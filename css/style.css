@@ -47,7 +47,7 @@ h6 {
 }
 
 h1 {
-  font-size: 70px;
+  font-size: 52px;
 }
 
 h2 {
@@ -133,7 +133,7 @@ ol {
   text-transform: uppercase;
   margin-bottom: 6px;
 }
-.section-title h2 {
+.section-title h1,h2 {
   color: #ffffff;
   font-weight: 700;
   text-transform: uppercase;
