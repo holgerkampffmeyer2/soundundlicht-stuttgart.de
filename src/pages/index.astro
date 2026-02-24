@@ -1,0 +1,381 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const testimonials = [
+  {
+    name: "Julian",
+    text: "Ich habe eine Lichtanlage für eine private Feier ausgeliehen und bin absolut begeistert! Der Verleih lief reibungslos. Super freundlicher Service, kompetente, professionelle Beratung und sehr faire Preise. Die Technik war top in Schuss, einfach aufzubauen und hat für eine großartige Atmosphäre gesorgt. Jederzeit wieder.",
+    service: "Mieter Lichtanlage"
+  },
+  {
+    name: "Thomas",
+    text: "Hatte bei Holger eine Sound- und Lichtanlage gemietet. Super netter Kontakt, gute Erklärung der Funktionen und alles reibungslos!",
+    service: "Mieter Musik- und Lichtanlage"
+  },
+  {
+    name: "Bernd",
+    text: "Alle 5 Sterne in allem gerechtfertigt!! Sehr freundlich, kompetent, Preis-Leistung Top. Anfrage Super schnelle Rückantwort, Angebot genau so schnell. Termin wie ausgemacht pünktlich. Beratung, Vorführung, Bedienung Erklärung ausführlich verständlich erklärt. Aller Geräte Top in Schuss.",
+    service: "Mieter Lichtanlage und Nebelmaschine"
+  },
+  {
+    name: "Dominik",
+    text: "Top! Hat alles bestens geklappt! Ein zuverlässiger und seriöser Kontakt!",
+    service: "Mieter Musikanlage"
+  },
+  {
+    name: "Wassim",
+    text: "Ich habe eine Soundanlage gemietet und war sehr zufrieden. Holger war freundlich, zuverlässig und die Anlage hatte eine top Klangqualität. Alles lief reibungslos. Gerne wieder!",
+    service: "Mieter Soundanlage"
+  },
+  {
+    name: "Sesubasu",
+    text: "Tolles, leistungsfähiges und leicht zu bedienendes Equipment. Mietung und Kommunikation einfach und schnell!",
+    service: "Mieter Lichtanlage"
+  }
+];
+
+const galleryImages = [
+  { src: "/img/vermietung/licht1.webp", fallback: "/img/vermietung/licht1.jpg", alt: "Lichtanlage" },
+  { src: "/img/vermietung/licht2.webp", fallback: "/img/vermietung/licht2.jpg", alt: "Lichtanlage" },
+  { src: "/img/vermietung/anlage1.webp", fallback: "/img/vermietung/anlage1.jpg", alt: "Musikanlage" },
+  { src: "/img/vermietung/anlage2.webp", fallback: "/img/vermietung/anlage2.jpg", alt: "Musikanlage" },
+  { src: "/img/vermietung/jbl-set1.webp", fallback: "/img/vermietung/jbl-set1.jpg", alt: "JBL Sound System" },
+  { src: "/img/vermietung/ldmaui3.webp", fallback: "/img/vermietung/ldmaui3.jpg", alt: "LD MAUI" },
+  { src: "/img/vermietung/licht3.webp", fallback: "/img/vermietung/licht3.jpg", alt: "Licht Show" },
+  { src: "/img/vermietung/licht4.webp", fallback: "/img/vermietung/licht4.jpg", alt: "Licht Show" }
+];
+---
+
+<Layout
+  title="Sound & Licht Stuttgart - Partytechnik mieten"
+  description="Vermietung von Lautsprechern, Musikanlagen, Partyboxen und Partybeleuchtung für jede Feier im Großraum Stuttgart."
+  image="/img/header.webp"
+>
+  <Navbar currentPage="home" />
+
+  <!-- Hero Slider -->
+  <section id="home" class="hero-slider">
+    <!-- Slide 1 -->
+    <div class="slide slide-1 active" data-slide="0">
+      <div class="slide-content">
+        <div class="container mx-auto px-4">
+          <div class="max-w-3xl">
+            <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase mb-4 block">
+              Partytechnik Vermietung
+            </span>
+            <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
+              Sound & Licht Stuttgart
+            </h1>
+            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-2xl">
+              Du planst eine Geburtstagsparty, Hochzeit, Firmenfeier oder ein Karaoke-Event? Ich bin Dein lokaler Verleiher von Lautsprechern, Musikanlagen, Partyboxen und Partybeleuchtung im Großraum Stuttgart.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#services" class="btn-primary">Mehr erfahren</a>
+              <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-secondary">Zur Technik!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide slide-2" data-slide="1">
+      <div class="slide-content">
+        <div class="container mx-auto px-4">
+          <div class="max-w-3xl">
+            <span class="text-[var(--color-accent)] text-lg tracking-widest uppercase mb-4 block">
+              Jetzt mieten
+            </span>
+            <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
+              Technik für dein Event
+            </h1>
+            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-2xl">
+              Kraftvoller Sound, beeindruckende Lichteffekte und professionelle Ausrüstung für unvergessliche Feiern.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-primary">Zur Vermietung</a>
+              <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slider Navigation -->
+    <button class="slider-nav prev" id="slider-prev">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button class="slider-nav next" id="slider-next">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Slider Dots -->
+    <div class="slider-dots">
+      <div class="slider-dot active" data-dot="0"></div>
+      <div class="slider-dot" data-dot="1"></div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float z-20">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 animate-on-scroll">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+          Unsere Leistungen
+        </span>
+        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
+          Was wir dir bieten
+        </h2>
+        <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
+          Professionelle Veranstaltungstechnik für deine Feier im Großraum Stuttgart. Einfach mieten, aufbauen und loslegen!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Service 1 -->
+        <div class="service-card animate-on-scroll">
+          <div class="text-4xl mb-4">🔊</div>
+          <h3 class="font-play text-xl font-bold mb-3">Lautsprecher & Partyboxen</h3>
+          <p class="text-[var(--color-text-muted)] text-sm">
+            Kraftvoller Sound für Partys, Hochzeiten, Vereinsfeiern, Karaoke-Events und Geburtstage. Einfach anschließen und loslegen!
+          </p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card animate-on-scroll">
+          <div class="text-4xl mb-4">💡</div>
+          <h3 class="font-play text-xl font-bold mb-3">Partylichter & Effekte</h3>
+          <p class="text-[var(--color-text-muted)] text-sm">
+            LED-Lichteffekte, Nebelmaschinen, bewegte Lichter, komplette Lichtanlagen für die perfekte Stimmung auf deiner Feier.
+          </p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card animate-on-scroll">
+          <div class="text-4xl mb-4">🎚️</div>
+          <h3 class="font-play text-xl font-bold mb-3">Komplettpakete</h3>
+          <p class="text-[var(--color-text-muted)] text-sm">
+            Miet Kombi-Angebote aus Sound & Licht. Zuverlässig, günstig und mit persönlicher Beratung, zugeschnitten auf deine Feier.
+          </p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card animate-on-scroll">
+          <div class="text-4xl mb-4">✓</div>
+          <h3 class="font-play text-xl font-bold mb-3">Warum bei uns mieten?</h3>
+          <ul class="text-[var(--color-text-muted)] text-sm space-y-2">
+            <li>✓ Einfache Abholung im Raum Stuttgart</li>
+            <li>✓ Verkehrsgünstig an A8 / B27</li>
+            <li>✓ Persönliche Beratung & faire Preise</li>
+            <li>✓ Ideal für Privatfeiern & Events</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 animate-on-scroll">
+        <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-primary">
+          Technik aussuchen & anfragen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galerie Section -->
+  <section id="galerie" class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 animate-on-scroll">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+          Galerie
+        </span>
+        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">
+          Unsere Technik
+        </h2>
+      </div>
+
+      <div class="gallery-grid">
+        {galleryImages.map((img, index) => (
+          <div class="gallery-item animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
+            <picture>
+              <source srcset={img.src} type="image/webp" />
+              <img src={img.fallback || img.src} alt={img.alt} loading="lazy" />
+            </picture>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12 animate-on-scroll">
+        <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-secondary">
+          Alle Geräte ansehen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="bewertungen" class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 animate-on-scroll">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+          Kundenstimmen
+        </span>
+        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">
+          Was unsere Kunden sagen
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {testimonials.map((testimonial, index) => (
+          <div class="testimonial-card animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
+            <img src="/img/5stars.png" alt="5 Sterne" class="h-4 mb-4" />
+            <p class="text-[var(--color-text-muted)] mb-4 italic">"{testimonial.text}"</p>
+            <div class="border-t border-[var(--color-border)] pt-4">
+              <h4 class="font-bold text-[var(--color-secondary)]">{testimonial.name}</h4>
+              <p class="text-[var(--color-text-muted)] text-sm">{testimonial.service}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt Section -->
+  <section id="kontakt" class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto text-center animate-on-scroll">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+        Kontakt
+      </span>
+      <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
+        Wir sind für dich da!
+      </h2>
+      <p class="text-[var(--color-text-muted)] text-lg mb-10">
+        Du hast Fragen zur Technik oder möchtest etwas mieten? Kontaktiere uns!
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-[var(--color-bg)] rounded-xl p-6">
+          <div class="text-3xl mb-3">📍</div>
+          <h3 class="font-play font-bold mb-2">Adresse</h3>
+          <p class="text-[var(--color-text-muted)]">
+            Magellanstraße 4<br>
+            70771 Echterdingen<br>
+            (Großraum Stuttgart)
+          </p>
+        </div>
+        <div class="bg-[var(--color-bg)] rounded-xl p-6">
+          <div class="text-3xl mb-3">📧</div>
+          <h3 class="font-play font-bold mb-2">E-Mail</h3>
+          <p class="text-[var(--color-text-muted)]">
+            holger.kampffmeyer+dj@gmail.com
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="mailto:holger.kampffmeyer+dj@gmail.com" class="btn-primary flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          E-Mail senden
+        </a>
+        <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-secondary">
+          Zur Technik
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <Footer />
+
+  <script>
+    // Hero Slider
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".slider-dot");
+    const prevBtn = document.getElementById("slider-prev");
+    const nextBtn = document.getElementById("slider-next");
+    let currentSlide = 0;
+    let slideInterval: number;
+
+    function showSlide(index: number) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      showSlide((currentSlide + 1) % slides.length);
+    }
+
+    function prevSlide() {
+      showSlide((currentSlide - 1 + slides.length) % slides.length);
+    }
+
+    function startSlider() {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopSlider() {
+      clearInterval(slideInterval);
+    }
+
+    // Event Listeners
+    prevBtn?.addEventListener("click", () => {
+      prevSlide();
+      stopSlider();
+      startSlider();
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      nextSlide();
+      stopSlider();
+      startSlider();
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        showSlide(i);
+        stopSlider();
+        startSlider();
+      });
+    });
+
+    // Start automatic slider
+    startSlider();
+
+    // Scroll Animation Observer
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+      observer.observe(el);
+    });
+  </script>
+</Layout>

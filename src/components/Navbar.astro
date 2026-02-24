@@ -1,0 +1,63 @@
+---
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = 'home' } = Astro.props;
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-3">
+        <img src="/img/djhulk_logo.png" alt="Sound und Licht Stuttgart Logo" class="h-12" />
+        <span class="font-play text-xl font-bold hidden sm:block">Sound & Licht</span>
+      </a>
+      
+      <!-- Desktop Menu -->
+      <div class="desktop-menu hidden md:flex items-center space-x-6">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#galerie" class="nav-link">Galerie</a>
+        <a href="#bewertungen" class="nav-link">Bewertungen</a>
+        <a href="#kontakt" class="nav-link">Kontakt</a>
+        <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-primary text-sm py-2 px-4">Zur Vermietung</a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-[var(--color-text)] p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-surface)] border-t border-[var(--color-border)]">
+    <div class="px-4 py-4 space-y-3">
+      <a href="#home" class="block nav-link py-2">Home</a>
+      <a href="#services" class="block nav-link py-2">Services</a>
+      <a href="#galerie" class="block nav-link py-2">Galerie</a>
+      <a href="#bewertungen" class="block nav-link py-2">Bewertungen</a>
+      <a href="#kontakt" class="block nav-link py-2">Kontakt</a>
+      <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-primary text-center text-sm py-2 px-4 mt-4">Zur Vermietung</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+  
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+</script>
