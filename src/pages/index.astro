@@ -37,14 +37,78 @@ const testimonials = [
 ];
 
 const galleryImages = [
-  { src: "/img/vermietung/licht1.webp", fallback: "/img/vermietung/licht1.jpg", alt: "Lichtanlage" },
-  { src: "/img/vermietung/licht2.webp", fallback: "/img/vermietung/licht2.jpg", alt: "Lichtanlage" },
-  { src: "/img/vermietung/anlage1.webp", fallback: "/img/vermietung/anlage1.jpg", alt: "Musikanlage" },
-  { src: "/img/vermietung/anlage2.webp", fallback: "/img/vermietung/anlage2.jpg", alt: "Musikanlage" },
-  { src: "/img/vermietung/jbl-set1.webp", fallback: "/img/vermietung/jbl-set1.jpg", alt: "JBL Sound System" },
-  { src: "/img/vermietung/ldmaui3.webp", fallback: "/img/vermietung/ldmaui3.jpg", alt: "LD MAUI" },
-  { src: "/img/vermietung/licht3.webp", fallback: "/img/vermietung/licht3.jpg", alt: "Licht Show" },
-  { src: "/img/vermietung/licht4.webp", fallback: "/img/vermietung/licht4.jpg", alt: "Licht Show" }
+  { 
+    src: "/img/vermietung/licht1.webp", 
+    fallback: "/img/vermietung/licht1.jpg", 
+    alt: "Lichtanlage",
+    useCase: "Geburtstagsfeier, Party",
+    equipment: "2x LD Maui 28 G3 Säulen-PA, Lichtanlage + Nebelmaschine",
+    persons: "50-100 Personen",
+    simplicity: "Plug & Play, in 5 Min. aufgebaut"
+  },
+  { 
+    src: "/img/vermietung/licht2.webp", 
+    fallback: "/img/vermietung/licht2.jpg", 
+    alt: "Lichtanlage",
+    useCase: "Vereinsfeier, Firmenfeier",
+    equipment: "2x LD Maui 28 G3 Säulen-PA",
+    persons: "bis 150 Personen",
+    simplicity: "2060W Peak, professioneller Sound"
+  },
+  { 
+    src: "/img/vermietung/anlage1.webp", 
+    fallback: "/img/vermietung/anlage1.jpg", 
+    alt: "Musikanlage",
+    useCase: "Firmenfeier, Private Feier",
+    equipment: "JBL Partybox 300 + 320",
+    persons: "50-80 Personen",
+    simplicity: "Bluetooth, sofort startklar"
+  },
+  { 
+    src: "/img/vermietung/anlage2.webp", 
+    fallback: "/img/vermietung/anlage2.jpg", 
+    alt: "Musikanlage",
+    useCase: "Hochzeiten, Vereinsfeier",
+    equipment: "LD Maui 28 G3 Säulen-PA",
+    persons: "bis 150 Personen",
+    simplicity: "2060W Peak, professioneller Sound, einfacher Aufbau"
+  },
+  { 
+    src: "/img/vermietung/jbl-set1.webp", 
+    fallback: "/img/vermietung/jbl-set1.jpg", 
+    alt: "JBL Sound System",
+    useCase: "Private Feiern, Gartenparty",
+    equipment: "JBL Partybox Set (2x)",
+    persons: "50-80 Personen",
+    simplicity: "Dynamic Light Effects, Bluetooth"
+  },
+  { 
+    src: "/img/vermietung/ldmaui3.webp", 
+    fallback: "/img/vermietung/ldmaui3.jpg", 
+    alt: "LD MAUI",
+    useCase: "Firmenfeier, Hochzeit",
+    equipment: "2x LD Maui 28 G3 Säulen-PA",
+    persons: "bis 150",
+    simplicity: "2060W Peak, professioneller Sound"
+  },
+  { 
+    src: "/img/vermietung/licht3.webp", 
+    fallback: "/img/vermietung/licht3.jpg", 
+    alt: "Licht Show",
+    useCase: "Lichtshow, Party",
+    equipment: "LD Maui 28 G3 Säulen-PA und Partylichtanlage",
+    persons: "50-100 Personen",
+    simplicity: "Einfacher Aufbau, Sound-zu-Licht Modus"
+  },
+  { 
+    src: "/img/vermietung/stairville-led-bossfx-2-pro-2.webp", 
+    fallback: "/img/vermietung/stairville-led-bossfx-2-pro-2.jpg", 
+    alt: "Licht Show",
+    useCase: "Events, Hochzeiten",
+    equipment: "LED BossFX-2 Pro + Nebelmaschine",
+    persons: "50-100 Personen",
+    simplicity: "Inkl. Stativ"
+  }
 ];
 ---
 
@@ -212,6 +276,12 @@ const galleryImages = [
               <source srcset={img.src} type="image/webp" />
               <img src={img.fallback || img.src} alt={img.alt} loading="lazy" />
             </picture>
+            <div class="gallery-info">
+              <span class="gallery-usecase">{img.useCase}</span>
+              <span class="gallery-details">
+                {img.equipment} • {img.persons} • {img.simplicity}
+              </span>
+            </div>
           </div>
         ))}
       </div>

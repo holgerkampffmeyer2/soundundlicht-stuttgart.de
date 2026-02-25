@@ -111,6 +111,29 @@
 
 ---
 
+## Bildbearbeitung
+
+### Verfügbare Scripts
+| Script | Beschreibung |
+|--------|--------------|
+| `create-webp.mjs` | Erstellt WebP-Versionen aller JPG-Bilder (Qualität: 80%, max. 1920px) |
+| `optimize-images.mjs` | Optimiert existierende Bilder für Web |
+
+### Verwendung
+```bash
+# WebP erstellen
+node create-webp.mjs
+
+# Bilder optimieren
+node optimize-images.mjs
+```
+
+Bilder liegen in:
+- `/public/img/` - Öffentliche Bilder (WebP + JPG)
+- `/img/` - Quelldateien (JPG)
+
+---
+
 ## Externe Links
 - Vermietung: https://holger-kampffmeyer.de/vermietung.html
 - Facebook: https://www.facebook.com/profile.php?id=61559169515364
