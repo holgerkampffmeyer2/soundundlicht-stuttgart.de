@@ -70,9 +70,10 @@
 ### Sections (index.astro)
 1. **Hero Slider** - 2 Slides mit Navigation, Dots, Auto-Slide (5s)
 2. **Services** - Leistungsübersicht
-3. **Galerie** - Bild-Gallery
-4. **Bewertungen** - Kundenbewertungen
-5. **Kontakt** - Kontaktformular +Infos
+3. **Galerie** - Bild-Gallery mit Kategorie-Beschreibungen (Partyboxen, PA-Anlage, Komplettset, Partylichtanlagen)
+4. **FAQ** - Häufig gestellte Fragen (als Accordion)
+5. **Bewertungen** - Kundenbewertungen
+6. **Kontakt** - Kontaktformular +Infos
 
 ### Komponenten
 - **Navbar:** Fixed, `z-50`, backdrop-blur, Mobile Hamburger Menu
@@ -95,11 +96,17 @@
 - Mobile Menu mit Toggle
 
 ### SEO
-- Meta Description, Keywords
+- Meta Description, Keywords (erweitert mit lokalen Städten)
 - Open Graph Tags
 - Twitter Cards
-- Schema.org LocalBusiness JSON-LD
+- Schema.org LocalBusiness JSON-LD (mit areaServed, telephone, priceRange)
 - Canonical URL
+- Lokale Keywords: Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim
+
+### Texte
+- Du-Ansprache durchgehend
+- Lokale Städte: Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim
+- USPs: Kostenlose Lieferung, persönliche Beratung, keine Kaution
 
 ---
 

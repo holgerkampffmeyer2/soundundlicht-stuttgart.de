@@ -36,11 +36,39 @@ const testimonials = [
   }
 ];
 
+const faqs = [
+  {
+    question: "Wie viel kostet es, eine Partybox in Stuttgart zu mieten?",
+    answer: "Unsere Partyboxen (z.B. JBL Partybox) sind bereits ab 80€ pro Boxenpaar und Tag verfügbar. Eine einzelne Box kostet 50€ pro Tag. Kontaktier mich für ein individuelles Angebot!"
+  },
+  {
+    question: "Welche PA-Anlage eignet sich für 50 Personen?",
+    answer: "Für Veranstaltungen mit 50-80 Personen empfehle ich unsere JBL Partyboxen oder das LD Maui 28 G3 Komplettset. Beide sind Plug & Play und in 5 Minuten aufgebaut. Kraftvoller Sound für unvergessliche Partys!"
+  },
+  {
+    question: "Wie funktioniert die Bezahlung für die Vermietung?",
+    answer: "Die Bezahlung erfolgt bei Abholung. Ich biete Barzahlung und Paypal an!"
+  },
+  {
+    question: "Wo kann ich die Technik abholen?",
+    answer: "Die Technik kann direkt bei mir in Leinfelden-Echterdingen (Magellanstraße 4) abgeholt werden. Ich erkläre dir ausführlich den Aufbau und gebe dir eine Einweisung."
+  },
+  {
+    question: "Was kostet eine Party-Lichtanlage für eine Hochzeit?",
+    answer: "Eine vollständige Partylichtanlage mit verschiedenen Effekten, Sound-zu-Licht-Steuerung, Fernbedienung und Stativ ist bereits ab 50€ pro Tag verfügbar. Inklusive persönlicher Beratung, Aufbauanleitung und Einweisung. Perfekt für Hochzeiten, Geburtstage und andere Feiern!"
+  },
+  {
+    question: "Bietest Du auch Partylichtanlagen und Nebelmaschinen im Paket?",
+    answer: "Ja, ich biete die Partylichtanlagen auch zusammen mit einer Nebelmaschine an. Das Komplettpaket gibt es ab 60€ pro Tag und kommt mit einem vollen Tank mit Nebelfluid. Perfekt für beeindruckende Lichteffekte auf deiner Feier!"
+  }
+];
+
 const galleryImages = [
   { 
     src: "/img/vermietung/licht1.webp", 
     fallback: "/img/vermietung/licht1.jpg", 
     alt: "Lichtanlage",
+    category: "Komplettset Sound & Licht",
     useCase: "Geburtstagsfeier, Party",
     equipment: "2x LD Maui 28 G3 Säulen-PA, Lichtanlage + Nebelmaschine",
     persons: "50-100 Personen",
@@ -50,8 +78,9 @@ const galleryImages = [
     src: "/img/vermietung/licht2.webp", 
     fallback: "/img/vermietung/licht2.jpg", 
     alt: "Lichtanlage",
+    category: "PA-Anlage",
     useCase: "Vereinsfeier, Firmenfeier",
-    equipment: "2x LD Maui 28 G3 Säulen-PA",
+    equipment: "LD Maui 28 G3 Säulen-PA",
     persons: "bis 150 Personen",
     simplicity: "2060W Peak, professioneller Sound"
   },
@@ -59,15 +88,17 @@ const galleryImages = [
     src: "/img/vermietung/anlage1.webp", 
     fallback: "/img/vermietung/anlage1.jpg", 
     alt: "Musikanlage",
+    category: "PA-Anlage und Lichttechnik",
     useCase: "Firmenfeier, Private Feier",
-    equipment: "JBL Partybox 300 + 320",
-    persons: "50-80 Personen",
-    simplicity: "Bluetooth, sofort startklar"
+    equipment: "LD Maui 28 G3 Säulen-PA, Partylichtanlage",
+    persons: "bis 150 Personen",
+    simplicity: "Kraftvoller Sound, beeindruckende Lichteffekte, einfacher Aufbau"
   },
   { 
     src: "/img/vermietung/anlage2.webp", 
     fallback: "/img/vermietung/anlage2.jpg", 
     alt: "Musikanlage",
+    category: "PA-Anlage",
     useCase: "Hochzeiten, Vereinsfeier",
     equipment: "LD Maui 28 G3 Säulen-PA",
     persons: "bis 150 Personen",
@@ -77,6 +108,7 @@ const galleryImages = [
     src: "/img/vermietung/jbl-set1.webp", 
     fallback: "/img/vermietung/jbl-set1.jpg", 
     alt: "JBL Sound System",
+    category: "Partyboxen",
     useCase: "Private Feiern, Gartenparty",
     equipment: "JBL Partybox Set (2x)",
     persons: "50-80 Personen",
@@ -86,6 +118,7 @@ const galleryImages = [
     src: "/img/vermietung/ldmaui3.webp", 
     fallback: "/img/vermietung/ldmaui3.jpg", 
     alt: "LD MAUI",
+    category: "PA-Anlage",
     useCase: "Firmenfeier, Hochzeit",
     equipment: "2x LD Maui 28 G3 Säulen-PA",
     persons: "bis 150",
@@ -95,6 +128,7 @@ const galleryImages = [
     src: "/img/vermietung/licht3.webp", 
     fallback: "/img/vermietung/licht3.jpg", 
     alt: "Licht Show",
+    category: "Komplettset Sound & Licht",
     useCase: "Lichtshow, Party",
     equipment: "LD Maui 28 G3 Säulen-PA und Partylichtanlage",
     persons: "50-100 Personen",
@@ -104,6 +138,7 @@ const galleryImages = [
     src: "/img/vermietung/stairville-led-bossfx-2-pro-2.webp", 
     fallback: "/img/vermietung/stairville-led-bossfx-2-pro-2.jpg", 
     alt: "Licht Show",
+    category: "Partylichtanlagen",
     useCase: "Events, Hochzeiten",
     equipment: "LED BossFX-2 Pro + Nebelmaschine",
     persons: "50-100 Personen",
@@ -113,8 +148,8 @@ const galleryImages = [
 ---
 
 <Layout
-  title="Sound & Licht Stuttgart - Partytechnik mieten"
-  description="Vermietung von Lautsprechern, Musikanlagen, Partyboxen und Partybeleuchtung für jede Feier im Großraum Stuttgart."
+  title="Partytechnik mieten Stuttgart | Sound & Licht Verleih - Leinfelden-Echterdingen, Esslingen, Tübingen"
+  description="Vermietung von PA-Anlagen, Partyboxen & Lichttechnik in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen. Ab 79€ pro Tag. DJ-Service, persönliche Beratung, kostenlose Lieferung."
   image="/img/header.webp"
 >
   <Navbar currentPage="home" />
@@ -133,7 +168,7 @@ const galleryImages = [
               Sound & Licht Stuttgart
             </h1>
             <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-2xl">
-              Du planst eine Geburtstagsparty, Hochzeit, Firmenfeier oder ein Karaoke-Event? Ich bin Dein lokaler Verleiher von Lautsprechern, Musikanlagen, Partyboxen und Partybeleuchtung im Großraum Stuttgart.
+              Du planst eine Geburtstagsparty, Hochzeit, Firmenfeier oder ein Karaoke-Event? Ich bin Dein lokaler Verleiher von Lautsprechern, Musikanlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung.
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
               <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-primary">Zur Vermietung</a>
@@ -201,10 +236,10 @@ const galleryImages = [
           Unsere Leistungen
         </span>
         <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
-          Was wir dir bieten
+          Was ich dir biete
         </h2>
         <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
-          Professionelle Veranstaltungstechnik für deine Feier im Großraum Stuttgart. Einfach mieten, aufbauen und loslegen!
+          Professionelle Veranstaltungstechnik, Partyboxen und Lichttechnik für deine Feier in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim und Umgebung. Egal ob Geburtstag, Hochzeit, Vereinsfeier oder Firmenfeier – ich habe die passende Technik für unvergessliche Events. Einfach mieten, abholen und losfeiern!
         </p>
       </div>
 
@@ -212,37 +247,37 @@ const galleryImages = [
         <!-- Service 1 -->
         <div class="service-card animate-on-scroll">
           <div class="text-4xl mb-4">🔊</div>
-          <h3 class="font-play text-xl font-bold mb-3">Lautsprecher & Partyboxen</h3>
+          <h3 class="font-play text-xl font-bold mb-3">Vermietung von PA-Anlagen, Lautsprechern & Partyboxen</h3>
           <p class="text-[var(--color-text-muted)] text-sm">
-            Kraftvoller Sound für Partys, Hochzeiten, Vereinsfeiern, Karaoke-Events und Geburtstage. Einfach anschließen und loslegen!
+            Kraftvoller Sound für Partys, Hochzeiten, Vereinsfeiern, Karaoke-Events und Geburtstage. Professionelle Musikanlagen, Lautsprecher und Partyboxen für kleine bis mittelgroße Veranstaltungen.
           </p>
         </div>
 
         <!-- Service 2 -->
         <div class="service-card animate-on-scroll">
           <div class="text-4xl mb-4">💡</div>
-          <h3 class="font-play text-xl font-bold mb-3">Partylichter & Effekte</h3>
+          <h3 class="font-play text-xl font-bold mb-3">Verleih von Lichttechnik, Partylichter & Lcht-Effekte</h3>
           <p class="text-[var(--color-text-muted)] text-sm">
-            LED-Lichteffekte, Nebelmaschinen, bewegte Lichter, komplette Lichtanlagen für die perfekte Stimmung auf deiner Feier.
+            LED-Lichteffekte, Partylichtanlagen, Nebelmaschinen, bewegte Lichter, komplette Lichtanlagen für die perfekte Stimmung auf deiner Feier.
           </p>
         </div>
 
         <!-- Service 3 -->
         <div class="service-card animate-on-scroll">
           <div class="text-4xl mb-4">🎚️</div>
-          <h3 class="font-play text-xl font-bold mb-3">Komplettpakete</h3>
+          <h3 class="font-play text-xl font-bold mb-3">Vermietung von Komplettpaketen für Veranstaltungen und Partys</h3>
           <p class="text-[var(--color-text-muted)] text-sm">
-            Miet Kombi-Angebote aus Sound & Licht. Zuverlässig, günstig und mit persönlicher Beratung, zugeschnitten auf deine Feier.
+            Vermietung von Kombi-Angeboten aus Sound & Licht. Zuverlässig, günstig und mit persönlicher Beratung, zugeschnitten auf deine Feier.
           </p>
         </div>
 
         <!-- Service 4 -->
         <div class="service-card animate-on-scroll">
           <div class="text-4xl mb-4">✓</div>
-          <h3 class="font-play text-xl font-bold mb-3">Warum bei uns mieten?</h3>
+          <h3 class="font-play text-xl font-bold mb-3">Warum bei mir mieten?</h3>
           <ul class="text-[var(--color-text-muted)] text-sm space-y-2">
-            <li>✓ Einfache Abholung im Raum Stuttgart</li>
-            <li>✓ Verkehrsgünstig an A8 / B27</li>
+            <li>✓ Einfache Abholung in Stuttgart & Umgebung</li>
+            <li>✓ Kostenlose Lieferung im Raum Stuttgart</li>
             <li>✓ Persönliche Beratung & faire Preise</li>
             <li>✓ Ideal für Privatfeiern & Events</li>
           </ul>
@@ -262,11 +297,14 @@ const galleryImages = [
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16 animate-on-scroll">
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
-          Galerie
+          Verleih & Vermietung
         </span>
-        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">
-          Unsere Technik
+        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
+          Unsere Veranstaltungstechnik
         </h2>
+        <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
+          Vermietung / Verleih von Veranstaltungstechnik im Großraum Stuttgart, Leinfelden-Echterdingen, Tübingen, Esslingen und Umkreis. Ich vermiete Partyboxen, Musikanlagen, DJ-Equipment, Lichttechnik und Beleuchtung für deine privaten Feiern, Firmen-Events, Vereinsfeiern, Messen und sonstige Veranstaltungen.
+        </p>
       </div>
 
       <div class="gallery-grid">
@@ -277,6 +315,7 @@ const galleryImages = [
               <img src={img.fallback || img.src} alt={img.alt} loading="lazy" />
             </picture>
             <div class="gallery-info">
+              <span class="gallery-category">{img.category}</span>
               <span class="gallery-usecase">{img.useCase}</span>
               <span class="gallery-details">
                 {img.equipment} • {img.persons} • {img.simplicity}
@@ -290,6 +329,29 @@ const galleryImages = [
         <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-secondary">
           Alle Geräte ansehen
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 animate-on-scroll">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+          FAQ
+        </span>
+        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">
+          Häufig gestellte Fragen
+        </h2>
+      </div>
+      
+      <div class="space-y-4">
+        {faqs.map((faq, index) => (
+          <details class="faq-item animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
+            <summary class="font-play text-lg font-semibold">{faq.question}</summary>
+            <p class="text-[var(--color-text-muted)] mt-3">{faq.answer}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
@@ -331,7 +393,7 @@ const galleryImages = [
         Wir sind für dich da!
       </h2>
       <p class="text-[var(--color-text-muted)] text-lg mb-10">
-        Du hast Fragen zur Technik oder möchtest etwas mieten? Kontaktiere uns!
+        Du hast Fragen zur Technik oder möchtest etwas mieten? Kontaktiere uns! Abholung und persönliche Beratung in Leinfelden-Echterdingen, verkehrsgünstig an A8 / B27 gelegen. Wir liefern kostenlos nach Stuttgart, Esslingen, Tübingen und Umgebung. Wir freuen uns auf deine Anfrage!
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
