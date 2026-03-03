@@ -52,52 +52,40 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     
     <!-- Schema.org LocalBusiness -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Sound & Licht Stuttgart - Partytechnik Verleih",
-      "description": "Vermietung von PA-Anlagen, Partyboxen, Musikanlagen, Lichttechnik und DJ-Equipment für Partys, Hochzeiten und Firmenevents in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen.",
-      "image": "https://soundundlicht-stuttgart.de/img/djhulk_logo.png",
-      "@id": "https://soundundlicht-stuttgart.de/",
-      "url": "https://soundundlicht-stuttgart.de/",
-      "telephone": "+49-157-37433743",
-      "priceRange": "€€",
-      "areaServed": {
-        "@type": "GeoCircle",
-        "geoMidpoint": {
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "DJ Hulk - Holger Kampffmeyer",
+        "description": "Verleih von Musikanlagen, Partyboxen, Lichttechnik und Tontechnik im Großraum Stuttgart. Electronic Music DJ für Events, Feiern und Hochzeiten.",
+        "url": "https://holger-kampffmeyer.de",
+        "telephone": "+49-1711467491",
+        "email": "holger.kampffmeyer+dj@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Magellanstraße 4",
+          "addressLocality": "Leinfelden-Echterdingen",
+          "postalCode": "70771",
+          "addressRegion": "Baden-Württemberg",
+          "addressCountry": "DE"
+        },
+        "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 48.72,
-          "longitude": 9.16
+          "latitude": "48.6938",
+          "longitude": "9.1539"
         },
-        "geoRadius": "50000"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Magellanstraße 4",
-        "addressLocality": "Leinfelden-Echterdingen",
-        "postalCode": "70771",
-        "addressRegion": "Baden-Württemberg",
-        "addressCountry": "DE"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:00",
-        "closes": "18:00"
-      },
-      "sameAs": [
-        "https://www.facebook.com/profile.php?id=61559169515364",
-        "https://www.instagram.com/holgerkampffmeyer/"
-      ],
-      "potentialAction": {
-        "@type": "ReserveAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://holger-kampffmeyer.de/vermietung.html"
+        "openingHours": "Mo-Su 09:00-20:00",
+        "priceRange": "€€",
+        "areaServed": {
+          "@type": "State",
+          "name": "Baden-Württemberg"
         },
-        "name": "Technik mieten"
+        "sameAs": [
+          "https://www.facebook.com/holger.kampffmeyer",
+          "https://www.instagram.com/djhulk_de",
+          "https://www.youtube.com/@djhulk_de",
+          "https://www.mixcloud.com/holger-kampffmeyer/"
+        ]
       }
-    }
     </script>
   </head>
   <body class="min-h-screen">
