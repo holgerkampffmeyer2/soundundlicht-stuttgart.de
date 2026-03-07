@@ -2,6 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import VolumeUpIcon from "../components/icons/VolumeUpIcon.astro";
+import LightBulbIcon from "../components/icons/LightBulbIcon.astro";
+import PackageIcon from "../components/icons/PackageIcon.astro";
+import CheckCircleIcon from "../components/icons/CheckCircleIcon.astro";
+import MapPinIcon from "../components/icons/MapPinIcon.astro";
+import EmailIcon from "../components/icons/EmailIcon.astro";
 
 const testimonials = [
   {
@@ -246,7 +252,7 @@ const galleryImages = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Service 1 -->
         <div class="service-card animate-on-scroll">
-          <div class="text-4xl mb-4">🔊</div>
+          <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
           <h3 class="font-play text-xl font-bold mb-3">Vermietung von PA-Anlagen, Lautsprechern & Partyboxen</h3>
           <p class="text-[var(--color-text-muted)] text-sm">
             Kraftvoller Sound für Partys, Hochzeiten, Vereinsfeiern, Karaoke-Events und Geburtstage. Professionelle Musikanlagen, Lautsprecher und Partyboxen für kleine bis mittelgroße Veranstaltungen.
@@ -255,7 +261,7 @@ const galleryImages = [
 
         <!-- Service 2 -->
         <div class="service-card animate-on-scroll">
-          <div class="text-4xl mb-4">💡</div>
+          <div class="text-[var(--color-secondary)] mb-4"><LightBulbIcon class="w-10 h-10" /></div>
           <h3 class="font-play text-xl font-bold mb-3">Verleih von Lichttechnik, Partylichter & Lcht-Effekte</h3>
           <p class="text-[var(--color-text-muted)] text-sm">
             LED-Lichteffekte, Partylichtanlagen, Nebelmaschinen, bewegte Lichter, komplette Lichtanlagen für die perfekte Stimmung auf deiner Feier.
@@ -264,7 +270,7 @@ const galleryImages = [
 
         <!-- Service 3 -->
         <div class="service-card animate-on-scroll">
-          <div class="text-4xl mb-4">🎚️</div>
+          <div class="text-[var(--color-secondary)] mb-4"><PackageIcon class="w-10 h-10" /></div>
           <h3 class="font-play text-xl font-bold mb-3">Vermietung von Komplettpaketen für Veranstaltungen und Partys</h3>
           <p class="text-[var(--color-text-muted)] text-sm">
             Vermietung von Kombi-Angeboten aus Sound & Licht. Zuverlässig, günstig und mit persönlicher Beratung, zugeschnitten auf deine Feier.
@@ -273,7 +279,7 @@ const galleryImages = [
 
         <!-- Service 4 -->
         <div class="service-card animate-on-scroll">
-          <div class="text-4xl mb-4">✓</div>
+          <div class="text-[var(--color-secondary)] mb-4"><CheckCircleIcon class="w-10 h-10" /></div>
           <h3 class="font-play text-xl font-bold mb-3">Warum bei mir mieten?</h3>
           <ul class="text-[var(--color-text-muted)] text-sm space-y-2">
             <li>✓ Einfache Abholung in Stuttgart & Umgebung</li>
@@ -398,7 +404,7 @@ const galleryImages = [
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <div class="bg-[var(--color-bg)] rounded-xl p-6">
-          <div class="text-3xl mb-3">📍</div>
+          <div class="text-[var(--color-secondary)] mb-3"><MapPinIcon class="w-10 h-10" /></div>
           <h3 class="font-play font-bold mb-2">Adresse</h3>
           <p class="text-[var(--color-text-muted)]">
             Magellanstraße 4<br>
@@ -407,7 +413,7 @@ const galleryImages = [
           </p>
         </div>
         <div class="bg-[var(--color-bg)] rounded-xl p-6">
-          <div class="text-3xl mb-3">📧</div>
+          <div class="text-[var(--color-secondary)] mb-3"><EmailIcon class="w-10 h-10" /></div>
           <h3 class="font-play font-bold mb-2">E-Mail</h3>
           <p class="text-[var(--color-text-muted)]">
             holger.kampffmeyer+dj@gmail.com
