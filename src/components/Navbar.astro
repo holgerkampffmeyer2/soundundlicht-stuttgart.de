@@ -4,6 +4,14 @@ interface Props {
 }
 
 const { currentPage = 'home' } = Astro.props;
+
+const navItems = [
+  { id: 'home', label: 'Home', href: '#home' },
+  { id: 'services', label: 'Services', href: '#services' },
+  { id: 'galerie', label: 'Galerie', href: '#galerie' },
+  { id: 'bewertungen', label: 'Bewertungen', href: '#bewertungen' },
+  { id: 'kontakt', label: 'Kontakt', href: '#kontakt' },
+];
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]">
@@ -17,11 +25,9 @@ const { currentPage = 'home' } = Astro.props;
       
       <!-- Desktop Menu -->
       <div class="desktop-menu hidden md:flex items-center space-x-6">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#galerie" class="nav-link">Galerie</a>
-        <a href="#bewertungen" class="nav-link">Bewertungen</a>
-        <a href="#kontakt" class="nav-link">Kontakt</a>
+        {navItems.map((item) => (
+          <a href={item.href} class:list={["nav-link", { active: currentPage === item.id }]}>{item.label}</a>
+        ))}
         <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-primary text-sm py-2 px-4">Zur Vermietung</a>
       </div>
       
@@ -37,11 +43,9 @@ const { currentPage = 'home' } = Astro.props;
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-surface)] border-t border-[var(--color-border)]">
     <div class="px-4 py-4 space-y-3">
-      <a href="#home" class="block nav-link py-2">Home</a>
-      <a href="#services" class="block nav-link py-2">Services</a>
-      <a href="#galerie" class="block nav-link py-2">Galerie</a>
-      <a href="#bewertungen" class="block nav-link py-2">Bewertungen</a>
-      <a href="#kontakt" class="block nav-link py-2">Kontakt</a>
+      {navItems.map((item) => (
+        <a href={item.href} class:list={["block nav-link py-2", { active: currentPage === item.id }]}>{item.label}</a>
+      ))}
       <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-primary text-center text-sm py-2 px-4 mt-4">Zur Vermietung</a>
     </div>
   </div>
@@ -50,6 +54,8 @@ const { currentPage = 'home' } = Astro.props;
 <script>
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]') as NodeListOf<HTMLElement>;
   
   menuBtn?.addEventListener('click', () => {
     mobileMenu?.classList.toggle('hidden');
@@ -60,4 +66,29 @@ const { currentPage = 'home' } = Astro.props;
       mobileMenu.classList.add('hidden');
     });
   });
+  
+  function updateActiveLink() {
+    const scrollPos = window.scrollY + 100;
+    
+    sections.forEach(section => {
+      const sectionEl = section as HTMLElement;
+      const sectionTop = sectionEl.offsetTop;
+      const sectionHeight = sectionEl.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === `#${sectionId}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', updateActiveLink);
+  updateActiveLink();
 </script>
