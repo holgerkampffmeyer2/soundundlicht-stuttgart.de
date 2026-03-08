@@ -1,0 +1,46 @@
+---
+import StarIcon from "./icons/StarIcon.astro";
+
+interface Testimonial {
+  name: string;
+  role: string;
+  text: string;
+}
+
+const testimonials: Testimonial[] = [
+  { name: 'Julian', role: 'Mieter Lichtanlage', text: 'Ich habe eine Lichtanlage für eine private Feier ausgeliehen und bin absolut begeistert! Super freundlicher Service, kompetente Beratung und sehr faire Preise.' },
+  { name: 'Thomas', role: 'Mieter Musik- und Lichtanlage', text: 'Hatte bei Holger eine Sound- und Lichtanlage gemietet. Super netter Kontakt, gute Erklärung der Funktionen und alles reibungslos!' },
+  { name: 'Dominik', role: 'Mieter Musikanlage', text: 'Top! Hat alles bestens geklappt! Ein zuverlässiger und seriöser Kontakt!' },
+  { name: 'Wassim', role: 'Mieter Musikanlage', text: 'Ich habe eine Soundanlage gemietet und war sehr zufrieden. Holger war freundlich, zuverlässig und die Anlage hatte eine top Klangqualität.' },
+  { name: 'Sesubasu', role: 'Mieter Lichtanlage', text: 'Tolles, leistungsfähiges und leicht zu bedienendes Equipment. Mietung und Kommunikation einfach und schnell!' },
+  { name: 'Bernd', role: 'Mieter Lichtanlage und Nebelmaschine', text: 'Alle 5 Sterne in allem Gerechtfertigt!! Sehr Freundlich, Kompetent, Preis Leistung Top. Jederzeit wieder!' }
+];
+---
+
+<section class="section-padding bg-[var(--color-surface)]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Rezensionen</span>
+      <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">Was sagen meine Kunden?</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {testimonials.map((testimonial, index) => (
+        <div class="bg-[var(--color-bg)] rounded-xl p-6 border border-[var(--color-border)] hover:border-[var(--color-secondary)] hover:shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-all duration-300" style={`animation-delay: ${index * 0.1}s`}>
+          <div class="flex gap-1 mb-4">
+            <StarIcon class="w-5 h-5 text-orange-500" />
+            <StarIcon class="w-5 h-5 text-orange-500" />
+            <StarIcon class="w-5 h-5 text-orange-500" />
+            <StarIcon class="w-5 h-5 text-orange-500" />
+            <StarIcon class="w-5 h-5 text-orange-500" />
+          </div>
+          <p class="text-[var(--color-text-muted)] mb-4">{testimonial.text}</p>
+          <div class="border-t border-[var(--color-border)] pt-4">
+            <h3 class="font-bold">{testimonial.name}</h3>
+            <span class="text-sm text-[var(--color-text-muted)]">{testimonial.role}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
