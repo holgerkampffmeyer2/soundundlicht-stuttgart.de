@@ -5,12 +5,16 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  noIndex?: boolean;
+  jsonLd?: object | object[];
 }
 
 const { 
   title, 
   description = "Vermietung von Lautsprechern, Musikanlagen, Partyboxen und Partybeleuchtung für jede Feier im Großraum Stuttgart.",
-  image = "/img/header.jpg"
+  image = "/img/header.jpg",
+  noIndex = false,
+  jsonLd
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -28,6 +32,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#0a0a0f" />
+    <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow" } />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,14 +56,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     
     <!-- Schema.org LocalBusiness -->
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "DJ Hulk - Holger Kampffmeyer",
         "description": "Verleih von Musikanlagen, Partyboxen, Lichttechnik und Tontechnik im Großraum Stuttgart. Electronic Music DJ für Events, Feiern und Hochzeiten.",
-        "url": "https://holger-kampffmeyer.de",
-        "telephone": "+49-1711467491",
+        "url": "https://soundundlicht-stuttgart.de",
+        "telephone": "+491711467491",
         "email": "holger.kampffmeyer+dj@gmail.com",
         "address": {
           "@type": "PostalAddress",
@@ -83,10 +88,32 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           "https://www.facebook.com/holger.kampffmeyer",
           "https://www.instagram.com/djhulk_de",
           "https://www.youtube.com/@djhulk_de",
-          "https://www.mixcloud.com/holger-kampffmeyer/"
+          "https://www.mixcloud.com/holger-kampffmeyer/",
+          "https://holger-kampffmeyer.de"
         ]
       }
     </script>
+
+    <!-- JSON-LD SiteNavigationElement as ItemList -->
+    <script is:inline type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "SiteNavigationElement",
+            "position": 1,
+            "name": "Startseite",
+            "url": "https://soundundlicht-stuttgart.de/"
+          }
+        ]
+      }
+    </script>
+    {jsonLd && (
+      Array.isArray(jsonLd) ? jsonLd : [jsonLd]
+    ).map(item => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
   </head>
   <body class="min-h-screen">
     <slot />

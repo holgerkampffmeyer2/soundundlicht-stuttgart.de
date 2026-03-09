@@ -100,7 +100,10 @@
 - Open Graph Tags
 - Twitter Cards
 - Schema.org LocalBusiness JSON-LD (mit areaServed, telephone, priceRange)
+- Schema.org SiteNavigationElement als ItemList
 - Canonical URL
+- `noIndex` Prop für Seiten ohne Indexierung
+- `jsonLd` Prop für seiten-spezifische Schema-Daten
 - Lokale Keywords: Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim
 
 ### Texte
@@ -142,6 +145,7 @@ Bilder liegen in:
 ---
 
 ## Externe Links
-- Vermietung: https://holger-kampffmeyer.de/vermietung.html
+- DJ Hulk: https://holger-kampffmeyer.de/djhulk-electronic-music
+- Vermietung: https://holger-kampffmeyer.de/vermietung
 - Facebook: https://www.facebook.com/profile.php?id=61559169515364
 - Instagram: https://www.instagram.com/holgerkampffmeyer/
