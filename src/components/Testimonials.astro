@@ -7,6 +7,12 @@ interface Testimonial {
   text: string;
 }
 
+interface Props {
+  id?: string;
+}
+
+const { id } = Astro.props;
+
 const testimonials: Testimonial[] = [
   { name: 'Julian', role: 'Mieter Lichtanlage', text: 'Ich habe eine Lichtanlage für eine private Feier ausgeliehen und bin absolut begeistert! Super freundlicher Service, kompetente Beratung und sehr faire Preise.' },
   { name: 'Thomas', role: 'Mieter Musik- und Lichtanlage', text: 'Hatte bei Holger eine Sound- und Lichtanlage gemietet. Super netter Kontakt, gute Erklärung der Funktionen und alles reibungslos!' },
@@ -17,7 +23,7 @@ const testimonials: Testimonial[] = [
 ];
 ---
 
-<section class="section-padding bg-[var(--color-surface)]">
+<section id={id} class="section-padding bg-[var(--color-surface)]">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16">
       <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Rezensionen</span>
