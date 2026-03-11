@@ -147,12 +147,26 @@ const galleryImages = [
             <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase mb-4 block">
               Dein lokaler Verleih für Partylicht, Partyboxen und Veranstaltungstechnik
             </span>
-            <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
+            <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text glitch" data-text="Sound & Licht Stuttgart">
               Sound & Licht Stuttgart
             </h1>
-            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-2xl">
+            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-4 max-w-2xl">
               Du planst eine Geburtstagsparty, Hochzeit, Firmenfeier oder ein Karaoke-Event? Ich bin Dein lokaler Verleiher von Lautsprechern, Musikanlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung.
             </p>
+            
+            <!-- Soundwave Visual -->
+            <div class="soundwave-container mb-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="soundwave-bar" style="height: 20%;"></div>
+              <div class="soundwave-bar" style="height: 40%;"></div>
+              <div class="soundwave-bar" style="height: 60%;"></div>
+              <div class="soundwave-bar" style="height: 80%;"></div>
+              <div class="soundwave-bar" style="height: 100%;"></div>
+              <div class="soundwave-bar" style="height: 80%;"></div>
+              <div class="soundwave-bar" style="height: 60%;"></div>
+              <div class="soundwave-bar" style="height: 40%;"></div>
+              <div class="soundwave-bar" style="height: 20%;"></div>
+            </div>
+            
             <div class="flex flex-col sm:flex-row gap-4">
               <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-primary">Zur Vermietung</a>
               <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
@@ -170,13 +184,28 @@ const galleryImages = [
             <span class="text-[var(--color-accent)] text-lg tracking-widest uppercase mb-4 block">
               Jetzt mieten
             </span>
-            <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
+            <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text glitch" data-text="Technik für dein Event">
               Technik für dein Event
             </h1>
             <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-2xl">
-              Kraftvoller Sound, beeindruckende Lichteffekte und professionelle Ausrüstung für unvergessliche Feiern.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4">
+               Kraftvoller Sound, beeindruckende Lichteffekte und professionelle Ausrüstung für unvergessliche Feiern.
+             </p>
+             
+             <!-- Soundwave Visual -->
+             <div class="soundwave-container mb-8">
+               <div class="soundwave-bar"></div>
+               <div class="soundwave-bar"></div>
+               <div class="soundwave-bar"></div>
+               <div class="soundwave-bar"></div>
+               <div class="soundwave-bar"></div>
+               <div class="soundwave-bar"></div>
+               <div class="soundwave-bar"></div>
+               <div class="soundwave-bar"></div>
+               <div class="soundwave-bar"></div>
+               <div class="soundwave-bar"></div>
+             </div>
+             
+             <div class="flex flex-col sm:flex-row gap-4">
               <a href="https://holger-kampffmeyer.de/vermietung.html" class="btn-primary">Zur Vermietung</a>
               <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
             </div>
@@ -292,7 +321,8 @@ const galleryImages = [
 
       <div class="gallery-grid">
         {galleryImages.map((img, index) => (
-          <div class="gallery-item animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
+          <a href="https://holger-kampffmeyer.de/vermietung.html" class="gallery-item animate-on-scroll block" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="light-ray"></div>
             <picture>
               <source srcset={img.src} type="image/webp" />
               <img src={img.fallback || img.src} alt={img.alt} loading="lazy" />
@@ -304,7 +334,7 @@ const galleryImages = [
                 {img.equipment} • {img.persons} • {img.simplicity}
               </span>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 
