@@ -589,76 +589,91 @@ body {
   animation: neon-pulse-cyan 2s ease-in-out infinite;
 }
 
-/* Glitch Effect */
-@keyframes glitch {
-  0% {
-    transform: translate(0);
+/* Disco Light / Strobe Effect for Header */
+@keyframes disco-sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
   }
-  20% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, 2px);
-  }
-  80% {
-    transform: translate(2px, -2px);
-  }
-  100% {
-    transform: translate(0);
+  50% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-@keyframes glitch-skew {
-  0% {
-    transform: skew(0deg);
+@keyframes text-strobe {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 20px var(--color-secondary),
+                 0 0 40px var(--color-secondary),
+                 0 0 60px var(--color-accent);
   }
-  20% {
-    transform: skew(-2deg);
-  }
-  40% {
-    transform: skew(2deg);
-  }
-  60% {
-    transform: skew(-1deg);
-  }
-  80% {
-    transform: skew(1deg);
-  }
-  100% {
-    transform: skew(0deg);
+  20%, 24%, 55% {
+    opacity: 0.3;
+    text-shadow: none;
   }
 }
 
-.glitch {
+@keyframes rainbow-glow {
+  0% {
+    text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #ff0000;
+  }
+  25% {
+    text-shadow: 0 0 20px #ff8800, 0 0 40px #ff8800, 0 0 60px #ff8800;
+  }
+  50% {
+    text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
+  }
+  75% {
+    text-shadow: 0 0 20px #0088ff, 0 0 40px #0088ff, 0 0 60px #0088ff;
+  }
+  100% {
+    text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #ff0000;
+  }
+}
+
+.disco-text {
+  animation: text-strobe 3s infinite;
+}
+
+.disco-sparkle {
   position: relative;
-  animation: glitch-skew 3s ease-in-out infinite;
 }
 
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
+.disco-sparkle::before {
+  content: '';
   position: absolute;
-  top: 0;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 100px;
+  background: radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(255,255,255,0.1) 100%);
+  animation: disco-sparkle 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.disco-sparkle::after {
+  content: '✦ ✧ ✦ ✧ ✦';
+  position: absolute;
+  top: -30px;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  text-align: center;
+  font-size: 10px;
+  color: var(--color-accent);
+  animation: disco-sparkle 1.5s ease-in-out infinite;
+  letter-spacing: 10px;
+  opacity: 0.7;
 }
 
-.glitch::before {
-  left: 2px;
-  text-shadow: -2px 0 var(--color-secondary);
-  clip: rect(24px, 550px, 90px, 0);
-  animation: glitch 3s infinite linear alternate-reverse;
-}
-
-.glitch::after {
-  left: -2px;
-  text-shadow: -2px 0 var(--color-accent);
-  clip: rect(85px, 550px, 140px, 0);
-  animation: glitch 2s infinite linear alternate-reverse;
+.rainbow-text {
+  animation: rainbow-glow 4s linear infinite;
+  background: linear-gradient(90deg, #ff0000, #ff8800, #00ff00, #0088ff, #ff0000);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Moving Gradient Background */
@@ -770,9 +785,9 @@ body {
   .soundwave-bar,
   .neon-pulse,
   .neon-pulse-cyan,
-  .glitch,
-  .glitch::before,
-  .glitch::after,
+  .disco-text,
+  .disco-sparkle::before,
+  .disco-sparkle::after,
   .moving-gradient,
   .gallery-item .light-ray,
   .beat-pulse,
@@ -780,5 +795,6 @@ body {
     animation: none !important;
     transform: none !important;
     opacity: 1 !important;
+    text-shadow: none !important;
   }
 }

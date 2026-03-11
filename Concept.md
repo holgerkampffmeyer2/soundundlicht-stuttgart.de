@@ -32,6 +32,18 @@
 - Hero-Slider mit 2 Slides
 - Hover-Effekte: `translateY(-3px)`, `box-shadow`
 
+### Animationen & Effekte
+| Effekt | Klasse | Beschreibung |
+|--------|--------|--------------|
+| Soundwave | `.soundwave-container` / `.soundwave-bar` | Animierter Equalizer im Hero |
+| Neon-Pulse | `.neon-pulse` / `.neon-pulse-cyan` | Pulsierender Neon-Glow |
+| Light-Ray | `.light-ray` | Lichtstrahl-Effekt bei Gallery-Hover |
+| Beat-Pulse | `.beat-pulse` | Rhythmischer Puls-Effekt |
+| Moving Gradient | `.moving-gradient` | Animierter Hintergrund-Gradient |
+
+### Barrierefreiheit
+- `prefers-reduced-motion` wird bei allen Animationen unterstützt
+
 ---
 
 ## Architektur
