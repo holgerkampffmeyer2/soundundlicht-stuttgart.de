@@ -721,19 +721,37 @@ body {
   height: 100%;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(249, 115, 22, 0.4) 45%, 
-    rgba(34, 211, 238, 0.3) 50%, 
-    rgba(249, 115, 22, 0.4) 55%, 
+    rgba(249, 115, 22, 0.15) 45%, 
+    rgba(34, 211, 238, 0.1) 50%, 
+    rgba(249, 115, 22, 0.15) 55%, 
     transparent 100%
   );
   transform: translateX(-150%);
   pointer-events: none;
   z-index: 3;
   filter: blur(2px);
+  animation: light-ray-pass 8s ease-in-out infinite;
+}
+
+@keyframes light-ray-pass {
+  0%, 100% {
+    transform: translateX(-150%);
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(150%);
+    opacity: 0;
+  }
 }
 
 .gallery-item:hover .light-ray {
-  animation: light-ray 0.8s ease-out;
+  animation: none;
+  opacity: 0.8;
+  transform: translateX(100%);
+  transition: all 0.3s ease-out;
 }
 
 /* Beat Pulse - syncs with sound */
