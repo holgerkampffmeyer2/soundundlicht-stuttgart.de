@@ -249,10 +249,10 @@ body {
   aspect-ratio: 1/1.1;
   background: var(--color-surface);
   border-radius: 0.75rem;
-  overflow: hidden;
   position: relative;
   transition: all 0.4s ease;
   cursor: pointer;
+  overflow: visible;
 }
 
 .gallery-item::after {
@@ -377,6 +377,35 @@ body {
 
 .service-card:hover::before {
   transform: scaleX(1);
+}
+
+.service-card .light-ray {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(249, 115, 22, 0.6) 45%, 
+    rgba(34, 211, 238, 0.5) 50%, 
+    rgba(249, 115, 22, 0.6) 55%, 
+    transparent 100%
+  );
+  transform: translateX(-150%);
+  pointer-events: none;
+  z-index: 1;
+  animation: light-ray-pass 6s ease-in-out infinite;
+}
+
+.service-card:nth-child(1) .light-ray { animation-delay: 0s; }
+.service-card:nth-child(2) .light-ray { animation-delay: 1.5s; }
+.service-card:nth-child(3) .light-ray { animation-delay: 3s; }
+.service-card:nth-child(4) .light-ray { animation-delay: 4.5s; }
+
+.service-card:hover .light-ray {
+  opacity: 0.8;
+  transition: opacity 0.3s;
 }
 
 /* Testimonials */
@@ -716,21 +745,29 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%;
+  width: 40%;
   height: 100%;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(249, 115, 22, 0.15) 45%, 
-    rgba(34, 211, 238, 0.1) 50%, 
-    rgba(249, 115, 22, 0.15) 55%, 
+    rgba(249, 115, 22, 0.5) 45%, 
+    rgba(34, 211, 238, 0.4) 50%, 
+    rgba(249, 115, 22, 0.5) 55%, 
     transparent 100%
   );
   transform: translateX(-150%);
   pointer-events: none;
   z-index: 3;
-  filter: blur(2px);
-  animation: light-ray-pass 8s ease-in-out infinite;
+  animation: light-ray-pass 6s ease-in-out infinite;
 }
+
+.gallery-item:nth-child(1) .light-ray { animation-delay: 0s; }
+.gallery-item:nth-child(2) .light-ray { animation-delay: 1s; }
+.gallery-item:nth-child(3) .light-ray { animation-delay: 2s; }
+.gallery-item:nth-child(4) .light-ray { animation-delay: 3s; }
+.gallery-item:nth-child(5) .light-ray { animation-delay: 4s; }
+.gallery-item:nth-child(6) .light-ray { animation-delay: 5s; }
+.gallery-item:nth-child(7) .light-ray { animation-delay: 6s; }
+.gallery-item:nth-child(8) .light-ray { animation-delay: 7s; }
 
 @keyframes light-ray-pass {
   0%, 100% {
