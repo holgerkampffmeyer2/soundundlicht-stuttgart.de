@@ -387,21 +387,21 @@ body {
   height: 100%;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(249, 115, 22, 0.6) 45%, 
-    rgba(34, 211, 238, 0.5) 50%, 
-    rgba(249, 115, 22, 0.6) 55%, 
+    rgba(249, 115, 22, 0.3) 45%, 
+    rgba(34, 211, 238, 0.25) 50%, 
+    rgba(249, 115, 22, 0.3) 55%, 
     transparent 100%
   );
   transform: translateX(-150%);
   pointer-events: none;
   z-index: 1;
-  animation: light-ray-pass 6s ease-in-out infinite;
+  animation: light-ray-pass 12s ease-in-out infinite;
 }
 
 .service-card:nth-child(1) .light-ray { animation-delay: 0s; }
-.service-card:nth-child(2) .light-ray { animation-delay: 1.5s; }
-.service-card:nth-child(3) .light-ray { animation-delay: 3s; }
-.service-card:nth-child(4) .light-ray { animation-delay: 4.5s; }
+.service-card:nth-child(2) .light-ray { animation-delay: 4s; }
+.service-card:nth-child(3) .light-ray { animation-delay: 8s; }
+.service-card:nth-child(4) .light-ray { animation-delay: 12s; }
 
 .service-card:hover .light-ray {
   opacity: 0.8;
@@ -749,33 +749,33 @@ body {
   height: 100%;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(249, 115, 22, 0.5) 45%, 
-    rgba(34, 211, 238, 0.4) 50%, 
-    rgba(249, 115, 22, 0.5) 55%, 
+    rgba(249, 115, 22, 0.25) 45%, 
+    rgba(34, 211, 238, 0.2) 50%, 
+    rgba(249, 115, 22, 0.25) 55%, 
     transparent 100%
   );
   transform: translateX(-150%);
   pointer-events: none;
   z-index: 3;
-  animation: light-ray-pass 6s ease-in-out infinite;
+  animation: light-ray-pass 12s ease-in-out infinite;
 }
 
 .gallery-item:nth-child(1) .light-ray { animation-delay: 0s; }
-.gallery-item:nth-child(2) .light-ray { animation-delay: 1s; }
-.gallery-item:nth-child(3) .light-ray { animation-delay: 2s; }
-.gallery-item:nth-child(4) .light-ray { animation-delay: 3s; }
-.gallery-item:nth-child(5) .light-ray { animation-delay: 4s; }
-.gallery-item:nth-child(6) .light-ray { animation-delay: 5s; }
-.gallery-item:nth-child(7) .light-ray { animation-delay: 6s; }
-.gallery-item:nth-child(8) .light-ray { animation-delay: 7s; }
+.gallery-item:nth-child(2) .light-ray { animation-delay: 3s; }
+.gallery-item:nth-child(3) .light-ray { animation-delay: 6s; }
+.gallery-item:nth-child(4) .light-ray { animation-delay: 9s; }
+.gallery-item:nth-child(5) .light-ray { animation-delay: 12s; }
+.gallery-item:nth-child(6) .light-ray { animation-delay: 15s; }
+.gallery-item:nth-child(7) .light-ray { animation-delay: 18s; }
+.gallery-item:nth-child(8) .light-ray { animation-delay: 21s; }
 
 @keyframes light-ray-pass {
   0%, 100% {
     transform: translateX(-150%);
     opacity: 0;
   }
-  20%, 80% {
-    opacity: 0.5;
+  15%, 25% {
+    opacity: 0.4;
   }
   50% {
     transform: translateX(150%);
