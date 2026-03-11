@@ -77,7 +77,10 @@
 
 ### Animation-Klassen
 - `.animate-on-scroll` - Fade-In bei Scroll
-- `.soundwave-container` - Equalizer-Animation
-- `.neon-pulse` - Pulsierender Glow
-- `.light-ray` - Lichtstrahl bei Hover
+- `.soundwave-container` / `.soundwave-bar` - Equalizer-Animation im Hero
+- `.neon-pulse` - Pulsierender oranger Neon-Glow (für Buttons)
+- `.neon-pulse-cyan` - Pulsierender cyaner Neon-Glow
+- `.light-ray` - Animierter Lichtstrahl (zeitversetzt auf Karten)
 - `.gradient-text` - Orange→Cyan Gradient
+- `.moving-gradient` - Animierter Hintergrund-Gradient
+- `.beat-pulse` - Rhythmischer Puls-Effekt
