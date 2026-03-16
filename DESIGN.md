@@ -1,4 +1,4 @@
-# Concept.md - Sound & Licht Stuttgart
+# DESIGN.md - Sound & Licht Stuttgart
 
 ## Projektübersicht
 
@@ -14,6 +14,7 @@
 | Variable | Wert | Verwendung |
 |----------|------|------------|
 | `--color-bg` | `#0a0a0f` | Hintergrund |
+| `--color-surface` | `#121218` | Karten/Oberflächen |
 | `--color-text` | `#e5e5e5` | Primärtext |
 | `--color-text-muted` | `#a3a3a3` | Sekundärtext |
 | `--color-secondary` | `#f97316` (orange) | Akzent/CTA |
@@ -31,6 +32,7 @@
 - Animierte Scroll-Effekte (`animate-on-scroll`)
 - Hero-Slider mit 2 Slides
 - Hover-Effekte: `translateY(-3px)`, `box-shadow`
+- Glassmorphismus bei Navbar
 
 ### Animationen & Effekte
 | Effekt | Klasse | Beschreibung |
@@ -64,6 +66,8 @@
   /components
     Navbar.astro      # Navigation mit Mobile Menu
     Footer.astro      # Footer mit Kontakt/Social
+    Testimonials.astro # Kundenbewertungen
+    /icons            # SVG Icon-Komponenten
   /layouts
     Layout.astro      # Haupt-Layout mit SEO/Schema.org
   /pages
@@ -81,15 +85,17 @@
 
 ### Sections (index.astro)
 1. **Hero Slider** - 2 Slides mit Navigation, Dots, Auto-Slide (5s)
-2. **Services** - Leistungsübersicht
-3. **Galerie** - Bild-Gallery mit Kategorie-Beschreibungen (Partyboxen, PA-Anlage, Komplettset, Partylichtanlagen)
+2. **Services** - Leistungsübersicht (4 Karten)
+3. **Galerie** - Bild-Gallery mit Kategorie-Beschreibungen
 4. **FAQ** - Häufig gestellte Fragen (als Accordion)
 5. **Bewertungen** - Kundenbewertungen
-6. **Kontakt** - Kontaktformular +Infos
+6. **Kontakt** - Kontakt-Infos mit Google Maps Embed
 
 ### Komponenten
 - **Navbar:** Fixed, `z-50`, backdrop-blur, Mobile Hamburger Menu
 - **Footer:** Social Links, Adresse, Copyright
+- **Testimonials:** Kundenbewertungen mit Rating
+- **Icons:** VolumeUpIcon, LightBulbIcon, PackageIcon, CheckCircleIcon, MapPinIcon, EmailIcon
 
 ---
 
@@ -106,6 +112,11 @@
 - Smooth scroll zu Sections (`#home`, `#services`, etc.)
 - Active State Tracking
 - Mobile Menu mit Toggle
+
+### Google Maps
+- Embed im Kontakt-Bereich
+- Zeigt auf Google Business Profile (Holger Kampffmeyer DJ Dienstleistungen)
+- Responsive: h-64 mobile, h-80 desktop
 
 ### SEO
 - Meta Description, Keywords (erweitert mit lokalen Städten)
