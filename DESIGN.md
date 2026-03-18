@@ -144,6 +144,28 @@
 
 ---
 
+## Code-Qualität
+
+### Linting
+```bash
+npm run lint      # ESLint Prüfung (.astro, .ts, .js)
+npm run lint:fix  # Automatische Korrekturen
+```
+
+### TypeScript
+```bash
+npm run astro check  # Astro TypeScript Check
+```
+
+### Dependencies
+- ESLint 10.x mit Astro, TypeScript und Prettier Integration
+- astro-eslint-parser für .astro Dateien
+- @typescript-eslint für TypeScript Support
+
+---
+
+---
+
 ## Bildbearbeitung
 
 ### Verfügbare Scripts
