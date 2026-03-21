@@ -9,7 +9,7 @@ Sound & Licht Stuttgart - DJ und Veranstaltungstechnik-Vermietung im Großraum S
 - **GitHub:** github.com/holgerkampffmeyer/soundundlicht-stuttgart.de
 
 ## Tech-Stack
-- **Framework:** Astro 5.x
+- **Framework:** Astro 6.x
 - **Styling:** Tailwind CSS 4.x
 - **Build:** Static Site Generation (SSG)
 

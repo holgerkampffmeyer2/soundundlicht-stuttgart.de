@@ -53,7 +53,7 @@
 ### Tech Stack
 | Komponente | Technologie |
 |------------|-------------|
-| Framework | Astro 5.x |
+| Framework | Astro 6.x |
 | Styling | Tailwind CSS 4.x |
 | Scripting | Vanilla TypeScript |
 | Build | Vite |
