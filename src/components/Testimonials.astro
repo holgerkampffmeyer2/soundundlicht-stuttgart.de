@@ -1,52 +1,127 @@
 ---
 import StarIcon from "./icons/StarIcon.astro";
+import googleReviewsData from '../data/google-reviews.json';
 
-interface Testimonial {
-  name: string;
-  role: string;
-  text: string;
-}
-
-interface Props {
-  id?: string;
-}
-
-const { id } = Astro.props;
-
-const testimonials: Testimonial[] = [
-  { name: 'Julian', role: 'Mieter Lichtanlage', text: 'Ich habe eine Lichtanlage für eine private Feier ausgeliehen und bin absolut begeistert! Super freundlicher Service, kompetente Beratung und sehr faire Preise.' },
-  { name: 'Thomas', role: 'Mieter Musik- und Lichtanlage', text: 'Hatte bei Holger eine Sound- und Lichtanlage gemietet. Super netter Kontakt, gute Erklärung der Funktionen und alles reibungslos!' },
-  { name: 'Dominik', role: 'Mieter Musikanlage', text: 'Top! Hat alles bestens geklappt! Ein zuverlässiger und seriöser Kontakt!' },
-  { name: 'Wassim', role: 'Mieter Musikanlage', text: 'Ich habe eine Soundanlage gemietet und war sehr zufrieden. Holger war freundlich, zuverlässig und die Anlage hatte eine top Klangqualität.' },
-  { name: 'Sesubasu', role: 'Mieter Lichtanlage', text: 'Tolles, leistungsfähiges und leicht zu bedienendes Equipment. Mietung und Kommunikation einfach und schnell!' },
-  { name: 'Bernd', role: 'Mieter Lichtanlage und Nebelmaschine', text: 'Alle 5 Sterne in allem Gerechtfertigt!! Sehr Freundlich, Kompetent, Preis Leistung Top. Jederzeit wieder!' }
-];
+const ITEMS_PER_PAGE = 3;
+const allReviews = googleReviewsData.reviews || [];
+const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
 ---
 
-<section id={id} class="section-padding bg-[var(--color-surface)]">
+<section class="section-padding bg-[var(--color-surface)]">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16">
       <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Rezensionen</span>
       <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">Was sagen meine Kunden?</h2>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {testimonials.map((testimonial, index) => (
-        <div class="bg-[var(--color-bg)] rounded-xl p-6 border border-[var(--color-border)] hover:border-[var(--color-secondary)] hover:shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-all duration-300" style={`animation-delay: ${index * 0.1}s`}>
-          <div class="flex gap-1 mb-4">
-            <StarIcon class="w-5 h-5 text-orange-500" />
-            <StarIcon class="w-5 h-5 text-orange-500" />
-            <StarIcon class="w-5 h-5 text-orange-500" />
-            <StarIcon class="w-5 h-5 text-orange-500" />
-            <StarIcon class="w-5 h-5 text-orange-500" />
+    {allReviews.length === 0 ? (
+      <p class="text-center text-[var(--color-text-muted)]">Noch keine Rezensionen vorhanden. Kommen bald wieder!</p>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="reviewsGrid">
+        {allReviews.map((review, index) => (
+          <div class="review-card bg-[var(--color-bg)] rounded-xl p-6 border border-[var(--color-border)] hover:border-[var(--color-secondary)] hover:shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-all duration-300" data-page={Math.floor(index / ITEMS_PER_PAGE) + 1}>
+            <div class="flex gap-1 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <StarIcon class={`w-5 h-5 ${i < review.rating ? 'text-orange-500' : 'text-gray-400'}`} />
+              ))}
+            </div>
+            <p class="text-[var(--color-text-muted)] mb-4">{review.text}</p>
+            <div class="border-t border-[var(--color-border)] pt-4">
+              <h3 class="font-bold">{review.author_name}</h3>
+              <span class="text-sm text-[var(--color-text-muted)]">{review.relative_time_description}</span>
+            </div>
           </div>
-          <p class="text-[var(--color-text-muted)] mb-4">{testimonial.text}</p>
-          <div class="border-t border-[var(--color-border)] pt-4">
-            <h3 class="font-bold">{testimonial.name}</h3>
-            <span class="text-sm text-[var(--color-text-muted)]">{testimonial.role}</span>
-          </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    )}
+
+    {totalPages > 1 && ( 
+      <nav class="flex justify-center mt-12" aria-label="Pagination">
+        <ul class="flex items-center gap-1 text-base">
+          <li>
+            <button 
+              id="prevPage"
+              class="flex items-center justify-center w-10 h-10 leading-tight border border-gray-300 rounded-l-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              disabled
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          </li>
+          {[...Array(totalPages)].map((_, i) => {
+            const pageNumber = i + 1;
+            return (
+              <li>
+                <button
+                  class="page-btn flex items-center justify-center w-10 h-10 leading-tight border border-gray-300 text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)] transition-colors"
+                  data-page={pageNumber}
+                >
+                  {pageNumber}
+                </button>
+              </li>
+            );
+          })}
+          <li>
+            <button 
+              id="nextPage"
+              class="flex items-center justify-center w-10 h-10 leading-tight border border-gray-300 rounded-r-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)] transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    )}
   </div>
 </section>
+
+<script define:vars={{ totalPages, ITEMS_PER_PAGE }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    let currentPage = 1;
+    const cards = document.querySelectorAll('.review-card');
+    const pageBtns = document.querySelectorAll('.page-btn');
+    const prevBtn = document.getElementById('prevPage');
+    const nextBtn = document.getElementById('nextPage');
+
+    function showPage(page) {
+      cards.forEach((card, index) => {
+        const cardPage = Math.floor(index / ITEMS_PER_PAGE) + 1;
+        card.style.display = cardPage === page ? 'block' : 'none';
+      });
+
+      pageBtns.forEach((btn) => {
+        const btnPage = parseInt(btn.dataset.page);
+        if (btnPage === page) {
+          btn.classList.add('bg-orange-500', 'text-white', 'border-orange-500');
+          btn.classList.remove('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-gray-300');
+        } else {
+          btn.classList.remove('bg-orange-500', 'text-white', 'border-orange-500');
+          btn.classList.add('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-gray-300');
+        }
+      });
+
+      prevBtn.disabled = page === 1;
+      nextBtn.disabled = page === totalPages;
+      currentPage = page;
+    }
+
+    pageBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        showPage(parseInt(btn.dataset.page));
+      });
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) showPage(currentPage - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < totalPages) showPage(currentPage + 1);
+    });
+
+    showPage(1);
+  });
+</script>
