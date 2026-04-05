@@ -17,7 +17,8 @@ const {
   jsonLd
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/\/+$/, '/') || '/';
+const canonicalURL = new URL(canonicalPath, Astro.site);
 ---
 
 <!doctype html>
