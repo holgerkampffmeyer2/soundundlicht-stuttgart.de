@@ -148,13 +148,13 @@
 
 ### Linting
 ```bash
-npm run lint      # ESLint Prüfung (.astro, .ts, .js)
-npm run lint:fix  # Automatische Korrekturen
+pnpm run lint      # ESLint Prüfung (.astro, .ts, .js)
+pnpm run lint:fix  # Automatische Korrekturen
 ```
 
 ### TypeScript
 ```bash
-npm run astro check  # Astro TypeScript Check
+pnpm run astro check  # Astro TypeScript Check
 ```
 
 ### Dependencies

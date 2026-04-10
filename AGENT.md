@@ -32,7 +32,7 @@
 
 ### 5. Performance
 - Bilder lazy laden (`loading="lazy"`)
-- Build prüfen: `npm run build`
+- Build prüfen: `pnpm run build`
 - Keine unnötigen Dependencies
 
 ### 6. Git Workflow
@@ -46,9 +46,9 @@
 
 | Befehl | Beschreibung |
 |--------|--------------|
-| `npm run dev` | Development Server starten |
-| `npm run build` | Produktion-Build erstellen |
-| `npm run preview` | Preview des Builds |
+| `pnpm run dev` | Development Server starten |
+| `pnpm run build` | Produktion-Build erstellen |
+| `pnpm run preview` | Preview des Builds |
 | `node create-webp.mjs` | WebP-Bilder erstellen |
 
 ---
