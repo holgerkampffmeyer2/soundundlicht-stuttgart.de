@@ -15,11 +15,11 @@ Sound & Licht Stuttgart - DJ und Veranstaltungstechnik-Vermietung im Großraum S
 
 ## Build & Deployment
 ```bash
-npm run dev       # Development server
-npm run build     # Production build -> dist/
-npm run preview   # Preview production build
-npm run lint      # ESLint Code-Prüfung
-npm run lint:fix  # ESLint Auto-Fix
+pnpm run dev       # Development server
+pnpm run build     # Production build -> dist/
+pnpm run preview   # Preview production build
+pnpm run lint      # ESLint Code-Prüfung
+pnpm run lint:fix  # ESLint Auto-Fix
 ```
 
 ## Wichtige Regeln

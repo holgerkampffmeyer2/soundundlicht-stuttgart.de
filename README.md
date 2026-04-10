@@ -12,27 +12,27 @@ Website für DJ und Veranstaltungstechnik-Vermietung im Großraum Stuttgart.
 
 ```bash
 # Installation
-npm install
+pnpm install
 
 # Development
-npm run dev
+pnpm run dev
 
 # Production Build
-npm run build
+pnpm run build
 
 # Preview Build
-npm run preview
+pnpm run preview
 ```
 
 ## Befehle
 
 | Befehl | Beschreibung |
 |--------|---------------|
-| `npm run dev` | Development Server starten |
-| `npm run build` | Production Build erstellen |
-| `npm run preview` | Production Build testen |
-| `npm run lint` | Code prüfen |
-| `npm run lint:fix` | Code automatisch korrigieren |
+| `pnpm run dev` | Development Server starten |
+| `pnpm run build` | Production Build erstellen |
+| `pnpm run preview` | Production Build testen |
+| `pnpm run lint` | Code prüfen |
+| `pnpm run lint:fix` | Code automatisch korrigieren |
 
 ## Verzeichnisstruktur
 
