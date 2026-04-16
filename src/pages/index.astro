@@ -46,6 +46,19 @@ const faqs = [
   }
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
 const galleryImages = [
   { 
     src: "/img/vermietung/licht1.webp", 
@@ -134,6 +147,7 @@ const galleryImages = [
   title="Partytechnik mieten Stuttgart | Sound & Licht Verleih - Leinfelden-Echterdingen, Esslingen, Tübingen"
   description="Vermietung von PA-Anlagen, Partyboxen & Lichttechnik in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen. Ab 79€ pro Tag. DJ-Service, persönliche Beratung, kostenlose Lieferung."
   image="/img/header.webp"
+  jsonLd={faqJsonLd}
 >
   <Navbar currentPage="home" />
 

@@ -1,0 +1,4 @@
+Ich möchte die Website um einen Musik Blog erweitern. 
+
+1- Dafür lies die letzten 10 mixcloud posts https://www.mixcloud.com/holger-kampffmeyer/posts/, die eine Beschreibung, ein Bild und die Tracklist sowie den Link zum Mix enthalten
+2. Baue ein Script zum abrufen der letzten 10 mixcloud posts und speichere sie in einer json data, analog zu 
