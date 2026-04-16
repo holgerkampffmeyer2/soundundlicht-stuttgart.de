@@ -298,10 +298,16 @@ body {
 }
 
 .gallery-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   padding: 0.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  z-index: 10;
 }
 
 .gallery-category {
