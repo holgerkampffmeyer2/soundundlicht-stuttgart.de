@@ -246,13 +246,13 @@ body {
 }
 
 .gallery-item {
-  aspect-ratio: 1/1.1;
+  aspect-ratio: 1;
   background: var(--color-surface);
   border-radius: 0.75rem;
   position: relative;
   transition: all 0.4s ease;
   cursor: pointer;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .gallery-item::after {
@@ -278,28 +278,13 @@ body {
 }
 
 .gallery-item:hover {
-  transform: scale(1.03);
   box-shadow: 0 0 40px rgba(249, 115, 22, 0.4);
-}
-
-.gallery-item:hover::after {
-  opacity: 1;
-}
-
-.gallery-item:hover::before {
-  opacity: 1;
-  transform: scale(1);
 }
 
 .gallery-item img {
   width: 100%;
-  height: 50%;
+  height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.15);
 }
 
 .gallery-info {
@@ -377,35 +362,6 @@ body {
 
 .service-card:hover::before {
   transform: scaleX(1);
-}
-
-.service-card .light-ray {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(249, 115, 22, 0.3) 45%, 
-    rgba(34, 211, 238, 0.25) 50%, 
-    rgba(249, 115, 22, 0.3) 55%, 
-    transparent 100%
-  );
-  transform: translateX(-150%);
-  pointer-events: none;
-  z-index: 1;
-  animation: light-ray-pass 12s ease-in-out infinite;
-}
-
-.service-card:nth-child(1) .light-ray { animation-delay: 0s; }
-.service-card:nth-child(2) .light-ray { animation-delay: 4s; }
-.service-card:nth-child(3) .light-ray { animation-delay: 8s; }
-.service-card:nth-child(4) .light-ray { animation-delay: 12s; }
-
-.service-card:hover .light-ray {
-  opacity: 0.8;
-  transition: opacity 0.3s;
 }
 
 /* Testimonials */
@@ -741,54 +697,7 @@ body {
   }
 }
 
-.gallery-item .light-ray {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(249, 115, 22, 0.25) 45%, 
-    rgba(34, 211, 238, 0.2) 50%, 
-    rgba(249, 115, 22, 0.25) 55%, 
-    transparent 100%
-  );
-  transform: translateX(-150%);
-  pointer-events: none;
-  z-index: 3;
-  animation: light-ray-pass 12s ease-in-out infinite;
-}
 
-.gallery-item:nth-child(1) .light-ray { animation-delay: 0s; }
-.gallery-item:nth-child(2) .light-ray { animation-delay: 3s; }
-.gallery-item:nth-child(3) .light-ray { animation-delay: 6s; }
-.gallery-item:nth-child(4) .light-ray { animation-delay: 9s; }
-.gallery-item:nth-child(5) .light-ray { animation-delay: 12s; }
-.gallery-item:nth-child(6) .light-ray { animation-delay: 15s; }
-.gallery-item:nth-child(7) .light-ray { animation-delay: 18s; }
-.gallery-item:nth-child(8) .light-ray { animation-delay: 21s; }
-
-@keyframes light-ray-pass {
-  0%, 100% {
-    transform: translateX(-150%);
-    opacity: 0;
-  }
-  15%, 25% {
-    opacity: 0.4;
-  }
-  50% {
-    transform: translateX(150%);
-    opacity: 0;
-  }
-}
-
-.gallery-item:hover .light-ray {
-  animation: none;
-  opacity: 0.8;
-  transform: translateX(100%);
-  transition: all 0.3s ease-out;
-}
 
 /* Beat Pulse - syncs with sound */
 @keyframes beat-pulse {
