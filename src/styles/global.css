@@ -246,7 +246,7 @@ body {
 }
 
 .gallery-item {
-  aspect-ratio: 1;
+  aspect-ratio: 1/1.1;
   background: var(--color-surface);
   border-radius: 0.75rem;
   position: relative;
@@ -278,7 +278,17 @@ body {
 }
 
 .gallery-item:hover {
+  transform: scale(1.03);
   box-shadow: 0 0 40px rgba(249, 115, 22, 0.4);
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+.gallery-item:hover::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .gallery-item img {
@@ -292,7 +302,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  height: 50%;
 }
 
 .gallery-category {
