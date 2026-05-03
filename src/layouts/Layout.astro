@@ -17,7 +17,7 @@ const {
   jsonLd
 } = Astro.props;
 
-const canonicalPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/\/+$/, '/') || '/';
+const canonicalPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/\/+$/, '') || '/';
 const canonicalURL = new URL(canonicalPath, Astro.site);
 ---
 
@@ -56,6 +56,19 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
     
     <title>{title}</title>
     
+    <!-- JSON-LD WebPage with mainEntity -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": title,
+      "description": description,
+      "url": canonicalURL.href,
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "name": "DJ Hulk - Holger Kampffmeyer"
+      }
+    })} />
+
     <!-- Schema.org LocalBusiness -->
     <script is:inline type="application/ld+json">
       {
