@@ -40,13 +40,21 @@ jobs:
         run: |
           echo "## Lighthouse CI Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| URL | Performance | Accessibility | Best Practices | SEO |" >> $GITHUB_STEP_SUMMARY
-          echo "|-----|-------------|---------------|-----------------|-----|" >> $GITHUB_STEP_SUMMARY
-          if [ -f ".lighthouseci/lhci-manifest.json" ]; then
-            jq -r '.[] | "| \(.url) | \(.summary.performance // "N/A") | \(.summary.accessibility // "N/A") | \(.summary["best-practices"] // "N/A") | \(.summary.seo // "N/A") |"' .lighthouseci/lhci-manifest.json >> $GITHUB_STEP_SUMMARY || true
-          fi
+          echo "Lighthouse CI has run. Check the uploaded artifacts for detailed HTML reports." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Full reports: Check the uploaded artifacts or the links in the Run Lighthouse CI step output" >> $GITHUB_STEP_SUMMARY
+          echo "**Threshold Settings:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Performance: >= 0.75 (warn)" >> $GITHUB_STEP_SUMMARY
+          echo "- Accessibility: >= 0.85 (warn)" >> $GITHUB_STEP_SUMMARY
+          echo "- Best Practices: >= 0.75 (warn)" >> $GITHUB_STEP_SUMMARY
+          echo "- SEO: >= 0.9 (error)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          # Try to show links to HTML reports if available
+          if [ -d ".lighthouseci" ]; then
+            echo "**Report Files:**" >> $GITHUB_STEP_SUMMARY
+            find .lighthouseci -name "*.html" 2>/dev/null | while read file; do
+              echo "- $file" >> $GITHUB_STEP_SUMMARY
+            done
+          fi
           
       - name: Add Lighthouse Comment (PR only)
         if: github.event_name == 'pull_request'
