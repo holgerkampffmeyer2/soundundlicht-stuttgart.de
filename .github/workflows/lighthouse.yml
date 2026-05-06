@@ -38,15 +38,15 @@ jobs:
       - name: Format Lighthouse Results
         if: always()
         run: |
-          echo "## 🔦 Lighthouse CI Results" >> $GITHUB_STEP_SUMMARY
+          echo "## Lighthouse CI Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| URL | Performance | Accessibility | Best Practices | SEO |" >> $GITHUB_STEP_SUMMARY
           echo "|-----|-------------|---------------|-----------------|-----|" >> $GITHUB_STEP_SUMMARY
-          if [ -f ".lighthouseci/assertion-results.json" ]; then
-            cat .lighthouseci/assertion-results.json | jq -r '.[] | "| \(.url) | \(.actualScore // "N/A") | \(.actualScore // "N/A") | \(.actualScore // "N/A") | \(.actualScore // "N/A") |"' >> $GITHUB_STEP_SUMMARY
+          if [ -f ".lighthouseci/lhci-manifest.json" ]; then
+            jq -r '.[] | "| \(.url) | \(.summary.performance // "N/A") | \(.summary.accessibility // "N/A") | \(.summary["best-practices"] // "N/A") | \(.summary.seo // "N/A") |"' .lighthouseci/lhci-manifest.json >> $GITHUB_STEP_SUMMARY || true
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "📊 Full reports: Check the uploaded artifacts or the links in the Run Lighthouse CI step output" >> $GITHUB_STEP_SUMMARY
+          echo "Full reports: Check the uploaded artifacts or the links in the Run Lighthouse CI step output" >> $GITHUB_STEP_SUMMARY
           
       - name: Add Lighthouse Comment (PR only)
         if: github.event_name == 'pull_request'
@@ -54,11 +54,11 @@ jobs:
         with:
           header: lighthouse
           message: |
-            ## 🔦 Lighthouse CI Results
+            ## Lighthouse CI Results
             Check the [GitHub Actions run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for full Lighthouse reports.
             
             Threshold settings:
-            - Performance: ≥0.75 (warn)
-            - Accessibility: ≥0.85 (warn)  
-            - Best Practices: ≥0.75 (warn)
-            - SEO: ≥0.9 (error)
+            - Performance: >= 0.75 (warn)
+            - Accessibility: >= 0.85 (warn)
+            - Best Practices: >= 0.75 (warn)
+            - SEO: >= 0.9 (error)
