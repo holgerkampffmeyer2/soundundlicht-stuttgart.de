@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# LLM Bots erlaubt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# LLMs.txt for AI crawlers
+LLMs.txt: /llms.txt
+
+Sitemap: https://soundundlicht-stuttgart.de/sitemap.xml
