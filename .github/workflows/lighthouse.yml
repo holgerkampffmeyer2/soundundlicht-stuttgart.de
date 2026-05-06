@@ -1,0 +1,64 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install
+        
+      - name: Build site
+        run: pnpm run build
+        
+      - name: Run Lighthouse CI
+        id: lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./lighthouserc.cjs
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          
+      - name: Format Lighthouse Results
+        if: always()
+        run: |
+          echo "## 🔦 Lighthouse CI Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| URL | Performance | Accessibility | Best Practices | SEO |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|-------------|---------------|-----------------|-----|" >> $GITHUB_STEP_SUMMARY
+          if [ -f ".lighthouseci/assertion-results.json" ]; then
+            cat .lighthouseci/assertion-results.json | jq -r '.[] | "| \(.url) | \(.actualScore // "N/A") | \(.actualScore // "N/A") | \(.actualScore // "N/A") | \(.actualScore // "N/A") |"' >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📊 Full reports: Check the uploaded artifacts or the links in the Run Lighthouse CI step output" >> $GITHUB_STEP_SUMMARY
+          
+      - name: Add Lighthouse Comment (PR only)
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: lighthouse
+          message: |
+            ## 🔦 Lighthouse CI Results
+            Check the [GitHub Actions run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for full Lighthouse reports.
+            
+            Threshold settings:
+            - Performance: ≥0.75 (warn)
+            - Accessibility: ≥0.85 (warn)  
+            - Best Practices: ≥0.75 (warn)
+            - SEO: ≥0.9 (error)
