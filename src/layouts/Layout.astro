@@ -35,10 +35,16 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
     <meta name="theme-color" content="#0a0a0f" />
     <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow" } />
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts - non-render-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Play:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Play:wght@400;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- Preload critical hero image -->
+    <link rel="preload" as="image" href="/img/header.webp" type="image/webp">
     
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
