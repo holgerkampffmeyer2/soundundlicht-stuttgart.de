@@ -26,8 +26,5 @@
     "eslint-plugin-astro": "^1.6.0",
     "globals": "^17.4.0",
     "typescript": "^5.9.3"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
   }
 }
