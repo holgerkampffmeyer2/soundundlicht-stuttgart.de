@@ -11,6 +11,7 @@
     "lint:fix": "eslint src --ext .astro,.ts,.js --fix"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
     "@tailwindcss/vite": "^4.2.0",
     "astro": "^6.2.1",
     "tailwindcss": "^4.2.0",
