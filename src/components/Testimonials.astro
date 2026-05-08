@@ -2,12 +2,14 @@
 import StarIcon from "./icons/StarIcon.astro";
 import googleReviewsData from '../data/google-reviews.json';
 
+const { id } = Astro.props;
+
 const ITEMS_PER_PAGE = 3;
 const allReviews = googleReviewsData.reviews || [];
 const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
 ---
 
-<section class="section-padding bg-[var(--color-surface)]">
+<section id={id} class="section-padding bg-[var(--color-surface)]">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16">
       <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Rezensionen</span>
