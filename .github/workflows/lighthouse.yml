@@ -12,7 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - uses: pnpm/action-setup@v4
+      - name: Setup pnpm
+        run: corepack enable && corepack prepare pnpm@10 --activate
           
       - uses: actions/setup-node@v4
         with:
