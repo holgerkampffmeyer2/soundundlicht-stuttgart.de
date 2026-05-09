@@ -1,0 +1,84 @@
+---
+interface Props {
+  image: string;
+  city: string;
+  title: string;
+  description: string;
+  details: string;
+  distanceKm?: string;
+  travelTime?: string;
+}
+
+const { image, city, title, description, details, distanceKm, travelTime } = Astro.props;
+---
+
+<section class="city-hero">
+  <div class="city-hero-bg" style={`background-image: url('${image}')`}></div>
+  <div class="city-hero-overlay"></div>
+  <div class="city-hero-content">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl relative z-10">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase mb-4 block">
+          Partytechnik Vermietung {city}
+        </span>
+        <h1 class="font-play text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text">
+          {title}
+        </h1>
+        <p class="text-[var(--color-text)] text-lg md:text-xl mb-6">
+          {description}
+        </p>
+        <p class="text-white/90 mb-8">
+          {details}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#pakete" class="btn-primary">Pakete ansehen</a>
+          <a href="mailto:holger.kampffmeyer+dj@gmail.com" class="btn-secondary">Jetzt anfragen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .city-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .city-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.05);
+    animation: hero-zoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes hero-zoom {
+    0% { transform: scale(1.05); }
+    100% { transform: scale(1.15); }
+  }
+
+  .city-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(10, 10, 15, 0.92) 0%,
+      rgba(10, 10, 15, 0.7) 40%,
+      rgba(249, 115, 22, 0.15) 100%
+    );
+    z-index: 1;
+  }
+
+  .city-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 8rem 0 4rem;
+  }
+</style>

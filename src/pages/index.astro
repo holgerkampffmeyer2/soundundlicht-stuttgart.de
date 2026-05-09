@@ -9,36 +9,24 @@ import CheckCircleIcon from "../components/icons/CheckCircleIcon.astro";
 import MapPinIcon from "../components/icons/MapPinIcon.astro";
 import EmailIcon from "../components/icons/EmailIcon.astro";
 import Testimonials from "../components/Testimonials.astro";
+import CityGrid from "../components/CityGrid.astro";
 
 const faqs = [
-
   {
-    question: "Wie viel kostet es, eine Partybox in Stuttgart zu mieten?",
-    answer: "Unsere Partyboxen (z.B. JBL Partybox) sind bereits ab 80€ pro Boxenpaar und Tag verfügbar. Eine einzelne Box kostet 50€ pro Tag. Kontaktier mich für ein individuelles Angebot!"
+    question: "Welche Pakete bietet Sound & Licht Stuttgart an?",
+    answer: "Ich biete drei Komplettpakete: das Partypaket (ab 160€/Tag) mit JBL Partyboxen, Laserbar und Licht, das DJ-Paket (ab 200€/Tag) mit LD Maui Säulen-PA, LED-Beleuchtung und Nebelmaschine, sowie das Veranstaltungspaket (ab 180€/Tag) mit PA, Mischpult und umfangreicher Lichttechnik. Alle Pakete sind Plug & Play und inklusive Einweisung."
   },
   {
-    question: "Welche PA-Anlage eignet sich für 50 Personen?",
-    answer: "Für Veranstaltungen mit 50-80 Personen empfehle ich unsere JBL Partyboxen oder das LD Maui 28 G3 Komplettset. Beide sind Plug & Play und in 5 Minuten aufgebaut. Kraftvoller Sound für unvergessliche Partys!"
-  },
-  {
-    question: "Wie funktioniert die Bezahlung für die Vermietung?",
-    answer: "Die Bezahlung erfolgt bei Abholung. Ich biete Barzahlung und Paypal an!"
+    question: "Wie läuft die Anmietung ab?",
+    answer: "Du nimmst per E-Mail Kontakt auf, ich melde mich innerhalb von 12 Stunden mit einem Angebot. Nach Bestätigung holst Du die Technik in Leinfelden-Echterdingen ab. Bezahlung erfolgt bar oder per PayPal. Nach der Feier bringst Du die Technik zurück und erhältst die Kaution."
   },
   {
     question: "Wo kann ich die Technik abholen?",
-    answer: "Die Technik kann direkt bei mir in Leinfelden-Echterdingen (Magellanstraße 4) abgeholt werden. Ich erkläre dir ausführlich den Aufbau und gebe dir eine Einweisung."
+    answer: "Die Technik kann direkt in Leinfelden-Echterdingen (Magellanstraße 4) abgeholt werden. Ich erkläre dir ausführlich den Aufbau und gebe dir eine Einweisung."
   },
   {
-    question: "Was kostet eine Party-Lichtanlage für eine Hochzeit?",
-    answer: "Eine vollständige Partylichtanlage mit verschiedenen Effekten, Sound-zu-Licht-Steuerung, Fernbedienung und Stativ ist bereits ab 50€ pro Tag verfügbar. Inklusive persönlicher Beratung, Aufbauanleitung und Einweisung. Perfekt für Hochzeiten, Geburtstage und andere Feiern!"
-  },
-  {
-    question: "Bietest Du auch Partylichtanlagen und Nebelmaschinen im Paket?",
-    answer: "Ja, ich biete die Partylichtanlagen auch zusammen mit einer Nebelmaschine an. Das Komplettpaket gibt es ab 60€ pro Tag und kommt mit einem vollen Tank mit Nebelfluid. Perfekt für beeindruckende Lichteffekte auf deiner Feier!"
-  },
-  {
-    question: "Reicht ein normales Auto für den Transport oder brauche ich einen Kombi/Transporter?",
-    answer: "Die einzelnen Komponenten sind gut in einem Kombi oder Kleinwagen mit umklappbarer Rückbank zu transportieren. Für größere Pakete oder mehrere Boxen empfehle ich einen Kombi oder Transporter. Ich berate dich gerne, welche Fahrzeuge geeignet sind."
+    question: "Brauche ich Vorkenntnisse, um die Anlage zu bedienen?",
+    answer: "Nein, ich biete eine umfassende Einweisung an. Die Technik ist für jeden Benutzer einfach zu bedienen."
   },
   {
     question: "Was tun, wenn die Party schon in 3 Tagen ist?",
@@ -49,14 +37,123 @@ const faqs = [
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie viel kostet es, eine Partybox in Stuttgart zu mieten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unsere Partyboxen (z.B. JBL Partybox) sind bereits ab 80€ pro Boxenpaar und Tag verfügbar. Eine einzelne Box kostet 50€ pro Tag."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welche PA-Anlage eignet sich für 50 Personen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Für Veranstaltungen mit 50-80 Personen empfehle ich unsere JBL Partyboxen oder das LD Maui 28 G3 Komplettset. Beide sind Plug & Play und in 5 Minuten aufgebaut."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie funktioniert die Bezahlung?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Bezahlung erfolgt bei Abholung. Ich biete Barzahlung und PayPal an!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wo kann ich die Technik abholen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Technik kann direkt in Leinfelden-Echterdingen (Magellanstraße 4) abgeholt werden. Ich erkläre dir ausführlich den Aufbau und gebe dir eine Einweisung."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was kostet eine Party-Lichtanlage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Eine vollständige Partylichtanlage mit verschiedenen Effekten ist bereits ab 50€ pro Tag verfügbar. Inklusive persönlicher Beratung und Einweisung."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Bietest du auch Pakete mit Nebelmaschine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, ich biete die Partylichtanlagen auch zusammen mit einer Nebelmaschine an. Das Komplettpaket gibt es ab 60€ pro Tag."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Brauche ich Vorkenntnisse, um die Anlage zu bedienen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein, ich biete eine umfassende Einweisung an. Die Technik ist für jeden Benutzer einfach zu bedienen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was tun, wenn die Party schon in 3 Tagen ist?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, ich reagiere auch kurzfristig! Anfragen bis zu 2 Tagen vor der Veranstaltung sind meist noch möglich. Am besten rufst du mich direkt an unter 0171/1467491 für schnelle Abstimmung. Ich habe oft noch freie Geräte verfügbar."
+      }
     }
-  }))
+  ]
+};
+
+const offerCatalogJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "name": "Vermietung Pakete",
+  "itemListElement": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Partypaket"
+      },
+      "price": "160.00",
+      "priceCurrency": "EUR"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "DJ-Paket"
+      },
+      "price": "200.00",
+      "priceCurrency": "EUR"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Veranstaltungspaket"
+      },
+      "price": "180.00",
+      "priceCurrency": "EUR"
+    }
+  ]
+};
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Veranstaltungstechnik Vermietung",
+  "description": "Verleih von PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart und Umgebung",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Sound & Licht Stuttgart - Holger Kampffmeyer",
+    "url": "https://soundundlicht-stuttgart.de"
+  },
+  "areaServed": {
+    "@type": "State",
+    "name": "Baden-Württemberg"
+  }
 };
 
 const galleryImages = [
@@ -145,9 +242,9 @@ const galleryImages = [
 
 <Layout
   title="Partytechnik mieten Stuttgart | Sound & Licht Verleih - Leinfelden-Echterdingen, Esslingen, Tübingen"
-  description="Vermietung von PA-Anlagen, Partyboxen & Lichttechnik in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen. Ab 79€ pro Tag. DJ-Service, persönliche Beratung, kostenlose Lieferung."
+  description="Vermietung von PA-Anlagen, Partyboxen & Lichttechnik in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen. Ab 79€ pro Tag. DJ-Service, persönliche Beratung, einfache Abholung."
   image="/img/header.webp"
-  jsonLd={faqJsonLd}
+  jsonLd={[serviceJsonLd, faqJsonLd, offerCatalogJsonLd]}
 >
   <Navbar currentPage="home" />
 
@@ -169,7 +266,7 @@ const galleryImages = [
             </p>
             
 <div class="flex flex-col sm:flex-row gap-4">
-              <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary neon-pulse">Zur Vermietung</a>
+              <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary neon-pulse">Zur Vermietung ↗</a>
               <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
             </div>
           </div>
@@ -194,7 +291,7 @@ const galleryImages = [
              
              <!-- Soundwave Visual -->
 <div class="flex flex-col sm:flex-row gap-4">
-              <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary neon-pulse">Zur Vermietung</a>
+              <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary neon-pulse">Zur Vermietung ↗</a>
               <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
             </div>
           </div>
@@ -286,7 +383,86 @@ const galleryImages = [
 
       <div class="text-center mt-12 animate-on-scroll">
         <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary">
-          Technik aussuchen & anfragen
+          Technik aussuchen &amp; anfragen ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pakete Section -->
+  <section id="pakete" class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 animate-on-scroll">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+          Pakete
+        </span>
+        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
+          Unsere Komplettpakete
+        </h2>
+        <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
+          Alles aus einer Hand – Sound, Licht und Effekte als fertiges Paket. Plug &amp; Play, inklusive Kabel und Einweisung.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Paket 1: Partypaket -->
+        <div class="service-card animate-on-scroll flex flex-col">
+          <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
+          <h3 class="font-play text-xl font-bold mb-2">Partypaket</h3>
+          <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 160€ / Tag</p>
+          <p class="text-[var(--color-text-muted)] text-sm mb-4">Für kleinere Feiern bis ca. 50 Personen</p>
+          <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
+            <li>✓ 2x JBL Partyboxen</li>
+            <li>✓ KLS Laserbar</li>
+            <li>✓ Nebelmaschine</li>
+            <li>✓ Mikrofon</li>
+            <li>✓ 4x LED Par Lichter</li>
+          </ul>
+          <a href="https://holger-kampffmeyer.de/vermietung/partypaket-stuttgart" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
+            Details &amp; Buchung ↗
+          </a>
+        </div>
+
+        <!-- Paket 2: DJ-Paket -->
+        <div class="service-card animate-on-scroll flex flex-col">
+          <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
+          <h3 class="font-play text-xl font-bold mb-2">DJ-Paket</h3>
+          <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 200€ / Tag</p>
+          <p class="text-[var(--color-text-muted)] text-sm mb-4">Für DJ Gigs &amp; mittlere Feiern bis ca. 150 Personen</p>
+          <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
+            <li>✓ 2x LD Maui 28 G3</li>
+            <li>✓ LED BossFX-2 Pro + Nebel</li>
+            <li>✓ Moving Head</li>
+            <li>✓ Stage Bar</li>
+            <li>✓ Mikrofon + 4x LED Par</li>
+          </ul>
+          <a href="https://holger-kampffmeyer.de/vermietung/djpaket-fildern" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
+            Details &amp; Buchung ↗
+          </a>
+        </div>
+
+        <!-- Paket 3: Veranstaltungspaket -->
+        <div class="service-card animate-on-scroll flex flex-col">
+          <div class="text-[var(--color-secondary)] mb-4"><PackageIcon class="w-10 h-10" /></div>
+          <h3 class="font-play text-xl font-bold mb-2">Veranstaltungspaket</h3>
+          <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 180€ / Tag</p>
+          <p class="text-[var(--color-text-muted)] text-sm mb-4">Für mittlere bis große Veranstaltungen bis ca. 150 Personen</p>
+          <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
+            <li>✓ 2x LD Maui 28 G3</li>
+            <li>✓ 6-Kanal Mischpult</li>
+            <li>✓ KLS Laserbar + Nebel</li>
+            <li>✓ 2x Moving Head</li>
+            <li>✓ Mikrofon + 4x LED Par</li>
+          </ul>
+          <a href="https://holger-kampffmeyer.de/vermietung/veranstaltungspaket-stuttgart" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
+            Details &amp; Buchung ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 animate-on-scroll">
+        <a href="https://holger-kampffmeyer.de/vermietung" class="btn-secondary">
+          Alle Pakete und Einzelgeräte ansehen ↗
         </a>
       </div>
     </div>
@@ -327,11 +503,65 @@ const galleryImages = [
 
       <div class="text-center mt-12 animate-on-scroll">
         <a href="https://holger-kampffmeyer.de/vermietung" class="btn-secondary">
-          Alle Geräte ansehen
+          Alle Geräte ansehen ↗
         </a>
       </div>
     </div>
   </section>
+
+  <!-- So funktioniert's Section -->
+  <section id="ablauf" class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 animate-on-scroll">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+          Ablauf
+        </span>
+        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
+          So einfach mietest du
+        </h2>
+        <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
+          In vier Schritten zur perfekten Partytechnik – unkompliziert, persönlich und fair.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="service-card animate-on-scroll text-center">
+          <div class="text-4xl font-bold text-[var(--color-secondary)] mb-3">1</div>
+          <h3 class="font-play text-lg font-bold mb-2">Anfragen</h3>
+          <p class="text-[var(--color-text-muted)] text-sm">
+            Schreib mir eine E-Mail mit deiner Wunschtechnik und dem Mietzeitraum.
+          </p>
+        </div>
+
+        <div class="service-card animate-on-scroll text-center">
+          <div class="text-4xl font-bold text-[var(--color-secondary)] mb-3">2</div>
+          <h3 class="font-play text-lg font-bold mb-2">Bestätigen</h3>
+          <p class="text-[var(--color-text-muted)] text-sm">
+            Ich melde mich innerhalb von 12 Stunden mit einem fairen Angebot bei dir.
+          </p>
+        </div>
+
+        <div class="service-card animate-on-scroll text-center">
+          <div class="text-4xl font-bold text-[var(--color-secondary)] mb-3">3</div>
+          <h3 class="font-play text-lg font-bold mb-2">Abholen</h3>
+          <p class="text-[var(--color-text-muted)] text-sm">
+            Hol die Technik in Leinfelden-Echterdingen ab. Bezahlung bar oder per PayPal.
+          </p>
+        </div>
+
+        <div class="service-card animate-on-scroll text-center">
+          <div class="text-4xl font-bold text-[var(--color-secondary)] mb-3">4</div>
+          <h3 class="font-play text-lg font-bold mb-2">Feiern</h3>
+          <p class="text-[var(--color-text-muted)] text-sm">
+            Aufbauen, loslegen und nach der Feier einfach wieder zurückbringen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Grid Section -->
+  <CityGrid />
 
   <!-- FAQ Section -->
   <section id="faq" class="section-padding bg-[var(--color-bg)]">
@@ -409,7 +639,7 @@ const galleryImages = [
           E-Mail senden
         </a>
         <a href="https://holger-kampffmeyer.de/vermietung" class="btn-secondary">
-          Zur Technik
+          Zur Technik ↗
         </a>
       </div>
     </div>
@@ -425,7 +655,7 @@ const galleryImages = [
     const prevBtn = document.getElementById("slider-prev");
     const nextBtn = document.getElementById("slider-next");
     let currentSlide = 0;
-    let slideInterval: number;
+    let slideInterval: ReturnType<typeof setInterval>;
 
     function showSlide(index: number) {
       slides.forEach((slide, i) => {

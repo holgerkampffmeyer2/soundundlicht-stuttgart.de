@@ -6,11 +6,12 @@ interface Props {
 const { currentPage = 'home' } = Astro.props;
 
 const navItems = [
-  { id: 'home', label: 'Home', href: '#home' },
-  { id: 'services', label: 'Services', href: '#services' },
-  { id: 'galerie', label: 'Miettechnik', href: '#galerie' },
-  { id: 'bewertungen', label: 'Bewertungen', href: '#bewertungen' },
-  { id: 'kontakt', label: 'Kontakt', href: '#kontakt' },
+  { id: 'home', label: 'Home', href: '/' },
+  { id: 'services', label: 'Services', href: '/#services' },
+  { id: 'pakete', label: 'Pakete', href: '/#pakete' },
+  { id: 'galerie', label: 'Miettechnik', href: '/#galerie' },
+  { id: 'bewertungen', label: 'Bewertungen', href: '/#bewertungen' },
+  { id: 'kontakt', label: 'Kontakt', href: '/#kontakt' },
 ];
 ---
 
@@ -28,7 +29,7 @@ const navItems = [
         {navItems.map((item) => (
           <a href={item.href} class:list={["nav-link", { active: currentPage === item.id }]}>{item.label}</a>
         ))}
-        <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary text-sm py-2 px-4">Zur Vermietung</a>
+        <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary text-sm py-2 px-4">Zur Vermietung ↗</a>
       </div>
       
       <!-- Mobile Menu Button -->
@@ -46,7 +47,7 @@ const navItems = [
       {navItems.map((item) => (
         <a href={item.href} class:list={["block nav-link py-2", { active: currentPage === item.id }]}>{item.label}</a>
       ))}
-      <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary text-center text-sm py-2 px-4 mt-4">Zur Vermietung</a>
+      <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary text-center text-sm py-2 px-4 mt-4">Zur Vermietung ↗</a>
     </div>
   </div>
 </nav>

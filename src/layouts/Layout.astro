@@ -114,6 +114,23 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
       }
     </script>
 
+    <!-- JSON-LD AggregateRating -->
+    <script is:inline type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "14",
+        "bestRating": "5",
+        "worstRating": "1",
+        "itemReviewed": {
+          "@type": "Service",
+          "name": "Veranstaltungstechnik Vermietung",
+          "url": "https://soundundlicht-stuttgart.de"
+        }
+      }
+    </script>
+
     <!-- JSON-LD SiteNavigationElement as ItemList -->
     <script is:inline type="application/ld+json">
       {
@@ -125,6 +142,30 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
             "position": 1,
             "name": "Startseite",
             "url": "https://soundundlicht-stuttgart.de/"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 2,
+            "name": "Pakete",
+            "url": "https://soundundlicht-stuttgart.de/#pakete"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 3,
+            "name": "Miettechnik",
+            "url": "https://soundundlicht-stuttgart.de/#galerie"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "FAQ",
+            "url": "https://soundundlicht-stuttgart.de/#faq"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 5,
+            "name": "Bewertungen",
+            "url": "https://soundundlicht-stuttgart.de/#bewertungen"
           }
         ]
       }

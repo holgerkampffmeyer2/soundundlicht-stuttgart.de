@@ -1,0 +1,73 @@
+---
+import VolumeUpIcon from "./icons/VolumeUpIcon.astro";
+import PackageIcon from "./icons/PackageIcon.astro";
+---
+
+<section class="section-padding bg-[var(--color-surface)]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 animate-on-scroll">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+        Pakete
+      </span>
+      <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
+        Unsere Komplettpakete
+      </h2>
+      <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
+        Alles aus einer Hand – Sound, Licht und Effekte als fertiges Paket. Plug &amp; Play, inklusive Kabel und Einweisung.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="service-card animate-on-scroll flex flex-col">
+        <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
+        <h3 class="font-play text-xl font-bold mb-2">Partypaket</h3>
+        <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 160€ / Tag</p>
+        <p class="text-[var(--color-text-muted)] text-sm mb-4">Für kleinere Feiern bis ca. 50 Personen</p>
+        <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
+          <li>✓ 2x JBL Partyboxen</li>
+          <li>✓ KLS Laserbar</li>
+          <li>✓ Nebelmaschine</li>
+          <li>✓ Mikrofon</li>
+          <li>✓ 4x LED Par Lichter</li>
+        </ul>
+        <a href="https://holger-kampffmeyer.de/vermietung/partypaket-stuttgart" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
+          Details &amp; Buchung ↗
+        </a>
+      </div>
+
+      <div class="service-card animate-on-scroll flex flex-col">
+        <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
+        <h3 class="font-play text-xl font-bold mb-2">DJ-Paket</h3>
+        <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 200€ / Tag</p>
+        <p class="text-[var(--color-text-muted)] text-sm mb-4">Für DJ Gigs &amp; mittlere Feiern bis ca. 150 Personen</p>
+        <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
+          <li>✓ 2x LD Maui 28 G3</li>
+          <li>✓ LED BossFX-2 Pro + Nebel</li>
+          <li>✓ Moving Head</li>
+          <li>✓ Stage Bar</li>
+          <li>✓ Mikrofon + 4x LED Par</li>
+        </ul>
+        <a href="https://holger-kampffmeyer.de/vermietung/djpaket-fildern" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
+          Details &amp; Buchung ↗
+        </a>
+      </div>
+
+      <div class="service-card animate-on-scroll flex flex-col">
+        <div class="text-[var(--color-secondary)] mb-4"><PackageIcon class="w-10 h-10" /></div>
+        <h3 class="font-play text-xl font-bold mb-2">Veranstaltungspaket</h3>
+        <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 180€ / Tag</p>
+        <p class="text-[var(--color-text-muted)] text-sm mb-4">Für mittlere bis große Veranstaltungen bis ca. 150 Personen</p>
+        <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
+          <li>✓ 2x LD Maui 28 G3</li>
+          <li>✓ 6-Kanal Mischpult</li>
+          <li>✓ KLS Laserbar + Nebel</li>
+          <li>✓ 2x Moving Head</li>
+          <li>✓ Mikrofon + 4x LED Par</li>
+        </ul>
+        <a href="https://holger-kampffmeyer.de/vermietung/veranstaltungspaket-stuttgart" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
+          Details &amp; Buchung ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

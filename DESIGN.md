@@ -127,11 +127,11 @@
 - Canonical URL
 - `noIndex` Prop für Seiten ohne Indexierung
 - `jsonLd` Prop für seiten-spezifische Schema-Daten
-- Lokale Keywords: Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim
+- Lokale Keywords: Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim, Ludwigsburg, Böblingen, Sindelfingen, Leonberg, Waiblingen, Nürtingen, Reutlingen, Kirchheim unter Teck, Ostfildern
 
 ### Texte
 - Du-Ansprache durchgehend
-- Lokale Städte: Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim
+- Lokale Städte: Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim, Ludwigsburg, Böblingen, Sindelfingen, Leonberg, Waiblingen, Nürtingen, Reutlingen, Kirchheim unter Teck, Ostfildern
 - USPs: Kostenlose Lieferung, persönliche Beratung, keine Kaution
 
 ---

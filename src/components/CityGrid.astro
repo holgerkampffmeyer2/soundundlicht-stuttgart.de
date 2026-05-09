@@ -1,0 +1,460 @@
+---
+const cities = [
+  {
+    name: "Stuttgart",
+    slug: "stuttgart",
+    image: "/img/cities/stuttgart.webp",
+    title: "PA-Anlage & Partybox mieten",
+    description: "Veranstaltungstechnik für Partys, Hochzeiten und Firmenfeiern in Stuttgart."
+  },
+  {
+    name: "Esslingen",
+    slug: "esslingen",
+    image: "/img/cities/esslingen.webp",
+    title: "Partybox & PA-Anlage mieten",
+    description: "Sound- und Lichttechnik für deine Feier in Esslingen am Neckar."
+  },
+  {
+    name: "Tübingen",
+    slug: "tübingen",
+    image: "/img/cities/tuebingen.webp",
+    title: "Veranstaltungstechnik mieten",
+    description: "PA-Anlagen, Partyboxen und Licht für Partys und Uni-Events in Tübingen."
+  },
+  {
+    name: "Filderstadt",
+    slug: "filderstadt",
+    image: "/img/cities/filderstadt.webp",
+    title: "Partytechnik mieten",
+    description: "Soundanlagen und Lichttechnik für Feiern in Filderstadt und Umgebung."
+  },
+  {
+    name: "Leinfelden-Echterdingen",
+    slug: "leinfelden-echterdingen",
+    image: "/img/cities/leinfelden-echterdingen.webp",
+    title: "Veranstaltungstechnik mieten",
+    description: "Technik direkt vor Ort – Abholung in der Magellanstraße 4."
+  },
+  {
+    name: "Kornwestheim",
+    slug: "kornwestheim",
+    image: "/img/cities/kornwestheim.webp",
+    title: "PA-Anlage & Partybox mieten",
+    description: "Sound- und Lichttechnik für deine Feier in Kornwestheim."
+  },
+  {
+    name: "Ludwigsburg",
+    slug: "ludwigsburg",
+    image: "/img/cities/ludwigsburg.webp",
+    title: "PA-Anlage & Partybox mieten",
+    description: "Veranstaltungstechnik für Partys und Feiern in Ludwigsburg."
+  },
+  {
+    name: "Böblingen",
+    slug: "böblingen",
+    image: "/img/cities/böblingen.webp",
+    title: "PA-Anlage & Partybox mieten",
+    description: "Sound- und Lichttechnik für deine Feier in Böblingen."
+  },
+  {
+    name: "Sindelfingen",
+    slug: "sindelfingen",
+    image: "/img/cities/sindelfingen.webp",
+    title: "PA-Anlage & Partybox mieten",
+    description: "Veranstaltungstechnik für Partys und Feiern in Sindelfingen."
+  },
+  {
+    name: "Leonberg",
+    slug: "leonberg",
+    image: "/img/cities/leonberg.webp",
+    title: "PA-Anlage & Partybox mieten",
+    description: "Sound- und Lichttechnik für deine Feier in Leonberg."
+  },
+  {
+    name: "Waiblingen",
+    slug: "waiblingen",
+    image: "/img/cities/waiblingen.webp",
+    title: "PA-Anlage & Partybox mieten",
+    description: "Veranstaltungstechnik für Partys und Feiern in Waiblingen."
+  },
+  {
+    name: "Nürtingen",
+    slug: "nürtingen",
+    image: "/img/cities/nürtingen.webp",
+    title: "PA-Anlage & Partybox mieten",
+    description: "Sound- und Lichttechnik für deine Feier in Nürtingen."
+  },
+  {
+    name: "Reutlingen",
+    slug: "reutlingen",
+    image: "/img/cities/reutlingen.webp",
+    title: "Veranstaltungstechnik mieten",
+    description: "PA-Anlagen, Partyboxen und Licht für Events in Reutlingen."
+  },
+  {
+    name: "Kirchheim unter Teck",
+    slug: "kirchheim-unter-teck",
+    image: "/img/cities/kirchheim-unter-teck.webp",
+    title: "Veranstaltungstechnik mieten",
+    description: "Sound- und Lichttechnik für Feiern in Kirchheim unter Teck."
+  },
+  {
+    name: "Ostfildern",
+    slug: "ostfildern",
+    image: "/img/cities/ostfildern.webp",
+    title: "Veranstaltungstechnik mieten",
+    description: "Technik für Partys und Events in Ostfildern – nur 8 km entfernt."
+  }
+];
+
+const total = cities.length;
+---
+
+<section class="section-padding bg-[var(--color-surface)] !py-12 md:!py-16">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 animate-on-scroll">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+        Einzugsgebiet
+      </span>
+      <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
+        In welcher Stadt feierst du?
+      </h2>
+      <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
+        Wähle deine Stadt und erfahre, welche Technik wir für deine Region empfehlen.
+        Die Abholung erfolgt immer in Leinfelden-Echterdingen.
+      </p>
+    </div>
+
+    <div class="city-carousel" data-total={total}>
+      <button class="carousel-btn carousel-prev" id="carousel-prev" aria-label="Vorherige Stadt">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carousel-track">
+          {cities.at(-1) && (
+            <a href={`/${cities.at(-1).slug}/`} class="carousel-slide" data-index="-1" aria-hidden="true">
+              <div class="city-card-bg" style={`background-image: url('${cities.at(-1).image}')`}></div>
+              <div class="city-card-overlay"></div>
+              <div class="city-card-content">
+                <span class="city-card-label">{cities.at(-1).name}</span>
+                <h3 class="city-card-title">{cities.at(-1).title}</h3>
+                <p class="city-card-desc">{cities.at(-1).description}</p>
+                <span class="city-card-link">Zur Vermietung in {cities.at(-1).name} →</span>
+              </div>
+            </a>
+          )}
+          {cities.map((city, i) => (
+            <a href={`/${city.slug}/`} class="carousel-slide" data-index={i}>
+              <div class="city-card-bg" style={`background-image: url('${city.image}')`}></div>
+              <div class="city-card-overlay"></div>
+              <div class="city-card-content">
+                <span class="city-card-label">{city.name}</span>
+                <h3 class="city-card-title">{city.title}</h3>
+                <p class="city-card-desc">{city.description}</p>
+                <span class="city-card-link">Zur Vermietung in {city.name} →</span>
+              </div>
+            </a>
+          ))}
+          <a href={`/${cities[0].slug}/`} class="carousel-slide" data-index={total} aria-hidden="true">
+            <div class="city-card-bg" style={`background-image: url('${cities[0].image}')`}></div>
+            <div class="city-card-overlay"></div>
+            <div class="city-card-content">
+              <span class="city-card-label">{cities[0].name}</span>
+              <h3 class="city-card-title">{cities[0].title}</h3>
+              <p class="city-card-desc">{cities[0].description}</p>
+              <span class="city-card-link">Zur Vermietung in {cities[0].name} →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <button class="carousel-btn carousel-next" id="carousel-next" aria-label="Nächste Stadt">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+
+      <div class="carousel-dots" id="carousel-dots">
+        {cities.map((_, i) => (
+          <button class="carousel-dot" data-index={i} aria-label={`Stadt ${i + 1}`}></button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const track = document.getElementById("carousel-track");
+    const prevBtn = document.getElementById("carousel-prev");
+    const nextBtn = document.getElementById("carousel-next");
+    const dots = document.querySelectorAll(".carousel-dot");
+    const slides = track.querySelectorAll(".carousel-slide");
+    const total = slides.length - 2;
+    let current = 1;
+    let isAnimating = false;
+
+    function update() {
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === (current - 1 + total) % total);
+      });
+    }
+
+    function jumpTo(index) {
+      current = index;
+      track.style.transition = "none";
+      update();
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          track.style.transition = "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)";
+        });
+      });
+    }
+
+    function slide(dir) {
+      if (isAnimating) return;
+      isAnimating = true;
+      const next = current + dir;
+      if (next > total) {
+        current = total + 1;
+        update();
+        setTimeout(() => jumpTo(1), 700);
+      } else if (next < 1) {
+        current = 0;
+        update();
+        setTimeout(() => jumpTo(total), 700);
+      } else {
+        current = next;
+        update();
+      }
+    }
+
+    nextBtn.addEventListener("click", () => slide(1));
+    prevBtn.addEventListener("click", () => slide(-1));
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        if (isAnimating) return;
+        const target = parseInt(dot.dataset.index) + 1;
+        if (target === current) return;
+        isAnimating = true;
+        current = target;
+        update();
+      });
+    });
+
+    let autoPlay = setInterval(() => slide(1), 6000);
+
+    const carousel = document.querySelector(".city-carousel");
+    carousel.addEventListener("mouseenter", () => clearInterval(autoPlay));
+    carousel.addEventListener("mouseleave", () => { autoPlay = setInterval(() => slide(1), 6000); });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") slide(-1);
+      if (e.key === "ArrowRight") slide(1);
+    });
+
+    track.style.transition = "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)";
+    update();
+
+    track.addEventListener("transitionend", () => {
+      if (current === 0) jumpTo(total);
+      if (current === total + 1) jumpTo(1);
+      isAnimating = false;
+    });
+  })();
+</script>
+
+<style>
+  .city-carousel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    position: relative;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    position: relative;
+    aspect-ratio: 2/1;
+    display: block;
+    text-decoration: none;
+    overflow: hidden;
+  }
+
+  .city-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.6s ease;
+  }
+
+  .carousel-slide:hover .city-card-bg {
+    transform: scale(1.08);
+  }
+
+  .city-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(10, 10, 15, 0.92) 0%,
+      rgba(10, 10, 15, 0.7) 40%,
+      rgba(249, 115, 22, 0.15) 100%
+    );
+    z-index: 1;
+  }
+
+  .city-card-content {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 2.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .city-card-label {
+    display: inline-block;
+    background: var(--color-secondary);
+    color: var(--color-bg);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.8rem;
+    border-radius: 0.25rem;
+    width: fit-content;
+    margin-bottom: 0.75rem;
+  }
+
+  .city-card-title {
+    font-family: 'Play', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .city-card-desc {
+    color: white;
+    opacity: 0.85;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 500px;
+  }
+
+  .city-card-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-slide:hover .city-card-link {
+    color: var(--color-secondary-hover);
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(10, 10, 15, 0.6);
+    backdrop-filter: blur(4px);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-btn:hover {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+  }
+
+  .carousel-prev {
+    left: 1rem;
+  }
+
+  .carousel-next {
+    right: 1rem;
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+  }
+
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .carousel-dot.active {
+    background: var(--color-secondary);
+    transform: scale(1.4);
+    box-shadow: 0 0 12px var(--color-secondary);
+  }
+
+  .carousel-dot:hover {
+    background: var(--color-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .city-card-content {
+      padding: 1.5rem 1.25rem;
+    }
+    .city-card-title {
+      font-size: 1.25rem;
+    }
+    .city-card-desc {
+      display: none;
+    }
+    .carousel-btn {
+      width: 36px;
+      height: 36px;
+    }
+    .carousel-btn :global(svg) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>
