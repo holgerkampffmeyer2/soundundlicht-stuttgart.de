@@ -23,4 +23,4 @@ Allow: /
 # LLMs.txt for AI crawlers
 LLMs.txt: /llms.txt
 
-Sitemap: https://soundundlicht-stuttgart.de/sitemap.xml
+Sitemap: https://soundundlicht-stuttgart.de/sitemap-index.xml
