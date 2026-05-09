@@ -11,34 +11,28 @@ import EmailIcon from "../components/icons/EmailIcon.astro";
 const cityJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Veranstaltungstechnik Vermietung Kirchheim unter Teck",
-  "description": "PA-Anlagen, Partyboxen und Lichttechnik mieten in Kirchheim unter Teck und Umgebung. Komplettpakete für Geburtstage, Hochzeiten und Vereinsfeiern. Abholung in Leinfelden-Echterdingen, nur 28 km.",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "DJ Hulk - Holger Kampffmeyer"
-  },
-  "url": "https://soundundlicht-stuttgart.de/kirchheim-unter-teck/",
+  "name": "Veranstaltungstechnik Vermietung Leinfelden-Echterdingen",
   "areaServed": {
     "@type": "City",
-    "name": "Kirchheim unter Teck"
+    "name": "Leinfelden-Echterdingen"
   }
 };
 ---
 
 <Layout
-  title="Veranstaltungstechnik mieten in Kirchheim unter Teck | Sound & Licht Stuttgart"
-  description="PA-Anlagen, Partyboxen und Lichttechnik mieten in Kirchheim unter Teck und Umgebung. Komplettpakete für Geburtstage, Hochzeiten und Vereinsfeiern. Abholung in Leinfelden-Echterdingen, nur 28 km."
+  title="Veranstaltungstechnik mieten in Leinfelden-Echterdingen | Sound & Licht Stuttgart"
+  description="Partytechnik mieten in Leinfelden-Echterdingen: PA-Anlagen, Partyboxen und Lichttechnik direkt vor Ort zur Abholung. Komplettpakete für deine Feier – Magellanstraße 4."
   image="/img/header.webp"
   jsonLd={cityJsonLd}
 >
   <Navbar />
 
   <CityHero
-    image="/img/cities/kirchheim-unter-teck.webp"
-    city="Kirchheim unter Teck"
-    title="Veranstaltungstechnik mieten in Kirchheim unter Teck"
-    description="Du wohnst in Kirchheim unter Teck, Nabern, Ötlingen oder Umgebung und brauchst eine Soundanlage oder Lichttechnik für deine Feier? Ich bin dein Verleiher direkt um die Ecke."
-    details="Mein Standort in Leinfelden-Echterdingen ist nur ca. 28 km von Kirchheim unter Teck entfernt, gut erreichbar über die A8. Du kannst die Technik bequem abholen, ich helfe dir beim Einladen und erkläre dir den Aufbau."
+    image="/img/cities/leinfelden-echterdingen.webp"
+    city="Leinfelden-Echterdingen"
+    title="Veranstaltungstechnik mieten in Leinfelden-Echterdingen"
+    description="Du wohnst in Leinfelden-Echterdingen und brauchst Technik für deine Party? Perfekt – mein Standort ist in der Magellanstraße 4, direkt bei dir um die Ecke. PA-Anlagen, Partyboxen, Lichttechnik und Komplettpakete zur sofortigen Abholung."
+    details="Als lokaler Anbieter in Leinfelden-Echterdingen kennst du mich vielleicht schon. Ich berate dich persönlich, zeige dir die Technik vor Ort und erkläre dir den Aufbau. Auch kurzfristige Anfragen sind möglich – einfach vorbeikommen oder anrufen!"
   />
 
   <CityPackages />
@@ -50,10 +44,12 @@ const cityJsonLd = {
         Kontakt
       </span>
       <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
-        Technik mieten in Kirchheim unter Teck – einfach anfragen
+        Technik mieten in Leinfelden-Echterdingen
       </h2>
       <p class="text-[var(--color-text-muted)] text-lg mb-10">
-        Du wohnst in Kirchheim unter Teck oder der Umgebung und brauchst Technik? Schreib mir eine E-Mail – die Abholung ist nur 28 km entfernt in Leinfelden-Echterdingen, Magellanstraße 4, verkehrsgünstig an A8. Ich melde mich innerhalb von 12 Stunden bei dir!
+        Du wohnst in Leinfelden-Echterdingen? Komm einfach vorbei oder schreib mir eine E-Mail. 
+        Mein Standort: Magellanstraße 4, 70771 Leinfelden-Echterdingen – verkehrsgünstig an A8 / B27. 
+        Ich melde mich innerhalb von 12 Stunden bei dir!
       </p>
 
       <div class="grid grid-cols-1 gap-8 mb-12">
@@ -73,12 +69,9 @@ const cityJsonLd = {
           <p class="text-[var(--color-text-muted)]">
             Magellanstraße 4<br>
             70771 Leinfelden-Echterdingen<br>
-            Nur ca. 28 km von Kirchheim unter Teck
+            Direkt vor Ort – verkehrsgünstig an A8 / B27
           </p>
-          <a href="https://www.google.com/maps/dir/Kirchheim%20unter%20Teck/Magellanstraße+4,+70771+Leinfelden-Echterdingen/" target="_blank" rel="noopener noreferrer" class="text-[var(--color-secondary)] text-sm hover:underline mt-2 inline-block">
-            Route von Kirchheim unter Teck planen →
-          </a>
-</div>
+        </div>
         <div class="bg-[var(--color-bg)] rounded-xl p-6">
           <div class="text-[var(--color-secondary)] mb-3"><EmailIcon class="w-10 h-10" /></div>
           <h3 class="font-play font-bold mb-2">E-Mail</h3>

@@ -5,11 +5,9 @@ interface Props {
   title: string;
   description: string;
   details: string;
-  distanceKm?: string;
-  travelTime?: string;
 }
 
-const { image, city, title, description, details, distanceKm, travelTime } = Astro.props;
+const { image, city, title, description, details } = Astro.props;
 ---
 
 <section class="city-hero">
