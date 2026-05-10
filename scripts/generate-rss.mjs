@@ -125,9 +125,9 @@ function generateRss() {
     const pubDate = formatRssDate(item.pubDate);
     const category = '[Seite]';
     xml += `    <item>
-      <guid isPermaLink="false">${escapeXml(item.id)}</guid>
+      <guid isPermaLink="false">${escapeXml(encodeURI(item.id))}</guid>
       <title>${escapeXml(category + ' ' + item.title)}</title>
-      <link>${escapeXml(site + item.link)}</link>
+      <link>${escapeXml(encodeURI(site + item.link))}</link>
       <description>${escapeXml(item.description)}</description>
       <pubDate>${pubDate}</pubDate>
     </item>
