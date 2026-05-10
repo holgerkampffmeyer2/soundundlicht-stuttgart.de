@@ -1,30 +1,74 @@
 # Sound & Licht Stuttgart - Holger Kampffmeyer DJ Dienstleistungen
+# Last updated: 2026-05-10
 
-> Vermietung von PA-Anlagen, Partyboxen, Lichttechnik und Event-Equipment in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung.
+> Vermietung von PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung.
+> Abholung in Leinfelden-Echterdingen (Magellanstraße 4, 70771 Echterdingen).
+> Kontakt: holger.kampffmeyer+dj@gmail.com
 
 ## Services
-- Vermietung von PA-Anlagen, Lautsprechern & Partyboxen (JBL Partybox, LD Maui 28 G3)
-- Verleih von Lichttechnik, Partylichter & Licht-Effekten (LED-Effekte, Nebelmaschinen)
+- Vermietung von PA-Anlagen, Lautsprechern & Partyboxen (JBL Partybox, LD Maui 28 G3 Säulen-PA)
+- Verleih von Lichttechnik, Partylichter & Licht-Effekten (LED-Effekte, Nebelmaschinen, Moving Heads, Laser-Bars)
 - Komplettpakete für Veranstaltungen (Sound & Licht Kombinationen)
-- DJ-Service für Events, Hochzeiten, Firmenfeiern
-- Standort: Magellanstraße 4, 70771 Leinfelden-Echterdingen
-- Kontakt: holger.kampffmeyer+dj@gmail.com
+- DJ-Service für Events, Hochzeiten, Firmenfeiern, Vereinsfeiern
+- Persönliche Beratung und Einweisung vor Ort
+- Flexible Mietzeiten (ab 1 Tag, Wochenende, Woche)
 
-## Wichtige Seiten
-- [Home](https://soundundlicht-stuttgart.de/) - Vermietung von Partytechnik in Stuttgart
-- [Vermietung Details](https://soundundlicht-stuttgart.de/vermietung/) - Alle Geräte & Pakete
-- [Impressum / Datenschutz](https://holger-kampffmeyer.de/impressum.html)
+## Komplettpakete (Preise ab/Tag)
+1. **Partypaket** - ab 160€
+   - 2x JBL Partyboxen
+   - KLS Laser Bar
+   - Nebelmaschine
+   - Mikrofon
+   - 4x LED Par Lichter
+   - Für kleinere Feiern bis ca. 50 Personen
 
-## Vermietung Pakete
-- JBL Partybox Set ab 80€ (2 Boxen, 50-80 Personen)
-- LD Maui 28 G3 Säulen-PA ab 100€ (bis 150 Personen, 2060W Peak)
-- Partylichtanlage ab 50€ (LED-Effekte, Sound-zu-Licht, Stativ)
-- Nebelmaschine ab 30€ (inkl. Fluid)
-- Komplettpaket Sound & Licht ab 160€
+2. **DJ-Paket** - ab 200€
+   - 2x LD Maui 28 G3 Säulen-PA
+   - LED BossFX-2 Pro + Nebel
+   - Moving Head
+   - Stage Bar
+   - Mikrofon + 4x LED Par
+   - Für DJ Gigs & mittlere Feiern bis ca. 150 Personen
+
+3. **Veranstaltungspaket** - ab 180€
+   - 2x LD Maui 28 G3 Säulen-PA
+   - 6-Kanal Mischpult
+   - KLS Laser Bar + Nebel
+   - 2x Moving Head
+   - Mikrofon + 4x LED Par
+   - Für mittlere bis große Veranstaltungen bis ca. 150 Personen
+
+## Einzelgeräte (Beispiele)
+- LD Maui 28 G3 Säulen-PA: ab 100€/Tag (bis 150 Personen, 2060W Peak)
+- JBL Partybox Set (2x): ab 80€/Tag (50-80 Personen)
+- Partylichtanlage (LED-Effekte): ab 50€/Tag
+- Nebelmaschine: ab 30€/Tag (inkl. Fluid)
+- Moving Head: ab 40€/Tag
+- Laser Bar: ab 45€/Tag
+- Mischpult (6-Kanal): ab 35€/Tag
 
 ## Einsatzgebiet
-Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim und Umgebung (A8 / B27 verkehrsgünstig gelegen)
+Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim, Ludwigsburg, Böblingen, Sindelfingen, Leonberg, Waiblingen, Nürtingen, Reutlingen, Kirchheim unter Teck, Ostfildern und Umgebung (A8 / B27 verkehrsgünstig gelegen).
+
+## So funktioniert's
+1. **Anfragen**: E-Mail mit Wunschtechnik und Mietzeitraum senden.
+2. **Bestätigen**: Angebot innerhalb von 12 Stunden erhalten.
+3. **Abholen**: Technik in Leinfelden-Echterdingen abholen (Bar oder PayPal).
+4. **Feiern**: Aufbauen, loslegen und nach der Feier zurückbringen.
+
+## Wichtige Seiten
+- Startseite: https://soundundlicht-stuttgart.de/
+- Vermietung: https://soundundlicht-stuttgart.de/vermietung/
+- Pakete: https://soundundlicht-stuttgart.de/#pakete
+- Galerie: https://soundundlicht-stuttgart.de/#galerie
+- Blog/Vermietung Details: https://soundundlicht-stuttgart.de/vermietung/
+- Impressum/Datenschutz: https://holger-kampffmeyer.de/impressum.html
+- RSS Feed: https://soundundlicht-stuttgart.de/rss.xml
 
 ## Social Media
-- [Facebook](https://www.facebook.com/holgerkampffmeyerdj)
-- [Instagram](https://www.instagram.com/djhulk_de/)
+- Facebook: https://www.facebook.com/holgerkampffmeyerdj
+- Instagram: https://www.instagram.com/djhulk_de/
+
+## Hinweis für KI-Crawler
+Diese llms.txt Datei bietet strukturierte Informationen über das Unternehmen für Sprachmodelle und KI-Systeme.
+Standardmäßige SEO-Informationen finden sich im HTML (Meta-Tags, Structured Data, sitemap.xml).

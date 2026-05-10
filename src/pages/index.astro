@@ -231,12 +231,12 @@ const galleryImages = [
     </div>
 
     <!-- Slider Navigation -->
-    <button class="slider-nav prev" id="slider-prev">
+    <button class="slider-nav prev" id="slider-prev" aria-label="Previous slide">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
-    <button class="slider-nav next" id="slider-next">
+    <button class="slider-nav next" id="slider-next" aria-label="Next slide">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
       </svg>
@@ -377,19 +377,19 @@ const galleryImages = [
 
       <div class="gallery-grid">
         {galleryImages.map((img, index) => (
-          <a href="/vermietung/" class="gallery-item animate-on-scroll block" style={`animation-delay: ${index * 0.1}s`}>
-            <picture>
-              <source srcset={img.src} type="image/webp" />
-              <img src={img.fallback || img.src} alt={img.alt} loading="lazy" />
-            </picture>
-            <div class="gallery-info">
-              <span class="gallery-category">{img.category}</span>
-              <span class="gallery-usecase">{img.useCase}</span>
-              <span class="gallery-details">
-                {img.equipment} • {img.persons} • {img.simplicity}
-              </span>
-            </div>
-          </a>
+           <a href="/vermietung/" class="gallery-item animate-on-scroll block" style={`animation-delay: ${index * 0.1}s`}>
+             <picture>
+               <source srcset={img.src} type="image/webp" />
+               <img src={img.fallback || img.src} alt={img.alt} width="800" height="450" loading="lazy" />
+             </picture>
+             <div class="gallery-info">
+               <span class="gallery-category">{img.category}</span>
+               <span class="gallery-usecase">{img.useCase}</span>
+               <span class="gallery-details">
+                 {img.equipment} • {img.persons} • {img.simplicity}
+               </span>
+             </div>
+           </a>
         ))}
       </div>
 
