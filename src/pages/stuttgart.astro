@@ -7,6 +7,16 @@ import CityPackages from "../components/CityPackages.astro";
 import CitySteps from "../components/CitySteps.astro";
 import MapPinIcon from "../components/icons/MapPinIcon.astro";
 import EmailIcon from "../components/icons/EmailIcon.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import FAQSection from "../components/FAQSection.astro";
+import { getFaqsForPage } from '../lib/faqUtils';
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: "Stuttgart" }
+];
+
+const cityFaqs = getFaqsForPage('index');
 
 const cityJsonLd = {
   "@context": "https://schema.org",
@@ -30,6 +40,8 @@ const travelTime = "20-25";
 >
   <Navbar />
 
+  <Breadcrumb segments={breadcrumbSegments} />
+
   <CityHero
     image="/img/cities/stuttgart.webp"
     city="Stuttgart"
@@ -41,6 +53,13 @@ const travelTime = "20-25";
 
   <CityPackages />
   <CitySteps />
+
+  <!-- FAQ -->
+  <section class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-4xl mx-auto">
+      <FAQSection faqs={cityFaqs} />
+    </div>
+  </section>
 
   <!-- Kontakt -->
   <section id="kontakt" class="section-padding bg-[var(--color-surface)]">
@@ -91,7 +110,7 @@ const travelTime = "20-25";
         <a href="mailto:holger.kampffmeyer+dj@gmail.com" class="btn-primary flex items-center justify-center gap-2">
           E-Mail senden
         </a>
-        <a href="https://holger-kampffmeyer.de/vermietung" class="btn-secondary">
+        <a href="/vermietung/" class="btn-secondary">
           Alle Details &amp; Geräte ↗
         </a>
       </div>

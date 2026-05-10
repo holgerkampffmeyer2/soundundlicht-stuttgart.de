@@ -1,21 +1,29 @@
 ---
+import ChevronDownIcon from "./icons/ChevronDownIcon.astro";
+
 interface Props {
   currentPage?: string;
 }
 
 const { currentPage = 'home' } = Astro.props;
 
-const navItems = [
-  { id: 'home', label: 'Home', href: '/' },
-  { id: 'services', label: 'Services', href: '/#services' },
-  { id: 'pakete', label: 'Pakete', href: '/#pakete' },
-  { id: 'galerie', label: 'Miettechnik', href: '/#galerie' },
-  { id: 'bewertungen', label: 'Bewertungen', href: '/#bewertungen' },
-  { id: 'kontakt', label: 'Kontakt', href: '/#kontakt' },
+const vermietungItems = [
+  { href: '/vermietung/', label: 'Übersicht' },
+  { href: '/vermietung/partypaket-stuttgart/', label: 'Partypaket' },
+  { href: '/vermietung/veranstaltungspaket-stuttgart/', label: 'Veranstaltungspaket' },
+  { href: '/vermietung/djpaket-fildern/', label: 'DJ-Paket' },
+  { href: '/vermietung/ld-maui-28g3/', label: 'LD Maui 28 G3' },
+  { href: '/vermietung/jbl-partybox-300-320/', label: 'JBL Partybox 300/320' },
+  { href: '/vermietung/partylicht-moving-head/', label: 'Partylicht & Moving Head' },
+  { href: '/vermietung/led-bossfx-nebelmaschine/', label: 'LED BossFX & Nebelmaschine' },
+  { href: '/vermietung/kls-laser-bar/', label: 'KLS Laser Bar' },
 ];
+
+const isVermietungActive = currentPage.startsWith('/vermietung');
+const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietung', '') || '/' : null;
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]" aria-label="Main navigation">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="flex items-center justify-between h-20">
       <!-- Logo -->
@@ -26,14 +34,40 @@ const navItems = [
       
       <!-- Desktop Menu -->
       <div class="desktop-menu hidden md:flex items-center space-x-6">
-        {navItems.map((item) => (
-          <a href={item.href} class:list={["nav-link", { active: currentPage === item.id }]}>{item.label}</a>
-        ))}
-        <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary text-sm py-2 px-4">Zur Vermietung ↗</a>
+        <a href="/" class:list={["nav-link", { active: currentPage === '/' || currentPage === 'home' }]}>Home</a>
+        
+        <!-- Vermietung Dropdown -->
+        <div class="relative group">
+          <a 
+            href="/vermietung/" 
+            class:list={["nav-link flex items-center gap-1", { active: isVermietungActive }]}
+          >
+            Vermietung
+            <ChevronDownIcon class="h-4 w-4" />
+          </a>
+          <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            {vermietungItems.map(item => (
+              <a 
+                href={item.href} 
+                class:list={[
+                  "block px-4 py-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] hover:bg-[var(--color-bg)] first:rounded-t-lg last:rounded-b-lg",
+                  { "text-[var(--color-secondary)] bg-[var(--color-bg)]": activeVermietungSlug === item.href.replace('/vermietung', '') }
+                ]}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+        <a href="/#services" class="nav-link">Services</a>
+        <a href="/#pakete" class="nav-link">Pakete</a>
+        <a href="/#galerie" class="nav-link">Miettechnik</a>
+        <a href="/#bewertungen" class="nav-link">Bewertungen</a>
+        <a href="/#kontakt" class="nav-link">Kontakt</a>
       </div>
       
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden text-[var(--color-text)] p-2">
+      <button id="mobile-menu-btn" class="md:hidden text-[var(--color-text)] p-2" aria-label="Toggle mobile menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -44,10 +78,13 @@ const navItems = [
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-surface)] border-t border-[var(--color-border)]">
     <div class="px-4 py-4 space-y-3">
-      {navItems.map((item) => (
-        <a href={item.href} class:list={["block nav-link py-2", { active: currentPage === item.id }]}>{item.label}</a>
-      ))}
-      <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary text-center text-sm py-2 px-4 mt-4">Zur Vermietung ↗</a>
+      <a href="/" class:list={["block nav-link py-2", { active: currentPage === '/' || currentPage === 'home' }]}>Home</a>
+      <a href="/#services" class="block nav-link py-2">Services</a>
+      <a href="/#pakete" class="block nav-link py-2">Pakete</a>
+      <a href="/vermietung/" class:list={["block nav-link py-2", { active: isVermietungActive }]}>Vermietung</a>
+      <a href="/#galerie" class="block nav-link py-2">Miettechnik</a>
+      <a href="/#bewertungen" class="block nav-link py-2">Bewertungen</a>
+      <a href="/#kontakt" class="block nav-link py-2">Kontakt</a>
     </div>
   </div>
 </nav>

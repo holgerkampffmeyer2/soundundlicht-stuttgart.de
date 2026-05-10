@@ -1,0 +1,88 @@
+---
+interface Props {
+  specs: Record<string, string>;
+}
+
+const { specs } = Astro.props;
+const entries = Object.entries(specs);
+---
+
+<section class="section-padding bg-[var(--color-bg)]">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Technische Daten</span>
+      <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Technische Spezifikationen</h2>
+    </div>
+
+    <div class="specs-table-container">
+      <table class="specs-table">
+        <tbody>
+          {entries.map(([key, value], index) => (
+            <tr class={index % 2 === 0 ? 'even' : 'odd'}>
+              <td class="spec-key">{key}</td>
+              <td class="spec-value">{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .specs-table-container {
+    background: var(--color-surface);
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .specs-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .specs-table tr {
+    transition: all 0.3s ease;
+  }
+
+  .specs-table tr:hover {
+    background: var(--color-surface-hover);
+  }
+
+  .specs-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .specs-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .spec-key {
+    color: var(--color-text-muted);
+    font-weight: 500;
+    width: 40%;
+  }
+
+  .spec-value {
+    color: var(--color-text);
+    font-weight: 600;
+    text-align: right;
+  }
+
+  @media (max-width: 640px) {
+    .specs-table td {
+      padding: 0.75rem 1rem;
+    }
+    
+    .spec-key {
+      width: 45%;
+      font-size: 0.875rem;
+    }
+    
+    .spec-value {
+      font-size: 0.875rem;
+    }
+  }
+</style>

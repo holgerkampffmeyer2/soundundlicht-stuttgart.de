@@ -1,0 +1,281 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import ProductGallery from '../../components/vermietung/ProductGallery.astro';
+import PackageContents from '../../components/vermietung/PackageContents.astro';
+import RentalPricing from '../../components/vermietung/RentalPricing.astro';
+import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getFaqsForPage } from '../../lib/faqUtils';
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: "Vermietung", href: "/vermietung" },
+  { label: "DJ-Paket Fildern" }
+];
+
+const pageTitle = "DJ-Paket Fildern - Eventtechnik Miete | DJ Hulk";
+
+const faqs = getFaqsForPage('djpaket-fildern');
+
+const images = [
+  "/img/vermietung/ldmaui3.webp",
+  "/img/vermietung/LDMAUI28G3_1_kl.webp",
+  "/img/vermietung/ldmaui2.webp",
+  "/img/vermietung/ld-3.webp",
+  "/img/vermietung/stairville-led-bossfx-2-pro-bundle.webp",
+  "/img/vermietung/stairville-led-bossfx-2-pro-2.webp",
+  "/img/vermietung/stairville-af-150-fog-machine.webp",
+  "/img/vermietung/stairville-af-150-fog-machine-1.webp",
+  "/img/vermietung/IMG_9114.webp",
+  "/img/vermietung/Showlite_stagebar_1.webp",
+  "/img/vermietung/mikrofon.webp",
+  "/img/vermietung/36-parlight.webp"
+];
+
+const packageItems = [
+  { name: "2x LD Maui 28 G3 Säulensystem", detailPage: "/vermietung/ld-maui-28g3" },
+  { name: "Stairville LED BossFX-2 Pro", detailPage: "/vermietung/led-bossfx-nebelmaschine" },
+  { name: "Stairville AF-150 Nebelmaschine", detailPage: "/vermietung/led-bossfx-nebelmaschine" },
+  { name: "18 Prisma 10 Gobo LED Moving Head", detailPage: "/vermietung/partylicht-moving-head" },
+  { name: "Showlight LED Stage Bar" },
+  { name: "Mikrofon inkl. XLR-Kabel" },
+  { name: "2x LED PAR Strahler", detailPage: "/vermietung/partylicht-moving-head" },
+  { name: "Stromkabel, XLR Kabel und Anschlusskabel" }
+];
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soundundlicht-stuttgart.de/"},
+    {"@type": "ListItem", "position": 2, "name": "Vermietung", "item": "https://soundundlicht-stuttgart.de/vermietung"},
+    {"@type": "ListItem", "position": 3, "name": "DJ-Paket Fildern", "item": "https://soundundlicht-stuttgart.de/vermietung/djpaket-fildern"}
+  ]
+};
+
+const events = [
+  {
+    title: "Hochzeit",
+    description: "Das ideale Paket für Hochzeitsfeiern bis 150 Gäste. Professioneller Sound für Musik und Reden, kombiniert mit einer beeindruckenden Lichtshow.",
+    personCount: "bis 150 Personen"
+  },
+  {
+    title: "Firmenfeier",
+    description: "Perfekt für Betriebsfeiern, Jubiläen und Firmenevents. Leistungsstarke Anlage für klare Durchsagen und musikalische Untermalung.",
+    personCount: "bis 150 Personen"
+  },
+  {
+    title: "DJ Gig",
+    description: "Ideal für DJs, die keine eigene Anlage haben und Wert auf professionellen Sound und Licht legen.",
+    personCount: "bis 150 Personen"
+  },
+  {
+    title: "Gartenfest",
+    description: "Auch für größere Gartenfeste mit bis zu 150 Gästen geeignet. Kraftvoller Sound und stimmungsvolle Beleuchtung auch im Außenbereich.",
+    personCount: "bis 150 Personen"
+  }
+];
+
+const packageFeatures = [
+  "Professionelles DJ-Komplettpaket für mittlere bis große Feiern",
+  "LD Maui 28 G3 - professionelles Säulensystem mit erstklassigem Sound",
+  "LED BossFX-2 Pro mit 2 Derby, 2 Spots und Strobe Effekten",
+  "AF-150 Nebelmaschine für atmosphärische Lichtwirkung",
+  "18 Prisma Moving Head für dynamische Lichtshows",
+  "Showlight LED Stage Bar für Bühnenbeleuchtung",
+  "Inklusive Mikrofon für Durchsagen und Ansprachen",
+  "4 LED PAR Strahler für atmosphärische Ambientebeleuchtung",
+  "Passt in einen Kombi oder Kleinwagen mit umgeklappter Rückbank"
+];
+
+const siteUrl = "https://soundundlicht-stuttgart.de";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "DJ-Paket Fildern Vermietung",
+  "description": "Miete das DJ-Paket Fildern für dein Event. Komplette Eventtechnik mit LD Maui Soundanlage, LED BossFX, Nebelmaschine, Moving Head und Stage Bar für bis zu 150 Personen.",
+  "image": [
+    siteUrl + images[0],
+    siteUrl + images[1]
+  ],
+  "provider": {
+    "@type": "Person",
+    "name": "Holger Kampffmeyer",
+    "telephone": "+49-171-1467491",
+    "url": "https://soundundlicht-stuttgart.de"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://soundundlicht-stuttgart.de/vermietung/djpaket-fildern",
+    "price": "200",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq: any) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const videoSchema = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "DJ-Paket Fildern Demo",
+  "description": "Demo des DJ-Paket Fildern - komplette Eventtechnik mit LD Maui, LED Licht und Nebelmaschine",
+  "thumbnailUrl": ["/img/vermietung/ldmaui3.webp"],
+  "contentUrl": "https://www.youtube.com/watch?v=vE5PQ7IUdrg",
+  "embedUrl": "https://www.youtube.com/embed/vE5PQ7IUdrg",
+  "uploadDate": "2024-03-15T00:00:00+00:00",
+  "duration": "PT1M32S",
+  "publisher": {
+    "@type": "Organization",
+    "name": "DJ Hulk",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/djhulk_logo.webp"
+    }
+  }
+};
+---
+
+<Layout 
+  title={pageTitle}
+  description="Miete das DJ-Paket Fildern für dein Event. Komplette Eventtechnik mit LD Maui Soundanlage, LED BossFX, Nebelmaschine, Moving Head und Stage Bar für bis zu 150 Personen."
+  image="/img/vermietung/ldmaui3.webp"
+  jsonLd={[serviceSchema, faqSchema, videoSchema, breadcrumbSchema]}
+>
+  <Navbar currentPage="/vermietung" />
+
+  <Breadcrumb segments={breadcrumbSegments} />
+
+  <!-- Header -->
+  <section class="product-header section-padding pb-0">
+    <div class="max-w-6xl mx-auto px-4">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+      <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">DJ-Paket Fildern</h1>
+      <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
+        Das professionelle DJ-Paket für mittlere Feiern bis ca. 150 Personen. 
+        Hochwertige Technik mit LD Maui Soundanlage, LED BossFX, Nebelmaschine, Moving Head und Stage Bar.
+      </p>
+    </div>
+  </section>
+
+  <!-- Package Highlights -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Highlights</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Die Besonderheiten des DJ-Pakets Fildern</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {packageFeatures.map((feature) => (
+          <div class="bg-[var(--color-bg)] p-6 rounded-xl border border-[var(--color-border)] hover:border-[var(--color-secondary)] transition-all duration-300">
+            <div class="flex items-start gap-3">
+              <span class="text-[var(--color-secondary)] text-2xl">✓</span>
+              <p class="text-[var(--color-text)]">{feature}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Bildergalerie -->
+  <ProductGallery images={images} title="DJ-Paket Fildern" />
+
+  <!-- Demo Video -->
+  <section class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Video</span>
+        <h2 class="font-play text-3xl font-bold mt-2">Sound-Check PA Anlage</h2>
+        <p class="text-[var(--color-text-muted)] mt-2">Eindruck der LD Maui 28 G3 in Aktion</p>
+      </div>
+      <div class="aspect-video rounded-xl overflow-hidden bg-black">
+        <iframe 
+          src="https://www.youtube.com/embed/vE5PQ7IUdrg" 
+          title="LD Maui 28 G3 Demo"
+          class="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Preis & Kaution -->
+  <RentalPricing price="ab 200€" deposit={400} />
+
+  <!-- 3. Enthalten im Paket -->
+  <PackageContents title="Enthalten im DJ-Paket Fildern" items={packageItems} />
+
+  <!-- 4. Beispielanwendungen -->
+  <ExampleEvents events={events} />
+
+  <!-- FAQ -->
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-play text-2xl md:text-3xl font-bold text-center mb-10">
+        Häufig gestellte Fragen
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="bg-[var(--color-surface)] rounded-xl p-4 cursor-pointer group">
+            <summary class="font-bold cursor-pointer flex items-center gap-3 list-none">
+              <span class="w-6 h-6 bg-orange-500/20 rounded flex items-center justify-center text-orange-500 group-open:rotate-90 transition-transform">
+                <ChevronRightIcon class="w-3 h-3" />
+              </span>
+              {faq.question}
+            </summary>
+            <p class="text-[var(--color-text-muted)] mt-3 ml-9">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h2 class="font-play text-3xl md:text-4xl font-bold mb-6">Interessiert an diesem Paket?</h2>
+      <p class="text-[var(--color-text-muted)] mb-8">
+        Stell uns eine Anfrage für das DJ-Paket Fildern oder lass dich beraten.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/vermietung#kontakt" class="btn-primary">Jetzt anfragen</a>
+        <a href="/vermietung" class="btn-secondary">Zurück zur Übersicht</a>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <Footer />
+</Layout>
+
+<style>
+  .product-header {
+    background: var(--color-bg);
+    padding-bottom: 2rem;
+  }
+
+  .cta-section {
+    text-align: center;
+  }
+</style>

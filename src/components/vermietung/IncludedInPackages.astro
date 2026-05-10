@@ -1,0 +1,60 @@
+---
+interface Package {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  packages: Package[];
+}
+
+const { packages } = Astro.props;
+---
+
+{packages.length > 0 && (
+  <div class="included-in-packages">
+    <p class="included-in-packages-text">
+      Ebenso als Komplettset zu mieten in: 
+      {packages.map((pkg, index) => (
+        <>
+          <a href={pkg.url} class="included-in-packages-link">{pkg.name}</a>
+          {index < packages.length - 1 && <span class="separator">, </span>}
+        </>
+      ))}
+    </p>
+  </div>
+)}
+
+<style>
+  .included-in-packages {
+    margin-top: 2rem;
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+  .included-in-packages-text {
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+  }
+
+  .included-in-packages-link {
+    color: var(--color-secondary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .included-in-packages-link:hover {
+    color: white;
+    text-decoration-color: white;
+  }
+
+  .separator {
+    color: var(--color-text-muted);
+    margin: 0 0.25rem;
+  }
+</style>

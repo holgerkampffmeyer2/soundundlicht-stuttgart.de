@@ -1,0 +1,264 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ProductGallery from '../../components/vermietung/ProductGallery.astro';
+import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
+import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
+import RentalPricing from '../../components/vermietung/RentalPricing.astro';
+import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
+import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
+import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
+import { getFaqsForPage } from '../../lib/faqUtils';
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: "Vermietung", href: "/vermietung" },
+  { label: "LD Maui 28 G3" }
+];
+
+const pageTitle = "LD Maui 28 G3 - Vermietung | DJ Hulk";
+
+const faqs = getFaqsForPage('ld-maui-28g3');
+
+const includedInPackages = [
+  { name: "Veranstaltungspaket", url: "/vermietung/veranstaltungspaket-stuttgart" },
+  { name: "DJ-Paket Fildern", url: "/vermietung/djpaket-fildern" }
+];
+
+const images = [
+  "/img/vermietung/ldmaui3.webp",
+  "/img/vermietung/LDMAUI28G3_1_kl.webp",
+  "/img/vermietung/ldmaui2.webp",
+  "/img/vermietung/ld-3.webp",
+  "/img/vermietung/IMG_4594.webp",
+  "/img/vermietung/IMG_3952.webp",
+  "/img/vermietung/IMG_4252.webp",
+  "/img/vermietung/IMG_4722.webp",
+  "/img/vermietung/IMG_6054.webp",
+  "/img/vermietung/IMG_6196.webp",
+  "/img/vermietung/IMG_6267.webp",
+  "/img/vermietung/IMG_7142.webp"
+];
+
+const siteUrl = "https://soundundlicht-stuttgart.de";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "LD Maui 28 G3 Vermietung",
+  "description": "Miete das LD Maui 28 G3 Säulensystem für deine Party, Hochzeit oder Firmenfeier. Die LD Maui 28 G3 ist eine professionelle PA-Anlage mit starkem Bass, druckvollem und glasklarem Sound, mit 2060W, 127 dB Schalldruck, für bis zu 150 Personen.",
+  "image": [
+    siteUrl + images[0],
+    siteUrl + images[1]
+  ],
+  "provider": {
+    "@type": "Person",
+    "name": "Holger Kampffmeyer",
+    "telephone": "+49-171-1467491",
+    "url": "https://soundundlicht-stuttgart.de"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://soundundlicht-stuttgart.de/vermietung/ld-maui-28g3",
+    "price": "100",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soundundlicht-stuttgart.de/"},
+    {"@type": "ListItem", "position": 2, "name": "Vermietung", "item": "https://soundundlicht-stuttgart.de/vermietung"},
+    {"@type": "ListItem", "position": 3, "name": "LD Maui 28 G3", "item": "https://soundundlicht-stuttgart.de/vermietung/ld-maui-28g3"}
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq: any) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const videoSchema = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "LD Maui 28 G3 Sound-Check Demo",
+  "description": "Sound-Check der LD Maui 28 G3 PA Anlage in Aktion - professionelles Säulensystem mit 2060W Peak-Leistung",
+  "thumbnailUrl": ["/img/vermietung/ldmaui3.webp"],
+  "contentUrl": "https://www.youtube.com/watch?v=vE5PQ7IUdrg",
+  "embedUrl": "https://www.youtube.com/embed/vE5PQ7IUdrg",
+  "uploadDate": "2024-03-15T00:00:00+00:00",
+  "duration": "PT1M32S",
+  "publisher": {
+    "@type": "Organization",
+    "name": "DJ Hulk",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/djhulk_logo.webp"
+    }
+  }
+};
+
+const specs = {
+  "Peak-Leistung": "2060 W",
+  "RMS-Leistung": "1030 W",
+  "Max. SPL": "127 dB",
+  "Frequenzbereich": "37 Hz - 20 kHz",
+  "Subwoofer": '12" (305 mm)',
+  "Midrange": "12 x 3.5\"",
+  "Hochtöner": "2 x 1\"",
+  "Dispersion": "120° x 30°",
+  "Bluetooth": "5.0 mit AAC",
+  "Gewicht": "35.4 kg",
+  "Abmessungen Subwoofer": "370 x 527 x 472 mm",
+  "Gesamthöhe": "2052 mm"
+};
+
+const rentalIncludes = [
+  "2x LD Maui 28 G3 Säulensystem",
+  "2x Stromkabel",
+  "2x XLR Kabel 5m",
+  "Transporttaschen"
+];
+
+const events = [
+  {
+    title: "Hochzeit",
+    description: "Perfekt für die musikalische Untermalung deiner Hochzeitsfeier mit bis zu 150 Gästen. Kraftvoller und klarer Sound für Musik und Durchsagen.",
+    personCount: "bis 150 Personen"
+  },
+  {
+    title: "Firmenfeier",
+    description: "Ideal für Betriebsfeiern, Jubiläen und Firmenevents. Professioneller Sound für Reden, Präsentationen und musikalische Untermalung.",
+    personCount: "bis 150 Personen"
+  },
+  {
+    title: "Vereinsfeier",
+    description: "Egal ob Sportverein, Musikverein oder sonstige Vereinsfeier - der kraftvolle Sound sorgt für beste Stimmung bei allen Gästen.",
+    personCount: "bis 150 Personen"
+  }
+];
+---
+
+<Layout 
+  title={pageTitle}
+  description="Miete das LD Maui 28 G3 Säulensystem für deine Party, Hochzeit oder Firmenfeier. Die LD Maui 28 G3 ist eine professionelle PA-Anlage mit starkem Bass, druckvollem und glasklarem Sound, mit 2060W, 127 dB Schalldruck, für bis zu 150 Personen."
+  image="/img/vermietung/ldmaui3.webp"
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+>
+  <Navbar currentPage="/vermietung" />
+
+  <!-- Breadcrumb -->
+  <Breadcrumb segments={breadcrumbSegments} />
+
+  <!-- Header -->
+  <section class="product-header section-padding pb-0">
+    <div class="max-w-6xl mx-auto px-4">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+      <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">LD Maui 28 G3</h1>
+      <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
+        Professionelles Säulen-PA-System mit kraftvollem Sound für bis zu 150 Personen. <br />
+         Die LD Maui 28 G3 bietet mit 2060W und 127 dB Schalldruck einen beeindruckenden druckvollen und glasklaren Klang, einen starken tiefgehenden Bass für Partys, Hochzeiten und Firmenfeiern.
+      </p>
+    </div>
+  </section>
+
+  <!-- 1. Bildergalerie -->
+  <ProductGallery images={images} title="LD Maui 28 G3" />
+
+  <!-- Demo Video -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Video</span>
+        <h2 class="font-play text-3xl font-bold mt-2">Sound-Check PA Anlage</h2>
+        <p class="text-[var(--color-text-muted)] mt-2">Eindruck der LD Maui 28 G3 in Aktion</p>
+      </div>
+      <div class="aspect-video rounded-xl overflow-hidden bg-black">
+        <iframe 
+          src="https://www.youtube.com/embed/vE5PQ7IUdrg" 
+          title="LD Maui 28 G3 Demo"
+          class="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Preis & Kaution -->
+  <RentalPricing price="ab 100€" deposit={200} />
+
+  <!-- 3. Technische Spezifikation -->
+  <TechnicalSpecs specs={specs} />
+
+  <!-- 4. Lieferumfang -->
+  <RentalIncludes items={rentalIncludes} />
+
+  <!-- 5. Beispielanwendungen -->
+  <ExampleEvents events={events} />
+
+  <!-- FAQ -->
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-play text-2xl md:text-3xl font-bold text-center mb-10">
+        Häufig gestellte Fragen
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="bg-[var(--color-surface)] rounded-xl p-4 cursor-pointer group">
+            <summary class="font-bold cursor-pointer flex items-center gap-3 list-none">
+              <span class="w-6 h-6 bg-orange-500/20 rounded flex items-center justify-center text-orange-500 group-open:rotate-90 transition-transform">
+                <ChevronRightIcon class="w-3 h-3" />
+              </span>
+              {faq.question}
+            </summary>
+            <p class="text-[var(--color-text-muted)] mt-3 ml-9">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h2 class="font-play text-3xl md:text-4xl font-bold mb-2">Interessiert an diesem Produkt?</h2>
+      <p class="text-[var(--color-text-muted)] mb-6">
+        Stell uns eine Anfrage für die LD Maui 28 G3 oder lass dich beraten.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/vermietung#kontakt" class="btn-primary">Jetzt anfragen</a>
+        <a href="/vermietung" class="btn-secondary">Zurück zur Übersicht</a>
+      </div>
+      <IncludedInPackages packages={includedInPackages} />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .product-header {
+    background: var(--color-bg);
+    padding-bottom: 2rem;
+  }
+
+  .cta-section {
+    text-align: center;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import StarIcon from "./icons/StarIcon.astro";
+import GoogleIcon from "./icons/GoogleIcon.astro";
 import googleReviewsData from '../data/google-reviews.json';
 
 const { id } = Astro.props;
@@ -26,6 +27,7 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
               {Array.from({ length: 5 }).map((_, i) => (
                 <StarIcon class={`w-5 h-5 ${i < review.rating ? 'text-orange-500' : 'text-gray-400'}`} />
               ))}
+              <GoogleIcon class="w-4 h-4 ml-2 text-gray-400" />
             </div>
             <p class="text-[var(--color-text-muted)] mb-4">{review.text}</p>
             <div class="border-t border-[var(--color-border)] pt-4">
@@ -39,15 +41,16 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
 
     {totalPages > 1 && ( 
       <nav class="flex justify-center mt-12" aria-label="Pagination">
-        <ul class="flex items-center gap-1 text-base">
+        <ul class="flex items-center -space-x-px h-10 text-base">
           <li>
             <button 
               id="prevPage"
-              class="flex items-center justify-center w-10 h-10 leading-tight border border-gray-300 rounded-l-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              class="flex items-center justify-center px-4 h-10 ms-0 leading-tight border border-gray-300 rounded-s-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)] disabled:opacity-50 disabled:cursor-not-allowed"
               disabled
             >
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+              <span class="sr-only">Previous</span>
+              <svg class="w-3 h-3" aria-hidden="true" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
               </svg>
             </button>
           </li>
@@ -56,7 +59,7 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
             return (
               <li>
                 <button
-                  class="page-btn flex items-center justify-center w-10 h-10 leading-tight border border-gray-300 text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)] transition-colors"
+                  class="page-btn flex items-center justify-center px-4 h-10 leading-tight border border-gray-300 text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)]"
                   data-page={pageNumber}
                 >
                   {pageNumber}
@@ -67,10 +70,11 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
           <li>
             <button 
               id="nextPage"
-              class="flex items-center justify-center w-10 h-10 leading-tight border border-gray-300 rounded-r-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)] transition-colors"
+              class="flex items-center justify-center px-4 h-10 leading-tight border border-gray-300 rounded-e-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)]"
             >
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              <span class="sr-only">Next</span>
+              <svg class="w-3 h-3" aria-hidden="true" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 9l4-4-4-4"/>
               </svg>
             </button>
           </li>
@@ -80,7 +84,7 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
   </div>
 </section>
 
-<script define:vars={{ totalPages, ITEMS_PER_PAGE }}>
+<script is:inline define:vars={{ totalPages, ITEMS_PER_PAGE }}>
   document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
     const cards = document.querySelectorAll('.review-card');
@@ -94,13 +98,13 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
         card.style.display = cardPage === page ? 'block' : 'none';
       });
 
-      pageBtns.forEach((btn) => {
+      pageBtns.forEach(btn => {
         const btnPage = parseInt(btn.dataset.page);
         if (btnPage === page) {
-          btn.classList.add('bg-orange-500', 'text-white', 'border-orange-500');
+          btn.classList.add('bg-[var(--color-secondary)]', 'text-white', 'border-[var(--color-secondary)]');
           btn.classList.remove('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-gray-300');
         } else {
-          btn.classList.remove('bg-orange-500', 'text-white', 'border-orange-500');
+          btn.classList.remove('bg-[var(--color-secondary)]', 'text-white', 'border-[var(--color-secondary)]');
           btn.classList.add('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-gray-300');
         }
       });
@@ -110,7 +114,7 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
       currentPage = page;
     }
 
-    pageBtns.forEach((btn) => {
+    pageBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         showPage(parseInt(btn.dataset.page));
       });

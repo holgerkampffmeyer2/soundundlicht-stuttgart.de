@@ -1,0 +1,206 @@
+---
+interface Props {
+  images: string[];
+  title: string;
+}
+
+const { images, title } = Astro.props;
+---
+
+<section class="section-padding bg-[var(--color-surface)]">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Galerie</span>
+      <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Produktfotos</h2>
+    </div>
+
+    <div class="gallery-container">
+      <!-- Main Image -->
+      <div class="main-image-container">
+        <img 
+          id="mainImage" 
+          src={images[0]} 
+          alt={`${title} – Hauptbild`}
+          width="800"
+          height="600"
+          class="main-image"
+          loading="eager"
+        />
+        <div class="image-counter" id="imageCounter">1 / {images.length}</div>
+      </div>
+
+      <!-- Thumbnails -->
+      <div class="thumbnails-container">
+        {images.map((image, index) => (
+          <button 
+            class={`thumbnail ${index === 0 ? 'active' : ''}`}
+            data-index={index}
+            aria-label={`Bild ${index + 1} anzeigen`}
+          >
+            <img src={image} alt={`${title} – Miniatur ${index + 1}`} loading="lazy" width="80" height="60" />
+          </button>
+        ))}
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button class="gallery-nav prev" id="prevBtn" aria-label="Vorheriges Bild">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+      <button class="gallery-nav next" id="nextBtn" aria-label="Nächstes Bild">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ images }}>
+  let currentIndex = 0;
+  const mainImage = document.getElementById('mainImage');
+  const imageCounter = document.getElementById('imageCounter');
+  const thumbnails = document.querySelectorAll('.thumbnail');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  function updateImage(index) {
+    currentIndex = index;
+    if (currentIndex < 0) currentIndex = images.length - 1;
+    if (currentIndex >= images.length) currentIndex = 0;
+    
+    mainImage.src = images[currentIndex];
+    imageCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+    
+    thumbnails.forEach((thumb, i) => {
+      thumb.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => updateImage(index));
+  });
+
+  prevBtn.addEventListener('click', () => updateImage(currentIndex - 1));
+  nextBtn.addEventListener('click', () => updateImage(currentIndex + 1));
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') updateImage(currentIndex - 1);
+    if (e.key === 'ArrowRight') updateImage(currentIndex + 1);
+  });
+</script>
+
+<style>
+  .gallery-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .main-image-container {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 2px solid var(--color-border);
+    background: var(--color-bg);
+  }
+
+  .main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+    background: var(--color-bg);
+    border-radius: 0.5rem;
+  }
+
+  .image-counter {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .thumbnails-container {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .thumbnail {
+    width: 80px;
+    height: 60px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 2px solid var(--color-border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    background: none;
+  }
+
+  .thumbnail:hover {
+    border-color: var(--color-secondary);
+  }
+
+  .thumbnail.active {
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+  }
+
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0.25rem;
+  }
+
+  .gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(249, 115, 22, 0.8);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    z-index: 10;
+  }
+
+  .gallery-nav:hover {
+    background: var(--color-secondary);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+  }
+
+  .gallery-nav.prev {
+    left: -24px;
+  }
+
+  .gallery-nav.next {
+    right: -24px;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-nav.prev {
+      left: 10px;
+    }
+    .gallery-nav.next {
+      right: 10px;
+    }
+  }
+</style>

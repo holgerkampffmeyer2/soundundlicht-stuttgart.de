@@ -1,0 +1,102 @@
+---
+interface PackageItem {
+  name: string;
+  detailPage?: string;
+}
+
+interface Props {
+  title: string;
+  items: PackageItem[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<section class="section-padding bg-[var(--color-bg)]">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Im Paket enthalten</span>
+      <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">{title}</h2>
+      <p class="text-[var(--color-text-muted)] mt-4">
+        Alle Komponenten des Pakets auch einzeln zu mieten.
+      </p>
+    </div>
+
+    <div class="package-contents-container">
+      <table class="package-contents-table">
+        <tbody>
+          {items.map((item, index) => (
+            <tr class={index % 2 === 0 ? 'even' : 'odd'}>
+              <td class="package-item-name">
+                {item.detailPage ? (
+                  <a href={item.detailPage} class="text-[var(--color-secondary)] hover:underline">
+                    {item.name}
+                  </a>
+                ) : (
+                  item.name
+                )}
+              </td>
+              <td class="package-item-arrow">
+                {item.detailPage ? (
+                  <a href={item.detailPage} class="text-[var(--color-secondary)] hover:underline text-2xl">→</a>
+                ) : ''}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .package-contents-container {
+    background: var(--color-surface);
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .package-contents-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .package-contents-table tr {
+    transition: all 0.3s ease;
+  }
+
+  .package-contents-table tr:hover {
+    background: var(--color-surface-hover);
+  }
+
+  .package-contents-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .package-contents-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .package-item-name {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .package-item-arrow {
+    color: var(--color-secondary);
+    text-align: right;
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .package-contents-table td {
+      padding: 0.75rem 1rem;
+    }
+    
+    .package-item-name {
+      font-size: 0.875rem;
+    }
+  }
+</style>

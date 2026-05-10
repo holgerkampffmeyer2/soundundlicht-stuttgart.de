@@ -15,6 +15,7 @@ Website für Veranstaltungstechnik-Vermietung im Großraum Stuttgart (PA-Anlagen
 pnpm install
 pnpm run dev      # Dev server
 pnpm run build    # Production build → dist/
+pnpm run build:full # Build + RSS + urllist (für Deploy)
 pnpm run preview  # Preview build
 ```
 
@@ -100,6 +101,12 @@ public/
     ├── vermietung/   # Galerie-Bilder
     └── header.webp
 ```
+
+## Build-Outputs
+
+- `dist/` – statische HTML-Seiten
+- `public/rss.xml` – RSS-Feed (wird bei `pnpm run build` generiert)
+- `public/urllist.txt` – URL-Liste für Suchmaschinen (wird bei `pnpm run build` generiert)
 
 ## Domain
 

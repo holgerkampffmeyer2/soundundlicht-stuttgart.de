@@ -1,0 +1,259 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import ProductGallery from '../../components/vermietung/ProductGallery.astro';
+import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
+import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
+import RentalPricing from '../../components/vermietung/RentalPricing.astro';
+import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
+import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
+import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getFaqsForPage } from '../../lib/faqUtils';
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: "Vermietung", href: "/vermietung" },
+  { label: "Partylicht & Moving Head" }
+];
+
+const pageTitle = "Partylicht & Gobo Moving Head - Vermietung | DJ Hulk";
+
+const faqs = getFaqsForPage('partylicht-moving-head');
+
+const includedInPackages = [
+  { name: "Veranstaltungspaket", url: "/vermietung/veranstaltungspaket-stuttgart" },
+  { name: "DJ-Paket Fildern", url: "/vermietung/djpaket-fildern" }
+];
+
+const images = [
+  "/img/vermietung/61UpvPLTkHL._AC_SL1500_.webp",
+  "/img/vermietung/IMG_9114.webp",
+  "/img/vermietung/IMG_9115.webp",
+  "/img/vermietung/IMG_9119.webp",
+  "/img/vermietung/IMG_9129.webp",
+  "/img/vermietung/IMG_9139.webp",
+  "/img/vermietung/IMG_9140.webp",
+  "/img/vermietung/s-l1600.webp"
+];
+
+const siteUrl = "https://soundundlicht-stuttgart.de";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Partylicht & Gobo Moving Head Vermietung",
+  "description": "Miete unsere Party-Lichtanlage mit Gobo Moving Head und LED PAR Strahlern. DMX-steuerbar mit optionalem DMX-Controller sowie Sound-zu-Licht Modus für deine Party.",
+  "image": [
+    siteUrl + images[0],
+    siteUrl + images[1]
+  ],
+  "provider": {
+    "@type": "Person",
+    "name": "Holger Kampffmeyer",
+    "telephone": "+49-171-1467491",
+    "url": "https://soundundlicht-stuttgart.de"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://soundundlicht-stuttgart.de/vermietung/partylicht-moving-head",
+    "price": "50",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq: any) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soundundlicht-stuttgart.de/"},
+    {"@type": "ListItem", "position": 2, "name": "Vermietung", "item": "https://soundundlicht-stuttgart.de/vermietung"},
+    {"@type": "ListItem", "position": 3, "name": "Partylicht & Moving Head", "item": "https://soundundlicht-stuttgart.de/vermietung/partylicht-moving-head"}
+  ]
+};
+
+const specsMovingHead = {
+  "Modell": "18 Prisma LED Spot 10 Gobo RGBW DMX",
+  "DMX-Kanäle": "11/16",
+  "LED": "RGBW 4-in-1",
+  "Gobos": "10 Muster",
+  "Prismen": "18-fach Prisma",
+  "Steuerung": "Sound-zu-Licht, DMX, Automatikprogramme",
+  "Abmessungen": "20.5 x 28 cm"
+};
+
+const specsPAR = {
+  "Modell": "2x 270W 18 LED PAR RGBW",
+  "LEDs": "18 x 15W RGBW 4-in-1",
+  "DMX-Kanäle": "9",
+  "Steuerung": "Sound-zu-Licht, DMX, Automatikprogramme",
+  "Gehäuse": "Robustes Aluminium",
+  "Abmessungen": "23 x 11.5 cm"
+};
+
+const specsStativ = {
+  "Typ": "Flexibles T-Bar Stativ DJ Ständer",
+  "Höhe": "100 - 180 cm",
+  "Breite": "95 cm",
+  "Montagepunkte": "4 für PAR-Lichter und Moving Heads"
+};
+
+const rentalIncludes = [
+  "1x LED Spot Moving Head 18 Prisma",
+  "2x LED PAR RGBW Strahler",
+  "1x T-Bar Stativ",
+  "DMX-Controller und -Kabel optional gegen Aufpreis"
+];
+
+const events = [
+  {
+    title: "Geburtstagsfeier",
+    description: "Spektakuläre Lichteffekte für deine Geburtstagsfeier. Die Moving Heads und PAR-Strahler sorgen für eine tolle Party-Atmosphäre.",
+    personCount: "bis 100 Personen"
+  },
+  {
+    title: "Hochzeit",
+    description: "Verleih deiner Hochzeit das gewisse Extra mit professioneller Lichttechnik. Perfekt für Tanzfläche und Ambientebeleuchtung.",
+    personCount: "bis 100 Personen"
+  },
+  {
+    title: "Firmenevent",
+    description: "Beeindruckende Beleuchtung für Firmenfeiern, Jubiläen und Messen. Per DMX programmierbar für individuelle Lichtshows.",
+    personCount: "bis 100 Personen"
+  }
+];
+---
+
+<Layout 
+  title={pageTitle}
+  description="Miete unsere Party-Lichtanlage mit Gobo Moving Head und LED PAR Strahlern. DMX-steuerbar mit optionalem DMX-Controller sowie Sound-zu-Licht Modus für deine Party."
+  image="/img/vermietung/licht1.webp"
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}
+>
+  <Navbar currentPage="/vermietung" />
+
+  <Breadcrumb segments={breadcrumbSegments} />
+
+  <!-- Header -->
+  <section class="product-header section-padding pb-0">
+    <div class="max-w-6xl mx-auto px-4">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+      <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">Partylicht & Gobo Moving Head</h1>
+      <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
+        Leistungsfähige DMX-steuerbare Party-Lichtanlage mit 18 Prisma LED Moving Head, 
+        zwei hellen 270W LED PAR Strahlern und flexiblem T-Bar Stativ. <br />
+        Sound-zu-Licht Modus oder eigene Programme per DMX. Ideal für DJs, Partys, Hochzeiten und Firmenevents. Mit optionalem DMX-Controller für individuell programmierbare Lichtshows erhältlich.
+      </p>
+    </div>
+  </section>
+
+  <!-- 1. Bildergalerie -->
+  <ProductGallery images={images} title="Partylicht & Moving Head" />
+
+  <!-- 2. Preis & Kaution -->
+  <RentalPricing price="ab 50€" deposit={100} />
+
+  <!-- 3a. Technische Spezifikation Moving Head -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Technische Daten</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Gobo Moving Head</h2>
+      </div>
+      <TechnicalSpecs specs={specsMovingHead} />
+    </div>
+  </section>
+
+  <!-- 3b. Technische Spezifikation PAR Strahler -->
+  <section class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">LED PAR Strahler</h2>
+      </div>
+      <TechnicalSpecs specs={specsPAR} />
+    </div>
+  </section>
+
+  <!-- 3c. Technische Spezifikation Stativ -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">T-Bar Stativ</h2>
+      </div>
+      <TechnicalSpecs specs={specsStativ} />
+    </div>
+  </section>
+
+  <!-- 4. Lieferumfang -->
+  <RentalIncludes items={rentalIncludes} />
+
+  <!-- 5. Beispielanwendungen -->
+  <ExampleEvents events={events} />
+
+  <!-- FAQ -->
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-play text-2xl md:text-3xl font-bold text-center mb-10">
+        Häufig gestellte Fragen
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="bg-[var(--color-surface)] rounded-xl p-4 cursor-pointer group">
+            <summary class="font-bold cursor-pointer flex items-center gap-3 list-none">
+              <span class="w-6 h-6 bg-orange-500/20 rounded flex items-center justify-center text-orange-500 group-open:rotate-90 transition-transform">
+                <ChevronRightIcon class="w-3 h-3" />
+              </span>
+              {faq.question}
+            </summary>
+            <p class="text-[var(--color-text-muted)] mt-3 ml-9">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h2 class="font-play text-3xl md:text-4xl font-bold mb-6">Interessiert an diesem Produkt?</h2>
+      <p class="text-[var(--color-text-muted)] mb-8">
+        Stell uns eine Anfrage für die Party-Lichtanlage oder lass dich beraten.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/vermietung#kontakt" class="btn-primary">Jetzt anfragen</a>
+        <a href="/vermietung" class="btn-secondary">Zurück zur Übersicht</a>
+      </div>
+      <IncludedInPackages packages={includedInPackages} />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .product-header {
+    background: var(--color-bg);
+    padding-bottom: 2rem;
+  }
+
+  .cta-section {
+    text-align: center;
+  }
+</style>

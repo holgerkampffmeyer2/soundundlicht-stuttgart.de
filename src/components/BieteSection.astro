@@ -1,0 +1,62 @@
+---
+import VolumeUpIcon from "./icons/VolumeUpIcon.astro";
+import LightBulbIcon from "./icons/LightBulbIcon.astro";
+import PackageIcon from "./icons/PackageIcon.astro";
+import ShieldCheckIcon from "./icons/ShieldCheckIcon.astro";
+import CheckIcon from "./icons/CheckIcon.astro";
+---
+<div class="mt-16">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div class="bg-[var(--color-bg)] p-6 rounded-xl">
+      <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4 text-orange-500">
+        <VolumeUpIcon class="w-6 h-6" />
+      </div>
+      <h3 class="font-bold text-lg mb-2">PA-Anlagen & Partyboxen</h3>
+      <p class="text-[var(--color-text-muted)] text-sm">
+        Kraftvoller Sound für Partys, Hochzeiten und Vereinsfeiern. Professionelle Musikanlagen und Partyboxen.
+      </p>
+    </div>
+    <div class="bg-[var(--color-bg)] p-6 rounded-xl">
+      <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4 text-orange-500">
+        <LightBulbIcon class="w-6 h-6" />
+      </div>
+      <h3 class="font-bold text-lg mb-2">Lichttechnik</h3>
+      <p class="text-[var(--color-text-muted)] text-sm">
+        LED-Lichteffekte, Partylichtanlagen, Nebelmaschinen und komplette Lichtanlagen für die perfekte Stimmung.
+      </p>
+    </div>
+    <div class="bg-[var(--color-bg)] p-6 rounded-xl">
+      <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4 text-orange-500">
+        <PackageIcon class="w-6 h-6" />
+      </div>
+      <h3 class="font-bold text-lg mb-2">Komplettpakete</h3>
+      <p class="text-[var(--color-text-muted)] text-sm">
+        Vermietung von Kombi-Angeboten aus Sound & Licht. Zuverlässig, hochwertig und mit persönlicher Beratung.
+      </p>
+    </div>
+    <div class="bg-[var(--color-bg)] p-6 rounded-xl">
+      <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4 text-orange-500">
+        <ShieldCheckIcon class="w-6 h-6" />
+      </div>
+      <h3 class="font-bold text-lg mb-2">Warum bei mir mieten?</h3>
+      <ul class="text-[var(--color-text-muted)] text-sm space-y-2">
+        <li class="flex items-center gap-2">
+          <CheckIcon class="w-5 h-5 text-[var(--color-secondary)]" />
+          Einfache Abholung in Stuttgart & Umgebung. 
+        </li>
+        <li class="flex items-center gap-2">
+          <CheckIcon class="w-5 h-5 text-[var(--color-secondary)]" />
+          Persönliche Beratung. 
+        </li>
+        <li class="flex items-center gap-2">
+          <CheckIcon class="w-5 h-5 text-[var(--color-secondary)]" />
+          Faire Preise. 
+        </li>
+        <li class="flex items-center gap-2">
+          <CheckIcon class="w-5 h-5 text-[var(--color-secondary)]" />
+          Leistungsstarke Technik für kleine und große Events
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

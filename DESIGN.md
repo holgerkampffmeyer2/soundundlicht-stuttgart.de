@@ -191,6 +191,19 @@ Bilder liegen in:
 
 ## Externe Links
 - DJ Hulk: https://holger-kampffmeyer.de/djhulk-electronic-music
-- Vermietung: https://holger-kampffmeyer.de/vermietung
+- Vermietung: https://soundundlicht-stuttgart.de/vermietung
 - Facebook: https://www.facebook.com/profile.php?id=61559169515364
 - Instagram: https://www.instagram.com/holgerkampffmeyer/
+
+## RSS Feed & URL-Liste
+
+Beim Build werden automatisch generiert:
+- `public/rss.xml` – RSS 2.0 Feed mit allen Seiten
+- `public/urllist.txt` – Reine URL-Liste für Suchmaschinen
+
+```bash
+pnpm run build             # Nur Astro-Build (schnell)
+pnpm run build:full        # Kompletter Build inkl. RSS + urllist
+pnpm run generate-rss      # Nur RSS generieren
+pnpm run generate-urllist  # Nur urllist.txt generieren
+```

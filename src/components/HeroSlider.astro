@@ -1,0 +1,149 @@
+---
+interface Button {
+  text: string;
+  href: string;
+  class?: string;
+}
+
+interface Slide {
+  title: string;
+  titleTag?: "h1" | "h2";
+  description: string;
+  category?: string;
+  categoryColor?: string;
+  buttons: Button[];
+  backgroundImage?: string;
+  gradient?: string;
+  ptClass?: string;
+}
+
+interface Props {
+  slides: Slide[];
+  interval?: number;
+  id?: string;
+}
+
+const { slides, interval = 5000, id = "hero" } = Astro.props;
+---
+
+  <section id={id} class="hero-slider" data-interval={interval}>
+  {slides.map((slide, index) => (
+    <div class={`slide slide-${index + 1} ${index === 0 ? "active" : ""}`} data-slide={index}>
+      <div
+        class="slide-content"
+        style={slide.backgroundImage
+          ? `background-image: ${slide.gradient || "linear-gradient(135deg, rgba(10, 10, 15, 0.9) 0%, rgba(249, 115, 22, 0.2) 100%)"}, url("${slide.backgroundImage}");`
+          : undefined
+        }
+      >
+        <div class="container mx-auto px-4">
+          <div class={`max-w-3xl ${slide.ptClass || ""}`}>
+            {slide.category && (
+              <span
+                class={`text-[${slide.categoryColor || "var(--color-secondary)"}] text-lg tracking-widest uppercase animate-fadeInUp stagger-1`}
+              >
+                {slide.category}
+              </span>
+            )}
+            {slide.titleTag === "h2" ? (
+              <h2 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text animate-fadeInUp stagger-2">
+                {slide.title}
+              </h2>
+            ) : (
+              <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text animate-fadeInUp stagger-2">
+                {slide.title}
+              </h1>
+            )}
+            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-2xl animate-fadeInUp stagger-3">
+              {slide.description}
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 animate-fadeInUp stagger-4">
+              {slide.buttons.map((btn) => (
+                <a href={btn.href} class={btn.class || "btn-primary"}>{btn.text}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <button class="slider-nav prev" id="slider-prev">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  <button class="slider-nav next" id="slider-next">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
+  <div class="slider-dots">
+    {slides.map((_, index) => (
+      <div class={`slider-dot ${index === 0 ? "active" : ""}`} data-dot={index}></div>
+    ))}
+  </div>
+  <script is:inline define:vars={{ id, interval }}>
+  (function() {
+    const section = document.getElementById(id);
+    if (!section) return;
+    
+    const slides = section.querySelectorAll(".slide");
+    const dots = section.querySelectorAll(".slider-dot");
+    const prevBtn = section.querySelector("#slider-prev");
+    const nextBtn = section.querySelector("#slider-next");
+
+    if (!slides.length) return;
+
+    let currentSlide = 0;
+    let slideInterval = null;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      showSlide((currentSlide + 1) % slides.length);
+    }
+
+    function prevSlide() {
+      showSlide((currentSlide - 1 + slides.length) % slides.length);
+    }
+
+    function startSlider() {
+      stopSlider();
+      slideInterval = setInterval(nextSlide, interval);
+    }
+
+    function stopSlider() {
+      if (slideInterval) clearInterval(slideInterval);
+    }
+
+    prevBtn?.addEventListener("click", () => {
+      prevSlide();
+      startSlider();
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      nextSlide();
+      startSlider();
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        showSlide(i);
+        startSlider();
+      });
+    });
+
+    startSlider();
+  })();
+</script>
+</section>

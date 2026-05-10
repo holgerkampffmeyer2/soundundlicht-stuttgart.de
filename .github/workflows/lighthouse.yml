@@ -24,7 +24,7 @@ jobs:
         run: pnpm install
         
       - name: Build site
-        run: pnpm run build
+        run: pnpm run build:full
         
       - name: Run Lighthouse CI
         id: lighthouse

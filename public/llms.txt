@@ -12,7 +12,7 @@
 
 ## Wichtige Seiten
 - [Home](https://soundundlicht-stuttgart.de/) - Vermietung von Partytechnik in Stuttgart
-- [Vermietung Details](https://holger-kampffmeyer.de/vermietung.html) - Alle Geräte & Pakete
+- [Vermietung Details](https://soundundlicht-stuttgart.de/vermietung/) - Alle Geräte & Pakete
 - [Impressum / Datenschutz](https://holger-kampffmeyer.de/impressum.html)
 
 ## Vermietung Pakete

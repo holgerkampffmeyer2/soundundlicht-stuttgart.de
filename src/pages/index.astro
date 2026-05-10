@@ -10,99 +10,23 @@ import MapPinIcon from "../components/icons/MapPinIcon.astro";
 import EmailIcon from "../components/icons/EmailIcon.astro";
 import Testimonials from "../components/Testimonials.astro";
 import CityGrid from "../components/CityGrid.astro";
+import FAQSection from "../components/FAQSection.astro";
+import { getFaqsForPage } from '../lib/faqUtils';
+import BieteSection from "../components/BieteSection.astro";
 
-const faqs = [
-  {
-    question: "Welche Pakete bietet Sound & Licht Stuttgart an?",
-    answer: "Ich biete drei Komplettpakete: das Partypaket (ab 160€/Tag) mit JBL Partyboxen, Laserbar und Licht, das DJ-Paket (ab 200€/Tag) mit LD Maui Säulen-PA, LED-Beleuchtung und Nebelmaschine, sowie das Veranstaltungspaket (ab 180€/Tag) mit PA, Mischpult und umfangreicher Lichttechnik. Alle Pakete sind Plug & Play und inklusive Einweisung."
-  },
-  {
-    question: "Wie läuft die Anmietung ab?",
-    answer: "Du nimmst per E-Mail Kontakt auf, ich melde mich innerhalb von 12 Stunden mit einem Angebot. Nach Bestätigung holst Du die Technik in Leinfelden-Echterdingen ab. Bezahlung erfolgt bar oder per PayPal. Nach der Feier bringst Du die Technik zurück und erhältst die Kaution."
-  },
-  {
-    question: "Wo kann ich die Technik abholen?",
-    answer: "Die Technik kann direkt in Leinfelden-Echterdingen (Magellanstraße 4) abgeholt werden. Ich erkläre dir ausführlich den Aufbau und gebe dir eine Einweisung."
-  },
-  {
-    question: "Brauche ich Vorkenntnisse, um die Anlage zu bedienen?",
-    answer: "Nein, ich biete eine umfassende Einweisung an. Die Technik ist für jeden Benutzer einfach zu bedienen."
-  },
-  {
-    question: "Was tun, wenn die Party schon in 3 Tagen ist?",
-    answer: "Ja, ich reagiere auch kurzfristig! Anfragen bis zu 2 Tagen vor der Veranstaltung sind meist noch möglich. Am besten rufst du mich direkt an unter 0171/1467491 für schnelle Abstimmung. Ich habe oft noch freie Geräte verfügbar."
-  }
-];
+const indexFaqs = getFaqsForPage('index');
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Wie viel kostet es, eine Partybox in Stuttgart zu mieten?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Unsere Partyboxen (z.B. JBL Partybox) sind bereits ab 80€ pro Boxenpaar und Tag verfügbar. Eine einzelne Box kostet 50€ pro Tag."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Welche PA-Anlage eignet sich für 50 Personen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Für Veranstaltungen mit 50-80 Personen empfehle ich unsere JBL Partyboxen oder das LD Maui 28 G3 Komplettset. Beide sind Plug & Play und in 5 Minuten aufgebaut."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wie funktioniert die Bezahlung?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Die Bezahlung erfolgt bei Abholung. Ich biete Barzahlung und PayPal an!"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wo kann ich die Technik abholen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Die Technik kann direkt in Leinfelden-Echterdingen (Magellanstraße 4) abgeholt werden. Ich erkläre dir ausführlich den Aufbau und gebe dir eine Einweisung."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Was kostet eine Party-Lichtanlage?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Eine vollständige Partylichtanlage mit verschiedenen Effekten ist bereits ab 50€ pro Tag verfügbar. Inklusive persönlicher Beratung und Einweisung."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Bietest du auch Pakete mit Nebelmaschine?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja, ich biete die Partylichtanlagen auch zusammen mit einer Nebelmaschine an. Das Komplettpaket gibt es ab 60€ pro Tag."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Brauche ich Vorkenntnisse, um die Anlage zu bedienen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nein, ich biete eine umfassende Einweisung an. Die Technik ist für jeden Benutzer einfach zu bedienen."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Was tun, wenn die Party schon in 3 Tagen ist?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja, ich reagiere auch kurzfristig! Anfragen bis zu 2 Tagen vor der Veranstaltung sind meist noch möglich. Am besten rufst du mich direkt an unter 0171/1467491 für schnelle Abstimmung. Ich habe oft noch freie Geräte verfügbar."
-      }
+  "mainEntity": indexFaqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
     }
-  ]
+  }))
 };
 
 const offerCatalogJsonLd = {
@@ -165,7 +89,8 @@ const galleryImages = [
     useCase: "Geburtstagsfeier, Party",
     equipment: "2x LD Maui 28 G3 Säulen-PA, Lichtanlage + Nebelmaschine",
     persons: "50-100 Personen",
-    simplicity: "Plug & Play, in 5 Min. aufgebaut"
+    simplicity: "Plug & Play, in 5 Min. aufgebaut",
+    detailPage: "/vermietung/ld-maui-28g3/"
   },
   { 
     src: "/img/vermietung/licht2.webp", 
@@ -175,7 +100,8 @@ const galleryImages = [
     useCase: "Vereinsfeier, Firmenfeier",
     equipment: "LD Maui 28 G3 Säulen-PA",
     persons: "bis 150 Personen",
-    simplicity: "2060W Peak, professioneller Sound"
+    simplicity: "2060W Peak, professioneller Sound",
+    detailPage: "/vermietung/ld-maui-28g3/"
   },
   { 
     src: "/img/vermietung/anlage1.webp", 
@@ -185,7 +111,8 @@ const galleryImages = [
     useCase: "Firmenfeier, Private Feier",
     equipment: "LD Maui 28 G3 Säulen-PA, Partylichtanlage",
     persons: "bis 150 Personen",
-    simplicity: "Kraftvoller Sound, beeindruckende Lichteffekte, einfacher Aufbau"
+    simplicity: "Kraftvoller Sound, beeindruckende Lichteffekte, einfacher Aufbau",
+    detailPage: "/vermietung/veranstaltungspaket-stuttgart/"
   },
   { 
     src: "/img/vermietung/anlage2.webp", 
@@ -195,7 +122,8 @@ const galleryImages = [
     useCase: "Hochzeiten, Vereinsfeier",
     equipment: "LD Maui 28 G3 Säulen-PA",
     persons: "bis 150 Personen",
-    simplicity: "2060W Peak, professioneller Sound, einfacher Aufbau"
+    simplicity: "2060W Peak, professioneller Sound, einfacher Aufbau",
+    detailPage: "/vermietung/ld-maui-28g3/"
   },
   { 
     src: "/img/vermietung/jbl-set1.webp", 
@@ -205,7 +133,8 @@ const galleryImages = [
     useCase: "Private Feiern, Gartenparty",
     equipment: "JBL Partybox Set (2x)",
     persons: "50-80 Personen",
-    simplicity: "Dynamic Light Effects, Bluetooth"
+    simplicity: "Dynamic Light Effects, Bluetooth",
+    detailPage: "/vermietung/jbl-partybox-300-320/"
   },
   { 
     src: "/img/vermietung/ldmaui3.webp", 
@@ -215,7 +144,8 @@ const galleryImages = [
     useCase: "Firmenfeier, Hochzeit",
     equipment: "2x LD Maui 28 G3 Säulen-PA",
     persons: "bis 150",
-    simplicity: "2060W Peak, professioneller Sound"
+    simplicity: "2060W Peak, professioneller Sound",
+    detailPage: "/vermietung/ld-maui-28g3/"
   },
   { 
     src: "/img/vermietung/licht3.webp", 
@@ -225,7 +155,8 @@ const galleryImages = [
     useCase: "Lichtshow, Party",
     equipment: "LD Maui 28 G3 Säulen-PA und Partylichtanlage",
     persons: "50-100 Personen",
-    simplicity: "Einfacher Aufbau, Sound-zu-Licht Modus"
+    simplicity: "Einfacher Aufbau, Sound-zu-Licht Modus",
+    detailPage: "/vermietung/veranstaltungspaket-stuttgart/"
   },
   { 
     src: "/img/vermietung/stairville-led-bossfx-2-pro-2.webp", 
@@ -235,14 +166,15 @@ const galleryImages = [
     useCase: "Events, Hochzeiten",
     equipment: "LED BossFX-2 Pro + Nebelmaschine",
     persons: "50-100 Personen",
-    simplicity: "Inkl. Stativ"
+    simplicity: "Inkl. Stativ",
+    detailPage: "/vermietung/led-bossfx-nebelmaschine/"
   }
 ];
 ---
 
 <Layout
   title="Partytechnik mieten Stuttgart | Sound & Licht Verleih - Leinfelden-Echterdingen, Esslingen, Tübingen"
-  description="Vermietung von PA-Anlagen, Partyboxen & Lichttechnik in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen. Ab 79€ pro Tag. DJ-Service, persönliche Beratung, einfache Abholung."
+  description="Vermietung von PA-Anlagen, Partyboxen & Lichttechnik in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen. Ab 160€ pro Tag. DJ-Service, persönliche Beratung, einfache Abholung."
   image="/img/header.webp"
   jsonLd={[serviceJsonLd, faqJsonLd, offerCatalogJsonLd]}
 >
@@ -266,7 +198,7 @@ const galleryImages = [
             </p>
             
 <div class="flex flex-col sm:flex-row gap-4">
-              <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary neon-pulse">Zur Vermietung ↗</a>
+              <a href="/vermietung/" class="btn-primary neon-pulse">Zur Vermietung ↗</a>
               <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
             </div>
           </div>
@@ -282,16 +214,16 @@ const galleryImages = [
             <span class="text-[var(--color-accent)] text-lg tracking-widest uppercase mb-4 block">
               Jetzt mieten
             </span>
-            <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
+            <h2 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
               Technik für dein Event
-            </h1>
+            </h2>
             <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-2xl">
                Kraftvoller Sound, beeindruckende Lichteffekte und professionelle Ausrüstung für unvergessliche Feiern.
              </p>
              
              <!-- Soundwave Visual -->
 <div class="flex flex-col sm:flex-row gap-4">
-              <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary neon-pulse">Zur Vermietung ↗</a>
+              <a href="/vermietung/" class="btn-primary neon-pulse">Zur Vermietung ↗</a>
               <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
             </div>
           </div>
@@ -340,49 +272,10 @@ const galleryImages = [
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Service 1 -->
-        <div class="service-card animate-on-scroll">
-          <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
-          <h3 class="font-play text-xl font-bold mb-3">Vermietung von PA-Anlagen, Lautsprechern & Partyboxen</h3>
-          <p class="text-[var(--color-text-muted)] text-sm">
-            Kraftvoller Sound für Partys, Hochzeiten, Vereinsfeiern, Karaoke-Events und Geburtstage. Professionelle Musikanlagen, Lautsprecher und Partyboxen für kleine bis mittelgroße Veranstaltungen.
-          </p>
-        </div>
-
-        <!-- Service 2 -->
-        <div class="service-card animate-on-scroll">
-          <div class="text-[var(--color-secondary)] mb-4"><LightBulbIcon class="w-10 h-10" /></div>
-          <h3 class="font-play text-xl font-bold mb-3">Verleih von Lichttechnik, Partylichter & Lcht-Effekte</h3>
-          <p class="text-[var(--color-text-muted)] text-sm">
-            LED-Lichteffekte, Partylichtanlagen, Nebelmaschinen, bewegte Lichter, komplette Lichtanlagen für die perfekte Stimmung auf deiner Feier.
-          </p>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="service-card animate-on-scroll">
-          <div class="text-[var(--color-secondary)] mb-4"><PackageIcon class="w-10 h-10" /></div>
-          <h3 class="font-play text-xl font-bold mb-3">Vermietung von Komplettpaketen für Veranstaltungen und Partys</h3>
-          <p class="text-[var(--color-text-muted)] text-sm">
-            Vermietung von Kombi-Angeboten aus Sound & Licht. Zuverlässig, günstig und mit persönlicher Beratung, zugeschnitten auf deine Feier.
-          </p>
-        </div>
-
-        <!-- Service 4 -->
-        <div class="service-card animate-on-scroll">
-          <div class="text-[var(--color-secondary)] mb-4"><CheckCircleIcon class="w-10 h-10" /></div>
-          <h3 class="font-play text-xl font-bold mb-3">Warum bei mir mieten?</h3>
-          <ul class="text-[var(--color-text-muted)] text-sm space-y-2">
-            <li>✓ Einfache Abholung in Stuttgart & Umgebung</li>
-            <li>✓ Persönliche Beratung</li>
-            <li>✓ Faire Preise</li>
-            <li>✓ Ideal für Privatfeiern & Events</li>
-          </ul>
-        </div>
-      </div>
+      <BieteSection />
 
       <div class="text-center mt-12 animate-on-scroll">
-        <a href="https://holger-kampffmeyer.de/vermietung" class="btn-primary">
+        <a href="/vermietung/" class="btn-primary">
           Technik aussuchen &amp; anfragen ↗
         </a>
       </div>
@@ -413,12 +306,12 @@ const galleryImages = [
           <p class="text-[var(--color-text-muted)] text-sm mb-4">Für kleinere Feiern bis ca. 50 Personen</p>
           <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
             <li>✓ 2x JBL Partyboxen</li>
-            <li>✓ KLS Laserbar</li>
+            <li>✓ KLS Laser Bar</li>
             <li>✓ Nebelmaschine</li>
             <li>✓ Mikrofon</li>
             <li>✓ 4x LED Par Lichter</li>
           </ul>
-          <a href="https://holger-kampffmeyer.de/vermietung/partypaket-stuttgart" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
+          <a href="/vermietung/partypaket-stuttgart/" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
             Details &amp; Buchung ↗
           </a>
         </div>
@@ -436,7 +329,7 @@ const galleryImages = [
             <li>✓ Stage Bar</li>
             <li>✓ Mikrofon + 4x LED Par</li>
           </ul>
-          <a href="https://holger-kampffmeyer.de/vermietung/djpaket-fildern" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
+          <a href="/vermietung/djpaket-fildern/" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
             Details &amp; Buchung ↗
           </a>
         </div>
@@ -450,18 +343,18 @@ const galleryImages = [
           <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
             <li>✓ 2x LD Maui 28 G3</li>
             <li>✓ 6-Kanal Mischpult</li>
-            <li>✓ KLS Laserbar + Nebel</li>
+            <li>✓ KLS Laser Bar + Nebel</li>
             <li>✓ 2x Moving Head</li>
             <li>✓ Mikrofon + 4x LED Par</li>
           </ul>
-          <a href="https://holger-kampffmeyer.de/vermietung/veranstaltungspaket-stuttgart" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
+          <a href="/vermietung/veranstaltungspaket-stuttgart/" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
             Details &amp; Buchung ↗
           </a>
         </div>
       </div>
 
       <div class="text-center mt-12 animate-on-scroll">
-        <a href="https://holger-kampffmeyer.de/vermietung" class="btn-secondary">
+        <a href="/vermietung/" class="btn-secondary">
           Alle Pakete und Einzelgeräte ansehen ↗
         </a>
       </div>
@@ -485,7 +378,7 @@ const galleryImages = [
 
       <div class="gallery-grid">
         {galleryImages.map((img, index) => (
-          <a href="https://holger-kampffmeyer.de/vermietung" class="gallery-item animate-on-scroll block" style={`animation-delay: ${index * 0.1}s`}>
+          <a href="/vermietung/" class="gallery-item animate-on-scroll block" style={`animation-delay: ${index * 0.1}s`}>
             <picture>
               <source srcset={img.src} type="image/webp" />
               <img src={img.fallback || img.src} alt={img.alt} loading="lazy" />
@@ -502,7 +395,7 @@ const galleryImages = [
       </div>
 
       <div class="text-center mt-12 animate-on-scroll">
-        <a href="https://holger-kampffmeyer.de/vermietung" class="btn-secondary">
+        <a href="/vermietung/" class="btn-secondary">
           Alle Geräte ansehen ↗
         </a>
       </div>
@@ -566,28 +459,33 @@ const galleryImages = [
   <!-- FAQ Section -->
   <section id="faq" class="section-padding bg-[var(--color-bg)]">
     <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-16 animate-on-scroll">
-        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
-          FAQ
-        </span>
-        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">
-          Häufig gestellte Fragen
-        </h2>
-      </div>
-      
-      <div class="space-y-4">
-        {faqs.map((faq, index) => (
-          <details class="faq-item animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
-            <summary class="font-play text-lg font-semibold">{faq.question}</summary>
-            <p class="text-[var(--color-text-muted)] mt-3">{faq.answer}</p>
-          </details>
-        ))}
-      </div>
+      <FAQSection faqs={indexFaqs} />
     </div>
   </section>
 
   <!-- Testimonials Section -->
   <Testimonials id="bewertungen" />
+
+  <!-- DJ Section -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto text-center animate-on-scroll">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+        DJ Buchen
+      </span>
+      <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
+        Du brauchst einen DJ?
+      </h2>
+      <p class="text-[var(--color-text-muted)] text-lg mb-8 max-w-3xl mx-auto">
+        Ich bin nicht nur dein Ansprechpartner für Veranstaltungstechnik, sondern auch als DJ Hulk auf Hochzeiten, Firmenfeiern und Club-Events unterwegs. House, Tech House, Deep House – ich bringe die Menge zum Tanzen. Musikwünsche werden vorab besprochen und berücksichtigt.
+      </p>
+      <a href="https://holger-kampffmeyer.de/djhulk-electronic-music" target="_blank" class="btn-primary neon-pulse inline-flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+        </svg>
+        DJ Hulk kennenlernen ↗
+      </a>
+    </div>
+  </section>
 
   <!-- Kontakt Section -->
   <section id="kontakt" class="section-padding bg-[var(--color-surface)]">
@@ -638,7 +536,7 @@ const galleryImages = [
           </svg>
           E-Mail senden
         </a>
-        <a href="https://holger-kampffmeyer.de/vermietung" class="btn-secondary">
+        <a href="/vermietung/" class="btn-secondary">
           Zur Technik ↗
         </a>
       </div>

@@ -1,0 +1,37 @@
+---
+---
+
+<section class="max-w-3xl mx-auto mt-16 p-6">
+  <div class="text-center mb-10">
+    <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Service</span>
+    <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Ablauf & Service</h2>
+  </div>
+  <ol class="service-list space-y-4 text-[var(--color-text-muted)]">
+    <li>Du nimmst Kontakt zu mir auf. Bitte teile mir den Mietzeitraum und die Art Deiner Veranstaltung mit und natürlich, welches Paket bzw. welche Technik Du mieten möchtest.</li>
+    <li>Sobald Deine Anfrage eingeht, melde ich mich umgehend bei Dir - in der Regel innerhalb von 12 Stunden.</li>
+    <li>Ich erstelle ein individuelles Angebot.</li>
+    <li>Bei Gefallen bestätigst Du mir per Email das Angebot.</li>
+    <li>Du holst die Technik ab. Bezahlung erfolgt bar oder per PayPal.</li>
+    <li>Die Technik passt in der Regel in einen normalen PKW oder Kombi, ich helfe Dir beim Einladen.</li>
+    <li>Bei Rückgabe der gemieteten Technik erhältst Du die Kaution zurück.</li>
+  </ol>
+</section>
+
+<style>
+  .service-list {
+    counter-reset: list-counter;
+    list-style: none;
+  }
+  .service-list li {
+    counter-increment: list-counter;
+    padding-left: 2rem;
+    position: relative;
+  }
+  .service-list li::before {
+    content: counter(list-counter) ".";
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+    font-weight: bold;
+  }
+</style>

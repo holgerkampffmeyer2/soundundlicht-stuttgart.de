@@ -135,12 +135,17 @@ const cityJsonLd = {
 ## Build Commands
 
 ```bash
-pnpm run dev        # Dev server
-pnpm run build      # Production build → dist/
-pnpm run preview    # Preview build
+pnpm run dev             # Dev server
+pnpm run build           # Production build → dist/
+pnpm run build:full      # Build + RSS + urllist (für Deploy)
+pnpm run preview         # Preview build
+pnpm run generate-rss    # Nur RSS-Feed generieren
+pnpm run generate-urllist # Nur urllist.txt generieren
 ```
 
-`dist/` is gitignored. Build output: static HTML in `dist/`, sitemap at `dist/sitemap-index.xml`.
+Build-Prozess (build:full): `generate-rss.mjs` → `astro build` → `update-sitemap.mjs` (urllist.txt).  
+`dist/` is gitignored. Build output: static HTML in `dist/`, sitemap at `dist/sitemap-index.xml`, RSS at `public/rss.xml`, URL-Liste at `public/urllist.txt`.
+Für tägliche Entwicklung reicht `pnpm run build` (ohne RSS/urllist).
 
 ## Design System
 

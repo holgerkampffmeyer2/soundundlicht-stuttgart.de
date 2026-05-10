@@ -1,0 +1,59 @@
+---
+interface Props {
+  segments: { label: string; href?: string }[];
+}
+
+const { segments } = Astro.props;
+const lastIndex = segments.length - 1;
+---
+
+<div class="breadcrumb-section">
+  <div class="max-w-6xl mx-auto px-4">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      {segments.map((segment, index) => (
+        <>
+          {segment.href ? (
+            <a href={segment.href}>{segment.label}</a>
+          ) : (
+            <span class="current">{segment.label}</span>
+          )}
+          {index < lastIndex && <span class="separator">/</span>}
+        </>
+      ))}
+    </nav>
+  </div>
+</div>
+
+<style>
+  .breadcrumb-section {
+    padding-top: 120px;
+    padding-bottom: 1rem;
+    background: var(--color-bg);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-secondary);
+  }
+
+  .breadcrumb .separator {
+    color: var(--color-border);
+  }
+
+  .breadcrumb .current {
+    color: var(--color-text);
+  }
+</style>

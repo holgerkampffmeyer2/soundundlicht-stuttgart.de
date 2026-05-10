@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:full": "node scripts/generate-rss.mjs && astro build && node scripts/update-sitemap.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint src --ext .astro,.ts,.js",
-    "lint:fix": "eslint src --ext .astro,.ts,.js --fix"
+    "lint:fix": "eslint src --ext .astro,.ts,.js --fix",
+    "generate-rss": "node scripts/generate-rss.mjs",
+    "generate-urllist": "node scripts/update-sitemap.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
