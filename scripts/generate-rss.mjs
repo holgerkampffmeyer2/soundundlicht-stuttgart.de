@@ -113,9 +113,9 @@ function generateRss() {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sound & Licht Stuttgart - Neueste Updates</title>
+    <title>${escapeXml('Sound & Licht Stuttgart - Neueste Updates')}</title>
     <link>${site}</link>
-    <description>Neueste Seiten-Updates von Sound & Licht Stuttgart – Veranstaltungstechnik Vermietung im Großraum Stuttgart.</description>
+    <description>${escapeXml('Neueste Seiten-Updates von Sound & Licht Stuttgart – Veranstaltungstechnik Vermietung im Großraum Stuttgart.')}</description>
     <language>de</language>
     <lastBuildDate>${lastBuildDate}</lastBuildDate>
     <atom:link href="${site}/rss.xml" rel="self" type="application/rss+xml"/>
