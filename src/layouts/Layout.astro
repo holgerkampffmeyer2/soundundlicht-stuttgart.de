@@ -114,22 +114,7 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
       }
     </script>
 
-    <!-- JSON-LD AggregateRating -->
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "14",
-        "bestRating": "5",
-        "worstRating": "1",
-        "itemReviewed": {
-          "@type": "Service",
-          "name": "Veranstaltungstechnik Vermietung",
-          "url": "https://soundundlicht-stuttgart.de"
-        }
-      }
-    </script>
+
 
     <!-- JSON-LD SiteNavigationElement as ItemList -->
     <script is:inline type="application/ld+json">
