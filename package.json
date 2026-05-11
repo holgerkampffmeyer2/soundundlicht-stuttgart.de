@@ -11,7 +11,8 @@
     "lint": "eslint src --ext .astro,.ts,.js",
     "lint:fix": "eslint src --ext .astro,.ts,.js --fix",
     "generate-rss": "node scripts/generate-rss.mjs",
-    "generate-urllist": "node scripts/update-sitemap.mjs"
+    "generate-urllist": "node scripts/update-sitemap.mjs",
+    "bing-indexnow": "node scripts/bing-indexnow.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
