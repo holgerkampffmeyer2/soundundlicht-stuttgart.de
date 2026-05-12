@@ -5,27 +5,111 @@
     <link>https://soundundlicht-stuttgart.de</link>
     <description>Neueste Seiten-Updates von Sound &amp; Licht Stuttgart – Veranstaltungstechnik Vermietung im Großraum Stuttgart.</description>
     <language>de</language>
-    <lastBuildDate>Sun, 10 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://soundundlicht-stuttgart.de/rss.xml" rel="self" type="application/rss+xml"/>
-    <item>
-      <guid isPermaLink="false">/b%C3%B6blingen/</guid>
-      <title>[Seite] PA-Anlage &amp; Partybox mieten in Böblingen</title>
-      <link>https://soundundlicht-stuttgart.de/b%C3%B6blingen/</link>
-      <description>Sound- und Lichttechnik mieten in Böblingen</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
     <item>
       <guid isPermaLink="false">/esslingen/</guid>
       <title>[Seite] Partybox &amp; PA-Anlage mieten in Esslingen</title>
       <link>https://soundundlicht-stuttgart.de/esslingen/</link>
       <description>Veranstaltungstechnik mieten in Esslingen</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
       <guid isPermaLink="false">/filderstadt/</guid>
       <title>[Seite] Partytechnik mieten in Filderstadt</title>
       <link>https://soundundlicht-stuttgart.de/filderstadt/</link>
       <description>PA-Anlagen und Lichttechnik mieten in Filderstadt</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/leinfelden-echterdingen/</guid>
+      <title>[Seite] Veranstaltungstechnik mieten in Leinfelden-Echterdingen</title>
+      <link>https://soundundlicht-stuttgart.de/leinfelden-echterdingen/</link>
+      <description>Sound und Licht mieten in Leinfelden-Echterdingen</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/stuttgart/</guid>
+      <title>[Seite] PA-Anlage &amp; Partybox mieten in Stuttgart</title>
+      <link>https://soundundlicht-stuttgart.de/stuttgart/</link>
+      <description>Sound- und Lichttechnik mieten in Stuttgart</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/t%C3%BCbingen/</guid>
+      <title>[Seite] Veranstaltungstechnik mieten in Tübingen</title>
+      <link>https://soundundlicht-stuttgart.de/t%C3%BCbingen/</link>
+      <description>Sound, Licht und Partyequipment mieten in Tübingen</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/vermietung/djpaket-fildern/</guid>
+      <title>[Seite] DJ-Paket Fildern</title>
+      <link>https://soundundlicht-stuttgart.de/vermietung/djpaket-fildern/</link>
+      <description>DJ-Paket mit LD Maui, Moving Heads, LED PAR für bis zu 150 Personen</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/vermietung/jbl-partybox-300-320/</guid>
+      <title>[Seite] JBL Partybox 300/320 mieten</title>
+      <link>https://soundundlicht-stuttgart.de/vermietung/jbl-partybox-300-320/</link>
+      <description>Kompaktes JBL Partybox Set für Indoor-Events</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/vermietung/kls-laser-bar/</guid>
+      <title>[Seite] Eurolite KLS Laser Bar mieten</title>
+      <link>https://soundundlicht-stuttgart.de/vermietung/kls-laser-bar/</link>
+      <description>Kompaktes LED Bar System mit Laser-Effekten für Partys</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/vermietung/ld-maui-28g3/</guid>
+      <title>[Seite] LD Maui 28 G3 mieten</title>
+      <link>https://soundundlicht-stuttgart.de/vermietung/ld-maui-28g3/</link>
+      <description>Line Array Party-Soundsystem mit 2× 10&quot; Subwoofer und 8× 3.5&quot; Topteil</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/vermietung/led-bossfx-nebelmaschine/</guid>
+      <title>[Seite] LED BossFX &amp; Nebelmaschine mieten</title>
+      <link>https://soundundlicht-stuttgart.de/vermietung/led-bossfx-nebelmaschine/</link>
+      <description>LED BossFX-2 Pro + AF-150 Nebelmaschine für Atmosphäre</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/vermietung/partylicht-moving-head/</guid>
+      <title>[Seite] Partylicht &amp; Moving Head mieten</title>
+      <link>https://soundundlicht-stuttgart.de/vermietung/partylicht-moving-head/</link>
+      <description>LED Moving Head Spot + Partylicht Set für Dynamic Lightshows</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/vermietung/partypaket-stuttgart/</guid>
+      <title>[Seite] Partypaket Stuttgart</title>
+      <link>https://soundundlicht-stuttgart.de/vermietung/partypaket-stuttgart/</link>
+      <description>Komplettpaket für bis zu 50 Personen – Sound, Licht, DJ-Equipment mieten</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/vermietung/veranstaltungspaket-stuttgart/</guid>
+      <title>[Seite] Veranstaltungspaket Stuttgart</title>
+      <link>https://soundundlicht-stuttgart.de/vermietung/veranstaltungspaket-stuttgart/</link>
+      <description>Komplettpaket für bis zu 150 Personen – Profi-Equipment mieten</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/vermietung/</guid>
+      <title>[Seite] Eventtechnik Vermietung Stuttgart</title>
+      <link>https://soundundlicht-stuttgart.de/vermietung/</link>
+      <description>Partytechnik mieten in Stuttgart – Sound, Licht, Komplettpakete</description>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">/b%C3%B6blingen/</guid>
+      <title>[Seite] PA-Anlage &amp; Partybox mieten in Böblingen</title>
+      <link>https://soundundlicht-stuttgart.de/b%C3%B6blingen/</link>
+      <description>Sound- und Lichttechnik mieten in Böblingen</description>
       <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
@@ -47,13 +131,6 @@
       <title>[Seite] PA-Anlage &amp; Partybox mieten in Kornwestheim</title>
       <link>https://soundundlicht-stuttgart.de/kornwestheim/</link>
       <description>Veranstaltungstechnik mieten in Kornwestheim</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/leinfelden-echterdingen/</guid>
-      <title>[Seite] Veranstaltungstechnik mieten in Leinfelden-Echterdingen</title>
-      <link>https://soundundlicht-stuttgart.de/leinfelden-echterdingen/</link>
-      <description>Sound und Licht mieten in Leinfelden-Echterdingen</description>
       <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
@@ -96,83 +173,6 @@
       <title>[Seite] PA-Anlage &amp; Partybox mieten in Sindelfingen</title>
       <link>https://soundundlicht-stuttgart.de/sindelfingen/</link>
       <description>Veranstaltungstechnik mieten in Sindelfingen</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/stuttgart/</guid>
-      <title>[Seite] PA-Anlage &amp; Partybox mieten in Stuttgart</title>
-      <link>https://soundundlicht-stuttgart.de/stuttgart/</link>
-      <description>Sound- und Lichttechnik mieten in Stuttgart</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/t%C3%BCbingen/</guid>
-      <title>[Seite] Veranstaltungstechnik mieten in Tübingen</title>
-      <link>https://soundundlicht-stuttgart.de/t%C3%BCbingen/</link>
-      <description>Sound, Licht und Partyequipment mieten in Tübingen</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/vermietung/djpaket-fildern/</guid>
-      <title>[Seite] DJ-Paket Fildern</title>
-      <link>https://soundundlicht-stuttgart.de/vermietung/djpaket-fildern/</link>
-      <description>DJ-Paket mit LD Maui, Moving Heads, LED PAR für bis zu 150 Personen</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/vermietung/jbl-partybox-300-320/</guid>
-      <title>[Seite] JBL Partybox 300/320 mieten</title>
-      <link>https://soundundlicht-stuttgart.de/vermietung/jbl-partybox-300-320/</link>
-      <description>Kompaktes JBL Partybox Set für Indoor-Events</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/vermietung/kls-laser-bar/</guid>
-      <title>[Seite] Eurolite KLS Laser Bar mieten</title>
-      <link>https://soundundlicht-stuttgart.de/vermietung/kls-laser-bar/</link>
-      <description>Kompaktes LED Bar System mit Laser-Effekten für Partys</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/vermietung/ld-maui-28g3/</guid>
-      <title>[Seite] LD Maui 28 G3 mieten</title>
-      <link>https://soundundlicht-stuttgart.de/vermietung/ld-maui-28g3/</link>
-      <description>Line Array Party-Soundsystem mit 2× 10&quot; Subwoofer und 8× 3.5&quot; Topteil</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/vermietung/led-bossfx-nebelmaschine/</guid>
-      <title>[Seite] LED BossFX &amp; Nebelmaschine mieten</title>
-      <link>https://soundundlicht-stuttgart.de/vermietung/led-bossfx-nebelmaschine/</link>
-      <description>LED BossFX-2 Pro + AF-150 Nebelmaschine für Atmosphäre</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/vermietung/partylicht-moving-head/</guid>
-      <title>[Seite] Partylicht &amp; Moving Head mieten</title>
-      <link>https://soundundlicht-stuttgart.de/vermietung/partylicht-moving-head/</link>
-      <description>LED Moving Head Spot + Partylicht Set für Dynamic Lightshows</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/vermietung/partypaket-stuttgart/</guid>
-      <title>[Seite] Partypaket Stuttgart</title>
-      <link>https://soundundlicht-stuttgart.de/vermietung/partypaket-stuttgart/</link>
-      <description>Komplettpaket für bis zu 50 Personen – Sound, Licht, DJ-Equipment mieten</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/vermietung/veranstaltungspaket-stuttgart/</guid>
-      <title>[Seite] Veranstaltungspaket Stuttgart</title>
-      <link>https://soundundlicht-stuttgart.de/vermietung/veranstaltungspaket-stuttgart/</link>
-      <description>Komplettpaket für bis zu 150 Personen – Profi-Equipment mieten</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <guid isPermaLink="false">/vermietung/</guid>
-      <title>[Seite] Eventtechnik Vermietung Stuttgart</title>
-      <link>https://soundundlicht-stuttgart.de/vermietung/</link>
-      <description>Partytechnik mieten in Stuttgart – Sound, Licht, Komplettpakete</description>
       <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
     </item>
     <item>

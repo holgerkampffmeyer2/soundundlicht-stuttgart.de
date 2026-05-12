@@ -7,7 +7,7 @@
 
 ## Services
 - Vermietung von PA-Anlagen, Lautsprechern & Partyboxen (JBL Partybox, LD Maui 28 G3 Säulen-PA)
-- Verleih von Lichttechnik, Partylichter & Licht-Effekten (LED-Effekte, Nebelmaschinen, Moving Heads, Laser-Bars)
+- Verleih von Lichttechnik, Partylichter & Licht-Effekten (LED-Effekte, Nebelmaschinen, Moving Heads, LED-Bars)
 - Komplettpakete für Veranstaltungen (Sound & Licht Kombinationen)
 - DJ-Service für Events, Hochzeiten, Firmenfeiern, Vereinsfeiern
 - Persönliche Beratung und Einweisung vor Ort
@@ -61,7 +61,6 @@ Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim, Ludwigsb
 - Vermietung: https://soundundlicht-stuttgart.de/vermietung/
 - Pakete: https://soundundlicht-stuttgart.de/#pakete
 - Galerie: https://soundundlicht-stuttgart.de/#galerie
-- Blog/Vermietung Details: https://soundundlicht-stuttgart.de/vermietung/
 - Impressum/Datenschutz: https://holger-kampffmeyer.de/impressum.html
 - RSS Feed: https://soundundlicht-stuttgart.de/rss.xml
 
