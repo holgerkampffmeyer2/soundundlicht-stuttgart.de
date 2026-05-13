@@ -107,6 +107,7 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
   
   function updateActiveLink() {
     const scrollPos = window.scrollY + 100;
+    let currentSection: string | null = null;
     
     sections.forEach(section => {
       const sectionEl = section as HTMLElement;
@@ -115,14 +116,25 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
       const sectionId = section.getAttribute('id');
       
       if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-        navLinks.forEach(link => {
-          const href = link.getAttribute('href');
-          if (href === `#${sectionId}`) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        });
+        currentSection = sectionId;
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href') || '';
+      
+      if (href === '/' && currentSection === 'home') {
+        link.classList.add('active');
+      }
+      
+      if (href === '/vermietung/' && window.location.pathname.startsWith('/vermietung')) {
+        link.classList.add('active');
+      }
+      
+      const hash = href.split('#')[1];
+      if (hash && currentSection === hash) {
+        link.classList.add('active');
       }
     });
   }
