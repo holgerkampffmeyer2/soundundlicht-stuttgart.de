@@ -126,13 +126,13 @@ const faqSchema = {
 <Layout 
   title={pageTitle}
   description="Miete das Partypaket für deine Party in Stuttgart und Umgebung. Komplette Partytechnik mit JBL Partyboxen, Licht, Nebel und Mikrofon für bis zu 50 Personen."
-  image="/img/vermietung/partypaket1.webp"
+  image="/img/vermietung/partypaket.webp"
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": "Partypaket Stuttgart Demo",
     "description": "Demo des Partypakets Stuttgart - JBL Partyboxen, LED Licht und Nebelmaschine",
-    "thumbnailUrl": ["/img/vermietung/partypaket1.webp"],
+    "thumbnailUrl": ["/img/vermietung/partypaket.webp"],
     "contentUrl": "https://www.youtube.com/watch?v=Ivch0DqKkW0",
     "embedUrl": "https://www.youtube.com/embed/Ivch0DqKkW0",
     "uploadDate": "2024-01-20T00:00:00+00:00",
@@ -151,9 +151,10 @@ const faqSchema = {
 
   <Breadcrumb segments={breadcrumbSegments} />
 
-  <!-- Header -->
-  <section class="product-header section-padding pb-0">
-    <div class="max-w-6xl mx-auto px-4">
+  <!-- Hero Header -->
+  <section class="relative min-h-[50vh] flex items-center overflow-hidden"
+    style="background: linear-gradient(to right, rgba(10,10,15,0.9) 0%, rgba(10,10,15,0.3) 100%), url('/img/vermietung/partypaket.webp') center/cover no-repeat;">
+    <div class="max-w-6xl mx-auto px-4 w-full">
       <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
       <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">Partypaket Stuttgart</h1>
       <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">

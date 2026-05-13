@@ -158,16 +158,17 @@ const faqSchema = {
 <Layout 
   title={pageTitle}
   description="Miete das Veranstaltungspaket für dein Event in Stuttgart. Komplette Eventtechnik mit LD Maui Soundanlage, Licht, Nebel und Moving Heads für bis zu 150 Personen."
-  image="/img/vermietung/ldmaui3.webp"
+  image="/img/vermietung/veranstaltungspaket.webp"
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
 >
   <Navbar currentPage="/vermietung" />
 
   <Breadcrumb segments={breadcrumbSegments} />
 
-  <!-- Header -->
-  <section class="product-header section-padding pb-0">
-    <div class="max-w-6xl mx-auto px-4">
+  <!-- Hero Header -->
+  <section class="relative min-h-[50vh] flex items-center overflow-hidden"
+    style="background: linear-gradient(to right, rgba(10,10,15,0.9) 0%, rgba(10,10,15,0.3) 100%), url('/img/vermietung/veranstaltungspaket.webp') center/cover no-repeat;">
+    <div class="max-w-6xl mx-auto px-4 w-full">
       <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
       <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">Veranstaltungspaket Stuttgart</h1>
       <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">

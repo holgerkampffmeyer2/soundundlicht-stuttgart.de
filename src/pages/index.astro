@@ -174,7 +174,7 @@ const galleryImages = [
 <Layout
   title="Partytechnik mieten Stuttgart | Sound & Licht Verleih - Leinfelden-Echterdingen, Esslingen, Tübingen"
   description="Vermietung von PA-Anlagen, Partyboxen & Lichttechnik in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen. Ab 160€ pro Tag. DJ-Service, persönliche Beratung, einfache Abholung."
-  image="/img/header.webp"
+  image="/img/slider/slide1.webp"
   jsonLd={[serviceJsonLd, faqJsonLd, offerCatalogJsonLd]}
 >
   <Navbar currentPage="home" />
@@ -230,6 +230,29 @@ const galleryImages = [
       </div>
     </div>
 
+    <!-- Slide 3 -->
+    <div class="slide slide-3" data-slide="2">
+      <div class="slide-content">
+        <div class="container mx-auto px-4">
+          <div class="max-w-3xl">
+            <span class="text-[var(--color-accent)] text-lg tracking-widest uppercase mb-4 block">
+              Komplettpakete für dein Event
+            </span>
+            <h2 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
+              Sound, Licht & Effekte
+            </h2>
+            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-2xl">
+              Wähle zwischen Partypaket, DJ-Paket oder Veranstaltungspaket – alles Plug & Play, in 5 Minuten aufgebaut, abholbereit in Leinfelden-Echterdingen.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/vermietung/" class="btn-primary neon-pulse">Zu den Paketen ↗</a>
+              <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Slider Navigation -->
     <button class="slider-nav prev" id="slider-prev" aria-label="Previous slide">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -246,6 +269,7 @@ const galleryImages = [
     <div class="slider-dots">
       <div class="slider-dot active" data-dot="0"></div>
       <div class="slider-dot" data-dot="1"></div>
+      <div class="slider-dot" data-dot="2"></div>
     </div>
 
     <!-- Scroll Indicator -->
@@ -361,45 +385,6 @@ const galleryImages = [
   </section>
 
   <!-- Galerie Section -->
-  <section id="galerie" class="section-padding bg-[var(--color-surface)]">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 animate-on-scroll">
-        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
-          Verleih & Vermietung
-        </span>
-        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
-          Unsere Veranstaltungstechnik
-        </h2>
-        <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
-          Vermietung / Verleih von Veranstaltungstechnik im Großraum Stuttgart, Leinfelden-Echterdingen, Tübingen, Esslingen und Umkreis. Ich vermiete Partyboxen, Musikanlagen, DJ-Equipment, Lichttechnik und Beleuchtung für deine privaten Feiern, Firmen-Events, Vereinsfeiern, Messen und sonstige Veranstaltungen.
-        </p>
-      </div>
-
-      <div class="gallery-grid">
-        {galleryImages.map((img, index) => (
-           <a href="/vermietung/" class="gallery-item animate-on-scroll block" style={`animation-delay: ${index * 0.1}s`}>
-             <picture>
-               <source srcset={img.src} type="image/webp" />
-               <img src={img.fallback || img.src} alt={img.alt} width="800" height="450" loading="lazy" />
-             </picture>
-             <div class="gallery-info">
-               <span class="gallery-category">{img.category}</span>
-               <span class="gallery-usecase">{img.useCase}</span>
-               <span class="gallery-details">
-                 {img.equipment} • {img.persons} • {img.simplicity}
-               </span>
-             </div>
-           </a>
-        ))}
-      </div>
-
-      <div class="text-center mt-12 animate-on-scroll">
-        <a href="/vermietung/" class="btn-secondary">
-          Alle Geräte ansehen ↗
-        </a>
-      </div>
-    </div>
-  </section>
 
   <!-- So funktioniert's Section -->
   <section id="ablauf" class="section-padding bg-[var(--color-bg)]">

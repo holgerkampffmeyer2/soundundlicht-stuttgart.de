@@ -155,16 +155,17 @@ const videoSchema = {
 <Layout 
   title={pageTitle}
   description="Miete das DJ-Paket Fildern für dein Event. Komplette Eventtechnik mit LD Maui Soundanlage, LED BossFX, Nebelmaschine, Moving Head und Stage Bar für bis zu 150 Personen."
-  image="/img/vermietung/ldmaui3.webp"
+  image="/img/vermietung/djpaket.webp"
   jsonLd={[serviceSchema, faqSchema, videoSchema, breadcrumbSchema]}
 >
   <Navbar currentPage="/vermietung" />
 
   <Breadcrumb segments={breadcrumbSegments} />
 
-  <!-- Header -->
-  <section class="product-header section-padding pb-0">
-    <div class="max-w-6xl mx-auto px-4">
+  <!-- Hero Header -->
+  <section class="relative min-h-[50vh] flex items-center overflow-hidden"
+    style="background: linear-gradient(to right, rgba(10,10,15,0.9) 0%, rgba(10,10,15,0.3) 100%), url('/img/vermietung/djpaket.webp') center/cover no-repeat;">
+    <div class="max-w-6xl mx-auto px-4 w-full">
       <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
       <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">DJ-Paket Fildern</h1>
       <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">

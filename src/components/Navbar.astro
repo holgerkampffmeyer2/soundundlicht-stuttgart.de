@@ -61,7 +61,7 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
         </div>
         <a href="/#services" class="nav-link">Services</a>
         <a href="/#pakete" class="nav-link">Pakete</a>
-        <a href="/#galerie" class="nav-link">Miettechnik</a>
+        <a href="/#ablauf" class="nav-link">Ablauf</a>
         <a href="/#bewertungen" class="nav-link">Bewertungen</a>
         <a href="/#kontakt" class="nav-link">Kontakt</a>
       </div>
@@ -79,10 +79,10 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
   <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-surface)] border-t border-[var(--color-border)]">
     <div class="px-4 py-4 space-y-3">
       <a href="/" class:list={["block nav-link py-2", { active: currentPage === '/' || currentPage === 'home' }]}>Home</a>
+      <a href="/vermietung/" class:list={["block nav-link py-2", { active: isVermietungActive }]}>Vermietung</a>
       <a href="/#services" class="block nav-link py-2">Services</a>
       <a href="/#pakete" class="block nav-link py-2">Pakete</a>
-      <a href="/vermietung/" class:list={["block nav-link py-2", { active: isVermietungActive }]}>Vermietung</a>
-      <a href="/#galerie" class="block nav-link py-2">Miettechnik</a>
+      <a href="/#ablauf" class="block nav-link py-2">Ablauf</a>
       <a href="/#bewertungen" class="block nav-link py-2">Bewertungen</a>
       <a href="/#kontakt" class="block nav-link py-2">Kontakt</a>
     </div>

@@ -41,7 +41,7 @@ const serviceSchema = {
 
 const komplettPakete = [
   {
-    image: "/img/vermietung/partypaket1.webp",
+    image: "/img/vermietung/partypaket.webp",
     price: 'ab 160€',
     title: 'Partypaket',
     description: 'Das Party-Starterpaket besteht aus Licht und Sound für kleinere Feiern bis ca. 50 Personen.',
@@ -49,7 +49,7 @@ const komplettPakete = [
     detailPage: '/vermietung/partypaket-stuttgart'
   },
   {
-    image: "/img/vermietung/DSC_2320.webp",
+    image: "/img/vermietung/djpaket.webp",
     price: 'ab 200€',
     title: 'DJ-Paket',
     description: 'Das DJ-Paket für DJ Gigs und mittlere Feiern bis ca. 150 Personen mit LD Maui, LED BossFX, Moving Head und Stage Bar.',
@@ -57,7 +57,7 @@ const komplettPakete = [
     detailPage: '/vermietung/djpaket-fildern'
   },
   {
-    image: "/img/vermietung/ldmaui3.webp",
+    image: "/img/vermietung/veranstaltungspaket.webp",
     price: 'ab 180€',
     title: 'Veranstaltungspaket',
     description: 'Das Veranstaltungspaket für mittlere Feiern bis ca. 150 Personen.',
@@ -278,7 +278,7 @@ const lichtEquipment = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {komplettPakete.map((item, index) => (
           <div class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
-            <img src={item.image} alt={item.title} class="rounded-img w-full h-64 object-contain mb-4 bg-[var(--color-surface)]" />
+            <img src={item.image} alt={item.title} class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
             <span class="text-[var(--color-secondary)] text-sm font-bold">{item.price}</span>
             <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
             <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
@@ -310,7 +310,7 @@ const lichtEquipment = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {soundEquipment.map((item, index) => (
           <div class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
-            <img src={item.image} alt={item.title} class="rounded-img w-full h-64 object-contain mb-4 bg-[var(--color-surface)]" />
+            <img src={item.image} alt={item.title} class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
             <span class="text-[var(--color-secondary)] text-sm font-bold">{item.price}</span>
             <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
             <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
@@ -342,7 +342,7 @@ const lichtEquipment = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {lichtEquipment.map((item, index) => (
           <div class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
-            <img src={item.image} alt={item.title} class="rounded-img w-full h-64 object-contain mb-4 bg-[var(--color-surface)]" />
+            <img src={item.image} alt={item.title} class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
             <span class="text-[var(--color-secondary)] text-sm font-bold">{item.price}</span>
             <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
             <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
