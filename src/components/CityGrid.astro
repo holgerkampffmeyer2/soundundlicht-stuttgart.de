@@ -136,7 +136,7 @@ const total = cities.length;
         <div class="carousel-track" id="carousel-track">
           {cities.at(-1) && (
             <a href={`/${cities.at(-1).slug}/`} class="carousel-slide" data-index="-1" aria-hidden="true">
-              <div class="city-card-bg" style={`background-image: url('${cities.at(-1).image}')`}></div>
+              <div class="city-card-bg" data-bg={cities.at(-1).image}></div>
               <div class="city-card-overlay"></div>
               <div class="city-card-content">
                 <span class="city-card-label">{cities.at(-1).name}</span>
@@ -148,7 +148,7 @@ const total = cities.length;
           )}
           {cities.map((city, i) => (
             <a href={`/${city.slug}/`} class="carousel-slide" data-index={i}>
-              <div class="city-card-bg" style={`background-image: url('${city.image}')`}></div>
+              <div class="city-card-bg" data-bg={city.image}></div>
               <div class="city-card-overlay"></div>
               <div class="city-card-content">
                 <span class="city-card-label">{city.name}</span>
@@ -159,7 +159,7 @@ const total = cities.length;
             </a>
           ))}
           <a href={`/${cities[0].slug}/`} class="carousel-slide" data-index={total} aria-hidden="true">
-            <div class="city-card-bg" style={`background-image: url('${cities[0].image}')`}></div>
+            <div class="city-card-bg" data-bg={cities[0].image}></div>
             <div class="city-card-overlay"></div>
             <div class="city-card-content">
               <span class="city-card-label">{cities[0].name}</span>
@@ -197,9 +197,22 @@ const total = cities.length;
     let current = 1;
     let isAnimating = false;
 
+    function loadSlide(index) {
+      const slide = slides[index];
+      if (!slide) return;
+      const bg = slide.querySelector(".city-card-bg");
+      if (!bg || bg.style.backgroundImage) return;
+      const url = bg.getAttribute("data-bg");
+      if (url) bg.style.backgroundImage = "url('" + url + "')";
+    }
+
+    function loadAllSlides() {
+      slides.forEach(function (_, i) { loadSlide(i); });
+    }
+
     function update() {
-      track.style.transform = `translateX(-${current * 100}%)`;
-      dots.forEach((dot, i) => {
+      track.style.transform = "translateX(-" + (current * 100) + "%)";
+      dots.forEach(function (dot, i) {
         dot.classList.toggle("active", i === (current - 1 + total) % total);
       });
     }
@@ -208,8 +221,8 @@ const total = cities.length;
       current = index;
       track.style.transition = "none";
       update();
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
           track.style.transition = "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)";
         });
       });
@@ -222,24 +235,24 @@ const total = cities.length;
       if (next > total) {
         current = total + 1;
         update();
-        setTimeout(() => jumpTo(1), 700);
+        setTimeout(function () { jumpTo(1); }, 700);
       } else if (next < 1) {
         current = 0;
         update();
-        setTimeout(() => jumpTo(total), 700);
+        setTimeout(function () { jumpTo(total); }, 700);
       } else {
         current = next;
         update();
       }
     }
 
-    nextBtn.addEventListener("click", () => slide(1));
-    prevBtn.addEventListener("click", () => slide(-1));
+    nextBtn.addEventListener("click", function () { slide(1); });
+    prevBtn.addEventListener("click", function () { slide(-1); });
 
-    dots.forEach((dot) => {
-      dot.addEventListener("click", () => {
+    dots.forEach(function (dot) {
+      dot.addEventListener("click", function () {
         if (isAnimating) return;
-        const target = parseInt(dot.dataset.index) + 1;
+        var target = parseInt(dot.dataset.index) + 1;
         if (target === current) return;
         isAnimating = true;
         current = target;
@@ -247,21 +260,22 @@ const total = cities.length;
       });
     });
 
-    let autoPlay = setInterval(() => slide(1), 6000);
+    var autoPlay = setInterval(function () { slide(1); }, 6000);
 
-    const carousel = document.querySelector(".city-carousel");
-    carousel.addEventListener("mouseenter", () => clearInterval(autoPlay));
-    carousel.addEventListener("mouseleave", () => { autoPlay = setInterval(() => slide(1), 6000); });
+    var carousel = document.querySelector(".city-carousel");
+    carousel.addEventListener("mouseenter", function () { clearInterval(autoPlay); });
+    carousel.addEventListener("mouseleave", function () { autoPlay = setInterval(function () { slide(1); }, 6000); });
 
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener("keydown", function (e) {
       if (e.key === "ArrowLeft") slide(-1);
       if (e.key === "ArrowRight") slide(1);
     });
 
     track.style.transition = "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)";
+    loadAllSlides();
     update();
 
-    track.addEventListener("transitionend", () => {
+    track.addEventListener("transitionend", function () {
       if (current === 0) jumpTo(total);
       if (current === total + 1) jumpTo(1);
       isAnimating = false;
@@ -308,6 +322,7 @@ const total = cities.length;
     background-position: center;
     background-repeat: no-repeat;
     transition: transform 0.6s ease;
+    background-color: #1a1a2e;
   }
 
   .carousel-slide:hover .city-card-bg {
@@ -418,23 +433,34 @@ const total = cities.length;
   }
 
   .carousel-dot {
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .carousel-dot::after {
+    content: '';
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    border: none;
     background: rgba(255, 255, 255, 0.25);
-    cursor: pointer;
     transition: all 0.3s ease;
-    padding: 0;
   }
 
-  .carousel-dot.active {
+  .carousel-dot.active::after {
     background: var(--color-secondary);
     transform: scale(1.4);
     box-shadow: 0 0 12px var(--color-secondary);
   }
 
-  .carousel-dot:hover {
+  .carousel-dot:hover::after {
     background: var(--color-secondary);
   }
 
