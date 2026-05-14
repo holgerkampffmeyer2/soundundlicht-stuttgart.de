@@ -55,8 +55,6 @@ const payload = {
 const apiUrl = 'https://api.indexnow.org/indexnow';
 
 console.log(`📤 Sending ${urls.length} URLs to Bing IndexNow API...`);
-console.log(`🔑 Key: ${apiKey}`);
-console.log(`🌐 Host: ${payload.host}`);
 
 try {
   const response = await fetch(apiUrl, {
