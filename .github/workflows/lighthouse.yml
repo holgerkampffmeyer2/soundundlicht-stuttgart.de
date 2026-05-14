@@ -34,26 +34,9 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
           
-      - name: Format Lighthouse Results
+      - name: Extract Key Findings
         if: always()
-        run: |
-          echo "## Lighthouse CI Results" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Lighthouse CI has run. Check the uploaded artifacts for detailed HTML reports." >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Threshold Settings:**" >> $GITHUB_STEP_SUMMARY
-          echo "- Performance: >= 0.75 (warn)" >> $GITHUB_STEP_SUMMARY
-          echo "- Accessibility: >= 0.85 (warn)" >> $GITHUB_STEP_SUMMARY
-          echo "- Best Practices: >= 0.75 (warn)" >> $GITHUB_STEP_SUMMARY
-          echo "- SEO: >= 0.9 (error)" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          # Try to show links to HTML reports if available
-          if [ -d ".lighthouseci" ]; then
-            echo "**Report Files:**" >> $GITHUB_STEP_SUMMARY
-            find .lighthouseci -name "*.html" 2>/dev/null | while read file; do
-              echo "- $file" >> $GITHUB_STEP_SUMMARY
-            done
-          fi
+        run: node scripts/extract-lighthouse-findings.mjs >> $GITHUB_STEP_SUMMARY
           
       - name: Add Lighthouse Comment (PR only)
         if: github.event_name == 'pull_request'
