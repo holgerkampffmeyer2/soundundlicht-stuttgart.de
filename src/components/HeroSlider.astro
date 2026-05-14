@@ -37,27 +37,27 @@ const { slides, interval = 5000, id = "hero" } = Astro.props;
         }
       >
         <div class="container mx-auto px-4">
-          <div class={`max-w-3xl ${slide.ptClass || ""}`}>
+          <div class={`max-w-5xl ${slide.ptClass || ""}`}>
             {slide.category && (
               <span
-                class={`text-[${slide.categoryColor || "var(--color-secondary)"}] text-lg tracking-widest uppercase animate-fadeInUp stagger-1`}
+                class={`text-[${slide.categoryColor || "var(--color-secondary)"}] text-lg tracking-widest uppercase`}
               >
                 {slide.category}
               </span>
             )}
             {slide.titleTag === "h2" ? (
-              <h2 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text animate-fadeInUp stagger-2">
+              <h2 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
                 {slide.title}
               </h2>
             ) : (
-              <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text animate-fadeInUp stagger-2">
+              <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
                 {slide.title}
               </h1>
             )}
-            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-2xl animate-fadeInUp stagger-3">
+            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-4xl">
               {slide.description}
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 animate-fadeInUp stagger-4">
+            <div class="flex flex-col sm:flex-row gap-4">
               {slide.buttons.map((btn) => (
                 <a href={btn.href} class={btn.class || "btn-primary"}>{btn.text}</a>
               ))}
@@ -84,6 +84,7 @@ const { slides, interval = 5000, id = "hero" } = Astro.props;
       <div class={`slider-dot ${index === 0 ? "active" : ""}`} data-dot={index}></div>
     ))}
   </div>
+  <slot />
   <script is:inline define:vars={{ id, interval }}>
   (function() {
     const section = document.getElementById(id);

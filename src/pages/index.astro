@@ -5,12 +5,12 @@ import Footer from "../components/Footer.astro";
 import VolumeUpIcon from "../components/icons/VolumeUpIcon.astro";
 import LightBulbIcon from "../components/icons/LightBulbIcon.astro";
 import PackageIcon from "../components/icons/PackageIcon.astro";
-import MapPinIcon from "../components/icons/MapPinIcon.astro";
-import EmailIcon from "../components/icons/EmailIcon.astro";
 import Testimonials from "../components/Testimonials.astro";
+import ContactSection from "../components/ContactSection.astro";
 import CityGrid from "../components/CityGrid.astro";
 import FAQSection from "../components/FAQSection.astro";
 import { getFaqsForPage } from '../lib/faqUtils';
+import HeroSlider from "../components/HeroSlider.astro";
 import BieteSection from "../components/BieteSection.astro";
 
 const indexFaqs = getFaqsForPage('index');
@@ -179,106 +179,49 @@ const galleryImages = [
 >
   <Navbar currentPage="home" />
 
-  <!-- Hero Slider -->
-  <section id="home" class="hero-slider">
-    <!-- Slide 1 -->
-    <div class="slide slide-1 active" data-slide="0">
-      <div class="slide-content">
-        <div class="container mx-auto px-4">
-          <div class="max-w-3xl">
-            <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase mb-4 block">
-              Dein lokaler Verleih für Partylicht, Partyboxen und Veranstaltungstechnik
-            </span>
-            <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
-              Sound & Licht Stuttgart
-            </h1>
-            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-4 max-w-2xl">
-              Du planst eine Geburtstagsparty, Hochzeit, Firmenfeier oder ein Karaoke-Event? Ich bin Dein lokaler Verleiher von Lautsprechern, Musikanlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung. Keine Versandrisiken, kein monatelanger Vorlauf. Einfach vorbeikommen, Technik anschauen, mitnehmen und losfeiern.
-            </p>
-            
-<div class="flex flex-col sm:flex-row gap-4">
-              <a href="/vermietung/" class="btn-primary neon-pulse">Zur Vermietung ↗</a>
-              <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slide 2 -->
-    <div class="slide slide-2" data-slide="1">
-      <div class="slide-content">
-        <div class="container mx-auto px-4">
-          <div class="max-w-3xl">
-            <span class="text-[var(--color-accent)] text-lg tracking-widest uppercase mb-4 block">
-              Jetzt mieten
-            </span>
-            <h2 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
-              Technik für dein Event
-            </h2>
-            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-2xl">
-               Kraftvoller Sound, beeindruckende Lichteffekte und professionelle Ausrüstung für unvergessliche Feiern.
-             </p>
-             
-             <!-- Soundwave Visual -->
-<div class="flex flex-col sm:flex-row gap-4">
-              <a href="/vermietung/" class="btn-primary neon-pulse">Zur Vermietung ↗</a>
-              <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div class="slide slide-3" data-slide="2">
-      <div class="slide-content">
-        <div class="container mx-auto px-4">
-          <div class="max-w-3xl">
-            <span class="text-[var(--color-accent)] text-lg tracking-widest uppercase mb-4 block">
-              Komplettpakete für dein Event
-            </span>
-            <h2 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
-              Sound, Licht & Effekte
-            </h2>
-            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-2xl">
-              Wähle zwischen Partypaket, DJ-Paket oder Veranstaltungspaket – alles Plug & Play, in 5 Minuten aufgebaut, abholbereit in Leinfelden-Echterdingen.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-              <a href="/vermietung/" class="btn-primary neon-pulse">Zu den Paketen ↗</a>
-              <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slider Navigation -->
-    <button class="slider-nav prev" id="slider-prev" aria-label="Previous slide">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg>
-    </button>
-    <button class="slider-nav next" id="slider-next" aria-label="Next slide">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-      </svg>
-    </button>
-
-    <!-- Slider Dots -->
-    <div class="slider-dots">
-      <div class="slider-dot active" data-dot="0"></div>
-      <div class="slider-dot" data-dot="1"></div>
-      <div class="slider-dot" data-dot="2"></div>
-    </div>
-
-    <!-- Scroll Indicator -->
+  <HeroSlider
+    id="home"
+    slides={[
+      {
+        title: "Sound & Licht Stuttgart",
+        titleTag: "h1",
+        description: "Du planst eine Geburtstagsparty, Hochzeit, Firmenfeier oder ein Karaoke-Event? Ich bin Dein lokaler Verleiher von Lautsprechern, Musikanlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung. Keine Versandrisiken, kein monatelanger Vorlauf. Einfach vorbeikommen, Technik anschauen, mitnehmen und losfeiern.",
+        category: "Dein lokaler Verleih für Partylicht, Partyboxen und Veranstaltungstechnik",
+        buttons: [
+          { text: "Zur Vermietung ↗", href: "/vermietung/", class: "btn-primary neon-pulse" },
+          { text: "Kontakt aufnehmen", href: "#kontakt", class: "btn-secondary" }
+        ]
+      },
+      {
+        title: "Technik für dein Event",
+        titleTag: "h2",
+        description: "Kraftvoller Sound, beeindruckende Lichteffekte und professionelle Ausrüstung für unvergessliche Feiern.",
+        category: "Jetzt mieten",
+        categoryColor: "var(--color-accent)",
+        buttons: [
+          { text: "Zur Vermietung ↗", href: "/vermietung/", class: "btn-primary neon-pulse" },
+          { text: "Kontakt aufnehmen", href: "#kontakt", class: "btn-secondary" }
+        ]
+      },
+      {
+        title: "Sound, Licht & Effekte",
+        titleTag: "h2",
+        description: "Wähle zwischen Partypaket, DJ-Paket oder Veranstaltungspaket – alles Plug & Play, in 5 Minuten aufgebaut, abholbereit in Leinfelden-Echterdingen.",
+        category: "Komplettpakete für dein Event",
+        categoryColor: "var(--color-accent)",
+        buttons: [
+          { text: "Zu den Paketen ↗", href: "/vermietung/", class: "btn-primary neon-pulse" },
+          { text: "Kontakt aufnehmen", href: "#kontakt", class: "btn-secondary" }
+        ]
+      }
+    ]}
+  >
     <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float z-20">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
     </div>
-  </section>
+  </HeroSlider>
 
   <!-- Services Section -->
   <section id="services" class="section-padding bg-[var(--color-bg)]">
@@ -471,124 +414,19 @@ const galleryImages = [
     </div>
   </section>
 
-  <!-- Kontakt Section -->
-  <section id="kontakt" class="section-padding bg-[var(--color-surface)]">
-    <div class="max-w-4xl mx-auto text-center animate-on-scroll">
-      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
-        Kontakt
-      </span>
-      <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
-        Wir sind für dich da!
-      </h2>
-      <p class="text-[var(--color-text-muted)] text-lg mb-10">
-        Du hast Fragen zur Technik oder möchtest etwas mieten? Kontaktiere uns! Abholung und persönliche Beratung in Leinfelden-Echterdingen, verkehrsgünstig an A8 / B27 gelegen. Unser übliches Einzugsgebiet umfasst Stuttgart, Esslingen, Tübingen und Umgebung. Wir freuen uns auf deine Anfrage!
-      </p>
-
-      <div class="grid grid-cols-1 gap-8 mb-12">
-        <div class="bg-[var(--color-bg)] rounded-xl p-6">
-          <div class="w-full h-64 md:h-80 rounded-lg overflow-hidden mb-4">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2633.5828618899773!2d9.15913277708782!3d48.69433947131032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799c318ddfada49%3A0x8c761bb0db8ae55e!2sHolger%20Kampffmeyer%20DJ%20Dienstleistungen!5e0!3m2!1sde!2sde!4v1773674458531!5m2!1sde!2sde"
-              style="border:0; width: 100%; height: 100%;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Google Maps - Sound & Licht Stuttgart">
-            </iframe>
-          </div>
-          <div class="text-[var(--color-secondary)] mb-3"><MapPinIcon class="w-10 h-10" /></div>   
-          <h3 class="font-play font-bold mb-2">Adresse</h3>
-          <p class="text-[var(--color-text-muted)]">
-            Magellanstraße 4<br>
-            70771 Echterdingen<br>
-            (Großraum Stuttgart)
-          </p>
-        </div>
-        <div class="bg-[var(--color-bg)] rounded-xl p-6">
-          <div class="text-[var(--color-secondary)] mb-3"><EmailIcon class="w-10 h-10" /></div>
-          <h3 class="font-play font-bold mb-2">E-Mail</h3>
-          <p class="text-[var(--color-text-muted)]">
-            holger.kampffmeyer+dj@gmail.com
-          </p>
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="mailto:holger.kampffmeyer+dj@gmail.com" class="btn-primary flex items-center justify-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-          E-Mail senden
-        </a>
-        <a href="/vermietung/" class="btn-secondary">
-          Zur Technik ↗
-        </a>
-      </div>
-    </div>
-  </section>
+  <ContactSection
+    title="Wir sind für dich da!"
+    description="Du hast Fragen zur Technik oder möchtest etwas mieten? Kontaktiere uns! Abholung und persönliche Beratung in Leinfelden-Echterdingen, verkehrsgünstig an A8 / B27 gelegen. Unser übliches Einzugsgebiet umfasst Stuttgart, Esslingen, Tübingen und Umgebung. Wir freuen uns auf deine Anfrage!"
+    addressLocality="Echterdingen"
+    addressNote="(Großraum Stuttgart)"
+    addressLabel="Adresse"
+    secondaryButtonText="Zur Technik ↗"
+  />
 
   <!-- Footer -->
   <Footer />
 
   <script>
-    // Hero Slider
-    const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".slider-dot");
-    const prevBtn = document.getElementById("slider-prev");
-    const nextBtn = document.getElementById("slider-next");
-    let currentSlide = 0;
-    let slideInterval: ReturnType<typeof setInterval>;
-
-    function showSlide(index: number) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index);
-      });
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === index);
-      });
-      currentSlide = index;
-    }
-
-    function nextSlide() {
-      showSlide((currentSlide + 1) % slides.length);
-    }
-
-    function prevSlide() {
-      showSlide((currentSlide - 1 + slides.length) % slides.length);
-    }
-
-    function startSlider() {
-      slideInterval = setInterval(nextSlide, 5000);
-    }
-
-    function stopSlider() {
-      clearInterval(slideInterval);
-    }
-
-    // Event Listeners
-    prevBtn?.addEventListener("click", () => {
-      prevSlide();
-      stopSlider();
-      startSlider();
-    });
-
-    nextBtn?.addEventListener("click", () => {
-      nextSlide();
-      stopSlider();
-      startSlider();
-    });
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener("click", () => {
-        showSlide(i);
-        stopSlider();
-        startSlider();
-      });
-    });
-
-    // Start automatic slider
-    startSlider();
-
     // Scroll Animation Observer
     const observerOptions = {
       root: null,
