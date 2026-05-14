@@ -51,7 +51,7 @@ pnpm run preview  # Preview build
 | `Navbar.astro` | Navigation mit mobilen Menü |
 | `Footer.astro` | Footer mit Einzugsgebiet, Links, Social Media |
 | `Testimonials.astro` | Kundenbewertungen |
-| `Layout.astro` | Basis-Layout mit SEO, JSON-LD, Fonts |
+| `Layout.astro` | Basis-Layout mit SEO, JSON-LD |
 
 ## Neue City-Seite hinzufügen
 

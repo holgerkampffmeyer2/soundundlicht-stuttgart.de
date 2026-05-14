@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "@fontsource-variable/josefin-sans";
+@import "@fontsource/play";
 
 @theme {
   --color-bg: #0a0a0f;
@@ -19,7 +21,7 @@ html {
 }
 
 body {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
 }

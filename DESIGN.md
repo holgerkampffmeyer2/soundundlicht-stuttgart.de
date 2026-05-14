@@ -22,8 +22,8 @@
 | `--color-border` | `#262626` | Borders |
 
 ### Typografie
-- **Headings:** `Play` (Google Fonts) - 700 weight
-- **Body:** `Josefin Sans` (Google Fonts) - 300-600 weight
+- **Headings:** `Play` (self-hosted via @fontsource) - 700 weight
+- **Body:** `Josefin Sans` (self-hosted via @fontsource-variable) - 300-600 weight
 - **Sizes:** `text-5xl` bis `text-xl` (responsive)
 
 ### Visuelle Elemente
