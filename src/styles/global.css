@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource-variable/josefin-sans";
-@import "@fontsource/play";
+@import "@fontsource/play/latin.css";
 
 @theme {
   --color-bg: #0a0a0f;
@@ -165,20 +165,26 @@ body {
   height: 100%;
   display: flex;
   align-items: center;
-  background-size: cover;
-  background-position: center;
+  z-index: 2;
 }
 
-.slide-1 .slide-content {
-  background-image: url('/img/slider/slide1.webp');
+.hero-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
-.slide-2 .slide-content {
-  background-image: url('/img/slider/slide2.webp');
-}
-
-.slide-3 .slide-content {
-  background-image: url('/img/slider/slide3.webp');
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
 .slider-dots {
@@ -198,6 +204,8 @@ body {
   background: rgba(255, 255, 255, 0.3);
   cursor: pointer;
   transition: all 0.3s ease;
+  border: none;
+  padding: 0;
 }
 
 .slider-dot.active {

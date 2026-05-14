@@ -3,12 +3,10 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import VolumeUpIcon from "../components/icons/VolumeUpIcon.astro";
-import LightBulbIcon from "../components/icons/LightBulbIcon.astro";
 import PackageIcon from "../components/icons/PackageIcon.astro";
 import Testimonials from "../components/Testimonials.astro";
 import ContactSection from "../components/ContactSection.astro";
 import CityGrid from "../components/CityGrid.astro";
-import FAQSection from "../components/FAQSection.astro";
 import { getFaqsForPage } from '../lib/faqUtils';
 import HeroSlider from "../components/HeroSlider.astro";
 import BieteSection from "../components/BieteSection.astro";
@@ -78,103 +76,13 @@ const serviceJsonLd = {
     "name": "Baden-Württemberg"
   }
 };
-
-const galleryImages = [
-  { 
-    src: "/img/vermietung/licht1.webp", 
-    fallback: "/img/vermietung/licht1.jpg", 
-    alt: "2x LD Maui 28 G3 Säulen-PA, Lichtanlage + Nebelmaschine",
-    category: "Komplettset Sound & Licht",
-    useCase: "Geburtstagsfeier, Party",
-    equipment: "2x LD Maui 28 G3 Säulen-PA, Lichtanlage + Nebelmaschine",
-    persons: "50-100 Personen",
-    simplicity: "Plug & Play, in 5 Min. aufgebaut",
-    detailPage: "/vermietung/ld-maui-28g3/"
-  },
-  { 
-    src: "/img/vermietung/licht2.webp", 
-    fallback: "/img/vermietung/licht2.jpg", 
-    alt: "LD Maui 28 G3 Säulen-PA",
-    category: "PA-Anlage",
-    useCase: "Vereinsfeier, Firmenfeier",
-    equipment: "LD Maui 28 G3 Säulen-PA",
-    persons: "bis 150 Personen",
-    simplicity: "2060W Peak, professioneller Sound",
-    detailPage: "/vermietung/ld-maui-28g3/"
-  },
-  { 
-    src: "/img/vermietung/anlage1.webp", 
-    fallback: "/img/vermietung/anlage1.jpg", 
-    alt: "LD Maui 28 G3 Säulen-PA mit Lichtanlage",
-    category: "PA-Anlage und Lichttechnik",
-    useCase: "Firmenfeier, Private Feier",
-    equipment: "LD Maui 28 G3 Säulen-PA, Partylichtanlage",
-    persons: "bis 150 Personen",
-    simplicity: "Kraftvoller Sound, beeindruckende Lichteffekte, einfacher Aufbau",
-    detailPage: "/vermietung/veranstaltungspaket-stuttgart/"
-  },
-  { 
-    src: "/img/vermietung/anlage2.webp", 
-    fallback: "/img/vermietung/anlage2.jpg", 
-    alt: "LD Maui 28 G3 Säulen-PA",
-    category: "PA-Anlage",
-    useCase: "Hochzeiten, Vereinsfeier",
-    equipment: "LD Maui 28 G3 Säulen-PA",
-    persons: "bis 150 Personen",
-    simplicity: "2060W Peak, professioneller Sound, einfacher Aufbau",
-    detailPage: "/vermietung/ld-maui-28g3/"
-  },
-  { 
-    src: "/img/vermietung/jbl-set1.webp", 
-    fallback: "/img/vermietung/jbl-set1.jpg", 
-    alt: "JBL Partybox Set (2x)",
-    category: "Partyboxen",
-    useCase: "Private Feiern, Gartenparty",
-    equipment: "JBL Partybox Set (2x)",
-    persons: "50-80 Personen",
-    simplicity: "Dynamic Light Effects, Bluetooth",
-    detailPage: "/vermietung/jbl-partybox-300-320/"
-  },
-  { 
-    src: "/img/vermietung/ldmaui3.webp", 
-    fallback: "/img/vermietung/ldmaui3.jpg", 
-    alt: "2x LD Maui 28 G3 Säulen-PA",
-    category: "PA-Anlage",
-    useCase: "Firmenfeier, Hochzeit",
-    equipment: "2x LD Maui 28 G3 Säulen-PA",
-    persons: "bis 150",
-    simplicity: "2060W Peak, professioneller Sound",
-    detailPage: "/vermietung/ld-maui-28g3/"
-  },
-  { 
-    src: "/img/vermietung/licht3.webp", 
-    fallback: "/img/vermietung/licht3.jpg", 
-    alt: "LD Maui 28 G3 Säulen-PA und Partylichtanlage",
-    category: "Komplettset Sound & Licht",
-    useCase: "Lichtshow, Party",
-    equipment: "LD Maui 28 G3 Säulen-PA und Partylichtanlage",
-    persons: "50-100 Personen",
-    simplicity: "Einfacher Aufbau, Sound-zu-Licht Modus",
-    detailPage: "/vermietung/veranstaltungspaket-stuttgart/"
-  },
-  { 
-    src: "/img/vermietung/stairville-led-bossfx-2-pro-2.webp", 
-    fallback: "/img/vermietung/stairville-led-bossfx-2-pro-2.jpg", 
-    alt: "LED BossFX-2 Pro + Nebelmaschine",
-    category: "Partylichtanlagen",
-    useCase: "Events, Hochzeiten",
-    equipment: "LED BossFX-2 Pro + Nebelmaschine",
-    persons: "50-100 Personen",
-    simplicity: "Inkl. Stativ",
-    detailPage: "/vermietung/led-bossfx-nebelmaschine/"
-  }
-];
 ---
 
 <Layout
   title="Partytechnik mieten Stuttgart | Sound & Licht Verleih - Leinfelden-Echterdingen, Esslingen, Tübingen"
   description="Vermietung von PA-Anlagen, Partyboxen & Lichttechnik in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen. Ab 160€ pro Tag. DJ-Service, persönliche Beratung, einfache Abholung."
   image="/img/slider/slide1.webp"
+  preloadImage="/img/slider/slide1.webp"
   jsonLd={[serviceJsonLd, faqJsonLd, offerCatalogJsonLd]}
 >
   <Navbar currentPage="home" />
@@ -425,25 +333,4 @@ const galleryImages = [
 
   <!-- Footer -->
   <Footer />
-
-  <script>
-    // Scroll Animation Observer
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.1,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-      observer.observe(el);
-    });
-  </script>
 </Layout>

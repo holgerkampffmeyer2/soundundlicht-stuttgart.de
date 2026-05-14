@@ -7,6 +7,7 @@ interface Props {
   image?: string;
   noIndex?: boolean;
   jsonLd?: object | object[];
+  preloadImage?: string;
 }
 
 const { 
@@ -14,7 +15,8 @@ const {
   description = "Vermietung von Lautsprechern, Musikanlagen, Partyboxen und Partybeleuchtung für jede Feier im Großraum Stuttgart.",
   image = "/img/header.webp",
   noIndex = false,
-  jsonLd
+  jsonLd,
+  preloadImage
 } = Astro.props;
 
 const canonicalPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/\/+$/, '') || '/';
@@ -35,6 +37,8 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
     <meta name="theme-color" content="#0a0a0f" />
     <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow" } />
     
+    {preloadImage && <link rel="preload" as="image" fetchpriority="high" href={preloadImage} />}
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -152,18 +156,11 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
   </head>
   <body class="min-h-screen">
     <slot />
-    <script>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
+    <script is:inline>
+      var observer = new IntersectionObserver(function(e) {
+        e.forEach(function(x) { if (x.isIntersecting) x.target.classList.add('visible'); });
       }, { threshold: 0.1 });
-
-      document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-      });
+      document.querySelectorAll('.animate-on-scroll').forEach(function(el) { observer.observe(el); });
     </script>
   </body>
 </html>
