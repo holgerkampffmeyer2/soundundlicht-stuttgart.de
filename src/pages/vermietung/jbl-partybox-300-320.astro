@@ -151,17 +151,20 @@ const events = [
 
   <Breadcrumb segments={breadcrumbSegments} />
 
-  <!-- Header -->
-  <section class="product-header section-padding pb-0">
-    <div class="max-w-6xl mx-auto px-4">
-      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
-      <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">JBL Partybox 300/320</h1>
-      <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
-        Miete unser Set aus JBL Partybox 300 und Stage 320 für deine nächste Party. Die JBL PartyBoxen sind mobile Party-Lautsprecher mit 240 W RMS-Leistung, tiefem Bass von 40 Hz und bis zu 18 Stunden Akkulaufzeit.
-        Dank Bluetooth, USB- und Klinkeneingängen kannst du deine Musik flexibel abspielen. Die integrierte Lichtshow sorgt für die richtige Stimmung auf deiner Feier. <br />
-        Perfekt für bis zu 80 Personen.
-      </p>
-      
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/img/vermietung/partypaket.webp')"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[rgba(10,10,15,0.95)] via-[rgba(10,10,15,0.7)] to-[rgba(249,115,22,0.15)]"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">JBL Partybox 300/320</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Miete unser Set aus JBL Partybox 300 und Stage 320 für deine nächste Party. Die JBL PartyBoxen sind mobile Party-Lautsprecher mit 240 W RMS-Leistung, tiefem Bass von 40 Hz und bis zu 18 Stunden Akkulaufzeit.
+          Dank Bluetooth, USB- und Klinkeneingängen kannst du deine Musik flexibel abspielen. Die integrierte Lichtshow sorgt für die richtige Stimmung auf deiner Feier. <br />
+          Perfekt für bis zu 80 Personen.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -243,11 +246,6 @@ const events = [
 </Layout>
 
 <style>
-  .product-header {
-    background: var(--color-bg);
-    padding-bottom: 2rem;
-  }
-
   .cta-section {
     text-align: center;
   }

@@ -163,15 +163,19 @@ const events = [
   <!-- Breadcrumb -->
   <Breadcrumb segments={breadcrumbSegments} />
 
-  <!-- Header -->
-  <section class="product-header section-padding pb-0">
-    <div class="max-w-6xl mx-auto px-4">
-      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
-      <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">LD Maui 28 G3</h1>
-      <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
-        Professionelles Säulen-PA-System mit kraftvollem Sound für bis zu 150 Personen. <br />
-         Die LD Maui 28 G3 bietet mit 2060W und 127 dB Schalldruck einen beeindruckenden druckvollen und glasklaren Klang, einen starken tiefgehenden Bass für Partys, Hochzeiten und Firmenfeiern.
-      </p>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/img/vermietung/djpaket.webp')"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[rgba(10,10,15,0.95)] via-[rgba(10,10,15,0.7)] to-[rgba(249,115,22,0.15)]"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">LD Maui 28 G3</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Professionelles Säulen-PA-System mit kraftvollem Sound für bis zu 150 Personen. <br />
+           Die LD Maui 28 G3 bietet mit 2060W und 127 dB Schalldruck einen beeindruckenden druckvollen und glasklaren Klang, einen starken tiefgehenden Bass für Partys, Hochzeiten und Firmenfeiern.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -253,11 +257,6 @@ const events = [
 </Layout>
 
 <style>
-  .product-header {
-    background: var(--color-bg);
-    padding-bottom: 2rem;
-  }
-
   .cta-section {
     text-align: center;
   }
