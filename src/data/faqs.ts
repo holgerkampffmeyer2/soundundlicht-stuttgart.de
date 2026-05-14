@@ -46,7 +46,7 @@ export const faqs: FaqEntry[] = [
   {
     id: "vorkenntnisse",
     question: "Brauche ich Vorkenntnisse, um die Anlage zu bedienen?",
-    answer: "Nein, ich biete eine umfassende Einweisung an. Die Technik ist für jeden Benutzer einfach zu bedienen.",
+    answer: "Nein, ich biete eine umfassende Einweisung an. Die Technik ist für jeden Benutzer einfach zu bedienen. Und das ist der Unterschied zu Versandverleihern: bei mir siehst und testest du die Technik vorher. Du bekommst kein 'Überraschungspaket', sondern weißt genau, was dich erwartet.",
     pages: ["index", "vermietung"]
   },
   {
@@ -56,10 +56,22 @@ export const faqs: FaqEntry[] = [
     pages: ["index", "vermietung"]
   },
   {
-    id: "kurzfristig-anfrage",
-    question: "Was tun, wenn die Party schon in 3 Tagen ist?",
-    answer: "Ja, ich reagiere auch kurzfristig! Anfragen bis zu 2 Tagen vor der Veranstaltung sind meist noch möglich. Am besten rufst du mich direkt an unter 0171/1467491 für schnelle Abstimmung. Ich habe oft noch freie Geräte verfügbar.",
+    id: "vs-versand-vorlauf",
+    question: "Wie kurzfristig kann ich Technik mieten?",
+    answer: "Bei mir reichen oft 1-3 Tage Vorlauf. Viele Versandverleiher benötigen Wochen oder einen Monat Vorlauf, weil erst die Zahlung eingehen muss, dann der Versand mit Puffer geplant wird und nach der Party die Rücksendung abgewartet wird. Bei mir: Anfrage stellen, Termin bestätigen, abholen, feiern – so einfach ist das.",
     pages: ["index", "vermietung", "jbl-partybox-300-320", "djpaket-fildern", "veranstaltungspaket-stuttgart", "partypaket-stuttgart", "partylicht-moving-head", "led-bossfx-nebelmaschine", "ld-maui-28g3", "kls-laser-bar"]
+  },
+  {
+    id: "vs-versand-lieferrisiko",
+    question: "Was passiert, wenn die Technik zu spät ankommt?",
+    answer: "Bei mir passiert das nicht – du holst die Technik persönlich ab und nimmst sie sofort mit. Anders als bei Versandverleihern gibt es kein Risiko, dass der Paketdienst zu spät kommt, die Lieferung beschädigt ist oder deine Party ohne Technik starten muss. Du siehst die Geräte vor Ort, testest sie und fährst los – deine Party ist sicher.",
+    pages: ["index", "vermietung"]
+  },
+  {
+    id: "vs-versand-beratung",
+    question: "Bekomme ich Hilfe beim Aufbau der Technik?",
+    answer: "Ja auf jeden Fall! Bei der Abholung erkläre ich dir ausführlich den Aufbau und die Bedienung. Du kannst die Geräte vorher in Funktion sehen und alle Fragen stellen. Das ist der große Vorteil gegenüber Versandverleihern – dort bekommst du nur einen Karton zugeschickt und musst dich alleine durchkämpfen.",
+    pages: ["index", "vermietung"]
   },
   // JBL Partybox specific FAQs
   {
