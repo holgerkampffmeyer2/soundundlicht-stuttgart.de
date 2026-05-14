@@ -8,8 +8,8 @@
     "build:full": "node scripts/generate-rss.mjs && astro build && node scripts/update-sitemap.mjs",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint src --ext .astro,.ts,.js",
-    "lint:fix": "eslint src --ext .astro,.ts,.js --fix",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "generate-rss": "node scripts/generate-rss.mjs",
     "generate-urllist": "node scripts/update-sitemap.mjs",
     "bing-indexnow": "node scripts/bing-indexnow.mjs"

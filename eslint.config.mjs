@@ -5,6 +5,9 @@ import tseslintPlugin from '@typescript-eslint/eslint-plugin';
 import tsparser from '@typescript-eslint/parser';
 
 export default [
+  {
+    ignores: ['dist/', 'node_modules/', 'public/', '.astro/'],
+  },
   js.configs.recommended,
   {
     files: ['**/*.astro'],
@@ -17,6 +20,7 @@ export default [
       parserOptions: {
         parser: tsparser,
         extraFileExtensions: ['.astro'],
+        projectService: false,
       },
     },
     plugins: {
@@ -35,6 +39,9 @@ export default [
         ...globals.node,
       },
       parser: tsparser,
+      parserOptions: {
+        projectService: false,
+      },
     },
     plugins: {
       '@typescript-eslint': tseslintPlugin,
