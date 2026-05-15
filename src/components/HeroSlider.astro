@@ -94,7 +94,7 @@ const { slides, interval = 5000, id = "hero" } = Astro.props;
   <slot />
   <script>
   (function() {
-    const section = document.querySelector(".hero-slider");
+    const section = document.querySelector(".hero-slider") as HTMLElement | null;
     if (!section) return;
     const interval = parseInt(section.dataset.interval) || 5000;
     
@@ -106,9 +106,9 @@ const { slides, interval = 5000, id = "hero" } = Astro.props;
     if (!slides.length) return;
 
     let currentSlide = 0;
-    let slideInterval = null;
+    let slideInterval: number | null = null;
 
-    function showSlide(index) {
+    function showSlide(index: number) {
       slides.forEach((slide, i) => {
         slide.classList.toggle("active", i === index);
       });
