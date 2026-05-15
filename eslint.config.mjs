@@ -28,7 +28,7 @@ export default [
     },
     rules: {
       'no-unused-vars': 'warn',
-      'no-console': 'warn',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
       '@typescript-eslint/no-unused-vars': 'warn',
     },
   },
@@ -48,7 +48,7 @@ export default [
     },
     rules: {
       'no-unused-vars': 'warn',
-      'no-console': 'warn',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
       '@typescript-eslint/no-unused-vars': 'warn',
     },
   },
@@ -56,13 +56,14 @@ export default [
     files: ['**/*.js', '**/*.mjs'],
     languageOptions: {
       globals: {
+        ...globals.browser,
         ...globals.node,
         ...globals.es2021,
       },
     },
     rules: {
       'no-unused-vars': 'warn',
-      'no-console': 'warn',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
 ];
