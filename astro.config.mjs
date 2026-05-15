@@ -7,6 +7,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   site: 'https://soundundlicht-stuttgart.de',
-  trailingSlash: 'ignore',
+  trailingSlash: 'always',
+  build: {
+    format: 'directory',
+  },
   integrations: [sitemap()],
 });

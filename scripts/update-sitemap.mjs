@@ -26,7 +26,10 @@ function findHtmlPages() {
 
     if (hasIndex) {
       const pagePath = relativePrefix || '/';
-      pages.push(`${baseUrl}${pagePath}`);
+      const html = fs.readFileSync(path.join(dir, 'index.html'), 'utf-8');
+      if (!html.includes('noindex')) {
+        pages.push(`${baseUrl}${pagePath}`);
+      }
     }
 
     for (const entry of entries) {

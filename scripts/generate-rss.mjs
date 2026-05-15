@@ -3,39 +3,16 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT_DIR = path.join(__dirname, '..');
+const DIST_DIR = path.join(ROOT_DIR, 'dist');
+const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 
 const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const site = 'https://soundundlicht-stuttgart.de';
 
-const pageMeta = {
-  '/': { title: 'Sound & Licht Stuttgart', description: 'Partytechnik mieten in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung' },
-  '/stuttgart/': { title: 'PA-Anlage & Partybox mieten in Stuttgart', description: 'Sound- und Lichttechnik mieten in Stuttgart' },
-  '/esslingen/': { title: 'Partybox & PA-Anlage mieten in Esslingen', description: 'Veranstaltungstechnik mieten in Esslingen' },
-  '/tübingen/': { title: 'Veranstaltungstechnik mieten in Tübingen', description: 'Sound, Licht und Partyequipment mieten in Tübingen' },
-  '/filderstadt/': { title: 'Partytechnik mieten in Filderstadt', description: 'PA-Anlagen und Lichttechnik mieten in Filderstadt' },
-  '/leinfelden-echterdingen/': { title: 'Veranstaltungstechnik mieten in Leinfelden-Echterdingen', description: 'Sound und Licht mieten in Leinfelden-Echterdingen' },
-  '/kornwestheim/': { title: 'PA-Anlage & Partybox mieten in Kornwestheim', description: 'Veranstaltungstechnik mieten in Kornwestheim' },
-  '/ludwigsburg/': { title: 'PA-Anlage & Partybox mieten in Ludwigsburg', description: 'Partytechnik mieten in Ludwigsburg' },
-  '/böblingen/': { title: 'PA-Anlage & Partybox mieten in Böblingen', description: 'Sound- und Lichttechnik mieten in Böblingen' },
-  '/sindelfingen/': { title: 'PA-Anlage & Partybox mieten in Sindelfingen', description: 'Veranstaltungstechnik mieten in Sindelfingen' },
-  '/leonberg/': { title: 'PA-Anlage & Partybox mieten in Leonberg', description: 'Partyequipment mieten in Leonberg' },
-  '/waiblingen/': { title: 'PA-Anlage & Partybox mieten in Waiblingen', description: 'Sound und Licht mieten in Waiblingen' },
-  '/nürtingen/': { title: 'PA-Anlage & Partybox mieten in Nürtingen', description: 'Veranstaltungstechnik mieten in Nürtingen' },
-  '/reutlingen/': { title: 'Veranstaltungstechnik mieten in Reutlingen', description: 'Sound, Licht und DJ-Equipment mieten in Reutlingen' },
-  '/kirchheim-unter-teck/': { title: 'Veranstaltungstechnik mieten in Kirchheim unter Teck', description: 'Partytechnik mieten in Kirchheim unter Teck' },
-  '/ostfildern/': { title: 'Veranstaltungstechnik mieten in Ostfildern', description: 'Sound und Licht mieten in Ostfildern' },
-  '/vermietung/': { title: 'Eventtechnik Vermietung Stuttgart', description: 'Partytechnik mieten in Stuttgart – Sound, Licht, Komplettpakete' },
-  '/vermietung/partypaket-stuttgart/': { title: 'Partypaket Stuttgart', description: 'Komplettpaket für bis zu 50 Personen – Sound, Licht, DJ-Equipment mieten' },
-  '/vermietung/veranstaltungspaket-stuttgart/': { title: 'Veranstaltungspaket Stuttgart', description: 'Komplettpaket für bis zu 150 Personen – Profi-Equipment mieten' },
-  '/vermietung/djpaket-fildern/': { title: 'DJ-Paket Fildern', description: 'DJ-Paket mit LD Maui, Moving Heads, LED PAR für bis zu 150 Personen' },
-  '/vermietung/ld-maui-28g3/': { title: 'LD Maui 28 G3 mieten', description: 'Line Array Party-Soundsystem mit 2× 10" Subwoofer und 8× 3.5" Topteil' },
-  '/vermietung/jbl-partybox-300-320/': { title: 'JBL Partybox 300/320 mieten', description: 'Kompaktes JBL Partybox Set für Indoor-Events' },
-  '/vermietung/partylicht-moving-head/': { title: 'Partylicht & Moving Head mieten', description: 'LED Moving Head Spot + Partylicht Set für Dynamic Lightshows' },
-  '/vermietung/led-bossfx-nebelmaschine/': { title: 'LED BossFX & Nebelmaschine mieten', description: 'LED BossFX-2 Pro + AF-150 Nebelmaschine für Atmosphäre' },
-  '/vermietung/kls-laser-bar/': { title: 'Eurolite KLS Laser Bar mieten', description: 'Kompaktes LED Bar System mit Laser-Effekten für Partys' },
-};
+const excludePaths = ['/impressum', '/links'];
 
 function escapeXml(str) {
   return str
@@ -44,6 +21,10 @@ function escapeXml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
+}
+
+function decodeHtmlEntities(str) {
+  return str.replace(/&#(\d+);/g, (_, code) => String.fromCharCode(code)).replace(/&amp;/g, '&');
 }
 
 function formatRssDate(dateStr) {
@@ -55,57 +36,62 @@ function formatRssDate(dateStr) {
   return `${dayName}, ${day} ${monthName} ${year} 00:00:00 GMT`;
 }
 
-function getFileDate(filePath) {
-  try {
-    return fs.statSync(filePath).mtime.toISOString().split('T')[0];
-  } catch {
-    return new Date().toISOString().split('T')[0];
-  }
+function extractMeta(html) {
+  const titleMatch = html.match(/<title>([^<]*)<\/title>/);
+  const descMatch = html.match(/<meta\s+name="description"\s+content="([^"]*)"/);
+  const title = titleMatch ? decodeHtmlEntities(titleMatch[1].trim()) : '';
+  const description = descMatch ? decodeHtmlEntities(descMatch[1].trim()) : '';
+  return { title, description };
 }
 
-function generateRss() {
-  const outputPath = path.join(__dirname, '../public/rss.xml');
-  const items = [];
+function findHtmlPages() {
+  const pageMap = new Map();
 
-  const staticPagesDir = path.join(__dirname, '../src/pages');
-  const excludePaths = ['impressum', 'links'];
-
-  function walkDir(dir) {
+  function walkDir(dir, relativePrefix) {
+    if (!fs.existsSync(dir)) return;
     const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+    let hasIndex = false;
     for (const entry of entries) {
-      const fullPath = path.join(dir, entry.name);
+      if (entry.isFile() && entry.name === 'index.html') {
+        hasIndex = true;
+        break;
+      }
+    }
+
+    if (hasIndex) {
+      const pagePath = relativePrefix || '/';
+      const shouldExclude = excludePaths.some(ex => pagePath.startsWith(ex));
+      if (!shouldExclude) {
+        const fullPath = path.join(dir, 'index.html');
+        const html = fs.readFileSync(fullPath, 'utf-8');
+        const meta = extractMeta(html);
+        if (!meta.title.startsWith('Redirecting')) {
+          const stat = fs.statSync(fullPath);
+          const pubDate = stat.mtime.toISOString().split('T')[0];
+          pageMap.set(pagePath, { path: pagePath, title: meta.title, description: meta.description, pubDate });
+        }
+      }
+    }
+
+    for (const entry of entries) {
       if (entry.isDirectory()) {
-        walkDir(fullPath);
-      } else if (entry.name.endsWith('.astro')) {
-        const relativePath = path.relative(staticPagesDir, fullPath);
-        let pagePath = '/' + relativePath.replace(/\.astro$/, '').replace(/\\/g, '/');
-        if (pagePath.endsWith('/index')) {
-          pagePath = pagePath.replace('/index', '') || '/';
-        }
-        if (pagePath === '//') pagePath = '/';
-        pagePath = pagePath.replace(/\/?$/, '/');
-
-        const shouldExclude = excludePaths.some(ex => pagePath.includes(ex));
-        if (shouldExclude) continue;
-
-        const meta = pageMeta[pagePath];
-        if (meta) {
-          items.push({
-            id: pagePath,
-            title: meta.title,
-            link: pagePath,
-            description: meta.description,
-            pubDate: getFileDate(fullPath),
-            isPage: true,
-          });
-        }
+        walkDir(path.join(dir, entry.name), `${relativePrefix}${entry.name}/`);
       }
     }
   }
 
-  walkDir(staticPagesDir);
+  walkDir(DIST_DIR, '/');
+  return [...pageMap.values()].sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+}
 
-  items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+function generateRss() {
+  if (!fs.existsSync(DIST_DIR)) {
+    console.error('❌ dist/ directory not found. Run `astro build` first.');
+    process.exit(1);
+  }
+
+  const items = findHtmlPages();
 
   const today = new Date();
   const lastBuildDate = formatRssDate(today);
@@ -124,10 +110,11 @@ function generateRss() {
   for (const item of items) {
     const pubDate = formatRssDate(item.pubDate);
     const category = '[Seite]';
+    const link = `${site}${item.path}`;
     xml += `    <item>
-      <guid isPermaLink="false">${escapeXml(encodeURI(item.id))}</guid>
+      <guid isPermaLink="false">${escapeXml(item.path)}</guid>
       <title>${escapeXml(category + ' ' + item.title)}</title>
-      <link>${escapeXml(encodeURI(site + item.link))}</link>
+      <link>${escapeXml(link)}</link>
       <description>${escapeXml(item.description)}</description>
       <pubDate>${pubDate}</pubDate>
     </item>
@@ -138,8 +125,13 @@ function generateRss() {
 </rss>
 `;
 
-  fs.writeFileSync(outputPath, xml);
-  console.log(`✅ RSS feed generated at public/rss.xml with ${items.length} items`);
+  const distPath = path.join(DIST_DIR, 'rss.xml');
+  fs.writeFileSync(distPath, xml);
+  console.log(`✅ RSS feed generated at dist/rss.xml with ${items.length} items`);
+
+  const publicPath = path.join(PUBLIC_DIR, 'rss.xml');
+  fs.writeFileSync(publicPath, xml);
+  console.log(`   → synced to public/rss.xml`);
 }
 
 generateRss();

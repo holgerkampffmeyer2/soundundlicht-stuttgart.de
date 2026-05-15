@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "build:full": "node scripts/generate-rss.mjs && astro build && node scripts/update-sitemap.mjs",
+    "build:full": "astro build && node scripts/generate-rss.mjs && node scripts/update-sitemap.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint src",
