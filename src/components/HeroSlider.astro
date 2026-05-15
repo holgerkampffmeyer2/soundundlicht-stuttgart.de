@@ -96,7 +96,8 @@ const { slides, interval = 5000, id = "hero" } = Astro.props;
   (function() {
     const section = document.querySelector(".hero-slider") as HTMLElement | null;
     if (!section) return;
-    const interval = parseInt(section.dataset.interval) || 5000;
+    const intervalAttr = section.dataset.interval;
+    const interval = intervalAttr ? parseInt(intervalAttr) : 5000;
     
     const slides = section.querySelectorAll(".slide");
     const dots = section.querySelectorAll(".slider-dot");
@@ -106,7 +107,7 @@ const { slides, interval = 5000, id = "hero" } = Astro.props;
     if (!slides.length) return;
 
     let currentSlide = 0;
-    let slideInterval: number | null = null;
+    let slideInterval: ReturnType<typeof setInterval> | null = null;
 
     function showSlide(index: number) {
       slides.forEach((slide, i) => {
