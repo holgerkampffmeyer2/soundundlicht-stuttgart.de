@@ -279,7 +279,7 @@ const lichtEquipment = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {komplettPakete.map((item, index) => (
           <div class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
-            <img src={item.image} alt={item.title} class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
+            <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
             <span class="text-[var(--color-secondary)] text-sm font-bold">{item.price}</span>
             <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
             <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
@@ -311,7 +311,7 @@ const lichtEquipment = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {soundEquipment.map((item, index) => (
           <div class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
-            <img src={item.image} alt={item.title} class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
+            <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
             <span class="text-[var(--color-secondary)] text-sm font-bold">{item.price}</span>
             <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
             <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
@@ -343,7 +343,7 @@ const lichtEquipment = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {lichtEquipment.map((item, index) => (
           <div class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
-            <img src={item.image} alt={item.title} class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
+            <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
             <span class="text-[var(--color-secondary)] text-sm font-bold">{item.price}</span>
             <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
             <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
