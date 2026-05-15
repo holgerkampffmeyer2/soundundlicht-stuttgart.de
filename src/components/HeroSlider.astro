@@ -38,7 +38,6 @@ const { slides, interval = 5000, id = "hero" } = Astro.props;
         width="1920"
         height="1080"
         fetchpriority={index === 0 ? "high" : "low"}
-        decoding="async"
         loading={index === 0 ? "eager" : "lazy"}
       />
       <div class="slide-overlay" style={`background: ${slide.gradient || "linear-gradient(135deg, rgba(10, 10, 15, 0.85) 0%, rgba(249, 115, 22, 0.15) 100%)"};`}></div>
@@ -93,10 +92,11 @@ const { slides, interval = 5000, id = "hero" } = Astro.props;
     ))}
   </div>
   <slot />
-  <script is:inline define:vars={{ id, interval }}>
+  <script>
   (function() {
-    const section = document.getElementById(id);
+    const section = document.querySelector(".hero-slider");
     if (!section) return;
+    const interval = parseInt(section.dataset.interval) || 5000;
     
     const slides = section.querySelectorAll(".slide");
     const dots = section.querySelectorAll(".slider-dot");
