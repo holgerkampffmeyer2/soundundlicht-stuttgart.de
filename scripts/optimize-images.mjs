@@ -1,77 +1,162 @@
 import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import os from 'os';
 
-const publicDir = './public';
-const imgDir = path.join(publicDir, 'img');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT_DIR = path.join(__dirname, '..');
+const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 
-// Optimize all JPG images
-async function optimizeImages() {
-  const files = fs.readdirSync(imgDir, { recursive: true });
-  
-  let optimized = 0;
-  let totalSaved = 0;
+const CONCURRENCY = os.cpus().length;
 
-  for (const file of files) {
-    if (typeof file !== 'string') continue;
-    
-    const ext = path.extname(file).toLowerCase();
-    if (ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') continue;
-    
-    const filePath = path.join(imgDir, file);
-    const stat = fs.statSync(filePath);
-    const originalSize = stat.size;
-    
-    try {
-      // Determine max width based on directory
-      let maxWidth = 1920; // default for main images
-      
-      if (file.includes('vermietung')) {
-        maxWidth = 1200; // product images
-      } else if (file.includes('videos') || file === 'header.jpg') {
-        maxWidth = 1920;
-      } else if (file.includes('icons') || file === '5stars.png' || file === 'favicon.ico') {
-        maxWidth = 100; // small icons
-      }
-      
-      const image = sharp(filePath);
-      const metadata = await image.metadata();
-      
-      // Skip if already smaller
-      if (metadata.width && metadata.width <= maxWidth) {
-        console.log(`Skipping ${file} (already optimized: ${metadata.width}px)`);
-        continue;
-      }
+function parseArgs() {
+  const args = process.argv.slice(2);
+  const options = {
+    dirs: [path.join(PUBLIC_DIR, 'img')],
+    width: 1920,
+    height: null,
+    fit: 'inside',
+    quality: 80,
+    concurrency: CONCURRENCY,
+  };
 
-      // Optimize
-      let optimizedImage;
-      if (ext === '.png') {
-        optimizedImage = image.png({ quality: 80, compressionLevel: 9 });
-      } else {
-        optimizedImage = image.jpeg({ quality: 80, mozjpeg: true });
-      }
-      
-      if (metadata.width && metadata.width > maxWidth) {
-        optimizedImage = optimizedImage.resize(maxWidth, null, { withoutEnlargement: true });
-      }
-      
-      const buffer = await optimizedImage.toBuffer();
-      fs.writeFileSync(filePath, buffer);
-      
-      const newSize = buffer.length;
-      const saved = originalSize - newSize;
-      const percent = ((saved / originalSize) * 100).toFixed(1);
-      
-      console.log(`✓ ${file}: ${(originalSize/1024).toFixed(0)}KB → ${(newSize/1024).toFixed(0)}KB (saved ${percent}%)`);
-      
-      optimized++;
-      totalSaved += saved;
-    } catch (err) {
-      console.error(`Error processing ${file}:`, err.message);
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg === '-w' || arg === '--width') {
+      options.width = parseInt(args[++i], 10) || 1920;
+    } else if (arg === '-h' || arg === '--height') {
+      options.height = parseInt(args[++i], 10) || null;
+    } else if (arg === '--fit') {
+      options.fit = args[++i] || 'inside';
+    } else if (arg === '-q' || arg === '--quality') {
+      options.quality = parseInt(args[++i], 10) || 80;
+    } else if (arg === '--concurrency') {
+      options.concurrency = parseInt(args[++i], 10) || CONCURRENCY;
+    } else if (arg === '-d' || arg === '--dir') {
+      options.dirs = [args[++i]];
+    } else if (arg === '-h' || arg === '--help') {
+      console.log(`
+Usage: node optimize-images.mjs [options]
+
+Options:
+  -w, --width <px>        Max width (default: 1920)
+  -h, --height <px>       Max height (default: no limit)
+  --fit <mode>            Fit mode: cover/contain/inside/outside (default: inside)
+  -q, --quality <num>     WebP quality 1-100 (default: 80)
+  --concurrency <num>     Parallel tasks (default: CPU cores)
+  -d, --dir <path>        Single directory to process (default: public/img)
+  -h, --help              Show this help
+      `);
+      process.exit(0);
     }
   }
 
-  console.log(`\n✅ Optimized ${optimized} images. Total saved: ${(totalSaved/1024).toFixed(1)}KB`);
+  return options;
 }
 
-optimizeImages();
+function findImages(rootDir) {
+  const images = [];
+  if (!fs.existsSync(rootDir)) return images;
+
+  const files = fs.readdirSync(rootDir, { recursive: true });
+  for (const file of files) {
+    if (typeof file !== 'string') continue;
+    const ext = path.extname(file).toLowerCase();
+    if (ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') continue;
+    images.push(path.join(rootDir, file));
+  }
+
+  return images;
+}
+
+async function processImage(filePath, options) {
+  const baseName = path.basename(filePath);
+  const webpPath = filePath.replace(/\.(jpe?g|png)$/i, '.webp');
+
+  if (baseName.includes('icons') || baseName === '5stars.png') return false;
+
+  try {
+    const image = sharp(filePath);
+    const metadata = await image.metadata();
+
+    const needsResize =
+      (options.width && metadata.width && metadata.width > options.width) ||
+      (options.height && metadata.height && metadata.height > options.height);
+
+    if (!needsResize && fs.existsSync(webpPath)) {
+      return false;
+    }
+
+    const resizeOpts = {};
+    if (needsResize) {
+      if (options.width && metadata.width > options.width) resizeOpts.width = options.width;
+      if (options.height && metadata.height > options.height) resizeOpts.height = options.height;
+      resizeOpts.withoutEnlargement = true;
+      resizeOpts.fit = options.fit;
+    }
+
+    let pipeline = image;
+
+    if (needsResize) {
+      pipeline = pipeline.resize(resizeOpts);
+    }
+
+    await pipeline
+      .webp({ quality: options.quality })
+      .toFile(webpPath);
+
+    const originalSize = fs.statSync(filePath).size;
+    const webpSize = fs.statSync(webpPath).size;
+    const saved = ((1 - webpSize / originalSize) * 100).toFixed(1);
+
+    console.log(`  ✓ ${baseName} → ${path.basename(webpPath)} (${saved}% smaller)`);
+    return true;
+  } catch (err) {
+    console.error(`  ✗ Error: ${baseName} - ${err.message}`);
+    return false;
+  }
+}
+
+async function processAll(images, options) {
+  let converted = 0;
+  const queue = [...images];
+
+  async function worker() {
+    while (queue.length > 0) {
+      const filePath = queue.shift();
+      const done = await processImage(filePath, options);
+      if (done) converted++;
+    }
+  }
+
+  const workers = Array.from({ length: Math.min(options.concurrency, images.length) }, () => worker());
+  await Promise.all(workers);
+
+  return converted;
+}
+
+async function main() {
+  const options = parseArgs();
+  let totalConverted = 0;
+
+  for (const dir of options.dirs) {
+    if (!fs.existsSync(dir)) {
+      console.log(`Skipping (not found): ${dir}`);
+      continue;
+    }
+    const images = findImages(dir);
+    if (images.length === 0) {
+      console.log(`No images found in: ${dir}`);
+      continue;
+    }
+    console.log(`Processing ${images.length} images in: ${dir}`);
+    const converted = await processAll(images, options);
+    console.log(`[${dir}] ${converted} files converted to WebP`);
+    totalConverted += converted;
+  }
+
+  console.log(`\n✅ Total: ${totalConverted} WebP images created`);
+}
+
+main();

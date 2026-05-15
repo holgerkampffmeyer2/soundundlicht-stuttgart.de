@@ -144,7 +144,7 @@ pnpm run generate-urllist # Nur urllist.txt generieren
 ```
 
 Build-Prozess (build:full): `generate-rss.mjs` → `astro build` → `update-sitemap.mjs` (urllist.txt).  
-`dist/` is gitignored. Build output: static HTML in `dist/`, sitemap at `dist/sitemap-index.xml`, RSS at `public/rss.xml`, URL-Liste at `public/urllist.txt`.
+`dist/` is gitignored. Build output: static HTML in `dist/`, sitemap at `dist/sitemap-index.xml`, RSS at `public/rss.xml`, URL-Liste at `public/urllist.txt` + `dist/urllist.txt`.
 Für tägliche Entwicklung reicht `pnpm run build` (ohne RSS/urllist).
 
 ## Design System
@@ -180,7 +180,16 @@ Für Galerie-Bilder (index.astro) wird das picture-Element genutzt:
 CityHero nutzt direkt WebP (single source) – Hintergrundbilder via CSS `background-image`.
 
 ### Batch-Konvertierung
-`node create-webp.mjs` konvertiert alle JPGs in `public/img/` zu WebP (1920px, quality 80).
+- `node scripts/create-webp.mjs` — konvertiert alle JPGs/PNGs in `public/img/` zu WebP (1920px, quality 80, parallel)
+- `node scripts/optimize-images.mjs` — optimiert + resized Bilder zu WebP, non-destructive, mit CLI-Optionen:
+  ```
+  -w, --width <px>        Max width (default: 1920)
+  -h, --height <px>       Max height
+  --fit <mode>            cover/contain/inside/outside (default: inside)
+  -q, --quality <num>     WebP quality 1-100 (default: 80)
+  --concurrency <num>     Parallel tasks (default: CPU cores)
+  -d, --dir <path>        Single directory (default: public/img)
+  ```
 
 ## Performance
 - Bilder lazy laden (`loading="lazy"`)

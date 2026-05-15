@@ -41,14 +41,13 @@ function findHtmlPages() {
 }
 
 function generateUrllist(urls) {
-  const urllistPath = path.join(PUBLIC_DIR, 'urllist.txt');
-  fs.writeFileSync(urllistPath, urls.join('\n') + '\n');
+  const publicPath = path.join(PUBLIC_DIR, 'urllist.txt');
+  fs.writeFileSync(publicPath, urls.join('\n') + '\n');
   console.log(`✅ urllist.txt generated with ${urls.length} URLs`);
 
-  if (urls.length > 0) {
-    console.log('   URLs:');
-    urls.forEach(u => console.log(`   - ${u}`));
-  }
+  const distPath = path.join(DIST_DIR, 'urllist.txt');
+  fs.writeFileSync(distPath, urls.join('\n') + '\n');
+  console.log(`   → synced to dist/`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
