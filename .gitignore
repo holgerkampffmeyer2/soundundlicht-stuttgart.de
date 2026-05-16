@@ -6,6 +6,7 @@ dist/
 
 # test
 test-results/
+lighthouse.*/
 
 # Astro
 .astro/
