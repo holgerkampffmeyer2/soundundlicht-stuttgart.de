@@ -105,6 +105,7 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
     });
   });
   
+  let ticking = false;
   function updateActiveLink() {
     const scrollPos = window.scrollY + 100;
     let currentSection: string | null = null;
@@ -137,8 +138,14 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
         link.classList.add('active');
       }
     });
+    ticking = false;
   }
   
-  window.addEventListener('scroll', updateActiveLink);
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => updateActiveLink());
+      ticking = true;
+    }
+  }, { passive: true });
   updateActiveLink();
 </script>

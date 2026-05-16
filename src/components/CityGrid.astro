@@ -206,8 +206,12 @@ const total = cities.length;
       if (url) bg.style.backgroundImage = "url('" + url + "')";
     }
 
+    function loadRange(start, end) {
+      for (var i = start; i <= end; i++) loadSlide(i);
+    }
     function loadAllSlides() {
-      slides.forEach(function (_, i) { loadSlide(i); });
+      // Only load visible + adjacent slides (current ±1) + cloned slides
+      loadRange(0, 3);  // first slide, clone before, clone after + slide 2
     }
 
     function update() {
@@ -244,6 +248,9 @@ const total = cities.length;
         current = next;
         update();
       }
+      // Preload adjacent slides
+      loadSlide(current + dir);
+      loadSlide(current - dir);
     }
 
     nextBtn.addEventListener("click", function () { slide(1); });

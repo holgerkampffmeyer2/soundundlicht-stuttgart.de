@@ -84,8 +84,8 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
   </div>
 </section>
 
-<script is:inline define:vars={{ totalPages, ITEMS_PER_PAGE }}>
-  document.addEventListener('DOMContentLoaded', () => {
+<script is:inline type="module" define:vars={{ totalPages, ITEMS_PER_PAGE }}>
+  (() => {
     let currentPage = 1;
     const cards = document.querySelectorAll('.review-card');
     const pageBtns = document.querySelectorAll('.page-btn');
@@ -129,5 +129,5 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
     });
 
     showPage(1);
-  });
+  })();
 </script>
