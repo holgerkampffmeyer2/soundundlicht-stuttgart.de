@@ -154,7 +154,7 @@ const { images, title } = Astro.props;
 
   .thumbnail.active {
     border-color: var(--color-secondary);
-    box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 0 15px color-mix(in srgb, var(--color-secondary) 40%, transparent);
   }
 
   .thumbnail img {
@@ -170,7 +170,7 @@ const { images, title } = Astro.props;
     transform: translateY(-50%);
     width: 48px;
     height: 48px;
-    background: rgba(249, 115, 22, 0.8);
+    background: color-mix(in srgb, var(--color-secondary) 80%, transparent);
     border: none;
     border-radius: 50%;
     display: flex;
@@ -184,7 +184,7 @@ const { images, title } = Astro.props;
 
   .gallery-nav:hover {
     background: var(--color-secondary);
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--color-secondary) 60%, transparent);
   }
 
   .gallery-nav.prev {
