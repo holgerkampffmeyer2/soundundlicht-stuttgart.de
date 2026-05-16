@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "./themes/default.css";
+@import "./themes/deep-bass.css";
 
 html {
   scroll-behavior: smooth;
@@ -48,7 +48,7 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-secondary), #ea580c);
+  background: var(--color-secondary);
   color: white;
   padding: 1rem 2rem;
   border-radius: 0.5rem;
@@ -60,8 +60,9 @@ body {
 }
 
 .btn-primary:hover {
+  background: var(--color-secondary-hover);
   transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(249, 115, 22, 0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .btn-secondary {
@@ -81,7 +82,7 @@ body {
   background: var(--color-accent);
   color: var(--color-bg);
   transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(34, 211, 238, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .section-padding {
