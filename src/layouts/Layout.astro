@@ -57,8 +57,8 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
         --color-text: #f8fafc;
         --color-text-muted: #a1a1aa;
         --color-border: #3b0764;
-        --font-heading: 'Poppins', sans-serif;
-        --font-body: 'Open Sans', sans-serif;
+        --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
+        --font-body: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
       }
       html[data-theme="deep-bass"] {
         --color-bg: #050510;
@@ -72,8 +72,8 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
         --color-text: #f8fafc;
         --color-text-muted: #64748b;
         --color-border: #1e293b;
-        --font-heading: 'Inter', sans-serif;
-        --font-body: 'Inter', sans-serif;
+        --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
+        --font-body: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
       }
       html[data-theme="golden-hour"] {
         --color-bg: #0a0a0f;
@@ -87,8 +87,8 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
         --color-text: #fefce8;
         --color-text-muted: #a8a29e;
         --color-border: #292524;
-        --font-heading: 'Playfair Display', serif;
-        --font-body: 'Inter', sans-serif;
+        --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
+        --font-body: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
       }
       html[data-theme="arctic-frost"] {
         --color-bg: #080b12;
@@ -102,18 +102,13 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
         --color-text: #f1f5f9;
         --color-text-muted: #94a3b8;
         --color-border: #1e293b;
-        --font-heading: 'DM Sans', sans-serif;
-        --font-body: 'DM Sans', sans-serif;
+        --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
+        --font-body: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
       }
     </style>
 
     {preloadImage && <link rel="preload" as="image" fetchpriority="high" href={preloadImage} />}
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/josefin-sans-variable.woff2" />
-
-    <!-- Google Fonts (Theme-Fonts: Inter, Playfair Display, DM Sans, Poppins, Open Sans) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />

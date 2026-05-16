@@ -1,84 +1,126 @@
-# Theme System – Drop-In Replacement
+# Theme System
 
 ## Architektur
 
-CSS-Variablen-basiert: Zwei Theme-Dateien definieren nur `@theme {}`-Blöcke mit denselben Token-Namen, aber unterschiedlichen Werten + Fonts. Alle Komponenten (`global.css`) bleiben unverändert.
+CSS-Variablen-basiert via `@theme {}`-Blöcke. Alle Token sind identisch benannt, nur Werte unterscheiden sich pro Theme. Components in `global.css` nutzen `var(--color-*)` und bleiben unverändert.
 
 ```
 src/styles/
 ├── themes/
-│   ├── default.css      ← @theme: Cyan/Orange + Josefin Sans (aktuell)
-│   └── alt.css          ← @theme: Purple/Pink/Neon + Poppins/Open Sans
-├── fonts.css            ← @font-face (Josefin Sans + Poppins + Open Sans)
-├── global.css           ← @import "tailwindcss" + ALLE Component-Styles (button, card, hero, etc.)
-└── theme-loader.css     ← zentraler Import: themes/X.css → fonts.css → global.css
+│   ├── deep-bass.css       ← @theme: Navy/Blau + Josefin Sans (Default)
+│   ├── default.css         ← @theme: Cyan/Orange + Josefin Sans (altes Default)
+│   ├── electric-night.css  ← @theme: Purple/Pink/Neon + Josefin Sans
+│   ├── golden-hour.css     ← @theme: Amber/Gold + Josefin Sans
+│   └── arctic-frost.css    ← @theme: Hellblau/Lavendel + Josefin Sans
+├── fonts.css               ← @font-face: Josefin Sans (self-hosted, variable woff2)
+└── global.css              ← @import "tailwindcss" + @import "./themes/<name>.css" + ALLE Component-Styles
 ```
 
 ## Theme-Wechsel
 
-`theme-loader.css` – eine Zeile ändern:
+### 1. Permanent (CSS-Level)
+
+In `src/styles/global.css` Zeile 2 ändern:
 
 ```css
-@import "./themes/alt.css";       /* ← aktiv: Electric Night */
-/* @import "./themes/default.css"; */  /* ← alternativ: Cyan/Orange */
+@import "./themes/deep-bass.css";  /* ← aktiv (Default) */
+/* @import "./themes/default.css"; */
+/* @import "./themes/electric-night.css"; */
+/* @import "./themes/golden-hour.css"; */
+/* @import "./themes/arctic-frost.css"; */
 ```
 
-## Theme A (Default – aktuell)
+### 2. Temporär (URL-Parameter)
 
-| Token | Wert | Rolle |
-|-------|------|-------|
-| `--color-bg` | `#0a0a0f` | Hintergrund |
-| `--color-surface` | `#12121a` | Karten/Sektionen |
-| `--color-surface-hover` | `#1a1a25` | Karten-Hover |
-| `--color-primary` | `#0891b2` | Primär (cyan) |
-| `--color-primary-hover` | `#22d3ee` | Primär-Hover |
-| `--color-secondary` | `#f97316` | Sekundär/CTA (orange) |
-| `--color-secondary-hover` | `#fb923c` | Sekundär-Hover |
-| `--color-accent` | `#22d3ee` | Akzent (cyan) |
-| `--color-text` | `#f8fafc` | Text |
-| `--color-text-muted` | `#94a3b8` | Muted-Text |
-| `--color-border` | `#1e1e2e` | Rahmen |
-| `--font-heading` | `'Josefin Sans Variable', 'Josefin Sans', sans-serif` | Überschriften |
-| `--font-body` | `'Josefin Sans Variable', 'Josefin Sans', sans-serif` | Fließtext |
+Jede Seite unterstützt `?theme=<name>` für Client-seitigen Wechsel ohne Neu-Build:
 
-## Theme B ("Electric Night" – Neu)
+- `?theme=electric-night` – Purple/Pink
+- `?theme=deep-bass` – Navy/Blau
+- `?theme=golden-hour` – Amber/Gold
+- `?theme=arctic-frost` – Hellblau/Lavendel
 
-Inspiriert von Club-Atmosphäre, Neonlicht, Bühnen-Party-Vibe.
+Implementiert in `Layout.astro` via:
+- Early inline `<script>` liest `?theme=` aus URL, setzt `data-theme` auf `<html>`
+- Inline `<style>` definiert alle 4 Alt-Theme-Vars unter `html[data-theme="<name>"] {}`
+- Läuft vor dem ersten Paint → kein FOUC
 
-| Token | Wert | Rolle |
-|-------|------|-------|
-| `--color-bg` | `#0a0a0f` | Hintergrund (unverändert) |
-| `--color-surface` | `#1c0a2e` | Karten/Sektionen (deep purple) |
-| `--color-surface-hover` | `#2d1b4e` | Karten-Hover |
-| `--color-primary` | `#a855f7` | Primär (purple-500) |
-| `--color-primary-hover` | `#c084fc` | Primär-Hover (purple-400) |
-| `--color-secondary` | `#ec4899` | Sekundär/CTA (pink-500) |
-| `--color-secondary-hover` | `#f472b6` | Sekundär-Hover (pink-400) |
-| `--color-accent` | `#22d3ee` | Akzent (cyan bleibt als Kontrast) |
-| `--color-text` | `#f8fafc` | Text (unverändert) |
-| `--color-text-muted` | `#a1a1aa` | Muted-Text (zinc-400) |
-| `--color-border` | `#3b0764` | Rahmen (purple-950) |
-| `--font-heading` | `'Poppins', sans-serif` | Überschriften |
-| `--font-body` | `'Open Sans', sans-serif` | Fließtext |
+## Alle Themes im Überblick
 
-## Umsetzung
+### deep-bass (Default – Navy/Blau)
+| Token | Wert |
+|-------|------|
+| `--color-bg` | `#050510` |
+| `--color-surface` | `#0a1628` |
+| `--color-primary` | `#2563eb` |
+| `--color-secondary` | `#1e40af` |
+| `--color-accent` | `#60a5fa` |
 
-1. `src/styles/themes/default.css` – @theme-Block aus global.css extrahiert + font-Vars
-2. `src/styles/themes/alt.css` – neues "Electric Night" @theme
-3. `src/styles/theme-loader.css` – zentrale CSS-Import-Kette
-4. `src/styles/global.css` – @theme entfernt, body/font-play auf CSS-Variablen umgestellt
-5. `src/styles/fonts.css` – @font-face für Poppins + Open Sans ergänzt
-6. `src/layouts/Layout.astro` – import auf theme-loader.css
+### default (Cyan/Orange, CSS-Import-wechselbar)
+| Token | Wert |
+|-------|------|
+| `--color-bg` | `#0a0a0f` |
+| `--color-primary` | `#0891b2` |
+| `--color-secondary` | `#f97316` |
+| `--color-accent` | `#22d3ee` |
+
+### electric-night (Purple/Pink)
+| Token | Wert |
+|-------|------|
+| `--color-bg` | `#0a0a0f` |
+| `--color-surface` | `#1c0a2e` |
+| `--color-primary` | `#a855f7` |
+| `--color-secondary` | `#ec4899` |
+| `--color-accent` | `#22d3ee` |
+
+### golden-hour (Amber/Gold)
+| Token | Wert |
+|-------|------|
+| `--color-bg` | `#0a0a0f` |
+| `--color-surface` | `#1a1410` |
+| `--color-primary` | `#f59e0b` |
+| `--color-secondary` | `#fb923c` |
+| `--color-accent` | `#eab308` |
+
+### arctic-frost (Hellblau/Lavendel)
+| Token | Wert |
+|-------|------|
+| `--color-bg` | `#080b12` |
+| `--color-surface` | `#0f172a` |
+| `--color-primary` | `#60a5fa` |
+| `--color-secondary` | `#a78bfa` |
+| `--color-accent` | `#67e8f9` |
+
+## Fonts
+
+- **Eine Schriftart für alle Themes**: Josefin Sans (self-hosted, variable woff2)
+- Geladen via `src/styles/fonts.css` → `Layout.astro` importiert sie
+- Kein Google Fonts-Netzwerkrequest → schneller, DSGVO-konform, offline-fähig
+
+## Farben in Components
+
+Hardcodierte Farben (orange/cyan) wurden durch `color-mix(in srgb, var(--color-*))` ersetzt:
+
+| Klasse | Nutzung |
+|--------|---------|
+| `.icon-circle` + `.icon-circle-secondary/primary/accent` | Icon-Container |
+| `.faq-icon` / `.faq-details[open] .faq-icon` | FAQ-Toggle-Icons |
+| `.star-active` | Aktive Sterne in Reviews |
+| `.hero-overlay-accent` | Gradient-Overlay auf Hero-Sektionen |
+| `.review-card-hover` | Hover-Schatten auf Review-Karten |
 
 ## Keine Änderungen an
 
-- Components (Navbar, HeroSlider, CityGrid, Footer, etc.)
-- Tailwind-Klassen in .astro-Files (`bg-[var(--color-primary)]` → `bg-primary` etc.)
+- Components (Navbar, CityHero, Footer, etc.)
 - HTML-Struktur, JSON-LD, Scripts
-- Build-Prozess
+- Build-Prozess (`pnpm run build`)
+- Tailwind-Klassen
 
-## Fallstricke
+## Wartung
 
-- `@font-face` muss VOR `@import "tailwindcss"` kommen (Tailwind v4 Bug)
-- `@theme {}` muss NACH `@import "tailwindcss"` kommen (CSS-Reihenfolge)
-- Google Fonts @import wird per `@import url(...)` vor `@import "tailwindcss"` gelöst
+Neues Theme hinzufügen:
+1. `src/styles/themes/<name>.css` erstellen mit `@theme {}`-Block
+2. In `Layout.astro`:
+   - Theme in URL-Regex des Scripts ergänzen
+   - `html[data-theme="<name>"] {}`-Block im `<style>` ergänzen
+3. Für temporären Wechsel: fertig (URL-Parameter)
+4. Für permanenten Wechsel: `@import` in `global.css` ändern

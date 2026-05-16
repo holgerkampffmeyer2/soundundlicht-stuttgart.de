@@ -10,6 +10,6 @@
   --color-text: #fefce8;
   --color-text-muted: #a8a29e;
   --color-border: #292524;
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
+  --font-body: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
 }
