@@ -4,6 +4,9 @@ node_modules/
 # Build output
 dist/
 
+# test
+test-results/
+
 # Astro
 .astro/
 
