@@ -19,6 +19,10 @@ pnpm run build:full # Build + RSS + urllist (für Deploy)
 pnpm run preview  # Preview build
 ```
 
+## Theme System
+
+The site supports multiple color themes switchable via URL parameter (`?theme=<name>`) or by changing the CSS import in `src/styles/global.css`. See `docs/theme-system.md` for details.
+
 ## Seitenstruktur
 
 | Seite | Route | Beschreibung |

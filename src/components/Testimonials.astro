@@ -22,10 +22,10 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
     ) : (
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="reviewsGrid">
         {allReviews.map((review, index) => (
-          <div class="review-card bg-[var(--color-bg)] rounded-xl p-6 border border-[var(--color-border)] hover:border-[var(--color-secondary)] hover:shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-all duration-300" data-page={Math.floor(index / ITEMS_PER_PAGE) + 1}>
+          <div class="review-card bg-[var(--color-bg)] rounded-xl p-6 border border-[var(--color-border)] hover:border-[var(--color-secondary)] review-card-hover transition-all duration-300" data-page={Math.floor(index / ITEMS_PER_PAGE) + 1}>
             <div class="flex gap-1 mb-4">
               {Array.from({ length: 5 }).map((_, i) => (
-                <StarIcon class={`w-5 h-5 ${i < review.rating ? 'text-orange-500' : 'text-gray-400'}`} />
+                <StarIcon class={`w-5 h-5 ${i < review.rating ? 'star-active' : 'text-gray-400'}`} />
               ))}
               <GoogleIcon class="w-4 h-4 ml-2 text-gray-400" />
             </div>

@@ -213,3 +213,7 @@ CityHero nutzt direkt WebP (single source) – Hintergrundbilder via CSS `backgr
 - Only "ab"-prices shown (no concrete prices)
 - Contact via email only (no form)
 - Pickup in Leinfelden-Echterdingen (no delivery)
+
+## Theme System
+
+The site supports multiple color themes switchable via URL parameter (`?theme=<name>`) or by changing the CSS import in `src/styles/global.css`. See `docs/theme-system.md` for details.

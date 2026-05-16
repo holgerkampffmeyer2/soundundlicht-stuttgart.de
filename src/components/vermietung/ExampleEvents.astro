@@ -91,13 +91,13 @@ const { events } = Astro.props;
   .event-card:hover {
     border-color: var(--color-secondary);
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15);
+    box-shadow: 0 20px 40px color-mix(in srgb, var(--color-secondary) 15%, transparent);
   }
 
   .event-icon {
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(34, 211, 238, 0.1));
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-secondary) 20%, transparent), color-mix(in srgb, var(--color-accent) 10%, transparent));
     border-radius: 1rem;
     display: flex;
     align-items: center;
