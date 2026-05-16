@@ -1,0 +1,15 @@
+@theme {
+  --color-bg: #050510;
+  --color-surface: #0a1628;
+  --color-surface-hover: #0f1f3a;
+  --color-primary: #06b6d4;
+  --color-primary-hover: #22d3ee;
+  --color-secondary: #10b981;
+  --color-secondary-hover: #34d399;
+  --color-accent: #06b6d4;
+  --color-text: #f8fafc;
+  --color-text-muted: #64748b;
+  --color-border: #1e293b;
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
