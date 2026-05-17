@@ -22,6 +22,15 @@ src/
 ├── pages/                # Routen
 │   ├── index.astro       # Landing Page
 │   ├── vermietung.astro  # Vermietung Landing
+│   ├── vermietung/       # Produktseiten (8)
+│   │   ├── partypaket-stuttgart.astro
+│   │   ├── djpaket-fildern.astro
+│   │   ├── veranstaltungspaket-stuttgart.astro
+│   │   ├── jbl-partybox-300-320.astro
+│   │   ├── ld-maui-28g3.astro
+│   │   ├── kls-laser-bar.astro
+│   │   ├── led-bossfx-nebelmaschine.astro
+│   │   └── partylicht-moving-head.astro
 │   └── <stadt>.astro     # City Pages (15 Städte)
 ├── styles/
 │   ├── global.css
@@ -45,7 +54,15 @@ public/
 |------|-----|
 | `/` | Landing Page |
 | `/vermietung/` | Vermietung Landing |
-| `/stuttgart/` ... `/ostfildern/` | 15 City Pages |
+| `/vermietung/partypaket-stuttgart/` | Partypaket |
+| `/vermietung/djpaket-fildern/` | DJ-Paket |
+| `/vermietung/veranstaltungspaket-stuttgart/` | Veranstaltungspaket |
+| `/vermietung/jbl-partybox-300-320/` | JBL Partybox |
+| `/vermietung/ld-maui-28g3/` | LD Maui 28 G3 |
+| `/vermietung/kls-laser-bar/` | KLS Laser Bar |
+| `/vermietung/led-bossfx-nebelmaschine/` | LED + Nebelmaschine |
+| `/vermietung/partylicht-moving-head/` | Partylicht Moving Head |
+| 15 City Pages: `/stuttgart/`, `/esslingen/`, ... `/ostfildern/` | City Pages |
 
 ---
 
