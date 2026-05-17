@@ -18,7 +18,7 @@ Alle verfügbaren Themes via `?theme=<name>`:
 - `golden-hour` – Amber/Gold (#f59e0b / #fb923c)
 - `arctic-frost` – Hellblau/Lavendel (#60a5fa / #a78bfa)
 
-Siehe `docs/theme-system.md` für vollständige Token-Tabellen aller Themes.
+Siehe [docs/theme-system.md](theme-system.md) für vollständige Token-Tabellen aller Themes.
 
 ## Animation-Klassen
 - `.animate-on-scroll` – Fade-In bei Scroll (IntersectionObserver)

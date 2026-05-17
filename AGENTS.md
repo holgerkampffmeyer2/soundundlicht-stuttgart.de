@@ -42,4 +42,4 @@ Für tägliche Entwicklung reicht `pnpm run build` (ohne RSS/urllist).
 - Contact via email only (no form)
 - Pickup in Leinfelden-Echterdingen (no delivery)
 
-Siehe `docs/DESIGN.md` für Farbsystem, Animationen, Bildkonventionen und Theme-System.
+Siehe [docs/DESIGN.md](docs/DESIGN.md) für Farbsystem, Animationen, Bildkonventionen und Theme-System.
