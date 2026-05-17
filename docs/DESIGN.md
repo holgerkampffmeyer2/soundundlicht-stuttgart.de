@@ -53,22 +53,22 @@ public/
 
 ### Default (deep-bass – Navy/Blau)
 
-| Token | Wert | Rolle |
+| Token | Farbe | Rolle |
 |---|---|---|
-| `--color-bg` | `#050510` | Hintergrund |
-| `--color-surface` | `#0a1628` | Karten, Sektionen |
-| `--color-primary` | `#2563eb` | Primäre Akzente |
-| `--color-secondary` | `#1e40af` | Sekundäre Akzente |
-| `--color-accent` | `#60a5fa` | Buttons, Links |
+| `--color-bg` | <span style="display:inline-block;width:12px;height:12px;background:#050510;border-radius:2px;border:1px solid #333;"></span> `#050510` | Hintergrund |
+| `--color-surface` | <span style="display:inline-block;width:12px;height:12px;background:#0a1628;border-radius:2px;border:1px solid #333;"></span> `#0a1628` | Karten, Sektionen |
+| `--color-primary` | <span style="display:inline-block;width:12px;height:12px;background:#2563eb;border-radius:2px;"></span> `#2563eb` | Primäre Akzente |
+| `--color-secondary` | <span style="display:inline-block;width:12px;height:12px;background:#1e40af;border-radius:2px;"></span> `#1e40af` | Sekundäre Akzente |
+| `--color-accent` | <span style="display:inline-block;width:12px;height:12px;background:#60a5fa;border-radius:2px;"></span> `#60a5fa` | Buttons, Links |
 
 ### Alt-Themes
 
 | Theme | Stimmung |
 |---|---|
-| `default` | Cyan/Orange (#0891b2 / #f97316) |
-| `electric-night` | Purple/Pink (#a855f7 / #ec4899) |
-| `golden-hour` | Amber/Gold (#f59e0b / #fb923c) |
-| `arctic-frost` | Hellblau/Lavendel (#60a5fa / #a78bfa) |
+| `default` | <span style="display:inline-block;width:12px;height:12px;background:#0891b2;border-radius:2px;"></span> Cyan/Orange (#0891b2 / #f97316) |
+| `electric-night` | <span style="display:inline-block;width:12px;height:12px;background:#a855f7;border-radius:2px;"></span> Purple/Pink (#a855f7 / #ec4899) |
+| `golden-hour` | <span style="display:inline-block;width:12px;height:12px;background:#f59e0b;border-radius:2px;"></span> Amber/Gold (#f59e0b / #fb923c) |
+| `arctic-frost` | <span style="display:inline-block;width:12px;height:12px;background:#60a5fa;border-radius:2px;"></span> Hellblau/Lavendel (#60a5fa / #a78bfa) |
 
 Vollständige Token-Tabellen: [docs/theme-system.md](theme-system.md)
 
