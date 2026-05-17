@@ -21,7 +21,7 @@ pnpm run preview  # Preview build
 
 ## Theme System
 
-The site supports multiple color themes switchable via URL parameter (`?theme=<name>`) or by changing the CSS import in `src/styles/global.css`. See [docs/DESIGN.md](docs/DESIGN.md) for details.
+The site supports multiple color themes switchable via URL parameter (`?theme=<name>`) or by changing the CSS import in `src/styles/global.css`. See [docs/DESIGN.md](docs/DESIGN.md) for details (Token-Tabellen in [docs/theme-system.md](docs/theme-system.md)).
 
 ## Seitenstruktur
 
