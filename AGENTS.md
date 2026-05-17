@@ -7,12 +7,23 @@ Astro 6.x SSG site for event tech rental (PA, partyboxes, lights) in Stuttgart a
 
 ```
 src/pages/
-├── index.astro                       # Landing page (hero slider, services, packages, gallery, steps, city grid, FAQ, testimonials, contact)
-├── stuttgart.astro                   # City page: PA-Anlage & Partybox mieten in Stuttgart
-├── esslingen.astro                   # City page: Partybox & PA-Anlage mieten in Esslingen
-├── tübingen.astro                    # City page: Veranstaltungstechnik mieten in Tübingen
-├── filderstadt.astro                 # City page: Partytechnik mieten in Filderstadt
-└── leinfelden-echterdingen.astro     # City page: Veranstaltungstechnik mieten in Leinfelden-Echterdingen
+├── index.astro                       # Landing page
+├── vermietung.astro                  # Vermietung landing page
+├── stuttgart.astro                   # City pages (15 total)
+├── esslingen.astro
+├── tübingen.astro
+├── filderstadt.astro
+├── leinfelden-echterdingen.astro
+├── kornwestheim.astro
+├── ludwigsburg.astro
+├── böblingen.astro
+├── sindelfingen.astro
+├── leonberg.astro
+├── waiblingen.astro
+├── nürtingen.astro
+├── reutlingen.astro
+├── kirchheim-unter-teck.astro
+└── ostfildern.astro
 ```
 
 ## Build Commands

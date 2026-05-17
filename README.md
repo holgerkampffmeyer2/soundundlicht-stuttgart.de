@@ -21,7 +21,7 @@ pnpm run preview  # Preview build
 
 ## Theme System
 
-The site supports multiple color themes switchable via URL parameter (`?theme=<name>`) or by changing the CSS import in `src/styles/global.css`. See `docs/theme-system.md` for details.
+The site supports multiple color themes switchable via URL parameter (`?theme=<name>`) or by changing the CSS import in `src/styles/global.css`. See [docs/DESIGN.md](docs/DESIGN.md) for details.
 
 ## Seitenstruktur
 
@@ -59,11 +59,7 @@ The site supports multiple color themes switchable via URL parameter (`?theme=<n
 
 ## Neue City-Seite hinzufügen
 
-1. **Bild:** CC-lizenziertes Stadtfoto von Wikimedia Commons als WebP konvertieren (1920px hero + 600px thumb) nach `public/img/cities/`
-2. **Seite:** `src/pages/<slug>.astro` anlegen (bestehende City-Seite kopieren)
-3. **CityGrid:** Eintrag in `src/components/CityGrid.astro` ergänzen
-4. **Footer:** Link in `src/components/Footer.astro` Einzugsgebiet ergänzen
-5. **Build:** `pnpm run build` – Sitemap prüft neue URL
+Siehe [docs/citypage.md](docs/citypage.md) für die vollständige Anleitung.
 
 ## Verzeichnisstruktur
 
@@ -82,6 +78,7 @@ src/
 │   └── Layout.astro
 ├── pages/
 │   ├── index.astro
+│   ├── vermietung.astro
 │   ├── stuttgart.astro
 │   ├── esslingen.astro
 │   ├── tübingen.astro
