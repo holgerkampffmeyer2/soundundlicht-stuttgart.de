@@ -17,11 +17,11 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - Keine Secrets (API-Keys, Passwörter) committen
 
 ## SEO Notes
-- Single-page for landing (no sub-pages)
-- City pages are separate .astro files in `src/pages/` (no dynamic routing)
-- Only "ab"-prices shown (no concrete prices)
-- Contact via email only (no form)
-- Pickup in Leinfelden-Echterdingen (no delivery)
+- Landing page is single-page (all sections inline, no sub-pages)
+- City pages + product pages are separate `.astro` files (no dynamic routing)
+- Only "ab"-prices shown (no concrete fixed prices)
+- Contact via email only (no contact form)
+- Abholung in Leinfelden-Echterdingen, Lieferung auf Anfrage möglich
 
 ## Referenzen
 - [docs/DESIGN.md](docs/DESIGN.md) — Projektstruktur, Farbsystem, Komponenten, Animationen
