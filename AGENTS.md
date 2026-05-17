@@ -16,12 +16,17 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - Vor Commit: Build testen (`pnpm run build`)
 - Keine Secrets (API-Keys, Passwörter) committen
 
-## SEO Notes
-- Landing page is single-page (all sections inline, no sub-pages)
-- City pages + product pages are separate `.astro` files (no dynamic routing)
-- Only "ab"-prices shown (no concrete fixed prices)
-- Contact via email only (no contact form)
-- Abholung in Leinfelden-Echterdingen, Lieferung auf Anfrage möglich
+## SEO-Richtlinien
+
+- **JSON-LD pro Seitentyp:**
+  - Landing (`/`): `Service` (general), `OfferCatalog` (3 Pakete, `ab`-Preise), `FAQPage` (manuell via `faqJsonLd`)
+  - Vermietung (`/vermietung/`): `Service`, `FAQPage` (manuell via `faqSchema`)
+  - City-Seite (`/<stadt>/`): `Service` mit `areaServed: { City: "<Stadt>" }` + `provider: LocalBusiness`
+  - Produktseite (`/vermietung/<produkt>/`): `Service`, `Product`, `FAQPage` (via `getFaqsForPage('<produkt-slug>')`)
+- **Preise**: immer `"ab XX€"` als Text, nie fester Betrag in `price`
+- **FAQ-Helper**: `getFaqsForPage(pageId)` aus `lib/faqUtils` — filtert FAQs per `pages[]`-Array. `faqUtils` hat keinen `getFaqSchema()`, FAQPage-JSON-LD wird manuell in jeder Seite gebaut.
+- **Slug-Convention**: City = `<stadt>.astro`, Produkt = `vermietung/<produkt-slug>.astro`
+- **Title-Pattern**: `"<Keyword> mieten in <Stadt> | Sound & Licht Stuttgart"`
 
 ## Referenzen
 - [docs/DESIGN.md](docs/DESIGN.md) — Projektstruktur, Farbsystem, Komponenten, Animationen
