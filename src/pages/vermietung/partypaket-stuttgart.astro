@@ -151,18 +151,21 @@ const faqSchema = {
 
   <Breadcrumb segments={breadcrumbSegments} />
 
-  <!-- Hero Header -->
-  <section class="relative min-h-[50vh] flex items-center overflow-hidden"
-    style="background: linear-gradient(to right, rgba(10,10,15,0.9) 0%, rgba(10,10,15,0.3) 100%), url('/img/vermietung/partypaket.webp') center/cover no-repeat;">
-    <div class="max-w-6xl mx-auto px-4 w-full">
-      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
-      <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">Partypaket Stuttgart</h1>
-      <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
-        Das Party-Starterpaket für kleinere Feiern bis ca. 50 Personen. 
-        Komplette Technik mit Sound, Licht, Nebel und Mikrofon aus einer Hand.
-      </p>
-    </div>
-  </section>
+    <!-- Hero -->
+    <section class="relative min-h-[60vh] flex items-center overflow-hidden">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/img/vermietung/partypaket.webp')"></div>
+      <div class="hero-overlay-accent"></div>
+      <div class="relative z-10 w-full py-32 px-4">
+        <div class="max-w-6xl mx-auto">
+          <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+          <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Partypaket Stuttgart</h1>
+          <p class="text-[var(--color-text)] text-xl max-w-2xl">
+            Miete unser Partypaket für deine nächste Party in Stuttgart und Umgebung. Das Set enthält 2x JBL Partyboxen mit kraftvollem Sound und dynamischen Lichteffekten, eine Eurolite KLS Laser Bar für spektakuläre Lichtshow, eine Stairville AF-150 Nebelmaschine für atmosphärische Wirkung sowie Mikrofon und LED PAR Strahler für vollständige Beschallung und Beleuchtung.<br />
+            Alles inklusive Strom- und Anschlusskabel für sofortigen Einsatz. Perfekt für Geburtstagsfeiern, Hauspartys und kleinere Veranstaltungen bis zu 50 Personen.
+          </p>
+        </div>
+      </div>
+    </section>
 
   <!-- Package Highlights -->
   <section class="section-padding bg-[var(--color-surface)]">

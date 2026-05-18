@@ -165,18 +165,21 @@ const faqSchema = {
 
   <Breadcrumb segments={breadcrumbSegments} />
 
-  <!-- Hero Header -->
-  <section class="relative min-h-[50vh] flex items-center overflow-hidden"
-    style="background: linear-gradient(to right, rgba(10,10,15,0.9) 0%, rgba(10,10,15,0.3) 100%), url('/img/vermietung/veranstaltungspaket.webp') center/cover no-repeat;">
-    <div class="max-w-6xl mx-auto px-4 w-full">
-      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
-      <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">Veranstaltungspaket Stuttgart</h1>
-      <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
-        Das professionelle Veranstaltungspaket für mittlere Feiern bis ca. 150 Personen. 
-        Hochwertige Technik mit LD Maui Soundanlage, Licht, Nebel und Moving Heads.
-      </p>
-    </div>
-  </section>
+    <!-- Hero -->
+    <section class="relative min-h-[60vh] flex items-center overflow-hidden">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/img/vermietung/veranstaltungspaket.webp')"></div>
+      <div class="hero-overlay-accent"></div>
+      <div class="relative z-10 w-full py-32 px-4">
+        <div class="max-w-6xl mx-auto">
+          <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+          <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Veranstaltungspaket Stuttgart</h1>
+          <p class="text-[var(--color-text)] text-xl max-w-2xl">
+            Miete unser professionelles Veranstaltungspaket für dein Event in Stuttgart und Umgebung. Das Set enthält das leistungsstarke LD Maui 28 G3 Säulensystem mit erstklassigem Sound, ein Yamaha 6-Kanal Mischpult für flexible Audio-Steuerung, eine Eurolite KLS Laser Bar für spektakuläre Licht- und Lasereffekte, eine Stairville AF-150 Nebelmaschine für atmosphärische Wirkung sowie Moving Heads, Mikrofon und LED PAR Strahler für komplette Beschallung und Beleuchtung.<br />
+            Alles inklusive notwendiger Strom- und Anschlusskabel für einfachen Aufbau. Perfekt für Hochzeiten, Firmenfeiern, Vereinsfeste und Gartenpartys bis zu 150 Personen.
+          </p>
+        </div>
+      </div>
+    </section>
 
   <!-- Package Highlights -->
   <section class="section-padding bg-[var(--color-surface)]">
