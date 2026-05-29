@@ -135,7 +135,7 @@ const total = cities.length;
       <div class="carousel-viewport">
         <div class="carousel-track" id="carousel-track">
           {cities.at(-1) && (
-            <a href={`/${cities.at(-1).slug}/`} class="carousel-slide" data-index="-1" aria-hidden="true" tabindex="-1">
+            <a href={`/${cities.at(-1).slug}`} class="carousel-slide" data-index="-1" aria-hidden="true" tabindex="-1">
               <div class="city-card-bg" data-bg={cities.at(-1).image}></div>
               <div class="city-card-overlay"></div>
               <div class="city-card-content">
@@ -147,7 +147,7 @@ const total = cities.length;
             </a>
           )}
           {cities.map((city, i) => (
-            <a href={`/${city.slug}/`} class="carousel-slide" data-index={i}>
+            <a href={`/${city.slug}`} class="carousel-slide" data-index={i}>
               <div class="city-card-bg" data-bg={city.image}></div>
               <div class="city-card-overlay"></div>
               <div class="city-card-content">

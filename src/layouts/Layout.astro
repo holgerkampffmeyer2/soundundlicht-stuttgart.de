@@ -21,9 +21,13 @@ const {
 } = Astro.props;
 
 let canonicalPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/');
-// Ensure trailing slash for consistency with site configuration
-if (!canonicalPath.endsWith('/') && canonicalPath !== '/') {
-  canonicalPath += '/';
+// Ensure no trailing slash for trailingSlash: 'never' site
+if (canonicalPath === '/') {
+  // Homepage should have no path
+  canonicalPath = '';
+} else if (canonicalPath.endsWith('/')) {
+  // Remove trailing slash for other pages
+  canonicalPath = canonicalPath.slice(0, -1);
 }
 const canonicalURL = new URL(canonicalPath, Astro.site);
 ---
