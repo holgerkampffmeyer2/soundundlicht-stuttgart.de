@@ -28,7 +28,7 @@ function findHtmlPages() {
       const pagePath = relativePrefix || '/';
       const html = fs.readFileSync(path.join(dir, 'index.html'), 'utf-8');
       if (!html.includes('noindex')) {
-        pages.push(`${baseUrl}${pagePath}`);
+        pages.push(`${baseUrl}${encodeURI(pagePath)}`);
       }
     }
 
