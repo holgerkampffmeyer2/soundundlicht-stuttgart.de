@@ -549,6 +549,16 @@ body {
   color: var(--color-accent);
 }
 
+.faq-details {
+  transition: all 0.3s ease;
+}
+
+.faq-details:hover {
+  border-color: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--color-secondary) 12%, transparent);
+}
+
 .faq-details[open] .faq-icon {
   transform: rotate(90deg);
 }
