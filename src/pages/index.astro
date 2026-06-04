@@ -9,6 +9,7 @@ import ContactSection from "../components/ContactSection.astro";
 import CityGrid from "../components/CityGrid.astro";
 import FAQSection from "../components/FAQSection.astro";
 import { getFaqsForPage } from '../lib/faqUtils';
+import { serviceArea, businessRating, offerCatalogJsonLd } from '../data/jsonLd';
 import HeroSlider from "../components/HeroSlider.astro";
 import BieteSection from "../components/BieteSection.astro";
 
@@ -27,54 +28,9 @@ const faqJsonLd = {
   }))
 };
 
-const offerCatalogJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "OfferCatalog",
-  "name": "Vermietung Pakete",
-  "itemListElement": [
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Partypaket"
-      },
-      "price": "160.00",
-      "priceCurrency": "EUR"
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "DJ-Paket"
-      },
-      "price": "200.00",
-      "priceCurrency": "EUR"
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Veranstaltungspaket"
-      },
-      "price": "180.00",
-      "priceCurrency": "EUR"
-    }
-  ]
-};
+// offerCatalogJsonLd imported from data/jsonLd
 
-const businessRating = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://soundundlicht-stuttgart.de/#business",
-  "name": "DJ Hulk - Holger Kampffmeyer",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": 5.0,
-    "reviewCount": 15,
-    "bestRating": 5,
-    "worstRating": 1
-  }
-};
+// businessRating imported from data/jsonLd
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
@@ -85,10 +41,7 @@ const serviceJsonLd = {
     "@type": "LocalBusiness",
     "@id": "https://soundundlicht-stuttgart.de/#business"
   },
-  "areaServed": {
-    "@type": "State",
-    "name": "Baden-Württemberg"
-  }
+  "areaServed": serviceArea
 };
 ---
 
@@ -105,13 +58,13 @@ const serviceJsonLd = {
     id="home"
     slides={[
       {
-        title: "Sound & Licht Stuttgart",
+        title: "Partytechnik mieten in Stuttgart & Umgebung",
         titleTag: "h1",
-        description: "Du planst eine Geburtstagsparty, Hochzeit, Firmenfeier oder ein Karaoke-Event? Ich bin Dein lokaler Verleiher von Lautsprechern, Musikanlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung. Keine Versandrisiken, kein monatelanger Vorlauf. Einfach vorbeikommen, Technik anschauen, mitnehmen und losfeiern.",
-        category: "Dein lokaler Verleih für Partylicht, Partyboxen und Veranstaltungstechnik",
+        description: "PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment für deine Feier. Ich bin dein lokaler Verleiher in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung. Keine Versandrisiken – einfach vorbeikommen, Technik anschauen, mitnehmen und losfeiern.",
+        category: "Lokaler Verleih: Abholung in Leinfelden-Echterdingen",
         buttons: [
-          { text: "Zur Vermietung ↗", href: "/vermietung", class: "btn-primary" },
-          { text: "Kontakt aufnehmen", href: "#kontakt", class: "btn-secondary" }
+          { text: "Pakete & Preise ↗", href: "/vermietung", class: "btn-primary" },
+          { text: "Verfügbarkeit prüfen", href: "#kontakt", class: "btn-secondary" }
         ]
       },
       {

@@ -20,7 +20,7 @@ export function getFaqsForPage(currentPage: string): FaqEntry[] {
     
     // Manual includes check for older TypeScript targets
     for (let i = 0; i < faq.pages.length; i++) {
-      if (faq.pages[i] === currentPage) {
+      if (faq.pages[i] === currentPage || faq.pages[i] === 'index') {
         return true;
       }
     }

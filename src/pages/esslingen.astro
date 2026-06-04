@@ -15,7 +15,7 @@ const breadcrumbSegments = [
   { label: "Esslingen" }
 ];
 
-const cityFaqs = getFaqsForPage('index');
+const cityFaqs = getFaqsForPage('esslingen');
 
 const cityJsonLd = {
   "@context": "https://schema.org",
@@ -30,13 +30,26 @@ const cityJsonLd = {
     "@id": "https://soundundlicht-stuttgart.de/#business"
   }
 };
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": cityFaqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
 <Layout
   title="Partybox & PA-Anlage mieten in Esslingen | Sound & Licht Stuttgart"
   description="Veranstaltungstechnik mieten in Esslingen am Neckar: Partyboxen, PA-Anlagen, Lichttechnik und Komplettpakete. Abholung in Leinfelden-Echterdingen, nur 10 km von Esslingen."
   image="/img/header.webp"
-  jsonLd={cityJsonLd}
+  jsonLd={[cityJsonLd, faqJsonLd]}
 >
   <Navbar currentPage="city" />
 

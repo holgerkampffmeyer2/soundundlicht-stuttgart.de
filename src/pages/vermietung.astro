@@ -7,6 +7,7 @@ import FAQSection from '../components/FAQSection.astro';
 import MietanfrageAblauf from '../components/vermietung/MietanfrageAblauf.astro';
 import HeroSlider from "../components/HeroSlider.astro";
 import { getFaqsForPage } from '../lib/faqUtils';
+import { serviceArea, businessRating, offerCatalogJsonLd } from '../data/jsonLd';
 
 const faqs = getFaqsForPage('vermietung');
 
@@ -23,19 +24,7 @@ const faqSchema = {
   }))
 };
 
-const businessRating = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://soundundlicht-stuttgart.de/#business",
-  "name": "DJ Hulk - Holger Kampffmeyer",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": 5.0,
-    "reviewCount": 15,
-    "bestRating": 5,
-    "worstRating": 1
-  }
-};
+// businessRating imported from data/jsonLd
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -46,10 +35,7 @@ const serviceSchema = {
     "@type": "LocalBusiness",
     "@id": "https://soundundlicht-stuttgart.de/#business"
   },
-  "areaServed": {
-    "@type": "State",
-    "name": "Baden-Württemberg"
-  }
+  "areaServed": serviceArea
 };
 
 const komplettPakete = [
@@ -198,7 +184,7 @@ const lichtEquipment = [
 ---
 
 <Layout 
-  title="Vermietung - DJ Hulk - Partyboxen, Lichttechnik Stuttgart"
+  title="Vermietung - Sound und Licht Stuttgart - Partyboxen, Lichttechnik und DJ-Equipment mieten"
   description="Verleih von Musikanlagen, Partyboxen, Lichttechnik und DJ-Equipment im Großraum Stuttgart. Faire Preise und professionelle Beratung."
   image="/img/vermietung/licht2.webp"
   jsonLd={[
@@ -213,16 +199,7 @@ const lichtEquipment = [
     businessRating,
     faqSchema,
     serviceSchema,
-    {
-      "@context": "https://schema.org",
-      "@type": "OfferCatalog",
-      "name": "Vermietung Pakete",
-      "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Partypaket"}, "price": "160.00", "priceCurrency": "EUR"},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ-Paket"}, "price": "200.00", "priceCurrency": "EUR"},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Veranstaltungspaket"}, "price": "180.00", "priceCurrency": "EUR"}
-      ]
-    }
+    offerCatalogJsonLd
   ]}
 >
   <Navbar currentPage="/vermietung" />

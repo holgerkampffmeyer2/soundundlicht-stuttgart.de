@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/fonts.css';
+import { serviceArea } from '../data/jsonLd';
 
 interface Props {
   title: string;
@@ -142,63 +143,52 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
       "description": description,
       "url": canonicalURL.href,
       "mainEntity": {
-        "@type": "LocalBusiness",
-        "@id": "https://soundundlicht-stuttgart.de/#business",
-        "name": "DJ Hulk - Holger Kampffmeyer",
-        "image": "https://soundundlicht-stuttgart.de/img/header.webp",
-        "telephone": "+491711467491",
-        "priceRange": "€€",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Magellanstraße 4",
-          "addressLocality": "Leinfelden-Echterdingen",
-          "postalCode": "70771",
-          "addressRegion": "Baden-Württemberg",
-          "addressCountry": "DE"
-        }
+        "@id": "https://soundundlicht-stuttgart.de/#business"
       }
     })} />
 
     <!-- Schema.org LocalBusiness -->
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "@id": "https://soundundlicht-stuttgart.de/#business",
-        "name": "DJ Hulk - Holger Kampffmeyer",
-        "description": "Verleih von Musikanlagen, Partyboxen, Lichttechnik und Tontechnik im Großraum Stuttgart. Electronic Music DJ für Events, Feiern und Hochzeiten.",
-        "url": "https://soundundlicht-stuttgart.de",
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://soundundlicht-stuttgart.de/#business",
+      "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
+      "description": "Verleih von Musikanlagen, Partyboxen, Lichttechnik und Tontechnik im Großraum Stuttgart. Electronic Music DJ für Events, Feiern und Hochzeiten.",
+      "url": "https://soundundlicht-stuttgart.de",
+      "telephone": "+491711467491",
+      "email": "holger.kampffmeyer+dj@gmail.com",
+      "image": "https://soundundlicht-stuttgart.de/img/header.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Magellanstraße 4",
+        "addressLocality": "Leinfelden-Echterdingen",
+        "postalCode": "70771",
+        "addressRegion": "Baden-Württemberg",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "48.6938",
+        "longitude": "9.1539"
+      },
+      "openingHours": ["Mo 09:00-20:00", "Tu 09:00-20:00", "We 09:00-20:00", "Th 09:00-20:00", "Fr 09:00-20:00", "Sa 09:00-20:00", "Su 09:00-20:00"],
+      "priceRange": "€€",
+      "areaServed": serviceArea,
+      "contactPoint": {
+        "@type": "ContactPoint",
         "telephone": "+491711467491",
+        "contactType": "customer service",
         "email": "holger.kampffmeyer+dj@gmail.com",
-        "image": "https://soundundlicht-stuttgart.de/img/header.webp",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Magellanstraße 4",
-          "addressLocality": "Leinfelden-Echterdingen",
-          "postalCode": "70771",
-          "addressRegion": "Baden-Württemberg",
-          "addressCountry": "DE"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "48.6938",
-          "longitude": "9.1539"
-        },
-        "openingHours": "Mo-Su 09:00-20:00",
-        "priceRange": "€€",
-        "areaServed": {
-          "@type": "State",
-          "name": "Baden-Württemberg"
-        },
-        "sameAs": [
-          "https://www.facebook.com/holgerkampffmeyerdj",
-          "https://www.instagram.com/djhulk_de",
-          "https://www.youtube.com/@djhulk_de",
-          "https://www.mixcloud.com/holger-kampffmeyer/",
-          "https://holger-kampffmeyer.de"
-        ]
-      }
-    </script>
+        "availableLanguage": ["German", "English"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/holgerkampffmeyerdj",
+        "https://www.instagram.com/djhulk_de",
+        "https://www.youtube.com/@djhulk_de",
+        "https://www.mixcloud.com/holger-kampffmeyer/",
+        "https://holger-kampffmeyer.de"
+      ]
+    })} />
 
 
 
@@ -207,6 +197,7 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
       {
         "@context": "https://schema.org",
         "@type": "ItemList",
+        "name": "Hauptnavigation",
         "itemListElement": [
           {
             "@type": "SiteNavigationElement",

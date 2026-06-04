@@ -16,7 +16,20 @@ const breadcrumbSegments = [
   { label: "Waiblingen" }
 ];
 
-const cityFaqs = getFaqsForPage('index');
+const cityFaqs = getFaqsForPage('waiblingen');
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": cityFaqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 
 const cityJsonLd = {
   "@context": "https://schema.org",
@@ -39,7 +52,7 @@ const cityJsonLd = {
   title="PA-Anlage & Partybox mieten in Waiblingen | Sound & Licht Stuttgart"
   description="PA-Anlagen, Partyboxen und Lichttechnik mieten in Waiblingen und Umgebung. Komplettpakete für Geburtstage, Hochzeiten und Vereinsfeiern. Abholung in Leinfelden-Echterdingen, nur 25 km."
   image="/img/header.webp"
-  jsonLd={cityJsonLd}
+  jsonLd={[cityJsonLd, faqJsonLd]}
 >
   <Navbar currentPage="city" />
 

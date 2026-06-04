@@ -15,7 +15,20 @@ const breadcrumbSegments = [
   { label: "Stuttgart" }
 ];
 
-const cityFaqs = getFaqsForPage('index');
+const cityFaqs = getFaqsForPage('stuttgart');
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": cityFaqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 
 const cityJsonLd = {
   "@context": "https://schema.org",
@@ -39,7 +52,7 @@ const travelTime = "20-25";
   title="PA-Anlage & Partybox mieten in Stuttgart | Sound & Licht Stuttgart"
   description="Partytechnik mieten in Stuttgart: PA-Anlagen, Partyboxen, Lichttechnik und Komplettpakete für deine Feier. Abholung in Leinfelden-Echterdingen, verkehrsgünstig an A8/B27 – nur {travelTime} Minuten von Stuttgart."
   image="/img/header.webp"
-  jsonLd={cityJsonLd}
+  jsonLd={[cityJsonLd, faqJsonLd]}
 >
   <Navbar currentPage="city" />
 

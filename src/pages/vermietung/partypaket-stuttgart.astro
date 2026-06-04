@@ -10,6 +10,7 @@ import Testimonials from '../../components/Testimonials.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getFaqsForPage } from '../../lib/faqUtils';
+import { businessRating } from '../../data/jsonLd';
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -17,7 +18,7 @@ const breadcrumbSegments = [
   { label: "Partypaket" }
 ];
 
-const pageTitle = "Partypaket Stuttgart - Partytechnik Miete | DJ Hulk";
+const pageTitle = "Partypaket Stuttgart | Sound und Licht Stuttgart - Holger Kampffmeyer";
 
 const faqs = getFaqsForPage('partypaket-stuttgart');
 
@@ -75,19 +76,7 @@ const packageFeatures = [
 
 const siteUrl = "https://soundundlicht-stuttgart.de";
 
-const businessRating = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://soundundlicht-stuttgart.de/#business",
-  "name": "DJ Hulk - Holger Kampffmeyer",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": 5.0,
-    "reviewCount": 15,
-    "bestRating": 5,
-    "worstRating": 1
-  }
-};
+// businessRating imported from data/jsonLd
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -151,7 +140,7 @@ const faqSchema = {
     "duration": "PT1M30S",
     "publisher": {
       "@type": "Organization",
-      "name": "DJ Hulk",
+      "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
       "logo": {
         "@type": "ImageObject",
         "url": "/img/djhulk_logo.webp"

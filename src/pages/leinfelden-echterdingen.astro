@@ -15,7 +15,7 @@ const breadcrumbSegments = [
   { label: "Leinfelden-Echterdingen" }
 ];
 
-const cityFaqs = getFaqsForPage('index');
+const cityFaqs = getFaqsForPage('leinfelden-echterdingen');
 
 const cityJsonLd = {
   "@context": "https://schema.org",
@@ -30,13 +30,26 @@ const cityJsonLd = {
     "@id": "https://soundundlicht-stuttgart.de/#business"
   }
 };
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": cityFaqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
 <Layout
   title="Veranstaltungstechnik mieten in Leinfelden-Echterdingen | Sound & Licht Stuttgart"
   description="Partytechnik mieten in Leinfelden-Echterdingen: PA-Anlagen, Partyboxen und Lichttechnik direkt vor Ort zur Abholung. Komplettpakete für deine Feier – Magellanstraße 4."
   image="/img/header.webp"
-  jsonLd={cityJsonLd}
+  jsonLd={[cityJsonLd, faqJsonLd]}
 >
   <Navbar currentPage="city" />
 
