@@ -62,6 +62,19 @@ const offerCatalogJsonLd = {
   ]
 };
 
+const businessRating = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://soundundlicht-stuttgart.de/#business",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 5.0,
+    "reviewCount": 15,
+    "bestRating": 5,
+    "worstRating": 1
+  }
+};
+
 const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -84,7 +97,7 @@ const serviceJsonLd = {
   description="Vermietung von PA-Anlagen, Partyboxen & Lichttechnik in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen. Ab 160€ pro Tag. DJ-Service, persönliche Beratung, einfache Abholung."
   image="/img/slider/slide1.webp"
   preloadImage="/img/slider/slide1.webp"
-  jsonLd={[serviceJsonLd, faqJsonLd, offerCatalogJsonLd]}
+  jsonLd={[serviceJsonLd, faqJsonLd, offerCatalogJsonLd, businessRating]}
 >
   <Navbar currentPage="home" />
 

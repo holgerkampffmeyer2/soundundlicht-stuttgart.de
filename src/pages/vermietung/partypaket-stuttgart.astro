@@ -75,6 +75,19 @@ const packageFeatures = [
 
 const siteUrl = "https://soundundlicht-stuttgart.de";
 
+const businessRating = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://soundundlicht-stuttgart.de/#business",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 5.0,
+    "reviewCount": 15,
+    "bestRating": 5,
+    "worstRating": 1
+  }
+};
+
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -127,7 +140,7 @@ const faqSchema = {
   title={pageTitle}
   description="Miete das Partypaket für deine Party in Stuttgart und Umgebung. Komplette Partytechnik mit JBL Partyboxen, Licht, Nebel und Mikrofon für bis zu 50 Personen."
   image="/img/vermietung/partypaket.webp"
-  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, {
+  jsonLd={[businessRating, serviceSchema, breadcrumbSchema, faqSchema, {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": "Partypaket Stuttgart Demo",

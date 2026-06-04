@@ -94,6 +94,19 @@ const packageFeatures = [
 
 const siteUrl = "https://soundundlicht-stuttgart.de";
 
+const businessRating = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://soundundlicht-stuttgart.de/#business",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 5.0,
+    "reviewCount": 15,
+    "bestRating": 5,
+    "worstRating": 1
+  }
+};
+
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -156,7 +169,7 @@ const videoSchema = {
   title={pageTitle}
   description="Miete das DJ-Paket Fildern für dein Event. Komplette Eventtechnik mit LD Maui Soundanlage, LED BossFX, Nebelmaschine, Moving Head und Stage Bar für bis zu 150 Personen."
   image="/img/vermietung/djpaket.webp"
-  jsonLd={[serviceSchema, faqSchema, videoSchema, breadcrumbSchema]}
+  jsonLd={[businessRating, serviceSchema, faqSchema, videoSchema, breadcrumbSchema]}
 >
   <Navbar currentPage="/vermietung" />
 
