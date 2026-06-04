@@ -143,7 +143,19 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
       "url": canonicalURL.href,
       "mainEntity": {
         "@type": "LocalBusiness",
-        "name": "DJ Hulk - Holger Kampffmeyer"
+        "@id": "https://soundundlicht-stuttgart.de/#business",
+        "name": "DJ Hulk - Holger Kampffmeyer",
+        "image": "https://soundundlicht-stuttgart.de/img/header.webp",
+        "telephone": "+491711467491",
+        "priceRange": "€€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Magellanstraße 4",
+          "addressLocality": "Leinfelden-Echterdingen",
+          "postalCode": "70771",
+          "addressRegion": "Baden-Württemberg",
+          "addressCountry": "DE"
+        }
       }
     })} />
 
@@ -158,6 +170,7 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
         "url": "https://soundundlicht-stuttgart.de",
         "telephone": "+491711467491",
         "email": "holger.kampffmeyer+dj@gmail.com",
+        "image": "https://soundundlicht-stuttgart.de/img/header.webp",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Magellanstraße 4",
