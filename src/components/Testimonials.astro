@@ -25,9 +25,9 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
           <div class="review-card bg-[var(--color-bg)] rounded-xl p-6 border border-[var(--color-border)] hover:border-[var(--color-secondary)] review-card-hover transition-all duration-300" data-page={Math.floor(index / ITEMS_PER_PAGE) + 1}>
             <div class="flex gap-1 mb-4">
               {Array.from({ length: 5 }).map((_, i) => (
-                <StarIcon class={`w-5 h-5 ${i < review.rating ? 'star-active' : 'text-gray-400'}`} />
+                <StarIcon class={`w-5 h-5 ${i < review.rating ? 'star-active' : 'text-[var(--color-text-muted)]'}`} />
               ))}
-              <GoogleIcon class="w-4 h-4 ml-2 text-gray-400" />
+              <GoogleIcon class="w-4 h-4 ml-2 text-[var(--color-text-muted)]" />
             </div>
             <p class="text-[var(--color-text-muted)] mb-4">{review.text}</p>
             <div class="border-t border-[var(--color-border)] pt-4">
@@ -45,7 +45,7 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
           <li>
             <button 
               id="prevPage"
-              class="flex items-center justify-center px-4 h-10 ms-0 leading-tight border border-gray-300 rounded-s-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)] disabled:opacity-50 disabled:cursor-not-allowed"
+              class="flex items-center justify-center px-4 h-10 ms-0 leading-tight border border-[var(--color-border)] rounded-s-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)] disabled:opacity-50 disabled:cursor-not-allowed"
               disabled
             >
               <span class="sr-only">Previous</span>
@@ -59,7 +59,7 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
             return (
               <li>
                 <button
-                  class="page-btn flex items-center justify-center px-4 h-10 leading-tight border border-gray-300 text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)]"
+                  class="page-btn flex items-center justify-center px-4 h-10 leading-tight border border-[var(--color-border)] text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)]"
                   data-page={pageNumber}
                 >
                   {pageNumber}
@@ -70,7 +70,7 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
           <li>
             <button 
               id="nextPage"
-              class="flex items-center justify-center px-4 h-10 leading-tight border border-gray-300 rounded-e-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)]"
+              class="flex items-center justify-center px-4 h-10 leading-tight border border-[var(--color-border)] rounded-e-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)]"
             >
               <span class="sr-only">Next</span>
               <svg class="w-3 h-3" aria-hidden="true" fill="none" viewBox="0 0 6 10">
@@ -102,10 +102,10 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
         const btnPage = parseInt(btn.dataset.page);
         if (btnPage === page) {
           btn.classList.add('bg-[var(--color-secondary)]', 'text-white', 'border-[var(--color-secondary)]');
-          btn.classList.remove('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-gray-300');
+          btn.classList.remove('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-[var(--color-border)]');
         } else {
           btn.classList.remove('bg-[var(--color-secondary)]', 'text-white', 'border-[var(--color-secondary)]');
-          btn.classList.add('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-gray-300');
+          btn.classList.add('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-[var(--color-border)]');
         }
       });
 
