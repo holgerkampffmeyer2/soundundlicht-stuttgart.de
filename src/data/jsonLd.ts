@@ -69,7 +69,20 @@ export const offerCatalogJsonLd = {
       },
       "priceSpecification": {
         "@type": "UnitPriceSpecification",
-        "price": "180.00",
+        "price": "200.00",
+        "priceCurrency": "EUR",
+        "priceComponentType": "https://schema.org/UnitPriceSpecification"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Akku-Party-Paket – Outdoor"
+      },
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "170.00",
         "priceCurrency": "EUR",
         "priceComponentType": "https://schema.org/UnitPriceSpecification"
       }

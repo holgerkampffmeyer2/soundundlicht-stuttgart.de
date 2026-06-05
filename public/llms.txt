@@ -1,5 +1,5 @@
 # Sound & Licht Stuttgart - Holger Kampffmeyer DJ Dienstleistungen
-# Last updated: 2026-05-10
+# Last updated: 2026-06-05
 
 > Vermietung von PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung.
 > Abholung in Leinfelden-Echterdingen (Magellanstraße 4, 70771 Echterdingen).
@@ -30,7 +30,7 @@
    - Mikrofon + 4x LED Par
    - Für DJ Gigs & mittlere Feiern bis ca. 150 Personen
 
-3. **Veranstaltungspaket** - ab 180€
+3. **Veranstaltungspaket** - ab 200€
    - 2x LD Maui 28 G3 Säulen-PA
    - 6-Kanal Mischpult
    - KLS Laser Bar + Nebel
@@ -38,8 +38,16 @@
    - Mikrofon + 4x LED Par
    - Für mittlere bis große Veranstaltungen bis ca. 150 Personen
 
+4. **Akku-Party-Paket – Outdoor** - ab 170€
+   - 2x JBL Partyboxen (Akkubetrieb)
+   - LED BossFX-2 Pro (betrieben über Powerstation)
+   - 2x Akku LED PAR Lichter
+   - EnginStar Powerstation 350W
+   - 4-6h Akkulaufzeit
+   - Für Outdoor-Partys & Locations ohne Strom, 50-80 Personen
+
 ## Einzelgeräte (Beispiele)
-- LD Maui 28 G3 Säulen-PA: ab 100€/Tag (bis 150 Personen, 2060W Peak)
+- LD Maui 28 G3 Säulen-PA: ab 120€/Tag (bis 150 Personen, 2060W Peak)
 - JBL Partybox Set (2x): ab 80€/Tag (50-80 Personen)
 - Partylichtanlage (LED-Effekte): ab 50€/Tag
 - Nebelmaschine: ab 30€/Tag (inkl. Fluid)

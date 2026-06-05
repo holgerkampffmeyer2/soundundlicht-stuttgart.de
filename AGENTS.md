@@ -19,7 +19,7 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 ## SEO-Richtlinien
 
 - **JSON-LD pro Seitentyp:**
-  - Landing (`/`): `Service` (general), `OfferCatalog` (3 Pakete, `ab`-Preise), `FAQPage` (manuell via `faqJsonLd`)
+  - Landing (`/`): `Service` (general), `OfferCatalog` (4 Pakete, `ab`-Preise), `FAQPage` (manuell via `faqJsonLd`)
   - Vermietung (`/vermietung/`): `Service`, `FAQPage` (manuell via `faqSchema`)
   - City-Seite (`/<stadt>/`): `Service` mit `areaServed: { City: "<Stadt>" }` + `provider: LocalBusiness`
   - Produktseite (`/vermietung/<produkt>/`): `Service`, `Product`, `FAQPage` (via `getFaqsForPage('<produkt-slug>')`)

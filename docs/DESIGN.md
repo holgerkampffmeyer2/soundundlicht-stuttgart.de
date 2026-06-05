@@ -62,6 +62,7 @@ public/
 | `/vermietung/kls-laser-bar/` | KLS Laser Bar |
 | `/vermietung/led-bossfx-nebelmaschine/` | LED + Nebelmaschine |
 | `/vermietung/partylicht-moving-head/` | Partylicht Moving Head |
+| `/vermietung/akku-party-paket/` | Akku-Party-Paket – Outdoor |
 | 15 City Pages: `/stuttgart/`, `/esslingen/`, ... `/ostfildern/` | City Pages |
 
 ---

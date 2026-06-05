@@ -57,18 +57,26 @@ const komplettPakete = [
   },
   {
     image: "/img/vermietung/veranstaltungspaket.webp",
-    price: 'ab 180€',
+    price: 'ab 200€',
     title: 'Veranstaltungspaket',
     description: 'Das Veranstaltungspaket für mittlere Feiern bis ca. 150 Personen.',
     features: ['2x LD Maui 28 G3', '6-Kanal Mischpult', 'KLS Laser Bar', 'Nebelmaschine', 'Mikrofon', '4x LED Par Lichter', '2x Moving Head'],
     detailPage: '/vermietung/veranstaltungspaket-stuttgart'
+  },
+  {
+    image: "/img/vermietung/Akku-powered-party-hero.webp",
+    price: 'ab 170€',
+    title: 'Akku-Party-Paket – Outdoor',
+    description: 'Das Outdoor-Komplettpaket für Partys ohne Stromanschluss. Akkubetrieben mit 2x JBL Partyboxen, LED BossFX Licht, Akku-PAR-Lichtern und Powerstation. 4-6h Laufzeit.',
+    features: ['2x JBL Partyboxen (Akkubetrieb)', 'LED BossFX-2 Pro', '2x Akku LED PAR Lichter', 'EnginStar Powerstation 350W', '4-6h Akkulaufzeit'],
+    detailPage: '/vermietung/akku-party-paket'
   }
 ];
 
 const soundEquipment = [
   {
     image: '/img/vermietung/IMG_7142.JPG',
-    price: 'ab 100€',
+    price: 'ab 120€',
     title: 'Säulensystem 2x LD Maui 28 G3 (Paar)',
     description: 'Kompaktes Plug und Play Säulen System mit top Klang für DJs, kleine Bands und Feiern. 2x 2060 W Peak-Leistung und 127 dB max. SPL. Für bis zu 150 Personen.',
     features: ['2x 12\'-Subwoofer', 'Anschlüsse: 2x XLR', 'inkl. 2x 5m Lautsprecherkabel'],
@@ -179,6 +187,13 @@ const lichtEquipment = [
     title: 'Mikrofon',
     description: 'Mikrofon für Gesangseinlagen, Moderation, Ansprachen etc.',
     features: ['Mikrofon + 10M XLR Kabel']
+  },
+  {
+    image: "/img/vermietung/enginestar-akku2.webp",
+    price: 'ab 30€',
+    title: 'EnginStar R350 Powerstation – Tragbarer Akku',
+    description: 'Tragbare 350W Powerstation mit 296Wh Kapazität und Transporttasche. Ideal für Partys, Outdoor-Events oder Locations ohne Stromanschluss.',
+    features: ['350W reine Sinuswelle', '296Wh Kapazität (80.000mAh)', '2x USB-A, USB-C, 2x 230V', 'LED-Leuchte (3 Modi)', 'inkl. Transporttasche']
   }
 ];
 ---
@@ -231,7 +246,7 @@ const lichtEquipment = [
         ptClass: "pt-32"
       },
       {
-        title: "Veranstaltungspaket mieten in Stuttgart – ab 180€/Tag",
+        title: "Veranstaltungspaket mieten in Stuttgart – ab 200€/Tag",
         titleTag: "h2",
         description: "Das Rundum-Sorglos-Paket für deine mittlere bis große Veranstaltung.",
         buttons: [
@@ -239,6 +254,17 @@ const lichtEquipment = [
           { text: "Jetzt anfragen", href: "#kontakt", class: "btn-secondary" }
         ],
         backgroundImage: "/img/vermietung/ldmaui3.webp",
+        ptClass: "pt-32"
+      },
+      {
+        title: "Akku-Party-Paket mieten – ab 170€/Tag",
+        titleTag: "h2",
+        description: "Komplett akkubetrieben für Outdoor-Partys und Locations ohne Strom. 4-6h Laufzeit.",
+        buttons: [
+          { text: "Details Akku-Party-Paket", href: "/vermietung/akku-party-paket" },
+          { text: "Jetzt anfragen", href: "#kontakt", class: "btn-secondary" }
+        ],
+        backgroundImage: "/img/vermietung/Akku-powered-party-hero.webp",
         ptClass: "pt-32"
       }
     ]}
@@ -267,7 +293,7 @@ const lichtEquipment = [
         <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">Alles aus einer Hand</h2>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {komplettPakete.map((item, index) => (
           <div class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
             <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />

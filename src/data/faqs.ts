@@ -797,5 +797,24 @@ export const faqs: FaqEntry[] = [
     question: "Wie weit ist Leinfelden-Echterdingen von Waiblingen entfernt?",
     answer: "Leinfelden-Echterdingen liegt ca. 25 km von Waiblingen entfernt – eine Fahrtzeit von etwa 25 Minuten über die B14 und A8.",
     pages: ["waiblingen"]
+  },
+  // Akku-Party-Paket specific FAQs
+  {
+    id: "akku-paket-laufzeit",
+    question: "Wie lange hält der Akku bei einer Party?",
+    answer: "Das Akku-Party-Paket bietet 4-6 Stunden Partylaufzeit, abhängig von der Lautstärke und der Nutzung der Lichteffekte. Die JBL Partyboxen haben eigene Akkus mit bis zu 18h Laufzeit. Die LED BossFX Lichtanlage und PAR-Lichter werden über die Powerstation versorgt. Bei moderater Lautstärke und gedimmten Lichteffekten sind gut 6 Stunden drin.",
+    pages: ["akku-party-paket"]
+  },
+  {
+    id: "akku-paket-innen",
+    question: "Kann ich das Paket auch drinnen nutzen?",
+    answer: "Ja, natürlich! Das Akku-Party-Paket eignet sich auch für Innenräume – besonders praktisch, wenn keine Steckdose in der Nähe ist (z.B. in Garagen, Vereinsheimen, Kellerräumen oder auf Tanzflächen ohne Stromanschluss). Einfach aufbauen, einschalten und loslegen.",
+    pages: ["akku-party-paket"]
+  },
+  {
+    id: "akku-paket-wird-versorgt",
+    question: "Welche Geräte werden über die Powerstation versorgt?",
+    answer: "Die LED BossFX-2 Pro Lichtanlage wird über die EnginStar Powerstation mit Strom versorgt. Die 2x Akku LED PAR Lichter und die JBL Partyboxen laufen komplett eigenständig über ihre integrierten Akkus (JBL bis zu 18 Stunden). Die Powerstation (296Wh / 350W) hat genug Kapazität für einen ganzen Partyabend Lichttechnik.",
+    pages: ["akku-party-paket"]
   }
 ];

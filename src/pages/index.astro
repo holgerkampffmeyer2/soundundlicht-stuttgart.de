@@ -64,7 +64,7 @@ const serviceJsonLd = {
         category: "Lokaler Verleih: Abholung in Leinfelden-Echterdingen",
         buttons: [
           { text: "Pakete & Preise ↗", href: "/vermietung", class: "btn-primary" },
-          { text: "Verfügbarkeit prüfen", href: "#kontakt", class: "btn-secondary" }
+          { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
         ]
       },
       {
@@ -97,7 +97,7 @@ const serviceJsonLd = {
         categoryColor: "var(--color-accent)",
         buttons: [
           { text: "Zu den Paketen ↗", href: "/vermietung", class: "btn-primary" },
-          { text: "Kontakt aufnehmen", href: "#kontakt", class: "btn-secondary" }
+          { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
         ]
       }
     ]}
@@ -149,7 +149,7 @@ const serviceJsonLd = {
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Paket 1: Partypaket -->
         <div class="service-card animate-on-scroll flex flex-col">
           <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
@@ -190,7 +190,7 @@ const serviceJsonLd = {
         <div class="service-card animate-on-scroll flex flex-col">
           <div class="text-[var(--color-secondary)] mb-4"><PackageIcon class="w-10 h-10" /></div>
           <h3 class="font-play text-xl font-bold mb-2">Veranstaltungspaket</h3>
-          <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 180€ / Tag</p>
+          <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 200€ / Tag</p>
           <p class="text-[var(--color-text-muted)] text-sm mb-4">Für mittlere bis große Veranstaltungen bis ca. 150 Personen</p>
           <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
             <li>✓ 2x LD Maui 28 G3</li>
@@ -200,6 +200,24 @@ const serviceJsonLd = {
             <li>✓ Mikrofon + 4x LED Par</li>
           </ul>
           <a href="/vermietung/veranstaltungspaket-stuttgart" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
+            Details &amp; Buchung ↗
+          </a>
+        </div>
+
+        <!-- Paket 4: Akku-Party-Paket -->
+        <div class="service-card animate-on-scroll flex flex-col">
+          <div class="text-[var(--color-secondary)] mb-4"><PackageIcon class="w-10 h-10" /></div>
+          <h3 class="font-play text-xl font-bold mb-2">Akku-Party-Paket – Outdoor</h3>
+          <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 170€ / Tag</p>
+          <p class="text-[var(--color-text-muted)] text-sm mb-4">Für Outdoor-Partys &amp; Locations ohne Strom, 50-80 Personen</p>
+          <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
+            <li>✓ 2x JBL Partyboxen (Akkubetrieb)</li>
+            <li>✓ LED BossFX-2 Pro (via Powerstation)</li>
+            <li>✓ 2x Akku LED PAR Lichter</li>
+            <li>✓ EnginStar Powerstation</li>
+            <li>✓ 4-6h Akkulaufzeit</li>
+          </ul>
+          <a href="/vermietung/akku-party-paket" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
             Details &amp; Buchung ↗
           </a>
         </div>
