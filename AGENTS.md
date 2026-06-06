@@ -7,6 +7,7 @@ Astro 6.x SSG site for event tech rental (PA, partyboxes, lights) in Stuttgart a
 - `pnpm run dev` — Dev server
 - `pnpm run build` — Production build → dist/ (für tägliche Entwicklung)
 - `pnpm run build:full` — Build + RSS + urllist (für Deploy)
+  - **Timeout:** Build braucht ~35–40s → Agent muss min. 180s Timeout setzen
 - `pnpm run preview` — Preview build
 
 Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist.txt`.
