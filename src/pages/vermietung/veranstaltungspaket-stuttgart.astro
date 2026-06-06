@@ -10,7 +10,7 @@ import Testimonials from '../../components/Testimonials.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { businessRating } from '../../data/jsonLd';
+
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -108,8 +108,6 @@ const packageFeatures = [
 
 const siteUrl = "https://soundundlicht-stuttgart.de";
 
-// businessRating imported from data/jsonLd
-
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -160,7 +158,7 @@ const faqSchema = {
   title={pageTitle}
   description="Miete das Veranstaltungspaket für dein Event in Stuttgart. Komplette Eventtechnik mit LD Maui Soundanlage, Licht, Nebel und Moving Heads für bis zu 150 Personen."
   image="/img/vermietung/veranstaltungspaket.webp"
-  jsonLd={[businessRating, serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
 >
   <Navbar currentPage="/vermietung" />
 

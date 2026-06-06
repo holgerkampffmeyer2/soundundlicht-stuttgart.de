@@ -10,7 +10,7 @@ import Testimonials from '../../components/Testimonials.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { businessRating } from '../../data/jsonLd';
+
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -124,7 +124,7 @@ const faqSchema = {
   title={pageTitle}
   description="Miete das Akku-Party-Paket für Outdoor-Partys ohne Stromanschluss. Komplett akkubetrieben mit JBL Partyboxen, LED BossFX Licht und EnginStar Powerstation. 4-6h Laufzeit."
   image="/img/vermietung/Akku-powered-party-hero.webp"
-  jsonLd={[businessRating, serviceSchema, breadcrumbSchema, faqSchema]}
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}
 >
   <Navbar currentPage="/vermietung" />
 
