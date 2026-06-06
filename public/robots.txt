@@ -1,24 +1,45 @@
 User-agent: *
 Allow: /
 
-# LLM Bots erlaubt
+# === Klassische Suchmaschinen ===
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# === OpenAI (ChatGPT) ===
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+# === Google (Gemini/AI Overviews) ===
 User-agent: Google-Extended
 Allow: /
 
+# === Anthropic (Claude) ===
 User-agent: anthropic-ai
 Allow: /
 
 User-agent: Claude-Web
 Allow: /
 
+# === Andere AI-Crawler ===
 User-agent: cohere-ai
 Allow: /
 
+User-agent: amazonbot
+Allow: /
+
+User-agent: perplexitybot
+Allow: /
+
+
+# === Sitemaps ===
 Sitemap: https://soundundlicht-stuttgart.de/sitemap-index.xml
 Sitemap: https://soundundlicht-stuttgart.de/rss.xml
