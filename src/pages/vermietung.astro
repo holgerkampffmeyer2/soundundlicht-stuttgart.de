@@ -68,6 +68,14 @@ const komplettPakete = [
     description: 'Das Outdoor-Komplettpaket für Partys ohne Stromanschluss. Akkubetrieben mit 2x JBL Partyboxen, LED BossFX Licht, Akku-PAR-Lichtern und Powerstation. 4-6h Laufzeit.',
     features: ['2x JBL Partyboxen (Akkubetrieb)', 'LED BossFX-2 Pro', '2x Akku LED PAR Lichter', 'EnginStar Powerstation 350W', '4-6h Akkulaufzeit'],
     detailPage: '/vermietung/akku-party-paket'
+  },
+  {
+    image: "/img/vermietung/karaoke-paket-hero.webp",
+    price: 'ab 130€',
+    title: 'Karaoke-Paket',
+    description: 'Das Komplettpaket für Karaoke-Abende: 2x JBL Partyboxen, 2x Mikrofone, Yamaha Mischpult. Musik-Zuspielung via Computer oder Bluetooth.',
+    features: ['2x JBL Partyboxen (240W)', '2x Mikrofone inkl. XLR-Kabel', 'Yamaha Mischpult MG6', 'Computer-/Bluetooth-Zuspielung', 'Alle Kabel inklusive'],
+    detailPage: '/vermietung/karaoke-paket'
   }
 ];
 
@@ -263,12 +271,51 @@ const lichtEquipment = [
         ],
         backgroundImage: "/img/vermietung/Akku-powered-party-hero.webp",
         ptClass: "pt-32"
+      },
+      {
+        title: "Karaoke-Paket mieten in Stuttgart – ab 130€/Tag",
+        titleTag: "h2",
+        description: "Das Rundum-Sorglos-Paket für deine Karaoke-Party. 2x JBL Partyboxen, 2x Mikrofone, Yamaha Mischpult – alles inklusive.",
+        buttons: [
+          { text: "Details Karaoke-Paket", href: "/vermietung/karaoke-paket" },
+          { text: "Jetzt anfragen", href: "#kontakt", class: "btn-secondary" }
+        ],
+        backgroundImage: "/img/vermietung/karaoke-paket-hero.webp",
+        ptClass: "pt-32"
       }
     ]}
   />
 
+  <!-- Section Jump Navigation -->
+  <nav class="sticky top-20 z-40 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]">
+    <div class="max-w-7xl mx-auto px-4 py-3 overflow-x-auto">
+      <div class="flex gap-2 min-w-max justify-center">
+        <a href="#ablauf" class="section-jump-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Ablauf
+        </a>
+        <a href="#pakete" class="section-jump-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          Pakete
+        </a>
+        <a href="#sound" class="section-jump-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+          Sound
+        </a>
+        <a href="#licht" class="section-jump-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          Licht
+        </a>
+        <a href="#kontakt" class="section-jump-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Anfragen
+        </a>
+      </div>
+    </div>
+  </nav>
+
   <!-- Intro Section -->
-  <section class="section-padding bg-[var(--color-bg)]">
+  <section id="ablauf" class="section-padding bg-[var(--color-bg)]">
     <div class="max-w-7xl mx-auto">
       <h2 class="font-play text-3xl md:text-4xl font-bold mb-6">Vermietung von Musikanlagen, PA Anlagen, Partyboxen und mehr!</h2>
       <p class="text-[var(--color-text-muted)] mb-6">
@@ -283,14 +330,14 @@ const lichtEquipment = [
   </section>
 
   <!-- Komplettpakete -->
-  <section class="section-padding bg-[var(--color-surface)]">
+  <section id="pakete" class="section-padding bg-[var(--color-surface)]">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12">
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Komplettpakete</span>
         <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">Alles aus einer Hand</h2>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {komplettPakete.map((item, index) => (
           <div class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
             <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
@@ -315,7 +362,7 @@ const lichtEquipment = [
   </section>
 
   <!-- Sound Equipment -->
-  <section class="section-padding bg-[var(--color-bg)]">
+  <section id="sound" class="section-padding bg-[var(--color-bg)]">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12">
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Sound</span>
@@ -347,7 +394,7 @@ const lichtEquipment = [
   </section>
 
   <!-- Licht Equipment -->
-  <section class="section-padding bg-[var(--color-surface)]">
+  <section id="licht" class="section-padding bg-[var(--color-surface)]">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12">
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Licht</span>
@@ -405,3 +452,29 @@ const lichtEquipment = [
 
   <Footer />
 </Layout>
+
+<style>
+  .section-jump-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition: all 0.2s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .section-jump-link:hover {
+    color: var(--color-text);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .section-jump-link:active {
+    transform: scale(0.97);
+  }
+</style>

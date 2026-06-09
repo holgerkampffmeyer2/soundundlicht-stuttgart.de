@@ -106,7 +106,7 @@ export const siteNavigationJsonLd = {
 export const offerCatalogJsonLd = {
   "@context": "https://schema.org",
   "@type": "OfferCatalog",
-  "name": "Vermietung Pakete",
+  "name": "Vermietung Pakete & Einzelgeräte",
   "itemListElement": [
     {
       "@type": "Offer",
@@ -114,6 +114,7 @@ export const offerCatalogJsonLd = {
         "@type": "Service",
         "name": "Partypaket"
       },
+      "description": "2x JBL Partyboxen, KLS Laser Bar, Nebelmaschine, Mikrofon, 4x LED Par Lichter",
       "priceSpecification": {
         "@type": "UnitPriceSpecification",
         "price": "160.00",
@@ -127,6 +128,7 @@ export const offerCatalogJsonLd = {
         "@type": "Service",
         "name": "DJ-Paket"
       },
+      "description": "2x LD Maui 28 G3, LED BossFX-2 Pro, Moving Head, Stage Bar, Mikrofon, 4x LED Par Lichter",
       "priceSpecification": {
         "@type": "UnitPriceSpecification",
         "price": "200.00",
@@ -140,6 +142,7 @@ export const offerCatalogJsonLd = {
         "@type": "Service",
         "name": "Veranstaltungspaket"
       },
+      "description": "2x LD Maui 28 G3, 6-Kanal Mischpult, KLS Laser Bar, Nebelmaschine, Mikrofon, 4x LED Par Lichter, 2x Moving Head",
       "priceSpecification": {
         "@type": "UnitPriceSpecification",
         "price": "200.00",
@@ -153,9 +156,94 @@ export const offerCatalogJsonLd = {
         "@type": "Service",
         "name": "Akku-Party-Paket – Outdoor"
       },
+      "description": "2x JBL Partyboxen (Akkubetrieb), LED BossFX-2 Pro, 2x Akku LED PAR Lichter, EnginStar Powerstation 350W",
       "priceSpecification": {
         "@type": "UnitPriceSpecification",
         "price": "170.00",
+        "priceCurrency": "EUR",
+        "priceComponentType": "https://schema.org/UnitPriceSpecification"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Karaoke-Paket"
+      },
+      "description": "2x JBL Partyboxen, 2x Mikrofone, Yamaha Mischpult, Bluetooth/Computer-Zuspielung – inkl. aller Kabel",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "130.00",
+        "priceCurrency": "EUR",
+        "priceComponentType": "https://schema.org/UnitPriceSpecification"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Säulensystem 2x LD Maui 28 G3"
+      },
+      "description": "Kompaktes Plug-and-Play-Säulensystem, 2x 2060W Peak, 127dB max. SPL, für bis zu 150 Personen",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "120.00",
+        "priceCurrency": "EUR",
+        "priceComponentType": "https://schema.org/UnitPriceSpecification"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "JBL Partyboxen (Paar)"
+      },
+      "description": "2x 240W Partylautsprecher mit dynamischen Lichteffekten, Bluetooth, AUX, Akkubetrieb bis 18h",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "80.00",
+        "priceCurrency": "EUR",
+        "priceComponentType": "https://schema.org/UnitPriceSpecification"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "LED BossFX-2 Pro und Nebelmaschine"
+      },
+      "description": "Lichtanlage mit 2 Derby, 2 Spots, 4x Strobe LEDs und AF-150 DMX Nebelmaschine",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "60.00",
+        "priceCurrency": "EUR",
+        "priceComponentType": "https://schema.org/UnitPriceSpecification"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Eurolite KLS Laser Bar"
+      },
+      "description": "LED Lichtanlage mit Derby-, Laser- und Strobe-Effekten – kein Laserschutzbeauftragter nötig",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "50.00",
+        "priceCurrency": "EUR",
+        "priceComponentType": "https://schema.org/UnitPriceSpecification"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "LED Moving Head 18 Prisma 10 Gobo"
+      },
+      "description": "LED Spot mit RGBW, 10 Gobos, 18 Prismen, Sound-zu-Licht Steuerung, DMX programmierbar",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "50.00",
         "priceCurrency": "EUR",
         "priceComponentType": "https://schema.org/UnitPriceSpecification"
       }

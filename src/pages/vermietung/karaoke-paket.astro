@@ -1,0 +1,265 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import ProductGallery from '../../components/vermietung/ProductGallery.astro';
+import PackageContents from '../../components/vermietung/PackageContents.astro';
+import RentalPricing from '../../components/vermietung/RentalPricing.astro';
+import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getFaqsForPage } from '../../lib/faqUtils';
+
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: "Vermietung", href: "/vermietung" },
+  { label: "Karaoke-Paket" }
+];
+
+const pageTitle = "Karaoke-Paket mieten in Stuttgart | Sound & Licht Stuttgart";
+
+const faqs = getFaqsForPage('karaoke-paket');
+
+const images = [
+  "/img/vermietung/karaoke-paket1.webp",
+  "/img/vermietung/karaoke-paket2.webp",
+  "/img/vermietung/Mikrofon2.webp",
+  "/img/vermietung/Yamaha-mischpult.webp"
+];
+
+const packageItems = [
+  { name: "2x JBL Partyboxen", detailPage: "/vermietung/jbl-partybox-300-320" },
+  { name: "2x Mikrofon inkl. XLR-Kabel" },
+  { name: "Yamaha MG06X Mischpult" },
+  { name: "Verbindungskabel (Computer, AUX, Strom)" }
+];
+
+const events = [
+  {
+    title: "Karaoke-Abend",
+    description: "Der perfekte Abend für geselliges Singen mit Freunden. Zwei Mikrofone ermöglichen Duette und Gesangswettbewerbe. Die JBL Partyboxen liefern satten Sound für stimmungsvolle Karaoke-Nächte.",
+    personCount: "bis 50 Personen"
+  },
+  {
+    title: "Geburtstagsfeier",
+    description: "Mache deine Geburtstagsfeier unvergesslich mit einem Karaoke-Setup. Die Musikzuspielung per Bluetooth oder Computer macht es einfach, jede Playlist in Sekunden zu starten.",
+    personCount: "bis 50 Personen"
+  },
+  {
+    title: "Teamevent / Betriebsfeier",
+    description: "Karaoke bringt jedes Team zum Lachen. Das Komplettpaket ist in 20 Minuten aufgebaut und sorgt für ausgelassene Stimmung auf jeder Firmenfeier.",
+    personCount: "bis 50 Personen"
+  }
+];
+
+const packageFeatures = [
+  "2x JBL Partyboxen mit kraftvollem 240W Sound",
+  "2x Mikrofon für Duette und Gesangseinlagen",
+  "Yamaha MG06 Mischpult für professionelle Audiosteuerung",
+  "Musik-Zuspielung über Bluetooth vom Smartphone",
+  "Computer-Anschluss über beigelegtes Verbindungskabel",
+  "Schneller Aufbau – in 20 Minuten einsatzbereit",
+  "Alle Kabel und Verbindungen inklusive",
+  "Passt in jeden Kombi oder Kleinwagen",
+  "Perfekt für Karaoke-Abende, Geburtstage und Feiern"
+];
+
+const siteUrl = "https://soundundlicht-stuttgart.de";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Karaoke-Paket Stuttgart Vermietung",
+  "description": "Miete das Karaoke-Paket für deine Party in Stuttgart und Umgebung. 2x JBL Partyboxen, 2x Mikrofone und Yamaha Mischpult für unvergessliche Karaoke-Abende. Inklusive aller Kabel.",
+  "image": [
+    siteUrl + images[0],
+    siteUrl + images[1]
+  ],
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://soundundlicht-stuttgart.de/#business"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://soundundlicht-stuttgart.de/vermietung/karaoke-paket",
+    "price": "130",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soundundlicht-stuttgart.de/"},
+    {"@type": "ListItem", "position": 2, "name": "Vermietung", "item": "https://soundundlicht-stuttgart.de/vermietung"},
+    {"@type": "ListItem", "position": 3, "name": "Karaoke-Paket", "item": "https://soundundlicht-stuttgart.de/vermietung/karaoke-paket"}
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq: any) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<Layout 
+  title={pageTitle}
+  description="Miete das Karaoke-Paket für deine Party in Stuttgart und Umgebung. 2x JBL Partyboxen, 2x Mikrofone und Yamaha Mischpult für unvergessliche Karaoke-Abende. Inklusive aller Kabel."
+  image="/img/vermietung/karaoke-paket-hero.webp"
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Karaoke-Paket Stuttgart Demo",
+    "description": "Demo des Karaoke-Pakets Stuttgart - JBL Partyboxen 300 und 320 in Aktion",
+    "thumbnailUrl": ["/img/vermietung/karaoke-paket-hero.webp"],
+    "contentUrl": "https://www.youtube.com/watch?v=Ivch0DqKkW0",
+    "embedUrl": "https://www.youtube.com/embed/Ivch0DqKkW0",
+    "uploadDate": "2024-01-20T00:00:00+00:00",
+    "duration": "PT1M30S",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/img/djhulk_logo.webp"
+      }
+    }
+  }]}
+>
+  <Navbar currentPage="/vermietung" />
+
+  <Breadcrumb segments={breadcrumbSegments} />
+
+    <!-- Hero -->
+    <section class="relative min-h-[60vh] flex items-center overflow-hidden">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/img/vermietung/karaoke-paket-hero.webp')"></div>
+      <div class="hero-overlay-accent"></div>
+      <div class="relative z-10 w-full py-32 px-4">
+        <div class="max-w-6xl mx-auto">
+          <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+          <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Karaoke-Paket Stuttgart</h1>
+          <p class="text-[var(--color-text)] text-xl max-w-2xl">
+            Miete unser Karaoke-Paket für deine nächste Party in Stuttgart und Umgebung. Das Set enthält 2x JBL Partyboxen mit kraftvollem 240W Sound, 2x Mikrofone für Duette und Gesangseinlagen sowie ein Yamaha MG06 Mischpult für professionelle Audiosteuerung.<br />
+            Musik kannst du entweder per Bluetooth vom Smartphone oder über einen Computer mit beigelegtem Verbindungskabel zuspielen. Alle Kabel sind inklusive – einfach abholen, aufbauen und loslegen. Perfekt für Karaoke-Abende, Geburtstagsfeiern und Teamevents bis zu 50 Personen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  <!-- Package Highlights -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Highlights</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Die Besonderheiten des Karaoke-Pakets</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {packageFeatures.map((feature) => (
+          <div class="bg-[var(--color-bg)] p-6 rounded-xl border border-[var(--color-border)] hover:border-[var(--color-secondary)] transition-all duration-300">
+            <div class="flex items-start gap-3">
+              <span class="text-[var(--color-secondary)] text-2xl">✓</span>
+              <p class="text-[var(--color-text)]">{feature}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Bildergalerie -->
+  <ProductGallery images={images} title="Karaoke-Paket" />
+
+  <!-- Demo Video -->
+  <section class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Video</span>
+        <h2 class="font-play text-3xl font-bold mt-2">Sound-Check</h2>
+        <p class="text-[var(--color-text-muted)] mt-2">Eindruck der JBL Partyboxen 300 und 320 in Aktion</p>
+      </div>
+      <div class="aspect-video rounded-xl overflow-hidden bg-black">
+        <iframe 
+          src="https://www.youtube.com/embed/Ivch0DqKkW0" 
+          title="JBL Partybox Demo"
+          class="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Preis & Kaution -->
+  <RentalPricing price="ab 130€" deposit={200} />
+
+  <!-- 3. Enthalten im Paket -->
+  <PackageContents title="Enthalten im Karaoke-Paket" items={packageItems} />
+
+  <!-- 4. Beispielanwendungen -->
+  <ExampleEvents events={events} />
+
+  <!-- FAQ -->
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-play text-2xl md:text-3xl font-bold text-center mb-10">
+        Häufig gestellte Fragen
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="faq-details bg-[var(--color-surface)] rounded-xl p-4 cursor-pointer">
+            <summary class="font-bold cursor-pointer flex items-center gap-3 list-none">
+              <span class="faq-icon">
+                <ChevronRightIcon class="w-3 h-3" />
+              </span>
+              {faq.question}
+            </summary>
+            <p class="text-[var(--color-text-muted)] mt-3 ml-9">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h2 class="font-play text-3xl md:text-4xl font-bold mb-6">Interessiert an diesem Paket?</h2>
+      <p class="text-[var(--color-text-muted)] mb-8">
+        Stell uns eine Anfrage für das Karaoke-Paket oder lass dich beraten.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/vermietung#kontakt" class="btn-primary">Jetzt anfragen</a>
+        <a href="/vermietung" class="btn-secondary">Zurück zur Übersicht</a>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <Footer />
+</Layout>
+
+<style>
+  .product-header {
+    background: var(--color-bg);
+    padding-bottom: 2rem;
+  }
+
+  .cta-section {
+    text-align: center;
+  }
+</style>

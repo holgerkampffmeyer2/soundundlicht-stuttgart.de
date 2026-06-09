@@ -816,5 +816,30 @@ export const faqs: FaqEntry[] = [
     question: "Welche Geräte werden über die Powerstation versorgt?",
     answer: "Die LED BossFX-2 Pro Lichtanlage wird über die EnginStar Powerstation mit Strom versorgt. Die 2x Akku LED PAR Lichter und die JBL Partyboxen laufen komplett eigenständig über ihre integrierten Akkus (JBL bis zu 18 Stunden). Die Powerstation (296Wh / 350W) hat genug Kapazität für einen ganzen Partyabend Lichttechnik.",
     pages: ["akku-party-paket"]
+  },
+  // Karaoke-Paket specific FAQs
+  {
+    id: "karaoke-mikrofone",
+    question: "Welche Mikrofone sind im Karaoke-Paket enthalten?",
+    answer: "Im Karaoke-Paket sind 2 hochwertige Gesangsmikrofone inklusive XLR-Kabel enthalten. Die Mikrofone werden direkt an die JBL Partyboxen angeschlossen, die über separate Mikrofoneingänge verfügen.",
+    pages: ["karaoke-paket"]
+  },
+  {
+    id: "karaoke-songauswahl",
+    question: "Wie kann ich Karaoke-Songs abspielen?",
+    answer: "Du hast mehrere Optionen: Playback-Songs über USB-Stick, Bluetooth vom Smartphone/Tablet, oder 3,5mm AUX-Kabel vom Laptop. Die JBL Partyboxen geben den Sound wieder und du singst über die Mikrofone dazu. Das Yamaha Mischpult erlaubt dir, die Lautstärke von Musik und Mikrofonen getrennt zu regeln.",
+    pages: ["karaoke-paket"]
+  },
+  {
+    id: "karaoke-personenzahl",
+    question: "Für wie viele Personen ist das Karaoke-Paket geeignet?",
+    answer: "Das Karaoke-Paket eignet sich perfekt für Veranstaltungen mit bis zu 50 Personen. Die 2x JBL Partyboxen mit 240W Gesamtleistung liefern ausreichend Sound für kleinere bis mittlere Räume.",
+    pages: ["karaoke-paket"]
+  },
+  {
+    id: "karaoke-aufbauzeit",
+    question: "Wie lange dauert der Aufbau des Karaoke-Pakets?",
+    answer: "Das Karaoke-Paket ist in ca. 20-30 Minuten vollständig aufgebaut. Die JBL Partyboxen sind in wenigen Minuten einsatzbereit – einfach anschließen und per Bluetooth verbinden. Das Yamaha Mischpult und die Mikrofone kommen danach dazu. Eine ausführliche Einweisung bekommst du bei der Abholung.",
+    pages: ["karaoke-paket"]
   }
 ];
