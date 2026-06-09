@@ -1,0 +1,38 @@
+---
+export interface Paket {
+  image: string;
+  price: string;
+  title: string;
+  description: string;
+  features: string[];
+  detailPage?: string;
+}
+
+interface Props {
+  pakete: Paket[];
+}
+
+const { pakete } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  {pakete.map((item, index) => (
+    <div class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
+      <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
+      <span class="text-[var(--color-secondary)] text-sm font-bold">{item.price}</span>
+      <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
+      <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
+      <ul class="text-[var(--color-text-muted)] text-sm space-y-1">
+        {item.features.map(feature => (
+          <li class="flex items-center gap-2">
+            <span class="text-[var(--color-secondary)]">•</span> {feature}
+          </li>
+        ))}
+      </ul>
+      <a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
+      {item.detailPage && (
+        <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block">Mehr Infos</a>
+      )}
+    </div>
+  ))}
+</div>

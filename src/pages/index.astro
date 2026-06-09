@@ -2,8 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import VolumeUpIcon from "../components/icons/VolumeUpIcon.astro";
-import PackageIcon from "../components/icons/PackageIcon.astro";
 import Testimonials from "../components/Testimonials.astro";
 import ContactSection from "../components/ContactSection.astro";
 import CityGrid from "../components/CityGrid.astro";
@@ -12,6 +10,8 @@ import { getFaqsForPage } from '../lib/faqUtils';
 import { serviceArea, offerCatalogJsonLd } from '../data/jsonLd';
 import HeroSlider from "../components/HeroSlider.astro";
 import BieteSection from "../components/BieteSection.astro";
+import { komplettPakete } from '../data/packages';
+import PackageCardGrid from '../components/PackageCardGrid.astro';
 
 const indexFaqs = getFaqsForPage('index');
 
@@ -147,97 +147,7 @@ const serviceJsonLd = {
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Paket 1: Partypaket -->
-        <div class="service-card animate-on-scroll flex flex-col">
-          <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
-          <h3 class="font-play text-xl font-bold mb-2">Partypaket</h3>
-          <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 160€ / Tag</p>
-          <p class="text-[var(--color-text-muted)] text-sm mb-4">Für kleinere Feiern bis ca. 50 Personen</p>
-          <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
-            <li>✓ 2x JBL Partyboxen</li>
-            <li>✓ KLS Laser Bar</li>
-            <li>✓ Nebelmaschine</li>
-            <li>✓ Mikrofon</li>
-            <li>✓ 4x LED Par Lichter</li>
-          </ul>
-          <a href="/vermietung/partypaket-stuttgart" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
-            Details &amp; Buchung ↗
-          </a>
-        </div>
-
-        <!-- Paket 2: DJ-Paket -->
-        <div class="service-card animate-on-scroll flex flex-col">
-          <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
-          <h3 class="font-play text-xl font-bold mb-2">DJ-Paket</h3>
-          <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 200€ / Tag</p>
-          <p class="text-[var(--color-text-muted)] text-sm mb-4">Für DJ Gigs &amp; mittlere Feiern bis ca. 150 Personen</p>
-          <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
-            <li>✓ 2x LD Maui 28 G3</li>
-            <li>✓ LED BossFX-2 Pro + Nebel</li>
-            <li>✓ Moving Head</li>
-            <li>✓ Stage Bar</li>
-            <li>✓ Mikrofon + 4x LED Par</li>
-          </ul>
-          <a href="/vermietung/djpaket-fildern" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
-            Details &amp; Buchung ↗
-          </a>
-        </div>
-
-        <!-- Paket 3: Veranstaltungspaket -->
-        <div class="service-card animate-on-scroll flex flex-col">
-          <div class="text-[var(--color-secondary)] mb-4"><PackageIcon class="w-10 h-10" /></div>
-          <h3 class="font-play text-xl font-bold mb-2">Veranstaltungspaket</h3>
-          <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 200€ / Tag</p>
-          <p class="text-[var(--color-text-muted)] text-sm mb-4">Für mittlere bis große Veranstaltungen bis ca. 150 Personen</p>
-          <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
-            <li>✓ 2x LD Maui 28 G3</li>
-            <li>✓ 6-Kanal Mischpult</li>
-            <li>✓ KLS Laser Bar + Nebel</li>
-            <li>✓ 2x Moving Head</li>
-            <li>✓ Mikrofon + 4x LED Par</li>
-          </ul>
-          <a href="/vermietung/veranstaltungspaket-stuttgart" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
-            Details &amp; Buchung ↗
-          </a>
-        </div>
-
-        <!-- Paket 4: Akku-Party-Paket -->
-        <div class="service-card animate-on-scroll flex flex-col">
-          <div class="text-[var(--color-secondary)] mb-4"><PackageIcon class="w-10 h-10" /></div>
-          <h3 class="font-play text-xl font-bold mb-2">Akku-Party-Paket – Outdoor</h3>
-          <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 170€ / Tag</p>
-          <p class="text-[var(--color-text-muted)] text-sm mb-4">Für Outdoor-Partys &amp; Locations ohne Strom, 50-80 Personen</p>
-          <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
-            <li>✓ 2x JBL Partyboxen (Akkubetrieb)</li>
-            <li>✓ LED BossFX-2 Pro (via Powerstation)</li>
-            <li>✓ 2x Akku LED PAR Lichter</li>
-            <li>✓ EnginStar Powerstation</li>
-            <li>✓ 4-6h Akkulaufzeit</li>
-          </ul>
-          <a href="/vermietung/akku-party-paket" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
-            Details &amp; Buchung ↗
-          </a>
-        </div>
-
-        <!-- Paket 5: Karaoke-Paket -->
-        <div class="service-card animate-on-scroll flex flex-col">
-          <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
-          <h3 class="font-play text-xl font-bold mb-2">Karaoke-Paket</h3>
-          <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 130€ / Tag</p>
-          <p class="text-[var(--color-text-muted)] text-sm mb-4">Für Karaoke-Abende & Party-Singen, bis ca. 50 Personen</p>
-          <ul class="text-[var(--color-text-muted)] text-sm space-y-1.5 mb-6 flex-1">
-            <li>✓ 2x JBL Partyboxen</li>
-            <li>✓ 2x Mikrofon</li>
-            <li>✓ Yamaha Mischpult</li>
-            <li>✓ Bluetooth & Computer-Zuspielung</li>
-            <li>✓ Alle Kabel inklusive</li>
-          </ul>
-          <a href="/vermietung/karaoke-paket" class="btn-primary text-center text-sm py-2.5 px-4 mt-auto">
-            Details &amp; Buchung ↗
-          </a>
-        </div>
-      </div>
+      <PackageCardGrid pakete={komplettPakete} />
 
       <div class="text-center mt-12 animate-on-scroll">
         <a href="/vermietung" class="btn-secondary">
