@@ -42,4 +42,3 @@ Allow: /
 
 # === Sitemaps ===
 Sitemap: https://soundundlicht-stuttgart.de/sitemap-index.xml
-Sitemap: https://soundundlicht-stuttgart.de/rss.xml
