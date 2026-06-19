@@ -52,60 +52,63 @@ const serviceJsonLd = {
 >
   <Navbar currentPage="home" />
 
-  <HeroSlider
-    id="home"
-    slides={[
-      {
-        title: "Partytechnik mieten in Stuttgart & Umgebung",
-        titleTag: "h1",
-        description: "PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment für deine Feier. Ich bin dein lokaler Verleiher in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung. Keine Versandrisiken – einfach vorbeikommen, Technik anschauen, mitnehmen und losfeiern.",
-        category: "Lokaler Verleih: Abholung in Leinfelden-Echterdingen",
-        buttons: [
-          { text: "Pakete & Preise ↗", href: "/vermietung", class: "btn-primary" },
-          { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
-        ]
-      },
-      {
-        title: "Soundanlagen & Partyboxen",
-        titleTag: "h2",
-        description: "Ob 2x JBL Partybox mit 240W und Lightshow für den Geburtstag oder ein LD Maui 28 G3 Säulensystem für deine Hochzeit – professioneller Sound für bis zu 150 Gäste. Auch einzeln mietbar, inklusive Kabel und Einweisung.",
-        category: "Einzelgeräte Audio",
-        categoryColor: "var(--color-accent)",
-        buttons: [
-          { text: "Zur Vermietung ↗", href: "/vermietung", class: "btn-primary" },
-          { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
-        ]
-      },
-      {
-        title: "Lichttechnik & Effekte",
-        titleTag: "h2",
-        description: "Moving Heads für dynamische Lightshows, LED PAR Strahler für farbiges Ambientelicht, KLS Laser Bar mit Derby-Effekten und Nebelmaschine für die richtige Atmosphäre – jedes Gerät auch einzeln mietbar.",
-        category: "Einzelgeräte Licht & Effekte",
-        categoryColor: "var(--color-accent)",
-        buttons: [
-          { text: "Zur Vermietung ↗", href: "/vermietung", class: "btn-primary" },
-          { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
-        ]
-      },
-      {
-        title: "Komplettpakete für dein Event",
-        titleTag: "h2",
-        description: "Sound, Licht und Effekte als fertiges Paket – vom Partypaket mit JBL Boxen bis zum Veranstaltungspaket mit professionellem Mischpult. Alles Plug & Play, inklusive aller Kabel und persönlicher Einweisung.",
-        category: "Auch als Komplettpaket",
-        categoryColor: "var(--color-accent)",
-        buttons: [
-          { text: "Zu den Paketen ↗", href: "/vermietung", class: "btn-primary" },
-          { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
-        ]
-      }
-    ]}
-  >
-    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float z-20">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-      </svg>
-    </div>
-  </HeroSlider>
+  <div class="relative">
+    <HeroSlider
+      id="home"
+      slides={[
+        {
+          title: "Partytechnik mieten in Stuttgart & Umgebung",
+          titleTag: "h1",
+          description: "PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment für deine Feier. Ich bin dein lokaler Verleiher in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung. Keine Versandrisiken – einfach vorbeikommen, Technik anschauen, mitnehmen und losfeiern.",
+          category: "Lokaler Verleih: Abholung in Leinfelden-Echterdingen",
+          buttons: [
+            { text: "Pakete & Preise ↗", href: "/vermietung", class: "btn-primary" },
+            { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
+          ]
+        },
+        {
+          title: "Soundanlagen & Partyboxen",
+          titleTag: "h2",
+          description: "Ob 2x JBL Partybox mit 240W und Lightshow für den Geburtstag oder ein LD Maui 28 G3 Säulensystem für deine Hochzeit – professioneller Sound für bis zu 150 Gäste. Auch einzeln mietbar, inklusive Kabel und Einweisung.",
+          category: "Einzelgeräte Audio",
+          categoryColor: "var(--color-accent)",
+          buttons: [
+            { text: "Zur Vermietung ↗", href: "/vermietung", class: "btn-primary" },
+            { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
+          ]
+        },
+        {
+          title: "Lichttechnik & Effekte",
+          titleTag: "h2",
+          description: "Moving Heads für dynamische Lightshows, LED PAR Strahler für farbiges Ambientelicht, KLS Laser Bar mit Derby-Effekten und Nebelmaschine für die richtige Atmosphäre – jedes Gerät auch einzeln mietbar.",
+          category: "Einzelgeräte Licht & Effekte",
+          categoryColor: "var(--color-accent)",
+          buttons: [
+            { text: "Zur Vermietung ↗", href: "/vermietung", class: "btn-primary" },
+            { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
+          ]
+        },
+        {
+          title: "Komplettpakete für dein Event",
+          titleTag: "h2",
+          description: "Sound, Licht und Effekte als fertiges Paket – vom Partypaket mit JBL Boxen bis zum Veranstaltungspaket mit professionellem Mischpult. Alles Plug & Play, inklusive aller Kabel und persönlicher Einweisung.",
+          category: "Auch als Komplettpaket",
+          categoryColor: "var(--color-accent)",
+          buttons: [
+            { text: "Zu den Paketen ↗", href: "/vermietung", class: "btn-primary" },
+            { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
+          ]
+        }
+      ]}
+    >
+      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float z-20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </HeroSlider>
+
+  </div>
 
   <!-- Services Section -->
   <section id="services" class="section-padding bg-[var(--color-bg)]">

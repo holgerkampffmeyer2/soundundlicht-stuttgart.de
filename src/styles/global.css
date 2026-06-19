@@ -390,6 +390,10 @@ body {
   position: relative;
 }
 
+.equipment-card[id] {
+  scroll-margin-top: 160px;
+}
+
 .equipment-card::before {
   content: '';
   position: absolute;
@@ -596,4 +600,214 @@ body {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* Rental Search Overlay */
+.rental-search-overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  max-height: 480px;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  margin-top: 4px;
+}
+
+.rental-search-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 14px;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.15s;
+}
+
+.rental-search-item:last-child {
+  border-bottom: none;
+}
+
+.rental-search-item:hover,
+.rental-search-item-active {
+  background: var(--color-bg);
+}
+
+.rental-search-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--color-bg);
+}
+
+.rental-search-item-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.rental-search-item-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  line-height: 1.3;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rental-search-snippet {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rental-search-empty {
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.rental-search-overlay mark {
+  background: var(--color-secondary);
+  color: white;
+  padding: 0 3px;
+  border-radius: 3px;
+}
+
+.rental-search-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.rental-search-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.badge-paket {
+  background: var(--color-secondary);
+  color: var(--color-bg);
+}
+
+.badge-sound {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.badge-licht {
+  background: var(--color-primary);
+  color: white;
+}
+
+.rental-search-price {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+input[data-rental-search] {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+input[data-rental-search]:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-secondary) 25%, transparent);
+}
+
+input[data-rental-search]::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.7;
+}
+
+.rental-search-wrapper {
+  position: relative;
+}
+
+.rental-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+/* Fixed Search (Layout.astro) */
+.rental-search-fixed {
+  position: fixed;
+  top: 90px;
+  right: 1rem;
+  z-index: 40;
+  width: 18rem;
+  background: color-mix(in srgb, var(--color-surface) 70%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 30%, transparent);
+  border-radius: 14px;
+  padding: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .rental-search-fixed {
+    right: 2rem;
+    width: 20rem;
+  }
+}
+
+.rental-search-fixed:focus-within {
+  border-color: var(--color-secondary);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--color-secondary) 20%, transparent),
+    0 0 24px color-mix(in srgb, var(--color-secondary) 15%, transparent),
+    0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.rental-search-fixed .rental-search-wrapper input[data-rental-search] {
+  background: transparent;
+  border: none;
+  padding: 0.625rem 0.75rem 0.625rem 2.5rem;
+  font-size: 0.925rem;
+}
+
+.rental-search-fixed .rental-search-wrapper input[data-rental-search]:focus {
+  box-shadow: none;
+}
+
+.rental-search-fixed .rental-search-icon {
+  left: 10px;
+  width: 18px;
+  height: 18px;
 }

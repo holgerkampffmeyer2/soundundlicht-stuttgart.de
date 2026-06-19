@@ -21,8 +21,8 @@ importers:
         specifier: ^4.2.0
         version: 4.2.2(vite@8.0.8(@types/node@24.12.3)(esbuild@0.27.7)(jiti@2.6.1))
       astro:
-        specifier: ^6.4.2
-        version: 6.4.2(@types/node@24.12.3)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)
+        specifier: ^6.4.8
+        version: 6.4.8(@types/node@24.12.3)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)
       tailwindcss:
         specifier: ^4.2.0
         version: 4.2.2
@@ -1039,8 +1039,8 @@ packages:
     resolution: {integrity: sha512-+QDcgc7e+au6EZ0YjMmRRjNoQo5bDMlaR45aWDoFsuxQTCM9qmCHRoiKJPELgckJ8Wmr7vcfpa9eCDHBFh6G4w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  astro@6.4.2:
-    resolution: {integrity: sha512-8H89CH2dKL5SCU99OCqdU9BGjmPkSJqaPurywj5XMo7eMFGUFD3vsNhdEKnEh4mK4LgGje3/QDTTSIIGst0G0Q==}
+  astro@6.4.8:
+    resolution: {integrity: sha512-KK5lX90uU9EeVaTjINyj3sy9/NFXVa59aowaqbWBDDKLXZh4rr7GwIaCFYVetE22MJtsCNFerQXn0vlCLmpP/Q==}
     engines: {node: '>=22.12.0', npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1174,8 +1174,8 @@ packages:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
 
-  devalue@5.7.1:
-    resolution: {integrity: sha512-MUbZ586EgQqdRnC4yDrlod3BEdyvE4TapGYHMW2CiaW+KkkFmWEFqBUaLltEZCGi0iFXCEjRF0OjF0DV2QHjOA==}
+  devalue@5.8.1:
+    resolution: {integrity: sha512-4CXDYRBGqN+57wVJkuXBYmpAVUSg3L6JAQa/DFqm238G73E1wuyc/JhGQJzN7vUf/CMphYau2zXbfWzDR5aTEw==}
 
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
@@ -3133,7 +3133,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@6.4.2(@types/node@24.12.3)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2):
+  astro@6.4.8(@types/node@24.12.3)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2):
     dependencies:
       '@astrojs/compiler': 4.0.0
       '@astrojs/internal-helpers': 0.10.0
@@ -3149,7 +3149,7 @@ snapshots:
       clsx: 2.1.1
       common-ancestor-path: 2.0.0
       cookie: 1.1.1
-      devalue: 5.7.1
+      devalue: 5.8.1
       diff: 8.0.4
       dset: 3.1.4
       es-module-lexer: 2.0.0
@@ -3327,7 +3327,7 @@ snapshots:
 
   detect-libc@2.1.2: {}
 
-  devalue@5.7.1: {}
+  devalue@5.8.1: {}
 
   devlop@1.1.0:
     dependencies:
