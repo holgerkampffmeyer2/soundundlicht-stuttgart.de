@@ -10,7 +10,9 @@ import Testimonials from '../../components/Testimonials.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getFaqsForPage } from '../../lib/faqUtils';
+import { rentalItems } from '../../data/rental-catalog';
 
+const product = rentalItems.find(i => i.slug === 'partypaket-stuttgart')!;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -92,7 +94,7 @@ const serviceSchema = {
   "offers": {
     "@type": "Offer",
     "url": "https://soundundlicht-stuttgart.de/vermietung/partypaket-stuttgart",
-    "price": "160",
+    "price": product.priceValue.toString(),
     "priceCurrency": "EUR",
     "availability": "https://schema.org/InStock"
   }
@@ -127,7 +129,7 @@ const faqSchema = {
   description="Miete das Partypaket für deine Party in Stuttgart und Umgebung. Komplette Partytechnik mit JBL Partyboxen, Licht, Nebel und Mikrofon für bis zu 50 Personen."
   image="/img/vermietung/partypaket.webp"
   pagefindType="produkt"
-  pagefindMeta={{ price: "ab 160€", image: images[0], category: "Paket", label: "Partypaket" }}
+  pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Partypaket" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, {
     "@context": "https://schema.org",
     "@type": "VideoObject",
@@ -159,6 +161,13 @@ const faqSchema = {
       <div class="relative z-10 w-full py-32 px-4">
         <div class="max-w-6xl mx-auto">
           <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+          <div class="flex flex-wrap gap-3 mt-3 mb-2">
+            <span class="price-badge">{product.price}</span>
+            <span class="plug-badge-inline">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              Inkl. Kabel & Einweisung
+            </span>
+          </div>
           <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Partypaket Stuttgart</h1>
           <p class="text-[var(--color-text)] text-xl max-w-2xl">
             Miete unser Partypaket für deine nächste Party in Stuttgart und Umgebung. Das Set enthält 2x JBL Partyboxen mit kraftvollem Sound und dynamischen Lichteffekten, eine Eurolite KLS Laser Bar für spektakuläre Lichtshow, eine Stairville AF-150 Nebelmaschine für atmosphärische Wirkung sowie Mikrofon und LED PAR Strahler für vollständige Beschallung und Beleuchtung.<br />
@@ -212,7 +221,7 @@ const faqSchema = {
   </section>
 
   <!-- 2. Preis & Kaution -->
-  <RentalPricing price="ab 160€" deposit={200} />
+  <RentalPricing price={product.price} deposit={200} />
 
   <!-- 3. Enthalten im Paket -->
   <PackageContents title="Enthalten im Partypaket" items={packageItems} />

@@ -10,8 +10,8 @@ import { getFaqsForPage } from '../lib/faqUtils';
 import { serviceArea, offerCatalogJsonLd } from '../data/jsonLd';
 import HeroSlider from "../components/HeroSlider.astro";
 import BieteSection from "../components/BieteSection.astro";
-import { komplettPakete } from '../data/packages';
 import PackageCardGrid from '../components/PackageCardGrid.astro';
+import { rentalItems } from '../data/rental-catalog';
 
 const indexFaqs = getFaqsForPage('index');
 
@@ -28,7 +28,7 @@ const faqJsonLd = {
   }))
 };
 
-// offerCatalogJsonLd imported from data/jsonLd
+const komplettPakete = rentalItems.filter(i => i.category === 'Paket');
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
@@ -48,7 +48,7 @@ const serviceJsonLd = {
   description="Vermietung von PA-Anlagen, Partyboxen & Lichttechnik in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen. Ab 160€ pro Tag. DJ-Service, persönliche Beratung, einfache Abholung."
   image="/img/slider/slide1.webp"
   preloadImage="/img/slider/slide1.webp"
-  jsonLd={[serviceJsonLd, faqJsonLd, offerCatalogJsonLd]}
+  jsonLd={[serviceJsonLd, faqJsonLd, offerCatalogJsonLd(rentalItems)]}
 >
   <Navbar currentPage="home" />
 

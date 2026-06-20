@@ -11,6 +11,9 @@ import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import { getFaqsForPage } from '../../lib/faqUtils';
+import { rentalItems } from '../../data/rental-catalog';
+
+const product = rentalItems.find(i => i.slug === 'ld-maui-28g3')!;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -60,7 +63,7 @@ const serviceSchema = {
   "offers": {
     "@type": "Offer",
     "url": "https://soundundlicht-stuttgart.de/vermietung/ld-maui-28g3",
-    "price": "120",
+    "price": product.priceValue.toString(),
     "priceCurrency": "EUR",
     "availability": "https://schema.org/InStock"
   }
@@ -155,7 +158,7 @@ const events = [
   description="Miete das LD Maui 28 G3 Säulensystem für deine Party, Hochzeit oder Firmenfeier. Die LD Maui 28 G3 ist eine professionelle PA-Anlage mit starkem Bass, druckvollem und glasklarem Sound, mit 2060W, 127 dB Schalldruck, für bis zu 150 Personen."
   image="/img/vermietung/ldmaui3.webp"
   pagefindType="produkt"
-  pagefindMeta={{ price: "ab 120€", image: images[0], category: "Sound", label: "Säulensystem 2x LD Maui 28 G3 (Paar)" }}
+  pagefindMeta={{ price: product.price, image: images[0], category: "Sound", label: "Säulensystem 2x LD Maui 28 G3 (Paar)" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
 >
   <Navbar currentPage="/vermietung" />
@@ -170,6 +173,13 @@ const events = [
     <div class="relative z-10 w-full py-32 px-4">
       <div class="max-w-6xl mx-auto">
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+            <span class="price-badge">{product.price}</span>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Inkl. Kabel & Einweisung
+          </span>
+        </div>
         <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">LD Maui 28 G3</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">
           Professionelles Säulen-PA-System mit kraftvollem Sound für bis zu 150 Personen. <br />
@@ -203,7 +213,7 @@ const events = [
   </section>
 
   <!-- 2. Preis & Kaution -->
-  <RentalPricing price="ab 120€" deposit={200} />
+  <RentalPricing price={product.price} deposit={200} />
 
   <!-- 3. Technische Spezifikation -->
   <TechnicalSpecs specs={specs} />

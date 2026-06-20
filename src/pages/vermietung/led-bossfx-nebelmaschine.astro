@@ -11,6 +11,9 @@ import IncludedInPackages from '../../components/vermietung/IncludedInPackages.a
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getFaqsForPage } from '../../lib/faqUtils';
+import { rentalItems } from '../../data/rental-catalog';
+
+const product = rentalItems.find(i => i.slug === 'led-bossfx-nebelmaschine')!;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -56,7 +59,7 @@ const serviceSchema = {
   "offers": {
     "@type": "Offer",
     "url": "https://soundundlicht-stuttgart.de/vermietung/led-bossfx-nebelmaschine",
-    "price": "60",
+    "price": product.priceValue.toString(),
     "priceCurrency": "EUR",
     "availability": "https://schema.org/InStock"
   }
@@ -153,7 +156,7 @@ const videoSchema = {
   description="Miete die LED Party-Lichtanlage BossFX-2 Pro mit AF-150 Nebelmaschine. Sound-zu-Licht Modus und DMX-Steuerung für deine Party."
   image="/img/vermietung/stairville-led-bossfx-2-pro-bundle.webp"
   pagefindType="produkt"
-  pagefindMeta={{ price: "ab 60€", image: images[0], category: "Licht", label: "Lichtanlage LED BossFX-2 Pro und AF-150 Fog Machine" }}
+  pagefindMeta={{ price: product.price, image: images[0], category: "Licht", label: "Lichtanlage LED BossFX-2 Pro und AF-150 Fog Machine" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
 >
   <Navbar currentPage="/vermietung" />
@@ -164,6 +167,13 @@ const videoSchema = {
   <section class="product-header section-padding pb-0">
     <div class="max-w-6xl mx-auto px-4">
       <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+      <div class="flex flex-wrap gap-3 mt-3 mb-2">
+        <span class="price-badge">{product.price}</span>
+        <span class="plug-badge-inline">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          Inkl. Kabel & Einweisung
+        </span>
+      </div>
       <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">LED BossFX-2 Pro & Nebelmaschine</h1>
       <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
         Die Stairville LED BossFX-2 Pro ist eine komplette Party-Lichtanlage für DJs und Events: mit 2 Derby-Beams, 2 hellen Flood-Panels, 4 Strobe-LEDs (Weiß/UV) und schnellem Plug-and-Play-Aufbau inklusive Stativ.
@@ -197,7 +207,7 @@ const videoSchema = {
   </section>
 
   <!-- 2. Preis & Kaution -->
-  <RentalPricing price="ab 60€" deposit={100} />
+  <RentalPricing price={product.price} deposit={100} />
 
   <!-- 3a. Technische Spezifikation Partylicht -->
   <section class="section-padding bg-[var(--color-surface)]">

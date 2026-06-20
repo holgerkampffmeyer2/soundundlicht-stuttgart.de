@@ -10,7 +10,9 @@ import Testimonials from '../../components/Testimonials.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getFaqsForPage } from '../../lib/faqUtils';
+import { rentalItems } from '../../data/rental-catalog';
 
+const product = rentalItems.find(i => i.slug === 'akku-party-paket')!;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -90,7 +92,7 @@ const serviceSchema = {
   "offers": {
     "@type": "Offer",
     "url": "https://soundundlicht-stuttgart.de/vermietung/akku-party-paket",
-    "price": "170",
+    "price": product.priceValue.toString(),
     "priceCurrency": "EUR",
     "availability": "https://schema.org/InStock"
   }
@@ -125,7 +127,7 @@ const faqSchema = {
   description="Miete das Akku-Party-Paket für Outdoor-Partys ohne Stromanschluss. Komplett akkubetrieben mit JBL Partyboxen, LED BossFX Licht und EnginStar Powerstation. 4-6h Laufzeit."
   image="/img/vermietung/Akku-powered-party-hero.webp"
   pagefindType="produkt"
-  pagefindMeta={{ price: "ab 170€", image: images[0], category: "Paket", label: "Akku-Party-Paket – Outdoor" }}
+  pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Akku-Party-Paket – Outdoor" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}
 >
   <Navbar currentPage="/vermietung" />
@@ -139,6 +141,13 @@ const faqSchema = {
       <div class="relative z-10 w-full py-32 px-4">
         <div class="max-w-6xl mx-auto">
           <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+          <div class="flex flex-wrap gap-3 mt-3 mb-2">
+            <span class="price-badge">{product.price}</span>
+            <span class="plug-badge-inline">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              Inkl. Kabel & Einweisung
+            </span>
+          </div>
           <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Akku-Party-Paket – Outdoor</h1>
           <p class="text-[var(--color-text)] text-xl max-w-2xl">
             Das Komplettpaket für Partys an Orten ohne Stromanschluss. Enthält 2x JBL Partyboxen (Akkubetrieb, 18h Laufzeit), 
@@ -175,7 +184,7 @@ const faqSchema = {
   <ProductGallery images={images} title="Akku-Party-Paket" />
 
   <!-- 2. Preis & Kaution -->
-  <RentalPricing price="ab 170€" deposit={300} />
+  <RentalPricing price={product.price} deposit={300} />
 
   <!-- 3. Enthalten im Paket -->
   <PackageContents title="Enthalten im Akku-Party-Paket" items={packageItems} />

@@ -11,6 +11,9 @@ import IncludedInPackages from '../../components/vermietung/IncludedInPackages.a
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getFaqsForPage } from '../../lib/faqUtils';
+import { rentalItems } from '../../data/rental-catalog';
+
+const product = rentalItems.find(i => i.slug === 'kls-laser-bar')!;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -53,7 +56,7 @@ const serviceSchema = {
   "offers": {
     "@type": "Offer",
     "url": "https://soundundlicht-stuttgart.de/vermietung/kls-laser-bar",
-    "price": "50",
+    "price": product.priceValue.toString(),
     "priceCurrency": "EUR",
     "availability": "https://schema.org/InStock"
   }
@@ -151,7 +154,7 @@ const videoSchema = {
   description="Miete die Eurolite KLS Laser Bar FX mit 1200W Nebelmaschine. Sound-zu-Licht Steuerung für deine Party."
   image="/img/vermietung/eurolite-kls-laser-bar.webp"
   pagefindType="produkt"
-  pagefindMeta={{ price: "ab 50€", image: images[0], category: "Licht", label: "Eurolite KLS Laser Bar" }}
+  pagefindMeta={{ price: product.price, image: images[0], category: "Licht", label: "Eurolite KLS Laser Bar" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
 >
   <Navbar currentPage="/vermietung" />
@@ -162,6 +165,13 @@ const videoSchema = {
   <section class="product-header section-padding pb-0">
     <div class="max-w-6xl mx-auto px-4">
       <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+      <div class="flex flex-wrap gap-3 mt-3 mb-2">
+        <span class="price-badge">{product.price}</span>
+        <span class="plug-badge-inline">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          Inkl. Kabel & Einweisung
+        </span>
+      </div>
       <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">Eurolite KLS Laser Bar FX</h1>
       <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
         Die EUROLITE LED KLS Laser Bar FX ist ein kompaktes 4in1-Lichtset mit vielen Einsatzmöglichkeiten:  mit 2 Derbys, 2 LED Spots, 4 weißen Strobe-LEDs und Laser (RG, 2M) sorgt die Lichtanlage für eine beeindruckende Lichtshow. 
@@ -194,7 +204,7 @@ const videoSchema = {
   </section>
 
   <!-- 2. Preis & Kaution -->
-  <RentalPricing price="ab 50€" deposit={100} />
+  <RentalPricing price={product.price} deposit={100} />
 
   <!-- 3a. Technische Spezifikation Laser Bar -->
   <section class="section-padding bg-[var(--color-surface)]">

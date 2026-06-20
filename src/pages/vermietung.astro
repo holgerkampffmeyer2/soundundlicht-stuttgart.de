@@ -8,7 +8,6 @@ import MietanfrageAblauf from '../components/vermietung/MietanfrageAblauf.astro'
 import HeroSlider from "../components/HeroSlider.astro";
 import { getFaqsForPage } from '../lib/faqUtils';
 import { serviceArea, offerCatalogJsonLd } from '../data/jsonLd';
-import { komplettPakete } from '../data/packages';
 import PackageCardGrid from '../components/PackageCardGrid.astro';
 import { rentalItems } from '../data/rental-catalog';
 
@@ -39,8 +38,7 @@ const serviceSchema = {
   "areaServed": serviceArea
 };
 
-// komplettPakete imported from ../data/packages
-
+const komplettPakete = rentalItems.filter(i => i.category === 'Paket');
 const soundEquipment = rentalItems.filter(i => i.category === 'Sound');
 const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
 ---
@@ -67,7 +65,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
     },
     faqSchema,
     serviceSchema,
-    offerCatalogJsonLd
+    offerCatalogJsonLd(rentalItems)
   ]}
 >
   <Navbar currentPage="/vermietung" />
@@ -202,8 +200,14 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {soundEquipment.map((item, index) => (
           <div id={`item-${item.slug}`} class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
-            <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
-            <span class="text-[var(--color-secondary)] text-sm font-bold">{item.price}</span>
+            <div class="relative">
+              <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
+              <span class="plug-badge">
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                Inkl. Kabel & Einweisung
+              </span>
+            </div>
+            <span class="price-badge">{item.price}</span>
             <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
             <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
             <ul class="text-[var(--color-text-muted)] text-sm space-y-1">
@@ -234,8 +238,14 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {lichtEquipment.map((item, index) => (
           <div id={`item-${item.slug}`} class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
-            <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
-            <span class="text-[var(--color-secondary)] text-sm font-bold">{item.price}</span>
+            <div class="relative">
+              <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
+              <span class="plug-badge">
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                Inkl. Kabel & Einweisung
+              </span>
+            </div>
+            <span class="price-badge">{item.price}</span>
             <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
             <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
             <ul class="text-[var(--color-text-muted)] text-sm space-y-1">

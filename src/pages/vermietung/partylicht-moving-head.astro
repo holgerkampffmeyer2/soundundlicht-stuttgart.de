@@ -11,6 +11,9 @@ import IncludedInPackages from '../../components/vermietung/IncludedInPackages.a
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getFaqsForPage } from '../../lib/faqUtils';
+import { rentalItems } from '../../data/rental-catalog';
+
+const product = rentalItems.find(i => i.slug === 'partylicht-moving-head')!;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -56,7 +59,7 @@ const serviceSchema = {
   "offers": {
     "@type": "Offer",
     "url": "https://soundundlicht-stuttgart.de/vermietung/partylicht-moving-head",
-    "price": "50",
+    "price": product.priceValue.toString(),
     "priceCurrency": "EUR",
     "availability": "https://schema.org/InStock"
   }
@@ -142,7 +145,7 @@ const events = [
   description="Miete unsere Party-Lichtanlage mit Gobo Moving Head und LED PAR Strahlern. DMX-steuerbar mit optionalem DMX-Controller sowie Sound-zu-Licht Modus für deine Party."
   image="/img/vermietung/licht1.webp"
   pagefindType="produkt"
-  pagefindMeta={{ price: "ab 50€", image: images[0], category: "Licht", label: "18 Prisma 10 Gobo LED Moving Head" }}
+  pagefindMeta={{ price: product.price, image: images[0], category: "Licht", label: "18 Prisma 10 Gobo LED Moving Head" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}
 >
   <Navbar currentPage="/vermietung" />
@@ -153,6 +156,13 @@ const events = [
   <section class="product-header section-padding pb-0">
     <div class="max-w-6xl mx-auto px-4">
       <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+      <div class="flex flex-wrap gap-3 mt-3 mb-2">
+        <span class="price-badge">{product.price}</span>
+        <span class="plug-badge-inline">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          Inkl. Kabel & Einweisung
+        </span>
+      </div>
       <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">Partylicht & Gobo Moving Head</h1>
       <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
         Leistungsfähige DMX-steuerbare Party-Lichtanlage mit 18 Prisma LED Moving Head, 
@@ -166,7 +176,7 @@ const events = [
   <ProductGallery images={images} title="Partylicht & Moving Head" />
 
   <!-- 2. Preis & Kaution -->
-  <RentalPricing price="ab 50€" deposit={100} />
+  <RentalPricing price={product.price} deposit={100} />
 
   <!-- 3a. Technische Spezifikation Moving Head -->
   <section class="section-padding bg-[var(--color-surface)]">
