@@ -232,20 +232,22 @@ const pagefindMetaKeys = Object.keys(pagefindMerged);
     }
     var list = document.createElement('div');
     var catalogMatchedUrls = {};
-    results.forEach(function (item) {
-      var isVermietungPage = item.url === '/vermietung' || item.url === '/vermietung/';
-      if (isVermietungPage && rentalCatalog) {
-        var matched = matchCatalogProducts(query);
-        if (matched.length) {
-          matched.forEach(function(p) {
-            renderProductCard(p, list, query);
-            if (p.detailPage && p.detailPage.indexOf('#') === -1) {
-              catalogMatchedUrls[p.detailPage] = true;
-            }
-          });
-          return;
-        }
+    var hasVermietungHit = results.some(function(r) {
+      return r.url === '/vermietung' || r.url === '/vermietung/';
+    });
+    if (hasVermietungHit && rentalCatalog) {
+      var matched = matchCatalogProducts(query);
+      if (matched.length) {
+        matched.forEach(function(p) {
+          renderProductCard(p, list, query);
+          if (p.detailPage && p.detailPage.indexOf('#') === -1) {
+            catalogMatchedUrls[p.detailPage] = true;
+          }
+        });
       }
+    }
+    results.forEach(function (item) {
+      if (item.url === '/vermietung' || item.url === '/vermietung/') return;
       if (catalogMatchedUrls[item.url]) return;
       var el = document.createElement('a');
       el.className = 'rental-search-item';
