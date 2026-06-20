@@ -25,7 +25,7 @@ const isVermietungActive = currentPage.startsWith('/vermietung');
 const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietung', '') || '/' : null;
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]" aria-label="Main navigation">
+<nav data-pagefind-ignore class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]" aria-label="Main navigation">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="flex items-center justify-between h-20">
       <!-- Logo -->

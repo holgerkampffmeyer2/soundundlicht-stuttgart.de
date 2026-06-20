@@ -6,6 +6,7 @@ Website für Veranstaltungstechnik-Vermietung im Großraum Stuttgart (PA-Anlagen
 
 - **Framework:** Astro 6.x
 - **Styling:** Tailwind CSS 4.x
+- **Search:** Pagefind 1.5.x (via astro-pagefind) – clientseitige Volltextsuche
 - **Build:** Static Site Generation (SSG)
 - **Deployment:** GitHub Pages
 

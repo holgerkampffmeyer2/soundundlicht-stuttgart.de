@@ -126,6 +126,8 @@ const faqSchema = {
   title={pageTitle}
   description="Miete das Partypaket für deine Party in Stuttgart und Umgebung. Komplette Partytechnik mit JBL Partyboxen, Licht, Nebel und Mikrofon für bis zu 50 Personen."
   image="/img/vermietung/partypaket.webp"
+  pagefindType="produkt"
+  pagefindMeta={{ price: "ab 160€", image: images[0], category: "Paket", label: "Partypaket" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, {
     "@context": "https://schema.org",
     "@type": "VideoObject",

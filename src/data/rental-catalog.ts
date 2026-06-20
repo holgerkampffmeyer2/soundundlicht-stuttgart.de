@@ -163,7 +163,7 @@ export const rentalItems: RentalItem[] = [
     category: 'Licht',
     price: 'ab 20€',
     features: ['270W LEDs 18 x 15 W', 'RGBW Farbmischung', 'Per DMX programmierbar', 'Robustes Aluminiumgehäuse'],
-    detailPage: '/vermietung/partylicht-moving-head'
+    detailPage: '/vermietung#item-led-par-strahler'
   },
   {
     slug: 'led-par-lichter',

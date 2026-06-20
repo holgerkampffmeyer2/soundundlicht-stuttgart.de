@@ -155,6 +155,8 @@ const videoSchema = {
   title={pageTitle}
   description="Miete das DJ-Paket Fildern für dein Event. Komplette Eventtechnik mit LD Maui Soundanlage, LED BossFX, Nebelmaschine, Moving Head und Stage Bar für bis zu 150 Personen."
   image="/img/vermietung/djpaket.webp"
+  pagefindType="produkt"
+  pagefindMeta={{ price: "ab 200€", image: images[0], category: "Paket", label: "DJ-Paket" }}
   jsonLd={[serviceSchema, faqSchema, videoSchema, breadcrumbSchema]}
 >
   <Navbar currentPage="/vermietung" />

@@ -17,6 +17,22 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - Vor Commit: Build testen (`pnpm run build`)
 - Keine Secrets (API-Keys, Passwörter) committen
 
+## Suche (Pagefind)
+
+- **Pagefind 1.5.2** via `astro-pagefind` — Indexierung beim Build (sieht "Pagefind indexed N pages")
+- **props im `<Layout>`:**
+  - `pagefindType="produkt"` → setzt `data-pagefind-weight="2"` + `type:produkt` in meta
+  - `pagefindMeta={{ price: "ab 80€", image: "/img/...", category: "Sound", label: "..." }}`
+- **`pagefindMeta` wird als separate `<div>` pro Key-Value gerendert** — NICHT kombinierter `;`-String (Pagefind 1.5.2 parst `;` nicht korrekt!)
+- **`data-pagefind-ignore`** auf Navbar.astro + Footer.astro
+- **URL-Normalisierung**: `normalizeUrl()` strippt trailing slashes im JS (`trailingSlash: 'never'`)
+- **Katalog-Matching für `/vermietung/`:**
+  - `rentalItems` aus `rental-catalog.ts` (21 Produkte) wird als JSON-Script eingebettet
+  - `matchCatalogProducts(query)` matcht Suchbegriffe gegen Titel/Description/Features
+  - Funde werden als reiche Produktkarten gerendert, Link auf `vermietung/#item-<slug>`
+  - Nur 10 Produkte haben eigene `.astro`-Seiten → 11 werden via Katalog gematcht
+- **"Mehr Infos"-Button** auf `/vermietung/` erscheint nur bei Produkten mit echter Detailseite (kein `#` in `detailPage`)
+
 ## SEO-Richtlinien
 
 - **JSON-LD pro Seitentyp:**

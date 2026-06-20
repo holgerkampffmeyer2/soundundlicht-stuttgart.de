@@ -22,10 +22,12 @@ src/
 ├── pages/                # Routen
 │   ├── index.astro       # Landing Page
 │   ├── vermietung.astro  # Vermietung Landing
-│   ├── vermietung/       # Produktseiten (8)
+│   ├── vermietung/       # Produktseiten (10)
 │   │   ├── partypaket-stuttgart.astro
 │   │   ├── djpaket-fildern.astro
 │   │   ├── veranstaltungspaket-stuttgart.astro
+│   │   ├── akku-party-paket.astro
+│   │   ├── karaoke-paket.astro
 │   │   ├── jbl-partybox-300-320.astro
 │   │   ├── ld-maui-28g3.astro
 │   │   ├── kls-laser-bar.astro
@@ -38,7 +40,10 @@ src/
 ├── scripts/              # Build-Skripte
 │   ├── generate-rss.mjs
 │   └── update-sitemap.mjs
-└── data/                 # SEO-Daten
+├── data/                 # SEO-Daten + Mietkatalog
+│   ├── jsonLd.ts
+│   ├── packages.ts
+│   └── rental-catalog.ts   # 21 Mietartikel (alle Produkte)
 public/
 ├── img/
 │   ├── cities/           # City Hero-Bilder (slug.webp + -thumb.webp)
@@ -53,17 +58,19 @@ public/
 | Pfad | Typ |
 |------|-----|
 | `/` | Landing Page |
-| `/vermietung/` | Vermietung Landing |
+| `/vermietung/` | Vermietung Landing (auch `type:produkt`, 21 Einzelartikel via Katalog-Matching) |
 | `/vermietung/partypaket-stuttgart/` | Partypaket |
 | `/vermietung/djpaket-fildern/` | DJ-Paket |
 | `/vermietung/veranstaltungspaket-stuttgart/` | Veranstaltungspaket |
+| `/vermietung/akku-party-paket/` | Akku-Party-Paket – Outdoor |
+| `/vermietung/karaoke-paket/` | Karaoke-Paket |
 | `/vermietung/jbl-partybox-300-320/` | JBL Partybox |
 | `/vermietung/ld-maui-28g3/` | LD Maui 28 G3 |
 | `/vermietung/kls-laser-bar/` | KLS Laser Bar |
 | `/vermietung/led-bossfx-nebelmaschine/` | LED + Nebelmaschine |
 | `/vermietung/partylicht-moving-head/` | Partylicht Moving Head |
-| `/vermietung/akku-party-paket/` | Akku-Party-Paket – Outdoor |
 | 15 City Pages: `/stuttgart/`, `/esslingen/`, ... `/ostfildern/` | City Pages |
+| Weitere 11 Mietartikel (Powerstation, Mikrofon, Beamer, …) | Nur auf `/vermietung/#item-<slug>` (keine eigenen Seiten) |
 
 ---
 
@@ -163,3 +170,47 @@ pnpm run generate-rss # Nur RSS-Feed generieren
 - Sitemap: 25 URLs via `@astrojs/sitemap`
 - RSS Feed: `public/rss.xml` (wird bei build generiert)
 - urllist.txt für Suchmaschinen
+
+---
+
+## Suchsystem (Pagefind)
+
+Die Site verwendet **Pagefind 1.5.2** (via `astro-pagefind`) für clientseitige Volltextsuche. Indexierung erfolgt automatisch beim Build (`pnpm run build` / `pnpm run build:full` → "Pagefind indexed N pages").
+
+### Funktionsweise
+
+1. **Build**: Pagefind indexiert alle statischen HTML-Seiten im `dist/`-Output
+2. **Client**: `Layout.astro` lädt `/pagefind/pagefind.js` per dynamischem `import()` und führt die Suche aus
+3. **Ergebnisse**: Werden in einem Overlay unter dem Suchinput gerendert
+
+### Metadata pro Seite
+
+Jede Seite kann über Props im `<Layout>` mit Pagefind-Metadaten versehen werden:
+
+| Prop | Typ | Beispiel |
+|------|-----|----------|
+| `pagefindType` | `string` | `"produkt"` |
+| `pagefindMeta` | `Record<string, string>` | `{{ price: "ab 80€", image: "/img/...", ... }}` |
+
+**Achtung**: `pagefindMeta` wird als **separate `<div>`-Elemente** pro Key-Value-Paar gerendert, nicht als kombinierter `;`-String. Pagefind 1.5.2 parst `;` nicht korrekt als Separator.
+
+Wird `pagefindType="produkt"` gesetzt, bekommt die Seite automatisch `data-pagefind-weight="2"` (doppeltes Gewicht in Suchergebnissen).
+
+### Produkte auf `/vermietung/` (ohne eigene Seite)
+
+21 Produkte sind in `src/data/rental-catalog.ts` definiert. Nur 10 haben eigene Unterseiten in `src/pages/vermietung/`. Die restlichen 11 (Powerstation, Mikrofon, Beamer, …) existieren nur als Karten auf der `/vermietung/`-Seite.
+
+Damit auch diese in der Suche gefunden werden:
+
+1. **`/vermietung/`** hat `pagefindType="produkt"` und wird als Produktseite indexiert
+2. **Katalog-JSON**: Der gesamte `rentalItems[]`-Array wird als `<script id="rental-catalog-data" type="application/json">` in die Seite eingebettet
+3. **Client-Matching**: Die Suchfunktion `matchCatalogProducts(query)` durchsucht Titel, Beschreibung und Features aller 21 Produkte und rendert Treffer als reiche Produktkarten
+4. **Links**: Produkte ohne eigene Seite verlinken auf `vermietung/#item-<slug>`, Produkte mit eigener Seite auf die Detailseite
+
+### URL-Normalisierung
+
+Pagefind speichert URLs mit trailing slash (z.B. `/vermietung/jbl-partybox-300-320/`). Da `trailingSlash: 'never'` in der Astro-Config gesetzt ist, werden Slashes clientseitig via `normalizeUrl()` entfernt.
+
+### Ignorierte Elemente
+
+- `Navbar.astro` und `Footer.astro` haben `data-pagefind-ignore` (werden nicht indexiert)

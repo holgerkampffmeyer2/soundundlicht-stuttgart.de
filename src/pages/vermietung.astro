@@ -49,6 +49,13 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
   title="Vermietung - Sound und Licht Stuttgart - Partyboxen, Lichttechnik und DJ-Equipment mieten"
   description="Verleih von Musikanlagen, Partyboxen, Lichttechnik und DJ-Equipment im Großraum Stuttgart. Faire Preise und professionelle Beratung."
   image="/img/vermietung/licht2.webp"
+  pagefindType="produkt"
+  pagefindMeta={{
+    label: "Vermietung",
+    image: "/img/vermietung/licht2.webp",
+    category: "Vermietung",
+    price: "ab 10€"
+  }}
   jsonLd={[
     {
       "@context": "https://schema.org",
@@ -207,7 +214,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
               ))}
             </ul>
             <a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
-            {item.detailPage && (
+            {item.detailPage && !item.detailPage.includes('#') && (
               <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block">Mehr Infos</a>
             )}
           </div>
@@ -239,7 +246,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
               ))}
             </ul>
             <a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
-            {item.detailPage && (
+            {item.detailPage && !item.detailPage.includes('#') && (
               <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block">Mehr Infos</a>
             )}
           </div>
