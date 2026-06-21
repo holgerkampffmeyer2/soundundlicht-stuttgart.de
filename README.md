@@ -30,6 +30,15 @@ Siehe [docs/citypage.md](docs/citypage.md) für die vollständige Anleitung.
 
 Weitere Details zu Projektstruktur, Komponenten und Architektur in [docs/DESIGN.md](docs/DESIGN.md).
 
+## IndexNow
+
+Nach einem Deploy die aktualisierten URLs an alle IndexNow-Suchmaschinen melden:
+
+```bash
+pnpm run build:full     # urllist.txt aktualisieren
+pnpm run indexnow-submit  # an Bing, Yandex, Naver, Seznam, Yep senden
+```
+
 ## Build-Outputs
 
 - `dist/` – statische HTML-Seiten

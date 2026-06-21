@@ -12,7 +12,7 @@
     "lint:fix": "eslint src --fix",
     "generate-rss": "node scripts/generate-rss.mjs",
     "generate-urllist": "node scripts/update-sitemap.mjs",
-    "bing-indexnow": "node scripts/bing-indexnow.mjs"
+    "indexnow-submit": "node scripts/indexnow-submit.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

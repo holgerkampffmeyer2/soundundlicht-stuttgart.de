@@ -45,6 +45,13 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - **Slug-Convention**: City = `<stadt>.astro`, Produkt = `vermietung/<produkt-slug>.astro`
 - **Title-Pattern**: `"<Keyword> mieten in <Stadt> | Sound & Licht Stuttgart"`
 
+## IndexNow (URL-Submission)
+
+- `pnpm run indexnow-submit` — sendet alle URLs aus `public/urllist.txt` an `api.indexnow.org`
+- Das Relay verteilt automatisch an Bing, Yandex, Naver, Seznam, Yep
+- Vorher immer `pnpm run build:full` ausführen (aktualisiert `urllist.txt`)
+- **Google wird nicht unterstützt** — dafür Google Search Console nutzen
+
 ## Referenzen
 - [docs/DESIGN.md](docs/DESIGN.md) — Projektstruktur, Farbsystem, Komponenten, Animationen
 - [docs/theme-system.md](docs/theme-system.md) — vollständige Token-Tabellen aller Themes
