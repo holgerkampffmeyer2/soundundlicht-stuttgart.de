@@ -46,29 +46,28 @@ function getSlideImage(path: string) {
     const isLcp = index === 0;
     return (
     <div class={`slide slide-${index + 1} ${index === 0 ? "active" : ""}`} data-slide={index}>
-      {imgMeta ? (
-        <Picture
-          src={imgMeta}
-          formats={['avif', 'webp']}
-          alt=""
-          class="hero-bg-img"
-          width={1920}
-          height={1080}
-          loading={isLcp ? "eager" : "lazy"}
-          fetchpriority={isLcp ? "high" : "low"}
-          sizes="100vw"
-        />
-      ) : (
-        <img
-          src={imgSrc}
-          alt=""
-          class="hero-bg-img"
-          width="1920"
-          height="1080"
-          fetchpriority={isLcp ? "high" : "low"}
-          loading={isLcp ? "eager" : "lazy"}
-        />
-      )}
+{imgMeta ? (
+         <Picture
+           src={imgMeta}
+           formats={['avif', 'webp']}
+           alt=""
+           class="hero-bg-img"
+           width={1920}
+           height={1080}
+           loading={isLcp ? "eager" : "lazy"}
+           fetchpriority={isLcp ? "high" : "low"}
+         />
+       ) : (
+         <img
+           src={imgSrc}
+           alt=""
+           class="hero-bg-img"
+           width="1920"
+           height="1080"
+           fetchpriority={isLcp ? "high" : "low"}
+           loading={isLcp ? "eager" : "lazy"}
+         />
+       )}
       <div class="slide-overlay" style={slide.gradient ? `background: ${slide.gradient}` : undefined}></div>
       <div class="slide-content">
         <div class="container mx-auto px-4">
