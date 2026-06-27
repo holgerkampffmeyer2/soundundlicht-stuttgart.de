@@ -1,6 +1,6 @@
 import js from '@eslint/js';
 import globals from 'globals';
-import astroParser from 'astro-eslint-parser';
+import * as astroParser from 'astro-eslint-parser';
 import tseslintPlugin from '@typescript-eslint/eslint-plugin';
 import tsparser from '@typescript-eslint/parser';
 
@@ -16,7 +16,7 @@ export default [
         ...globals.browser,
         ...globals.node,
       },
-      parser: astroParser,
+      parser: astroParser.parseForESLint,
       parserOptions: {
         parser: tsparser,
         extraFileExtensions: ['.astro'],
