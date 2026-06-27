@@ -10,10 +10,11 @@ import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { rentalItems } from '../../data/rental-catalog';
 
-const product = rentalItems.find(i => i.slug === 'partylicht-moving-head')!;
+const products = await getCollection('products');
+const product = products.find(i => i.data.slug === 'partylicht-moving-head')!.data;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -23,7 +24,7 @@ const breadcrumbSegments = [
 
 const pageTitle = "Partylicht & Gobo Moving Head - Vermietung | DJ Hulk";
 
-const faqs = getFaqsForPage('partylicht-moving-head');
+const faqs = await getFaqsForPage('partylicht-moving-head');
 
 const includedInPackages = [
   { name: "Veranstaltungspaket", url: "/vermietung/veranstaltungspaket-stuttgart" },

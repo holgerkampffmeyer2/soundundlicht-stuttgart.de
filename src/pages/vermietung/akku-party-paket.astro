@@ -9,10 +9,11 @@ import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { rentalItems } from '../../data/rental-catalog';
 
-const product = rentalItems.find(i => i.slug === 'akku-party-paket')!;
+const products = await getCollection('products');
+const product = products.find(i => i.data.slug === 'akku-party-paket')!.data;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -22,7 +23,7 @@ const breadcrumbSegments = [
 
 const pageTitle = "Akku-Party-Paket mieten in Stuttgart | Sound & Licht Stuttgart";
 
-const faqs = getFaqsForPage('akku-party-paket');
+const faqs = await getFaqsForPage('akku-party-paket');
 
 const images = [
   "/img/vermietung/Outdoor-Akku-Set1.webp",
@@ -126,6 +127,7 @@ const faqSchema = {
   title={pageTitle}
   description="Miete das Akku-Party-Paket für Outdoor-Partys ohne Stromanschluss. Komplett akkubetrieben mit JBL Partyboxen, LED BossFX Licht und EnginStar Powerstation. 4-6h Laufzeit."
   image="/img/vermietung/Akku-powered-party-hero.webp"
+  preloadImage="/img/vermietung/Akku-powered-party-hero.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Akku-Party-Paket – Outdoor" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}

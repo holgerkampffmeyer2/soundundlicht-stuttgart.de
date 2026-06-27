@@ -9,10 +9,11 @@ import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { rentalItems } from '../../data/rental-catalog';
 
-const product = rentalItems.find(i => i.slug === 'djpaket-fildern')!;
+const products = await getCollection('products');
+const product = products.find(i => i.data.slug === 'djpaket-fildern')!.data;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -22,7 +23,7 @@ const breadcrumbSegments = [
 
 const pageTitle = "DJ-Paket Fildern | Sound und Licht Stuttgart - Holger Kampffmeyer";
 
-const faqs = getFaqsForPage('djpaket-fildern');
+const faqs = await getFaqsForPage('djpaket-fildern');
 
 const images = [
   "/img/vermietung/ldmaui3.webp",
@@ -157,6 +158,7 @@ const videoSchema = {
   title={pageTitle}
   description="Miete das DJ-Paket Fildern für dein Event. Komplette Eventtechnik mit LD Maui Soundanlage, LED BossFX, Nebelmaschine, Moving Head und Stage Bar für bis zu 150 Personen."
   image="/img/vermietung/djpaket.webp"
+  preloadImage="/img/vermietung/djpaket.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "DJ-Paket" }}
   jsonLd={[serviceSchema, faqSchema, videoSchema, breadcrumbSchema]}

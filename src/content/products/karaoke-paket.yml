@@ -1,0 +1,14 @@
+slug: karaoke-paket
+title: "Karaoke-Paket"
+image: /img/vermietung/karaoke-paket-hero.webp
+description: "Das Komplettpaket für Karaoke-Abende: 2x JBL Partyboxen, 2x Mikrofone, Yamaha Mischpult. Musik-Zuspielung via Computer oder Bluetooth."
+category: Paket
+price: "ab 130€ / Tag"
+priceValue: 130
+features:
+  - "2x JBL Partyboxen (240W)"
+  - "2x Mikrofone inkl. XLR-Kabel"
+  - "Yamaha Mischpult MG6"
+  - "Computer-/Bluetooth-Zuspielung"
+  - "Alle Kabel inklusive"
+detailPage: "/vermietung/karaoke-paket"

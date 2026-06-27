@@ -16,7 +16,7 @@ const breadcrumbSegments = [
   { label: "Kirchheim unter Teck" }
 ];
 
-const cityFaqs = getFaqsForPage('kirchheim-unter-teck');
+const cityFaqs = await getFaqsForPage('kirchheim-unter-teck');
 
 const faqJsonLd = {
   "@context": "https://schema.org",

@@ -9,8 +9,17 @@ export default defineConfig({
   },
   site: 'https://soundundlicht-stuttgart.de',
   trailingSlash: 'never',
+  compressHTML: true,
   build: {
     format: 'directory',
+  },
+  image: {
+    service: {
+      config: {
+        webp: { effort: 6 },
+        avif: { effort: 4 },
+      },
+    },
   },
   integrations: [sitemap({
     serialize(item) {

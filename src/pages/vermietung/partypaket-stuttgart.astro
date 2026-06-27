@@ -9,10 +9,11 @@ import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { rentalItems } from '../../data/rental-catalog';
 
-const product = rentalItems.find(i => i.slug === 'partypaket-stuttgart')!;
+const products = await getCollection('products');
+const product = products.find(i => i.data.slug === 'partypaket-stuttgart')!.data;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -22,7 +23,7 @@ const breadcrumbSegments = [
 
 const pageTitle = "Partypaket Stuttgart | Sound und Licht Stuttgart - Holger Kampffmeyer";
 
-const faqs = getFaqsForPage('partypaket-stuttgart');
+const faqs = await getFaqsForPage('partypaket-stuttgart');
 
 const images = [
   "/img/vermietung/partypaket1.webp",
@@ -128,6 +129,7 @@ const faqSchema = {
   title={pageTitle}
   description="Miete das Partypaket für deine Party in Stuttgart und Umgebung. Komplette Partytechnik mit JBL Partyboxen, Licht, Nebel und Mikrofon für bis zu 50 Personen."
   image="/img/vermietung/partypaket.webp"
+  preloadImage="/img/vermietung/partypaket.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Partypaket" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, {

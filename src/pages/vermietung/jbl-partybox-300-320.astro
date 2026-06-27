@@ -10,10 +10,11 @@ import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { rentalItems } from '../../data/rental-catalog';
 
-const product = rentalItems.find(i => i.slug === 'jbl-partybox-300-320')!;
+const products = await getCollection('products');
+const product = products.find(i => i.data.slug === 'jbl-partybox-300-320')!.data;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -23,7 +24,7 @@ const breadcrumbSegments = [
 
 const pageTitle = "JBL Partybox 300/320 | Sound und Licht Stuttgart - Holger Kampffmeyer";
 
-const faqs = getFaqsForPage('jbl-partybox-300-320');
+const faqs = await getFaqsForPage('jbl-partybox-300-320');
 
 const includedInPackages = [
   { name: "Partypaket", url: "/vermietung/partypaket-stuttgart" }
@@ -146,6 +147,7 @@ const events = [
   title={pageTitle}
   description="Miete das Set JBL Partybox 300 + 320 für deine Party, Geburtstagsfeier oder Firmenfeier. 2x 240W mit Akku, Light Show und TWS-Kopplung für bis zu 80 Personen."
   image="/img/vermietung/partybox-300_kl.webp"
+  preloadImage="/img/vermietung/partypaket.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Sound", label: "JBL Partyboxen (Paar)" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}

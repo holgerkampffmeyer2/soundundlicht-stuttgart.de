@@ -9,10 +9,11 @@ import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { rentalItems } from '../../data/rental-catalog';
 
-const product = rentalItems.find(i => i.slug === 'karaoke-paket')!;
+const products = await getCollection('products');
+const product = products.find(i => i.data.slug === 'karaoke-paket')!.data;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -22,7 +23,7 @@ const breadcrumbSegments = [
 
 const pageTitle = "Karaoke-Paket mieten in Stuttgart | Sound & Licht Stuttgart";
 
-const faqs = getFaqsForPage('karaoke-paket');
+const faqs = await getFaqsForPage('karaoke-paket');
 
 const images = [
   "/img/vermietung/karaoke-paket1.webp",
@@ -120,6 +121,7 @@ const faqSchema = {
   title={pageTitle}
   description="Miete das Karaoke-Paket für deine Party in Stuttgart und Umgebung. 2x JBL Partyboxen, 2x Mikrofone und Yamaha Mischpult für unvergessliche Karaoke-Abende. Inklusive aller Kabel."
   image="/img/vermietung/karaoke-paket-hero.webp"
+  preloadImage="/img/vermietung/karaoke-paket-hero.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Karaoke-Paket" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, {

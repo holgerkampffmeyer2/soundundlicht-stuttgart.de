@@ -1,26 +1,20 @@
-import { faqs } from '../data/faqs.ts';
+import { getCollection } from 'astro:content';
 
 export interface FaqEntry {
   id: string;
   question: string;
   answer: string;
   tags?: string[];
-  pages?: string[]; // Empty array means show on all pages
+  pages?: string[];
 }
 
-/**
- * Get FAQs for a specific page
- * @param currentPage - The current page identifier (should match the pages array in FaqEntry)
- * @returns Array of FAQs that should be displayed on the given page
- */
-export function getFaqsForPage(currentPage: string): FaqEntry[] {
-  return faqs.filter(faq => {
-    if (!faq.pages) return true;
-    if (faq.pages.length === 0) return true;
-    
-    // Manual includes check for older TypeScript targets
-    for (let i = 0; i < faq.pages.length; i++) {
-      if (faq.pages[i] === currentPage || faq.pages[i] === 'index') {
+export async function getFaqsForPage(currentPage: string): Promise<FaqEntry[]> {
+  const faqs = await getCollection('faqs');
+  return faqs.filter((faq: any) => {
+    if (!faq.data.pages) return true;
+    if (faq.data.pages.length === 0) return true;
+    for (let i = 0; i < faq.data.pages.length; i++) {
+      if (faq.data.pages[i] === currentPage || faq.data.pages[i] === 'index') {
         return true;
       }
     }

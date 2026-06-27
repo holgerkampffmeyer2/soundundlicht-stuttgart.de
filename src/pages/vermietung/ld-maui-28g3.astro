@@ -10,10 +10,11 @@ import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
+import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { rentalItems } from '../../data/rental-catalog';
 
-const product = rentalItems.find(i => i.slug === 'ld-maui-28g3')!;
+const products = await getCollection('products');
+const product = products.find(i => i.data.slug === 'ld-maui-28g3')!.data;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -23,7 +24,7 @@ const breadcrumbSegments = [
 
 const pageTitle = "LD Maui 28 G3 | Sound und Licht Stuttgart - Holger Kampffmeyer";
 
-const faqs = getFaqsForPage('ld-maui-28g3');
+const faqs = await getFaqsForPage('ld-maui-28g3');
 
 const includedInPackages = [
   { name: "Veranstaltungspaket", url: "/vermietung/veranstaltungspaket-stuttgart" },
@@ -157,6 +158,7 @@ const events = [
   title={pageTitle}
   description="Miete das LD Maui 28 G3 Säulensystem für deine Party, Hochzeit oder Firmenfeier. Die LD Maui 28 G3 ist eine professionelle PA-Anlage mit starkem Bass, druckvollem und glasklarem Sound, mit 2060W, 127 dB Schalldruck, für bis zu 150 Personen."
   image="/img/vermietung/ldmaui3.webp"
+  preloadImage="/img/vermietung/djpaket.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Sound", label: "Säulensystem 2x LD Maui 28 G3 (Paar)" }}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}

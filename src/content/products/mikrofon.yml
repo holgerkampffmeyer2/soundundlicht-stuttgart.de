@@ -1,0 +1,10 @@
+slug: mikrofon
+title: "Mikrofon"
+image: /img/vermietung/mikrofon.webp
+description: "Mikrofon für Gesangseinlagen, Moderation, Ansprachen etc."
+category: Licht
+price: "ab 10€ / Tag"
+priceValue: 10
+features:
+  - "Mikrofon + 10M XLR Kabel"
+detailPage: "/vermietung#item-mikrofon"

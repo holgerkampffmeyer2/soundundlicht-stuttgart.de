@@ -25,6 +25,7 @@ const { images, title } = Astro.props;
           height="600"
           class="main-image"
           loading="eager"
+          decoding="async"
         />
         <div class="image-counter" id="imageCounter">1 / {images.length}</div>
       </div>
@@ -37,7 +38,7 @@ const { images, title } = Astro.props;
             data-index={index}
             aria-label={`Bild ${index + 1} anzeigen`}
           >
-            <img src={image} alt={`${title} – Miniatur ${index + 1}`} loading="lazy" width="80" height="60" />
+            <img src={image} alt={`${title} – Miniatur ${index + 1}`} loading="lazy" decoding="async" width="80" height="60" />
           </button>
         ))}
       </div>

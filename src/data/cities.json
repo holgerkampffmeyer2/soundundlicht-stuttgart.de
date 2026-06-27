@@ -1,0 +1,137 @@
+[
+  {
+    "name": "Stuttgart",
+    "slug": "stuttgart",
+    "image": "/img/cities/stuttgart.webp",
+    "title": "PA-Anlage & Partybox mieten",
+    "description": "Veranstaltungstechnik für Partys, Hochzeiten und Firmenfeiern in Stuttgart.",
+    "distance": "15 km",
+    "travelTime": "15-20 min"
+  },
+  {
+    "name": "Esslingen",
+    "slug": "esslingen",
+    "image": "/img/cities/esslingen.webp",
+    "title": "Partybox & PA-Anlage mieten",
+    "description": "Sound- und Lichttechnik für deine Feier in Esslingen am Neckar.",
+    "distance": "20 km",
+    "travelTime": "20 min"
+  },
+  {
+    "name": "Tübingen",
+    "slug": "tübingen",
+    "image": "/img/cities/tuebingen.webp",
+    "title": "Veranstaltungstechnik mieten",
+    "description": "PA-Anlagen, Partyboxen und Licht für Partys und Uni-Events in Tübingen.",
+    "distance": "30 km",
+    "travelTime": "30 min"
+  },
+  {
+    "name": "Filderstadt",
+    "slug": "filderstadt",
+    "image": "/img/cities/filderstadt.webp",
+    "title": "Partytechnik mieten",
+    "description": "Soundanlagen und Lichttechnik für Feiern in Filderstadt und Umgebung.",
+    "distance": "5 km",
+    "travelTime": "5-10 min"
+  },
+  {
+    "name": "Leinfelden-Echterdingen",
+    "slug": "leinfelden-echterdingen",
+    "image": "/img/cities/leinfelden-echterdingen.webp",
+    "title": "Veranstaltungstechnik mieten",
+    "description": "Technik direkt vor Ort – Abholung in der Magellanstraße 4.",
+    "distance": "0 km",
+    "travelTime": "0 min"
+  },
+  {
+    "name": "Kornwestheim",
+    "slug": "kornwestheim",
+    "image": "/img/cities/kornwestheim.webp",
+    "title": "PA-Anlage & Partybox mieten",
+    "description": "Sound- und Lichttechnik für deine Feier in Kornwestheim.",
+    "distance": "20 km",
+    "travelTime": "20 min"
+  },
+  {
+    "name": "Ludwigsburg",
+    "slug": "ludwigsburg",
+    "image": "/img/cities/ludwigsburg.webp",
+    "title": "PA-Anlage & Partybox mieten",
+    "description": "Veranstaltungstechnik für Partys und Feiern in Ludwigsburg.",
+    "distance": "25 km",
+    "travelTime": "25 min"
+  },
+  {
+    "name": "Böblingen",
+    "slug": "böblingen",
+    "image": "/img/cities/böblingen.webp",
+    "title": "PA-Anlage & Partybox mieten",
+    "description": "Sound- und Lichttechnik für deine Feier in Böblingen.",
+    "distance": "20 km",
+    "travelTime": "20 min"
+  },
+  {
+    "name": "Sindelfingen",
+    "slug": "sindelfingen",
+    "image": "/img/cities/sindelfingen.webp",
+    "title": "PA-Anlage & Partybox mieten",
+    "description": "Veranstaltungstechnik für Partys und Feiern in Sindelfingen.",
+    "distance": "20 km",
+    "travelTime": "20 min"
+  },
+  {
+    "name": "Leonberg",
+    "slug": "leonberg",
+    "image": "/img/cities/leonberg.webp",
+    "title": "PA-Anlage & Partybox mieten",
+    "description": "Sound- und Lichttechnik für deine Feier in Leonberg.",
+    "distance": "25 km",
+    "travelTime": "20-25 min"
+  },
+  {
+    "name": "Waiblingen",
+    "slug": "waiblingen",
+    "image": "/img/cities/waiblingen.webp",
+    "title": "PA-Anlage & Partybox mieten",
+    "description": "Veranstaltungstechnik für Partys und Feiern in Waiblingen.",
+    "distance": "25 km",
+    "travelTime": "25 min"
+  },
+  {
+    "name": "Nürtingen",
+    "slug": "nürtingen",
+    "image": "/img/cities/nürtingen.webp",
+    "title": "PA-Anlage & Partybox mieten",
+    "description": "Sound- und Lichttechnik für deine Feier in Nürtingen.",
+    "distance": "25 km",
+    "travelTime": "25 min"
+  },
+  {
+    "name": "Reutlingen",
+    "slug": "reutlingen",
+    "image": "/img/cities/reutlingen.webp",
+    "title": "Veranstaltungstechnik mieten",
+    "description": "PA-Anlagen, Partyboxen und Licht für Events in Reutlingen.",
+    "distance": "40 km",
+    "travelTime": "30 min"
+  },
+  {
+    "name": "Kirchheim unter Teck",
+    "slug": "kirchheim-unter-teck",
+    "image": "/img/cities/kirchheim-unter-teck.webp",
+    "title": "Veranstaltungstechnik mieten",
+    "description": "Sound- und Lichttechnik für Feiern in Kirchheim unter Teck.",
+    "distance": "30 km",
+    "travelTime": "25 min"
+  },
+  {
+    "name": "Ostfildern",
+    "slug": "ostfildern",
+    "image": "/img/cities/ostfildern.webp",
+    "title": "Veranstaltungstechnik mieten",
+    "description": "Technik für Partys und Events in Ostfildern – nur 8 km entfernt.",
+    "distance": "15 km",
+    "travelTime": "15 min"
+  }
+]

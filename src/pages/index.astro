@@ -7,13 +7,15 @@ import ContactSection from "../components/ContactSection.astro";
 import CityGrid from "../components/CityGrid.astro";
 import FAQSection from "../components/FAQSection.astro";
 import { getFaqsForPage } from '../lib/faqUtils';
+import { getCollection } from 'astro:content';
 import { serviceArea, offerCatalogJsonLd } from '../data/jsonLd';
 import HeroSlider from "../components/HeroSlider.astro";
 import BieteSection from "../components/BieteSection.astro";
 import PackageCardGrid from '../components/PackageCardGrid.astro';
-import { rentalItems } from '../data/rental-catalog';
 
-const indexFaqs = getFaqsForPage('index');
+const products = await getCollection('products');
+const rentalItems = products.map(i => i.data);
+const indexFaqs = await getFaqsForPage('index');
 
 const faqJsonLd = {
   "@context": "https://schema.org",

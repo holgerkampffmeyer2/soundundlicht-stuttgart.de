@@ -10,10 +10,11 @@ import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
 import ChevronRightIcon from '../../components/icons/ChevronRightIcon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { rentalItems } from '../../data/rental-catalog';
 
-const product = rentalItems.find(i => i.slug === 'kls-laser-bar')!;
+const products = await getCollection('products');
+const product = products.find(i => i.data.slug === 'kls-laser-bar')!.data;
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -23,7 +24,7 @@ const breadcrumbSegments = [
 
 const pageTitle = "Eurolite KLS Laser Bar & Nebelmaschine | Sound und Licht Stuttgart";
 
-const faqs = getFaqsForPage('kls-laser-bar');
+const faqs = await getFaqsForPage('kls-laser-bar');
 
 const includedInPackages = [
   { name: "Partypaket", url: "/vermietung/partypaket-stuttgart" },

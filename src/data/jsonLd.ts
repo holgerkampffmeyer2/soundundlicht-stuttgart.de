@@ -103,9 +103,7 @@ export const siteNavigationJsonLd = {
   ]
 };
 
-import type { RentalItem } from './rental-catalog';
-
-export function offerCatalogJsonLd(items: RentalItem[]) {
+export function offerCatalogJsonLd(items: any[]) {
   const detailItems = items.filter(i => i.detailPage && !i.detailPage.includes('#'));
   return {
     "@context": "https://schema.org",

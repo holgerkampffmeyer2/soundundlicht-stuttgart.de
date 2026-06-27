@@ -15,7 +15,7 @@ const breadcrumbSegments = [
   { label: "Filderstadt" }
 ];
 
-const cityFaqs = getFaqsForPage('filderstadt');
+const cityFaqs = await getFaqsForPage('filderstadt');
 
 const cityJsonLd = {
   "@context": "https://schema.org",

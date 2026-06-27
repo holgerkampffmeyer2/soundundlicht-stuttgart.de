@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+
 interface Button {
   text: string;
   href: string;
@@ -24,22 +26,49 @@ interface Props {
 }
 
 const { slides, interval = 5000, id = "hero" } = Astro.props;
+
+const defaultSlides = [
+  { path: '/img/slider/slide1.webp', meta: await import('/src/assets/slider/slide1.webp').then(m => m.default) },
+  { path: '/img/slider/slide2.webp', meta: await import('/src/assets/slider/slide2.webp').then(m => m.default) },
+  { path: '/img/slider/slide3.webp', meta: await import('/src/assets/slider/slide3.webp').then(m => m.default) },
+  { path: '/img/slider/slide4.webp', meta: await import('/src/assets/slider/slide4.webp').then(m => m.default) },
+];
+
+function getSlideImage(path: string) {
+  return defaultSlides.find(s => s.path === path)?.meta;
+}
 ---
 
   <section id={id} class="hero-slider" data-interval={interval}>
   {slides.map((slide, index) => {
     const imgSrc = slide.backgroundImage || `/img/slider/slide${index + 1}.webp`;
+    const imgMeta = getSlideImage(imgSrc);
+    const isLcp = index === 0;
     return (
     <div class={`slide slide-${index + 1} ${index === 0 ? "active" : ""}`} data-slide={index}>
-      <img
-        src={imgSrc}
-        alt=""
-        class="hero-bg-img"
-        width="1920"
-        height="1080"
-        fetchpriority={index === 0 ? "high" : "low"}
-        loading={index === 0 ? "eager" : "lazy"}
-      />
+      {imgMeta ? (
+        <Picture
+          src={imgMeta}
+          formats={['avif', 'webp']}
+          alt=""
+          class="hero-bg-img"
+          width={1920}
+          height={1080}
+          loading={isLcp ? "eager" : "lazy"}
+          fetchpriority={isLcp ? "high" : "low"}
+          sizes="100vw"
+        />
+      ) : (
+        <img
+          src={imgSrc}
+          alt=""
+          class="hero-bg-img"
+          width="1920"
+          height="1080"
+          fetchpriority={isLcp ? "high" : "low"}
+          loading={isLcp ? "eager" : "lazy"}
+        />
+      )}
       <div class="slide-overlay" style={slide.gradient ? `background: ${slide.gradient}` : undefined}></div>
       <div class="slide-content">
         <div class="container mx-auto px-4">

@@ -6,12 +6,14 @@ import Testimonials from '../components/Testimonials.astro';
 import FAQSection from '../components/FAQSection.astro';
 import MietanfrageAblauf from '../components/vermietung/MietanfrageAblauf.astro';
 import HeroSlider from "../components/HeroSlider.astro";
+import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../lib/faqUtils';
 import { serviceArea, offerCatalogJsonLd } from '../data/jsonLd';
 import PackageCardGrid from '../components/PackageCardGrid.astro';
-import { rentalItems } from '../data/rental-catalog';
 
-const faqs = getFaqsForPage('vermietung');
+const products = await getCollection('products');
+const rentalItems = products.map(i => i.data);
+const faqs = await getFaqsForPage('vermietung');
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -219,7 +221,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
             </ul>
             <a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
             {item.detailPage && !item.detailPage.includes('#') && (
-              <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block">Mehr Infos</a>
+              <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block" transition:name={`product-${item.slug}`}>Mehr Infos</a>
             )}
           </div>
         ))}
@@ -257,7 +259,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
             </ul>
             <a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
             {item.detailPage && !item.detailPage.includes('#') && (
-              <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block">Mehr Infos</a>
+              <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block" transition:name={`product-${item.slug}`}>Mehr Infos</a>
             )}
           </div>
         ))}

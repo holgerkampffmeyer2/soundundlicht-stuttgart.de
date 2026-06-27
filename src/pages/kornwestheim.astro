@@ -16,7 +16,7 @@ const breadcrumbSegments = [
   { label: "Kornwestheim" }
 ];
 
-const cityFaqs = getFaqsForPage('kornwestheim');
+const cityFaqs = await getFaqsForPage('kornwestheim');
 
 const faqJsonLd = {
   "@context": "https://schema.org",

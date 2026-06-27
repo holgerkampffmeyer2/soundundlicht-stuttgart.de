@@ -1,8 +1,6 @@
 ---
-import type { RentalItem } from '../data/rental-catalog';
-
 interface Props {
-  pakete: RentalItem[];
+  pakete: any[];
 }
 
 const { pakete } = Astro.props;
@@ -30,7 +28,7 @@ const { pakete } = Astro.props;
       </ul>
       <a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
       {item.detailPage && (
-        <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block">Mehr Infos</a>
+        <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block" transition:name={`product-${item.slug}`}>Mehr Infos</a>
       )}
     </div>
   ))}

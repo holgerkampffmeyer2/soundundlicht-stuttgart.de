@@ -15,7 +15,7 @@ const breadcrumbSegments = [
   { label: "Tübingen" }
 ];
 
-const cityFaqs = getFaqsForPage('tübingen');
+const cityFaqs = await getFaqsForPage('tübingen');
 
 const cityJsonLd = {
   "@context": "https://schema.org",
