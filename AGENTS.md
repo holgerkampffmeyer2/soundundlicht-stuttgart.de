@@ -1,13 +1,15 @@
 # Agent Instructions – Sound & Licht Stuttgart
 
 ## Project Overview
-Astro 6.x SSG site for event tech rental (PA, partyboxes, lights) in Stuttgart area. Built with Tailwind CSS 4.x. Dark theme. Static deployment to GitHub Pages.
+Astro 7.x SSG site for event tech rental (PA, partyboxes, lights) in Stuttgart area. Built with Tailwind CSS 4.x. Dark theme. Static deployment to GitHub Pages. Content via Collection (products, faqs, cities).
 
 ## Build Commands
 - `pnpm run dev` — Dev server
 - `pnpm run build` — Production build → dist/ (für tägliche Entwicklung)
 - `pnpm run build:full` — Build + RSS + urllist (für Deploy)
-  - **Timeout:** Build braucht ~35–40s → Agent muss min. 180s Timeout setzen
+  - **Timeout:** Build braucht ~19s → Agent muss min. 60s Timeout setzen
+- `pnpm run build:images` — WebP-Optimierung via Sharp (JPG/PNG in `public/img/`)
+- `pnpm run build:full-with-images` — Images + Build + RSS + urllist
 - `pnpm run preview` — Preview build
 
 Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist.txt`.
@@ -27,10 +29,13 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - **`data-pagefind-ignore`** auf Navbar.astro + Footer.astro
 - **URL-Normalisierung**: `normalizeUrl()` strippt trailing slashes im JS (`trailingSlash: 'never'`)
 - **Katalog-Matching für `/vermietung/`:**
-  - `rentalItems` aus `rental-catalog.ts` (21 Produkte) wird als JSON-Script eingebettet
+  - `rentalItems` aus `getCollection('products')` (21 Produkte) wird als JSON-Script eingebettet
   - `matchCatalogProducts(query)` matcht Suchbegriffe gegen Titel/Description/Features
   - Funde werden als reiche Produktkarten gerendert, Link auf `vermietung/#item-<slug>`
   - Nur 10 Produkte haben eigene `.astro`-Seiten → 11 werden via Katalog gematcht
+- **Produktdaten**: `src/content/products/*.yml` (21 Dateien) via `getCollection('products')`
+- **FAQ-Daten**: `src/data/faqs.json` (135 Einträge) via `getCollection('faqs')`
+- **Städte**: `src/data/cities.json` (15 Städte) via `getCollection('cities')`
 - **"Mehr Infos"-Button** auf `/vermietung/` erscheint nur bei Produkten mit echter Detailseite (kein `#` in `detailPage`)
 
 ## SEO-Richtlinien

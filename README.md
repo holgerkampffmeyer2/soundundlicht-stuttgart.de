@@ -4,7 +4,8 @@ Website für Veranstaltungstechnik-Vermietung im Großraum Stuttgart (PA-Anlagen
 
 ## Tech-Stack
 
-- **Framework:** Astro 6.x
+- **Framework:** Astro 7.x
+- **Content:** Content Collections (Products YAML, FAQs JSON, Cities JSON) mit Zod-Validierung
 - **Styling:** Tailwind CSS 4.x
 - **Search:** Pagefind 1.5.x (via astro-pagefind) – clientseitige Volltextsuche
 - **Build:** Static Site Generation (SSG)
@@ -14,10 +15,12 @@ Website für Veranstaltungstechnik-Vermietung im Großraum Stuttgart (PA-Anlagen
 
 ```bash
 pnpm install
-pnpm run dev      # Dev server
-pnpm run build    # Production build → dist/
-pnpm run build:full # Build + RSS + urllist (für Deploy)
-pnpm run preview  # Preview build
+pnpm run dev                # Dev server
+pnpm run build              # Production build → dist/
+pnpm run build:images       # WebP-Optimierung via Sharp (JPG/PNG)
+pnpm run build:full         # Build + RSS + urllist (für Deploy)
+pnpm run build:full-with-images # Images + Build + RSS + urllist
+pnpm run preview            # Preview build
 ```
 
 ## Theme System
@@ -42,8 +45,8 @@ pnpm run indexnow-submit  # an Bing, Yandex, Naver, Seznam, Yep senden
 ## Build-Outputs
 
 - `dist/` – statische HTML-Seiten
-- `public/rss.xml` – RSS-Feed (wird bei `pnpm run build` generiert)
-- `public/urllist.txt` – URL-Liste für Suchmaschinen (wird bei `pnpm run build` generiert)
+- `public/rss.xml` – RSS-Feed (wird bei `pnpm run build:full` generiert)
+- `public/urllist.txt` – URL-Liste für Suchmaschinen (wird bei `pnpm run build:full` generiert)
 
 ## Domain
 

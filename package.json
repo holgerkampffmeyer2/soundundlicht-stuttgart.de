@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:images": "node scripts/optimize-images.mjs",
     "build:full": "astro build && node scripts/generate-rss.mjs && node scripts/update-sitemap.mjs",
+    "build:full-with-images": "node scripts/optimize-images.mjs && astro build && node scripts/generate-rss.mjs && node scripts/update-sitemap.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint src",

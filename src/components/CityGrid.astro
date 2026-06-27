@@ -32,7 +32,7 @@ const total = cities.length;
         <div class="carousel-track" id="carousel-track">
           {cities.at(-1) && (
             <a href={`/${cities.at(-1).slug}`} class="carousel-slide" data-index="-1" aria-hidden="true" tabindex="-1">
-              <div class="city-card-bg" data-bg={cities.at(-1).image}></div>
+              <img class="city-card-bg" data-src={cities.at(-1).image} alt="" />
               <div class="city-card-overlay"></div>
               <div class="city-card-content">
                 <span class="city-card-label">{cities.at(-1).name}</span>
@@ -44,7 +44,7 @@ const total = cities.length;
           )}
           {cities.map((city, i) => (
             <a href={`/${city.slug}`} class="carousel-slide" data-index={i}>
-              <div class="city-card-bg" data-bg={city.image}></div>
+              <img class="city-card-bg" data-src={city.image} alt="" />
               <div class="city-card-overlay"></div>
               <div class="city-card-content">
                 <span class="city-card-label">{city.name}</span>
@@ -55,7 +55,7 @@ const total = cities.length;
             </a>
           ))}
           <a href={`/${cities[0].slug}/`} class="carousel-slide" data-index={total} aria-hidden="true" tabindex="-1">
-            <div class="city-card-bg" data-bg={cities[0].image}></div>
+            <img class="city-card-bg" data-src={cities[0].image} alt="" />
             <div class="city-card-overlay"></div>
             <div class="city-card-content">
               <span class="city-card-label">{cities[0].name}</span>
@@ -97,9 +97,9 @@ const total = cities.length;
       const slide = slides[index];
       if (!slide) return;
       const bg = slide.querySelector(".city-card-bg");
-      if (!bg || bg.style.backgroundImage) return;
-      const url = bg.getAttribute("data-bg");
-      if (url) bg.style.backgroundImage = "url('" + url + "')";
+      if (!bg || bg.getAttribute('src')) return;
+      const url = bg.getAttribute("data-src");
+      if (url) bg.src = url;
     }
 
     function loadRange(start, end) {
@@ -221,9 +221,9 @@ const total = cities.length;
   .city-card-bg {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     transition: transform 0.6s ease;
     background-color: #1a1a2e;
   }
