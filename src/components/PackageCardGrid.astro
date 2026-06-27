@@ -26,10 +26,10 @@ const { pakete } = Astro.props;
           </li>
         ))}
       </ul>
-      <a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
-      {item.detailPage && (
-        <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block" transition:name={`product-${item.slug}`}>Mehr Infos</a>
-      )}
+<a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
+       {item.detailPage && (
+         <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block">Mehr Infos</a>
+       )}
     </div>
   ))}
 </div>

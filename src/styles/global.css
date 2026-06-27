@@ -880,4 +880,16 @@ input[data-rental-search]::placeholder {
   }
 }
 
+/* Fix for astroFadeInOut */
+@keyframes astroFadeInOut {
+  from {
+    opacity: 1;
+    mix-blend-mode: normal;
+  }
+  to {
+    opacity: 0;
+    mix-blend-mode: normal;
+  }
+}
+
 /* astroFadeInOut does not use mix-blend-mode, so we leave it as is */

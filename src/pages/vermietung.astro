@@ -44,7 +44,6 @@ const komplettPakete = rentalItems.filter(i => i.category === 'Paket');
 const soundEquipment = rentalItems.filter(i => i.category === 'Sound');
 const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
 ---
-
 <Layout 
   title="Vermietung - Sound und Licht Stuttgart - Partyboxen, Lichttechnik und DJ-Equipment mieten"
   description="Verleih von Musikanlagen, Partyboxen, Lichttechnik und DJ-Equipment im Großraum Stuttgart. Faire Preise und professionelle Beratung."
@@ -134,8 +133,8 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
         }
       ]}
     />
-
   </div>
+
   <!-- Section Jump Navigation -->
   <nav class="sticky top-20 z-40 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]">
     <div class="max-w-7xl mx-auto px-4 py-3 overflow-x-auto">
@@ -157,7 +156,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
           Licht
         </a>
         <a href="#kontakt" class="section-jump-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           Anfragen
         </a>
       </div>
@@ -221,7 +220,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
             </ul>
             <a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
             {item.detailPage && !item.detailPage.includes('#') && (
-              <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block" transition:name={`product-${item.slug}`}>Mehr Infos</a>
+              <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block">Mehr Infos</a>
             )}
           </div>
         ))}
@@ -259,16 +258,13 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
             </ul>
             <a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
             {item.detailPage && !item.detailPage.includes('#') && (
-              <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block" transition:name={`product-${item.slug}`}>Mehr Infos</a>
+              <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block">Mehr Infos</a>
             )}
           </div>
         ))}
       </div>
     </div>
   </section>
-
-  
-  
 
   <!-- Contact Form Section -->
   <section id="kontakt" class="section-padding bg-[var(--color-bg)]">
@@ -291,7 +287,6 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
 
   <FAQSection faqs={faqs} />
   <Testimonials />
-
   <Footer />
 </Layout>
 
