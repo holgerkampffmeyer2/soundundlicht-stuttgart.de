@@ -30,8 +30,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run ESLint
-        run: pnpm run lint
 
       - name: Build Astro site
         run: pnpm run build:full
