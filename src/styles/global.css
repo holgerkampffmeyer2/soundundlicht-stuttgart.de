@@ -574,10 +574,9 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 0.25rem;
-  flex-shrink: 0;
   background: color-mix(in srgb, var(--color-secondary) 20%, transparent);
   color: var(--color-secondary);
-  transition: transform 0.3s ease;
+  transform: transform 0.3s ease;
 }
 
 .star-active {
@@ -857,3 +856,28 @@ input[data-rental-search]::placeholder {
   border-radius: 0.5rem;
   border: 1px solid rgba(255,255,255,0.15);
 }
+
+/* Fix for invalid mix-blend-mode in Astro view transitions */
+@keyframes astroFadeIn {
+  from {
+    opacity: 0;
+    mix-blend-mode: normal;
+  }
+  to {
+    opacity: 1;
+    mix-blend-mode: normal;
+  }
+}
+
+@keyframes astroFadeOut {
+  from {
+    opacity: 1;
+    mix-blend-mode: normal;
+  }
+  to {
+    opacity: 0;
+    mix-blend-mode: normal;
+  }
+}
+
+/* astroFadeInOut does not use mix-blend-mode, so we leave it as is */

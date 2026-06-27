@@ -109,6 +109,30 @@ const pagefindMetaKeys = Object.keys(pagefindMerged);
     ).map(item => (
       <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />
     ))}
+  <!-- Fix for invalid mix-blend-mode in Astro view transitions -->
+  <style>
+    @keyframes astroFadeIn {
+      from {
+        opacity: 0;
+        mix-blend-mode: normal;
+      }
+      to {
+        opacity: 1;
+        mix-blend-mode: normal;
+      }
+    }
+
+    @keyframes astroFadeOut {
+      from {
+        opacity: 1;
+        mix-blend-mode: normal;
+      }
+      to {
+        opacity: 0;
+        mix-blend-mode: normal;
+      }
+    }
+  </style>
   </head>
   <body class="min-h-screen" data-pagefind-weight={pagefindBodyWeight}>
     <slot />
