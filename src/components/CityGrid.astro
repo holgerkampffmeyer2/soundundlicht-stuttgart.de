@@ -97,9 +97,10 @@ const total = cities.length;
       const slide = slides[index];
       if (!slide) return;
       const bg = slide.querySelector(".city-card-bg");
-      if (!bg || bg.getAttribute('src')) return;
+      if (!bg) return;
       const url = bg.getAttribute("data-src");
-      if (url) bg.src = url;
+      if (!url || bg.getAttribute('src') === url) return;
+      bg.src = url;
     }
 
     function loadRange(start, end) {
