@@ -19,8 +19,6 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "@fontsource-variable/josefin-sans": "^5.2.8",
-    "@fontsource/play": "^5.2.8",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "^7.0.3",
     "astro-pagefind": "^2.0.0",

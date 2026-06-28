@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import logo from '@assets/logo/djhulk_logo.webp';
-import ChevronDownIcon from "./icons/ChevronDownIcon.astro";
+import Icon from "./Icon.astro";
 
 interface Props {
   currentPage?: string;
@@ -32,7 +32,7 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
     <div class="flex items-center justify-between h-20">
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-3">
-        <Image src={logo} alt="Sound und Licht Stuttgart Logo" width={48} height={48} loading="eager" class="h-12" />
+        <Picture src={logo} formats={['avif', 'webp', 'jpeg']} alt="Sound und Licht Stuttgart Logo" width={48} height={48} loading="eager" class="h-12" />
         <span class="font-play text-xl font-bold hidden sm:block">Sound & Licht Stuttgart</span>
       </a>
       
@@ -47,7 +47,7 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
             class:list={["nav-link flex items-center gap-1", { active: isVermietungActive }]}
           >
             Vermietung
-            <ChevronDownIcon class="h-4 w-4" />
+            <Icon name="chevron-down" class="h-4 w-4" />
           </a>
           <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
             {vermietungItems.map(item => (

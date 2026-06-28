@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import logo from '@assets/logo/djhulk_logo.webp';
 const currentYear = new Date().getFullYear();
 ---
@@ -10,7 +10,7 @@ const currentYear = new Date().getFullYear();
       <!-- Company Info -->
       <div>
         <div class="flex items-center space-x-3 mb-4">
-          <Image src={logo} alt="Sound und Licht Stuttgart Logo" width={40} height={40} class="h-10" />
+          <Picture src={logo} formats={['avif', 'webp', 'jpeg']} alt="Sound und Licht Stuttgart Logo" width={40} height={40} class="h-10" />
           <span class="font-play text-xl font-bold">Sound & Licht Stuttgart</span>
         </div>
         <p class="text-[var(--color-text-muted)] text-sm">

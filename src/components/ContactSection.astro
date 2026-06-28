@@ -1,6 +1,5 @@
 ---
-import MapPinIcon from "./icons/MapPinIcon.astro";
-import EmailIcon from "./icons/EmailIcon.astro";
+import Icon from "./Icon.astro";
 
 interface Props {
   title: string;
@@ -47,7 +46,7 @@ const {
             title="Google Maps - Sound & Licht Stuttgart">
           </iframe>
         </div>
-        <div class="text-[var(--color-secondary)] mb-3"><MapPinIcon class="w-10 h-10" /></div>
+        <div class="text-[var(--color-secondary)] mb-3"><Icon name="map-pin" class="w-10 h-10" /></div>
         <h3 class="font-play font-bold mb-2">{addressLabel}</h3>
         <p class="text-[var(--color-text-muted)]">
           Magellanstraße 4<br />
@@ -57,7 +56,7 @@ const {
         </p>
       </div>
       <div class="bg-[var(--color-bg)] rounded-xl p-6">
-        <div class="text-[var(--color-secondary)] mb-3"><EmailIcon class="w-10 h-10" /></div>
+        <div class="text-[var(--color-secondary)] mb-3"><Icon name="email" class="w-10 h-10" /></div>
         <h3 class="font-play font-bold mb-2">E-Mail</h3>
         <p class="text-[var(--color-text-muted)]">
           holger.kampffmeyer+dj@gmail.com

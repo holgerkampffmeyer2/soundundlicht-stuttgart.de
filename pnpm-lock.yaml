@@ -11,12 +11,6 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.7.3
         version: 3.7.3
-      '@fontsource-variable/josefin-sans':
-        specifier: ^5.2.8
-        version: 5.2.8
-      '@fontsource/play':
-        specifier: ^5.2.8
-        version: 5.2.8
       '@tailwindcss/vite':
         specifier: ^4.3.1
         version: 4.3.1(vite@8.1.0(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0))
@@ -434,12 +428,6 @@ packages:
   '@eslint/plugin-kit@0.7.2':
     resolution: {integrity: sha512-+CNAzxglkrpNf/kKywqQfk74QjtceuOE7Qm+AF8miRvPF/wmmK5+OJOgVh3AVTT3RP2mH3+FOaxlE5v72owk0A==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
-
-  '@fontsource-variable/josefin-sans@5.2.8':
-    resolution: {integrity: sha512-xt8EGt2/66JJV/mmWU2NxafIwXmDNdd1yi/bVZyRRMCtygHXPCldJrrjjDgOCJPyXbE7NWkc3g+5iE8uJJGbFA==}
-
-  '@fontsource/play@5.2.8':
-    resolution: {integrity: sha512-nYxAYZsWO7hEFEUWx/lZWaNhWfi34Pbi0Rb3vbxskeaVpele1I6Q5os0bgnL9pTBMNuiG6UX+e6tF/2AC8tvKA==}
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -2916,10 +2904,6 @@ snapshots:
     dependencies:
       '@eslint/core': 1.2.1
       levn: 0.4.1
-
-  '@fontsource-variable/josefin-sans@5.2.8': {}
-
-  '@fontsource/play@5.2.8': {}
 
   '@humanfs/core@0.19.2':
     dependencies:

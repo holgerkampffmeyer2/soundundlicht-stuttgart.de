@@ -1,6 +1,5 @@
 ---
-import StarIcon from "./icons/StarIcon.astro";
-import GoogleIcon from "./icons/GoogleIcon.astro";
+import Icon from "./Icon.astro";
 import googleReviewsData from '../data/google-reviews.json';
 
 const { id } = Astro.props;
@@ -25,9 +24,9 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
           <div class="review-card bg-[var(--color-bg)] rounded-xl p-6 border border-[var(--color-border)] hover:border-[var(--color-secondary)] review-card-hover transition-all duration-300" data-page={Math.floor(index / ITEMS_PER_PAGE) + 1}>
             <div class="flex gap-1 mb-4">
               {Array.from({ length: 5 }).map((_, i) => (
-                <StarIcon class={`w-5 h-5 ${i < review.rating ? 'star-active' : 'text-[var(--color-text-muted)]'}`} />
+                <Icon name="star" class={`w-5 h-5 ${i < review.rating ? 'star-active' : 'text-[var(--color-text-muted)]'}`} />
               ))}
-              <GoogleIcon class="w-4 h-4 ml-2 text-[var(--color-text-muted)]" />
+              <Icon name="google" class="w-4 h-4 ml-2 text-[var(--color-text-muted)]" />
             </div>
             <p class="text-[var(--color-text-muted)] mb-4">{review.text}</p>
             <div class="border-t border-[var(--color-border)] pt-4">

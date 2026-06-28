@@ -5,8 +5,7 @@ import Footer from "../components/Footer.astro";
 import CityHero from "../components/CityHero.astro";
 import CityPackages from "../components/CityPackages.astro";
 import CitySteps from "../components/CitySteps.astro";
-import MapPinIcon from "../components/icons/MapPinIcon.astro";
-import EmailIcon from "../components/icons/EmailIcon.astro";
+import Icon from "../components/Icon.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import FAQSection from "../components/FAQSection.astro";
 import { getFaqsForPage } from '../lib/faqUtils';
@@ -100,7 +99,7 @@ const cityJsonLd = {
               title="Google Maps - Sound & Licht Stuttgart">
             </iframe>
           </div>
-          <div class="text-[var(--color-secondary)] mb-3"><MapPinIcon class="w-10 h-10" /></div>   
+          <div class="text-[var(--color-secondary)] mb-3"><Icon name="map-pin" class="w-10 h-10" /></div>   
           <h3 class="font-play font-bold mb-2">Adresse (Abholung)</h3>
           <p class="text-[var(--color-text-muted)]">
             Magellanstraße 4<br>
@@ -112,7 +111,7 @@ const cityJsonLd = {
           </a>
 </div>
         <div class="bg-[var(--color-bg)] rounded-xl p-6">
-          <div class="text-[var(--color-secondary)] mb-3"><EmailIcon class="w-10 h-10" /></div>
+          <div class="text-[var(--color-secondary)] mb-3"><Icon name="email" class="w-10 h-10" /></div>
           <h3 class="font-play font-bold mb-2">E-Mail</h3>
           <p class="text-[var(--color-text-muted)]">
             holger.kampffmeyer+dj@gmail.com

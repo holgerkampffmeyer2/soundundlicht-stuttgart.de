@@ -1,6 +1,5 @@
 ---
-import VolumeUpIcon from "./icons/VolumeUpIcon.astro";
-import PackageIcon from "./icons/PackageIcon.astro";
+import Icon from "./Icon.astro";
 ---
 
 <section class="section-padding bg-[var(--color-surface)]">
@@ -19,7 +18,7 @@ import PackageIcon from "./icons/PackageIcon.astro";
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="service-card animate-on-scroll flex flex-col">
-        <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
+        <div class="text-[var(--color-secondary)] mb-4"><Icon name="volume-up" class="w-10 h-10" /></div>
         <h3 class="font-play text-xl font-bold mb-2">Partypaket</h3>
         <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 160€ / Tag</p>
         <p class="text-[var(--color-text-muted)] text-sm mb-4">Für kleinere Feiern bis ca. 50 Personen</p>
@@ -36,7 +35,7 @@ import PackageIcon from "./icons/PackageIcon.astro";
       </div>
 
       <div class="service-card animate-on-scroll flex flex-col">
-        <div class="text-[var(--color-secondary)] mb-4"><VolumeUpIcon class="w-10 h-10" /></div>
+        <div class="text-[var(--color-secondary)] mb-4"><Icon name="volume-up" class="w-10 h-10" /></div>
         <h3 class="font-play text-xl font-bold mb-2">DJ-Paket</h3>
         <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 200€ / Tag</p>
         <p class="text-[var(--color-text-muted)] text-sm mb-4">Für DJ Gigs &amp; mittlere Feiern bis ca. 150 Personen</p>
@@ -53,7 +52,7 @@ import PackageIcon from "./icons/PackageIcon.astro";
       </div>
 
       <div class="service-card animate-on-scroll flex flex-col">
-        <div class="text-[var(--color-secondary)] mb-4"><PackageIcon class="w-10 h-10" /></div>
+        <div class="text-[var(--color-secondary)] mb-4"><Icon name="package" class="w-10 h-10" /></div>
         <h3 class="font-play text-xl font-bold mb-2">Veranstaltungspaket</h3>
         <p class="text-sm text-[var(--color-accent)] font-semibold mb-4">ab 200€ / Tag</p>
         <p class="text-[var(--color-text-muted)] text-sm mb-4">Für mittlere bis große Veranstaltungen bis ca. 150 Personen</p>
