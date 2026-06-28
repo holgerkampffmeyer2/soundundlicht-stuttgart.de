@@ -1,0 +1,239 @@
+---
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+const siteUrl = import.meta.env.PUBLIC_SITE || 'https://soundundlicht-stuttgart.de';
+---
+
+<form
+  class="contact-form"
+  action="https://api.web3forms.com/submit"
+  method="POST"
+>
+  <input type="hidden" name="access_key" value={web3formsKey} />
+  <input type="hidden" name="subject" value="Neue Anfrage von soundundlicht-stuttgart.de" />
+  <input type="hidden" name="from_name" value="Sound & Licht Stuttgart Kontaktformular" />
+  <input type="hidden" name="redirect" value={`${siteUrl}/thankyou`} />
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="name" class="form-label">Name *</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="form-input"
+        placeholder="Dein Name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="form-label">E-Mail *</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="form-input"
+        placeholder="deine@email.de"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="phone" class="form-label">Telefon</label>
+<input
+  type="tel"
+  id="phone"
+  name="phone"
+  class="form-input"
+  placeholder="01711467491"
+/>
+    </div>
+
+    <div class="form-group">
+      <label for="event_type" class="form-label">Veranstaltungstyp</label>
+      <select id="event_type" name="event_type" class="form-input">
+        <option value="">Bitte wählen…</option>
+        <option value="Geburtstag">Geburtstag</option>
+        <option value="Hochzeit">Hochzeit</option>
+        <option value="Firmenfeier">Firmenfeier</option>
+        <option value="Vereinsfeier">Vereinsfeier</option>
+        <option value="Sonstiges">Sonstiges</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="rental_period" class="form-label">Mietzeitraum</label>
+      <input
+        type="text"
+        id="rental_period"
+        name="rental_period"
+        class="form-input"
+        placeholder="z.B. 15.08. – 17.08.2026"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="city" class="form-label">Veranstaltungsort (Stadt)</label>
+      <input
+        type="text"
+        id="city"
+        name="city"
+        class="form-input"
+        placeholder="Stuttgart, Esslingen, …"
+      />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="equipment" class="form-label">Gewünschte Technik *</label>
+    <textarea
+      id="equipment"
+      name="equipment"
+      required
+      class="form-input form-textarea"
+      placeholder="Welche Geräte / Pakete interessieren dich?"
+    ></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="message" class="form-label">Nachricht</label>
+    <textarea
+      id="message"
+      name="message"
+      class="form-input form-textarea"
+      placeholder="Weitere Wünsche, Fragen oder Anmerkungen…"
+    ></textarea>
+  </div>
+
+  <div class="h-captcha" data-theme="dark"></div>
+
+  <button type="submit" class="btn-primary form-submit">
+    <span class="submit-text">Anfrage senden</span>
+    <span class="submit-spinner" style="display:none;">
+      <svg class="animate-spin w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+      </svg>
+    </span>
+  </button>
+</form>
+
+<script src="https://web3forms.com/client/script.js" async defer></script>
+
+<script>
+  (function() {
+    var form = document.querySelector('.contact-form');
+    if (!form) return;
+    var submitBtn = form.querySelector('.form-submit');
+    var submitText = form.querySelector('.submit-text');
+    var submitSpinner = form.querySelector('.submit-spinner');
+
+    form.addEventListener('submit', function() {
+      submitBtn.disabled = true;
+      submitText.style.display = 'none';
+      submitSpinner.style.display = 'inline-flex';
+    });
+  })();
+</script>
+
+<style>
+  .contact-form {
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .form-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-family: var(--font-body);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+  }
+
+  .form-input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  .form-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+  }
+
+  .form-textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  select.form-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  select.form-input option {
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  .h-captcha {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-submit {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .form-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .form-submit:disabled:hover {
+    transform: none;
+  }
+
+  .form-group + .form-group {
+    margin-top: 0;
+  }
+</style>

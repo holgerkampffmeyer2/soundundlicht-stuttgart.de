@@ -4,6 +4,16 @@ import { getCollection } from 'astro:content';
 const cityEntries = await getCollection('cities');
 const cities = cityEntries.map(c => c.data);
 const total = cities.length;
+
+function thumbSrc(imagePath) {
+  // Convert /img/cities/stuttgart.webp → /img/cities/stuttgart-thumb.webp
+  // Works for .webp, .jpg, .jpeg, .png
+  return imagePath.replace(/\.(webp|jpe?g|png)$/i, '-thumb.$1');
+}
+
+function thumbSrc(src: string): string {
+  return src.replace(/\.[^.]+$/, '-thumb.webp');
+}
 ---
 
 <section class="section-padding bg-[var(--color-surface)] !py-12 md:!py-16">
@@ -31,8 +41,8 @@ const total = cities.length;
       <div class="carousel-viewport">
         <div class="carousel-track" id="carousel-track">
 {cities.at(-1) && (
-             <a href={`/${cities.at(-1).slug}`} class="carousel-slide" data-index="-1" aria-hidden="true" tabindex="-1">
-               <img class="city-card-bg" data-src={cities.at(-1).image} src={cities.at(-1).image} srcset={cities.at(-1).image} alt="" />
+<a href={`/${cities.at(-1).slug}`} class="carousel-slide" data-index="-1" aria-hidden="true" tabindex="-1">
+                <img class="city-card-bg" data-src={cities.at(-1).image} data-srcset={thumbSrc(cities.at(-1).image) + ' 480w, ' + cities.at(-1).image + ' 960w'} src={cities.at(-1).image} srcset={cities.at(-1).image} sizes="(max-width: 640px) 100vw, 800px" alt="" />
                <div class="city-card-overlay"></div>
                <div class="city-card-content">
                  <span class="city-card-label">{cities.at(-1).name}</span>
@@ -42,9 +52,9 @@ const total = cities.length;
                </div>
              </a>
            )}
-          {cities.map((city, i) => (
-            <a href={`/${city.slug}`} class="carousel-slide" data-index={i}>
-              <img class="city-card-bg" data-src={city.image} src="data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOQ==" alt="" />
+{cities.map((city, i) => (
+             <a href={`/${city.slug}`} class="carousel-slide" data-index={i}>
+               <img class="city-card-bg" data-src={city.image} data-srcset={thumbSrc(city.image) + ' 480w, ' + city.image + ' 960w'} src="data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOQ==" alt="" />
               <div class="city-card-overlay"></div>
               <div class="city-card-content">
                 <span class="city-card-label">{city.name}</span>
@@ -54,8 +64,8 @@ const total = cities.length;
               </div>
             </a>
           ))}
-          <a href={`/${cities[0].slug}/`} class="carousel-slide" data-index={total} aria-hidden="true" tabindex="-1">
-            <img class="city-card-bg" data-src={cities[0].image} src="data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOQ==" alt="" />
+<a href={`/${cities[0].slug}/`} class="carousel-slide" data-index={total} aria-hidden="true" tabindex="-1">
+             <img class="city-card-bg" data-src={cities[0].image} data-srcset={thumbSrc(cities[0].image) + ' 480w, ' + cities[0].image + ' 960w'} src="data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOQ==" alt="" />
             <div class="city-card-overlay"></div>
             <div class="city-card-content">
               <span class="city-card-label">{cities[0].name}</span>
@@ -93,15 +103,19 @@ const total = cities.length;
     let current = 1;
     let isAnimating = false;
 
-    function loadSlide(index) {
-      const slide = slides[index];
-      if (!slide) return;
-      const bg = slide.querySelector(".city-card-bg");
-      if (!bg) return;
-      const url = bg.getAttribute("data-src");
-      if (!url || bg.getAttribute('src') === url) return;
-      bg.src = url;
-    }
+function loadSlide(index) {
+       const slide = slides[index];
+       if (!slide) return;
+       const bg = slide.querySelector(".city-card-bg");
+       if (!bg) return;
+       const url = bg.getAttribute("data-src");
+       const srcset = bg.getAttribute("data-srcset");
+       if (!url || bg.getAttribute('src') === url) return;
+       bg.src = url;
+       if (srcset && bg.getAttribute('srcset') !== srcset) {
+         bg.srcset = srcset;
+       }
+     }
 
     function loadRange(start, end) {
       for (var i = start; i <= end; i++) loadSlide(i);
@@ -115,6 +129,10 @@ const total = cities.length;
       track.style.transform = "translateX(-" + (current * 100) + "%)";
       dots.forEach(function (dot, i) {
         dot.classList.toggle("active", i === (current - 1 + total) % total);
+      });
+      slides.forEach(function (slide, i) {
+        var isVisible = i === current || i === current + 1 || i === current - 1;
+        slide.setAttribute("tabindex", isVisible ? "0" : "-1");
       });
     }
 
@@ -169,6 +187,8 @@ const total = cities.length;
     var carousel = document.querySelector(".city-carousel");
     carousel.addEventListener("mouseenter", function () { clearInterval(autoPlay); });
     carousel.addEventListener("mouseleave", function () { autoPlay = setInterval(function () { slide(1); }, 6000); });
+    carousel.addEventListener("touchstart", function () { clearInterval(autoPlay); }, { passive: true });
+    carousel.addEventListener("touchend", function () { autoPlay = setInterval(function () { slide(1); }, 6000); }, { passive: true });
 
     document.addEventListener("keydown", function (e) {
       if (e.key === "ArrowLeft") slide(-1);

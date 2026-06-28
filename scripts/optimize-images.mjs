@@ -80,12 +80,23 @@ async function processImage(filePath, options) {
     const image = sharp(filePath);
     const metadata = await image.metadata();
 
+    // Generate -thumb.webp variant (480px width) if it doesn't exist
+    const thumbPath = filePath.replace(/\.(jpe?g|png)$/i, '-thumb.webp');
+    let thumbGenerated = false;
+    if (!fs.existsSync(thumbPath) && metadata.width > 480) {
+      const thumbPipeline = sharp(filePath).resize({ width: 480, withoutEnlargement: true, fit: 'inside' });
+      await thumbPipeline.webp({ quality: 75 }).toFile(thumbPath);
+      const thumbSize = fs.statSync(thumbPath).size;
+      console.log(`  ✓ thumb: ${path.basename(thumbPath)} (${(thumbSize / 1024).toFixed(1)}KB)`);
+      thumbGenerated = true;
+    }
+
     const needsResize =
       (options.width && metadata.width && metadata.width > options.width) ||
       (options.height && metadata.height && metadata.height > options.height);
 
     if (!needsResize && fs.existsSync(webpPath)) {
-      return false;
+      return thumbGenerated;
     }
 
     const resizeOpts = {};

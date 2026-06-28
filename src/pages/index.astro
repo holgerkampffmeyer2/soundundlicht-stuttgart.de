@@ -12,6 +12,7 @@ import { serviceArea, offerCatalogJsonLd } from '../data/jsonLd';
 import HeroSlider from "../components/HeroSlider.astro";
 import BieteSection from "../components/BieteSection.astro";
 import PackageCardGrid from '../components/PackageCardGrid.astro';
+import StickyCTA from '../components/StickyCTA.astro';
 
 const products = await getCollection('products');
 const rentalItems = products.map(i => i.data);
@@ -65,7 +66,7 @@ const serviceJsonLd = {
           category: "Lokaler Verleih: Abholung in Leinfelden-Echterdingen",
           buttons: [
             { text: "Pakete & Preise ↗", href: "/vermietung", class: "btn-primary" },
-            { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
+            { text: "Beratung anfragen", href: "/vermietung#kontakt", class: "btn-secondary" }
           ]
         },
         {
@@ -76,7 +77,7 @@ const serviceJsonLd = {
           categoryColor: "var(--color-accent)",
           buttons: [
             { text: "Zur Vermietung ↗", href: "/vermietung", class: "btn-primary" },
-            { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
+            { text: "Beratung anfragen", href: "/vermietung#kontakt", class: "btn-secondary" }
           ]
         },
         {
@@ -87,7 +88,7 @@ const serviceJsonLd = {
           categoryColor: "var(--color-accent)",
           buttons: [
             { text: "Zur Vermietung ↗", href: "/vermietung", class: "btn-primary" },
-            { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
+            { text: "Beratung anfragen", href: "/vermietung#kontakt", class: "btn-secondary" }
           ]
         },
         {
@@ -98,7 +99,7 @@ const serviceJsonLd = {
           categoryColor: "var(--color-accent)",
           buttons: [
             { text: "Zu den Paketen ↗", href: "/vermietung", class: "btn-primary" },
-            { text: "Beratung anfragen", href: "#kontakt", class: "btn-secondary" }
+            { text: "Beratung anfragen", href: "/vermietung#kontakt", class: "btn-secondary" }
           ]
         }
       ]}
@@ -136,6 +137,9 @@ const serviceJsonLd = {
       </div>
     </div>
   </section>
+
+  <!-- Testimonials Section -->
+  <Testimonials id="bewertungen" />
 
   <!-- Pakete Section -->
   <section id="pakete" class="section-padding bg-[var(--color-surface)]">
@@ -225,9 +229,6 @@ const serviceJsonLd = {
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <Testimonials id="bewertungen" />
-
   <!-- DJ Section -->
   <section class="section-padding bg-[var(--color-surface)]">
     <div class="max-w-4xl mx-auto text-center animate-on-scroll">
@@ -257,6 +258,8 @@ const serviceJsonLd = {
     addressLabel="Adresse"
     secondaryButtonText="Zur Technik ↗"
   />
+
+  <StickyCTA href="/vermietung#kontakt" />
 
   <!-- Footer -->
   <Footer />

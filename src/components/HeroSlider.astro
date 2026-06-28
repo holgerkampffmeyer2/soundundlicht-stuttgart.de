@@ -74,7 +74,8 @@ function getSlideImage(path: string) {
           <div class={`max-w-5xl ${slide.ptClass || ""}`}>
             {slide.category && (
               <span
-                class={`text-[${slide.categoryColor || "var(--color-secondary)"}] text-lg tracking-widest uppercase`}
+                class="text-lg tracking-widest uppercase"
+                style={slide.categoryColor ? `color: ${slide.categoryColor}` : undefined}
               >
                 {slide.category}
               </span>

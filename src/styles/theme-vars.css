@@ -11,7 +11,7 @@ html[data-theme="electric-night"] {
   --color-text-muted: #a1a1aa;
   --color-border: #3b0764;
   --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
-  --font-body: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
+  --font-body: 'Inter Variable', 'Inter', sans-serif;
 }
 
 html[data-theme="deep-bass"] {
@@ -22,12 +22,12 @@ html[data-theme="deep-bass"] {
   --color-primary-hover: #3b82f6;
   --color-secondary: #1e40af;
   --color-secondary-hover: #2563eb;
-  --color-accent: #60a5fa;
+  --color-accent: #22c55e;
   --color-text: #f8fafc;
   --color-text-muted: #64748b;
   --color-border: #1e293b;
   --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
-  --font-body: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
+  --font-body: 'Inter Variable', 'Inter', sans-serif;
 }
 
 html[data-theme="golden-hour"] {
@@ -43,7 +43,7 @@ html[data-theme="golden-hour"] {
   --color-text-muted: #a8a29e;
   --color-border: #292524;
   --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
-  --font-body: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
+  --font-body: 'Inter Variable', 'Inter', sans-serif;
 }
 
 html[data-theme="arctic-frost"] {
@@ -59,5 +59,5 @@ html[data-theme="arctic-frost"] {
   --color-text-muted: #94a3b8;
   --color-border: #1e293b;
   --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
-  --font-body: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
+  --font-body: 'Inter Variable', 'Inter', sans-serif;
 }

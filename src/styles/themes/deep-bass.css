@@ -6,10 +6,10 @@
   --color-primary-hover: #3b82f6;
   --color-secondary: #1e40af;
   --color-secondary-hover: #2563eb;
-  --color-accent: #60a5fa;
+  --color-accent: #22c55e;
   --color-text: #f8fafc;
   --color-text-muted: #64748b;
   --color-border: #1e293b;
   --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
-  --font-body: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
+  --font-body: 'Inter Variable', 'Inter', sans-serif;
 }
