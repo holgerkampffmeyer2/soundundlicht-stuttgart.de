@@ -11,8 +11,8 @@ import Icon from '../../components/Icon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import CartButton from '../../components/CartButton.astro';
-import StickyCTA from '../../components/StickyCTA.astro';
+import WishlistButton from '../../components/WishlistButton.astro';
+import StickyMerkliste from '../../components/StickyMerkliste.astro';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'partypaket-stuttgart')!.data;
@@ -266,12 +266,12 @@ const faqSchema = {
       </p>
       <button id="request-now-partypaket-stuttgart" class="btn-primary max-w-sm mx-auto mb-6">
         <span class="flex items-center justify-center gap-2">
-          <Icon name="cart" class="w-5 h-5" />
+          <Icon name="email" class="w-5 h-5" />
           Jetzt anfragen
         </span>
       </button>
       <div class="flex flex-wrap gap-3 justify-center items-center mb-4">
-        <CartButton product={product} class="btn-secondary" />
+        <WishlistButton product={product} class="btn-secondary" />
       </div>
       <a href="/vermietung" class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)] text-sm inline-flex items-center gap-1 transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -281,17 +281,17 @@ const faqSchema = {
       </a>
     </div>
     <script>
-      import { addItem } from '../../lib/cartStore';
+      import { addItem } from '../../lib/merklisteStore';
       document.getElementById('request-now-partypaket-stuttgart')?.addEventListener('click', function() {
         addItem('partypaket-stuttgart');
-        document.dispatchEvent(new CustomEvent('toggle-cart'));
+        document.dispatchEvent(new CustomEvent('toggle-merkliste'));
       });
     </script>
   </section>
 
   <Testimonials />
 
-  <StickyCTA href="/vermietung#kontakt" productSlug={product.slug} />
+  <StickyMerkliste href="/vermietung#kontakt" productSlug={product.slug} />
 
   <Footer />
 </Layout>

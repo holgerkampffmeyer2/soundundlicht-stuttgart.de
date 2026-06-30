@@ -2,7 +2,7 @@
 import { Picture } from 'astro:assets';
 import logo from '@assets/logo/djhulk_logo.webp';
 import Icon from "./Icon.astro";
-import CartIcon from "./CartIcon.astro";
+import WishlistIcon from "./WishlistIcon.astro";
 
 interface Props {
   currentPage?: string;
@@ -69,7 +69,7 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
         <a href="/#ablauf" class="nav-link">Ablauf</a>
         <a href="/#bewertungen" class="nav-link">Bewertungen</a>
 <a href="/#kontakt" class="nav-link">Kontakt</a>
-         <CartIcon class="ml-4" />
+         <WishlistIcon class="ml-4" />
        </div>
       
       <!-- Mobile Menu Button -->
@@ -92,7 +92,7 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
       <a href="/#bewertungen" class="block nav-link py-2">Bewertungen</a>
       <a href="/#kontakt" class="block nav-link py-2">Kontakt</a>
       <div class="pt-2 border-t border-[var(--color-border)]">
-        <CartIcon class="block" />
+        <WishlistIcon class="block" />
       </div>
     </div>
   </div>

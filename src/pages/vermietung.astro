@@ -12,7 +12,7 @@ import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../lib/faqUtils';
 import { serviceArea, offerCatalogJsonLd } from '../data/jsonLd';
 import PackageCardGrid from '../components/PackageCardGrid.astro';
-import StickyCTA from '../components/StickyCTA.astro';
+import StickyMerkliste from '../components/StickyMerkliste.astro';
 
 const products = await getCollection('products');
 const rentalItems = products.map(i => i.data);
@@ -281,16 +281,16 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
               ))}
             </ul>
              <div class="flex flex-col gap-2">
-                 <button data-action="add-to-cart" data-slug={item.slug} class="btn-primary w-full !px-3">
-                   <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
-                     <Icon name="cart" class="w-6 h-6 mt-0.5 shrink-0" />
-                     <span class="text-base leading-tight">Zum Warenkorb hinzufügen</span>
-                   </span>
-                 </button>
-                 {item.detailPage && !item.detailPage.includes('#') && (
-                   <a href={item.detailPage} class="btn-secondary w-full text-center block">Mehr Infos</a>
-                 )}
-               </div>
+                 <button data-action="add-to-wishlist" data-slug={item.slug} class="btn-primary w-full !px-3">
+                    <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
+                      <Icon name="heart" class="w-6 h-6 mt-0.5 shrink-0" />
+                      <span class="text-base leading-tight">Merken</span>
+                    </span>
+                  </button>
+                  {item.detailPage && !item.detailPage.includes('#') && (
+                    <a href={item.detailPage} class="btn-secondary w-full text-center block">Mehr Infos</a>
+                  )}
+                </div>
              </div>
            ))}
          </div>
@@ -337,16 +337,16 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
                 ))}
               </ul>
                <div class="flex flex-col gap-2">
-                   <button data-action="add-to-cart" data-slug={item.slug} class="btn-primary w-full !px-3">
-                     <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
-                      <Icon name="cart" class="w-6 h-6 mt-0.5 shrink-0" />
-                      <span class="text-base leading-tight">Zum Warenkorb hinzufügen</span>
-                    </span>
-                  </button>
-                {item.detailPage && !item.detailPage.includes('#') && (
-                  <a href={item.detailPage} class="btn-secondary w-full text-center block">Mehr Infos</a>
-                )}
-              </div>
+                    <button data-action="add-to-wishlist" data-slug={item.slug} class="btn-primary w-full !px-3">
+                      <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
+                       <Icon name="heart" class="w-6 h-6 mt-0.5 shrink-0" />
+                       <span class="text-base leading-tight">Merken</span>
+                     </span>
+                   </button>
+                 {item.detailPage && !item.detailPage.includes('#') && (
+                   <a href={item.detailPage} class="btn-secondary w-full text-center block">Mehr Infos</a>
+                 )}
+               </div>
            </div>
         ))}
       </div>
@@ -367,15 +367,15 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
 
   <FAQSection faqs={faqs} />
   <Testimonials />
-  <StickyCTA />
+  <StickyMerkliste />
   <Footer />
 </Layout>
 
 <script>
-  import { addItem } from '../lib/cartStore';
+  import { addItem } from '../lib/merklisteStore';
 
   document.addEventListener('click', (e) => {
-    const target = e.target.closest('[data-action="add-to-cart"]');
+    const target = e.target.closest('[data-action="add-to-wishlist"]');
     if (!target) return;
     if (target.closest('#pakete')) return;
     const slug = target.dataset.slug;
@@ -383,14 +383,14 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
 
     addItem(slug);
 
-    target.innerHTML = '<span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg><span class="text-base leading-tight">Im Warenkorb (1)</span></span>';
+    target.innerHTML = '<span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg><span class="text-base leading-tight">Gemerkt (1)</span></span>';
 
-    const cartBadge = document.querySelector('.cart-badge');
-    if (cartBadge) {
-      const items = JSON.parse(localStorage.getItem('sls_cart') || '{}').items || [];
+    const badge = document.querySelector('.merkliste-badge');
+    if (badge) {
+      const items = JSON.parse(localStorage.getItem('sls_merkliste') || '{}').items || [];
       const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
-      cartBadge.textContent = totalItems;
-      cartBadge.classList.toggle('hidden', totalItems === 0);
+      badge.textContent = totalItems;
+      badge.classList.toggle('hidden', totalItems === 0);
     }
   });
 </script>

@@ -34,8 +34,8 @@ const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data])
         <a href="mailto:holger.kampffmeyer+dj@gmail.com" class="text-[var(--color-accent)] font-semibold underline">per E‑Mail</a>.
       </p>
       
-      <!-- Cart Summary -->
-      <div id="cart-summary" class="mt-6 text-left w-full max-w-xs mx-auto"></div>
+      <!-- Merkliste -->
+      <div id="merkliste-summary" class="mt-6 text-left w-full max-w-xs mx-auto"></div>
       
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/vermietung" class="btn-primary">
@@ -79,14 +79,14 @@ const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data])
       const productScript = document.getElementById('rental-catalog-data');
       const productsBySlug = productScript ? JSON.parse(productScript.textContent) : {};
       
-      const cartSummary = document.getElementById('cart-summary');
+      const cartSummary = document.getElementById('merkliste-summary');
       if (!cartSummary) return;
       
       try {
-        const cart = JSON.parse(localStorage.getItem('sls_cart') || '{}');
+        const cart = JSON.parse(localStorage.getItem('sls_merkliste') || '{}');
         const items = cart.items || [];
         if (items.length === 0) {
-          cartSummary.innerHTML = '<p class="text-[var(--color-text-muted)]">Ihr Warenkorb ist leer.</p>';
+          cartSummary.innerHTML = '<p class="text-[var(--color-text-muted)]">Ihre Merkliste ist leer.</p>';
           return;
         }
         
@@ -120,27 +120,27 @@ const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data])
         });
         
         cartSummary.innerHTML = `
-          <h3 class="font-play font-bold mb-2">Ihr Warenkorb</h3>
+          <h3 class="font-play font-bold mb-2">Ihre Merkliste</h3>
           <div class="space-y-4">${rows}</div>
           <div class="mt-4 pt-2 border-t border-[var(--color-border)]">
             <p class="text-[var(--color-text-muted)] font-semibold">Gesamtbetrag: <span class="font-play text-xl">ab ${total} €</span></p>
             <p class="text-[var(--color-text-muted)] text-sm mt-2">
               Bitte beachten Sie: Dies ist eine unverbindliche Anfrage. Die angegebenen Preise sind Richtwerte und verstehen sich als Tagesmietpreise abholbereit in Stuttgart. Wir erstellen Ihnen anschließend ein individuelles, verbindliches Angebot basierend auf Verfügbarkeit, Mietdauer und genauer Aufstellung.
             </p>
-            <button id="clear-cart" class="mt-2 btn-secondary w-full">Warenkorb leeren</button>
+            <button id="clear-merkliste" class="mt-2 btn-secondary w-full">Merkliste leeren</button>
           </div>
         `;
         
-        const clearBtn = document.getElementById('clear-cart');
+        const clearBtn = document.getElementById('clear-merkliste');
         if (clearBtn) {
           clearBtn.addEventListener('click', () => {
-            localStorage.removeItem('sls_cart');
+            localStorage.removeItem('sls_merkliste');
             location.reload();
           });
         }
       } catch (e) {
-        console.error('Failed to render cart', e);
-        cartSummary.innerHTML = '<p class="text-[var(--color-text-muted)]">Fehler beim Laden des Warenkorbs.</p>';
+        console.error('Failed to render merkliste', e);
+        cartSummary.innerHTML = '<p class="text-[var(--color-text-muted)]">Fehler beim Laden der Merkliste.</p>';
       }
     });
   </script>

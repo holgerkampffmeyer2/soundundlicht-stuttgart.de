@@ -1,5 +1,5 @@
 ---
-import { getItemCount } from '../../lib/cartStore';
+import { getItemCount } from '../../lib/merklisteStore';
 ---
 <form
   class="contact-form"
@@ -10,7 +10,7 @@ import { getItemCount } from '../../lib/cartStore';
   <input type="hidden" name="subject" value="Neue Anfrage von soundundlicht-stuttgart.de" />
   <input type="hidden" name="from_name" value="Sound & Licht Stuttgart Kontaktformular" />
   <input type="hidden" name="redirect" value="https://soundundlicht-stuttgart.de/thankyou" />
-  <input type="hidden" name="cart" id="cart-data" />
+  <input type="hidden" name="cart" id="merkliste-data" />
 
   <div class="form-grid">
     <div class="form-group">
@@ -134,17 +134,16 @@ import { getItemCount } from '../../lib/cartStore';
     const submitBtn = form.querySelector('.form-submit');
     const submitText = form.querySelector('.submit-text');
     const submitSpinner = form.querySelector('.submit-spinner');
-    const cartInput = document.getElementById('cart-data');
+    const cartInput = document.getElementById('merkliste-data');
 
     function getCartData() {
       try {
-        const raw = localStorage.getItem('sls_cart');
+        const raw = localStorage.getItem('sls_merkliste');
         if (!raw) return '';
         const cart = JSON.parse(raw);
-        // Validate + expire
         if (!cart || typeof cart !== 'object' || !Array.isArray(cart.items)) return '';
         if (Date.now() - (cart.lastUpdated || 0) > 86400000) {
-          localStorage.removeItem('sls_cart');
+          localStorage.removeItem('sls_merkliste');
           return '';
         }
 
@@ -163,7 +162,7 @@ import { getItemCount } from '../../lib/cartStore';
         });
         return items.join(', ');
       } catch (e) {
-        console.warn('Could not read cart', e);
+        console.warn('Could not read merkliste', e);
         return '';
       }
     }
@@ -175,7 +174,7 @@ import { getItemCount } from '../../lib/cartStore';
       // Also prefill textarea so user sees exactly what's sent
       var eq = document.getElementById('equipment');
       if (eq && !eq.value.trim()) {
-        var cart = JSON.parse(localStorage.getItem('sls_cart') || '{}');
+        var cart = JSON.parse(localStorage.getItem('sls_merkliste') || '{}');
         if (cart.items && cart.items.length > 0) {
           var script = document.getElementById('rental-catalog-data');
           if (script) {
@@ -200,14 +199,13 @@ import { getItemCount } from '../../lib/cartStore';
     const equipmentTextarea = document.getElementById('equipment');
     if (!equipmentTextarea) return;
 
-    const raw = localStorage.getItem('sls_cart');
+    const raw = localStorage.getItem('sls_merkliste');
     if (!raw) return;
     try {
       const cart = JSON.parse(raw);
       if (!cart || typeof cart !== 'object' || !Array.isArray(cart.items)) return;
-      // Expire if older than 1 day
       if (Date.now() - (cart.lastUpdated || 0) > 86400000) {
-        localStorage.removeItem('sls_cart');
+        localStorage.removeItem('sls_merkliste');
         return;
       }
       const items = cart.items;
@@ -234,7 +232,7 @@ import { getItemCount } from '../../lib/cartStore';
   }
 
   document.addEventListener('DOMContentLoaded', prefillEquipment);
-  document.addEventListener('cart-prefill', prefillEquipment);
+  document.addEventListener('merkliste-prefill', prefillEquipment);
 </script>
 
 <style>

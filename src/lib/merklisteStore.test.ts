@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
-import { getCart, addItem, removeItem, updateItemQuantity, clearCart, getItemCount, getTotalPrice, getCartItemsWithDetails, isCartEmpty } from './cartStore.js';
+import { getCart, addItem, removeItem, updateItemQuantity, clearCart, getItemCount, getTotalPrice, getCartItemsWithDetails, isCartEmpty } from './merklisteStore.js';
 
-const STORAGE_KEY = 'sls_cart';
+const STORAGE_KEY = 'sls_merkliste';
 
 beforeEach(() => {
   const store: Record<string, string> = {};
@@ -16,7 +16,7 @@ beforeEach(() => {
   vi.spyOn(window, 'localStorage', 'get').mockReturnValue(mock);
 });
 
-describe('cartStore', () => {
+describe('merklisteStore', () => {
   const mockProductLookup = (slug: string) => {
     const products: Record<string, { slug: string; price: string }> = {
       'jbl-partybox-300-320': { slug: 'jbl-partybox-300-320', price: 'ab 80€' },
@@ -26,7 +26,7 @@ describe('cartStore', () => {
     return products[slug] || null;
   };
 
-  it('should initialize with empty cart', () => {
+  it('should initialize with empty merkliste', () => {
     const cart = getCart();
     expect(cart).toEqual({
       items: [],
@@ -34,7 +34,7 @@ describe('cartStore', () => {
     });
   });
 
-  it('should add item to cart', () => {
+  it('should add item to merkliste', () => {
     addItem('jbl-partybox-300-320', 2);
     const cart = getCart();
     expect(cart.items).toHaveLength(1);
@@ -80,7 +80,7 @@ describe('cartStore', () => {
     expect(isCartEmpty()).toBe(true);
   });
 
-  it('should clear cart', () => {
+  it('should clear merkliste', () => {
     addItem('jbl-partybox-300-320', 2);
     addItem('behringer-x32', 1);
     clearCart();
@@ -95,7 +95,7 @@ describe('cartStore', () => {
     expect(total).toBe(2 * 80 + 3 * 40);
   });
 
-  it('should return cart items with product details', () => {
+  it('should return merkliste items with product details', () => {
     addItem('jbl-partybox-300-320', 1);
     const itemsWithDetails = getCartItemsWithDetails(mockProductLookup);
     expect(itemsWithDetails).toHaveLength(1);
@@ -103,7 +103,7 @@ describe('cartStore', () => {
     expect(itemsWithDetails[0].product.slug).toBe('jbl-partybox-300-320');
   });
 
-  it('should persist cart to localStorage', () => {
+  it('should persist merkliste to localStorage', () => {
     addItem('jbl-partybox-300-320', 1);
     const stored = localStorage.getItem(STORAGE_KEY);
     expect(stored).not.toBeNull();
@@ -136,7 +136,7 @@ describe('cartStore', () => {
     expect(cart.items).toEqual([]);
   });
 
-  it('should clear expired cart (>24h old)', () => {
+  it('should clear expired merkliste (>24h old)', () => {
     const old = Date.now() - 25 * 60 * 60 * 1000;
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ items: [{ slug: 'jbl-partybox-300-320', quantity: 1, addedAt: old }], lastUpdated: old }));
     const cart = getCart();
@@ -144,8 +144,8 @@ describe('cartStore', () => {
     expect(localStorage.getItem(STORAGE_KEY)).toBeNull();
   });
 
-  it('should keep valid cart within 24h', () => {
-    const recent = Date.now() - 60 * 60 * 1000; // 1h old
+  it('should keep valid merkliste within 24h', () => {
+    const recent = Date.now() - 60 * 60 * 1000;
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ items: [{ slug: 'jbl-partybox-300-320', quantity: 2, addedAt: recent }], lastUpdated: recent }));
     const cart = getCart();
     expect(cart.items).toHaveLength(1);

@@ -10,32 +10,32 @@ interface Props {
 const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
 ---
 
-<div class="sticky-cta sticky-cta-initial" data-threshold={threshold}>
+<div class="sticky-merkliste sticky-merkliste-initial" data-threshold={threshold}>
   <div class="sticky-panel">
     {productSlug && (
-      <button class="sticky-panel-btn" data-action="add-to-cart" data-product-slug={productSlug}>
-        <Icon name="cart" class="w-4 h-4" />
-        <span>Zum Warenkorb</span>
+      <button class="sticky-panel-btn" data-action="add-to-wishlist" data-product-slug={productSlug}>
+        <Icon name="heart" class="w-4 h-4" />
+        <span>Merken</span>
       </button>
     )}
     <a href={href} class="sticky-panel-btn" data-action="request-now">
       <Icon name="email" class="w-4 h-4" />
       <span>Jetzt anfragen</span>
     </a>
-    <button class="sticky-panel-link relative" data-action="toggle-cart">
-      <Icon name="cart" class="w-5 h-5" />
-      <span class="absolute -top-1.5 -right-1.5 flex h-3.5 min-w-3.5 items-center justify-center text-[9px] font-bold bg-[var(--color-accent)] text-white rounded-full cart-badge hidden">0</span>
-      <span>Warenkorb betrachten</span>
+    <button class="sticky-panel-link relative" data-action="toggle-wishlist">
+      <Icon name="heart" class="w-5 h-5" />
+      <span class="absolute -top-1.5 -right-1.5 flex h-3.5 min-w-3.5 items-center justify-center text-[9px] font-bold bg-[var(--color-accent)] text-white rounded-full merkliste-badge hidden">0</span>
+      <span>Merkliste betrachten</span>
     </button>
   </div>
 </div>
 
 <script>
-  import { addItem, getCart } from '../lib/cartStore';
+  import { addItem, getCart } from '../lib/merklisteStore';
 
   (function() {
     function updateBadge() {
-      var badges = document.querySelectorAll('.sticky-cta .cart-badge');
+      var badges = document.querySelectorAll('.sticky-merkliste .merkliste-badge');
       var cart = getCart();
       var items = cart.items || [];
       var count = 0;
@@ -51,7 +51,7 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
       }
     }
 
-    var cta = document.querySelector('.sticky-cta');
+    var cta = document.querySelector('.sticky-merkliste');
     if (!cta) return;
     var threshold = parseInt(cta.dataset.threshold || '15');
     var ticking = false;
@@ -74,14 +74,12 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
       }
     });
 
-    // Update badge on cart changes
-    document.addEventListener('toggle-cart', updateBadge);
-    document.addEventListener('cart-prefill', updateBadge);
+    document.addEventListener('toggle-merkliste', updateBadge);
+    document.addEventListener('merkliste-prefill', updateBadge);
     updateBadge();
 
-    // Init: check if product already in cart
     (function() {
-      var addBtn = document.querySelector('[data-action="add-to-cart"][data-product-slug]');
+      var addBtn = document.querySelector('[data-action="add-to-wishlist"][data-product-slug]');
       if (addBtn) {
         var slug = addBtn.dataset.productSlug;
         var cart = getCart();
@@ -91,26 +89,26 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
           if (items[i].slug === slug) { inCart = true; break; }
         }
         if (inCart) {
-          addBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg><span>Im Warenkorb</span>';
+          addBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg><span>Gemerkt</span>';
         }
       }
     })();
 
     document.addEventListener('click', function(e) {
-      var btn = e.target.closest('[data-action="add-to-cart"]');
+      var btn = e.target.closest('[data-action="add-to-wishlist"]');
       if (btn) {
         var slug = btn.dataset.productSlug;
         if (slug) {
           addItem(slug);
-          btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg><span>Im Warenkorb</span>';
-          document.dispatchEvent(new CustomEvent('cart-prefill'));
+          btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg><span>Gemerkt</span>';
+          document.dispatchEvent(new CustomEvent('merkliste-prefill'));
         }
         return;
       }
 
-      btn = e.target.closest('[data-action="toggle-cart"]');
+      btn = e.target.closest('[data-action="toggle-wishlist"]');
       if (btn) {
-        document.dispatchEvent(new CustomEvent('toggle-cart'));
+        document.dispatchEvent(new CustomEvent('toggle-merkliste'));
         return;
       }
 
@@ -119,16 +117,16 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
         var slug = btn.closest('[data-product-slug]') ? btn.closest('[data-product-slug]').dataset.productSlug : null;
         var panel = btn.closest('.sticky-panel');
         if (panel) {
-          var addBtn = panel.querySelector('[data-action="add-to-cart"]');
+          var addBtn = panel.querySelector('[data-action="add-to-wishlist"]');
           if (addBtn) {
             slug = addBtn.dataset.productSlug;
           }
         }
         if (slug) {
           addItem(slug);
-          document.dispatchEvent(new CustomEvent('cart-prefill'));
+          document.dispatchEvent(new CustomEvent('merkliste-prefill'));
         } else {
-          document.dispatchEvent(new CustomEvent('cart-prefill'));
+          document.dispatchEvent(new CustomEvent('merkliste-prefill'));
         }
       }
     });
@@ -136,7 +134,7 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
 </script>
 
 <style>
-  .sticky-cta {
+  .sticky-merkliste {
     position: fixed;
     bottom: 1.5rem;
     right: 1.5rem;
@@ -146,7 +144,7 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
   }
 
-  .sticky-cta.visible {
+  .sticky-merkliste.visible {
     transform: translateY(0);
     opacity: 1;
   }
@@ -210,7 +208,7 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
   }
 
   @media (max-width: 640px) {
-    .sticky-cta {
+    .sticky-merkliste {
       bottom: 1rem;
       right: 1rem;
     }

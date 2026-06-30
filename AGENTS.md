@@ -7,7 +7,7 @@ Astro 7.x SSG site for event tech rental (PA, partyboxes, lights) in Stuttgart a
 - `pnpm run dev` — Dev server
 - `pnpm run build` — Production build → dist/ (für tägliche Entwicklung)
 - `pnpm run build:full` — Build + RSS + urllist (für Deploy)
-  - **Timeout:** Build braucht ~19s → Agent muss min. 60s Timeout setzen
+  - **Timeout:** Build braucht ~22s → Agent muss min. 60s Timeout setzen
 - `pnpm run build:images` — WebP-Optimierung via Sharp (JPG/PNG in `public/img/`)
 - `pnpm run build:full-with-images` — Images + Build + RSS + urllist
 - `pnpm run preview` — Preview build
@@ -28,6 +28,11 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - **`pagefindMeta` wird als separate `<div>` pro Key-Value gerendert** — NICHT kombinierter `;`-String (Pagefind 1.5.2 parst `;` nicht korrekt!)
 - **`data-pagefind-ignore`** auf Navbar.astro + Footer.astro
 - **URL-Normalisierung**: `normalizeUrl()` strippt trailing slashes im JS (`trailingSlash: 'never'`)
+- **Client-Script**: `src/scripts/search.ts` wird in `Layout.astro` via `<script>` importiert
+  - **Debounce**: 300ms nach Eingabe (mind. 2 Zeichen)
+  - **Keyboard**: ArrowUp/Down/Enter/Escape für Navigation im Overlay
+  - **Overlay-Close**: Klick außerhalb via `onDocumentClick`
+  - **Pagefind**: Dynamischer `import('/pagefind/pagefind.js')` bei erster Suche
 - **Katalog-Matching für `/vermietung/`:**
   - `rentalItems` aus `getCollection('products')` (21 Produkte) wird als JSON-Script eingebettet
   - `matchCatalogProducts(query)` matcht Suchbegriffe gegen Titel/Description/Features
@@ -37,6 +42,11 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - **FAQ-Daten**: `src/data/faqs.json` (135 Einträge) via `getCollection('faqs')`
 - **Städte**: `src/data/cities.json` (15 Städte) via `getCollection('cities')`
 - **"Mehr Infos"-Button** auf `/vermietung/` erscheint nur bei Produkten mit echter Detailseite (kein `#` in `detailPage`)
+- **Tests**: `tests/search.spec.ts` (Playwright, 4 Tests):
+  - Input sichtbar, korrekter Placeholder
+  - Volltext-Suche mit Pagefind (query `"PA"` → Ergebnisse)
+  - Schließen bei Klick außerhalb
+  - Kurze Query (1 Zeichen) zeigt kein Overlay
 
 ## SEO-Richtlinien
 
@@ -57,26 +67,30 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - Vorher immer `pnpm run build:full` ausführen (aktualisiert `urllist.txt`)
 - **Google wird nicht unterstützt** — dafür Google Search Console nutzen
 
-## Warenkorb (Cart-System)
+## Merkliste (Wunschliste für Anfragen)
 
-- **Clientseitiger Warenkorb** (`src/lib/cartStore.js`) via `localStorage` (Key: `sls_cart`)
+- **Clientseitige Merkliste** (`src/lib/merklisteStore.js`) via `localStorage` (Key: `sls_merkliste`)
   - Funktionen: `getCart()`, `addItem(slug)`, `removeItem(slug)`, `updateItemQuantity(slug, qty)`, `clearCart()`, `getItemCount()`
   - Automatische Leerung nach 24h Inaktivität
   - Produktdaten-Lookup via embedded JSON `#rental-catalog-data`
 - **Komponenten:**
-  - `CartIcon.astro` — Warenkorb-Icon mit Badge in `Navbar.astro` (desktop + mobile)
-  - `CartDrawer.astro` — Seitenpanel mit ARIA (`role="dialog"`, `aria-modal`), Escape/Overlay-Close, Focus-Trap, scale-Animation
-  - `CartButton.astro` — "Zum Warenkorb hinzufügen"-Button für Produktdetailseiten
-  - `StickyCTA.astro` — Grünes Sticky-Panel mit "Warenkorb betrachten" (alle Seiten)
-- **Icons**: Alle Cart-Icons via `Icon.astro` (`name="cart"`) – kein hardcodiertes SVG
+  - `WishlistIcon.astro` — Herz-Icon mit Badge in `Navbar.astro` (desktop + mobile)
+  - `WishlistDrawer.astro` — Seitenpanel mit ARIA (`role="dialog"`, `aria-modal`), Escape/Overlay-Close, Focus-Trap, scale-Animation
+  - `WishlistButton.astro` — "Merken"-Button für Produktdetailseiten
+  - `StickyMerkliste.astro` — Sticky-Panel mit "Merkliste betrachten" (alle Seiten)
+- **Icons**: Herz-Icon via `Icon.astro` (`name="heart"`) – kein hardcodiertes SVG
 - **Event-Interface:**
-  - `toggle-cart` → Drawer öffnen/schließen
-  - `cart-prefill` → Kontaktformular vorbereiten
-- **Skript-Imports**: Statische ESM-Imports (`import { addItem } from '../lib/cartStore'`) in `<script>` – keine dynamischen `import()`-Aufrufe (zuverlässiger in preview/production)
-- **Tests**: `tests/cart.spec.ts` (Playwright, 3 Tests):
-  - Produkt von `/vermietung/` hinzufügen, Badge-Prüfung, Drawer, Form-Prefill
-  - Produkt von Detailseite hinzufügen
-  - Mehrere Produkte + Drawer-Inhalt + Formular
+  - `toggle-merkliste` → Drawer öffnen/schließen
+  - `merkliste-prefill` → Kontaktformular vorbereiten
+- **Data-Actions:**
+  - `add-to-wishlist` → Produkt auf Merkliste
+  - `toggle-wishlist` → Drawer umschalten
+  - `request-now` → Sprung zum Formular
+- **Scope-Guard**: `PackageCardGrid.astro` hat `data-package-grid` für `target.closest()` – verhindert Double-Add mit `vermietung.astro`-Handler
+- **Skript-Imports**: Statische ESM-Imports (`import { addItem } from '../lib/merklisteStore'`) in `<script>` – keine dynamischen `import()`-Aufrufe (zuverlässiger in preview/production)
+- **Tests**: `tests/merkliste.spec.ts` (Playwright, 3 Tests) + `src/lib/merklisteStore.test.ts` (Vitest, 16 Tests):
+  - Playwright: Produkt von `/vermietung/` + Detailseite + mehrere Produkte hinzufügen
+  - Vitest: Unit-Tests für alle Store-Funktionen (CRUD, Validierung, Ablauf 24h)
   - Server: `pnpm run preview` auf Port 4321 (oder Dev-Server)
 
 ## Referenzen

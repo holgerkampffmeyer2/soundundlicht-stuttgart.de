@@ -2,22 +2,22 @@
 import Icon from './Icon.astro';
 ---
 
-<div id="cart-drawer" class="fixed inset-0 z-50 flex-col items-center justify-center hidden bg-black/50" role="dialog" aria-modal="true" aria-label="Warenkorb">
+<div id="merkliste-drawer" class="fixed inset-0 z-50 flex-col items-center justify-center hidden bg-black/50" role="dialog" aria-modal="true" aria-label="Merkliste">
   <div class="relative w-full max-w-xs mx-4 sm:max-w-md bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl shadow-lg p-6 max-h-[90vh] overflow-y-auto">
-    <button id="cart-close" class="absolute top-2 right-2 p-2 rounded hover:bg-[var(--color-accent)/10] transition-colors" aria-label="Warenkorb schließen">
+    <button id="merkliste-close" class="absolute top-2 right-2 p-2 rounded hover:bg-[var(--color-accent)/10] transition-colors" aria-label="Merkliste schließen">
       <Icon name="x" class="w-4 h-4" />
     </button>
 
-    <h2 class="font-play text-2xl font-bold mb-4 text-center">Ihr Warenkorb</h2>
+    <h2 class="font-play text-2xl font-bold mb-4 text-center">Ihre Merkliste</h2>
 
-    <div id="cart-contents">
-      <p class="text-[var(--color-text-muted)] text-center">Ihr Warenkorb ist leer.</p>
+    <div id="merkliste-contents">
+      <p class="text-[var(--color-text-muted)] text-center">Ihre Merkliste ist leer.</p>
     </div>
 
-    <div id="cart-footer" class="mt-6 pt-4 border-t border-[var(--color-border)] hidden">
-      <p id="cart-total-wrapper" class="text-[var(--color-text-muted)] mb-2 flex items-center gap-1 flex-wrap">
+    <div id="merkliste-footer" class="mt-6 pt-4 border-t border-[var(--color-border)] hidden">
+      <p id="merkliste-total-wrapper" class="text-[var(--color-text-muted)] mb-2 flex items-center gap-1 flex-wrap">
         <span>Gesamtbetrag:</span>
-        <span id="cart-total" class="font-play text-xl font-bold">0 €</span>
+        <span id="merkliste-total" class="font-play text-xl font-bold">0 €</span>
         <span class="price-info-wrap">
           <Icon name="info" class="w-3.5 h-3.5 cursor-help text-[var(--color-text-muted)]" />
           <span class="price-info-popup">Unverbindliche Preisangabe. Das finale Angebot erhalte ich nach Absenden des Formulars.</span>
@@ -30,69 +30,69 @@ import Icon from './Icon.astro';
 
 <script is:inline>
 (function() {
-  var STORAGE_KEY = 'sls_cart';
+  var STORAGE_KEY = 'sls_merkliste';
 
-  function getCart() {
+  function getMerkliste() {
     try {
       var stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        var cart = JSON.parse(stored);
-        if (cart && typeof cart === 'object' && Array.isArray(cart.items)) {
-          if (Date.now() - (cart.lastUpdated || 0) > 86400000) {
+        var data = JSON.parse(stored);
+        if (data && typeof data === 'object' && Array.isArray(data.items)) {
+          if (Date.now() - (data.lastUpdated || 0) > 86400000) {
             localStorage.removeItem(STORAGE_KEY);
             return { items: [], lastUpdated: Date.now() };
           }
-          return cart;
+          return data;
         }
       }
     } catch (e) {}
     return { items: [], lastUpdated: Date.now() };
   }
 
-  function saveCart(cart) {
+  function saveMerkliste(data) {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch (e) {}
   }
 
   function addItem(slug, qty) {
     qty = qty || 1;
-    var cart = getCart();
-    var idx = cart.items.findIndex(function(i) { return i.slug === slug; });
+    var data = getMerkliste();
+    var idx = data.items.findIndex(function(i) { return i.slug === slug; });
     if (idx >= 0) {
-      cart.items[idx].quantity += qty;
+      data.items[idx].quantity += qty;
     } else {
-      cart.items.push({ slug: slug, quantity: Math.max(1, qty), addedAt: Date.now() });
+      data.items.push({ slug: slug, quantity: Math.max(1, qty), addedAt: Date.now() });
     }
-    cart.lastUpdated = Date.now();
-    saveCart(cart);
+    data.lastUpdated = Date.now();
+    saveMerkliste(data);
   }
 
   function removeItem(slug) {
-    var cart = getCart();
-    cart.items = cart.items.filter(function(i) { return i.slug !== slug; });
-    if (cart.items.length === 0) {
+    var data = getMerkliste();
+    data.items = data.items.filter(function(i) { return i.slug !== slug; });
+    if (data.items.length === 0) {
       localStorage.removeItem(STORAGE_KEY);
     } else {
-      cart.lastUpdated = Date.now();
-      saveCart(cart);
+      data.lastUpdated = Date.now();
+      saveMerkliste(data);
     }
   }
 
   function updateItemQuantity(slug, qty) {
-    var cart = getCart();
-    var idx = cart.items.findIndex(function(i) { return i.slug === slug; });
+    var data = getMerkliste();
+    var idx = data.items.findIndex(function(i) { return i.slug === slug; });
     if (idx >= 0) {
       if (qty <= 0) {
-        cart.items.splice(idx, 1);
+        data.items.splice(idx, 1);
       } else {
-        cart.items[idx].quantity = qty;
+        data.items[idx].quantity = qty;
       }
-      if (cart.items.length === 0) {
+      if (data.items.length === 0) {
         localStorage.removeItem(STORAGE_KEY);
       } else {
-        cart.lastUpdated = Date.now();
-        saveCart(cart);
+        data.lastUpdated = Date.now();
+        saveMerkliste(data);
       }
     }
   }
@@ -121,7 +121,7 @@ import Icon from './Icon.astro';
   }
 
   function updateBadge(count) {
-    var badges = document.querySelectorAll('.cart-badge');
+    var badges = document.querySelectorAll('.merkliste-badge');
     for (var i = 0; i < badges.length; i++) {
       var badge = badges[i];
       badge.textContent = count;
@@ -133,18 +133,18 @@ import Icon from './Icon.astro';
     }
   }
 
-  function renderCart() {
-    var container = document.getElementById('cart-contents');
-    var footer = document.getElementById('cart-footer');
-    var totalEl = document.getElementById('cart-total');
+  function renderMerkliste() {
+    var container = document.getElementById('merkliste-contents');
+    var footer = document.getElementById('merkliste-footer');
+    var totalEl = document.getElementById('merkliste-total');
     if (!container) return;
 
     try {
-      var cart = getCart();
-      var items = cart.items || [];
+      var data = getMerkliste();
+      var items = data.items || [];
 
       if (items.length === 0) {
-        container.innerHTML = '<p class="text-[var(--color-text-muted)] text-center">Ihr Warenkorb ist leer.</p>';
+        container.innerHTML = '<p class="text-[var(--color-text-muted)] text-center">Ihre Merkliste ist leer.</p>';
         if (footer) footer.classList.add('hidden');
         updateBadge(0);
         return;
@@ -173,7 +173,7 @@ import Icon from './Icon.astro';
             '</picture>';
         }
 
-        html += '<div class="cart-item flex items-start space-x-4">' +
+        html += '<div class="merkliste-item flex items-start space-x-4">' +
           imgHtml +
           '<div class="flex-1 space-y-2">' +
           '<h3 class="font-play font-lg font-bold">' + title + '</h3>' +
@@ -207,8 +207,7 @@ import Icon from './Icon.astro';
       for (var j = 0; j < items.length; j++) { count += items[j].quantity; }
       updateBadge(count);
 
-      // Sync hidden cart-data field for form submission
-      var cartInput = document.getElementById('cart-data');
+      var cartInput = document.getElementById('merkliste-data');
       if (cartInput) {
         var data = [];
         for (var k = 0; k < items.length; k++) {
@@ -221,25 +220,25 @@ import Icon from './Icon.astro';
         cartInput.value = data.join(', ');
       }
     } catch (e) {
-      container.innerHTML = '<p class="text-[var(--color-text-muted)] text-center">Fehler beim Laden des Warenkorbs.</p>';
+      container.innerHTML = '<p class="text-[var(--color-text-muted)] text-center">Fehler beim Laden der Merkliste.</p>';
     }
   }
 
   function closeDrawer() {
-    document.getElementById('cart-drawer')?.classList.remove('open');
+    document.getElementById('merkliste-drawer')?.classList.remove('open');
   }
 
   function openDrawer() {
-    var drawer = document.getElementById('cart-drawer');
+    var drawer = document.getElementById('merkliste-drawer');
     if (!drawer) return;
     drawer.classList.add('open');
-    renderCart();
-    var closeBtn = document.getElementById('cart-close');
+    renderMerkliste();
+    var closeBtn = document.getElementById('merkliste-close');
     if (closeBtn) setTimeout(function() { closeBtn.focus(); }, 50);
   }
 
   function toggleDrawer() {
-    var drawer = document.getElementById('cart-drawer');
+    var drawer = document.getElementById('merkliste-drawer');
     if (!drawer) return;
     if (drawer.classList.contains('open')) {
       closeDrawer();
@@ -248,16 +247,15 @@ import Icon from './Icon.astro';
     }
   }
 
-  document.addEventListener('toggle-cart', toggleDrawer);
+  document.addEventListener('toggle-merkliste', toggleDrawer);
 
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeDrawer();
   });
 
-  document.getElementById('cart-close')?.addEventListener('click', closeDrawer);
+  document.getElementById('merkliste-close')?.addEventListener('click', closeDrawer);
 
-  // Click on backdrop closes drawer
-  document.getElementById('cart-drawer')?.addEventListener('click', function(e) {
+  document.getElementById('merkliste-drawer')?.addEventListener('click', function(e) {
     if (e.target === this) closeDrawer();
   });
 
@@ -268,45 +266,44 @@ import Icon from './Icon.astro';
     if (!action || !slug) return;
 
     if (action === 'increment') {
-      var cart = getCart();
-      var item = cart.items ? (cart.items.find(function(i) { return i.slug === slug; }) || { quantity: 0 }) : { quantity: 0 };
+      var data = getMerkliste();
+      var item = data.items ? (data.items.find(function(i) { return i.slug === slug; }) || { quantity: 0 }) : { quantity: 0 };
       updateItemQuantity(slug, (item.quantity || 0) + 1);
-      renderCart();
+      renderMerkliste();
     } else if (action === 'decrement') {
-      var cart = getCart();
-      var item = cart.items ? (cart.items.find(function(i) { return i.slug === slug; }) || { quantity: 0 }) : { quantity: 0 };
+      var data = getMerkliste();
+      var item = data.items ? (data.items.find(function(i) { return i.slug === slug; }) || { quantity: 0 }) : { quantity: 0 };
       var newQty = Math.max((item.quantity || 0) - 1, 0);
       if (newQty === 0) {
         removeItem(slug);
       } else {
         updateItemQuantity(slug, newQty);
       }
-      renderCart();
+      renderMerkliste();
     } else if (action === 'remove') {
       removeItem(slug);
-      renderCart();
+      renderMerkliste();
     }
   });
 
   document.getElementById('request-btn')?.addEventListener('click', function() {
-    // Populate hidden cart-data field for form submission
-    var cartInput = document.getElementById('cart-data');
+    var cartInput = document.getElementById('merkliste-data');
     if (cartInput) {
-      var cart = getCart();
-      var items = cart.items || [];
+      var data = getMerkliste();
+      var items = data.items || [];
       if (items.length > 0) {
         var catalog = getCatalog();
-        var data = items.map(function(item) {
+        var vals = items.map(function(item) {
           var prod = catalog[item.slug];
           var title = prod ? prod.title : item.slug;
           var price = prod ? prod.price : '';
           return item.quantity + 'x ' + title + ' (' + price + ')';
         }).join(', ');
-        cartInput.value = data;
+        cartInput.value = vals;
       }
     }
-    document.dispatchEvent(new CustomEvent('cart-prefill'));
-    document.getElementById('cart-drawer')?.classList.remove('open');
+    document.dispatchEvent(new CustomEvent('merkliste-prefill'));
+    document.getElementById('merkliste-drawer')?.classList.remove('open');
     var contactSection = document.getElementById('kontakt');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -315,10 +312,9 @@ import Icon from './Icon.astro';
     }
   });
 
-  // Initialize badge from localStorage on page load
   (function() {
-    var cart = getCart();
-    var items = cart.items || [];
+    var data = getMerkliste();
+    var items = data.items || [];
     var count = 0;
     for (var i = 0; i < items.length; i++) { count += items[i].quantity; }
     updateBadge(count);
@@ -327,28 +323,27 @@ import Icon from './Icon.astro';
 </script>
 
 <style>
-  #cart-drawer {
+  #merkliste-drawer {
     @apply hidden;
     transition: opacity 0.2s ease;
   }
-  #cart-drawer.open {
+  #merkliste-drawer.open {
     @apply flex;
   }
-  #cart-drawer > div {
+  #merkliste-drawer > div {
     transform: scale(0.95);
     opacity: 0;
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
-  #cart-drawer.open > div {
+  #merkliste-drawer.open > div {
     transform: scale(1);
     opacity: 1;
   }
-  #cart-drawer::before {
+  #merkliste-drawer::before {
     content: '';
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.5);
     z-index: -1;
   }
-
 </style>

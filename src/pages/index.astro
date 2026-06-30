@@ -12,7 +12,7 @@ import { serviceArea, offerCatalogJsonLd } from '../data/jsonLd';
 import HeroSlider from "../components/HeroSlider.astro";
 import BieteSection from "../components/BieteSection.astro";
 import PackageCardGrid from '../components/PackageCardGrid.astro';
-import StickyCTA from '../components/StickyCTA.astro';
+import StickyMerkliste from '../components/StickyMerkliste.astro';
 
 const products = await getCollection('products');
 const rentalItems = products.map(i => i.data);
@@ -188,15 +188,15 @@ const serviceJsonLd = {
           <div class="text-4xl font-bold text-[var(--color-secondary)] mb-3">1</div>
           <h3 class="font-play text-lg font-bold mb-2">Produkte zum Anfragen hinzufügen</h3>
           <p class="text-[var(--color-text-muted)] text-sm">
-            Durch Klick auf „Zur Anfrage hinzufügen“ legen Sie die gewünschte Technik in den Warenkorb.
+            Durch Klick auf „Merken“ legen Sie die gewünschte Technik auf Ihre Merkliste.
           </p>
         </div>
 
         <div class="service-card animate-on-scroll text-center">
           <div class="text-4xl font-bold text-[var(--color-secondary)] mb-3">2</div>
-          <h3 class="font-play text-lg font-bold mb-2">Warenkorb prüfen</h3>
+          <h3 class="font-play text-lg font-bold mb-2">Merkliste prüfen</h3>
           <p class="text-[var(--color-text-muted)] text-sm">
-            Im Header oder über den CTA‑Button können Sie den Warenkorb einsehen, Menge ändern oder Artikel entfernen.
+            Im Header oder über den CTA‑Button können Sie Ihre Merkliste einsehen, Menge ändern oder Artikel entfernen.
           </p>
         </div>
 
@@ -204,7 +204,7 @@ const serviceJsonLd = {
           <div class="text-4xl font-bold text-[var(--color-secondary)] mb-3">3</div>
           <h3 class="font-play text-lg font-bold mb-2">Zur Anfrage gehen</h3>
           <p class="text-[var(--color-text-muted)] text-sm">
-            Klicken Sie auf „Zur Anfrage gehen“ im Warenkorb‑Drawer, um zum Kontaktformular zu gelangen – dort ist Ihre Auswahl bereits sichtbar.
+            Klicken Sie auf „Zur Anfrage gehen“ im Merkliste‑Drawer, um zum Kontaktformular zu gelangen – dort ist Ihre Auswahl bereits sichtbar.
           </p>
         </div>
 
@@ -259,7 +259,7 @@ const serviceJsonLd = {
     secondaryButtonText="Zur Technik ↗"
   />
 
-  <StickyCTA href="/vermietung#kontakt" />
+  <StickyMerkliste href="/vermietung#kontakt" />
 
   <!-- Footer -->
   <Footer />
