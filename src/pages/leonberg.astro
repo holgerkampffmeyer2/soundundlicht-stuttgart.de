@@ -5,8 +5,8 @@ import Footer from "../components/Footer.astro";
 import CityHero from "../components/CityHero.astro";
 import CityPackages from "../components/CityPackages.astro";
 import CitySteps from "../components/CitySteps.astro";
-import Icon from "../components/Icon.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
+import ContactSection from "../components/ContactSection.astro";
 import FAQSection from "../components/FAQSection.astro";
 import { getFaqsForPage } from '../lib/faqUtils';
 
@@ -75,60 +75,11 @@ const cityJsonLd = {
     </div>
   </section>
 
-  <section id="kontakt" class="section-padding bg-[var(--color-surface)]">
-    <div class="max-w-4xl mx-auto text-center animate-on-scroll">
-      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
-        Kontakt
-      </span>
-      <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
-        Technik mieten in Leonberg – einfach anfragen
-      </h2>
-      <p class="text-[var(--color-text-muted)] text-lg mb-10">
-        Du wohnst in Leonberg oder der Umgebung und brauchst Technik? Schreib mir eine E-Mail – die Abholung ist nur 20 km entfernt in Leinfelden-Echterdingen, Magellanstraße 4, verkehrsgünstig an A8. Ich melde mich innerhalb von 12 Stunden bei dir!
-      </p>
-
-      <div class="grid grid-cols-1 gap-8 mb-12">
-        <div class="bg-[var(--color-bg)] rounded-xl p-6">
-          <div class="w-full h-64 md:h-80 rounded-lg overflow-hidden mb-4">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2633.5828618899773!2d9.15913277708782!3d48.69433947131032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799c318ddfada49%3A0x8c761bb0db8ae55e!2sHolger%20Kampffmeyer%20DJ%20Dienstleistungen!5e0!3m2!1sde!2sde!4v1773674458531!5m2!1sde!2sde"
-              style="border:0; width: 100%; height: 100%;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Google Maps - Sound & Licht Stuttgart">
-            </iframe>
-          </div>
-          <div class="text-[var(--color-secondary)] mb-3"><Icon name="map-pin" class="w-10 h-10" /></div>   
-          <h3 class="font-play font-bold mb-2">Adresse (Abholung)</h3>
-          <p class="text-[var(--color-text-muted)]">
-            Magellanstraße 4<br>
-            70771 Leinfelden-Echterdingen<br>
-            Nur ca. 20 km von Leonberg
-          </p>
-          <a href="https://www.google.com/maps/dir/Leonberg/Magellanstraße+4,+70771+Leinfelden-Echterdingen/" target="_blank" rel="noopener noreferrer nofollow" class="text-[var(--color-secondary)] text-sm hover:underline mt-2 inline-block">
-            Route von Leonberg planen →
-          </a>
-</div>
-        <div class="bg-[var(--color-bg)] rounded-xl p-6">
-          <div class="text-[var(--color-secondary)] mb-3"><Icon name="email" class="w-10 h-10" /></div>
-          <h3 class="font-play font-bold mb-2">E-Mail</h3>
-          <p class="text-[var(--color-text-muted)]">
-            holger.kampffmeyer+dj@gmail.com
-          </p>
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="mailto:holger.kampffmeyer+dj@gmail.com" class="btn-primary flex items-center justify-center gap-2">
-          E-Mail senden
-        </a>
-        <a href="/vermietung/" class="btn-secondary">
-          Alle Details &amp; Geräte ↗
-        </a>
-      </div>
-    </div>
-  </section>
+  <ContactSection
+    title="Technik mieten in Leonberg – einfach anfragen"
+    description="Du wohnst in Leonberg oder der Umgebung und brauchst Technik? Schreib mir eine E-Mail – die Abholung ist nur 20 km entfernt in Leinfelden-Echterdingen, Magellanstraße 4, verkehrsgünstig an A8. Ich melde mich innerhalb von 12 Stunden bei dir!"
+    distanceText="Nur ca. 20 km von Leonberg"
+  />
 
   <Footer />
 </Layout>
