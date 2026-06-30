@@ -829,6 +829,43 @@ input[data-rental-search]::placeholder {
   border: 1px solid color-mix(in srgb, var(--color-secondary) 25%, transparent);
 }
 
+.price-info-wrap {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+}
+.price-info-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  cursor: help;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+.price-info-popup {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5rem;
+  width: 14rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  z-index: 10;
+  text-align: left;
+}
+.price-info-wrap:hover .price-info-popup {
+  opacity: 1;
+}
+
 .plug-badge {
   position: absolute;
   top: 0.5rem;

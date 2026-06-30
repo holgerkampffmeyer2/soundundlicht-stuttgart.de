@@ -18,11 +18,9 @@ import Icon from './Icon.astro';
       <p id="cart-total-wrapper" class="text-[var(--color-text-muted)] mb-2 flex items-center gap-1 flex-wrap">
         <span>Gesamtbetrag:</span>
         <span id="cart-total" class="font-play text-xl font-bold">0 €</span>
-        <span class="cart-total-info relative inline-flex align-middle">
+        <span class="price-info-wrap">
           <Icon name="info" class="w-3.5 h-3.5 cursor-help text-[var(--color-text-muted)]" />
-          <span class="cart-total-info-popup absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 p-2 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)] text-xs leading-relaxed shadow-lg pointer-events-none opacity-0 transition-opacity z-10 text-left">
-            Unverbindliche Preisangabe. Das finale Angebot erhalte ich nach Absenden des Formulars.
-          </span>
+          <span class="price-info-popup">Unverbindliche Preisangabe. Das finale Angebot erhalte ich nach Absenden des Formulars.</span>
         </span>
       </p>
       <button id="request-btn" class="w-full btn-primary">Jetzt anfragen</button>
@@ -352,12 +350,5 @@ import Icon from './Icon.astro';
     background: rgba(0,0,0,0.5);
     z-index: -1;
   }
-  .cart-total-info-popup {
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    pointer-events: none;
-  }
-  .cart-total-info:hover .cart-total-info-popup {
-    opacity: 1;
-  }
+
 </style>
