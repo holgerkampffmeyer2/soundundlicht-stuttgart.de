@@ -281,23 +281,23 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
               ))}
             </ul>
              <div class="flex flex-col gap-2">
-                <button data-action="add-to-cart" data-slug={item.slug} class="btn-primary w-full !px-3">
-                  <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
-                    <Icon name="cart" class="w-6 h-6 mt-0.5 shrink-0" />
-                    <span class="text-sm leading-tight max-w-[8rem]">Zum Warenkorb hinzufügen</span>
-                  </span>
-                </button>
-                {item.detailPage && !item.detailPage.includes('#') && (
-                  <a href={item.detailPage} class="btn-secondary w-full text-center block">Mehr Infos</a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+                 <button data-action="add-to-cart" data-slug={item.slug} class="btn-primary w-full !px-3">
+                   <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
+                     <Icon name="cart" class="w-6 h-6 mt-0.5 shrink-0" />
+                     <span class="text-base leading-tight">Zum Warenkorb hinzufügen</span>
+                   </span>
+                 </button>
+                 {item.detailPage && !item.detailPage.includes('#') && (
+                   <a href={item.detailPage} class="btn-secondary w-full text-center block">Mehr Infos</a>
+                 )}
+               </div>
+             </div>
+           ))}
+         </div>
+       </div>
+     </section>
 
-    <!-- Licht Equipment -->
+     <!-- Licht Equipment -->
    <section id="licht" class="section-padding bg-[var(--color-surface)]">
      <div class="max-w-7xl mx-auto">
        <div class="text-center mb-12">
@@ -337,12 +337,12 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
                 ))}
               </ul>
                <div class="flex flex-col gap-2">
-                  <button data-action="add-to-cart" data-slug={item.slug} class="btn-primary w-full !px-3">
-                    <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
-                     <Icon name="cart" class="w-6 h-6 mt-0.5 shrink-0" />
-                     <span class="text-sm leading-tight max-w-[8rem]">Zum Warenkorb hinzufügen</span>
-                   </span>
-                 </button>
+                   <button data-action="add-to-cart" data-slug={item.slug} class="btn-primary w-full !px-3">
+                     <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
+                      <Icon name="cart" class="w-6 h-6 mt-0.5 shrink-0" />
+                      <span class="text-base leading-tight">Zum Warenkorb hinzufügen</span>
+                    </span>
+                  </button>
                 {item.detailPage && !item.detailPage.includes('#') && (
                   <a href={item.detailPage} class="btn-secondary w-full text-center block">Mehr Infos</a>
                 )}
@@ -383,7 +383,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
 
     addItem(slug);
 
-    target.innerHTML = '<span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg><span class="text-sm leading-tight max-w-[8rem]">Im Warenkorb (1)</span></span>';
+    target.innerHTML = '<span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg><span class="text-base leading-tight">Im Warenkorb (1)</span></span>';
 
     const cartBadge = document.querySelector('.cart-badge');
     if (cartBadge) {
