@@ -1,7 +1,6 @@
 ---
-const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'b7b5a28d-9d9b-460f-901a-01955f3e5122';
+import { getItemCount } from '../../lib/cartStore';
 ---
-
 <form
   class="contact-form"
   action="https://api.web3forms.com/submit"
@@ -11,6 +10,7 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'b7b5a28d-9d9b-460f
   <input type="hidden" name="subject" value="Neue Anfrage von soundundlicht-stuttgart.de" />
   <input type="hidden" name="from_name" value="Sound & Licht Stuttgart Kontaktformular" />
   <input type="hidden" name="redirect" value="https://soundundlicht-stuttgart.de/thankyou" />
+  <input type="hidden" name="cart" id="cart-data" />
 
   <div class="form-grid">
     <div class="form-group">
@@ -39,13 +39,13 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'b7b5a28d-9d9b-460f
 
     <div class="form-group">
       <label for="phone" class="form-label">Telefon</label>
-<input
-  type="tel"
-  id="phone"
-  name="phone"
-  class="form-input"
-  placeholder="01711467491"
-/>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        class="form-input"
+        placeholder="01711467491"
+      />
     </div>
 
     <div class="form-group">
@@ -121,18 +121,112 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'b7b5a28d-9d9b-460f
 
 <script>
   (function() {
-    var form = document.querySelector('.contact-form');
+    const form = document.querySelector('.contact-form');
     if (!form) return;
-    var submitBtn = form.querySelector('.form-submit');
-    var submitText = form.querySelector('.submit-text');
-    var submitSpinner = form.querySelector('.submit-spinner');
+    const submitBtn = form.querySelector('.form-submit');
+    const submitText = form.querySelector('.submit-text');
+    const submitSpinner = form.querySelector('.submit-spinner');
+    const cartInput = document.getElementById('cart-data');
 
-    form.addEventListener('submit', function() {
+    function getCartData() {
+      try {
+        const raw = localStorage.getItem('sls_cart');
+        if (!raw) return '';
+        const cart = JSON.parse(raw);
+        // Validate + expire
+        if (!cart || typeof cart !== 'object' || !Array.isArray(cart.items)) return '';
+        if (Date.now() - (cart.lastUpdated || 0) > 86400000) {
+          localStorage.removeItem('sls_cart');
+          return '';
+        }
+
+        const productScript = document.getElementById('rental-catalog-data');
+        const products = productScript ? JSON.parse(productScript.textContent) : [];
+        const productsBySlug = {};
+        for (let i = 0; i < products.length; i++) {
+          productsBySlug[products[i].slug] = products[i];
+        }
+
+        const items = cart.items.map(item => {
+          const prod = productsBySlug[item.slug];
+          const title = prod ? prod.title : item.slug;
+          const price = prod ? prod.price : '';
+          return `${item.quantity}x ${title} (${price})`;
+        });
+        return items.join(', ');
+      } catch (e) {
+        console.warn('Could not read cart', e);
+        return '';
+      }
+    }
+
+    form.addEventListener('submit', function(e) {
+      // Always read fresh cart data on submit
+      cartInput.value = getCartData();
+      
+      // Also prefill textarea so user sees exactly what's sent
+      var eq = document.getElementById('equipment');
+      if (eq && !eq.value.trim()) {
+        var cart = JSON.parse(localStorage.getItem('sls_cart') || '{}');
+        if (cart.items && cart.items.length > 0) {
+          var script = document.getElementById('rental-catalog-data');
+          if (script) {
+            var products = JSON.parse(script.textContent);
+            var bySlug = {};
+            for (var i = 0; i < products.length; i++) bySlug[products[i].slug] = products[i];
+            eq.value = cart.items.map(function(item) {
+              var p = bySlug[item.slug];
+              return item.quantity + 'x ' + (p ? p.title : item.slug) + ' (' + (p ? p.price : '') + ')';
+            }).join('\n');
+          }
+        }
+      }
+      
+      // Disable button and show spinner
       submitBtn.disabled = true;
       submitText.style.display = 'none';
       submitSpinner.style.display = 'inline-flex';
     });
   })();
+  function prefillEquipment() {
+    const equipmentTextarea = document.getElementById('equipment');
+    if (!equipmentTextarea) return;
+
+    const raw = localStorage.getItem('sls_cart');
+    if (!raw) return;
+    try {
+      const cart = JSON.parse(raw);
+      if (!cart || typeof cart !== 'object' || !Array.isArray(cart.items)) return;
+      // Expire if older than 1 day
+      if (Date.now() - (cart.lastUpdated || 0) > 86400000) {
+        localStorage.removeItem('sls_cart');
+        return;
+      }
+      const items = cart.items;
+      if (items.length === 0) return;
+
+      const productScript = document.getElementById('rental-catalog-data');
+      if (productScript) {
+        const products = JSON.parse(productScript.textContent);
+        const productsBySlug = {};
+        for (let i = 0; i < products.length; i++) {
+          productsBySlug[products[i].slug] = products[i];
+        }
+        const equipmentText = items.map(item => {
+          const prod = productsBySlug[item.slug];
+          const title = prod ? prod.title : item.slug;
+          const price = prod ? prod.price : '';
+          return `${item.quantity}x ${title} (${price})`;
+        }).join('\n');
+        equipmentTextarea.value = equipmentText;
+      } else {
+        equipmentTextarea.value = items.map(i => `${i.quantity}x ${i.slug}`).join(', ');
+      }
+    } catch (e) {}
+  }
+
+  document.addEventListener('DOMContentLoaded', prefillEquipment);
+  document.addEventListener('cart-prefill', prefillEquipment);
 </script>
 
 <style>
@@ -207,11 +301,11 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'b7b5a28d-9d9b-460f
     color: var(--color-text);
   }
 
-  .h-captcha {
-    margin: 1.5rem 0;
-    display: flex;
-    justify-content: center;
-  }
+.h-captcha {
+     margin: 1.5rem 0;
+     display: flex;
+     justify-content: center;
+   }
 
   .form-submit {
     width: 100%;

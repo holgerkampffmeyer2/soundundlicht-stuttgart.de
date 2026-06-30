@@ -1,35 +1,49 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
   threshold?: number;
   href?: string;
+  productSlug?: string;
 }
 
-const { threshold = 30, href = "#kontakt" } = Astro.props;
+const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
 ---
 
 <div class="sticky-cta sticky-cta-initial" data-threshold={threshold}>
-  <a href={href} class="sticky-cta-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-    </svg>
-    <span>Jetzt anfragen</span>
-  </a>
+  <div class="sticky-panel">
+    {productSlug && (
+      <button class="sticky-panel-btn" data-action="add-to-cart" data-product-slug={productSlug}>
+        <Icon name="cart" class="w-4 h-4" />
+        <span>Zum Warenkorb</span>
+      </button>
+    )}
+    <a href={href} class="sticky-panel-btn" data-action="request-now">
+      <Icon name="email" class="w-4 h-4" />
+      <span>Jetzt anfragen</span>
+    </a>
+    <button class="sticky-panel-link" data-action="toggle-cart">
+      <Icon name="cart" class="w-3.5 h-3.5" />
+      <span>Warenkorb betrachten</span>
+    </button>
+  </div>
 </div>
 
 <script>
+  import { addItem } from '../lib/cartStore';
+
   (function() {
-    const cta = document.querySelector('.sticky-cta');
+    var cta = document.querySelector('.sticky-cta');
     if (!cta) return;
-    const threshold = parseInt(cta.dataset.threshold || '80');
-    let ticking = false;
+    var threshold = parseInt(cta.dataset.threshold || '15');
+    var ticking = false;
 
     function onScroll() {
-      const scrollY = window.scrollY;
-      const viewportH = window.innerHeight;
-      const docH = document.documentElement.scrollHeight;
-      const scrollPercent = (scrollY / (docH - viewportH)) * 100;
-      const pastThreshold = scrollPercent > threshold;
-      cta.classList.toggle('visible', pastThreshold);
+      var scrollY = window.scrollY;
+      var viewportH = window.innerHeight;
+      var docH = document.documentElement.scrollHeight;
+      var scrollPercent = (scrollY / (docH - viewportH)) * 100;
+      cta.classList.toggle('visible', scrollPercent > threshold);
     }
 
     window.addEventListener('scroll', function() {
@@ -39,6 +53,42 @@ const { threshold = 30, href = "#kontakt" } = Astro.props;
           ticking = false;
         });
         ticking = true;
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('[data-action="add-to-cart"]');
+      if (btn) {
+        var slug = btn.dataset.productSlug;
+        if (slug) {
+          addItem(slug);
+          document.dispatchEvent(new CustomEvent('cart-prefill'));
+        }
+        return;
+      }
+
+      btn = e.target.closest('[data-action="toggle-cart"]');
+      if (btn) {
+        document.dispatchEvent(new CustomEvent('toggle-cart'));
+        return;
+      }
+
+      btn = e.target.closest('[data-action="request-now"]');
+      if (btn) {
+        var slug = btn.closest('[data-product-slug]') ? btn.closest('[data-product-slug]').dataset.productSlug : null;
+        var panel = btn.closest('.sticky-panel');
+        if (panel) {
+          var addBtn = panel.querySelector('[data-action="add-to-cart"]');
+          if (addBtn) {
+            slug = addBtn.dataset.productSlug;
+          }
+        }
+        if (slug) {
+          addItem(slug);
+          document.dispatchEvent(new CustomEvent('cart-prefill'));
+        } else {
+          document.dispatchEvent(new CustomEvent('cart-prefill'));
+        }
       }
     });
   })();
@@ -60,34 +110,68 @@ const { threshold = 30, href = "#kontakt" } = Astro.props;
     opacity: 1;
   }
 
-  .sticky-cta-btn {
-    display: inline-flex;
+  .sticky-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    min-width: 220px;
+  }
+
+  .sticky-panel-btn {
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.625rem 1rem;
     background: var(--color-accent);
     color: var(--color-bg);
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     border-radius: 9999px;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
     box-shadow: 0 4px 20px color-mix(in srgb, var(--color-accent) 40%, transparent);
-    transition: all 0.3s ease;
   }
 
-  .sticky-cta-btn:hover {
+  .sticky-panel-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 28px color-mix(in srgb, var(--color-accent) 60%, transparent);
+  }
+
+  .sticky-panel-btn:active {
+    transform: scale(0.97);
+  }
+
+  .sticky-panel-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.5rem;
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .sticky-panel-link:hover {
+    color: var(--color-accent);
   }
 
   @media (max-width: 640px) {
     .sticky-cta {
       bottom: 1rem;
       right: 1rem;
-    }
-    .sticky-cta-btn {
-      padding: 0.65rem 1.25rem;
-      font-size: 0.85rem;
     }
   }
 </style>

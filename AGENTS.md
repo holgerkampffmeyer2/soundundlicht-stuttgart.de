@@ -57,6 +57,28 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - Vorher immer `pnpm run build:full` ausführen (aktualisiert `urllist.txt`)
 - **Google wird nicht unterstützt** — dafür Google Search Console nutzen
 
+## Warenkorb (Cart-System)
+
+- **Clientseitiger Warenkorb** (`src/lib/cartStore.js`) via `localStorage` (Key: `sls_cart`)
+  - Funktionen: `getCart()`, `addItem(slug)`, `removeItem(slug)`, `updateItemQuantity(slug, qty)`, `clearCart()`, `getItemCount()`
+  - Automatische Leerung nach 24h Inaktivität
+  - Produktdaten-Lookup via embedded JSON `#rental-catalog-data`
+- **Komponenten:**
+  - `CartIcon.astro` — Warenkorb-Icon mit Badge in `Navbar.astro` (desktop + mobile)
+  - `CartDrawer.astro` — Seitenpanel mit ARIA (`role="dialog"`, `aria-modal`), Escape/Overlay-Close, Focus-Trap, scale-Animation
+  - `CartButton.astro` — "Zum Warenkorb hinzufügen"-Button für Produktdetailseiten
+  - `StickyCTA.astro` — Grünes Sticky-Panel mit "Warenkorb betrachten" (alle Seiten)
+- **Icons**: Alle Cart-Icons via `Icon.astro` (`name="cart"`) – kein hardcodiertes SVG
+- **Event-Interface:**
+  - `toggle-cart` → Drawer öffnen/schließen
+  - `cart-prefill` → Kontaktformular vorbereiten
+- **Skript-Imports**: Statische ESM-Imports (`import { addItem } from '../lib/cartStore'`) in `<script>` – keine dynamischen `import()`-Aufrufe (zuverlässiger in preview/production)
+- **Tests**: `tests/cart.spec.ts` (Playwright, 3 Tests):
+  - Produkt von `/vermietung/` hinzufügen, Badge-Prüfung, Drawer, Form-Prefill
+  - Produkt von Detailseite hinzufügen
+  - Mehrere Produkte + Drawer-Inhalt + Formular
+  - Server: `pnpm run preview` auf Port 4321 (oder Dev-Server)
+
 ## Referenzen
 - [docs/DESIGN.md](docs/DESIGN.md) — Projektstruktur, Farbsystem, Komponenten, Animationen
 - [docs/theme-system.md](docs/theme-system.md) — vollständige Token-Tabellen aller Themes

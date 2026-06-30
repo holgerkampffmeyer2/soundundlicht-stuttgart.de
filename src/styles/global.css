@@ -53,7 +53,7 @@ body {
   padding: 1rem 2rem;
   border-radius: 0.5rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -63,6 +63,10 @@ body {
   background: var(--color-secondary-hover);
   transform: translateY(-3px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
 }
 
 .btn-secondary {

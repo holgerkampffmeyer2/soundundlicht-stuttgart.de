@@ -1,0 +1,344 @@
+---
+import Icon from './Icon.astro';
+---
+
+<div id="cart-drawer" class="fixed inset-0 z-50 flex-col items-center justify-center hidden bg-black/50" role="dialog" aria-modal="true" aria-label="Warenkorb">
+  <div class="relative w-full max-w-xs mx-4 sm:max-w-md bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl shadow-lg p-6 max-h-[90vh] overflow-y-auto">
+    <button id="cart-close" class="absolute top-2 right-2 p-2 rounded hover:bg-[var(--color-accent)/10] transition-colors" aria-label="Warenkorb schließen">
+      <Icon name="x" class="w-4 h-4" />
+    </button>
+
+    <h2 class="font-play text-2xl font-bold mb-4 text-center">Ihr Warenkorb</h2>
+
+    <div id="cart-contents">
+      <p class="text-[var(--color-text-muted)] text-center">Ihr Warenkorb ist leer.</p>
+    </div>
+
+    <div id="cart-footer" class="mt-6 pt-4 border-t border-[var(--color-border)] hidden">
+      <p id="cart-total" class="text-[var(--color-text-muted)] mb-2">Gesamtbetrag: <span class="font-play text-xl font-bold">0 €</span></p>
+      <button id="request-btn" class="w-full btn-primary">Jetzt anfragen</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+(function() {
+  var STORAGE_KEY = 'sls_cart';
+
+  function getCart() {
+    try {
+      var stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        var cart = JSON.parse(stored);
+        if (cart && typeof cart === 'object' && Array.isArray(cart.items)) {
+          if (Date.now() - (cart.lastUpdated || 0) > 86400000) {
+            localStorage.removeItem(STORAGE_KEY);
+            return { items: [], lastUpdated: Date.now() };
+          }
+          return cart;
+        }
+      }
+    } catch (e) {}
+    return { items: [], lastUpdated: Date.now() };
+  }
+
+  function saveCart(cart) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+    } catch (e) {}
+  }
+
+  function addItem(slug, qty) {
+    qty = qty || 1;
+    var cart = getCart();
+    var idx = cart.items.findIndex(function(i) { return i.slug === slug; });
+    if (idx >= 0) {
+      cart.items[idx].quantity += qty;
+    } else {
+      cart.items.push({ slug: slug, quantity: Math.max(1, qty), addedAt: Date.now() });
+    }
+    cart.lastUpdated = Date.now();
+    saveCart(cart);
+  }
+
+  function removeItem(slug) {
+    var cart = getCart();
+    cart.items = cart.items.filter(function(i) { return i.slug !== slug; });
+    if (cart.items.length === 0) {
+      localStorage.removeItem(STORAGE_KEY);
+    } else {
+      cart.lastUpdated = Date.now();
+      saveCart(cart);
+    }
+  }
+
+  function updateItemQuantity(slug, qty) {
+    var cart = getCart();
+    var idx = cart.items.findIndex(function(i) { return i.slug === slug; });
+    if (idx >= 0) {
+      if (qty <= 0) {
+        cart.items.splice(idx, 1);
+      } else {
+        cart.items[idx].quantity = qty;
+      }
+      if (cart.items.length === 0) {
+        localStorage.removeItem(STORAGE_KEY);
+      } else {
+        cart.lastUpdated = Date.now();
+        saveCart(cart);
+      }
+    }
+  }
+
+  function getCatalog() {
+    var script = document.getElementById('rental-catalog-data');
+    if (!script) return {};
+    try {
+      var products = JSON.parse(script.textContent);
+      var map = {};
+      for (var i = 0; i < products.length; i++) {
+        map[products[i].slug] = products[i];
+      }
+      return map;
+    } catch (e) { return {}; }
+  }
+
+  function parsePrice(priceStr) {
+    var m = priceStr ? priceStr.match(/\d+/) : null;
+    return m ? parseInt(m[0], 10) : 0;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function updateBadge(count) {
+    var badge = document.querySelector('.cart-badge');
+    if (!badge) return;
+    badge.textContent = count;
+    if (count > 0) {
+      badge.classList.remove('hidden');
+    } else {
+      badge.classList.add('hidden');
+    }
+  }
+
+  function renderCart() {
+    var container = document.getElementById('cart-contents');
+    var footer = document.getElementById('cart-footer');
+    var totalEl = document.getElementById('cart-total');
+    if (!container) return;
+
+    try {
+      var cart = getCart();
+      var items = cart.items || [];
+
+      if (items.length === 0) {
+        container.innerHTML = '<p class="text-[var(--color-text-muted)] text-center">Ihr Warenkorb ist leer.</p>';
+        if (footer) footer.classList.add('hidden');
+        updateBadge(0);
+        return;
+      }
+
+      var catalog = getCatalog();
+      var total = 0;
+      var html = '<div class="space-y-4">';
+
+      for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        var product = catalog[item.slug];
+        var title = escapeHtml(product ? product.title : item.slug);
+        var image = product ? product.image : '';
+        var priceStr = product ? product.price : '';
+        var unitPrice = parsePrice(priceStr);
+        var itemTotal = unitPrice * item.quantity;
+        total += itemTotal;
+
+        var imgHtml = '';
+        if (image) {
+          var thumbWebp = image.replace(/\.(jpe?g|png)$/i, '-thumb.webp');
+          imgHtml = '<picture class="shrink-0">' +
+            '<source srcset="' + escapeHtml(thumbWebp) + '" type="image/webp" />' +
+            '<img src="' + escapeHtml(image) + '" alt="' + title + '" width="60" height="60" class="rounded-xl object-cover" />' +
+            '</picture>';
+        }
+
+        html += '<div class="cart-item flex items-start space-x-4">' +
+          imgHtml +
+          '<div class="flex-1 space-y-2">' +
+          '<h3 class="font-play font-lg font-bold">' + title + '</h3>' +
+          '<p class="text-[var(--color-text-muted)] text-sm">Preis: <span class="font-semibold">' + escapeHtml(priceStr) + '</span></p>' +
+          '<div class="flex items-center space-x-3">' +
+          '<button data-action="decrement" data-slug="' + escapeHtml(item.slug) + '" class="flex h-8 w-8 items-center justify-center rounded border border-[var(--color-border)] hover:bg-[var(--color-accent)/10] transition-colors">' +
+          '<svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14" /></svg>' +
+          '</button>' +
+          '<span class="w-8 text-center font-mono">' + item.quantity + '</span>' +
+          '<button data-action="increment" data-slug="' + escapeHtml(item.slug) + '" class="flex h-8 w-8 items-center justify-center rounded border border-[var(--color-border)] hover:bg-[var(--color-accent)/10] transition-colors">' +
+          '<svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" /></svg>' +
+          '</button>' +
+          '<button data-action="remove" data-slug="' + escapeHtml(item.slug) + '" class="ml-2 text-[var(--color-accent)] hover:underline">Entfernen</button>' +
+          '</div>' +
+          '<p class="text-[var(--color-text-muted)] text-sm">Zwischensumme: <span class="font-semibold">' + itemTotal + ' &euro;</span></p>' +
+          '</div>' +
+          '</div>';
+      }
+
+      html += '</div>';
+      container.innerHTML = html;
+
+      if (footer) {
+        footer.classList.remove('hidden');
+        if (totalEl) {
+          totalEl.innerHTML = 'Gesamtbetrag: <span class="font-play text-xl font-bold">' + total + ' &euro;</span>';
+        }
+      }
+
+      var count = 0;
+      for (var j = 0; j < items.length; j++) { count += items[j].quantity; }
+      updateBadge(count);
+
+      // Sync hidden cart-data field for form submission
+      var cartInput = document.getElementById('cart-data');
+      if (cartInput) {
+        var data = [];
+        for (var k = 0; k < items.length; k++) {
+          var it = items[k];
+          var prod2 = catalog[it.slug];
+          var t = prod2 ? prod2.title : it.slug;
+          var p = prod2 ? prod2.price : '';
+          data.push(it.quantity + 'x ' + t + ' (' + p + ')');
+        }
+        cartInput.value = data.join(', ');
+      }
+    } catch (e) {
+      container.innerHTML = '<p class="text-[var(--color-text-muted)] text-center">Fehler beim Laden des Warenkorbs.</p>';
+    }
+  }
+
+  function closeDrawer() {
+    document.getElementById('cart-drawer')?.classList.remove('open');
+  }
+
+  function openDrawer() {
+    var drawer = document.getElementById('cart-drawer');
+    if (!drawer) return;
+    drawer.classList.add('open');
+    renderCart();
+    var closeBtn = document.getElementById('cart-close');
+    if (closeBtn) setTimeout(function() { closeBtn.focus(); }, 50);
+  }
+
+  function toggleDrawer() {
+    var drawer = document.getElementById('cart-drawer');
+    if (!drawer) return;
+    if (drawer.classList.contains('open')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  }
+
+  document.addEventListener('toggle-cart', toggleDrawer);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDrawer();
+  });
+
+  document.getElementById('cart-close')?.addEventListener('click', closeDrawer);
+
+  // Click on backdrop closes drawer
+  document.getElementById('cart-drawer')?.addEventListener('click', function(e) {
+    if (e.target === this) closeDrawer();
+  });
+
+  document.addEventListener('click', function(e) {
+    var target = e.target;
+    var action = target.dataset.action;
+    var slug = target.dataset.slug;
+    if (!action || !slug) return;
+
+    if (action === 'increment') {
+      var cart = getCart();
+      var item = cart.items ? (cart.items.find(function(i) { return i.slug === slug; }) || { quantity: 0 }) : { quantity: 0 };
+      updateItemQuantity(slug, (item.quantity || 0) + 1);
+      renderCart();
+    } else if (action === 'decrement') {
+      var cart = getCart();
+      var item = cart.items ? (cart.items.find(function(i) { return i.slug === slug; }) || { quantity: 0 }) : { quantity: 0 };
+      var newQty = Math.max((item.quantity || 0) - 1, 0);
+      if (newQty === 0) {
+        removeItem(slug);
+      } else {
+        updateItemQuantity(slug, newQty);
+      }
+      renderCart();
+    } else if (action === 'remove') {
+      removeItem(slug);
+      renderCart();
+    }
+  });
+
+  document.getElementById('request-btn')?.addEventListener('click', function() {
+    // Populate hidden cart-data field for form submission
+    var cartInput = document.getElementById('cart-data');
+    if (cartInput) {
+      var cart = getCart();
+      var items = cart.items || [];
+      if (items.length > 0) {
+        var catalog = getCatalog();
+        var data = items.map(function(item) {
+          var prod = catalog[item.slug];
+          var title = prod ? prod.title : item.slug;
+          var price = prod ? prod.price : '';
+          return item.quantity + 'x ' + title + ' (' + price + ')';
+        }).join(', ');
+        cartInput.value = data;
+      }
+    }
+    document.dispatchEvent(new CustomEvent('cart-prefill'));
+    document.getElementById('cart-drawer')?.classList.remove('open');
+    var contactSection = document.getElementById('kontakt');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      window.location.href = '/vermietung/#kontakt';
+    }
+  });
+
+  // Initialize badge from localStorage on page load
+  (function() {
+    var cart = getCart();
+    var items = cart.items || [];
+    var count = 0;
+    for (var i = 0; i < items.length; i++) { count += items[i].quantity; }
+    updateBadge(count);
+  })();
+})();
+</script>
+
+<style>
+  #cart-drawer {
+    @apply hidden;
+    transition: opacity 0.2s ease;
+  }
+  #cart-drawer.open {
+    @apply flex;
+  }
+  #cart-drawer > div {
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  #cart-drawer.open > div {
+    transform: scale(1);
+    opacity: 1;
+  }
+  #cart-drawer::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+  }
+</style>

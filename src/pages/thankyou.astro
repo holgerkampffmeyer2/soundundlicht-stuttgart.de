@@ -3,21 +3,22 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Icon from "../components/Icon.astro";
----
+import { getCollection } from 'astro:content';
 
+const allProducts = await getCollection('products');
+const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data]));
+---
 <Layout
   title="Anfrage versendet | Sound & Licht Stuttgart"
   description="Deine Anfrage wurde erfolgreich versendet. Ich melde mich innerhalb von 12 Stunden bei dir."
   noIndex={true}
 >
   <Navbar />
-
+  
   <section class="section-padding min-h-[70vh] flex items-center bg-[var(--color-bg)]">
     <div class="max-w-2xl mx-auto text-center animate-on-scroll">
       <div class="text-7xl mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 mx-auto text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
+        <Icon name="check" class="w-20 h-20 mx-auto text-[var(--color-accent)]" />
       </div>
       <h1 class="font-play text-4xl md:text-5xl font-bold mb-6">
         Anfrage versendet! ✅
@@ -32,6 +33,10 @@ import Icon from "../components/Icon.astro";
         oder 
         <a href="mailto:holger.kampffmeyer+dj@gmail.com" class="text-[var(--color-accent)] font-semibold underline">per E‑Mail</a>.
       </p>
+      
+      <!-- Cart Summary -->
+      <div id="cart-summary" class="mt-6 text-left w-full max-w-xs mx-auto"></div>
+      
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/vermietung" class="btn-primary">
           Zurück zur Vermietung ↗
@@ -65,7 +70,78 @@ import Icon from "../components/Icon.astro";
         </div>
       </div>
     </div>
-  </section>
-
+    </section>
+  
   <Footer />
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const productScript = document.getElementById('rental-catalog-data');
+      const productsBySlug = productScript ? JSON.parse(productScript.textContent) : {};
+      
+      const cartSummary = document.getElementById('cart-summary');
+      if (!cartSummary) return;
+      
+      try {
+        const cart = JSON.parse(localStorage.getItem('sls_cart') || '{}');
+        const items = cart.items || [];
+        if (items.length === 0) {
+          cartSummary.innerHTML = '<p class="text-[var(--color-text-muted)]">Ihr Warenkorb ist leer.</p>';
+          return;
+        }
+        
+        let total = 0;
+        let rows = '';
+        items.forEach(item => {
+          const product = productsBySlug?.[item.slug];
+          if (!product) {
+            // fallback
+            rows += `<div class="mb-4"><span class="font-semibold">${item.quantity}x</span> ${item.slug} (Produkt nicht gefunden)</div>`;
+            return;
+          }
+          const priceMatch = product.price?.match(/\d+/);
+          const price = priceMatch ? parseInt(priceMatch[0], 10) : 0;
+          const itemTotal = price * item.quantity;
+          total += itemTotal;
+          
+          rows += `
+            <div class="flex items-start space-x-4 mb-4">
+              <div class="flex-shrink-0">
+                <img src="${product.image}" alt="${product.title}" width="50" height="50" class="rounded object-cover" onerror="this.src='https://via.placeholder.com/50?img=missing'">
+              </div>
+              <div class="flex-1 space-y-1">
+                <div class="font-semibold">${product.title}</div>
+                <div class="text-[var(--color-text-muted)] text-sm">${item.quantity}x</div>
+                <div class="text-[var(--color-text-muted)] text-sm">Preis: ${product.price}</div>
+                <div class="text-[var(--color-text-muted)] text-sm">Zwischensumme: ${itemTotal} €</div>
+              </div>
+            </div>
+          `;
+        });
+        
+        cartSummary.innerHTML = `
+          <h3 class="font-play font-bold mb-2">Ihr Warenkorb</h3>
+          <div class="space-y-4">${rows}</div>
+          <div class="mt-4 pt-2 border-t border-[var(--color-border)]">
+            <p class="text-[var(--color-text-muted)] font-semibold">Gesamtbetrag: <span class="font-play text-xl">ab ${total} €</span></p>
+            <p class="text-[var(--color-text-muted)] text-sm mt-2">
+              Bitte beachten Sie: Dies ist eine unverbindliche Anfrage. Die angegebenen Preise sind Richtwerte und verstehen sich als Tagesmietpreise abholbereit in Stuttgart. Wir erstellen Ihnen anschließend ein individuelles, verbindliches Angebot basierend auf Verfügbarkeit, Mietdauer und genauer Aufstellung.
+            </p>
+            <button id="clear-cart" class="mt-2 btn-secondary w-full">Warenkorb leeren</button>
+          </div>
+        `;
+        
+        const clearBtn = document.getElementById('clear-cart');
+        if (clearBtn) {
+          clearBtn.addEventListener('click', () => {
+            localStorage.removeItem('sls_cart');
+            location.reload();
+          });
+        }
+      } catch (e) {
+        console.error('Failed to render cart', e);
+        cartSummary.innerHTML = '<p class="text-[var(--color-text-muted)]">Fehler beim Laden des Warenkorbs.</p>';
+      }
+    });
+  </script>
 </Layout>

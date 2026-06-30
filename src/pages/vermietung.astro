@@ -18,6 +18,9 @@ const products = await getCollection('products');
 const rentalItems = products.map(i => i.data);
 const faqs = await getFaqsForPage('vermietung');
 
+// Map for quick product lookup by slug
+const productMap = Object.fromEntries(rentalItems.map(p => [p.slug, p]));
+
 function getWebpUrl(src: string): string {
   // Convert JPG/PNG to WebP, keep WebP as-is
   return src.replace(/\.(jpe?g|png)$/i, '.webp');
@@ -95,7 +98,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
           description: "Vollständige Sets für Geburtstag, Hochzeit oder Firmenfeier. Plug & Play, inkl. Kabel & Einweisung. Abholung in Leinfelden-Echterdingen.",
           buttons: [
             { text: "Details Partypaket", href: "/vermietung/partypaket-stuttgart" },
-            { text: "Jetzt anfragen", href: "#kontakt", class: "btn-secondary" }
+            { text: "Zur Anfrage hinzufügen", href: "#kontakt", class: "btn-secondary" }
           ],
           backgroundImage: "/img/vermietung/partypaket1.webp",
           ptClass: "pt-32"
@@ -106,7 +109,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
           description: "Dein komplettes Setup für professionelle DJ Gigs und mittlere Feiern.",
           buttons: [
             { text: "Details DJ-Paket", href: "/vermietung/djpaket-fildern" },
-            { text: "Jetzt anfragen", href: "#kontakt", class: "btn-secondary" }
+            { text: "Zur Anfrage hinzufügen", href: "#kontakt", class: "btn-secondary" }
           ],
           backgroundImage: "/img/vermietung/IMG_6643.webp",
           ptClass: "pt-32"
@@ -117,7 +120,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
           description: "Das Rundum-Sorglos-Paket für deine mittlere bis große Veranstaltung.",
           buttons: [
             { text: "Details Veranstaltungspaket", href: "/vermietung/veranstaltungspaket-stuttgart" },
-            { text: "Jetzt anfragen", href: "#kontakt", class: "btn-secondary" }
+            { text: "Zur Anfrage hinzufügen", href: "#kontakt", class: "btn-secondary" }
           ],
           backgroundImage: "/img/vermietung/ldmaui3.webp",
           ptClass: "pt-32"
@@ -128,7 +131,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
           description: "Komplett akkubetrieben für Outdoor-Partys und Locations ohne Strom. 4-6h Laufzeit.",
           buttons: [
             { text: "Details Akku-Party-Paket", href: "/vermietung/akku-party-paket" },
-            { text: "Jetzt anfragen", href: "#kontakt", class: "btn-secondary" }
+            { text: "Zur Anfrage hinzufügen", href: "#kontakt", class: "btn-secondary" }
           ],
           backgroundImage: "/img/vermietung/Akku-powered-party-hero.webp",
           ptClass: "pt-32"
@@ -139,7 +142,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
           description: "Das Rundum-Sorglos-Paket für deine Karaoke-Party. 2x JBL Partyboxen, 2x Mikrofone, Yamaha Mischpult – alles inklusive.",
           buttons: [
             { text: "Details Karaoke-Paket", href: "/vermietung/karaoke-paket" },
-            { text: "Jetzt anfragen", href: "#kontakt", class: "btn-secondary" }
+            { text: "Zur Anfrage hinzufügen", href: "#kontakt", class: "btn-secondary" }
           ],
           backgroundImage: "/img/vermietung/karaoke-paket-hero.webp",
           ptClass: "pt-32"
@@ -153,24 +156,24 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
     <div class="max-w-7xl mx-auto px-4 py-3 overflow-x-auto">
       <div class="flex gap-2 min-w-max justify-center">
         <a href="#ablauf" class="section-jump-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <Icon name="info" class="w-4 h-4" />
           Ablauf
         </a>
         <a href="#pakete" class="section-jump-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          <Icon name="package" class="w-4 h-4" />
           Pakete
         </a>
         <a href="#sound" class="section-jump-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+          <Icon name="volume-up" class="w-4 h-4" />
           Sound
         </a>
         <a href="#licht" class="section-jump-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          <Icon name="light-bulb" class="w-4 h-4" />
           Licht
         </a>
         <a href="#kontakt" class="section-jump-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          Anfragen
+          <Icon name="email" class="w-4 h-4" />
+          Anfrage
         </a>
       </div>
     </div>
@@ -247,48 +250,53 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-{soundEquipment.map((item, index) => (
-           <div id={`item-${item.slug}`} class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
-             <div class="relative">
-               <picture>
-                 <source srcset={`${getThumbUrl(item.image)} 480w, ${getWebpUrl(item.image)} 960w`} type="image/webp" />
-                 <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
-               </picture>
-               <span class="plug-badge">
-                 <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                 Inkl. Kabel & Einweisung
-               </span>
-             </div>
-             <span class="price-badge">{item.price}</span>
-             <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
-             <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
-             <ul class="text-[var(--color-text-muted)] text-sm space-y-1">
-               {item.features.map(feature => (
-                 <li class="flex items-center gap-2">
+        {soundEquipment.map((item, index) => (
+          <div id={`item-${item.slug}`} class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="relative">
+              <picture>
+                <source srcset={`${getThumbUrl(item.image)} 480w, ${getWebpUrl(item.image)} 960w`} type="image/webp" />
+                <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
+              </picture>
+              <span class="plug-badge">
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                Inkl. Kabel & Einweisung
+              </span>
+            </div>
+            <span class="price-badge">{item.price}</span>
+            <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
+            <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
+            <ul class="text-[var(--color-text-muted)] text-sm space-y-1">
+              {item.features.map(feature => (
+                <li class="flex items-center gap-2">
                   <span class="text-[var(--color-secondary)]">•</span> {feature}
                 </li>
               ))}
             </ul>
-            <a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
-            {item.detailPage && !item.detailPage.includes('#') && (
-              <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block">Mehr Infos</a>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+            <div class="flex flex-col gap-2">
+               <button data-action="add-to-cart" data-slug={item.slug} class="btn-primary w-full">
+                 <Icon name="cart" class="w-5 h-5" />
+                 <span>Zum Warenkorb hinzufügen</span>
+               </button>
+               {item.detailPage && !item.detailPage.includes('#') && (
+                 <a href={item.detailPage} class="btn-secondary w-full text-center block">Mehr Infos</a>
+               )}
+             </div>
+           </div>
+         ))}
+       </div>
+     </div>
+   </section>
 
-  <!-- Licht Equipment -->
-  <section id="licht" class="section-padding bg-[var(--color-surface)]">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Licht</span>
-        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">Lichttechnik & Effekte</h2>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-{lichtEquipment.map((item, index) => (
+   <!-- Licht Equipment -->
+   <section id="licht" class="section-padding bg-[var(--color-surface)]">
+     <div class="max-w-7xl mx-auto">
+       <div class="text-center mb-12">
+         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Licht</span>
+         <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">Lichttechnik & Effekte</h2>
+       </div>
+       
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+         {lichtEquipment.map((item, index) => (
            <div id={`item-${item.slug}`} class="equipment-card" style={`animation-delay: ${index * 0.1}s`}>
              <div class="relative">
                <picture>
@@ -306,14 +314,19 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
              <ul class="text-[var(--color-text-muted)] text-sm space-y-1">
                {item.features.map(feature => (
                  <li class="flex items-center gap-2">
-                  <span class="text-[var(--color-secondary)]">•</span> {feature}
-                </li>
-              ))}
-            </ul>
-            <a href="#kontakt" class="btn-primary w-full text-center mt-4 block">Jetzt anfragen</a>
-            {item.detailPage && !item.detailPage.includes('#') && (
-              <a href={item.detailPage} class="btn-secondary w-full text-center mt-3 block">Mehr Infos</a>
-            )}
+                   <span class="text-[var(--color-secondary)]">•</span> {feature}
+                 </li>
+               ))}
+             </ul>
+             <div class="flex flex-col gap-2">
+               <button data-action="add-to-cart" data-slug={item.slug} class="btn-primary w-full">
+                 <Icon name="cart" class="w-5 h-5" />
+                 <span>Zum Warenkorb hinzufügen</span>
+               </button>
+               {item.detailPage && !item.detailPage.includes('#') && (
+                 <a href={item.detailPage} class="btn-secondary w-full text-center block">Mehr Infos</a>
+               )}
+             </div>
           </div>
         ))}
       </div>
@@ -337,6 +350,35 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
   <StickyCTA />
   <Footer />
 </Layout>
+
+<script>
+  import { addItem } from '../lib/cartStore';
+
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('[data-action="add-to-cart"]');
+    if (!target) return;
+    if (target.closest('#pakete')) return;
+    const slug = target.dataset.slug;
+    if (!slug) return;
+
+    addItem(slug);
+
+    target.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+      </svg>
+      <span>Im Warenkorb (1)</span>
+    `;
+
+    const cartBadge = document.querySelector('.cart-badge');
+    if (cartBadge) {
+      const items = JSON.parse(localStorage.getItem('sls_cart') || '{}').items || [];
+      const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
+      cartBadge.textContent = totalItems;
+      cartBadge.classList.toggle('hidden', totalItems === 0);
+    }
+  });
+</script>
 
 <style>
   .section-jump-link {

@@ -3,27 +3,74 @@
 
 const STORAGE_KEY = 'sls_cart';
 
+// Check if we're in a browser environment (evaluated at runtime)
+function checkIsBrowser() {
+  return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
+}
+
+// Get localStorage reference (for testability)
+function getStorage() {
+  if (!checkIsBrowser()) {
+    return null;
+  }
+  return window.localStorage;
+}
+
+const ONE_DAY = 24 * 60 * 60 * 1000;
+
+function emptyCart() {
+  return { items: [], lastUpdated: Date.now() };
+}
+
+function isValidCart(cart) {
+  if (!cart || typeof cart !== 'object') return false;
+  if (!Array.isArray(cart.items)) return false;
+  if (typeof cart.lastUpdated !== 'number') return false;
+  for (const item of cart.items) {
+    if (!item || typeof item.slug !== 'string' || typeof item.quantity !== 'number') return false;
+  }
+  return true;
+}
+
 // Initialize cart from localStorage or return empty structure
 function loadCart() {
+  // If we're not in a browser (e.g., during SSR), return empty cart
+  const storage = getStorage();
+  if (!storage) {
+    return emptyCart();
+  }
+
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = storage.getItem(STORAGE_KEY);
     if (stored) {
-      return JSON.parse(stored);
+      const cart = JSON.parse(stored);
+      if (!isValidCart(cart)) {
+        storage.removeItem(STORAGE_KEY);
+        return emptyCart();
+      }
+      // Clear cart if older than 1 day
+      if (Date.now() - cart.lastUpdated > ONE_DAY) {
+        storage.removeItem(STORAGE_KEY);
+        return emptyCart();
+      }
+      return cart;
     }
   } catch (e) {
     console.warn('Failed to parse cart from localStorage', e);
   }
-  // Return empty cart structure
-  return {
-    items: [],
-    lastUpdated: Date.now()
-  };
+  return emptyCart();
 }
 
 // Save cart to localStorage
 function saveCart(cart) {
+  // If we're not in a browser, don't try to save to localStorage
+  const storage = getStorage();
+  if (!storage) {
+    return;
+  }
+
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+    storage.setItem(STORAGE_KEY, JSON.stringify(cart));
   } catch (e) {
     console.error('Failed to save cart to localStorage', e);
   }
@@ -67,7 +114,10 @@ export function removeItem(slug) {
   
   if (cart.items.length === 0) {
     // Optionally clear storage when empty
-    localStorage.removeItem(STORAGE_KEY);
+    const storage = getStorage();
+    if (storage) {
+      storage.removeItem(STORAGE_KEY);
+    }
   } else {
     cart.lastUpdated = Date.now();
     saveCart(cart);
@@ -88,7 +138,10 @@ export function updateItemQuantity(slug, quantity) {
     }
     
     if (cart.items.length === 0) {
-      localStorage.removeItem(STORAGE_KEY);
+      const storage = getStorage();
+      if (storage) {
+        storage.removeItem(STORAGE_KEY);
+      }
     } else {
       cart.lastUpdated = Date.now();
       saveCart(cart);
@@ -98,7 +151,10 @@ export function updateItemQuantity(slug, quantity) {
 
 // Clear entire cart
 export function clearCart() {
-  localStorage.removeItem(STORAGE_KEY);
+  const storage = getStorage();
+  if (storage) {
+    storage.removeItem(STORAGE_KEY);
+  }
 }
 
 // Get total number of items in cart (sum of quantities)

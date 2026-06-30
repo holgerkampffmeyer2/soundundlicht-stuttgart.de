@@ -1,0 +1,25 @@
+---
+import { getItemCount } from '../lib/cartStore';
+import Icon from './Icon.astro';
+
+const count = getItemCount();
+const badgeHidden = count === 0;
+---
+<button id="cart-toggle" class="relative flex items-center space-x-2 p-2 rounded hover:bg-[var(--color-accent)/10] hover:text-[var(--color-accent)] transition-colors" aria-label="Warenkorb ({count})">
+  <Icon name="cart" class="w-5 h-5" />
+  <span class:list={["absolute -top-1 -right-1 flex h-3 min-w-3 items-center justify-center text-[10px] font-bold bg-[var(--color-accent)] text-white rounded-full cart-badge", badgeHidden ? "hidden" : ""]}>
+    {count}
+  </span>
+</button>
+
+<script>
+  document.getElementById('cart-toggle')?.addEventListener('click', () => {
+    document.dispatchEvent(new CustomEvent('toggle-cart'));
+  });
+</script>
+
+<style>
+  #cart-toggle {
+    @apply relative inline-flex;
+  }
+</style>

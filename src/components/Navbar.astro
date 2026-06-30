@@ -2,6 +2,7 @@
 import { Picture } from 'astro:assets';
 import logo from '@assets/logo/djhulk_logo.webp';
 import Icon from "./Icon.astro";
+import CartIcon from "./CartIcon.astro";
 
 interface Props {
   currentPage?: string;
@@ -67,8 +68,9 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
         <a href="/#pakete" class="nav-link">Pakete</a>
         <a href="/#ablauf" class="nav-link">Ablauf</a>
         <a href="/#bewertungen" class="nav-link">Bewertungen</a>
-        <a href="/#kontakt" class="nav-link">Kontakt</a>
-      </div>
+<a href="/#kontakt" class="nav-link">Kontakt</a>
+         <CartIcon class="ml-4" />
+       </div>
       
       <!-- Mobile Menu Button -->
       <button id="mobile-menu-btn" class="md:hidden text-[var(--color-text)] p-2" aria-label="Toggle mobile menu">
@@ -89,6 +91,9 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
       <a href="/#ablauf" class="block nav-link py-2">Ablauf</a>
       <a href="/#bewertungen" class="block nav-link py-2">Bewertungen</a>
       <a href="/#kontakt" class="block nav-link py-2">Kontakt</a>
+      <div class="pt-2 border-t border-[var(--color-border)]">
+        <CartIcon class="block" />
+      </div>
     </div>
   </div>
 </nav>

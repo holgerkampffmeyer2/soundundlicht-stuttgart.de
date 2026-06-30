@@ -4,6 +4,7 @@ import '../styles/fonts.css';
 import '../styles/theme-vars.css';
 import { getCollection } from 'astro:content';
 import { localBusinessJsonLd, siteNavigationJsonLd } from '../data/jsonLd';
+import CartDrawer from '../components/CartDrawer.astro';
 
 const rentalItems = (await getCollection('products')).map(i => ({
   slug: i.data.slug,
@@ -148,17 +149,16 @@ const pagefindMetaKeys = Object.keys(pagefindMerged);
       <div id="pagefind-search-overlay" class="rental-search-overlay" style="display:none"></div>
     </div>
 
-    {pagefindMetaKeys.length > 0 && pagefindMetaKeys.map(key => (
-      <div data-pagefind-meta={`${key}:${pagefindMerged[key]}`} hidden></div>
-    ))}
+<CartDrawer />
 
-    <script id="rental-catalog-data" type="application/json" set:html={JSON.stringify(rentalItems)}></script>
+{pagefindMetaKeys.length > 0 && pagefindMetaKeys.map(key => (
+  <div data-pagefind-meta={`${key}:${pagefindMerged[key]}`} hidden></div>
+))}
 
-    <script>
-      import '../scripts/search.ts';
-    </script>
-    <script>
-      import '../scripts/scroll-animations.ts';
-    </script>
+<script id="rental-catalog-data" type="application/json" set:html={JSON.stringify(rentalItems)}></script>
+
+  <script>
+    import '../scripts/scroll-animations.ts';
+  </script>
   </body>
 </html>
