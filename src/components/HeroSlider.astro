@@ -45,7 +45,7 @@ function getSlideImage(path: string) {
     const imgMeta = getSlideImage(imgSrc);
     const isLcp = index === 0;
     return (
-    <div class={`slide slide-${index + 1} ${index === 0 ? "active" : ""}`} data-slide={index}>
+    <div class={`slide slide-${index + 1} ${index === 0 ? "active" : ""}`} data-slide={index} tabindex={index === 0 ? undefined : "-1"} aria-hidden={index === 0 ? undefined : "true"}>
 {imgMeta ? (
          <Picture
            src={imgMeta}

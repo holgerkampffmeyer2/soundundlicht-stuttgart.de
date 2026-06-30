@@ -49,7 +49,7 @@ const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data])
         <div class="flex items-start space-x-4">
           <Icon name="phone" class="h-6 w-6 text-[var(--color-accent)] flex-shrink-0" />
           <div>
-            <h3 class="font-play font-bold mb-1">Telefon</h3>
+            <h2 class="font-play font-bold mb-1 text-base">Telefon</h2>
             <p class="text-[var(--color-text-muted)]">
               <a href="tel:01711467491" class="text-[var(--color-accent)] font-semibold hover:underline">
                 0171 146 7491
@@ -60,7 +60,7 @@ const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data])
         <div class="flex items-start space-x-4">
           <Icon name="email" class="h-6 w-6 text-[var(--color-accent)] flex-shrink-0" />
           <div>
-            <h3 class="font-play font-bold mb-1">E‑Mail</h3>
+            <h2 class="font-play font-bold mb-1 text-base">E‑Mail</h2>
             <p class="text-[var(--color-text-muted)]">
               <a href="mailto:holger.kampffmeyer+dj@gmail.com" class="text-[var(--color-accent)] font-semibold hover:underline">
                 holger.kampffmeyer+dj@gmail.com
@@ -120,7 +120,7 @@ const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data])
         });
         
         cartSummary.innerHTML = `
-          <h3 class="font-play font-bold mb-2">Ihre Merkliste</h3>
+          <h2 class="font-play font-bold mb-2 text-base">Ihre Merkliste</h2>
           <div class="space-y-4">${rows}</div>
           <div class="mt-4 pt-2 border-t border-[var(--color-border)]">
             <p class="text-[var(--color-text-muted)] font-semibold">Gesamtbetrag: <span class="font-play text-xl">ab ${total} €</span></p>

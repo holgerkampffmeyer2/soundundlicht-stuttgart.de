@@ -16,15 +16,15 @@ html[data-theme="electric-night"] {
 
 html[data-theme="deep-bass"] {
   --color-bg: #050510;
-  --color-surface: #0a1628;
-  --color-surface-hover: #0f1f3a;
-  --color-primary: #2563eb;
-  --color-primary-hover: #3b82f6;
-  --color-secondary: #1e40af;
-  --color-secondary-hover: #2563eb;
+  --color-surface: #0f1f3a;
+  --color-surface-hover: #152a4a;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #60a5fa;
+  --color-secondary: #2563eb;
+  --color-secondary-hover: #3b82f6;
   --color-accent: #22c55e;
   --color-text: #f8fafc;
-  --color-text-muted: #64748b;
+  --color-text-muted: #94a3b8;
   --color-border: #1e293b;
   --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
   --font-body: 'Inter Variable', 'Inter', sans-serif;

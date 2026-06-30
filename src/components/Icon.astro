@@ -123,4 +123,4 @@ const DEFAULTS: Record<string, string> = {
 const cls = className || DEFAULTS[name] || "w-6 h-6";
 ---
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox={icon.viewBox} class={cls} set:html={icon.inner} />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox={icon.viewBox} class={cls} aria-hidden="true" set:html={icon.inner} />
