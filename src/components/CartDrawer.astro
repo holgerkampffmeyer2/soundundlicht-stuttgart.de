@@ -114,13 +114,15 @@ import Icon from './Icon.astro';
   }
 
   function updateBadge(count) {
-    var badge = document.querySelector('.cart-badge');
-    if (!badge) return;
-    badge.textContent = count;
-    if (count > 0) {
-      badge.classList.remove('hidden');
-    } else {
-      badge.classList.add('hidden');
+    var badges = document.querySelectorAll('.cart-badge');
+    for (var i = 0; i < badges.length; i++) {
+      var badge = badges[i];
+      badge.textContent = count;
+      if (count > 0) {
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
     }
   }
 
@@ -253,7 +255,7 @@ import Icon from './Icon.astro';
   });
 
   document.addEventListener('click', function(e) {
-    var target = e.target;
+    var target = e.target.closest('[data-action]') || e.target;
     var action = target.dataset.action;
     var slug = target.dataset.slug;
     if (!action || !slug) return;

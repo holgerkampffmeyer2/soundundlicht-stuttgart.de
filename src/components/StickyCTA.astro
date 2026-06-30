@@ -22,17 +22,35 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
       <Icon name="email" class="w-4 h-4" />
       <span>Jetzt anfragen</span>
     </a>
-    <button class="sticky-panel-link" data-action="toggle-cart">
-      <Icon name="cart" class="w-3.5 h-3.5" />
+    <button class="sticky-panel-link relative" data-action="toggle-cart">
+      <Icon name="cart" class="w-5 h-5" />
+      <span class="absolute -top-1.5 -right-1.5 flex h-3.5 min-w-3.5 items-center justify-center text-[9px] font-bold bg-[var(--color-accent)] text-white rounded-full cart-badge hidden">0</span>
       <span>Warenkorb betrachten</span>
     </button>
   </div>
 </div>
 
 <script>
-  import { addItem } from '../lib/cartStore';
+  import { addItem, getCart } from '../lib/cartStore';
 
   (function() {
+    function updateBadge() {
+      var badges = document.querySelectorAll('.sticky-cta .cart-badge');
+      var cart = getCart();
+      var items = cart.items || [];
+      var count = 0;
+      for (var i = 0; i < items.length; i++) { count += items[i].quantity; }
+      for (var j = 0; j < badges.length; j++) {
+        var badge = badges[j];
+        badge.textContent = count;
+        if (count > 0) {
+          badge.classList.remove('hidden');
+        } else {
+          badge.classList.add('hidden');
+        }
+      }
+    }
+
     var cta = document.querySelector('.sticky-cta');
     if (!cta) return;
     var threshold = parseInt(cta.dataset.threshold || '15');
@@ -55,6 +73,11 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
         ticking = true;
       }
     });
+
+    // Update badge on cart changes
+    document.addEventListener('toggle-cart', updateBadge);
+    document.addEventListener('cart-prefill', updateBadge);
+    updateBadge();
 
     document.addEventListener('click', function(e) {
       var btn = e.target.closest('[data-action="add-to-cart"]');
