@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import ProductGallery from '../../components/vermietung/ProductGallery.astro';
@@ -8,12 +9,11 @@ import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
 import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
-import Icon from '../../components/Icon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import WishlistButton from '../../components/WishlistButton.astro';
 import StickyMerkliste from '../../components/StickyMerkliste.astro';
+import ProductCTA from '../../components/ProductCTA.astro';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'jbl-partybox-300-320')!.data;
@@ -242,44 +242,9 @@ const events = [
   </section>
 
   <!-- CTA Section -->
-  <section class="cta-section section-padding bg-[var(--color-surface)]">
-    <div class="max-w-4xl mx-auto text-center px-4">
-      <h2 class="font-play text-3xl md:text-4xl font-bold mb-2">Interessiert an diesem Produkt?</h2>
-      <p class="text-[var(--color-text-muted)] mb-6">
-        Stell uns eine Anfrage für das JBL Partybox Set oder lass dich beraten.
-      </p>
-      <button id="request-now-jbl-partybox-300-320" class="btn-primary max-w-sm mx-auto mb-6">
-        <span class="flex items-center justify-center gap-2">
-          <Icon name="email" class="w-5 h-5" />
-          Jetzt anfragen
-        </span>
-      </button>
-      <div class="flex flex-wrap gap-3 justify-center items-center mb-4">
-        <WishlistButton product={product} class="btn-secondary" />
-      </div>
-      <a href="/vermietung" class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)] text-sm inline-flex items-center gap-1 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-        </svg>
-        Zurück zur Übersicht
-      </a>
-      <IncludedInPackages packages={includedInPackages} />
-    </div>
-    <script>
-      import { addItem } from '../../lib/merklisteStore';
-      document.getElementById('request-now-jbl-partybox-300-320')?.addEventListener('click', function() {
-        addItem('jbl-partybox-300-320');
-        document.dispatchEvent(new CustomEvent('toggle-merkliste'));
-      });
-    </script>
-  </section>
+  <ProductCTA product={product} label="das JBL Partybox Set" />
 
   <StickyMerkliste href="/vermietung#kontakt" productSlug={product.slug} />
   <Footer />
 </Layout>
 
-<style>
-  .cta-section {
-    text-align: center;
-  }
-</style>

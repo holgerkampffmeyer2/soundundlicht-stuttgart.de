@@ -68,20 +68,19 @@ document.getElementById('request-now-{slug}')?.addEventListener('click', functio
 
 ---
 
-## 4. City-Seiten inkonsistent
+## 4. City-Seiten inkonsistent \[ERLEDIGT - commit b402d5d\]
 
 **Problem:** 5 City-Seiten nutzen `<ContactSection>` component, 10 haben inline-Kontakt mit `<Icon name="map-pin">` und `<Icon name="email">`. Die kurzen Seiten (83 Zeilen) fehlen ggf. Sektionen.
 
 **Kurze Seiten (83 Zeilen):** `esslingen`, `filderstadt`, `leinfelden-echterdingen`, `stuttgart`, `tübingen`
 **Lange Seiten (134 Zeilen):** `böblingen`, `kirchheim-unter-teck`, `kornwestheim`, `leonberg`, `ludwigsburg`, `nürtingen`, `ostfildern`, `reutlingen`, `sindelfingen`, `waiblingen`
 
-**Vorgehen:**
-1. Prüfen ob die kürzeren Seiten bewusst weniger Inhalt haben (kleinere Städte → weniger Sektionen?)
-2. `docs/citypage.md` konsultieren für die vorgeschriebene Struktur
-3. Entweder: Alle auf gleiches Schema bringen, oder: Inkonsistenz als Feature dokumentieren
-4. Falls vereinheitlicht: `ContactSection`-Component in alle City-Seiten einbauen
+**Lösung:** Alle 10 langen City-Seiten wurden auf `<ContactSection />` Component umgestellt. Jetzt nutzen alle 15 City-Seiten die gleiche Component (Commit `b402d5d`).
 
-**Aufwand:** 15-30 Min. (je nach Entscheidung)
+**Dateien angepasst:**
+- `böblingen.astro`, `kirchheim-unter-teck.astro`, `kornwestheim.astro`, `leonberg.astro`, `ludwigsburg.astro`, `nürtingen.astro`, `ostfildern.astro`, `reutlingen.astro`, `sindelfingen.astro`, `waiblingen.astro`
+
+**Aufwand:** ✅ Erledigt
 
 ---
 
@@ -122,13 +121,13 @@ document.getElementById('request-now-{slug}')?.addEventListener('click', functio
 
 ## Priorisierung
 
-| Rang | Task | Aufwand | Impact | Risiko |
-|------|------|---------|--------|--------|
-| 1 | Duplizierte Produktseiten (2) | 45 Min | Hoch (Wartbarkeit) | Niedrig |
-| 2 | rgba → Theme-Vars (1) | 30 Min | Mittel (Theme-Konsistenz) | Niedrig |
-| 3 | service/equipment-card merge (3) | 20 Min | Mittel (CSS-Größe) | Niedrig |
-| 4 | Zentraler Event-Handler (5) | 30 Min | Mittel (Wartbarkeit) | Hoch |
-| 5 | text-white/bg-black (6) | 15 Min | Niedrig (Kosmetik) | Niedrig |
-| 6 | City-Seiten inkonsistent (4) | 15-30 Min | Niedrig | Niedrig |
+| Rang | Task | Aufwand | Impact | Risiko | Status |
+|------|------|---------|--------|--------|--------|
+| 1 | Duplizierte Produktseiten (2) | 45 Min | Hoch (Wartbarkeit) | Niedrig | Offen |
+| 2 | rgba → Theme-Vars (1) | 30 Min | Mittel (Theme-Konsistenz) | Niedrig | Offen |
+| 3 | service/equipment-card merge (3) | 20 Min | Mittel (CSS-Größe) | Niedrig | Offen |
+| 4 | Zentraler Event-Handler (5) | 30 Min | Mittel (Wartbarkeit) | Hoch | Offen |
+| 5 | text-white/bg-black (6) | 15 Min | Niedrig (Kosmetik) | Niedrig | Offen |
+| 6 | City-Seiten vereinheitlicht (4) | ✅ | Niedrig | Niedrig | ERLEDIGT (b402d5d) |
 
-**Empfehlung:** 1 → 2 → 3 → 5 → 6, Task 4 nur bei Bedarf (Regression-Risiko).
+**Empfehlung:** 1 → 6 → 2 → 3 → 5, Task 4 nur bei Bedarf (Regression-Risiko).
