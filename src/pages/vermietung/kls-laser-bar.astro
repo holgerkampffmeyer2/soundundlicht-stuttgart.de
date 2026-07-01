@@ -1,19 +1,13 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProductLayout from '../../components/vermietung/ProductLayout.astro';
 import Icon from '../../components/Icon.astro';
-import Navbar from '../../components/Navbar.astro';
-import Footer from '../../components/Footer.astro';
-import ProductGallery from '../../components/vermietung/ProductGallery.astro';
 import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
 import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
 import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import StickyMerkliste from '../../components/StickyMerkliste.astro';
-import ProductCTA from '../../components/ProductCTA.astro';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'kls-laser-bar')!.data;
@@ -35,7 +29,6 @@ const includedInPackages = [
 
 const images = [
   "/img/vermietung/kls-laserbar-ai.webp",
-  "/img/vermietung/eurolite-kls-laser-bar.webp",
   "/img/vermietung/eurolite-kls-laser-bar2.webp",
   "/img/vermietung/IMG_6642.webp",
   "/img/vermietung/uking_fogger-1200.webp"
@@ -136,7 +129,7 @@ const videoSchema = {
   "@type": "VideoObject",
   "name": "KLS Laser Bar & Nebelmaschine Demo",
   "description": "Demo der Eurolite KLS Laser Bar FX mit 1200W Nebelmaschine - Laser-Effekte und Nebel in Aktion",
-  "thumbnailUrl": ["/img/vermietung/eurolite-kls-laser-bar.webp"],
+  "thumbnailUrl": ["/img/vermietung/kls-laserbar-ai.webp"],
   "contentUrl": "https://www.youtube.com/watch?v=namuAf4RySA",
   "embedUrl": "https://www.youtube.com/embed/namuAf4RySA",
   "uploadDate": "2024-02-05T00:00:00+00:00",
@@ -152,39 +145,40 @@ const videoSchema = {
 };
 ---
 
-<Layout 
-  title={pageTitle}
+<ProductLayout 
+  product={product}
+  pageTitle={pageTitle}
   description="Miete die Eurolite KLS Laser Bar FX mit 1200W Nebelmaschine. Sound-zu-Licht Steuerung für deine Party."
-  image="/img/vermietung/eurolite-kls-laser-bar.webp"
+  image="/img/vermietung/kls-laserbar-ai.webp"
+  preloadImage="/img/vermietung/kls-laserbar-ai.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Licht", label: "Eurolite KLS Laser Bar" }}
+  galleryImages={images}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+  breadcrumbSegments={breadcrumbSegments}
 >
-  <Navbar currentPage="/vermietung" />
-
-  <Breadcrumb segments={breadcrumbSegments} />
-
-  <!-- Header -->
-  <section class="product-header section-padding pb-0">
-    <div class="max-w-6xl mx-auto px-4">
-      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
-      <div class="flex flex-wrap gap-3 mt-3 mb-2">
-        <span class="price-badge">{product.price}</span>
-        <span class="plug-badge-inline">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-          Inkl. Kabel & Einweisung
-        </span>
+  <!-- Hero -->
+  <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/img/vermietung/kls-laserbar-ai.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="hero-overlay-accent"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+          <span class="price-badge">{product.price}</span>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Inkl. Kabel & Einweisung
+          </span>
+        </div>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Eurolite KLS Laser Bar FX</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Die EUROLITE LED KLS Laser Bar FX ist ein kompaktes 4in1-Lichtset mit vielen Einsatzmöglichkeiten: mit 2 Derbys, 2 LED Spots, 4 weißen Strobe-LEDs und Laser (RG, 2M) sorgt die Lichtanlage für eine beeindruckende Lichtshow.
+          Optional mit 1200W Nebelmaschine. Kein Laserschutzbeauftragter notwendig!
+        </p>
       </div>
-      <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">Eurolite KLS Laser Bar FX</h1>
-      <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
-        Die EUROLITE LED KLS Laser Bar FX ist ein kompaktes 4in1-Lichtset mit vielen Einsatzmöglichkeiten:  mit 2 Derbys, 2 LED Spots, 4 weißen Strobe-LEDs und Laser (RG, 2M) sorgt die Lichtanlage für eine beeindruckende Lichtshow. 
-        Optional mit 1200W Nebelmaschine. Kein Laserschutzbeauftragter notwendig!
-      </p>
     </div>
   </section>
-
-  <!-- 1. Bildergalerie -->
-  <ProductGallery images={images} title="Eurolite KLS Laser Bar" />
 
   <!-- Demo Video -->
   <section class="section-padding bg-[var(--color-bg)]">
@@ -194,7 +188,7 @@ const videoSchema = {
         <h2 class="font-play text-3xl font-bold mt-2">Light-Demo</h2>
         <p class="text-[var(--color-text-muted)] mt-2">Eindruck der Eurolite KLS Laser Bar in Aktion</p>
       </div>
-      <div class="aspect-video rounded-xl overflow-hidden bg-black">
+       <div class="aspect-video rounded-xl overflow-hidden bg-[var(--color-bg)]">
         <iframe 
           src="https://www.youtube.com/embed/namuAf4RySA" 
           title="KLS Laser Bar Demo"
@@ -259,11 +253,5 @@ const videoSchema = {
       </div>
     </div>
   </section>
-
-  <!-- CTA Section -->
-  <ProductCTA product={product} label="die Eurolite KLS Laser Bar" />
-
-  <StickyMerkliste href="/vermietung#kontakt" productSlug={product.slug} />
-  <Footer />
-</Layout>
+</ProductLayout>
 

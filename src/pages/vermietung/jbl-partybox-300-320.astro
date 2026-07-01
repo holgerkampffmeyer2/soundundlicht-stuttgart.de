@@ -1,19 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProductLayout from '../../components/vermietung/ProductLayout.astro';
 import Icon from '../../components/Icon.astro';
-import Navbar from '../../components/Navbar.astro';
-import Footer from '../../components/Footer.astro';
-import ProductGallery from '../../components/vermietung/ProductGallery.astro';
 import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
 import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
 import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
-import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import StickyMerkliste from '../../components/StickyMerkliste.astro';
-import ProductCTA from '../../components/ProductCTA.astro';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'jbl-partybox-300-320')!.data;
@@ -25,36 +18,24 @@ const breadcrumbSegments = [
 ];
 
 const pageTitle = "JBL Partybox 300/320 | Sound und Licht Stuttgart - Holger Kampffmeyer";
-
 const faqs = await getFaqsForPage('jbl-partybox-300-320');
-
-const includedInPackages = [
-  { name: "Partypaket", url: "/vermietung/partypaket-stuttgart" }
-];
 
 const images = [
   "/img/vermietung/jbl-set1.webp",
   "/img/vermietung/jbl-set2.webp",
-  "/img/vermietung/partybox-300_kl.webp",
+  "/img/vermietung/partypaket.webp",
   "/img/vermietung/jblpartyboxen.webp",
   "/img/vermietung/jblpartyboxen2.webp"
 ];
 
 const siteUrl = "https://soundundlicht-stuttgart.de";
-
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "JBL Partybox 300 + 320 Set Vermietung",
   "description": "Leihe dieses leistungsstarke Partyboxen‑Set (2×240W) mit Akku, Light‑Show und Bluetooth – ideal für private Feiern bis 80 Personen.",
-  "image": [
-    siteUrl + images[0],
-    siteUrl + images[1]
-  ],
-  "provider": {
-    "@type": "LocalBusiness",
-    "@id": "https://soundundlicht-stuttgart.de/#business"
-  },
+  "image": [siteUrl + images[0], siteUrl + images[1]],
+  "provider": { "@type": "LocalBusiness", "@id": "https://soundundlicht-stuttgart.de/#business" },
   "offers": {
     "@type": "Offer",
     "url": "https://soundundlicht-stuttgart.de/vermietung/jbl-partybox-300-320",
@@ -63,20 +44,6 @@ const serviceSchema = {
     "availability": "https://schema.org/InStock"
   }
 };
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map((faq: any) => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-};
-
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -86,26 +53,15 @@ const breadcrumbSchema = {
     {"@type": "ListItem", "position": 3, "name": "JBL Partybox 300/320"}
   ]
 };
-
-const specs = {
-  "Ausgangsleistung": "2x 240 W",
-  "Frequenzbereich": "40 Hz - 20 kHz",
-  "Treiber": '2x 6.5" Woofer + 2x 1" Tweeter pro Box',
-  "Bluetooth": "Ja",
-  "Akku-Laufzeit": "bis 18 Stunden",
-  "Gewicht": "15.8 kg / 16.5 kg",
-  "Abmessungen": "31 x 69 x 32 cm / 33.5 x 67 x 38.5 cm",
-  "Eingänge": "USB, Aux, Mikrofon/Gitarre",
-  "Besonderheiten": "Light Show, Kopplung, IPX4 (nur 320)"
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq: any) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
 };
-
-const rentalIncludes = [
-  "1x JBL Partybox 300",
-  "1x JBL Partybox 320",
-  "2x Stromkabel",
-  "1x Verbindungskabel 5m"
-];
-
 const videoSchema = {
   "@context": "https://schema.org",
   "@type": "VideoObject",
@@ -119,73 +75,68 @@ const videoSchema = {
   "publisher": {
     "@type": "Organization",
     "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "/img/djhulk_logo.webp"
-    }
+    "logo": { "@type": "ImageObject", "url": "/img/djhulk_logo.webp" }
   }
 };
-
+const specs = {
+  "Ausgangsleistung": "2x 240 W",
+  "Frequenzbereich": "40 Hz - 20 kHz",
+  "Treiber": '2x 6.5" Woofer + 2x 1" Tweeter pro Box',
+  "Bluetooth": "Ja",
+  "Akku-Laufzeit": "bis 18 Stunden",
+  "Gewicht": "15.8 kg / 16.5 kg",
+  "Abmessungen": "31 x 69 x 32 cm / 33.5 x 67 x 38.5 cm",
+  "Eingänge": "USB, Aux, Mikrofon/Gitarre",
+  "Besonderheiten": "Light Show, Kopplung, IPX4 (nur 320)"
+};
+const rentalIncludes = [
+  "1x JBL Partybox 300",
+  "1x JBL Partybox 320",
+  "2x Stromkabel",
+  "1x Verbindungskabel 5m"
+];
 const events = [
-  {
-    title: "Party",
-    description: "Leistungsstarke Partylautsprecher mit JBL-Soundqualität und dynamischen Lichteffekten. Perfekt für Geburtstagsfeiern und private Feiern.",
-    personCount: "50-80 Personen"
-  },
-  {
-    title: "Vereinsfeier",
-    description: "Kraftvoller Sound für größere Feiern im Vereinsheim oder Festzelt. Zuspielung per Bluetooth oder Kabel.",
-    personCount: "50-80 Personen"
-  },
-  {
-    title: "Firmenfeier",
-    description: "Professionelle Soundanlage für Betriebsfeiern und Jubiläen. Beide Boxen koppelbar für Stereo-Sound.",
-    personCount: "50-80 Personen"
-  }
+  { title: "Party", description: "Leistungsstarke Partylautsprecher mit JBL-Soundqualität und dynamischen Lichteffekten. Perfekt für Geburtstagsfeiern und private Feiern.", personCount: "50-80 Personen" },
+  { title: "Vereinsfeier", description: "Kraftvoller Sound für größere Feiern im Vereinsheim oder Festzelt. Zuspielung per Bluetooth oder Kabel.", personCount: "50-80 Personen" },
+  { title: "Firmenfeier", description: "Professionelle Soundanlage für Betriebsfeiern und Jubiläen. Beide Boxen koppelbar für Stereo-Sound.", personCount: "50-80 Personen" }
 ];
 ---
 
-<Layout 
-  title={pageTitle}
+<ProductLayout 
+  product={product}
+  pageTitle={pageTitle}
   description="Miete das Set JBL Partybox 300 + 320 für deine Party, Geburtstagsfeier oder Firmenfeier. 2x 240W mit Akku, Light Show und TWS-Kopplung für bis zu 80 Personen."
-  image="/img/vermietung/partybox-300_kl.webp"
+  image="/img/vermietung/partypaket.webp"
   preloadImage="/img/vermietung/partypaket.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Sound", label: "JBL Partyboxen (Paar)" }}
+  galleryImages={images}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+  breadcrumbSegments={breadcrumbSegments}
 >
-  <Navbar currentPage="/vermietung" />
-
-  <Breadcrumb segments={breadcrumbSegments} />
-
-  <!-- Hero -->
-  <section class="relative min-h-[60vh] flex items-center overflow-hidden">
+  <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
     <img src="/img/vermietung/partypaket.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
     <div class="hero-overlay-accent"></div>
     <div class="relative z-10 w-full py-32 px-4">
       <div class="max-w-6xl mx-auto">
-          <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
-          <div class="flex flex-wrap gap-3 mt-3 mb-2">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
             <span class="price-badge">{product.price}</span>
-            <span class="plug-badge-inline">
-              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-              Inkl. Kabel & Einweisung
-            </span>
-          </div>
-          <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">JBL Partybox 300/320</h1>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Inkl. Kabel & Einweisung
+          </span>
+        </div>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">JBL Partybox 300/320</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">
           Miete unser Set aus JBL Partybox 300 und Stage 320 für deine nächste Party. Die JBL PartyBoxen sind mobile Party-Lautsprecher mit 240 W RMS-Leistung, tiefem Bass von 40 Hz und bis zu 18 Stunden Akkulaufzeit.
-          Dank Bluetooth, USB- und Klinkeneingängen kannst du deine Musik flexibel abspielen. Die integrierte Lichtshow sorgt für die richtige Stimmung auf deiner Feier. <br />
-          Perfekt für bis zu 80 Personen.
+           Dank Bluetooth, USB- und Klinkeneingängen kannst du deine Musik flexibel abspielen. Die integrierte Lichtshow sorgt für die richtige Stimmung auf deiner Feier. <br />
+           Perfekt für bis zu 80 Personen.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- 1. Bildergalerie -->
-  <ProductGallery images={images} title="JBL Partybox 300/320" />
-
-  <!-- Demo Video -->
   <section class="section-padding bg-[var(--color-bg)]">
     <div class="max-w-4xl mx-auto px-4">
       <div class="text-center mb-8">
@@ -193,7 +144,7 @@ const events = [
         <h2 class="font-play text-3xl font-bold mt-2">Sound-Check der JBL Partyboxen</h2>
         <p class="text-[var(--color-text-muted)] mt-2">Eindruck der JBL Partyboxen 300 und 320 in Aktion</p>
       </div>
-      <div class="aspect-video rounded-xl overflow-hidden bg-black">
+       <div class="aspect-video rounded-xl overflow-hidden bg-[var(--color-bg)]">
         <iframe 
           src="https://www.youtube.com/embed/Ivch0DqKkW0" 
           title="JBL Partybox Demo"
@@ -205,19 +156,11 @@ const events = [
     </div>
   </section>
 
-  <!-- 2. Preis & Kaution -->
   <RentalPricing price={product.price} deposit={150} />
-
-  <!-- 3. Technische Spezifikation -->
   <TechnicalSpecs specs={specs} />
-
-  <!-- 4. Lieferumfang -->
   <RentalIncludes items={rentalIncludes} />
-
-  <!-- 5. Beispielanwendungen -->
   <ExampleEvents events={events} />
 
-  <!-- FAQ -->
   <section class="section-padding">
     <div class="max-w-4xl mx-auto px-4">
       <h2 class="font-play text-2xl md:text-3xl font-bold text-center mb-10">
@@ -240,11 +183,6 @@ const events = [
       </div>
     </div>
   </section>
+</ProductLayout>
 
-  <!-- CTA Section -->
-  <ProductCTA product={product} label="das JBL Partybox Set" />
-
-  <StickyMerkliste href="/vermietung#kontakt" productSlug={product.slug} />
-  <Footer />
-</Layout>
 

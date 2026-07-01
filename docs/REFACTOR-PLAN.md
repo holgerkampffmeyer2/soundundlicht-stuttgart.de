@@ -123,11 +123,11 @@ document.getElementById('request-now-{slug}')?.addEventListener('click', functio
 
 | Rang | Task | Aufwand | Impact | Risiko | Status |
 |------|------|---------|--------|--------|--------|
-| 1 | Duplizierte Produktseiten (2) | 45 Min | Hoch (Wartbarkeit) | Niedrig | Offen |
-| 2 | rgba → Theme-Vars (1) | 30 Min | Mittel (Theme-Konsistenz) | Niedrig | Offen |
-| 3 | service/equipment-card merge (3) | 20 Min | Mittel (CSS-Größe) | Niedrig | Offen |
-| 4 | Zentraler Event-Handler (5) | 30 Min | Mittel (Wartbarkeit) | Hoch | Offen |
-| 5 | text-white/bg-black (6) | 15 Min | Niedrig (Kosmetik) | Niedrig | Offen |
+| 1 | Duplizierte Produktseiten (2) | 45 Min | Hoch (Wartbarkeit) | Niedrig | ERLEDIGT |
+| 2 | rgba → Theme-Vars (1) | 30 Min | Mittel (Theme-Konsistenz) | Niedrig | ERLEDIGT |
+| 3 | service/equipment-card merge (3) | 20 Min | Mittel (CSS-Größe) | Niedrig | ERLEDIGT |
+| 4 | Zentraler Event-Handler (5) | 30 Min | Mittel (Wartbarkeit) | Hoch | ERLEDIGT |
+| 5 | text-white/bg-black (6) | 15 Min | Niedrig (Kosmetik) | Niedrig | ERLEDIGT |
 | 6 | City-Seiten vereinheitlicht (4) | ✅ | Niedrig | Niedrig | ERLEDIGT (b402d5d) |
 
 **Empfehlung:** 1 → 6 → 2 → 3 → 5, Task 4 nur bei Bedarf (Regression-Risiko).

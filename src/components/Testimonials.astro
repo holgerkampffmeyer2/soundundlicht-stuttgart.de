@@ -100,10 +100,10 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
       pageBtns.forEach(btn => {
         const btnPage = parseInt(btn.dataset.page);
         if (btnPage === page) {
-          btn.classList.add('bg-[var(--color-secondary)]', 'text-white', 'border-[var(--color-secondary)]');
+           btn.classList.add('bg-[var(--color-secondary)]', 'text-[var(--color-bg)]', 'border-[var(--color-secondary)]');
           btn.classList.remove('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-[var(--color-border)]');
         } else {
-          btn.classList.remove('bg-[var(--color-secondary)]', 'text-white', 'border-[var(--color-secondary)]');
+           btn.classList.remove('bg-[var(--color-secondary)]', 'text-[var(--color-bg)]', 'border-[var(--color-secondary)]');
           btn.classList.add('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-[var(--color-border)]');
         }
       });

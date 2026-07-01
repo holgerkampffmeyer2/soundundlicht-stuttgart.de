@@ -1,18 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProductLayout from '../../components/vermietung/ProductLayout.astro';
 import Icon from '../../components/Icon.astro';
-import Navbar from '../../components/Navbar.astro';
-import Footer from '../../components/Footer.astro';
-import ProductGallery from '../../components/vermietung/ProductGallery.astro';
 import PackageContents from '../../components/vermietung/PackageContents.astro';
 import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import Testimonials from '../../components/Testimonials.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import StickyMerkliste from '../../components/StickyMerkliste.astro';
-import ProductCTA from '../../components/ProductCTA.astro';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'partypaket-stuttgart')!.data;
@@ -127,13 +121,15 @@ const faqSchema = {
 };
 ---
 
-<Layout 
-  title={pageTitle}
+<ProductLayout 
+  product={product}
+  pageTitle={pageTitle}
   description="Miete das Partypaket für deine Party in Stuttgart und Umgebung. Komplette Partytechnik mit JBL Partyboxen, Licht, Nebel und Mikrofon für bis zu 50 Personen."
   image="/img/vermietung/partypaket.webp"
   preloadImage="/img/vermietung/partypaket.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Partypaket" }}
+  galleryImages={images}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, {
     "@context": "https://schema.org",
     "@type": "VideoObject",
@@ -153,33 +149,30 @@ const faqSchema = {
       }
     }
   }]}
+  breadcrumbSegments={breadcrumbSegments}
 >
-  <Navbar currentPage="/vermietung" />
-
-  <Breadcrumb segments={breadcrumbSegments} />
-
-    <!-- Hero -->
-    <section class="relative min-h-[60vh] flex items-center overflow-hidden">
-      <img src="/img/vermietung/partypaket.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
-      <div class="hero-overlay-accent"></div>
-      <div class="relative z-10 w-full py-32 px-4">
-        <div class="max-w-6xl mx-auto">
-          <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
-          <div class="flex flex-wrap gap-3 mt-3 mb-2">
-            <span class="price-badge">{product.price}</span>
-            <span class="plug-badge-inline">
-              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-              Inkl. Kabel & Einweisung
-            </span>
-          </div>
-          <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Partypaket Stuttgart</h1>
-          <p class="text-[var(--color-text)] text-xl max-w-2xl">
-            Miete unser Partypaket für deine nächste Party in Stuttgart und Umgebung. Das Set enthält 2x JBL Partyboxen mit kraftvollem Sound und dynamischen Lichteffekten, eine Eurolite KLS Laser Bar für spektakuläre Lichtshow, eine Stairville AF-150 Nebelmaschine für atmosphärische Wirkung sowie Mikrofon und LED PAR Strahler für vollständige Beschallung und Beleuchtung.<br />
-            Alles inklusive Strom- und Anschlusskabel für sofortigen Einsatz. Perfekt für Geburtstagsfeiern, Hauspartys und kleinere Veranstaltungen bis zu 50 Personen.
-          </p>
+  <!-- Hero -->
+  <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/img/vermietung/partypaket.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="hero-overlay-accent"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+          <span class="price-badge">{product.price}</span>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Inkl. Kabel & Einweisung
+          </span>
         </div>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Partypaket Stuttgart</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Miete unser Partypaket für deine nächste Party in Stuttgart und Umgebung. Das Set enthält 2x JBL Partyboxen mit kraftvollem Sound und dynamischen Lichteffekten, eine Eurolite KLS Laser Bar für spektakuläre Lichtshow, eine Stairville AF-150 Nebelmaschine für atmosphärische Wirkung sowie Mikrofon und LED PAR Strahler für vollständige Beschallung und Beleuchtung.<br />
+          Alles inklusive Strom- und Anschlusskabel für sofortigen Einsatz. Perfekt für Geburtstagsfeiern, Hauspartys und kleinere Veranstaltungen bis zu 50 Personen.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
   <!-- Package Highlights -->
   <section class="section-padding bg-[var(--color-surface)]">
@@ -201,9 +194,6 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- 1. Bildergalerie -->
-  <ProductGallery images={images} title="Partypaket" />
-
   <!-- Demo Video -->
   <section class="section-padding bg-[var(--color-bg)]">
     <div class="max-w-4xl mx-auto px-4">
@@ -212,7 +202,7 @@ const faqSchema = {
         <h2 class="font-play text-3xl font-bold mt-2">Sound-Check</h2>
         <p class="text-[var(--color-text-muted)] mt-2">Eindruck der JBL Partyboxen 300 und 320 in Aktion</p>
       </div>
-      <div class="aspect-video rounded-xl overflow-hidden bg-black">
+       <div class="aspect-video rounded-xl overflow-hidden bg-[var(--color-bg)]">
         <iframe 
           src="https://www.youtube.com/embed/Ivch0DqKkW0" 
           title="JBL Partybox Demo"
@@ -257,13 +247,6 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <ProductCTA product={product} label="das Partypaket" />
-
   <Testimonials />
-
-  <StickyMerkliste href="/vermietung#kontakt" productSlug={product.slug} />
-
-  <Footer />
-</Layout>
+</ProductLayout>
 

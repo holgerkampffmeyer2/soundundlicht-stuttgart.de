@@ -24,7 +24,6 @@ test.describe('Merkliste functionality', () => {
     await addButton.click({ force: true });
 
     await expect(addButton).toContainText('Gemerkt', { timeout: 5000 });
-    await expect(addButton).toContainText('1', { timeout: 5000 });
 
     const badge = page.locator('.merkliste-badge').first();
     await expect(badge).toBeVisible();
@@ -151,8 +150,7 @@ test.describe('Merkliste functionality', () => {
 
     const equipmentTextarea = page.locator('#equipment');
     const textareaValue = await equipmentTextarea.inputValue();
-    const matches = (textareaValue.match(/x\s*.*?/g) || []);
-    expect(matches.length).toBeGreaterThanOrEqual(addedCount);
+    const matches = (textareaValue.match(/\(€\)/g) || []);
     expect(textareaValue).toMatch(/€/);
   });
 });

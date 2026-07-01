@@ -2,7 +2,7 @@
 import Icon from './Icon.astro';
 ---
 
-<div id="merkliste-drawer" class="fixed inset-0 z-50 flex-col items-center justify-center hidden bg-black/50" role="dialog" aria-modal="true" aria-label="Merkliste">
+<div id="merkliste-drawer" class="fixed inset-0 z-50 flex-col items-center justify-center hidden bg-[var(--overlay-scrim)]" role="dialog" aria-modal="true" aria-label="Merkliste">
   <div class="relative w-full max-w-xs mx-4 sm:max-w-md bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl shadow-lg p-6 max-h-[90vh] overflow-y-auto">
     <button id="merkliste-close" class="absolute top-2 right-2 p-2 rounded hover:bg-[var(--color-accent)/10] transition-colors" aria-label="Merkliste schließen">
       <Icon name="x" class="w-4 h-4" />
@@ -15,14 +15,6 @@ import Icon from './Icon.astro';
     </div>
 
     <div id="merkliste-footer" class="mt-6 pt-4 border-t border-[var(--color-border)] hidden">
-      <p id="merkliste-total-wrapper" class="text-[var(--color-text-muted)] mb-2 flex items-center gap-1 flex-wrap">
-        <span>Gesamtbetrag:</span>
-        <span id="merkliste-total" class="font-play text-xl font-bold">0 €</span>
-        <span class="price-info-wrap">
-          <Icon name="info" class="w-3.5 h-3.5 cursor-help text-[var(--color-text-muted)]" />
-          <span class="price-info-popup">Unverbindliche Preisangabe. Das finale Angebot erhalte ich nach Absenden des Formulars.</span>
-        </span>
-      </p>
       <button id="request-btn" class="w-full btn-primary">Jetzt anfragen</button>
     </div>
   </div>
@@ -55,15 +47,11 @@ import Icon from './Icon.astro';
     } catch (e) {}
   }
 
-  function addItem(slug, qty) {
-    qty = qty || 1;
+  function addItem(slug) {
     var data = getMerkliste();
-    var idx = data.items.findIndex(function(i) { return i.slug === slug; });
-    if (idx >= 0) {
-      data.items[idx].quantity += qty;
-    } else {
-      data.items.push({ slug: slug, quantity: Math.max(1, qty), addedAt: Date.now() });
-    }
+    var exists = data.items.some(function(i) { return i.slug === slug; });
+    if (exists) return;
+    data.items.push({ slug: slug, addedAt: Date.now() });
     data.lastUpdated = Date.now();
     saveMerkliste(data);
   }
@@ -79,24 +67,6 @@ import Icon from './Icon.astro';
     }
   }
 
-  function updateItemQuantity(slug, qty) {
-    var data = getMerkliste();
-    var idx = data.items.findIndex(function(i) { return i.slug === slug; });
-    if (idx >= 0) {
-      if (qty <= 0) {
-        data.items.splice(idx, 1);
-      } else {
-        data.items[idx].quantity = qty;
-      }
-      if (data.items.length === 0) {
-        localStorage.removeItem(STORAGE_KEY);
-      } else {
-        data.lastUpdated = Date.now();
-        saveMerkliste(data);
-      }
-    }
-  }
-
   function getCatalog() {
     var script = document.getElementById('rental-catalog-data');
     if (!script) return {};
@@ -108,11 +78,6 @@ import Icon from './Icon.astro';
       }
       return map;
     } catch (e) { return {}; }
-  }
-
-  function parsePrice(priceStr) {
-    var m = priceStr ? priceStr.match(/\d+/) : null;
-    return m ? parseInt(m[0], 10) : 0;
   }
 
   function escapeHtml(s) {
@@ -136,7 +101,6 @@ import Icon from './Icon.astro';
   function renderMerkliste() {
     var container = document.getElementById('merkliste-contents');
     var footer = document.getElementById('merkliste-footer');
-    var totalEl = document.getElementById('merkliste-total');
     if (!container) return;
 
     try {
@@ -151,7 +115,6 @@ import Icon from './Icon.astro';
       }
 
       var catalog = getCatalog();
-      var total = 0;
       var html = '<div class="space-y-4">';
 
       for (var i = 0; i < items.length; i++) {
@@ -160,9 +123,6 @@ import Icon from './Icon.astro';
         var title = escapeHtml(product ? product.title : item.slug);
         var image = product ? product.image : '';
         var priceStr = product ? product.price : '';
-        var unitPrice = parsePrice(priceStr);
-        var itemTotal = unitPrice * item.quantity;
-        total += itemTotal;
 
         var imgHtml = '';
         if (image) {
@@ -178,17 +138,9 @@ import Icon from './Icon.astro';
           '<div class="flex-1 space-y-2">' +
           '<h3 class="font-play font-lg font-bold">' + title + '</h3>' +
           '<p class="text-[var(--color-text-muted)] text-sm">Preis: <span class="font-semibold">' + escapeHtml(priceStr) + '</span></p>' +
-          '<div class="flex items-center space-x-3">' +
-          '<button data-action="decrement" data-slug="' + escapeHtml(item.slug) + '" class="flex min-h-[44px] min-w-[44px] items-center justify-center rounded border border-[var(--color-border)] hover:bg-[var(--color-accent)/10] transition-colors" aria-label="Menge verringern">' +
-          '<svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14" /></svg>' +
-          '</button>' +
-          '<span class="w-8 text-center font-mono">' + item.quantity + '</span>' +
-          '<button data-action="increment" data-slug="' + escapeHtml(item.slug) + '" class="flex min-h-[44px] min-w-[44px] items-center justify-center rounded border border-[var(--color-border)] hover:bg-[var(--color-accent)/10] transition-colors" aria-label="Menge erhöhen">' +
-          '<svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5" /></svg>' +
-          '</button>' +
-          '<button data-action="remove" data-slug="' + escapeHtml(item.slug) + '" class="ml-2 text-[var(--color-accent)] hover:underline">Entfernen</button>' +
+          '<div>' +
+          '<button data-action="remove" data-slug="' + escapeHtml(item.slug) + '" class="text-[var(--color-accent)] hover:underline">Entfernen</button>' +
           '</div>' +
-          '<p class="text-[var(--color-text-muted)] text-sm">Zwischensumme: <span class="font-semibold">' + itemTotal + ' &euro;</span></p>' +
           '</div>' +
           '</div>';
       }
@@ -198,14 +150,9 @@ import Icon from './Icon.astro';
 
       if (footer) {
         footer.classList.remove('hidden');
-        if (totalEl) {
-          totalEl.textContent = total + ' €';
-        }
       }
 
-      var count = 0;
-      for (var j = 0; j < items.length; j++) { count += items[j].quantity; }
-      updateBadge(count);
+      updateBadge(items.length);
 
       var cartInput = document.getElementById('merkliste-data');
       if (cartInput) {
@@ -215,7 +162,7 @@ import Icon from './Icon.astro';
           var prod2 = catalog[it.slug];
           var t = prod2 ? prod2.title : it.slug;
           var p = prod2 ? prod2.price : '';
-          data.push(it.quantity + 'x ' + t + ' (' + p + ')');
+          data.push(t + ' (' + p + ')');
         }
         cartInput.value = data.join(', ');
       }
@@ -272,22 +219,7 @@ import Icon from './Icon.astro';
     var slug = target.dataset.slug;
     if (!action || !slug) return;
 
-    if (action === 'increment') {
-      var data = getMerkliste();
-      var item = data.items ? (data.items.find(function(i) { return i.slug === slug; }) || { quantity: 0 }) : { quantity: 0 };
-      updateItemQuantity(slug, (item.quantity || 0) + 1);
-      renderMerkliste();
-    } else if (action === 'decrement') {
-      var data = getMerkliste();
-      var item = data.items ? (data.items.find(function(i) { return i.slug === slug; }) || { quantity: 0 }) : { quantity: 0 };
-      var newQty = Math.max((item.quantity || 0) - 1, 0);
-      if (newQty === 0) {
-        removeItem(slug);
-      } else {
-        updateItemQuantity(slug, newQty);
-      }
-      renderMerkliste();
-    } else if (action === 'remove') {
+    if (action === 'remove') {
       removeItem(slug);
       renderMerkliste();
     }
@@ -304,7 +236,7 @@ import Icon from './Icon.astro';
           var prod = catalog[item.slug];
           var title = prod ? prod.title : item.slug;
           var price = prod ? prod.price : '';
-          return item.quantity + 'x ' + title + ' (' + price + ')';
+          return title + ' (' + price + ')';
         }).join(', ');
         cartInput.value = vals;
       }
@@ -322,9 +254,7 @@ import Icon from './Icon.astro';
   (function() {
     var data = getMerkliste();
     var items = data.items || [];
-    var count = 0;
-    for (var i = 0; i < items.length; i++) { count += items[i].quantity; }
-    updateBadge(count);
+    updateBadge(items.length);
   })();
 })();
 </script>
@@ -350,7 +280,7 @@ import Icon from './Icon.astro';
     content: '';
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.5);
+    background: var(--overlay-scrim);
     z-index: -1;
   }
 </style>

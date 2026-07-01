@@ -12,4 +12,25 @@
   --color-border: #1e293b;
   --font-heading: 'Josefin Sans Variable', 'Josefin Sans', sans-serif;
   --font-body: 'Inter Variable', 'Inter', sans-serif;
+
+  --surface-tinted: rgba(5, 5, 16, 0.95);
+  --overlay-dark: rgba(5, 5, 16, 0.92);
+  --overlay-medium: rgba(5, 5, 16, 0.7);
+  --overlay-strong: rgba(5, 5, 16, 0.85);
+  --overlay-light: rgba(5, 5, 16, 0.6);
+  --overlay-scrim: rgba(0, 0, 0, 0.5);
+  --overlay-modal: rgba(0, 0, 0, 0.7);
+  --overlay-thumb: rgba(0, 0, 0, 0.6);
+
+  --shadow-card: 0 15px 35px rgba(0, 0, 0, 0.3);
+  --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-card-soft: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --shadow-cta: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-sticky: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+  --surface-glass-1: rgba(255, 255, 255, 0.25);
+  --surface-glass-2: rgba(255, 255, 255, 0.3);
+  --surface-glass-3: rgba(255, 255, 255, 0.2);
+  --surface-glass-4: rgba(255, 255, 255, 0.12);
+  --surface-glass-5: rgba(255, 255, 255, 0.15);
 }

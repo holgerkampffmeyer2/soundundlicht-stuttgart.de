@@ -163,7 +163,7 @@ import { getItemCount } from '../../lib/merklisteStore';
           const prod = productsBySlug[item.slug];
           const title = prod ? prod.title : item.slug;
           const price = prod ? prod.price : '';
-          return `${item.quantity}x ${title} (${price})`;
+          return `${title} (${price})`;
         });
         return items.join(', ');
       } catch (e) {
@@ -188,7 +188,7 @@ import { getItemCount } from '../../lib/merklisteStore';
             for (var i = 0; i < products.length; i++) bySlug[products[i].slug] = products[i];
             eq.value = cart.items.map(function(item) {
               var p = bySlug[item.slug];
-              return item.quantity + 'x ' + (p ? p.title : item.slug) + ' (' + (p ? p.price : '') + ')';
+              return (p ? p.title : item.slug) + ' (' + (p ? p.price : '') + ')';
             }).join('\n');
           }
         }
@@ -227,11 +227,11 @@ import { getItemCount } from '../../lib/merklisteStore';
           const prod = productsBySlug[item.slug];
           const title = prod ? prod.title : item.slug;
           const price = prod ? prod.price : '';
-          return `${item.quantity}x ${title} (${price})`;
+          return `${title} (${price})`;
         }).join('\n');
         equipmentTextarea.value = equipmentText;
       } else {
-        equipmentTextarea.value = items.map(i => `${i.quantity}x ${i.slug}`).join(', ');
+        equipmentTextarea.value = items.map(i => i.slug).join(', ');
       }
     } catch (e) {}
   }

@@ -13,6 +13,7 @@ import HeroSlider from "../components/HeroSlider.astro";
 import BieteSection from "../components/BieteSection.astro";
 import PackageCardGrid from '../components/PackageCardGrid.astro';
 import StickyMerkliste from '../components/StickyMerkliste.astro';
+import CitySteps from '../components/CitySteps.astro';
 
 const products = await getCollection('products');
 const rentalItems = products.map(i => i.data);
@@ -138,9 +139,6 @@ const serviceJsonLd = {
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <Testimonials id="bewertungen" />
-
   <!-- Pakete Section -->
   <section id="pakete" class="section-padding bg-[var(--color-surface)]">
     <div class="max-w-7xl mx-auto">
@@ -166,58 +164,11 @@ const serviceJsonLd = {
     </div>
   </section>
 
-  <!-- Galerie Section -->
-
   <!-- So funktioniert's Section -->
-  <section id="ablauf" class="section-padding bg-[var(--color-bg)]">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 animate-on-scroll">
-        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
-          Ablauf
-        </span>
-        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
-          So einfach mietest du
-        </h2>
-        <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
-          In vier Schritten zur perfekten Partytechnik – unkompliziert, persönlich und fair.
-        </p>
-      </div>
+  <CitySteps />
 
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="service-card animate-on-scroll text-center">
-          <div class="text-4xl font-bold text-[var(--color-secondary)] mb-3">1</div>
-          <h3 class="font-play text-lg font-bold mb-2">Produkte zum Anfragen hinzufügen</h3>
-          <p class="text-[var(--color-text-muted)] text-sm">
-            Durch Klick auf „Merken“ legen Sie die gewünschte Technik auf Ihre Merkliste.
-          </p>
-        </div>
-
-        <div class="service-card animate-on-scroll text-center">
-          <div class="text-4xl font-bold text-[var(--color-secondary)] mb-3">2</div>
-          <h3 class="font-play text-lg font-bold mb-2">Merkliste prüfen</h3>
-          <p class="text-[var(--color-text-muted)] text-sm">
-            Im Header oder über den CTA‑Button können Sie Ihre Merkliste einsehen, Menge ändern oder Artikel entfernen.
-          </p>
-        </div>
-
-        <div class="service-card animate-on-scroll text-center">
-          <div class="text-4xl font-bold text-[var(--color-secondary)] mb-3">3</div>
-          <h3 class="font-play text-lg font-bold mb-2">Zur Anfrage gehen</h3>
-          <p class="text-[var(--color-text-muted)] text-sm">
-            Klicken Sie auf „Zur Anfrage gehen“ im Merkliste‑Drawer, um zum Kontaktformular zu gelangen – dort ist Ihre Auswahl bereits sichtbar.
-          </p>
-        </div>
-
-        <div class="service-card animate-on-scroll text-center">
-          <div class="text-4xl font-bold text-[var(--color-secondary)] mb-3">4</div>
-          <h3 class="font-play text-lg font-bold mb-2">Angebot erhalten</h3>
-          <p class="text-[var(--color-text-muted)] text-sm">
-            Nach Absendung des Formulars erhalten Sie eine automatische Bestätigung. Wir erstellen anschließend ein verbindliches Angebot und melden uns innerhalb von 12 Stunden.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Testimonials Section -->
+  <Testimonials id="bewertungen" />
 
   <!-- City Grid Section -->
   <CityGrid />
@@ -230,7 +181,7 @@ const serviceJsonLd = {
   </section>
 
   <!-- DJ Section -->
-  <section class="section-padding bg-[var(--color-surface)]">
+  <section class="section-padding bg-[var(--color-bg)]">
     <div class="max-w-4xl mx-auto text-center animate-on-scroll">
       <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
         DJ Buchen

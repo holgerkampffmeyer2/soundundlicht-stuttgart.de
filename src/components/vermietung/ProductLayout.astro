@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Footer from '../../components/Footer.astro';
+import ProductGallery from './ProductGallery.astro';
+import ProductCTA from '../ProductCTA.astro';
+import StickyMerkliste from '../StickyMerkliste.astro';
+
+interface Props {
+  product: any;
+  pageTitle: string;
+  title?: string;
+  description: string;
+  image: string;
+  preloadImage: string;
+  pagefindMeta: any;
+  pagefindType?: string;
+  jsonLd: any[];
+  breadcrumbSegments: any[];
+  galleryImages?: string[];
+}
+
+const { product, pageTitle, title, description, image, preloadImage, pagefindMeta, pagefindType = 'produkt', jsonLd, breadcrumbSegments, galleryImages } = Astro.props;
+const layoutTitle = title ?? pageTitle;
+const gallery = galleryImages ?? product.images ?? [];
+const productSlug = product.slug;
+const productTitle = product.title ?? pageTitle;
+---
+
+<Layout 
+  title={layoutTitle}
+  description={description}
+  image={image}
+  preloadImage={preloadImage}
+  pagefindType={pagefindType}
+  pagefindMeta={pagefindMeta}
+  jsonLd={jsonLd}
+>
+  <Navbar currentPage="/vermietung" />
+  <Breadcrumb segments={breadcrumbSegments} />
+  
+  <slot name="hero" />
+  {gallery.length > 0 && (
+    <ProductGallery images={gallery} title={pageTitle} />
+  )}
+  <slot />
+
+  <ProductCTA product={{ slug: productSlug, title: productTitle }} label={product.ctaLabel} />
+  <StickyMerkliste href="/vermietung#kontakt" productSlug={productSlug} />
+
+  <Footer />
+</Layout>
+
+<style>
+  .cta-section { 
+    text-align: center; 
+  }
+</style>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const requestBtn = target.closest('[data-request-now]');
+    
+    if (requestBtn) {
+      const slug = requestBtn.getAttribute('data-request-now');
+      if (slug) {
+        document.dispatchEvent(new CustomEvent('add-to-wishlist', { detail: { slug } }));
+      }
+    }
+  });
+</script>
+
+

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
-import { getCart, addItem, removeItem, updateItemQuantity, clearCart, getItemCount, getTotalPrice, getCartItemsWithDetails, isCartEmpty } from './merklisteStore.js';
+import { getCart, addItem, removeItem, clearCart, getItemCount, isCartEmpty } from './merklisteStore.js';
 
 const STORAGE_KEY = 'sls_merkliste';
 
@@ -17,14 +17,6 @@ beforeEach(() => {
 });
 
 describe('merklisteStore', () => {
-  const mockProductLookup = (slug: string) => {
-    const products: Record<string, { slug: string; price: string }> = {
-      'jbl-partybox-300-320': { slug: 'jbl-partybox-300-320', price: 'ab 80€' },
-      'behringer-x32': { slug: 'behringer-x32', price: 'ab 150€' },
-      'led-par-64': { slug: 'led-par-64', price: 'ab 40€' }
-    };
-    return products[slug] || null;
-  };
 
   it('should initialize with empty merkliste', () => {
     const cart = getCart();
@@ -35,28 +27,26 @@ describe('merklisteStore', () => {
   });
 
   it('should add item to merkliste', () => {
-    addItem('jbl-partybox-300-320', 2);
+    addItem('jbl-partybox-300-320');
     const cart = getCart();
     expect(cart.items).toHaveLength(1);
     expect(cart.items[0]).toMatchObject({
       slug: 'jbl-partybox-300-320',
-      quantity: 2,
       addedAt: expect.any(Number)
     });
-    expect(getItemCount()).toBe(2);
+    expect(getItemCount()).toBe(1);
   });
 
-  it('should increase quantity when adding existing item', () => {
-    addItem('jbl-partybox-300-320', 1);
-    addItem('jbl-partybox-300-320', 3);
+  it('should not add duplicate item', () => {
+    addItem('jbl-partybox-300-320');
+    addItem('jbl-partybox-300-320');
     const cart = getCart();
     expect(cart.items).toHaveLength(1);
-    expect(cart.items[0].quantity).toBe(4);
   });
 
   it('should remove item completely', () => {
-    addItem('jbl-partybox-300-320', 2);
-    addItem('behringer-x32', 1);
+    addItem('jbl-partybox-300-320');
+    addItem('behringer-x32');
     removeItem('jbl-partybox-300-320');
     const cart = getCart();
     expect(cart.items).toHaveLength(1);
@@ -64,47 +54,16 @@ describe('merklisteStore', () => {
     expect(getItemCount()).toBe(1);
   });
 
-  it('should update item quantity', () => {
-    addItem('jbl-partybox-300-320', 1);
-    updateItemQuantity('jbl-partybox-300-320', 5);
-    const cart = getCart();
-    expect(cart.items[0].quantity).toBe(5);
-    expect(getItemCount()).toBe(5);
-  });
-
-  it('should remove item when quantity set to 0 or less', () => {
-    addItem('jbl-partybox-300-320', 2);
-    updateItemQuantity('jbl-partybox-300-320', 0);
-    const cart = getCart();
-    expect(cart.items).toHaveLength(0);
-    expect(isCartEmpty()).toBe(true);
-  });
-
   it('should clear merkliste', () => {
-    addItem('jbl-partybox-300-320', 2);
-    addItem('behringer-x32', 1);
+    addItem('jbl-partybox-300-320');
+    addItem('behringer-x32');
     clearCart();
     expect(getItemCount()).toBe(0);
     expect(localStorage.getItem(STORAGE_KEY)).toBeNull();
   });
 
-  it('should calculate total price correctly', () => {
-    addItem('jbl-partybox-300-320', 2);
-    addItem('led-par-64', 3);
-    const total = getTotalPrice(mockProductLookup);
-    expect(total).toBe(2 * 80 + 3 * 40);
-  });
-
-  it('should return merkliste items with product details', () => {
-    addItem('jbl-partybox-300-320', 1);
-    const itemsWithDetails = getCartItemsWithDetails(mockProductLookup);
-    expect(itemsWithDetails).toHaveLength(1);
-    expect(itemsWithDetails[0]).toHaveProperty('product');
-    expect(itemsWithDetails[0].product.slug).toBe('jbl-partybox-300-320');
-  });
-
   it('should persist merkliste to localStorage', () => {
-    addItem('jbl-partybox-300-320', 1);
+    addItem('jbl-partybox-300-320');
     const stored = localStorage.getItem(STORAGE_KEY);
     expect(stored).not.toBeNull();
     const parsed = JSON.parse(stored!);
@@ -130,15 +89,16 @@ describe('merklisteStore', () => {
     expect(cart.items).toEqual([]);
   });
 
-  it('should reject invalid cart items (missing quantity)', () => {
+  it('should accept cart items without quantity field', () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ items: [{ slug: 'test' }], lastUpdated: Date.now() }));
     const cart = getCart();
-    expect(cart.items).toEqual([]);
+    expect(cart.items).toHaveLength(1);
+    expect(cart.items[0].slug).toBe('test');
   });
 
   it('should clear expired merkliste (>24h old)', () => {
     const old = Date.now() - 25 * 60 * 60 * 1000;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ items: [{ slug: 'jbl-partybox-300-320', quantity: 1, addedAt: old }], lastUpdated: old }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ items: [{ slug: 'jbl-partybox-300-320', addedAt: old }], lastUpdated: old }));
     const cart = getCart();
     expect(cart.items).toEqual([]);
     expect(localStorage.getItem(STORAGE_KEY)).toBeNull();
@@ -146,10 +106,9 @@ describe('merklisteStore', () => {
 
   it('should keep valid merkliste within 24h', () => {
     const recent = Date.now() - 60 * 60 * 1000;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ items: [{ slug: 'jbl-partybox-300-320', quantity: 2, addedAt: recent }], lastUpdated: recent }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ items: [{ slug: 'jbl-partybox-300-320', addedAt: recent }], lastUpdated: recent }));
     const cart = getCart();
     expect(cart.items).toHaveLength(1);
     expect(cart.items[0].slug).toBe('jbl-partybox-300-320');
-    expect(cart.items[0].quantity).toBe(2);
   });
 });

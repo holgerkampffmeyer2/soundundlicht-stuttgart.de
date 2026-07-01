@@ -1,19 +1,13 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProductLayout from '../../components/vermietung/ProductLayout.astro';
 import Icon from '../../components/Icon.astro';
-import Navbar from '../../components/Navbar.astro';
-import Footer from '../../components/Footer.astro';
-import ProductGallery from '../../components/vermietung/ProductGallery.astro';
 import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
 import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
 import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import StickyMerkliste from '../../components/StickyMerkliste.astro';
-import ProductCTA from '../../components/ProductCTA.astro';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'led-bossfx-nebelmaschine')!.data;
@@ -36,7 +30,6 @@ const includedInPackages = [
 
 const images = [
   "/img/vermietung/LED-BossFX2-Pro-Nebel-AI.webp",
-  "/img/vermietung/stairville-led-bossfx-2-pro-bundle.webp",
   "/img/vermietung/stairville-led-bossfx-2-pro-2.webp",
   "/img/vermietung/stairville-led-bossfx-2-pro-3.webp",
   "/img/vermietung/stairville-led-bossfx-2-pro-4.webp",
@@ -138,7 +131,7 @@ const videoSchema = {
   "@type": "VideoObject",
   "name": "LED BossFX & Nebelmaschine Demo",
   "description": "Demo der LED BossFX-2 Pro Partylichtanlage mit AF-150 Nebelmaschine in Aktion",
-  "thumbnailUrl": ["/img/vermietung/stairville-led-bossfx-2-pro-bundle.webp"],
+  "thumbnailUrl": ["/img/vermietung/LED-BossFX2-Pro-Nebel-AI.webp"],
   "contentUrl": "https://www.youtube.com/watch?v=MzCgO9gkBzQ",
   "embedUrl": "https://www.youtube.com/embed/MzCgO9gkBzQ",
   "uploadDate": "2024-02-10T00:00:00+00:00",
@@ -154,40 +147,41 @@ const videoSchema = {
 };
 ---
 
-<Layout 
-  title={pageTitle}
+<ProductLayout 
+  product={product}
+  pageTitle={pageTitle}
   description="Miete die LED Party-Lichtanlage BossFX-2 Pro mit AF-150 Nebelmaschine. Sound-zu-Licht Modus und DMX-Steuerung für deine Party."
-  image="/img/vermietung/stairville-led-bossfx-2-pro-bundle.webp"
+  image="/img/vermietung/LED-BossFX2-Pro-Nebel-AI.webp"
+  preloadImage="/img/vermietung/LED-BossFX2-Pro-Nebel-AI.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Licht", label: "Lichtanlage LED BossFX-2 Pro und AF-150 Fog Machine" }}
+  galleryImages={images}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+  breadcrumbSegments={breadcrumbSegments}
 >
-  <Navbar currentPage="/vermietung" />
-
-  <Breadcrumb segments={breadcrumbSegments} />
-
   <!-- Header -->
-  <section class="product-header section-padding pb-0">
-    <div class="max-w-6xl mx-auto px-4">
-      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
-      <div class="flex flex-wrap gap-3 mt-3 mb-2">
-        <span class="price-badge">{product.price}</span>
-        <span class="plug-badge-inline">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-          Inkl. Kabel & Einweisung
-        </span>
+  <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/img/vermietung/LED-BossFX2-Pro-Nebel-AI.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="hero-overlay-accent"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+          <span class="price-badge">{product.price}</span>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Inkl. Kabel & Einweisung
+          </span>
+        </div>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">LED BossFX-2 Pro & Nebelmaschine</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Die Stairville LED BossFX-2 Pro ist eine komplette Party-Lichtanlage für DJs und Events: mit 2 Derby-Beams, 2 hellen Flood-Panels, 4 Strobe-LEDs (Weiß/UV) und schnellem Plug-and-Play-Aufbau inklusive Stativ.
+          <br />
+           Erhältlich auch als Set mit leistungsstarker 800W Nebelmaschine. Unerlässlich, um die Lichteffekte richtig zur Geltung zu bringen!
+        </p>
       </div>
-      <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4">LED BossFX-2 Pro & Nebelmaschine</h1>
-      <p class="text-[var(--color-text-muted)] text-xl max-w-2xl">
-        Die Stairville LED BossFX-2 Pro ist eine komplette Party-Lichtanlage für DJs und Events: mit 2 Derby-Beams, 2 hellen Flood-Panels, 4 Strobe-LEDs (Weiß/UV) und schnellem Plug-and-Play-Aufbau inklusive Stativ.
-        <br />
-         Erhältlich auch als Set mit leistungsstarker 800W Nebelmaschine. Unerlässlich, um die Lichteffekte richtig zur Geltung zu bringen!
-      </p>
     </div>
   </section>
-
-  <!-- 1. Bildergalerie -->
-  <ProductGallery images={images} title="LED BossFX-2 Pro & Nebelmaschine" />
 
   <!-- Demo Video -->
   <section class="section-padding bg-[var(--color-bg)]">
@@ -197,7 +191,7 @@ const videoSchema = {
         <h2 class="font-play text-3xl font-bold mt-2">Light-Demo</h2>
         <p class="text-[var(--color-text-muted)] mt-2">Eindruck der LED BossFX-2 Pro in Aktion</p>
       </div>
-      <div class="aspect-video rounded-xl overflow-hidden bg-black">
+       <div class="aspect-video rounded-xl overflow-hidden bg-[var(--color-bg)]">
         <iframe 
           src="https://www.youtube.com/embed/MzCgO9gkBzQ" 
           title="LED BossFX Demo"
@@ -242,9 +236,9 @@ const videoSchema = {
    <!-- FAQ -->
    <section class="section-padding">
      <div class="max-w-4xl mx-auto px-4">
-<h2 class="font-play text-2xl md:text-3xl font-bold text-center mb-10">
-        Häufig gestellte Fragen
-      </h2>
+       <h2 class="font-play text-2xl md:text-3xl font-bold text-center mb-10">
+         Häufig gestellte Fragen
+       </h2>
        <div class="space-y-4">
          {faqs.map((faq) => (
            <details class="faq-details bg-[var(--color-surface)] rounded-xl p-4 cursor-pointer">
@@ -262,11 +256,6 @@ const videoSchema = {
        </div>
      </div>
    </section>
+</ProductLayout>
 
-   <!-- CTA Section -->
-  <ProductCTA product={product} label="die LED BossFX-2 Pro mit Nebelmaschine" />
-
-  <StickyMerkliste href="/vermietung#kontakt" productSlug={product.slug} />
-  <Footer />
-</Layout>
 

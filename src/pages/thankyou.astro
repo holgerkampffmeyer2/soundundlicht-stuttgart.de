@@ -90,20 +90,13 @@ const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data])
           return;
         }
         
-        let total = 0;
         let rows = '';
         items.forEach(item => {
           const product = productsBySlug?.[item.slug];
           if (!product) {
-            // fallback
-            rows += `<div class="mb-4"><span class="font-semibold">${item.quantity}x</span> ${item.slug} (Produkt nicht gefunden)</div>`;
+            rows += `<div class="mb-4"><span class="font-semibold">${item.slug}</span> (Produkt nicht gefunden)</div>`;
             return;
           }
-          const priceMatch = product.price?.match(/\d+/);
-          const price = priceMatch ? parseInt(priceMatch[0], 10) : 0;
-          const itemTotal = price * item.quantity;
-          total += itemTotal;
-          
           rows += `
             <div class="flex items-start space-x-4 mb-4">
               <div class="flex-shrink-0">
@@ -111,9 +104,7 @@ const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data])
               </div>
               <div class="flex-1 space-y-1">
                 <div class="font-semibold">${product.title}</div>
-                <div class="text-[var(--color-text-muted)] text-sm">${item.quantity}x</div>
                 <div class="text-[var(--color-text-muted)] text-sm">Preis: ${product.price}</div>
-                <div class="text-[var(--color-text-muted)] text-sm">Zwischensumme: ${itemTotal} €</div>
               </div>
             </div>
           `;
@@ -123,9 +114,8 @@ const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data])
           <h2 class="font-play font-bold mb-2 text-base">Ihre Merkliste</h2>
           <div class="space-y-4">${rows}</div>
           <div class="mt-4 pt-2 border-t border-[var(--color-border)]">
-            <p class="text-[var(--color-text-muted)] font-semibold">Gesamtbetrag: <span class="font-play text-xl">ab ${total} €</span></p>
-            <p class="text-[var(--color-text-muted)] text-sm mt-2">
-              Bitte beachten Sie: Dies ist eine unverbindliche Anfrage. Die angegebenen Preise sind Richtwerte und verstehen sich als Tagesmietpreise abholbereit in Stuttgart. Wir erstellen Ihnen anschließend ein individuelles, verbindliches Angebot basierend auf Verfügbarkeit, Mietdauer und genauer Aufstellung.
+            <p class="text-[var(--color-text-muted)] text-sm">
+              Bitte beachten Sie: Dies ist eine unverbindliche Anfrage. Die angegebenen Preise sind Richtwerte.
             </p>
             <button id="clear-merkliste" class="mt-2 btn-secondary w-full">Merkliste leeren</button>
           </div>

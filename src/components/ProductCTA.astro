@@ -39,8 +39,6 @@ const { product, label = 'diesem Paket' } = Astro.props;
   but the IIFE + already-flag pattern ensures idempotent registration.
 -->
 <script>
-  import { addItem } from '../lib/merklisteStore';
-
   (() => {
     const SCRIPT_ID = 'productcta-request-now-init';
     if ((window as unknown as Record<string, boolean>)[SCRIPT_ID]) return;
@@ -51,7 +49,7 @@ const { product, label = 'diesem Paket' } = Astro.props;
       if (!target) return;
       const slug = target.id.replace(/^request-now-/, '');
       if (!slug) return;
-      addItem(slug);
+      document.dispatchEvent(new CustomEvent('add-to-wishlist', { detail: { slug } }));
       document.dispatchEvent(new CustomEvent('toggle-merkliste'));
     });
   })();

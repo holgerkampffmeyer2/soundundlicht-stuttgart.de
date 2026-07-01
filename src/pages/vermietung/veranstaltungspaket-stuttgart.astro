@@ -1,18 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProductLayout from '../../components/vermietung/ProductLayout.astro';
 import Icon from '../../components/Icon.astro';
-import Navbar from '../../components/Navbar.astro';
-import Footer from '../../components/Footer.astro';
-import ProductGallery from '../../components/vermietung/ProductGallery.astro';
 import PackageContents from '../../components/vermietung/PackageContents.astro';
 import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import Testimonials from '../../components/Testimonials.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import StickyMerkliste from '../../components/StickyMerkliste.astro';
-import ProductCTA from '../../components/ProductCTA.astro';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'veranstaltungspaket-stuttgart')!.data;
@@ -159,41 +153,40 @@ const faqSchema = {
 };
 ---
 
-<Layout 
-  title={pageTitle}
+<ProductLayout 
+  product={product}
+  pageTitle={pageTitle}
   description="Miete das Veranstaltungspaket für dein Event in Stuttgart. Komplette Eventtechnik mit LD Maui Soundanlage, Licht, Nebel und Moving Heads für bis zu 150 Personen."
   image="/img/vermietung/veranstaltungspaket.webp"
   preloadImage="/img/vermietung/veranstaltungspaket.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Veranstaltungspaket" }}
+  galleryImages={images}
   jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+  breadcrumbSegments={breadcrumbSegments}
 >
-  <Navbar currentPage="/vermietung" />
-
-  <Breadcrumb segments={breadcrumbSegments} />
-
-    <!-- Hero -->
-    <section class="relative min-h-[60vh] flex items-center overflow-hidden">
-      <img src="/img/vermietung/veranstaltungspaket.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
-      <div class="hero-overlay-accent"></div>
-      <div class="relative z-10 w-full py-32 px-4">
-        <div class="max-w-6xl mx-auto">
-          <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
-          <div class="flex flex-wrap gap-3 mt-3 mb-2">
-            <span class="price-badge">{product.price}</span>
-            <span class="plug-badge-inline">
-              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-              Inkl. Kabel & Einweisung
-            </span>
-          </div>
-          <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Veranstaltungspaket Stuttgart</h1>
-          <p class="text-[var(--color-text)] text-xl max-w-2xl">
-            Miete unser professionelles Veranstaltungspaket für dein Event in Stuttgart und Umgebung. Das Set enthält das leistungsstarke LD Maui 28 G3 Säulensystem mit erstklassigem Sound, ein Yamaha 6-Kanal Mischpult für flexible Audio-Steuerung, eine Eurolite KLS Laser Bar für spektakuläre Licht- und Lasereffekte, eine Stairville AF-150 Nebelmaschine für atmosphärische Wirkung sowie Moving Heads, Mikrofon und LED PAR Strahler für komplette Beschallung und Beleuchtung.<br />
-            Alles inklusive notwendiger Strom- und Anschlusskabel für einfachen Aufbau. Perfekt für Hochzeiten, Firmenfeiern, Vereinsfeste und Gartenpartys bis zu 150 Personen.
-          </p>
+  <!-- Hero -->
+  <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/img/vermietung/veranstaltungspaket.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="hero-overlay-accent"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+          <span class="price-badge">{product.price}</span>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Inkl. Kabel & Einweisung
+          </span>
         </div>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Veranstaltungspaket Stuttgart</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Miete unser professionelles Veranstaltungspaket für dein Event in Stuttgart und Umgebung. Das Set enthält das leistungsstarke LD Maui 28 G3 Säulensystem mit erstklassigem Sound, ein Yamaha 6-Kanal Mischpult für flexible Audio-Steuerung, eine Eurolite KLS Laser Bar für spektakuläre Licht- und Lasereffekte, eine Stairville AF-150 Nebelmaschine für atmosphärische Wirkung sowie Moving Heads, Mikrofon und LED PAR Strahler für komplette Beschallung und Beleuchtung.<br />
+          Alles inklusive notwendiger Strom- und Anschlusskabel für einfachen Aufbau. Perfekt für Hochzeiten, Firmenfeiern, Vereinsfeste und Gartenpartys bis zu 150 Personen.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
   <!-- Package Highlights -->
   <section class="section-padding bg-[var(--color-surface)]">
@@ -215,9 +208,6 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- 1. Bildergalerie -->
-  <ProductGallery images={images} title="Veranstaltungspaket" />
-
   <!-- Demo Video -->
   <section class="section-padding bg-[var(--color-bg)]">
     <div class="max-w-4xl mx-auto px-4">
@@ -226,7 +216,7 @@ const faqSchema = {
         <h2 class="font-play text-3xl font-bold mt-2">Sound-Check PA-Anlage</h2>
         <p class="text-[var(--color-text-muted)] mt-2">Eindruck der LD Maui 28 G3 in Aktion</p>
       </div>
-      <div class="aspect-video rounded-xl overflow-hidden bg-black">
+       <div class="aspect-video rounded-xl overflow-hidden bg-[var(--color-bg)]">
         <iframe 
           src="https://www.youtube.com/embed/vE5PQ7IUdrg" 
           title="LD Maui 28 G3 Demo"
@@ -271,13 +261,6 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <ProductCTA product={product} label="das Veranstaltungspaket" />
-
   <Testimonials />
-
-  <StickyMerkliste href="/vermietung#kontakt" productSlug={product.slug} />
-
-  <Footer />
-</Layout>
+</ProductLayout>
 

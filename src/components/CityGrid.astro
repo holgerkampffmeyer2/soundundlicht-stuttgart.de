@@ -258,8 +258,8 @@ function loadSlide(index) {
     inset: 0;
     background: linear-gradient(
       135deg,
-      rgba(10, 10, 15, 0.92) 0%,
-      rgba(10, 10, 15, 0.7) 40%,
+      var(--overlay-dark) 0%,
+      var(--overlay-medium) 40%,
       color-mix(in srgb, var(--color-secondary) 15%, transparent) 100%
     );
     z-index: 1;
@@ -298,7 +298,7 @@ function loadSlide(index) {
   }
 
   .city-card-desc {
-    color: white;
+    color: var(--color-text);
     opacity: 0.85;
     font-size: 0.95rem;
     line-height: 1.5;
@@ -326,10 +326,10 @@ function loadSlide(index) {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    background: rgba(10, 10, 15, 0.6);
+    border: 2px solid var(--surface-glass-2);
+    background: var(--overlay-light);
     backdrop-filter: blur(4px);
-    color: white;
+    color: var(--color-text);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -376,18 +376,18 @@ function loadSlide(index) {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.25);
+    background: var(--color-text-muted);
     transition: all 0.3s ease;
   }
 
   .carousel-dot.active::after {
-    background: var(--color-secondary);
+    background: var(--color-accent);
     transform: scale(1.4);
-    box-shadow: 0 0 12px var(--color-secondary);
+    box-shadow: 0 0 12px var(--color-accent);
   }
 
   .carousel-dot:hover::after {
-    background: var(--color-secondary);
+    background: var(--color-accent);
   }
 
   @media (max-width: 640px) {
