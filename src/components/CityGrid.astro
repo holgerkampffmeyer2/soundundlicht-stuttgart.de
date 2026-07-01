@@ -42,7 +42,7 @@ function thumbSrc(src: string): string {
         <div class="carousel-track" id="carousel-track">
 {cities.at(-1) && (
 <a href={`/${cities.at(-1).slug}`} class="carousel-slide" data-index="-1" aria-hidden="true" tabindex="-1">
-                <img class="city-card-bg" data-src={cities.at(-1).image} data-srcset={thumbSrc(cities.at(-1).image) + ' 480w, ' + cities.at(-1).image + ' 960w'} src={cities.at(-1).image} srcset={cities.at(-1).image} sizes="(max-width: 640px) 100vw, 800px" alt="" />
+                <img class="city-card-bg" data-src={cities.at(-1).image} data-srcset={thumbSrc(cities.at(-1).image) + ' 480w, ' + cities.at(-1).image + ' 960w'} src={cities.at(-1).image} sizes="(max-width: 640px) 100vw, 800px" alt="" />
                <div class="city-card-overlay"></div>
                <div class="city-card-content">
                  <span class="city-card-label">{cities.at(-1).name}</span>

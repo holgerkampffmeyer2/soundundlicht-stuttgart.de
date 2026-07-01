@@ -50,6 +50,20 @@ const productTitle = product.title ?? pageTitle;
   <StickyMerkliste href="/vermietung#kontakt" productSlug={productSlug} />
 
   <Footer />
+
+  <script>
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const requestBtn = target.closest('[data-request-now]');
+      
+      if (requestBtn) {
+        const slug = requestBtn.getAttribute('data-request-now');
+        if (slug) {
+          document.dispatchEvent(new CustomEvent('add-to-wishlist', { detail: { slug } }));
+        }
+      }
+    });
+  </script>
 </Layout>
 
 <style>
@@ -57,19 +71,5 @@ const productTitle = product.title ?? pageTitle;
     text-align: center; 
   }
 </style>
-
-<script>
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    const requestBtn = target.closest('[data-request-now]');
-    
-    if (requestBtn) {
-      const slug = requestBtn.getAttribute('data-request-now');
-      if (slug) {
-        document.dispatchEvent(new CustomEvent('add-to-wishlist', { detail: { slug } }));
-      }
-    }
-  });
-</script>
 
 

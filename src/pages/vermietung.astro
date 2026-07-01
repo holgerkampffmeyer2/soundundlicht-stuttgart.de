@@ -369,21 +369,21 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
   <Testimonials />
   <StickyMerkliste />
   <Footer />
+
+  <script>
+    import { addItem } from '../lib/merklisteStore';
+
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('[data-action="add-to-wishlist"]');
+      if (!target) return;
+      if (target.closest('#pakete')) return;
+      const slug = target.dataset.slug;
+      if (!slug) return;
+
+      document.dispatchEvent(new CustomEvent('add-to-wishlist', { detail: { slug } }));
+    });
+  </script>
 </Layout>
-
-<script>
-  import { addItem } from '../lib/merklisteStore';
-
-  document.addEventListener('click', (e) => {
-    const target = e.target.closest('[data-action="add-to-wishlist"]');
-    if (!target) return;
-    if (target.closest('#pakete')) return;
-    const slug = target.dataset.slug;
-    if (!slug) return;
-
-    document.dispatchEvent(new CustomEvent('add-to-wishlist', { detail: { slug } }));
-  });
-</script>
 
 <style>
   .section-jump-link {

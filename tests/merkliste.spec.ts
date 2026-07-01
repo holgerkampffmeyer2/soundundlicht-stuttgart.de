@@ -29,7 +29,7 @@ test.describe('Merkliste functionality', () => {
     await expect(badge).toBeVisible();
     await expect(badge).toHaveText('1');
 
-    await page.click('#merkliste-toggle', { force: true });
+    await page.click('.merkliste-toggle', { force: true });
     const drawer = page.locator('#merkliste-drawer');
     await expect(drawer).toHaveClass(/open/);
     await expect(drawer.locator('h3')).toContainText(productTitle ?? '');
@@ -81,7 +81,7 @@ test.describe('Merkliste functionality', () => {
     await expect(badge).toBeVisible();
     await expect(badge).toHaveText('1');
 
-    await page.click('#merkliste-toggle', { force: true });
+    await page.click('.merkliste-toggle', { force: true });
     const drawer = page.locator('#merkliste-drawer');
     await expect(drawer).toHaveClass(/open/);
     await expect(drawer.locator('h3')).toContainText(productTitle ?? '');
@@ -130,7 +130,7 @@ test.describe('Merkliste functionality', () => {
     await expect(badge).toBeVisible();
     await expect(badge).toHaveText(addedCount.toString());
 
-    await page.click('#merkliste-toggle', { force: true });
+    await page.click('.merkliste-toggle', { force: true });
     const drawer = page.locator('#merkliste-drawer');
     await expect(drawer).toHaveClass(/open/);
     const items = drawer.locator('.merkliste-item');
