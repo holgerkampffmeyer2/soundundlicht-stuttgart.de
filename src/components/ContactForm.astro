@@ -64,15 +64,27 @@ import { getItemCount } from '../../lib/merklisteStore';
     </div>
 
     <div class="form-group">
-      <label for="rental_period" class="form-label">Mietzeitraum</label>
+      <label for="rental_start" class="form-label">Anmietung</label>
       <input
-        type="text"
-        id="rental_period"
-        name="rental_period"
+        type="date"
+        id="rental_start"
+        name="rental_start"
         class="form-input"
-        placeholder="z.B. 15.08. – 17.08.2026"
         autocomplete="off"
       />
+      <span class="form-error" id="error-start" role="alert"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="rental_end" class="form-label">Rückgabe</label>
+      <input
+        type="date"
+        id="rental_end"
+        name="rental_end"
+        class="form-input"
+        autocomplete="off"
+      />
+      <span class="form-error" id="error-end" role="alert"></span>
     </div>
 
     <div class="form-group">
@@ -172,7 +184,60 @@ import { getItemCount } from '../../lib/merklisteStore';
       }
     }
 
+    // Date inputs: min=today, rental_end ≥ rental_start
+    var startInput = document.getElementById('rental_start');
+    var endInput = document.getElementById('rental_end');
+    function getTodayISO() {
+      var d = new Date();
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+    var today = getTodayISO();
+    if (startInput && endInput) {
+      startInput.min = today;
+      endInput.min = today;
+      startInput.addEventListener('change', function () {
+        endInput.min = startInput.value || today;
+        if (endInput.value && endInput.value < startInput.value) {
+          endInput.value = startInput.value;
+        }
+      });
+    }
+
+    var errorStart = document.getElementById('error-start');
+    var errorEnd = document.getElementById('error-end');
+    function clearErrors() {
+      if (errorStart) { errorStart.textContent = ''; startInput.classList.remove('is-invalid'); }
+      if (errorEnd) { errorEnd.textContent = ''; endInput.classList.remove('is-invalid'); }
+    }
+    function showError(el, input, msg) {
+      el.textContent = msg;
+      input.classList.add('is-invalid');
+      input.focus();
+    }
+    if (startInput) startInput.addEventListener('input', clearErrors);
+    if (endInput) endInput.addEventListener('input', clearErrors);
+
     form.addEventListener('submit', function(e) {
+      clearErrors();
+      // Date validation
+      var rentalStart = startInput ? startInput.value : '';
+      var rentalEnd = endInput ? endInput.value : '';
+      if (rentalStart && rentalStart < today) {
+        e.preventDefault();
+        if (errorStart && startInput) showError(errorStart, startInput, 'Bitte wähle ein Anmietdatum in der Zukunft.');
+        return;
+      }
+      if (rentalEnd && rentalEnd < today) {
+        e.preventDefault();
+        if (errorEnd && endInput) showError(errorEnd, endInput, 'Bitte wähle ein Rückgabedatum in der Zukunft.');
+        return;
+      }
+      if (rentalStart && rentalEnd && rentalEnd < rentalStart) {
+        e.preventDefault();
+        if (errorEnd && endInput) showError(errorEnd, endInput, 'Das Rückgabedatum muss nach dem Anmietdatum liegen.');
+        return;
+      }
+
       // Always read fresh cart data on submit
       cartInput.value = getCartData();
       
@@ -297,6 +362,22 @@ import { getItemCount } from '../../lib/merklisteStore';
   .form-textarea {
     min-height: 100px;
     resize: vertical;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+
+  .form-error {
+    font-size: 0.8rem;
+    color: #ef4444;
+    min-height: 1.2em;
+    display: block;
+  }
+
+  .form-input.is-invalid {
+    border-color: #ef4444;
   }
 
   select.form-input {
