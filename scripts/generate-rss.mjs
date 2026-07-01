@@ -23,8 +23,21 @@ function escapeXml(str) {
     .replace(/'/g, '&apos;');
 }
 
+const htmlEntities = {
+  '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&apos;': "'",
+  '&auml;': 'ä', '&Auml;': 'Ä', '&ouml;': 'ö', '&Ouml;': 'Ö', '&uuml;': 'ü', '&Uuml;': 'Ü',
+  '&szlig;': 'ß', '&ndash;': '–', '&mdash;': '—', '&hellip;': '…',
+  '&shy;': '', '&copy;': '©', '&reg;': '®', '&trade;': '™',
+  '&euro;': '€', '&pound;': '£', '&yen;': '¥', '&cent;': '¢',
+  '&deg;': '°', '&plusmn;': '±', '&raquo;': '»', '&laquo;': '«',
+  '&bdquo;': '„', '&ldquo;': '„', '&rdquo;': '“', '&lsquo;': '‘', '&rsquo;': '’',
+};
+
 function decodeHtmlEntities(str) {
-  return str.replace(/&#(\d+);/g, (_, code) => String.fromCharCode(code)).replace(/&amp;/g, '&');
+  return str
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(code))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, code) => String.fromCharCode(parseInt(code, 16)))
+    .replace(/&[a-zA-Z]+;/g, match => htmlEntities[match] || match);
 }
 
 function formatRssDate(dateStr) {
