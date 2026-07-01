@@ -21,7 +21,7 @@ const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data])
         <Icon name="check" class="w-20 h-20 mx-auto text-[var(--color-accent)]" />
       </div>
       <h1 class="font-play text-4xl md:text-5xl font-bold mb-6">
-        Anfrage versendet! ✅
+        Anfrage versendet!
       </h1>
       <p class="text-[var(--color-text-muted)] text-xl mb-4">
         Vielen Dank für deine Anfrage.
@@ -77,7 +77,11 @@ const productsBySlug = Object.fromEntries(allProducts.map(p => [p.slug, p.data])
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const productScript = document.getElementById('rental-catalog-data');
-      const productsBySlug = productScript ? JSON.parse(productScript.textContent) : {};
+      const products = productScript ? JSON.parse(productScript.textContent) : [];
+      const productsBySlug = {};
+      for (let i = 0; i < products.length; i++) {
+        productsBySlug[products[i].slug] = products[i];
+      }
       
       const cartSummary = document.getElementById('merkliste-summary');
       if (!cartSummary) return;
