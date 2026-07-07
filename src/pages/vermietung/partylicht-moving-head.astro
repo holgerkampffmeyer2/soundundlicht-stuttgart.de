@@ -67,7 +67,7 @@ const productSchema = {
   "@type": "Product",
   "name": product.title,
   "description": product.description,
-  "image": product.image ? (product.image.startsWith('http') ? product.image : 'https://soundundlicht-stuttgart.de' + product.image) : undefined,
+  ...(product.image ? { image: product.image.startsWith('http') ? product.image : 'https://soundundlicht-stuttgart.de' + product.image } : {}),
   "offers": {
     "@type": "Offer",
     "price": product.priceValue.toString(),

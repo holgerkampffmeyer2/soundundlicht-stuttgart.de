@@ -10,16 +10,11 @@ interface MerklisteData {
   lastUpdated: number;
 }
 
-function checkIsBrowser(): boolean {
+const ONE_DAY = 24 * 60 * 60 * 1000;
+
+function hasLocalStorage(): boolean {
   return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
 }
-
-function getStorage(): Storage | null {
-  if (!checkIsBrowser()) return null;
-  return window.localStorage;
-}
-
-const ONE_DAY = 24 * 60 * 60 * 1000;
 
 function emptyMerkliste(): MerklisteData {
   return { items: [], lastUpdated: Date.now() };
@@ -37,19 +32,18 @@ function isValidMerkliste(data: unknown): data is MerklisteData {
 }
 
 function loadMerkliste(): MerklisteData {
-  const storage = getStorage();
-  if (!storage) return emptyMerkliste();
+  if (!hasLocalStorage()) return emptyMerkliste();
 
   try {
-    const stored = storage.getItem(STORAGE_KEY);
+    const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       const data: unknown = JSON.parse(stored);
       if (!isValidMerkliste(data)) {
-        storage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(STORAGE_KEY);
         return emptyMerkliste();
       }
       if (Date.now() - data.lastUpdated > ONE_DAY) {
-        storage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(STORAGE_KEY);
         return emptyMerkliste();
       }
       return data;
@@ -61,11 +55,10 @@ function loadMerkliste(): MerklisteData {
 }
 
 function saveMerkliste(data: MerklisteData): void {
-  const storage = getStorage();
-  if (!storage) return;
+  if (!hasLocalStorage()) return;
 
   try {
-    storage.setItem(STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (e) {
     console.error('Failed to save merkliste to localStorage', e);
   }
@@ -92,8 +85,7 @@ export function removeItem(slug: string): void {
   data.items = data.items.filter(item => item.slug !== slug);
 
   if (data.items.length === 0) {
-    const storage = getStorage();
-    if (storage) storage.removeItem(STORAGE_KEY);
+    if (hasLocalStorage()) localStorage.removeItem(STORAGE_KEY);
   } else {
     data.lastUpdated = Date.now();
     saveMerkliste(data);
@@ -101,8 +93,7 @@ export function removeItem(slug: string): void {
 }
 
 export function clearCart(): void {
-  const storage = getStorage();
-  if (storage) storage.removeItem(STORAGE_KEY);
+  if (hasLocalStorage()) localStorage.removeItem(STORAGE_KEY);
 }
 
 export function getItemCount(): number {
