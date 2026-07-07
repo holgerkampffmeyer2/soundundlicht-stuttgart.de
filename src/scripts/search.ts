@@ -22,17 +22,13 @@ function escapeHtml(str: string): string {
 
 function loadPagefind(): Promise<any> {
   if (!pagefindPromise) {
-    pagefindPromise = new Promise(resolve => {
-      if ((window as any).pagefind) {
-        resolve((window as any).pagefind);
-        return;
-      }
-      const s = document.createElement('script');
-      s.src = '/pagefind/pagefind.js';
-      s.onload = () => resolve((window as any).pagefind);
-      s.onerror = () => { pagefindPromise = null; resolve(null); };
-      document.head.appendChild(s);
-    });
+    const pf = (window as any).__pagefind;
+    pagefindPromise = pf
+      ? Promise.race([
+          pf,
+          new Promise(resolve => setTimeout(() => resolve(null), 10000)),
+        ])
+      : Promise.resolve(null);
   }
   return pagefindPromise;
 }

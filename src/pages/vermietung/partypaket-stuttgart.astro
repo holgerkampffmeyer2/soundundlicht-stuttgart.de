@@ -144,7 +144,7 @@ const faqSchema = {
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Partypaket" }}
   galleryImages={images}
-  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, {
+  jsonLd={[productSchema, serviceSchema, breadcrumbSchema, faqSchema, {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": "Partypaket Stuttgart Demo",

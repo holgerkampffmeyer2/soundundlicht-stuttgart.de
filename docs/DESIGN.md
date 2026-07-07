@@ -180,7 +180,7 @@ Die Site verwendet **Pagefind 1.5.2** (via `astro-pagefind`) für clientseitige 
 ### Funktionsweise
 
 1. **Build**: Pagefind indexiert alle statischen HTML-Seiten im `dist/`-Output
-2. **Client**: `src/scripts/search.ts` erzeugt ein dynamisches `<script>`-Element für `/pagefind/pagefind.js` und greift über `window.pagefind` darauf zu (Vite kann den Import nicht auflösen, da pagefind erst nach dem Build generiert wird)
+2. **Client**: `Layout.astro` lädt pagefind per `import('/pagefind/pagefind.js')` in einem `<script is:inline>` (nicht von Vite verarbeitet) und speichert den Promise in `window.__pagefind`. `src/scripts/search.ts` nutzt `window.__pagefind` für die Suche.
 3. **Ergebnisse**: Werden in einem Overlay unter dem Suchinput gerendert
 
 ### Metadata pro Seite

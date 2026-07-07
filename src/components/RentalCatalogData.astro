@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import type { ProductData } from '../lib/types';
 
-const rentalItems = (await getCollection('products')).map(i => ({
+const rentalItems: ProductData[] = (await getCollection('products')).map(i => ({
   slug: i.data.slug,
   title: i.data.title,
   image: i.data.image,

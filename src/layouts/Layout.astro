@@ -145,6 +145,12 @@ const pagefindMetaKeys = Object.keys(pagefindMerged);
 
 <RentalCatalogData />
 
+<!-- pagefind per import() laden (is:inline → Vite verarbeitet es nicht) -->
+<script is:inline>
+  window.__pagefind = import('/pagefind/pagefind.js');
+  window.__pagefind.catch(function() { window.__pagefind = null; });
+</script>
+
 <script>
   import '../scripts/search.ts';
 </script>

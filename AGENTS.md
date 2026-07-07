@@ -32,7 +32,7 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
   - **Debounce**: 300ms nach Eingabe (mind. 2 Zeichen)
   - **Keyboard**: ArrowUp/Down/Enter/Escape für Navigation im Overlay
   - **Overlay-Close**: Klick außerhalb via `onDocumentClick`
-   - **Pagefind**: Dynamisches `<script>`-Element für `/pagefind/pagefind.js` bei erster Suche (da pagefind erst nach dem Build generiert wird, kann Vite den Import nicht auflösen)
+   - **Pagefind**: `Layout.astro` lädt pagefind per `import('/pagefind/pagefind.js')` in einem `<script is:inline>` (Vite umgangen) und speichert Promise in `window.__pagefind`. `search.ts` greift darauf zu.
 - **Katalog-Matching für `/vermietung/`:**
   - `rentalItems` aus `getCollection('products')` (21 Produkte) wird als JSON-Script eingebettet
   - `matchCatalogProducts(query)` matcht Suchbegriffe gegen Titel/Description/Features
