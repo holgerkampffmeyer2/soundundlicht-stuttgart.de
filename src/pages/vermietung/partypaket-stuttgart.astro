@@ -97,6 +97,20 @@ const serviceSchema = {
   }
 };
 
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.title,
+  "description": product.description,
+  "image": product.image ? (product.image.startsWith('http') ? product.image : 'https://soundundlicht-stuttgart.de' + product.image) : undefined,
+  "offers": {
+    "@type": "Offer",
+    "price": product.priceValue.toString(),
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  }
+};
+
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",

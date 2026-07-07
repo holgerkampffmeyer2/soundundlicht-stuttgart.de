@@ -44,6 +44,19 @@ const serviceSchema = {
     "availability": "https://schema.org/InStock"
   }
 };
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "JBL Partybox 300 + 320 Set Vermietung",
+  "description": "Leihe dieses leistungsstarke Partyboxen‑Set (2×240W) mit Akku, Light‑Show und Bluetooth – ideal für private Feiern bis 80 Personen.",
+  "image": [siteUrl + images[0], siteUrl + images[1]],
+  "offers": {
+    "@type": "Offer",
+    "price": product.priceValue.toString(),
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  }
+};
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -111,7 +124,7 @@ const events = [
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Sound", label: "JBL Partyboxen (Paar)" }}
   galleryImages={images}
-  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+  jsonLd={[productSchema, serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">

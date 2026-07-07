@@ -20,15 +20,18 @@ function escapeHtml(str: string): string {
   return div.innerHTML;
 }
 
-function dynamicImport(url: string): Promise<any> {
-  return new Function('url', 'return import(url)')(url);
-}
-
 function loadPagefind(): Promise<any> {
   if (!pagefindPromise) {
-    pagefindPromise = dynamicImport('/pagefind/pagefind.js').catch(() => {
-      pagefindPromise = null;
-      return null;
+    pagefindPromise = new Promise(resolve => {
+      if ((window as any).pagefind) {
+        resolve((window as any).pagefind);
+        return;
+      }
+      const s = document.createElement('script');
+      s.src = '/pagefind/pagefind.js';
+      s.onload = () => resolve((window as any).pagefind);
+      s.onerror = () => { pagefindPromise = null; resolve(null); };
+      document.head.appendChild(s);
     });
   }
   return pagefindPromise;

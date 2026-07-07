@@ -1,38 +1,49 @@
 const STORAGE_KEY = 'sls_merkliste';
 
-function checkIsBrowser() {
+interface MerklisteItem {
+  slug: string;
+  addedAt: number;
+}
+
+interface MerklisteData {
+  items: MerklisteItem[];
+  lastUpdated: number;
+}
+
+function checkIsBrowser(): boolean {
   return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
 }
 
-function getStorage() {
+function getStorage(): Storage | null {
   if (!checkIsBrowser()) return null;
   return window.localStorage;
 }
 
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
-function emptyMerkliste() {
+function emptyMerkliste(): MerklisteData {
   return { items: [], lastUpdated: Date.now() };
 }
 
-function isValidMerkliste(data) {
+function isValidMerkliste(data: unknown): data is MerklisteData {
   if (!data || typeof data !== 'object') return false;
-  if (!Array.isArray(data.items)) return false;
-  if (typeof data.lastUpdated !== 'number') return false;
-  for (const item of data.items) {
-    if (!item || typeof item.slug !== 'string') return false;
+  const d = data as Record<string, unknown>;
+  if (!Array.isArray(d.items)) return false;
+  if (typeof d.lastUpdated !== 'number') return false;
+  for (const item of d.items) {
+    if (!item || typeof item !== 'object' || typeof (item as MerklisteItem).slug !== 'string') return false;
   }
   return true;
 }
 
-function loadMerkliste() {
+function loadMerkliste(): MerklisteData {
   const storage = getStorage();
   if (!storage) return emptyMerkliste();
 
   try {
     const stored = storage.getItem(STORAGE_KEY);
     if (stored) {
-      const data = JSON.parse(stored);
+      const data: unknown = JSON.parse(stored);
       if (!isValidMerkliste(data)) {
         storage.removeItem(STORAGE_KEY);
         return emptyMerkliste();
@@ -49,7 +60,7 @@ function loadMerkliste() {
   return emptyMerkliste();
 }
 
-function saveMerkliste(data) {
+function saveMerkliste(data: MerklisteData): void {
   const storage = getStorage();
   if (!storage) return;
 
@@ -60,12 +71,12 @@ function saveMerkliste(data) {
   }
 }
 
-export function getCart() {
+export function getCart(): MerklisteData {
   const data = loadMerkliste();
   return { ...data, items: [...data.items] };
 }
 
-export function addItem(slug) {
+export function addItem(slug: string): void {
   if (!slug || typeof slug !== 'string') return;
   const data = loadMerkliste();
   const exists = data.items.some(item => item.slug === slug);
@@ -76,7 +87,7 @@ export function addItem(slug) {
   saveMerkliste(data);
 }
 
-export function removeItem(slug) {
+export function removeItem(slug: string): void {
   const data = loadMerkliste();
   data.items = data.items.filter(item => item.slug !== slug);
 
@@ -89,17 +100,17 @@ export function removeItem(slug) {
   }
 }
 
-export function clearCart() {
+export function clearCart(): void {
   const storage = getStorage();
   if (storage) storage.removeItem(STORAGE_KEY);
 }
 
-export function getItemCount() {
+export function getItemCount(): number {
   const data = loadMerkliste();
   return data.items.length;
 }
 
-export function isCartEmpty() {
+export function isCartEmpty(): boolean {
   const data = loadMerkliste();
   return data.items.length === 0;
 }

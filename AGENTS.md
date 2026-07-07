@@ -32,7 +32,7 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
   - **Debounce**: 300ms nach Eingabe (mind. 2 Zeichen)
   - **Keyboard**: ArrowUp/Down/Enter/Escape für Navigation im Overlay
   - **Overlay-Close**: Klick außerhalb via `onDocumentClick`
-  - **Pagefind**: Dynamischer `import('/pagefind/pagefind.js')` bei erster Suche
+   - **Pagefind**: Dynamisches `<script>`-Element für `/pagefind/pagefind.js` bei erster Suche (da pagefind erst nach dem Build generiert wird, kann Vite den Import nicht auflösen)
 - **Katalog-Matching für `/vermietung/`:**
   - `rentalItems` aus `getCollection('products')` (21 Produkte) wird als JSON-Script eingebettet
   - `matchCatalogProducts(query)` matcht Suchbegriffe gegen Titel/Description/Features
@@ -69,7 +69,7 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 
 ## Merkliste (Wunschliste für Anfragen)
 
-- **Clientseitige Merkliste** (`src/lib/merklisteStore.js`) via `localStorage` (Key: `sls_merkliste`)
+- **Clientseitige Merkliste** (`src/lib/merklisteStore.ts`) via `localStorage` (Key: `sls_merkliste`)
   - Funktionen: `getCart()`, `addItem(slug)`, `removeItem(slug)`, `updateItemQuantity(slug, qty)`, `clearCart()`, `getItemCount()`
   - Automatische Leerung nach 24h Inaktivität
   - Produktdaten-Lookup via embedded JSON `#rental-catalog-data`

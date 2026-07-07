@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+
+const rentalItems = (await getCollection('products')).map(i => ({
+  slug: i.data.slug,
+  title: i.data.title,
+  image: i.data.image,
+  description: i.data.description,
+  category: i.data.category,
+  price: i.data.price,
+  priceValue: i.data.priceValue,
+  features: i.data.features,
+  detailPage: i.data.detailPage,
+}));
+---
+
+<script id="rental-catalog-data" type="application/json" set:html={JSON.stringify(rentalItems)}></script>

@@ -62,6 +62,20 @@ const serviceSchema = {
   }
 };
 
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.title,
+  "description": product.description,
+  "image": product.image ? (product.image.startsWith('http') ? product.image : 'https://soundundlicht-stuttgart.de' + product.image) : undefined,
+  "offers": {
+    "@type": "Offer",
+    "price": product.priceValue.toString(),
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  }
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -146,7 +160,7 @@ const events = [
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Licht", label: "18 Prisma 10 Gobo LED Moving Head" }}
   galleryImages={images}
-  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}
+  jsonLd={[productSchema, serviceSchema, breadcrumbSchema, faqSchema]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <!-- Hero -->

@@ -165,7 +165,7 @@ pnpm run generate-rss # Nur RSS-Feed generieren
 
 ## SEO
 
-- JSON-LD: LocalBusiness, Service, FAQPage, OfferCatalog
+- JSON-LD: LocalBusiness, Service, Product, FAQPage, OfferCatalog
 - City-Seiten: Service mit city-spezifischem `areaServed`
 - Sitemap: 25 URLs via `@astrojs/sitemap`
 - RSS Feed: `public/rss.xml` (wird bei build generiert)
@@ -180,7 +180,7 @@ Die Site verwendet **Pagefind 1.5.2** (via `astro-pagefind`) für clientseitige 
 ### Funktionsweise
 
 1. **Build**: Pagefind indexiert alle statischen HTML-Seiten im `dist/`-Output
-2. **Client**: `Layout.astro` lädt `/pagefind/pagefind.js` per dynamischem `import()` und führt die Suche aus
+2. **Client**: `src/scripts/search.ts` erzeugt ein dynamisches `<script>`-Element für `/pagefind/pagefind.js` und greift über `window.pagefind` darauf zu (Vite kann den Import nicht auflösen, da pagefind erst nach dem Build generiert wird)
 3. **Ergebnisse**: Werden in einem Overlay unter dem Suchinput gerendert
 
 ### Metadata pro Seite
