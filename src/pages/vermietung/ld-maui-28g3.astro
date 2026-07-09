@@ -57,6 +57,26 @@ const productSchema = {
   "name": "LD Maui 28 G3 Vermietung",
   "description": "Miete das LD Maui 28 G3 Säulensystem für deine Party, Hochzeit oder Firmenfeier. Die LD Maui 28 G3 ist eine professionelle PA-Anlage mit starkem Bass, druckvollem und glasklarem Sound, mit 2060W, 127 dB Schalldruck, für bis zu 150 Personen.",
   "image": [siteUrl + images[0], siteUrl + images[1]],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "15",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Kunde" },
+      "datePublished": "2024-06-15",
+      "reviewBody": "Tolles Set, einfache Handhabung, gerne wieder!",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    }
+  ],
   "offers": {
     "@type": "Offer",
     "price": product.priceValue.toString(),
