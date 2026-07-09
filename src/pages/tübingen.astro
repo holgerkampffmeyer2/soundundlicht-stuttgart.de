@@ -43,13 +43,32 @@ const faqJsonLd = {
     }
   }))
 };
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://soundundlicht-stuttgart.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tübingen",
+      "item": "https://soundundlicht-stuttgart.de/tübingen"
+    }
+  ]
+};
 ---
 
 <Layout
   title="Veranstaltungstechnik mieten in Tübingen | Sound & Licht Stuttgart"
   description="PA-Anlagen, Partyboxen und Lichttechnik mieten in Tübingen. Komplettpakete für Parties, Hochzeiten und Uni-Events. Abholung in Leinfelden-Echterdingen, nur 25 km von Tübingen."
   image="/img/header.webp"
-  jsonLd={[cityJsonLd, faqJsonLd]}
+  jsonLd={[breadcrumbJsonLd, cityJsonLd, faqJsonLd]}
 >
   <Navbar currentPage="city" />
 

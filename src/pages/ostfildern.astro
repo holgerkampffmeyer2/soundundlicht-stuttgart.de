@@ -45,13 +45,32 @@ const cityJsonLd = {
     "name": "Ostfildern"
   }
 };
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://soundundlicht-stuttgart.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Ostfildern",
+      "item": "https://soundundlicht-stuttgart.de/ostfildern"
+    }
+  ]
+};
 ---
 
 <Layout
   title="Veranstaltungstechnik mieten in Ostfildern | Sound & Licht Stuttgart"
   description="PA-Anlagen, Partyboxen und Lichttechnik mieten in Ostfildern und Umgebung. Komplettpakete für Geburtstage, Hochzeiten und Vereinsfeiern. Abholung in Leinfelden-Echterdingen, nur 8 km."
   image="/img/header.webp"
-  jsonLd={[cityJsonLd, faqJsonLd]}
+  jsonLd={[breadcrumbJsonLd, cityJsonLd, faqJsonLd]}
 >
   <Navbar currentPage="city" />
 
