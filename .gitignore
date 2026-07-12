@@ -16,6 +16,9 @@ playwright-report/
 .vscode/
 .idea/
 
+# serena AI tool cache
+.serena/
+
 # OS
 .DS_Store
 Thumbs.db
