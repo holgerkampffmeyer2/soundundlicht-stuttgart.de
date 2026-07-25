@@ -3,7 +3,7 @@
 ## Project Overview
 Astro 7.x SSG site for event tech rental (PA, partyboxes, lights) in Stuttgart area. Built with Tailwind CSS 4.x. Dark theme. Static deployment to GitHub Pages. Content via Collection (products, faqs, cities).
 
-## Build Commands
+## Build & Test Commands
 - `pnpm run dev` — Dev server
 - `pnpm run build` — Production build → dist/ (für tägliche Entwicklung)
 - `pnpm run build:full` — Build + RSS + urllist (für Deploy)
@@ -11,21 +11,24 @@ Astro 7.x SSG site for event tech rental (PA, partyboxes, lights) in Stuttgart a
 - `pnpm run build:images` — WebP-Optimierung via Sharp (JPG/PNG in `public/img/`)
 - `pnpm run build:full-with-images` — Images + Build + RSS + urllist
 - `pnpm run preview` — Preview build
+- `pnpm run lint` — ESLint code linting
+- `npx vitest run` — Run unit tests (Vitest)
+- `npx playwright test` — Run E2E tests (Playwright)
 
 Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist.txt`.
 
 ## Git Workflow
 - Features auf eigenen Branches entwickeln
-- Vor Commit: Build testen (`pnpm run build`)
+- Vor Commit: Build und Lint testen (`pnpm run build && pnpm run lint`)
 - Keine Secrets (API-Keys, Passwörter) committen
 
 ## Suche (Pagefind)
 
-- **Pagefind 1.5.2** via `astro-pagefind` — Indexierung beim Build (sieht "Pagefind indexed N pages")
+- **astro-pagefind** — Indexierung beim Build (sieht "Pagefind indexed N pages")
 - **props im `<Layout>`:**
   - `pagefindType="produkt"` → setzt `data-pagefind-weight="2"` + `type:produkt` in meta
   - `pagefindMeta={{ price: "ab 80€", image: "/img/...", category: "Sound", label: "..." }}`
-- **`pagefindMeta` wird als separate `<div>` pro Key-Value gerendert** — NICHT kombinierter `;`-String (Pagefind 1.5.2 parst `;` nicht korrekt!)
+- **`pagefindMeta` wird als separate `<div>` pro Key-Value gerendert** — NICHT kombinierter `;`-String!
 - **`data-pagefind-ignore`** auf Navbar.astro + Footer.astro
 - **URL-Normalisierung**: `normalizeUrl()` strippt trailing slashes im JS (`trailingSlash: 'never'`)
 - **Client-Script**: `src/scripts/search.ts` wird in `Layout.astro` via `<script>` importiert
@@ -86,12 +89,28 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
   - `add-to-wishlist` → Produkt auf Merkliste
   - `toggle-wishlist` → Drawer umschalten
   - `request-now` → Sprung zum Formular
-- **Scope-Guard**: `PackageCardGrid.astro` hat `data-package-grid` für `target.closest()` – verhindert Double-Add mit `vermietung.astro`-Handler
+- **Scope-Guard**: `PackageCardGrid.astro` hast `data-package-grid` für `target.closest()` – verhindert Double-Add mit `vermietung.astro`-Handler
 - **Skript-Imports**: Statische ESM-Imports (`import { addItem } from '../lib/merklisteStore'`) in `<script>` – keine dynamischen `import()`-Aufrufe (zuverlässiger in preview/production)
 - **Tests**: `tests/merkliste.spec.ts` (Playwright, 3 Tests) + `src/lib/merklisteStore.test.ts` (Vitest, 16 Tests):
   - Playwright: Produkt von `/vermietung/` + Detailseite + mehrere Produkte hinzufügen
   - Vitest: Unit-Tests für alle Store-Funktionen (CRUD, Validierung, Ablauf 24h)
   - Server: `pnpm run preview` auf Port 4321 (oder Dev-Server)
+
+## OpenSpec Feature Development
+
+This project uses OpenSpec for spec-driven development. To define and implement future features:
+
+1. **Create a new change**:
+   ```bash
+   openspec new change "<feature-name>"
+   ```
+2. **Define artifacts**: Fill in `proposal.md`, `design.md`, `tasks.md`, and delta specs under `openspec/changes/<feature-name>/specs/`.
+3. **Apply & Implement**: Implement the feature according to the specs and tasks.
+4. **Archive & Sync**:
+   ```bash
+   openspec archive <feature-name> -y
+   ```
+
 
 ## Referenzen
 - [docs/DESIGN.md](docs/DESIGN.md) — Projektstruktur, Farbsystem, Komponenten, Animationen
