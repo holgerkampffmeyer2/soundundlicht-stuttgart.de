@@ -16,7 +16,7 @@ export default [
         ...globals.browser,
         ...globals.node,
       },
-      parser: astroParser.parseForESLint,
+      parser: astroParser,
       parserOptions: {
         parser: tsparser,
         extraFileExtensions: ['.astro'],
