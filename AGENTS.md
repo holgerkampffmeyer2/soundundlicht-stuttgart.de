@@ -44,7 +44,7 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - **Produktdaten**: `src/content/products/*.yml` (21 Dateien) via `getCollection('products')`
 - **FAQ-Daten**: `src/data/faqs.json` (135 Einträge) via `getCollection('faqs')`
 - **Städte**: `src/data/cities.json` (15 Städte) via `getCollection('cities')`
-- **"Mehr Infos"-Button** auf `/vermietung/` erscheint nur bei Produkten mit echter Detailseite (kein `#` in `detailPage`)
+- **"Details & Buchung"-Link** auf `/vermietung/` erscheint nur bei Produkten mit echter Detailseite (kein `#` in `detailPage`). Auf City-Seiten wird derselbe Link in `CityEinzeltechnik.astro` gerendert.
 - **Tests**: `tests/search.spec.ts` (Playwright, 4 Tests):
   - Input sichtbar, korrekter Placeholder
   - Volltext-Suche mit Pagefind (query `"PA"` → Ergebnisse)
@@ -73,7 +73,7 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 ## Merkliste (Wunschliste für Anfragen)
 
 - **Clientseitige Merkliste** (`src/lib/merklisteStore.ts`) via `localStorage` (Key: `sls_merkliste`)
-  - Funktionen: `getCart()`, `addItem(slug)`, `removeItem(slug)`, `updateItemQuantity(slug, qty)`, `clearCart()`, `getItemCount()`
+  - Funktionen: `getCart()`, `addItem(slug)`, `removeItem(slug)`, `clearCart()`, `getItemCount()`
   - Automatische Leerung nach 24h Inaktivität
   - Produktdaten-Lookup via embedded JSON `#rental-catalog-data`
 - **Komponenten:**

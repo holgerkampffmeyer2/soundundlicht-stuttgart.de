@@ -1,6 +1,12 @@
 ---
 import Icon from "./Icon.astro";
-const { faqs } = Astro.props;
+
+interface Faq {
+  question: string;
+  answer: string;
+}
+
+const { faqs } = Astro.props as { faqs: Faq[] };
 ---
 <div class="mt-16">
   <h2 class="font-play text-2xl md:text-3xl font-bold text-center mb-10">

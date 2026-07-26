@@ -1,0 +1,108 @@
+---
+import { getWebpUrl, getThumbUrl } from '../lib/imageUtils';
+import Icon from './Icon.astro';
+
+interface ProductData {
+  slug: string;
+  title: string;
+  image: string;
+  description: string;
+  category: string;
+  price: string;
+  features: string[];
+  detailPage?: string;
+}
+
+interface Props {
+  cityName: string;
+  items: ProductData[];
+  title?: string;
+  description?: string;
+}
+
+const { cityName, items, title, description } = Astro.props;
+
+const sectionTitle = title ? `${title} ${cityName}` : `Einzeltechnik für ${cityName}`;
+const sectionDescription = description ?? `Einzelgeräte für deine Feier in ${cityName} – flexibel kombinierbar.`;
+---
+
+<section class="section-padding bg-[var(--color-bg)]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 animate-on-scroll">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+        Einzeltechnik
+      </span>
+      <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
+        {sectionTitle}
+      </h2>
+      <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
+        {sectionDescription}
+      </p>
+      <p class="text-[var(--color-text-muted)] text-sm mt-3 italic">
+        Das sind Beispiele – auf der Übersichtsseite findest du alle Geräte zum Mieten.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {items.map((item, index) => (
+        <div id={`item-${item.slug}`} class="card-base equipment-card animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
+          <div class="relative">
+            <picture>
+              <source srcset={`${getThumbUrl(item.image)} 480w, ${getWebpUrl(item.image)} 960w`} type="image/webp" />
+              <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
+            </picture>
+            <span class="plug-badge">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              Inkl. Kabel &amp; Einweisung
+            </span>
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="price-badge">{item.price}</span>
+            <span class="price-info-wrap">
+              <svg class="price-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+              </svg>
+              <span class="price-info-popup">Unverbindliche Preisangabe. Das finale Angebot erhalte ich nach Absenden des Formulars.</span>
+            </span>
+          </div>
+          <h3 class="text-xl font-bold mt-2 mb-3">{item.title}</h3>
+          <p class="text-[var(--color-text-muted)] text-sm mb-4">{item.description}</p>
+          <ul class="text-[var(--color-text-muted)] text-sm space-y-1 mb-4">
+            {item.features.map(feature => (
+              <li class="flex items-center gap-2">
+                <span class="text-[var(--color-secondary)]">•</span> {feature}
+              </li>
+            ))}
+          </ul>
+          <div class="flex flex-col gap-2 mt-auto">
+            <button data-action="add-to-wishlist" data-slug={item.slug} class="btn-primary w-full !px-3" aria-pressed="false">
+              <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
+                <Icon name="heart" class="w-6 h-6 mt-0.5 shrink-0" />
+                <span class="text-base leading-tight">Merken</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-12 animate-on-scroll">
+      <p class="text-[var(--color-text-muted)] mb-6">
+        Alle einzelnen Geräte – von PA-Anlagen über Lichttechnik bis DJ-Equipment – findest du in unserer kompletten Übersicht. Jedes Gerät ist einzeln mietbar, inkl. Einweisung.
+      </p>
+      <a href="/vermietung" class="btn-primary inline-block text-base py-3 px-8">
+        Alle Geräte ansehen &amp; buchen ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const target = (e.target as HTMLElement).closest('[data-action="add-to-wishlist"]');
+    if (!target) return;
+    const slug = target.getAttribute('data-slug');
+    if (!slug) return;
+    document.dispatchEvent(new CustomEvent('add-to-wishlist', { detail: { slug } }));
+  });
+</script>

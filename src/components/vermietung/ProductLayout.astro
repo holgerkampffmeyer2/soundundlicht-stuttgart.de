@@ -7,17 +7,42 @@ import ProductGallery from './ProductGallery.astro';
 import ProductCTA from '../ProductCTA.astro';
 import StickyMerkliste from '../StickyMerkliste.astro';
 
+interface ProductData {
+  slug: string;
+  title: string;
+  images?: string[];
+  ctaLabel?: string;
+}
+
+interface PagefindMeta {
+  price?: string;
+  image?: string;
+  category?: string;
+  label?: string;
+}
+
+interface JsonLdItem {
+  '@context': string;
+  '@type': string;
+  [key: string]: unknown;
+}
+
+interface BreadcrumbSegment {
+  label: string;
+  href?: string;
+}
+
 interface Props {
-  product: any;
+  product: ProductData;
   pageTitle: string;
   title?: string;
   description: string;
   image: string;
   preloadImage: string;
-  pagefindMeta: any;
+  pagefindMeta: PagefindMeta;
   pagefindType?: string;
-  jsonLd: any[];
-  breadcrumbSegments: any[];
+  jsonLd: JsonLdItem[];
+  breadcrumbSegments: BreadcrumbSegment[];
   galleryImages?: string[];
 }
 

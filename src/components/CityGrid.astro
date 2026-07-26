@@ -5,14 +5,8 @@ const cityEntries = await getCollection('cities');
 const cities = cityEntries.map(c => c.data);
 const total = cities.length;
 
-function thumbSrc(imagePath) {
-  // Convert /img/cities/stuttgart.webp → /img/cities/stuttgart-thumb.webp
-  // Works for .webp, .jpg, .jpeg, .png
-  return imagePath.replace(/\.(webp|jpe?g|png)$/i, '-thumb.$1');
-}
-
 function thumbSrc(src: string): string {
-  return src.replace(/\.[^.]+$/, '-thumb.webp');
+  return src.replace(/\.(webp|jpe?g|png)$/i, '-thumb.$1');
 }
 ---
 
@@ -143,6 +137,7 @@ function loadSlide(index) {
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
           track.style.transition = "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)";
+          isAnimating = false;
         });
       });
     }

@@ -2,9 +2,7 @@
 
 ## Purpose
 Comprehensive functional and architectural feature inventory of the Sound & Licht Stuttgart event technology rental website.
-
 ## Requirements
-
 ### Requirement: Core Architecture and Layout
 The platform SHALL use Astro 7.x Static Site Generation (SSG) with Tailwind CSS 4.x and a dark theme.
 
@@ -18,6 +16,10 @@ The platform SHALL manage rental products via Astro content collections (`src/co
 #### Scenario: Product catalog and detail pages
 - **WHEN** users browse `/vermietung/` or product detail pages (`/vermietung/<slug>/`)
 - **THEN** products display pricing ("ab XX€"), features, descriptions, and "Mehr Infos" buttons for products with dedicated detail pages
+
+#### Scenario: Einzeltechnik section on city pages
+- **WHEN** a city page renders the Einzeltechnik section with individual equipment items
+- **THEN** each product card with a real detail page (no `#` anchor) SHALL display a "Details & Buchung ↗" link styled as `btn-primary`, matching the visual pattern used in the Komplettpakete section
 
 ### Requirement: FAQ Collection and Utility
 The platform SHALL manage FAQs via `src/data/faqs.json` (135 entries) filtered by page identifiers via `getFaqsForPage(pageId)`.
@@ -60,3 +62,4 @@ The platform SHALL maintain test coverage using Vitest and Playwright.
 #### Scenario: Unit and E2E test execution
 - **WHEN** tests are executed (`vitest` and `playwright test`)
 - **THEN** store logic, search functionality, and wishlist interactions are verified successfully
+

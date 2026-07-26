@@ -8,7 +8,10 @@ import CitySteps from "../components/CitySteps.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import ContactSection from "../components/ContactSection.astro";
 import FAQSection from "../components/FAQSection.astro";
+import CityEinzeltechnik from "../components/CityEinzeltechnik.astro";
+import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../lib/faqUtils';
+import citiesData from '../data/cities.json';
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -46,6 +49,14 @@ const cityJsonLd = {
 
 const distanceKm = "15";
 const travelTime = "20-25";
+
+const allProducts = await getCollection('products');
+const productsBySlug = Object.fromEntries(allProducts.map(p => [p.data.slug, p.data]));
+const cityData = citiesData.find(c => c.slug === 'stuttgart');
+const einzelItems = (cityData?.einzelItems ?? [])
+  .slice(0, 3)
+  .map(slug => productsBySlug[slug])
+  .filter(Boolean);
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
@@ -86,6 +97,14 @@ const breadcrumbJsonLd = {
   />
 
   <CityPackages />
+  {einzelItems.length > 0 && (
+    <CityEinzeltechnik
+      cityName="Stuttgart"
+      items={einzelItems}
+      title={cityData?.einzelTitle}
+      description={cityData?.einzelDescription}
+    />
+  )}
   <CitySteps />
 
   <!-- FAQ -->

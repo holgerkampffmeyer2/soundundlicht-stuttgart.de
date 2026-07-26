@@ -1,18 +1,21 @@
 ---
+interface PaketItem {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  price: string;
+  features: string[];
+  detailPage?: string;
+}
+
 interface Props {
-  pakete: any[];
+  pakete: PaketItem[];
 }
 
 const { pakete } = Astro.props;
 
-function getWebpUrl(src: string): string {
-  return src.replace(/\.(jpe?g|png)$/i, '.webp');
-}
-
-function getThumbUrl(src: string): string {
-  return src.replace(/\.[^.]+$/, '-thumb.webp');
-}
-
+import { getWebpUrl, getThumbUrl } from '../lib/imageUtils';
 import Icon from './Icon.astro';
 ---
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-package-grid>

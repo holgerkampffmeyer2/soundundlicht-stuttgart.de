@@ -1,6 +1,17 @@
 const DEBOUNCE_MS = 300;
 const MAX_RESULTS = 10;
-let pagefindPromise: Promise<any> | null = null;
+
+interface PagefindInstance {
+  search(query: string): Promise<{ results: Array<{ data(): Promise<PagefindData> }> }>;
+}
+
+interface PagefindData {
+  url: string;
+  meta: Record<string, string>;
+  excerpt: string;
+}
+
+let pagefindPromise: Promise<PagefindInstance | null> | null = null;
 const overlay = document.getElementById('pagefind-search-overlay');
 const input = document.getElementById('pagefind-search-input') as HTMLInputElement | null;
 let debounceTimer: ReturnType<typeof setTimeout> | null = null;
@@ -20,9 +31,9 @@ function escapeHtml(str: string): string {
   return div.innerHTML;
 }
 
-function loadPagefind(): Promise<any> {
+function loadPagefind(): Promise<PagefindInstance | null> {
   if (!pagefindPromise) {
-    const pf = (window as any).__pagefind;
+    const pf = (window as { __pagefind?: Promise<PagefindInstance> }).__pagefind;
     pagefindPromise = pf
       ? Promise.race([
           pf,
@@ -37,16 +48,16 @@ function normalizeUrl(url: string): string {
   return url ? url.replace(/\/$/, '') : url;
 }
 
-async function doSearch(query: string): Promise<any[]> {
+async function doSearch(query: string): Promise<PagefindData[]> {
   const pf = await loadPagefind();
   if (!pf) return [];
   const search = await pf.search(query);
   if (!search || !search.results) return [];
   const results = await Promise.all(
-    search.results.slice(0, MAX_RESULTS).map((r: any) => r.data())
+    search.results.slice(0, MAX_RESULTS).map((r) => r.data())
   );
-  results.forEach((r: any) => { r.url = normalizeUrl(r.url); });
-  results.sort((a: any, b: any) => {
+  results.forEach((r) => { r.url = normalizeUrl(r.url); });
+  results.sort((a, b) => {
     const aP = (a.meta && a.meta.type === 'produkt') ? 0 : 1;
     const bP = (b.meta && b.meta.type === 'produkt') ? 0 : 1;
     return aP - bP;
@@ -58,7 +69,7 @@ function cleanPageTitle(t: string): string {
   return (t || '').replace(/\s*[|–—-]\s*Sound\s*(?:und|&)\s*Licht\s*Stuttgart.*$/i, '').trim();
 }
 
-let rentalCatalog: any[] | null = null;
+let rentalCatalog: CatalogProduct[] | null = null;
 try {
   const catScript = document.getElementById('rental-catalog-data');
   if (catScript) rentalCatalog = JSON.parse(catScript.textContent || '[]');
@@ -114,7 +125,7 @@ function renderProductCard(product: CatalogProduct, list: HTMLElement, query: st
   list.appendChild(el);
 }
 
-function renderResults(results: any[], query: string): void {
+function renderResults(results: PagefindData[], query: string): void {
   if (!overlay) return;
   overlay.innerHTML = '';
   if (results.length === 0) {
@@ -136,7 +147,7 @@ function renderResults(results: any[], query: string): void {
       }
     });
   }
-  results.forEach((item: any) => {
+  results.forEach((item) => {
     if (item.url === '/vermietung' || item.url === '/vermietung/') return;
     if (catalogMatchedUrls[item.url]) return;
     const el = document.createElement('a');

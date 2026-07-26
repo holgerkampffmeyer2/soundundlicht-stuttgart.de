@@ -6,7 +6,10 @@
     "title": "PA-Anlage & Partybox mieten",
     "description": "Veranstaltungstechnik für Partys, Hochzeiten und Firmenfeiern in Stuttgart.",
     "distance": "15 km",
-    "travelTime": "15-20 min"
+    "travelTime": "15-20 min",
+    "einzelItems": ["jbl-partybox-300-320", "kls-laser-bar", "partylicht-moving-head"],
+    "einzelTitle": "Einzeltechnik für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Esslingen",
@@ -15,7 +18,10 @@
     "title": "Partybox & PA-Anlage mieten",
     "description": "Sound- und Lichttechnik für deine Feier in Esslingen am Neckar.",
     "distance": "20 km",
-    "travelTime": "20 min"
+    "travelTime": "20 min",
+    "einzelItems": ["ld-maui-28g3", "led-bossfx-nebelmaschine", "led-par-lichter"],
+    "einzelTitle": "Technik nach Wahl für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Tübingen",
@@ -24,7 +30,10 @@
     "title": "Veranstaltungstechnik mieten",
     "description": "PA-Anlagen, Partyboxen und Licht für Partys und Uni-Events in Tübingen.",
     "distance": "30 km",
-    "travelTime": "30 min"
+    "travelTime": "30 min",
+    "einzelItems": ["akku-party-paket", "akku-led-par", "powerstation"],
+    "einzelTitle": "Outdoor-Technik für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Filderstadt",
@@ -33,7 +42,10 @@
     "title": "Partytechnik mieten",
     "description": "Soundanlagen und Lichttechnik für Feiern in Filderstadt und Umgebung.",
     "distance": "5 km",
-    "travelTime": "5-10 min"
+    "travelTime": "5-10 min",
+    "einzelItems": ["jbl-partybox-300-320", "max-party-bar", "mikrofon"],
+    "einzelTitle": "Einzelgeräte für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Leinfelden-Echterdingen",
@@ -42,7 +54,10 @@
     "title": "Veranstaltungstechnik mieten",
     "description": "Technik direkt vor Ort – Abholung in der Magellanstraße 4.",
     "distance": "0 km",
-    "travelTime": "0 min"
+    "travelTime": "0 min",
+    "einzelItems": ["ld-maui-28g3", "kls-laser-bar", "yamaha-mischpult"],
+    "einzelTitle": "Technik direkt vor Ort –",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Kornwestheim",
@@ -51,7 +66,10 @@
     "title": "PA-Anlage & Partybox mieten",
     "description": "Sound- und Lichttechnik für deine Feier in Kornwestheim.",
     "distance": "20 km",
-    "travelTime": "20 min"
+    "travelTime": "20 min",
+    "einzelItems": ["jbl-partybox-300-320", "led-par-lichter", "nebel-maschine"],
+    "einzelTitle": "Einzeltechnik für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Ludwigsburg",
@@ -60,7 +78,10 @@
     "title": "PA-Anlage & Partybox mieten",
     "description": "Veranstaltungstechnik für Partys und Feiern in Ludwigsburg.",
     "distance": "25 km",
-    "travelTime": "25 min"
+    "travelTime": "25 min",
+    "einzelItems": ["ld-maui-28g3", "partylicht-moving-head", "showlight-stage-bar"],
+    "einzelTitle": "Technik nach Wahl für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Böblingen",
@@ -69,7 +90,10 @@
     "title": "PA-Anlage & Partybox mieten",
     "description": "Sound- und Lichttechnik für deine Feier in Böblingen.",
     "distance": "20 km",
-    "travelTime": "20 min"
+    "travelTime": "20 min",
+    "einzelItems": ["jbl-partybox-300-320", "kls-laser-bar", "max-party-bar"],
+    "einzelTitle": "Einzelgeräte für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Sindelfingen",
@@ -78,7 +102,10 @@
     "title": "PA-Anlage & Partybox mieten",
     "description": "Veranstaltungstechnik für Partys und Feiern in Sindelfingen.",
     "distance": "20 km",
-    "travelTime": "20 min"
+    "travelTime": "20 min",
+    "einzelItems": ["led-bossfx-nebelmaschine", "led-par-strahler", "beamz-mhl36"],
+    "einzelTitle": "Licht & Effekte für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Leonberg",
@@ -87,7 +114,10 @@
     "title": "PA-Anlage & Partybox mieten",
     "description": "Sound- und Lichttechnik für deine Feier in Leonberg.",
     "distance": "25 km",
-    "travelTime": "20-25 min"
+    "travelTime": "20-25 min",
+    "einzelItems": ["jbl-partybox-300-320", "led-par-lichter", "mini-party-beamer"],
+    "einzelTitle": "Einzeltechnik für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Waiblingen",
@@ -96,7 +126,10 @@
     "title": "PA-Anlage & Partybox mieten",
     "description": "Veranstaltungstechnik für Partys und Feiern in Waiblingen.",
     "distance": "25 km",
-    "travelTime": "25 min"
+    "travelTime": "25 min",
+    "einzelItems": ["ld-maui-28g3", "kls-laser-bar", "partylicht-moving-head"],
+    "einzelTitle": "Technik nach Wahl für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Nürtingen",
@@ -105,7 +138,10 @@
     "title": "PA-Anlage & Partybox mieten",
     "description": "Sound- und Lichttechnik für deine Feier in Nürtingen.",
     "distance": "25 km",
-    "travelTime": "25 min"
+    "travelTime": "25 min",
+    "einzelItems": ["jbl-partybox-300-320", "akku-led-par", "powerstation"],
+    "einzelTitle": "Outdoor-Technik für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Reutlingen",
@@ -114,7 +150,10 @@
     "title": "Veranstaltungstechnik mieten",
     "description": "PA-Anlagen, Partyboxen und Licht für Events in Reutlingen.",
     "distance": "40 km",
-    "travelTime": "30 min"
+    "travelTime": "30 min",
+    "einzelItems": ["ld-maui-28g3", "led-bossfx-nebelmaschine", "showlight-stage-bar"],
+    "einzelTitle": "Einzeltechnik für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Kirchheim unter Teck",
@@ -123,7 +162,10 @@
     "title": "Veranstaltungstechnik mieten",
     "description": "Sound- und Lichttechnik für Feiern in Kirchheim unter Teck.",
     "distance": "30 km",
-    "travelTime": "25 min"
+    "travelTime": "25 min",
+    "einzelItems": ["jbl-partybox-300-320", "led-par-lichter", "nebel-maschine"],
+    "einzelTitle": "Einzelgeräte für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   },
   {
     "name": "Ostfildern",
@@ -132,6 +174,9 @@
     "title": "Veranstaltungstechnik mieten",
     "description": "Technik für Partys und Events in Ostfildern – nur 8 km entfernt.",
     "distance": "15 km",
-    "travelTime": "15 min"
+    "travelTime": "15 min",
+    "einzelItems": ["jbl-partybox-300-320", "max-party-bar", "mikrofon"],
+    "einzelTitle": "Technik nach Wahl für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
   }
 ]
