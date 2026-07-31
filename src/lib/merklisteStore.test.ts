@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
-import { getCart, addItem, removeItem, clearCart, getItemCount, isCartEmpty } from './merklisteStore';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { getCart, addItem, removeItem, clearCart, getItemCount } from './merklisteStore';
 
 const STORAGE_KEY = 'sls_merkliste';
 

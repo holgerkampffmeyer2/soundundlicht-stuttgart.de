@@ -2,7 +2,7 @@ const DEBOUNCE_MS = 300;
 const MAX_RESULTS = 10;
 
 interface PagefindInstance {
-  search(query: string): Promise<{ results: Array<{ data(): Promise<PagefindData> }> }>;
+  search(_query: string): Promise<{ results: Array<{ data(): Promise<PagefindData> }> }>;
 }
 
 interface PagefindData {
@@ -73,7 +73,7 @@ let rentalCatalog: CatalogProduct[] | null = null;
 try {
   const catScript = document.getElementById('rental-catalog-data');
   if (catScript) rentalCatalog = JSON.parse(catScript.textContent || '[]');
-} catch (e) {}
+} catch {}
 
 interface CatalogProduct {
   slug: string;
@@ -101,7 +101,7 @@ function matchCatalogProducts(query: string): CatalogProduct[] {
   return scored.map(s => s.item);
 }
 
-function renderProductCard(product: CatalogProduct, list: HTMLElement, query: string): void {
+function renderProductCard(product: CatalogProduct, list: HTMLElement): void {
   const el = document.createElement('a');
   el.className = 'rental-search-item';
   el.href = product.detailPage || '/vermietung';
@@ -141,7 +141,7 @@ function renderResults(results: PagefindData[], query: string): void {
   if (hasVermietungHit && rentalCatalog) {
     const matched = matchCatalogProducts(query);
     matched.forEach(p => {
-      renderProductCard(p, list, query);
+      renderProductCard(p, list);
       if (p.detailPage && p.detailPage.indexOf('#') === -1) {
         catalogMatchedUrls[p.detailPage] = true;
       }
@@ -216,7 +216,7 @@ function onKeydown(e: KeyboardEvent): void {
   if (e.key === 'Enter' && selectedIndex >= 0 && items[selectedIndex]) { e.preventDefault(); window.location.href = (items[selectedIndex] as HTMLAnchorElement).href; return; }
 }
 
-function updateSelection(items: NodeListOf<Element>): void {
+function updateSelection(items: ReturnType<typeof document.querySelectorAll>): void {
   items.forEach((el, i) => el.classList.toggle('rental-search-item-active', i === selectedIndex));
   if (items[selectedIndex]) items[selectedIndex].scrollIntoView({ block: 'nearest' });
 }

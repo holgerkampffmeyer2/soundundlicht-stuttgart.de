@@ -17,6 +17,15 @@ Astro 7.x SSG site for event tech rental (PA, partyboxes, lights) in Stuttgart a
 
 Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist.txt`.
 
+## CLI-Proxy `rtk`
+
+- Befehle können über den Proxy `rtk` (z.B. `rtk lint`, `rtk pnpm run build`) gefiltert werden.
+- **Falls `rtk <cmd>` fehlerhaft/leer läuft** (z.B. `ESLint output (JSON parse failed: EOF ...)`), den Proxy deaktivieren und den Befehl direkt ausführen:
+  ```bash
+  RTK_DISABLED=1 pnpm run lint
+  ```
+- `RTK_DISABLED=1` schaltet die Hook-/Proxy-Funktion von rtk komplett ab (kein Wrapping, volle Rohausgabe).
+
 ## Git Workflow
 - Features auf eigenen Branches entwickeln
 - Vor Commit: Build und Lint testen (`pnpm run build && pnpm run lint`)

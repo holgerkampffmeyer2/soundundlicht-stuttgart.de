@@ -18,9 +18,6 @@ const products = await getCollection('products');
 const rentalItems = products.map(i => i.data);
 const faqs = await getFaqsForPage('vermietung');
 
-// Map for quick product lookup by slug
-const productMap = Object.fromEntries(rentalItems.map(p => [p.slug, p]));
-
 function getWebpUrl(src: string): string {
   // Convert JPG/PNG to WebP, keep WebP as-is
   return src.replace(/\.(jpe?g|png)$/i, '.webp');

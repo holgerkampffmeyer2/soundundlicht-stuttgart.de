@@ -5,7 +5,6 @@ import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
 import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
 import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
-import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
 
@@ -21,11 +20,6 @@ const breadcrumbSegments = [
 const pageTitle = "Partylicht & Gobo Moving Head - Vermietung | DJ Hulk";
 
 const faqs = await getFaqsForPage('partylicht-moving-head');
-
-const includedInPackages = [
-  { name: "Veranstaltungspaket", url: "/vermietung/veranstaltungspaket-stuttgart" },
-  { name: "DJ-Paket Fildern", url: "/vermietung/djpaket-fildern" }
-];
 
 const images = [
   "/img/vermietung/61UpvPLTkHL._AC_SL1500_.webp",

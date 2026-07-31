@@ -47,9 +47,18 @@ export default [
       '@typescript-eslint': tseslintPlugin,
     },
     rules: {
-      'no-unused-vars': 'warn',
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
-      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'no-empty': ['error', { allowEmptyCatch: true }],
+    },
+  },
+  {
+    files: ['src/scripts/**/*.ts', 'src/lib/merklisteStore.ts', 'src/lib/merklisteStore.test.ts'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
     },
   },
   {
