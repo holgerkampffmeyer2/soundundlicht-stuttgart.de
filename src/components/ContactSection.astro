@@ -36,15 +36,17 @@ const {
 
     <div class="grid grid-cols-1 gap-8 mb-12">
       <div class="bg-[var(--color-bg)] rounded-xl p-6">
-        <div class="w-full h-64 md:h-80 rounded-lg overflow-hidden mb-4">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2633.5828618899773!2d9.15913277708782!3d48.69433947131032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799c318ddfada49%3A0x8c761bb0db8ae55e!2sHolger%20Kampffmeyer%20DJ%20Dienstleistungen!5e0!3m2!1sde!2sde!4v1773674458531!5m2!1sde!2sde"
-            style="border:0; width: 100%; height: 100%;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Google Maps - Sound & Licht Stuttgart">
-          </iframe>
+        <div class="w-full h-64 md:h-80 rounded-lg overflow-hidden mb-4 bg-[var(--color-bg)]">
+          <div
+            class="map-placeholder flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center"
+            data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2633.5828618899773!2d9.15913277708782!3d48.69433947131032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799c318ddfada49%3A0x8c761bb0db8ae55e!2sHolger%20Kampffmeyer%20DJ%20Dienstleistungen!5e0!3m2!1sde!2sde!4v1773674458531!5m2!1sde!2sde"
+          >
+            <div class="text-[var(--color-secondary)]"><Icon name="map-pin" class="w-10 h-10" /></div>
+            <p class="text-[var(--color-text-muted)] text-sm max-w-md">
+              Mit dem Klick auf „Karte anzeigen“ wird Google Maps geladen. Dabei werden Daten (u. a. deine IP-Adresse) an Google Ireland Limited übertragen und ggf. auf Servern in den USA verarbeitet. Vor dem Klick werden keine Daten an Google übertragen.
+            </p>
+            <button type="button" class="btn-primary map-load-btn">Karte anzeigen</button>
+          </div>
         </div>
         <div class="text-[var(--color-secondary)] mb-3"><Icon name="map-pin" class="w-10 h-10" /></div>
         <h3 class="font-play font-bold mb-2">{addressLabel}</h3>
@@ -77,3 +79,32 @@ const {
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    function loadMap(placeholder) {
+      const src = placeholder.getAttribute('data-map-src');
+      if (!src) return;
+
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.style.border = '0';
+      iframe.className = 'w-full h-full';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('loading', 'lazy');
+      iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+      iframe.title = 'Google Maps - Sound & Licht Stuttgart';
+      placeholder.replaceWith(iframe);
+    }
+
+    document.addEventListener('click', function (event) {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const button = target.closest('.map-load-btn');
+      if (!button) return;
+      const placeholder = button.closest('.map-placeholder');
+      if (!placeholder) return;
+      loadMap(placeholder);
+    });
+  })();
+</script>
