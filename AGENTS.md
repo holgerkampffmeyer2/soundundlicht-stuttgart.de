@@ -1,9 +1,26 @@
 # Agent Instructions – Sound & Licht Stuttgart
 
-## Project Overview
-Astro 7.x SSG site for event tech rental (PA, partyboxes, lights) in Stuttgart area. Built with Tailwind CSS 4.x. Dark theme. Static deployment to GitHub Pages. Content via Collection (products, faqs, cities).
+## Projektübersicht
+Astro 7.x SSG-Website für Veranstaltungstechnik-Verleih (PA-Anlagen, Partyboxen, Lichttechnik) im Großraum Stuttgart. Dark Theme, statischer Deploy auf GitHub Pages. Inhalte über Content Collections (products YAML, faqs JSON, cities JSON).
 
-## Build & Test Commands
+## Tech-Stack
+- **Framework:** Astro 7.x (SSG, `output: 'static'`, `trailingSlash: 'never'`)
+- **Styling:** Tailwind CSS 4.x, Dark Theme, CSS Custom Properties
+- **Content:** Content Collections (products YAML, faqs JSON, cities JSON) mit Zod-Validierung
+- **Search:** Pagefind (via `astro-pagefind`) — clientseitige Volltextsuche
+- **Package-Manager:** pnpm
+- **Tests:** Vitest (Unit) + Playwright (E2E)
+- **Deploy:** GitHub Pages (static)
+
+## Schnellstart / Docs
+- [docs/DESIGN.md](docs/DESIGN.md) — Projektstruktur, Farbsystem, Komponenten, Animationen
+- [docs/theme-system.md](docs/theme-system.md) — vollständige Token-Tabellen aller Themes
+- [docs/citypage.md](docs/citypage.md) — Anleitung für neue City-Seiten
+- [docs/search.md](docs/search.md) — Suche (Pagefind) im Detail
+- [docs/seo.md](docs/seo.md) — SEO-Richtlinien & JSON-LD je Seitentyp
+- [docs/wishlist.md](docs/wishlist.md) — Merkliste (Wunschliste) im Detail
+
+## Build- & Test-Kommandos
 - `pnpm run dev` — Dev server
 - `pnpm run build` — Production build → dist/ (für tägliche Entwicklung)
 - `pnpm run build:full` — Build + RSS + urllist (für Deploy)
@@ -12,8 +29,8 @@ Astro 7.x SSG site for event tech rental (PA, partyboxes, lights) in Stuttgart a
 - `pnpm run build:full-with-images` — Images + Build + RSS + urllist
 - `pnpm run preview` — Preview build
 - `pnpm run lint` — ESLint code linting
-- `npx vitest run` — Run unit tests (Vitest)
-- `npx playwright test` — Run E2E tests (Playwright)
+- `npx vitest run` — Unit-Tests (Vitest)
+- `npx playwright test` — E2E-Tests (Playwright)
 
 Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist.txt`.
 
@@ -26,84 +43,41 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
   ```
 - `RTK_DISABLED=1` schaltet die Hook-/Proxy-Funktion von rtk komplett ab (kein Wrapping, volle Rohausgabe).
 
-## Git Workflow
+## Git-Workflow
+- Conventional Commits: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `ci:`
 - Features auf eigenen Branches entwickeln
 - Vor Commit: Build und Lint testen (`pnpm run build && pnpm run lint`)
 - Keine Secrets (API-Keys, Passwörter) committen
 
-## Suche (Pagefind)
+## Definition of Done
+- Nach Quellcode-Änderungen: `pnpm run lint && pnpm run build` (Tests falls betroffen)
+- Nach reinen .md-Änderungen: direkt push (kein lint/build)
+- Keine offenen TODOs im finalen Code hinterlassen
 
-- **astro-pagefind** — Indexierung beim Build (sieht "Pagefind indexed N pages")
-- **props im `<Layout>`:**
-  - `pagefindType="produkt"` → setzt `data-pagefind-weight="2"` + `type:produkt` in meta
-  - `pagefindMeta={{ price: "ab 80€", image: "/img/...", category: "Sound", label: "..." }}`
-- **`pagefindMeta` wird als separate `<div>` pro Key-Value gerendert** — NICHT kombinierter `;`-String!
-- **`data-pagefind-ignore`** auf Navbar.astro + Footer.astro
-- **URL-Normalisierung**: `normalizeUrl()` strippt trailing slashes im JS (`trailingSlash: 'never'`)
-- **Client-Script**: `src/scripts/search.ts` wird in `Layout.astro` via `<script>` importiert
-  - **Debounce**: 300ms nach Eingabe (mind. 2 Zeichen)
-  - **Keyboard**: ArrowUp/Down/Enter/Escape für Navigation im Overlay
-  - **Overlay-Close**: Klick außerhalb via `onDocumentClick`
-   - **Pagefind**: `Layout.astro` lädt pagefind per `import('/pagefind/pagefind.js')` in einem `<script is:inline>` (Vite umgangen) und speichert Promise in `window.__pagefind`. `search.ts` greift darauf zu.
-- **Katalog-Matching für `/vermietung/`:**
-  - `rentalItems` aus `getCollection('products')` (21 Produkte) wird als JSON-Script eingebettet
-  - `matchCatalogProducts(query)` matcht Suchbegriffe gegen Titel/Description/Features
-  - Funde werden als reiche Produktkarten gerendert, Link auf `vermietung/#item-<slug>`
-  - Nur 10 Produkte haben eigene `.astro`-Seiten → 11 werden via Katalog gematcht
-- **Produktdaten**: `src/content/products/*.yml` (21 Dateien) via `getCollection('products')`
-- **FAQ-Daten**: `src/data/faqs.json` (135 Einträge) via `getCollection('faqs')`
-- **Städte**: `src/data/cities.json` (15 Städte) via `getCollection('cities')`
-- **"Details & Buchung"-Link** auf `/vermietung/` erscheint nur bei Produkten mit echter Detailseite (kein `#` in `detailPage`). Auf City-Seiten wird derselbe Link in `CityEinzeltechnik.astro` gerendert.
-- **Tests**: `tests/search.spec.ts` (Playwright, 4 Tests):
-  - Input sichtbar, korrekter Placeholder
-  - Volltext-Suche mit Pagefind (query `"PA"` → Ergebnisse)
-  - Schließen bei Klick außerhalb
-  - Kurze Query (1 Zeichen) zeigt kein Overlay
+## Arbeitsweise
+- Kleine, nachvollziehbare Änderungen bevorzugen
+- Bestehende Patterns zuerst wiederverwenden, dann abstrahieren
+- Bei unklaren Anforderungen lieber vorhandene Komponenten erweitern statt neue Systeme einführen
 
-## SEO-Richtlinien
+## Wichtige Regeln & Grenzen
 
-- **JSON-LD pro Seitentyp:**
-  - Landing (`/`): `Service` (general), `OfferCatalog` (4 Pakete, `ab`-Preise), `FAQPage` (manuell via `faqJsonLd`)
-  - Vermietung (`/vermietung/`): `Service`, `FAQPage` (manuell via `faqSchema`)
-  - City-Seite (`/<stadt>/`): `Service` mit `areaServed: { City: "<Stadt>" }` + `provider: LocalBusiness`
-  - Produktseite (`/vermietung/<produkt>/`): `Service`, `Product`, `FAQPage` (via `getFaqsForPage('<produkt-slug>')`)
-- **Preise**: immer `"ab XX€"` als Text, nie fester Betrag in `price`
-- **FAQ-Helper**: `getFaqsForPage(pageId)` aus `lib/faqUtils` — filtert FAQs per `pages[]`-Array. `faqUtils` hat keinen `getFaqSchema()`, FAQPage-JSON-LD wird manuell in jeder Seite gebaut.
-- **Slug-Convention**: City = `<stadt>.astro`, Produkt = `vermietung/<produkt-slug>.astro`
-- **Title-Pattern**: `"<Keyword> mieten in <Stadt> | Sound & Licht Stuttgart"`
+### Immer
+- Domain: `soundundlicht-stuttgart.de`
+- Preise als `"ab XX€"`-Text, nie fester Betrag
+- Nach `build:full` für Deploy `indexnow-submit` ausführen
 
-## IndexNow (URL-Submission)
+### Vorher fragen
+- Dependencies hinzufügen
+- Analytics-, Consent- oder Payment-Integrationen ändern
 
-- `pnpm run indexnow-submit` — sendet alle URLs aus `public/urllist.txt` an `api.indexnow.org`
-- Das Relay verteilt automatisch an Bing, Yandex, Naver, Seznam, Yep
-- Vorher immer `pnpm run build:full` ausführen (aktualisiert `urllist.txt`)
-- **Google wird nicht unterstützt** — dafür Google Search Console nutzen
+### Nie
+- Secrets (API-Keys, Passwörter) committen
+- Produktive URLs hart codieren (Domain ist `soundundlicht-stuttgart.de`)
 
-## Merkliste (Wunschliste für Anfragen)
-
-- **Clientseitige Merkliste** (`src/lib/merklisteStore.ts`) via `localStorage` (Key: `sls_merkliste`)
-  - Funktionen: `getCart()`, `addItem(slug)`, `removeItem(slug)`, `clearCart()`, `getItemCount()`
-  - Automatische Leerung nach 24h Inaktivität
-  - Produktdaten-Lookup via embedded JSON `#rental-catalog-data`
-- **Komponenten:**
-  - `WishlistIcon.astro` — Herz-Icon mit Badge in `Navbar.astro` (desktop + mobile)
-  - `WishlistDrawer.astro` — Seitenpanel mit ARIA (`role="dialog"`, `aria-modal`), Escape/Overlay-Close, Focus-Trap, scale-Animation
-  - `WishlistButton.astro` — "Merken"-Button für Produktdetailseiten
-  - `StickyMerkliste.astro` — Sticky-Panel mit "Merkliste betrachten" (alle Seiten)
-- **Icons**: Herz-Icon via `Icon.astro` (`name="heart"`) – kein hardcodiertes SVG
-- **Event-Interface:**
-  - `toggle-merkliste` → Drawer öffnen/schließen
-  - `merkliste-prefill` → Kontaktformular vorbereiten
-- **Data-Actions:**
-  - `add-to-wishlist` → Produkt auf Merkliste
-  - `toggle-wishlist` → Drawer umschalten
-  - `request-now` → Sprung zum Formular
-- **Scope-Guard**: `PackageCardGrid.astro` hast `data-package-grid` für `target.closest()` – verhindert Double-Add mit `vermietung.astro`-Handler
-- **Skript-Imports**: Statische ESM-Imports (`import { addItem } from '../lib/merklisteStore'`) in `<script>` – keine dynamischen `import()`-Aufrufe (zuverlässiger in preview/production)
-- **Tests**: `tests/merkliste.spec.ts` (Playwright, 3 Tests) + `src/lib/merklisteStore.test.ts` (Vitest, 16 Tests):
-  - Playwright: Produkt von `/vermietung/` + Detailseite + mehrere Produkte hinzufügen
-  - Vitest: Unit-Tests für alle Store-Funktionen (CRUD, Validierung, Ablauf 24h)
-  - Server: `pnpm run preview` auf Port 4321 (oder Dev-Server)
+## Wissen & Referenzen
+- `docs/` — detaillierte Projekt-Doku (Suche, SEO, Merkliste, Design)
+- `openspec/` — Feature-Specs (OpenSpec)
+- `.serena/memories/` — persistentes Projektwissen (Tech-Stack, Konventionen); vor größeren Änderungen relevante Memories lesen
 
 ## OpenSpec Feature Development
 
@@ -120,8 +94,20 @@ This project uses OpenSpec for spec-driven development. To define and implement 
    openspec archive <feature-name> -y
    ```
 
+## IndexNow (URL-Submission)
 
-## Referenzen
-- [docs/DESIGN.md](docs/DESIGN.md) — Projektstruktur, Farbsystem, Komponenten, Animationen
-- [docs/theme-system.md](docs/theme-system.md) — vollständige Token-Tabellen aller Themes
-- [docs/citypage.md](docs/citypage.md) — Anleitung für neue City-Seiten
+- `pnpm run indexnow-submit` — sendet alle URLs aus `public/urllist.txt` an `api.indexnow.org`
+- Vorher immer `pnpm run build:full` ausführen (aktualisiert `urllist.txt`)
+- Google wird nicht unterstützt — dafür Google Search Console nutzen
+
+## Suche (Pagefind)
+
+Kurzübersicht: clientseitige Volltextsuche über `astro-pagefind`, Katalog-Matching für `/vermietung/`, `data-pagefind-ignore` auf Navbar/Footer. Details & Tests: [docs/search.md](docs/search.md).
+
+## SEO-Richtlinien
+
+Kurzübersicht: JSON-LD je Seitentyp (Service, OfferCatalog, FAQPage, Product), Preise immer `"ab XX€"`, Titel-Pattern `"<Keyword> mieten in <Stadt> | Sound & Licht Stuttgart"`. Details: [docs/seo.md](docs/seo.md).
+
+## Merkliste (Wunschliste für Anfragen)
+
+Kurzübersicht: clientseitige Merkliste via `localStorage` (`sls_merkliste`), Komponenten `WishlistIcon`/`WishlistDrawer`/`WishlistButton`/`StickyMerkliste`, Events `toggle-merkliste`/`merkliste-prefill`. Details & Tests: [docs/wishlist.md](docs/wishlist.md).
