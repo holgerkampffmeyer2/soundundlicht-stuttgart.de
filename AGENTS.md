@@ -29,6 +29,7 @@ Astro 7.x SSG-Website für Veranstaltungstechnik-Verleih (PA-Anlagen, Partyboxen
 - `pnpm run build:full-with-images` — Images + Build + RSS + urllist
 - `pnpm run preview` — Preview build
 - `pnpm run lint` — ESLint code linting
+- `pnpm run lint:agent` — ESLint kompakt (`--format unix --quiet`), token-optimiert für LLM/Agent-Checks (bevorzugt)
 - `npx vitest run` — Unit-Tests (Vitest)
 - `npx playwright test` — E2E-Tests (Playwright)
 
@@ -36,10 +37,11 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 
 ## CLI-Proxy `rtk`
 
-- Befehle können über den Proxy `rtk` (z.B. `rtk lint`, `rtk pnpm run build`) gefiltert werden.
-- **Falls `rtk <cmd>` fehlerhaft/leer läuft** (z.B. `ESLint output (JSON parse failed: EOF ...)`), den Proxy deaktivieren und den Befehl direkt ausführen:
+- Befehle können über den Proxy `rtk` (z.B. `rtk pnpm run build`, `rtk pnpm run lint:agent`) gefiltert werden.
+- **Veralteter Workaround:** Der direkte Subcommand `rtk lint` hat weiterhin einen JSON-Parse-Bug (`ESLint output (JSON parse failed: EOF ...)`). Stattdessen `rtk pnpm run lint:agent` verwenden (funktioniert).
+- Falls `rtk <cmd>` dennoch fehlerhaft/leer läuft, Proxy deaktivieren:
   ```bash
-  RTK_DISABLED=1 pnpm run lint
+  RTK_DISABLED=1 pnpm run lint:agent
   ```
 - `RTK_DISABLED=1` schaltet die Hook-/Proxy-Funktion von rtk komplett ab (kein Wrapping, volle Rohausgabe).
 
@@ -50,7 +52,7 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - Keine Secrets (API-Keys, Passwörter) committen
 
 ## Definition of Done
-- Nach Quellcode-Änderungen: `pnpm run lint && pnpm run build` (Tests falls betroffen)
+- Nach Quellcode-Änderungen: `pnpm run lint:agent && pnpm run build` (Tests falls betroffen)
 - Nach reinen .md-Änderungen: direkt push (kein lint/build)
 - Keine offenen TODOs im finalen Code hinterlassen
 
