@@ -109,17 +109,7 @@ const serviceSchema = {
   }
 };
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": product.title,
-  "description": product.description,
-  ...(product.image ? { image: product.image.startsWith('http') ? product.image : 'https://soundundlicht-stuttgart.de' + product.image } : {}),
-  "brand": {
-    "@type": "Brand",
-    "name": "Holger Kampffmeyer DJ Dienstleistungen"
-  }
-};
+
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -139,7 +129,7 @@ const videoSchema = {
   "@type": "VideoObject",
   "name": "DJ-Paket Fildern Demo",
   "description": "Demo des DJ-Paket Fildern - komplette Eventtechnik mit LD Maui, LED Licht und Nebelmaschine",
-  "thumbnailUrl": ["/img/vermietung/ldmaui3.webp"],
+  "thumbnailUrl": [siteUrl + "/img/vermietung/ldmaui3.webp"],
   "contentUrl": "https://www.youtube.com/watch?v=vE5PQ7IUdrg",
   "embedUrl": "https://www.youtube.com/embed/vE5PQ7IUdrg",
   "uploadDate": "2024-03-15T00:00:00+00:00",
@@ -149,7 +139,7 @@ const videoSchema = {
     "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
     "logo": {
       "@type": "ImageObject",
-      "url": "/img/djhulk_logo.webp"
+      "url": siteUrl + "/img/djhulk_logo.webp"
     }
   }
 };
@@ -164,7 +154,7 @@ const videoSchema = {
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "DJ-Paket" }}
   galleryImages={images}
-  jsonLd={[productSchema, serviceSchema, faqSchema, videoSchema, breadcrumbSchema]}
+  jsonLd={[serviceSchema, faqSchema, videoSchema, breadcrumbSchema]}
   breadcrumbSegments={breadcrumbSegments}
 >
     <!-- Hero -->

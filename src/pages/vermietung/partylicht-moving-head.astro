@@ -49,17 +49,7 @@ const serviceSchema = {
   }
 };
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": product.title,
-  "description": product.description,
-  ...(product.image ? { image: product.image.startsWith('http') ? product.image : 'https://soundundlicht-stuttgart.de' + product.image } : {}),
-  "brand": {
-    "@type": "Brand",
-    "name": "Holger Kampffmeyer DJ Dienstleistungen"
-  }
-};
+
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -145,7 +135,7 @@ const events = [
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Licht", label: "18 Prisma 10 Gobo LED Moving Head" }}
   galleryImages={images}
-  jsonLd={[productSchema, serviceSchema, breadcrumbSchema, faqSchema]}
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <!-- Hero -->

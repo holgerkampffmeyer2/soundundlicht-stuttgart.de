@@ -37,17 +37,7 @@ const serviceSchema = {
   "image": [siteUrl + images[0], siteUrl + images[1]],
   "provider": { "@type": "LocalBusiness", "@id": "https://soundundlicht-stuttgart.de/#business" }
 };
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "JBL Partybox 300 + 320 Set Vermietung",
-  "description": "Leihe dieses leistungsstarke Partyboxen‑Set (2×240W) mit Akku, Light‑Show und Bluetooth – ideal für private Feiern bis 80 Personen.",
-  "image": [siteUrl + images[0], siteUrl + images[1]],
-  "brand": {
-    "@type": "Brand",
-    "name": "Holger Kampffmeyer DJ Dienstleistungen"
-  }
-};
+
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -71,7 +61,7 @@ const videoSchema = {
   "@type": "VideoObject",
   "name": "JBL Partybox 300 + 320 Sound-Check Demo",
   "description": "Sound-Check der JBL Partybox 300 und 320 in Aktion - mobile Party-Lautsprecher mit 2x 240W, Light-Show und TWS-Kopplung",
-  "thumbnailUrl": ["/img/vermietung/jbl-set1.webp"],
+  "thumbnailUrl": [siteUrl + "/img/vermietung/jbl-set1.webp"],
   "contentUrl": "https://www.youtube.com/watch?v=Ivch0DqKkW0",
   "embedUrl": "https://www.youtube.com/embed/Ivch0DqKkW0",
   "uploadDate": "2024-01-20T00:00:00+00:00",
@@ -79,7 +69,7 @@ const videoSchema = {
   "publisher": {
     "@type": "Organization",
     "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
-    "logo": { "@type": "ImageObject", "url": "/img/djhulk_logo.webp" }
+    "logo": { "@type": "ImageObject", "url": siteUrl + "/img/djhulk_logo.webp" }
   }
 };
 const specs = {
@@ -115,7 +105,7 @@ const events = [
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Sound", label: "JBL Partyboxen (Paar)" }}
   galleryImages={images}
-  jsonLd={[productSchema, serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">

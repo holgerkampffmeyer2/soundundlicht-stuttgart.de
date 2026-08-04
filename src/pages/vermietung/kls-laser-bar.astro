@@ -45,17 +45,7 @@ const serviceSchema = {
   }
 };
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": product.title,
-  "description": product.description,
-  ...(product.image ? { image: product.image.startsWith('http') ? product.image : 'https://soundundlicht-stuttgart.de' + product.image } : {}),
-  "brand": {
-    "@type": "Brand",
-    "name": "Holger Kampffmeyer DJ Dienstleistungen"
-  }
-};
+
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -128,7 +118,7 @@ const videoSchema = {
   "@type": "VideoObject",
   "name": "KLS Laser Bar & Nebelmaschine Demo",
   "description": "Demo der Eurolite KLS Laser Bar FX mit 1200W Nebelmaschine - Laser-Effekte und Nebel in Aktion",
-  "thumbnailUrl": ["/img/vermietung/kls-laserbar-ai.webp"],
+  "thumbnailUrl": [siteUrl + "/img/vermietung/kls-laserbar-ai.webp"],
   "contentUrl": "https://www.youtube.com/watch?v=namuAf4RySA",
   "embedUrl": "https://www.youtube.com/embed/namuAf4RySA",
   "uploadDate": "2024-02-05T00:00:00+00:00",
@@ -138,7 +128,7 @@ const videoSchema = {
     "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
     "logo": {
       "@type": "ImageObject",
-      "url": "/img/djhulk_logo.webp"
+      "url": siteUrl + "/img/djhulk_logo.webp"
     }
   }
 };
@@ -153,7 +143,7 @@ const videoSchema = {
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Licht", label: "Eurolite KLS Laser Bar" }}
   galleryImages={images}
-  jsonLd={[productSchema, serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <!-- Hero -->

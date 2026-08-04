@@ -88,17 +88,7 @@ const serviceSchema = {
   }
 };
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": product.title,
-  "description": product.description,
-  ...(product.image ? { image: product.image.startsWith('http') ? product.image : 'https://soundundlicht-stuttgart.de' + product.image } : {}),
-  "brand": {
-    "@type": "Brand",
-    "name": "Holger Kampffmeyer DJ Dienstleistungen"
-  }
-};
+
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -133,7 +123,7 @@ const faqSchema = {
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Akku-Party-Paket – Outdoor" }}
   galleryImages={images}
-  jsonLd={[productSchema, serviceSchema, breadcrumbSchema, faqSchema]}
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}
   breadcrumbSegments={breadcrumbSegments}
 >
     <!-- Hero -->

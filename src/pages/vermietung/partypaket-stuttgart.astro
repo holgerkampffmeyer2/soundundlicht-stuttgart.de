@@ -90,17 +90,7 @@ const serviceSchema = {
   }
 };
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": product.title,
-  "description": product.description,
-  ...(product.image ? { image: product.image.startsWith('http') ? product.image : 'https://soundundlicht-stuttgart.de' + product.image } : {}),
-  "brand": {
-    "@type": "Brand",
-    "name": "Holger Kampffmeyer DJ Dienstleistungen"
-  }
-};
+
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -135,12 +125,12 @@ const faqSchema = {
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Partypaket" }}
   galleryImages={images}
-  jsonLd={[productSchema, serviceSchema, breadcrumbSchema, faqSchema, {
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": "Partypaket Stuttgart Demo",
     "description": "Demo des Partypakets Stuttgart - JBL Partyboxen, LED Licht und Nebelmaschine",
-    "thumbnailUrl": ["/img/vermietung/partypaket.webp"],
+    "thumbnailUrl": [siteUrl + "/img/vermietung/partypaket.webp"],
     "contentUrl": "https://www.youtube.com/watch?v=Ivch0DqKkW0",
     "embedUrl": "https://www.youtube.com/embed/Ivch0DqKkW0",
     "uploadDate": "2024-01-20T00:00:00+00:00",
@@ -150,7 +140,7 @@ const faqSchema = {
       "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
       "logo": {
         "@type": "ImageObject",
-        "url": "/img/djhulk_logo.webp"
+        "url": siteUrl + "/img/djhulk_logo.webp"
       }
     }
   }]}

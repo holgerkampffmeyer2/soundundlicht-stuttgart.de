@@ -44,17 +44,7 @@ const serviceSchema = {
   "image": [siteUrl + images[0], siteUrl + images[1]],
   "provider": { "@type": "LocalBusiness", "@id": "https://soundundlicht-stuttgart.de/#business" }
 };
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "LD Maui 28 G3 Vermietung",
-  "description": "Miete das LD Maui 28 G3 Säulensystem für deine Party, Hochzeit oder Firmenfeier. Die LD Maui 28 G3 ist eine professionelle PA-Anlage mit starkem Bass, druckvollem und glasklarem Sound, mit 2060W, 127 dB Schalldruck, für bis zu 150 Personen.",
-  "image": [siteUrl + images[0], siteUrl + images[1]],
-  "brand": {
-    "@type": "Brand",
-    "name": "Holger Kampffmeyer DJ Dienstleistungen"
-  }
-};
+
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -78,7 +68,7 @@ const videoSchema = {
   "@type": "VideoObject",
   "name": "LD Maui 28 G3 Sound-Check Demo",
   "description": "Sound-Check der LD Maui 28 G3 PA Anlage in Aktion - professionelles Säulensystem mit 2060W Peak-Leistung",
-  "thumbnailUrl": ["/img/vermietung/djpaket.webp"],
+  "thumbnailUrl": [siteUrl + "/img/vermietung/djpaket.webp"],
   "contentUrl": "https://www.youtube.com/watch?v=vE5PQ7IUdrg",
   "embedUrl": "https://www.youtube.com/embed/vE5PQ7IUdrg",
   "uploadDate": "2024-03-15T00:00:00+00:00",
@@ -86,7 +76,7 @@ const videoSchema = {
   "publisher": {
     "@type": "Organization",
     "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
-    "logo": { "@type": "ImageObject", "url": "/img/djhulk_logo.webp" }
+    "logo": { "@type": "ImageObject", "url": siteUrl + "/img/djhulk_logo.webp" }
   }
 };
 const specs = {
@@ -125,7 +115,7 @@ const events = [
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Sound", label: "Säulensystem 2x LD Maui 28 G3 (Paar)" }}
   galleryImages={images}
-  jsonLd={[productSchema, serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
