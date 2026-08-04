@@ -44,6 +44,7 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
   RTK_DISABLED=1 pnpm run lint:agent
   ```
 - `RTK_DISABLED=1` schaltet die Hook-/Proxy-Funktion von rtk komplett ab (kein Wrapping, volle Rohausgabe).
+- **Verifiziert funktionierend** (Stand 2026-08): `rtk pnpm run lint:agent`, `rtk pnpm run build`, `rtk npx vitest run --pool=forks` (Vitest: `threads`-Pool hängt in WSL, `forks` nutzen). `RTK_DISABLED=1` nur als letzter Fallback verwenden, wenn `rtk <cmd>` tatsächlich fehlschlägt — nicht pauschal setzen.
 
 ## Git-Workflow
 - Conventional Commits: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `ci:`
@@ -60,6 +61,7 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - Kleine, nachvollziehbare Änderungen bevorzugen
 - Bestehende Patterns zuerst wiederverwenden, dann abstrahieren
 - Bei unklaren Anforderungen lieber vorhandene Komponenten erweitern statt neue Systeme einführen
+- **Serena als Hauptwerkzeug** für Suche & Code-Anpassungen nutzen (statt grep/sed/perl): `search_for_pattern`/`find_symbol` zum Auffinden, `replace_in_files` für Massen-Edits, `edit`/`replace_content` für Einzel-Edits. Bei `replace_in_files` den Repl ohne `\n` formulieren (das Tool fügt `\n` als Literal ein) — stattdessen den Needle bis in den Folgekontext ziehen.
 
 ## Wichtige Regeln & Grenzen
 

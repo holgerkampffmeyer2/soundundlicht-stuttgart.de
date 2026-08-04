@@ -35,14 +35,7 @@ const serviceSchema = {
   "name": "JBL Partybox 300 + 320 Set Vermietung",
   "description": "Leihe dieses leistungsstarke Partyboxen‑Set (2×240W) mit Akku, Light‑Show und Bluetooth – ideal für private Feiern bis 80 Personen.",
   "image": [siteUrl + images[0], siteUrl + images[1]],
-  "provider": { "@type": "LocalBusiness", "@id": "https://soundundlicht-stuttgart.de/#business" },
-  "offers": {
-    "@type": "Offer",
-    "url": "https://soundundlicht-stuttgart.de/vermietung/jbl-partybox-300-320",
-    "price": product.priceValue.toString(),
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock"
-  }
+  "provider": { "@type": "LocalBusiness", "@id": "https://soundundlicht-stuttgart.de/#business" }
 };
 const productSchema = {
   "@context": "https://schema.org",
@@ -50,32 +43,6 @@ const productSchema = {
   "name": "JBL Partybox 300 + 320 Set Vermietung",
   "description": "Leihe dieses leistungsstarke Partyboxen‑Set (2×240W) mit Akku, Light‑Show und Bluetooth – ideal für private Feiern bis 80 Personen.",
   "image": [siteUrl + images[0], siteUrl + images[1]],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "15",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Kunde" },
-      "datePublished": "2024-06-15",
-      "reviewBody": "Tolles Set, einfache Handhabung, gerne wieder!",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      }
-    }
-  ],
-  "offers": {
-    "@type": "Offer",
-    "price": product.priceValue.toString(),
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock"
-  },
   "brand": {
     "@type": "Brand",
     "name": "Holger Kampffmeyer DJ Dienstleistungen"

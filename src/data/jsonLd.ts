@@ -45,7 +45,7 @@ export const localBusinessJsonLd = {
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
-    "reviewCount": "15",
+    "reviewCount": "21",
     "bestRating": "5",
     "worstRating": "1"
   },
@@ -115,13 +115,7 @@ export function offerCatalogJsonLd(items: any[]) {
         "@type": "Service",
         "name": item.title
       },
-      "description": item.features.join(", "),
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": item.priceValue.toFixed(2),
-        "priceCurrency": "EUR",
-        "priceComponentType": "https://schema.org/UnitPriceSpecification"
-      }
+      "description": item.features.join(", ")
     }))
   };
 }
