@@ -35,15 +35,9 @@
     "eslint": "^10.6.0",
     "eslint-plugin-astro": "^3.0.1",
     "globals": "^17.7.0",
-    "jsdom": "^29.1.1",
+    "jsdom": "^30.0.1",
     "playwright": "^1.61.1",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
-  },
-  "pnpm": {
-    "overrides": {
-      "brace-expansion": ">=5.0.8",
-      "postcss": ">=8.5.18"
-    }
   }
 }
