@@ -32,6 +32,9 @@ jobs:
       - name: Build site
         run: pnpm run build:full
         
+      - name: Fix preview command for Astro 7 CLI
+        run: sed -i 's/pnpm run preview -- --port 4321/pnpm run preview --port 4321/' lighthouserc.cjs
+        
       - name: Run Lighthouse CI
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v12
