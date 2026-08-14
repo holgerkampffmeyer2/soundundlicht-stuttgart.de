@@ -2,7 +2,7 @@
 
 ## Technologie-Stack
 
-- **Framework:** Astro 6.x (Static Site Generation, `output: 'static'`)
+- **Framework:** Astro 7.x (Static Site Generation, `output: 'static'`)
 - **Styling:** Tailwind CSS 4.x + CSS Custom Properties (Theme-System)
 - **Build-Tool:** Vite (via @tailwindcss/vite Plugin)
 - **Sprache:** TypeScript / Astro Components
@@ -33,17 +33,19 @@ src/
 │   │   ├── kls-laser-bar.astro
 │   │   ├── led-bossfx-nebelmaschine.astro
 │   │   └── partylicht-moving-head.astro
-│   └── <stadt>.astro     # City Pages (15 Städte)
+│   └── <stadt>.astro     # City Pages (16 Städte)
 ├── styles/
 │   ├── global.css
 │   └── themes/*.css      # 5 Farb-Themes
 ├── scripts/              # Build-Skripte
 │   ├── generate-rss.mjs
 │   └── update-sitemap.mjs
-├── data/                 # SEO-Daten + Mietkatalog
-│   ├── jsonLd.ts
-│   ├── packages.ts
-│   └── rental-catalog.ts   # 21 Mietartikel (alle Produkte)
+├── content/
+│   └── products/         # 21 Produkt-YAMLs
+├── data/                 # JSON-Daten
+│   ├── cities.json
+│   ├── faqs.json
+│   └── google-reviews.json
 public/
 ├── img/
 │   ├── cities/           # City Hero-Bilder (slug.webp + -thumb.webp)
@@ -69,7 +71,7 @@ public/
 | `/vermietung/kls-laser-bar/` | KLS Laser Bar |
 | `/vermietung/led-bossfx-nebelmaschine/` | LED + Nebelmaschine |
 | `/vermietung/partylicht-moving-head/` | Partylicht Moving Head |
-| 15 City Pages: `/stuttgart/`, `/esslingen/`, ... `/ostfildern/` | City Pages |
+| 16 City Pages: `/stuttgart/`, `/esslingen/`, ... `/waiblingen/` | City Pages |
 | Weitere 11 Mietartikel (Powerstation, Mikrofon, Beamer, …) | Nur auf `/vermietung/#item-<slug>` (keine eigenen Seiten) |
 
 ---
@@ -86,14 +88,15 @@ public/
 | `--color-secondary` | <span style="display:inline-block;width:12px;height:12px;background:#1e40af;border-radius:2px;"></span> `#1e40af` | Sekundäre Akzente |
 | `--color-accent` | <span style="display:inline-block;width:12px;height:12px;background:#60a5fa;border-radius:2px;"></span> `#60a5fa` | Buttons, Links |
 
-### Alt-Themes
+### Alle Themes
 
-| Theme | Stimmung |
-|---|---|
-| `default` | <span style="display:inline-block;width:12px;height:12px;background:#0891b2;border-radius:2px;"></span> Cyan/Orange (#0891b2 / #f97316) |
-| `electric-night` | <span style="display:inline-block;width:12px;height:12px;background:#a855f7;border-radius:2px;"></span> Purple/Pink (#a855f7 / #ec4899) |
-| `golden-hour` | <span style="display:inline-block;width:12px;height:12px;background:#f59e0b;border-radius:2px;"></span> Amber/Gold (#f59e0b / #fb923c) |
-| `arctic-frost` | <span style="display:inline-block;width:12px;height:12px;background:#60a5fa;border-radius:2px;"></span> Hellblau/Lavendel (#60a5fa / #a78bfa) |
+| Theme | Stimmung | Status |
+|---|---|---|
+| `deep-bass` | <span style="display:inline-block;width:12px;height:12px;background:#050510;border-radius:2px;"></span> Navy/Blau | **Default** |
+| `default` | <span style="display:inline-block;width:12px;height:12px;background:#0891b2;border-radius:2px;"></span> Cyan/Orange | Alternativ |
+| `electric-night` | <span style="display:inline-block;width:12px;height:12px;background:#a855f7;border-radius:2px;"></span> Purple/Pink | Alternativ |
+| `golden-hour` | <span style="display:inline-block;width:12px;height:12px;background:#f59e0b;border-radius:2px;"></span> Amber/Gold | Alternativ |
+| `arctic-frost` | <span style="display:inline-block;width:12px;height:12px;background:#60a5fa;border-radius:2px;"></span> Hellblau/Lavendel | Alternativ |
 
 Vollständige Token-Tabellen: [docs/theme-system.md](theme-system.md)
 
@@ -137,8 +140,7 @@ box-shadow: 0 0 30px color-mix(in srgb, var(--color-primary) 30%, transparent);
 - **City Hero**: `public/img/cities/<slug>.webp` (1920px, quality 85)
 - **City Thumb**: `public/img/cities/<slug>-thumb.webp` (600px, quality 75)
 - **Galerie**: `public/img/vermietung/<name>.webp` + Fallback `.jpg`
-- **Batch-Konvertierung**: `node scripts/create-webp.mjs` (1920px, q80, parallel)
-- **Optimierung**: `node scripts/optimize-images.mjs` (CLI: `-w`, `-q`, `--concurrency`, `-d`)
+- **Optimierung**: `node scripts/optimize-images.mjs` (WebP via Sharp, CLI: `-w`, `-q`, `--concurrency`, `-d`)
 - **Attribution**: CC-Lizenzen im HTML-Kommentar vermerken
 
 ---
@@ -154,11 +156,14 @@ box-shadow: 0 0 30px color-mix(in srgb, var(--color-primary) 30%, transparent);
 ## Build-Skripte
 
 ```bash
-pnpm run dev          # Dev server
-pnpm run build        # Production build → dist/ (inkl. Sitemap)
-pnpm run build:full   # Build + RSS + urllist (für Deploy)
-pnpm run preview      # Preview
-pnpm run generate-rss # Nur RSS-Feed generieren
+pnpm run dev                # Dev server
+pnpm run build              # Production build → dist/ (inkl. Sitemap)
+pnpm run build:full         # Build + RSS + urllist (für Deploy)
+pnpm run build:full-with-images # Images + Build + RSS + urllist
+pnpm run build:images       # WebP-Optimierung via Sharp (JPG/PNG)
+pnpm run preview            # Preview
+pnpm run generate-rss       # Nur RSS-Feed generieren
+pnpm run indexnow-submit    # URL-Submission an Suchmaschinen
 ```
 
 ---
@@ -175,7 +180,7 @@ pnpm run generate-rss # Nur RSS-Feed generieren
 
 ## Suchsystem (Pagefind)
 
-Die Site verwendet **Pagefind 1.5.2** (via `astro-pagefind`) für clientseitige Volltextsuche. Indexierung erfolgt automatisch beim Build (`pnpm run build` / `pnpm run build:full` → "Pagefind indexed N pages").
+Die Site verwendet **Pagefind 2.0.0** (via `astro-pagefind`) für clientseitige Volltextsuche. Indexierung erfolgt automatisch beim Build (`pnpm run build` / `pnpm run build:full` → "Pagefind indexed N pages").
 
 ### Funktionsweise
 
