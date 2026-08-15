@@ -4,6 +4,9 @@ node_modules/
 # Build output
 dist/
 
+# generated lastmod cache
+.lastmod-cache.json
+
 # test
 test-results/
 lighthouse-results/

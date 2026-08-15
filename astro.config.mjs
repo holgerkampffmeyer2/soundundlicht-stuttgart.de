@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import pagefind from 'astro-pagefind';
+import { lastModifiedFor, resolveSourceFiles } from './scripts/lastmod.mjs';
 
 export default defineConfig({
   vite: {
@@ -25,7 +26,6 @@ export default defineConfig({
     serialize(item) {
       const url = new URL(item.url);
       const path = decodeURIComponent(url.pathname);
-      const now = new Date().toISOString();
 
       let priority = 0.5;
       let changefreq = 'monthly';
@@ -41,7 +41,12 @@ export default defineConfig({
         changefreq = 'monthly';
       }
 
-      return { ...item, changefreq, lastmod: now, priority };
+      return {
+        ...item,
+        changefreq,
+        lastmod: lastModifiedFor(resolveSourceFiles(path)) || new Date().toISOString(),
+        priority,
+      };
     }
   }), pagefind()],
 });

@@ -1,3 +1,4 @@
+import { lastModifiedFor, resolveSourceFiles } from './lastmod.mjs';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -80,8 +81,9 @@ function findHtmlPages() {
         const html = fs.readFileSync(fullPath, 'utf-8');
         const meta = extractMeta(html);
         if (!meta.title.startsWith('Redirecting')) {
-          const stat = fs.statSync(fullPath);
-          const pubDate = stat.mtime.toISOString().split('T')[0];
+          const pubDate =
+            lastModifiedFor(resolveSourceFiles(pagePath)) ||
+            fs.statSync(fullPath).mtime.toISOString().split('T')[0];
           pageMap.set(pagePath, { path: pagePath, title: meta.title, description: meta.description, pubDate });
         }
       }
