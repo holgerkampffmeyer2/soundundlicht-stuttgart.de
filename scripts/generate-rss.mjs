@@ -125,7 +125,7 @@ function generateRss() {
     const category = '[Seite]';
     const link = `${site}${encodeURI(item.path)}`;
     xml += `    <item>
-      <guid isPermaLink="false">${escapeXml(encodeURI(item.path))}</guid>
+      <guid isPermaLink="true">${escapeXml(link)}</guid>
       <title>${escapeXml(category + ' ' + item.title)}</title>
       <link>${escapeXml(link)}</link>
       <description>${escapeXml(item.description)}</description>
