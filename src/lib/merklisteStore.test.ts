@@ -1,19 +1,32 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+// @vitest-environment node
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { getCart, addItem, removeItem, clearCart, getItemCount } from './merklisteStore';
 
 const STORAGE_KEY = 'sls_merkliste';
 
-beforeEach(() => {
+function createStorageMock(): Storage {
   const store: Record<string, string> = {};
-  const mock: Storage = {
+  return {
     getItem: (key: string) => store[key] ?? null,
-    setItem: (key: string, value: string) => { store[key] = value.toString(); },
+    setItem: (key: string, value: string) => { store[key] = String(value); },
     removeItem: (key: string) => { delete store[key]; },
-    clear: () => { Object.keys(store).forEach(k => delete store[k]); },
+    clear: () => { for (const key of Object.keys(store)) delete store[key]; },
     get length() { return Object.keys(store).length; },
-    key: (i: number) => Object.keys(store)[i] ?? null,
-  };
-  vi.spyOn(window, 'localStorage', 'get').mockReturnValue(mock);
+    key: (index: number) => Object.keys(store)[index] ?? null,
+  } as Storage;
+}
+
+beforeEach(() => {
+  const mock = createStorageMock();
+  const globals = globalThis as Record<string, unknown>;
+  globals.window = { localStorage: mock };
+  globals.localStorage = mock;
+});
+
+afterEach(() => {
+  const globals = globalThis as Record<string, unknown>;
+  delete globals.window;
+  delete globals.localStorage;
 });
 
 describe('merklisteStore', () => {
