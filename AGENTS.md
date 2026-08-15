@@ -28,9 +28,9 @@ Astro 7.x SSG-Website für Veranstaltungstechnik-Verleih (PA-Anlagen, Partyboxen
 - `pnpm run build:images` — WebP-Optimierung via Sharp (JPG/PNG in `public/img/`)
 - `pnpm run build:full-with-images` — Images + Build + RSS + urllist
 - `pnpm run preview` — Preview build
-- `pnpm run lint` — ESLint code linting
-- `pnpm run lint:agent` — ESLint kompakt (`--format unix --quiet`), token-optimiert für LLM/Agent-Checks (bevorzugt)
-- `npx vitest run` — Unit-Tests (Vitest)
+- `pnpm run lint` — ESLint code linting (mit Cache, `.eslintcache`)
+- `pnpm run lint:agent` — ESLint kompakt (`--format unix --quiet --cache`), token-optimiert für LLM/Agent-Checks (bevorzugt)
+- `pnpm test` — Unit-Tests (Vitest, `--pool=forks`)
 - `npx playwright test` — E2E-Tests (Playwright)
 
 Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist.txt`.

@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.join(__dirname, '..');
 const CACHE_PATH = path.join(ROOT_DIR, '.lastmod-cache.json');
-const CONCURRENCY = 16;
+const CONCURRENCY = 32;
 
 let cache = null;
 

@@ -7,6 +7,9 @@ dist/
 # generated lastmod cache
 .lastmod-cache.json
 
+# ESLint cache
+.eslintcache
+
 # test
 test-results/
 lighthouse-results/
