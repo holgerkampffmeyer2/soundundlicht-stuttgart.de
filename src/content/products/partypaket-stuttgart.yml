@@ -1,7 +1,7 @@
 slug: partypaket-stuttgart
 title: "Partypaket"
 image: /img/vermietung/partypaket.webp
-description: "Das Party-Starterpaket besteht aus Licht und Sound für kleinere Feiern bis ca. 50 Personen."
+description: "Lautsprecher, Partylicht und Mikrofon als fertiges Set. Musik per Spotify vom Handy, einfacher Aufbau. Ideal für Feiern bis 50 Personen."
 category: Paket
 price: "ab 160€ / Tag"
 priceValue: 160
@@ -12,3 +12,10 @@ features:
   - "Mikrofon"
   - "4x LED Par Lichter"
 detailPage: "/vermietung/partypaket-stuttgart"
+audienceTag: "Empfohlen für Einsteiger"
+audienceDescription: "Ideal für Feiern bis 50 Personen"
+personRange: "30–50 Personen"
+setupTime: "~30 Min."
+spotifyReady: true
+micIncluded: true
+lightIncluded: true

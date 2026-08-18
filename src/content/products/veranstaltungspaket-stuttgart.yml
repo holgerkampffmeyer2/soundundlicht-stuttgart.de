@@ -1,7 +1,7 @@
 slug: veranstaltungspaket-stuttgart
 title: "Veranstaltungspaket"
 image: /img/vermietung/veranstaltungspaket.webp
-description: "Das Veranstaltungspaket für mittlere Feiern bis ca. 150 Personen."
+description: "Rundum-sorglos für Hochzeiten, Firmenfeiern und größere Events. Sound, Licht und Effekte als Komplettset."
 category: Paket
 price: "ab 200€ / Tag"
 priceValue: 200
@@ -14,3 +14,10 @@ features:
   - "4x LED Par Lichter"
   - "2x Moving Head"
 detailPage: "/vermietung/veranstaltungspaket-stuttgart"
+audienceTag: "Empfohlen für Hochzeiten"
+audienceDescription: "Für Hochzeiten, Firmenfeiern & große Events"
+personRange: "80–150 Personen"
+setupTime: "~60 Min."
+spotifyReady: false
+micIncluded: true
+lightIncluded: true

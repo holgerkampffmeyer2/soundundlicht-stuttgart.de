@@ -197,12 +197,8 @@ import Icon from './Icon.astro';
     }
     document.dispatchEvent(new CustomEvent('merkliste-prefill'));
     closeDrawer();
-    var contactSection = document.getElementById('kontakt');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
-      window.location.href = '/vermietung#kontakt';
-    }
+    // Always navigate to the vermietung contact form
+    window.location.href = '/vermietung#kontakt';
   });
 </script>
 

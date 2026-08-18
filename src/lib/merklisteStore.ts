@@ -101,6 +101,11 @@ export function getItemCount(): number {
   return data.items.length;
 }
 
+export function hasItem(slug: string): boolean {
+  const data = loadMerkliste();
+  return data.items.some(item => item.slug === slug);
+}
+
 export function isCartEmpty(): boolean {
   const data = loadMerkliste();
   return data.items.length === 0;

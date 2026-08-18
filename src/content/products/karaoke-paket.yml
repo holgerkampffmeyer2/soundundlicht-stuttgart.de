@@ -1,7 +1,7 @@
 slug: karaoke-paket
 title: "Karaoke-Paket"
 image: /img/vermietung/karaoke-paket-hero.webp
-description: "Das Komplettpaket für Karaoke-Abende: 2x JBL Partyboxen, 2x Mikrofone, Yamaha Mischpult. Musik-Zuspielung via Computer oder Bluetooth."
+description: "2 Lautsprecher, 2 Mikrofone, Mischpult – alles für einen Karaoke-Abend mit Freunden."
 category: Paket
 price: "ab 130€ / Tag"
 priceValue: 130
@@ -12,3 +12,10 @@ features:
   - "Computer-/Bluetooth-Zuspielung"
   - "Alle Kabel inklusive"
 detailPage: "/vermietung/karaoke-paket"
+audienceTag: "Empfohlen für Karaoke"
+audienceDescription: "Für Karaoke-Abende mit Freunden"
+personRange: "10–50 Personen"
+setupTime: "~15 Min."
+spotifyReady: true
+micIncluded: true
+lightIncluded: false

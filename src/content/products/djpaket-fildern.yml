@@ -1,7 +1,7 @@
 slug: djpaket-fildern
 title: "DJ-Paket"
 image: /img/vermietung/djpaket.webp
-description: "Das DJ-Paket für DJ Gigs und mittlere Feiern bis ca. 150 Personen mit LD Maui, LED BossFX, Moving Head und Stage Bar."
+description: "Professionelles Setup für DJs und größere Feiern bis 150 Personen. Kraftvoller Sound, Lichteffekte und Mischpult."
 category: Paket
 price: "ab 200€ / Tag"
 priceValue: 200
@@ -13,3 +13,10 @@ features:
   - "Mikrofon"
   - "4x LED Par Lichter"
 detailPage: "/vermietung/djpaket-fildern"
+audienceTag: "Empfohlen für DJs"
+audienceDescription: "Für DJs & anspruchsvolle Events bis 150 Personen"
+personRange: "50–150 Personen"
+setupTime: "~45–60 Min."
+spotifyReady: false
+micIncluded: true
+lightIncluded: true

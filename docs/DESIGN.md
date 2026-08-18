@@ -33,7 +33,7 @@ src/
 │   │   ├── kls-laser-bar.astro
 │   │   ├── led-bossfx-nebelmaschine.astro
 │   │   └── partylicht-moving-head.astro
-│   └── <stadt>.astro     # City Pages (16 Städte)
+│   └── <stadt>.astro     # City Pages (15 Städte)
 ├── styles/
 │   ├── global.css
 │   └── themes/*.css      # 5 Farb-Themes
@@ -42,6 +42,14 @@ src/
 │   └── update-sitemap.mjs
 ├── content/
 │   └── products/         # 21 Produkt-YAMLs
+├── lib/                  # Hilfsfunktionen
+│   ├── cartData.ts       # Cart-Daten (readRawCart, buildProductMap, formatCartItems, getCartData)
+│   ├── cartData.test.ts  # Unit-Tests
+│   ├── faqUtils.ts       # FAQ-Filterung (getFaqsForPage)
+│   ├── imageUtils.ts     # WebP/Thumb-URLs
+│   ├── merklisteStore.ts # localStorage-CRUD für Merkliste
+│   ├── merklisteStore.test.ts # Unit-Tests
+│   └── types.ts          # Gemeinsame Typen
 ├── data/                 # JSON-Daten
 │   ├── cities.json
 │   ├── faqs.json
@@ -71,7 +79,7 @@ public/
 | `/vermietung/kls-laser-bar/` | KLS Laser Bar |
 | `/vermietung/led-bossfx-nebelmaschine/` | LED + Nebelmaschine |
 | `/vermietung/partylicht-moving-head/` | Partylicht Moving Head |
-| 16 City Pages: `/stuttgart/`, `/esslingen/`, ... `/waiblingen/` | City Pages |
+| 15 City Pages: `/stuttgart/`, `/esslingen/`, ... `/waiblingen/` | City Pages |
 | Weitere 11 Mietartikel (Powerstation, Mikrofon, Beamer, …) | Nur auf `/vermietung/#item-<slug>` (keine eigenen Seiten) |
 
 ---
@@ -172,7 +180,7 @@ pnpm run indexnow-submit    # URL-Submission an Suchmaschinen
 
 - JSON-LD: LocalBusiness, Service, Product, FAQPage, OfferCatalog
 - City-Seiten: Service mit city-spezifischem `areaServed`
-- Sitemap: 25 URLs via `@astrojs/sitemap`
+- Sitemap: 29+ URLs via `@astrojs/sitemap`
 - RSS Feed: `public/rss.xml` (wird bei build generiert)
 - urllist.txt für Suchmaschinen
 

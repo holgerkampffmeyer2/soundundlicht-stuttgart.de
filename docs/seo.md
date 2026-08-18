@@ -2,7 +2,7 @@
 
 ## JSON-LD pro Seitentyp
 
-- Landing (`/`): `Service` (general), `OfferCatalog` (4 Pakete, `ab`-Preise), `FAQPage` (manuell via `faqJsonLd`)
+- Landing (`/`): `Service` (general), `OfferCatalog` (Pakete & Einzelgeräte, `ab`-Preise), `FAQPage` (manuell via `faqJsonLd`)
 - Vermietung (`/vermietung/`): `Service`, `FAQPage` (manuell)
 - City-Seite (`/<stadt>/`): `Service` mit `areaServed: { City: "<Stadt>" }` + `provider: LocalBusiness`
 - Produktseite (`/vermietung/<produkt>/`): `Service`, `Product`, `FAQPage` (via `getFaqsForPage('<produkt-slug>')`)

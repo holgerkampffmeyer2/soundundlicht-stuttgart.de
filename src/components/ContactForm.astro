@@ -5,11 +5,126 @@
   action="https://api.web3forms.com/submit"
   method="POST"
 >
-  <input type="hidden" name="access_key" value="b7b5a28d-9d9b-460f-901a-01955f3e5122" />
   <input type="hidden" name="subject" value="Neue Anfrage von soundundlicht-stuttgart.de" />
   <input type="hidden" name="from_name" value="Sound & Licht Stuttgart Kontaktformular" />
   <input type="hidden" name="redirect" value="https://soundundlicht-stuttgart.de/thankyou" />
-  <input type="hidden" name="cart" id="merkliste-data" />
+  <input type="hidden" name="cart" />
+  <input type="hidden" name="access_key" value="b7b5a28d-9d9b-460f-901a-01955f3e5122" />
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="rental_start" class="form-label">Wann ist deine Feier? *</label>
+      <input
+        type="date"
+        id="rental_start"
+        name="rental_start"
+        required
+        class="form-input"
+        autocomplete="off"
+      />
+      <span class="form-error" id="error-start" role="alert"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="event_type" class="form-label">Was ist der Anlass?</label>
+      <select id="event_type" name="event_type" class="form-input">
+        <option value="">Bitte wählen…</option>
+        <option value="Geburtstag">Geburtstag</option>
+        <option value="Hochzeit">Hochzeit</option>
+        <option value="Firmenfeier">Firmenfeier</option>
+        <option value="Vereinsfeier">Vereinsfeier</option>
+        <option value="Karaoke-Abend">Karaoke-Abend</option>
+        <option value="Outdoor-Party">Outdoor-Party</option>
+        <option value="Sonstiges">Sonstiges</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="music_source" class="form-label">Wie möchtest du Musik abspielen?</label>
+    <select id="music_source" name="music_source" class="form-input">
+      <option value="">Bitte wählen…</option>
+      <option value="Spotify/Handy">Spotify oder Musik-App vom Handy</option>
+      <option value="Laptop">Laptop</option>
+      <option value="DJ-Equipment">DJ-Equipment</option>
+      <option value="Noch nicht sicher">Noch nicht sicher – ich brauche eine Empfehlung</option>
+    </select>
+  </div>
+
+  <p class="text-[var(--color-text-muted)] text-sm font-semibold pt-2">Deine Adresse <span class="font-normal">(optional – für den Mietvertrag)</span></p>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="street" class="form-label">Straße</label>
+      <input
+        type="text"
+        id="street"
+        name="street"
+        class="form-input"
+        placeholder="Musterstraße"
+        autocomplete="address-line1"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="housenumber" class="form-label">Hausnummer</label>
+      <input
+        type="text"
+        id="housenumber"
+        name="housenumber"
+        class="form-input"
+        placeholder="42"
+        autocomplete="address-line2"
+      />
+    </div>
+  </div>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="zip" class="form-label">PLZ</label>
+      <input
+        type="text"
+        id="zip"
+        name="zip"
+        class="form-input"
+        placeholder="70567"
+        autocomplete="postal-code"
+        maxlength="5"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="address_city" class="form-label">Stadt</label>
+      <input
+        type="text"
+        id="address_city"
+        name="address_city"
+        class="form-input"
+        placeholder="Stuttgart"
+        autocomplete="address-level2"
+      />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="equipment" class="form-label">
+      Was möchtest du mieten?
+      <span class="price-info-wrap ml-1">
+        <svg class="price-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+        </svg>
+        <span class="price-info-popup">Unverbindliche Preisangabe. Das finale Angebot erhalte ich nach Absenden des Formulars.</span>
+      </span>
+    </label>
+    <select id="equipment" name="equipment" class="form-input">
+      <option value="Empfehlung brauchen">Ich brauche eine Empfehlung</option>
+      <option value="Lautsprecher und Licht">Lautsprecher und Licht</option>
+      <option value="Nur Lautsprecher">Nur Lautsprecher</option>
+      <option value="Karaoke">Karaoke</option>
+      <option value="DJ-Equipment">DJ-Equipment</option>
+      <option value="Unsicher">Ich bin unsicher</option>
+    </select>
+  </div>
 
   <div class="form-grid">
     <div class="form-group">
@@ -37,101 +152,39 @@
         autocomplete="email"
       />
     </div>
-
-    <div class="form-group">
-      <label for="phone" class="form-label">Telefon</label>
-      <input
-        type="tel"
-        id="phone"
-        name="phone"
-        class="form-input"
-        placeholder="01711467491"
-        autocomplete="tel"
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="event_type" class="form-label">Veranstaltungstyp</label>
-      <select id="event_type" name="event_type" class="form-input">
-        <option value="">Bitte wählen…</option>
-        <option value="Geburtstag">Geburtstag</option>
-        <option value="Hochzeit">Hochzeit</option>
-        <option value="Firmenfeier">Firmenfeier</option>
-        <option value="Vereinsfeier">Vereinsfeier</option>
-        <option value="Sonstiges">Sonstiges</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="rental_start" class="form-label">Anmietung</label>
-      <input
-        type="date"
-        id="rental_start"
-        name="rental_start"
-        class="form-input"
-        autocomplete="off"
-      />
-      <span class="form-error" id="error-start" role="alert"></span>
-    </div>
-
-    <div class="form-group">
-      <label for="rental_end" class="form-label">Rückgabe</label>
-      <input
-        type="date"
-        id="rental_end"
-        name="rental_end"
-        class="form-input"
-        autocomplete="off"
-      />
-      <span class="form-error" id="error-end" role="alert"></span>
-    </div>
-
-    <div class="form-group">
-      <label for="city" class="form-label">Veranstaltungsort (Stadt)</label>
-      <input
-        type="text"
-        id="city"
-        name="city"
-        class="form-input"
-        placeholder="Stuttgart, Esslingen, …"
-        autocomplete="address-level2"
-      />
-    </div>
   </div>
 
   <div class="form-group">
-    <label for="equipment" class="form-label">
-      Gewünschte Technik *
-      <span class="price-info-wrap ml-1">
-        <svg class="price-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-        </svg>
-        <span class="price-info-popup">Unverbindliche Preisangabe. Das finale Angebot erhalte ich nach Absenden des Formulars.</span>
-      </span>
-    </label>
-    <textarea
-      id="equipment"
-      name="equipment"
-      required
-      class="form-input form-textarea"
-      placeholder="Welche Geräte / Pakete interessieren dich?"
-    ></textarea>
+    <label for="phone" class="form-label">Telefonnummer <span class="text-[var(--color-text-muted)] text-sm font-normal">(optional – praktisch für kurzfristige Rückfragen)</span></label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      class="form-input"
+      placeholder="0171 146 7491"
+      autocomplete="tel"
+    />
   </div>
 
   <div class="form-group">
-    <label for="message" class="form-label">Nachricht</label>
+    <label for="message" class="form-label">Weitere Informationen <span class="text-[var(--color-text-muted)] text-sm font-normal">(optional)</span></label>
     <textarea
       id="message"
       name="message"
       class="form-input form-textarea"
-      placeholder="Weitere Wünsche, Fragen oder Anmerkungen…"
+      placeholder="Besondere Wünsche, Fragen oder Anmerkungen…"
     ></textarea>
+    <input type="hidden" name="merkliste_items" id="merkliste-items-hidden" />
   </div>
 
   <div class="h-captcha" data-theme="dark"></div>
 
+  <p class="text-[var(--color-text-muted)] text-sm mb-4 text-center">
+    Deine Anfrage ist <strong class="text-[var(--color-text)]">unverbindlich</strong>. Es entsteht noch keine Buchung. Ich prüfe die Verfügbarkeit und sende dir ein konkretes Angebot.
+  </p>
+
   <button type="submit" class="btn-primary form-submit">
-    <span class="submit-text">Anfrage senden</span>
+    <span class="submit-text">Kostenlos und unverbindlich Angebot anfragen</span>
     <span class="submit-spinner" style="display:none;">
       <svg class="animate-spin w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -139,74 +192,49 @@
       </svg>
     </span>
   </button>
+  <p class="text-[var(--color-text-muted)] text-xs mt-3 text-center">
+    Keine automatische Buchung. Ich melde mich innerhalb von 12 Stunden.
+  </p>
 </form>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
 
 <script>
+  import { getCartData, buildProductMap } from '../lib/cartData';
+
   (function() {
     const form = document.querySelector('.contact-form');
     if (!form) return;
     const submitBtn = form.querySelector('.form-submit');
     const submitText = form.querySelector('.submit-text');
     const submitSpinner = form.querySelector('.submit-spinner');
-    const cartInput = document.getElementById('merkliste-data');
+    const messageTextarea = document.getElementById('message');
+    const merklisteHidden = document.getElementById('merkliste-items-hidden');
 
-    function getCartData() {
+    function resolveProductMap() {
+      const productScript = document.getElementById('rental-catalog-data');
+      if (!productScript) return {};
       try {
-        const raw = localStorage.getItem('sls_merkliste');
-        if (!raw) return '';
-        const cart = JSON.parse(raw);
-        if (!cart || typeof cart !== 'object' || !Array.isArray(cart.items)) return '';
-        if (Date.now() - (cart.lastUpdated || 0) > 86400000) {
-          localStorage.removeItem('sls_merkliste');
-          return '';
-        }
-
-        const productScript = document.getElementById('rental-catalog-data');
-        const products = productScript ? JSON.parse(productScript.textContent) : [];
-        const productsBySlug = {};
-        for (let i = 0; i < products.length; i++) {
-          productsBySlug[products[i].slug] = products[i];
-        }
-
-        const items = cart.items.map(item => {
-          const prod = productsBySlug[item.slug];
-          const title = prod ? prod.title : item.slug;
-          const price = prod ? prod.price : '';
-          return `${title} (${price})`;
-        });
-        return items.join(', ');
-      } catch (e) {
-        console.warn('Could not read merkliste', e);
-        return '';
+        return buildProductMap(JSON.parse(productScript.textContent));
+      } catch {
+        return {};
       }
     }
 
-    // Date inputs: min=today, rental_end ≥ rental_start
+    // Date inputs: min=today
     var startInput = document.getElementById('rental_start');
-    var endInput = document.getElementById('rental_end');
     function getTodayISO() {
       var d = new Date();
       return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
     }
     var today = getTodayISO();
-    if (startInput && endInput) {
+    if (startInput) {
       startInput.min = today;
-      endInput.min = today;
-      startInput.addEventListener('change', function () {
-        endInput.min = startInput.value || today;
-        if (endInput.value && endInput.value < startInput.value) {
-          endInput.value = startInput.value;
-        }
-      });
     }
 
     var errorStart = document.getElementById('error-start');
-    var errorEnd = document.getElementById('error-end');
     function clearErrors() {
       if (errorStart) { errorStart.textContent = ''; startInput.classList.remove('is-invalid'); }
-      if (errorEnd) { errorEnd.textContent = ''; endInput.classList.remove('is-invalid'); }
     }
     function showError(el, input, msg) {
       el.textContent = msg;
@@ -214,94 +242,56 @@
       input.focus();
     }
     if (startInput) startInput.addEventListener('input', clearErrors);
-    if (endInput) endInput.addEventListener('input', clearErrors);
 
     form.addEventListener('submit', function(e) {
       clearErrors();
-      // Date validation
       var rentalStart = startInput ? startInput.value : '';
-      var rentalEnd = endInput ? endInput.value : '';
       if (rentalStart && rentalStart < today) {
         e.preventDefault();
-        if (errorStart && startInput) showError(errorStart, startInput, 'Bitte wähle ein Anmietdatum in der Zukunft.');
-        return;
-      }
-      if (rentalEnd && rentalEnd < today) {
-        e.preventDefault();
-        if (errorEnd && endInput) showError(errorEnd, endInput, 'Bitte wähle ein Rückgabedatum in der Zukunft.');
-        return;
-      }
-      if (rentalStart && rentalEnd && rentalEnd < rentalStart) {
-        e.preventDefault();
-        if (errorEnd && endInput) showError(errorEnd, endInput, 'Das Rückgabedatum muss nach dem Anmietdatum liegen.');
+        if (errorStart && startInput) showError(errorStart, startInput, 'Bitte wähle ein Datum in der Zukunft.');
         return;
       }
 
-      // Always read fresh cart data on submit
-      cartInput.value = getCartData();
-      
-      // Also prefill textarea so user sees exactly what's sent
-      var eq = document.getElementById('equipment');
-      if (eq && !eq.value.trim()) {
-        var cart = JSON.parse(localStorage.getItem('sls_merkliste') || '{}');
-        if (cart.items && cart.items.length > 0) {
-          var script = document.getElementById('rental-catalog-data');
-          if (script) {
-            var products = JSON.parse(script.textContent);
-            var bySlug = {};
-            for (var i = 0; i < products.length; i++) bySlug[products[i].slug] = products[i];
-            eq.value = cart.items.map(function(item) {
-              var p = bySlug[item.slug];
-              return (p ? p.title : item.slug) + ' (' + (p ? p.price : '') + ')';
-            }).join('\n');
-          }
-        }
-      }
-      
+      // Store fresh cart data in hidden input for submission
+      var cartText = getCartData(localStorage, resolveProductMap());
+      if (merklisteHidden) merklisteHidden.value = cartText;
+
       // Disable button and show spinner
       submitBtn.disabled = true;
       submitText.style.display = 'none';
       submitSpinner.style.display = 'inline-flex';
     });
-  })();
-  function prefillEquipment() {
-    const equipmentTextarea = document.getElementById('equipment');
-    if (!equipmentTextarea) return;
 
-    const raw = localStorage.getItem('sls_merkliste');
-    if (!raw) return;
-    try {
-      const cart = JSON.parse(raw);
-      if (!cart || typeof cart !== 'object' || !Array.isArray(cart.items)) return;
-      if (Date.now() - (cart.lastUpdated || 0) > 86400000) {
-        localStorage.removeItem('sls_merkliste');
+    // Prefill textarea with merkliste items
+    var merklisteHeader = 'Gewünschte Geräte aus der Merkliste:';
+    function prefillMerkliste() {
+      var cartText = getCartData(localStorage, resolveProductMap());
+      if (merklisteHidden) merklisteHidden.value = cartText;
+      if (!messageTextarea) return;
+      if (!cartText) {
+        // If cart is empty and textarea was only header, clear it
+        if (messageTextarea.value === merklisteHeader + '\n') {
+          messageTextarea.value = '';
+        }
         return;
       }
-      const items = cart.items;
-      if (items.length === 0) return;
-
-      const productScript = document.getElementById('rental-catalog-data');
-      if (productScript) {
-        const products = JSON.parse(productScript.textContent);
-        const productsBySlug = {};
-        for (let i = 0; i < products.length; i++) {
-          productsBySlug[products[i].slug] = products[i];
-        }
-        const equipmentText = items.map(item => {
-          const prod = productsBySlug[item.slug];
-          const title = prod ? prod.title : item.slug;
-          const price = prod ? prod.price : '';
-          return `${title} (${price})`;
-        }).join('\n');
-        equipmentTextarea.value = equipmentText;
-      } else {
-        equipmentTextarea.value = items.map(i => i.slug).join(', ');
+      // Check if textarea already has merkliste content (user hasn't edited it)
+      var currentVal = messageTextarea.value;
+      var hasMerklistePrefix = currentVal.indexOf(merklisteHeader) === 0;
+      // If user hasn't edited beyond the header, update freely
+      // If textarea is empty or only had the header, set fresh
+      if (!currentVal || currentVal === merklisteHeader || currentVal === merklisteHeader + '\n') {
+        messageTextarea.value = merklisteHeader + '\n' + cartText;
+      } else if (hasMerklistePrefix) {
+        // Replace everything after the header with new cart data
+        messageTextarea.value = merklisteHeader + '\n' + cartText;
       }
-    } catch (e) {}
-  }
+      // If user added their own text, don't overwrite — just update hidden input
+    }
 
-  document.addEventListener('DOMContentLoaded', prefillEquipment);
-  document.addEventListener('merkliste-prefill', prefillEquipment);
+    document.addEventListener('DOMContentLoaded', prefillMerkliste);
+    document.addEventListener('merkliste-prefill', prefillMerkliste);
+  })();
 </script>
 
 <style>

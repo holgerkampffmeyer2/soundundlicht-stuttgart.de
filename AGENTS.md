@@ -69,6 +69,7 @@ Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist
 - Domain: `soundundlicht-stuttgart.de`
 - Preise als `"ab XX€"`-Text, nie fester Betrag
 - Nach `build:full` für Deploy `indexnow-submit` ausführen
+- **Ich-Perspektive** im gesamten User-Facing-Text (Einzelunternehmer, persönlich). Nur `impressum.astro` bleibt "Wir" (juristischer Text)
 
 ### Vorher fragen
 - Dependencies hinzufügen
@@ -114,4 +115,4 @@ Kurzübersicht: JSON-LD je Seitentyp (Service, OfferCatalog, FAQPage, Product), 
 
 ## Merkliste (Wunschliste für Anfragen)
 
-Kurzübersicht: clientseitige Merkliste via `localStorage` (`sls_merkliste`), Komponenten `WishlistIcon`/`WishlistDrawer`/`WishlistButton`/`StickyMerkliste`, Events `toggle-merkliste`/`merkliste-prefill`. Details & Tests: [docs/wishlist.md](docs/wishlist.md).
+Kurzübersicht: clientseitige Merkliste via `localStorage` (`sls_merkliste`), Komponenten `WishlistIcon`/`WishlistDrawer`/`WishlistButton`/`StickyMerkliste`, Events `toggle-merkliste`/`merkliste-prefill`. Buttons zeigen "Gemerkt" (btn-secondary) wenn Produkt schon in der Merkliste ist. WishlistDrawer "Jetzt anfragen" navigiert zu `/vermietung#kontakt`. Merkliste-Items werden in der Textarea "Weitere Informationen" des Kontaktformulars vorausgefüllt (`src/lib/cartData.ts`). Details & Tests: [docs/wishlist.md](docs/wishlist.md).

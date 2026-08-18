@@ -17,31 +17,52 @@ import Icon from "../components/Icon.astro";
         <Icon name="check" class="w-20 h-20 mx-auto text-[var(--color-accent)]" />
       </div>
       <h1 class="font-play text-4xl md:text-5xl font-bold mb-6">
-        Anfrage versendet!
+        Deine Anfrage ist angekommen.
       </h1>
       <p class="text-[var(--color-text-muted)] text-xl mb-4">
         Vielen Dank für deine Anfrage.
       </p>
-      <p class="text-[var(--color-text-muted)] mb-10 max-w-lg mx-auto">
-        Ich melde mich innerhalb von <strong class="text-[var(--color-text)]">12 Stunden</strong> bei dir mit einem individuellen Angebot. 
-        <span class="text-[var(--color-accent)] font-medium">Bei dringenden Anfragen:</span> 
-        <a href="tel:01711467491" class="text-[var(--color-accent)] font-semibold underline">0171 146 7491</a> 
-        oder 
-        <a href="mailto:holger.kampffmeyer+dj@gmail.com" class="text-[var(--color-accent)] font-semibold underline">per E‑Mail</a>.
+      <p class="text-[var(--color-text-muted)] mb-6 max-w-lg mx-auto">
+        Ich prüfe den Termin und melde mich innerhalb von <strong class="text-[var(--color-text)]">12 Stunden</strong> per E-Mail mit einem individuellen Angebot.
       </p>
-      
+
       <!-- Merkliste -->
       <div id="merkliste-summary" class="mt-6 text-left w-full max-w-xs mx-auto"></div>
-      
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/vermietung" class="btn-primary">
-          Zurück zur Vermietung ↗
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+        <a href="tel:01711467491" class="btn-primary flex items-center justify-center gap-2">
+          <Icon name="phone" class="h-5 w-5" />
+          Jetzt anrufen
         </a>
         <a href="/" class="btn-secondary">
           Zur Startseite
         </a>
       </div>
-      <div class="mt-12 bg-[var(--color-surface)] rounded-xl p-6 max-w-md mx-auto grid gap-4">
+
+      <!-- Vorbereitungstipps -->
+      <div class="mt-12 bg-[var(--color-surface)] rounded-xl p-6 max-w-md mx-auto text-left">
+        <h2 class="font-play font-bold mb-3 text-base">Vorbereitung für deine Feier</h2>
+        <ul class="text-[var(--color-text-muted)] text-sm space-y-2">
+          <li class="flex items-start gap-2">
+            <span class="text-[var(--color-secondary)] mt-0.5">✓</span>
+            Lade deine Spotify-Playlist vor der Feier offline herunter
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[var(--color-secondary)] mt-0.5">✓</span>
+            Stelle dein Handy auf „Nicht stören", während die Musik läuft
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[var(--color-secondary)] mt-0.5">✓</span>
+            Lade dein Handy vollständig auf
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[var(--color-secondary)] mt-0.5">✓</span>
+            Für den Transport: Kombi oder umklappbare Rückbank reicht
+          </li>
+        </ul>
+      </div>
+
+      <div class="mt-8 grid gap-4 max-w-md mx-auto">
         <div class="flex items-start space-x-4">
           <Icon name="phone" class="h-6 w-6 text-[var(--color-accent)] flex-shrink-0" />
           <div>
