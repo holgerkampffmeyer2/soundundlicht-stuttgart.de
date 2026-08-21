@@ -9,6 +9,7 @@ import Breadcrumb from "../components/Breadcrumb.astro";
 import ContactSection from "../components/ContactSection.astro";
 import FAQSection from "../components/FAQSection.astro";
 import CityEinzeltechnik from "../components/CityEinzeltechnik.astro";
+import Icon from "../components/Icon.astro";
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../lib/faqUtils';
 import citiesData from '../data/cities.json';
@@ -106,6 +107,21 @@ const breadcrumbJsonLd = {
     />
   )}
   <CitySteps />
+
+  <!-- Tipps vom Profi -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-[var(--color-bg)] border border-[var(--color-secondary)]/20 rounded-xl p-6">
+        <h2 class="font-play text-xl font-bold mb-2 flex items-center gap-2">
+          <Icon name="light-bulb" class="w-5 h-5 text-[var(--color-secondary)] shrink-0" />
+          Diese 5 Fehler beim Partytechnik mieten vermeiden
+        </h2>
+        <p class="text-[var(--color-text-muted)] text-sm">
+          Bevor du in Stuttgart Partytechnik mietest, wirf einen Blick auf meinen Medium-Artikel: <a href="https://medium.com/@holger.kampffmeyer/partytechnik-mieten-in-stuttgart-die-5-h%C3%A4ufigsten-fehler-und-warum-ich-meinen-eigenen-verleih-45c4189edbc6" target="_blank" rel="noopener" class="text-[var(--color-secondary)] hover:underline">Die 5 häufigsten Fehler – und warum ich meinen eigenen Verleih gegründet habe →</a>
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- FAQ -->
   <section class="section-padding bg-[var(--color-bg)]">
