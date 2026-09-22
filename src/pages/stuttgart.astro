@@ -49,8 +49,8 @@ const cityJsonLd = {
   }
 };
 
-const distanceKm = "15";
-const travelTime = "20-25";
+const distanceKm = "12";
+const travelTime = "15-20";
 
 const allProducts = await getCollection('products');
 const productsBySlug = Object.fromEntries(allProducts.map(p => [p.data.slug, p.data]));

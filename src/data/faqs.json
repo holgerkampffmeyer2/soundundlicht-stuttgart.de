@@ -471,7 +471,7 @@
   {
     "id": "böblingen-mietbar",
     "question": "Kann ich als Kunde aus Böblingen bei euch Technik mieten?",
-    "answer": "Ja, auf jeden Fall! Viele meiner Kunden kommen aus Böblingen und Umgebung. Die Abholung ist in Leinfelden-Echterdingen – von Böblingen aus nur ca. 20 km über die A8. Du kannst die Technik vor Ort testen, bekommst eine Einweisung und nimmst sie direkt mit.",
+    "answer": "Ja, auf jeden Fall! Viele meiner Kunden kommen aus Böblingen und Umgebung. Die Abholung ist in Leinfelden-Echterdingen – von Böblingen aus nur ca. 16 km über die A8. Du kannst die Technik vor Ort testen, bekommst eine Einweisung und nimmst sie direkt mit.",
     "pages": [
       "böblingen"
     ]
@@ -495,7 +495,7 @@
   {
     "id": "böblingen-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Böblingen entfernt?",
-    "answer": "Leinfelden-Echterdingen liegt nur ca. 20 km von Böblingen entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8. Viele Kunden aus Böblingen kommen bequem vorbei, holen die Technik ab und sind am selben Abend wieder zuhause.",
+    "answer": "Leinfelden-Echterdingen liegt nur ca. 16 km von Böblingen entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8. Viele Kunden aus Böblingen kommen bequem vorbei, holen die Technik ab und sind am selben Abend wieder zuhause.",
     "pages": [
       "böblingen"
     ]
@@ -511,7 +511,7 @@
   {
     "id": "esslingen-mietbar",
     "question": "Kann ich als Kunde aus Esslingen bei euch Technik mieten?",
-    "answer": "Ja, sehr gerne! Esslingen ist nur ca. 20 km entfernt, viele meiner Kunden kommen von dort. Du holst die Technik in Leinfelden-Echterdingen ab, bekommst eine ausführliche Einweisung und kannst direkt loslegen.",
+    "answer": "Ja, sehr gerne! Esslingen ist nur ca. 15 km entfernt, viele meiner Kunden kommen von dort. Du holst die Technik in Leinfelden-Echterdingen ab, bekommst eine ausführliche Einweisung und kannst direkt loslegen.",
     "pages": [
       "esslingen"
     ]
@@ -535,7 +535,7 @@
   {
     "id": "esslingen-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Esslingen entfernt?",
-    "answer": "Leinfelden-Echterdingen liegt nur ca. 20 km von Esslingen am Neckar entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8.",
+    "answer": "Leinfelden-Echterdingen liegt nur ca. 15 km von Esslingen am Neckar entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8.",
     "pages": [
       "esslingen"
     ]
@@ -583,7 +583,7 @@
   {
     "id": "kirchheim-anfahrt",
     "question": "Wie komme ich von Kirchheim unter Teck zu euch nach Leinfelden-Echterdingen?",
-    "answer": "Von Kirchheim unter Teck aus erreichst du mich in ca. 25 Minuten über die A8 Richtung Stuttgart, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, direkt an der A8 gelegen.",
+    "answer": "Von Kirchheim unter Teck aus erreichst du mich in ca. 30 Minuten über die A8 Richtung Stuttgart, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, direkt an der A8 gelegen.",
     "pages": [
       "kirchheim-unter-teck"
     ]
@@ -591,7 +591,7 @@
   {
     "id": "kirchheim-mietbar",
     "question": "Kann ich als Kunde aus Kirchheim unter Teck bei euch Technik mieten?",
-    "answer": "Ja, sehr gerne! Kirchheim unter Teck ist nur ca. 30 km entfernt. Du holst die Technik in Leinfelden-Echterdingen ab und bekommst eine ausführliche Einweisung vor Ort.",
+    "answer": "Ja, sehr gerne! Kirchheim unter Teck ist nur ca. 28 km entfernt. Du holst die Technik in Leinfelden-Echterdingen ab und bekommst eine ausführliche Einweisung vor Ort.",
     "pages": [
       "kirchheim-unter-teck"
     ]
@@ -615,7 +615,7 @@
   {
     "id": "kirchheim-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Kirchheim unter Teck entfernt?",
-    "answer": "Leinfelden-Echterdingen liegt ca. 30 km von Kirchheim unter Teck entfernt – eine Fahrtzeit von etwa 25 Minuten über die A8.",
+    "answer": "Leinfelden-Echterdingen liegt ca. 28 km von Kirchheim unter Teck entfernt – eine Fahrtzeit von etwa 30 Minuten über die A8.",
     "pages": [
       "kirchheim-unter-teck"
     ]
@@ -623,7 +623,7 @@
   {
     "id": "kornwestheim-anfahrt",
     "question": "Wie komme ich von Kornwestheim zu euch nach Leinfelden-Echterdingen?",
-    "answer": "Von Kornwestheim aus erreichst du mich in ca. 20 Minuten über die A81 Richtung Stuttgart, dann A8 Richtung Karlsruhe, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, 70771 Leinfelden-Echterdingen.",
+    "answer": "Von Kornwestheim aus erreichst du mich in ca. 25 Minuten über die A81 Richtung Stuttgart, dann A8 Richtung Karlsruhe, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, 70771 Leinfelden-Echterdingen.",
     "pages": [
       "kornwestheim"
     ]
@@ -631,7 +631,7 @@
   {
     "id": "kornwestheim-mietbar",
     "question": "Kann ich als Kunde aus Kornwestheim bei euch Technik mieten?",
-    "answer": "Ja, auf jeden Fall! Kornwestheim ist nur ca. 20 km entfernt. Viele Kunden aus dem gesamten Großraum Stuttgart mieten bei mir – du bist herzlich willkommen!",
+    "answer": "Ja, auf jeden Fall! Kornwestheim ist nur ca. 25 km entfernt. Viele Kunden aus dem gesamten Großraum Stuttgart mieten bei mir – du bist herzlich willkommen!",
     "pages": [
       "kornwestheim"
     ]
@@ -655,7 +655,7 @@
   {
     "id": "kornwestheim-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Kornwestheim entfernt?",
-    "answer": "Leinfelden-Echterdingen liegt ca. 20 km von Kornwestheim entfernt – eine Fahrtzeit von etwa 20 Minuten über die A81 und A8.",
+    "answer": "Leinfelden-Echterdingen liegt ca. 25 km von Kornwestheim entfernt – eine Fahrtzeit von etwa 25 Minuten über die A81 und A8.",
     "pages": [
       "kornwestheim"
     ]
@@ -711,7 +711,7 @@
   {
     "id": "leonberg-mietbar",
     "question": "Kann ich als Kunde aus Leonberg bei euch Technik mieten?",
-    "answer": "Ja, sehr gerne! Leonberg ist nur ca. 25 km entfernt und über die A8 gut angebunden. Du holst die Technik in Leinfelden-Echterdingen ab und bekommst eine ausführliche Einweisung.",
+    "answer": "Ja, sehr gerne! Leonberg ist nur ca. 20 km entfernt und über die A8 gut angebunden. Du holst die Technik in Leinfelden-Echterdingen ab und bekommst eine ausführliche Einweisung.",
     "pages": [
       "leonberg"
     ]
@@ -735,7 +735,7 @@
   {
     "id": "leonberg-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Leonberg entfernt?",
-    "answer": "Leinfelden-Echterdingen liegt ca. 25 km von Leonberg entfernt – eine Fahrtzeit von etwa 20-25 Minuten über die A8.",
+    "answer": "Leinfelden-Echterdingen liegt ca. 20 km von Leonberg entfernt – eine Fahrtzeit von etwa 20-25 Minuten über die A8.",
     "pages": [
       "leonberg"
     ]
@@ -783,7 +783,7 @@
   {
     "id": "nürtingen-anfahrt",
     "question": "Wie komme ich von Nürtingen zu euch nach Leinfelden-Echterdingen?",
-    "answer": "Von Nürtingen aus erreichst du mich in ca. 25 Minuten über die A8 Richtung Stuttgart, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, direkt an der A8 gelegen.",
+    "answer": "Von Nürtingen aus erreichst du mich in ca. 22 Minuten über die A8 Richtung Stuttgart, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, direkt an der A8 gelegen.",
     "pages": [
       "nürtingen"
     ]
@@ -791,7 +791,7 @@
   {
     "id": "nürtingen-mietbar",
     "question": "Kann ich als Kunde aus Nürtingen bei euch Technik mieten?",
-    "answer": "Ja, sehr gerne! Nürtingen ist nur ca. 25 km entfernt. Du holst die Technik in Leinfelden-Echterdingen ab und bekommst eine ausführliche Einweisung vor Ort.",
+    "answer": "Ja, sehr gerne! Nürtingen ist nur ca. 20 km entfernt. Du holst die Technik in Leinfelden-Echterdingen ab und bekommst eine ausführliche Einweisung vor Ort.",
     "pages": [
       "nürtingen"
     ]
@@ -815,7 +815,7 @@
   {
     "id": "nürtingen-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Nürtingen entfernt?",
-    "answer": "Leinfelden-Echterdingen liegt ca. 25 km von Nürtingen entfernt – eine Fahrtzeit von etwa 25 Minuten über die A8.",
+    "answer": "Leinfelden-Echterdingen liegt ca. 20 km von Nürtingen entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8.",
     "pages": [
       "nürtingen"
     ]
@@ -831,7 +831,7 @@
   {
     "id": "ostfildern-mietbar",
     "question": "Kann ich als Kunde aus Ostfildern bei euch Technik mieten?",
-    "answer": "Ja, natürlich! Ostfildern ist nur ca. 15 km entfernt. Du kannst die Technik bequem abholen, vor Ort testen und direkt mitnehmen.",
+    "answer": "Ja, natürlich! Ostfildern ist nur ca. 10 km entfernt. Du kannst die Technik bequem abholen, vor Ort testen und direkt mitnehmen.",
     "pages": [
       "ostfildern"
     ]
@@ -855,7 +855,7 @@
   {
     "id": "ostfildern-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Ostfildern entfernt?",
-    "answer": "Leinfelden-Echterdingen liegt nur ca. 15 km von Ostfildern entfernt – eine Fahrtzeit von etwa 15 Minuten über die B27.",
+    "answer": "Leinfelden-Echterdingen liegt nur ca. 10 km von Ostfildern entfernt – eine Fahrtzeit von etwa 15 Minuten über die B27.",
     "pages": [
       "ostfildern"
     ]
@@ -871,7 +871,7 @@
   {
     "id": "reutlingen-mietbar",
     "question": "Kann ich als Kunde aus Reutlingen bei euch Technik mieten?",
-    "answer": "Ja, sehr gerne! Reutlingen ist ca. 40 km entfernt. Über die A8 bist du in 30 Minuten bei mir. Viele Kunden aus der Region Reutlingen mieten bei mir und nehmen die Technik bequem mit.",
+    "answer": "Ja, sehr gerne! Reutlingen ist ca. 30 km entfernt. Über die A8 bist du in 30 Minuten bei mir. Viele Kunden aus der Region Reutlingen mieten bei mir und nehmen die Technik bequem mit.",
     "pages": [
       "reutlingen"
     ]
@@ -895,7 +895,7 @@
   {
     "id": "reutlingen-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Reutlingen entfernt?",
-    "answer": "Leinfelden-Echterdingen liegt ca. 40 km von Reutlingen entfernt – eine Fahrtzeit von etwa 30 Minuten über die A8.",
+    "answer": "Leinfelden-Echterdingen liegt ca. 30 km von Reutlingen entfernt – eine Fahrtzeit von etwa 30 Minuten über die A8.",
     "pages": [
       "reutlingen"
     ]
@@ -911,7 +911,7 @@
   {
     "id": "sindelfingen-mietbar",
     "question": "Kann ich als Kunde aus Sindelfingen bei euch Technik mieten?",
-    "answer": "Ja, auf jeden Fall! Sindelfingen ist nur ca. 20 km entfernt und über die A8 sehr gut angebunden. Viele Kunden aus Sindelfingen und Böblingen mieten bei mir.",
+    "answer": "Ja, auf jeden Fall! Sindelfingen ist nur ca. 18 km entfernt und über die A8 sehr gut angebunden. Viele Kunden aus Sindelfingen und Böblingen mieten bei mir.",
     "pages": [
       "sindelfingen"
     ]
@@ -935,7 +935,7 @@
   {
     "id": "sindelfingen-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Sindelfingen entfernt?",
-    "answer": "Leinfelden-Echterdingen liegt ca. 20 km von Sindelfingen entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8.",
+    "answer": "Leinfelden-Echterdingen liegt ca. 18 km von Sindelfingen entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8.",
     "pages": [
       "sindelfingen"
     ]
@@ -951,7 +951,7 @@
   {
     "id": "stuttgart-mietbar",
     "question": "Kann ich als Stuttgarter bei euch Technik mieten?",
-    "answer": "Ja, sehr gerne! Stuttgart ist nur 15 km entfernt. Viele meiner Kunden kommen aus Stuttgart – du holst die Technik in Leinfelden-Echterdingen ab, bekommst eine Einweisung und nimmst sie direkt mit.",
+    "answer": "Ja, sehr gerne! Stuttgart ist nur ca. 12 km entfernt. Viele meiner Kunden kommen aus Stuttgart – du holst die Technik in Leinfelden-Echterdingen ab, bekommst eine Einweisung und nimmst sie direkt mit.",
     "pages": [
       "stuttgart"
     ]
@@ -975,7 +975,7 @@
   {
     "id": "stuttgart-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Stuttgart entfernt?",
-    "answer": "Leinfelden-Echterdingen liegt nur ca. 15 km von Stuttgart entfernt – eine Fahrtzeit von etwa 15-20 Minuten über die A8. Vom Stuttgarter Hauptbahnhof aus erreichst du mich mit dem Auto in ca. 15 Minuten.",
+    "answer": "Leinfelden-Echterdingen liegt nur ca. 12 km von Stuttgart entfernt – eine Fahrtzeit von etwa 15-20 Minuten über die A8. Vom Stuttgarter Hauptbahnhof aus erreichst du mich mit dem Auto in ca. 15 Minuten.",
     "pages": [
       "stuttgart"
     ]
@@ -1225,7 +1225,7 @@
   {
     "id": "es-wendlingen-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Wendlingen am Neckar entfernt?",
-    "answer": "Wendlingen liegt ca. 18 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8. Du holst deine Technik direkt bei mir ab.",
+    "answer": "Wendlingen liegt ca. 20 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 22 Minuten über die A8. Du holst deine Technik direkt bei mir ab.",
     "pages": [
       "esslingen",
       "kirchheim-unter-teck"
@@ -1259,7 +1259,7 @@
   {
     "id": "fellbach-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Fellbach entfernt?",
-    "answer": "Fellbach liegt ca. 25 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 25 Minuten über die B14 und A8. Du holst die Technik bequem bei mir ab und bekommst eine persönliche Einweisung.",
+    "answer": "Fellbach liegt ca. 20 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 25 Minuten über die B14 und A8. Du holst die Technik bequem bei mir ab und bekommst eine persönliche Einweisung.",
     "pages": [
       "fellbach"
     ]
