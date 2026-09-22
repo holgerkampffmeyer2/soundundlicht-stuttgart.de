@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import CityHero from "../components/CityHero.astro";
 import CityPackages from "../components/CityPackages.astro";
 import CitySteps from "../components/CitySteps.astro";
+import CityAreas from "../components/CityAreas.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import ContactSection from "../components/ContactSection.astro";
 import FAQSection from "../components/FAQSection.astro";
@@ -102,6 +103,11 @@ const breadcrumbJsonLd = {
     />
   )}
   <CitySteps />
+
+  <CityAreas
+    areas={cityData?.areas ?? []}
+    intro="Bernhausen, Plattenhardt, Bonlanden, Sielmingen und Harthausen liegen direkt vor meiner Haustür – von überall auf den Fildern holst du deine Technik in 5–12 Minuten bei mir in Echterdingen ab."
+  />
 
   <!-- FAQ -->
   <section class="section-padding bg-[var(--color-bg)]">

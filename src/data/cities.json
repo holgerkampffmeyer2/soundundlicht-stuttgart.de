@@ -9,7 +9,24 @@
     "travelTime": "15-20 min",
     "einzelItems": ["jbl-partybox-300-320", "kls-laser-bar", "partylicht-moving-head"],
     "einzelTitle": "Einzeltechnik für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Plieningen", "km": "ca. 4 km", "travelTime": "10 Min." },
+      { "name": "Hohenheim", "km": "ca. 4 km", "travelTime": "10 Min." },
+      { "name": "Sonnenberg", "km": "ca. 4 km", "travelTime": "10 Min." },
+      { "name": "Birkach", "km": "ca. 5 km", "travelTime": "10 Min." },
+      { "name": "Möhringen", "km": "ca. 6 km", "travelTime": "12 Min." },
+      { "name": "Fasanenhof", "km": "ca. 6 km", "travelTime": "12 Min." },
+      { "name": "Vaihingen", "km": "ca. 8 km", "travelTime": "15 Min." },
+      { "name": "Degerloch", "km": "ca. 9 km", "travelTime": "15 Min." },
+      { "name": "Sillenbuch", "km": "ca. 9 km", "travelTime": "15 Min." },
+      { "name": "Hedelfingen", "km": "ca. 13 km", "travelTime": "18 Min." },
+      { "name": "Botnang", "km": "ca. 16 km", "travelTime": "22 Min." },
+      { "name": "Bad Cannstatt", "km": "ca. 17 km", "travelTime": "22 Min." },
+      { "name": "Feuerbach", "km": "ca. 17 km", "travelTime": "25 Min." },
+      { "name": "Weilimdorf", "km": "ca. 18 km", "travelTime": "25 Min." },
+      { "name": "Zuffenhausen", "km": "ca. 19 km", "travelTime": "25 Min." }
+    ]
   },
   {
     "name": "Esslingen",
@@ -21,7 +38,19 @@
     "travelTime": "20 min",
     "einzelItems": ["ld-maui-28g3", "led-bossfx-nebelmaschine", "led-par-lichter"],
     "einzelTitle": "Technik nach Wahl für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Denkendorf", "km": "ca. 8 km", "travelTime": "12 Min." },
+      { "name": "Ostfildern", "km": "ca. 8 km", "travelTime": "12 Min.", "url": "/ostfildern" },
+      { "name": "Altbach", "km": "ca. 14 km", "travelTime": "15 Min." },
+      { "name": "Deizisau", "km": "ca. 14 km", "travelTime": "15 Min." },
+      { "name": "Köngen", "km": "ca. 16 km", "travelTime": "18 Min." },
+      { "name": "Plochingen", "km": "ca. 16 km", "travelTime": "18 Min." },
+      { "name": "Wendlingen am Neckar", "km": "ca. 18 km", "travelTime": "20 Min." },
+      { "name": "Aichwald", "km": "ca. 18 km", "travelTime": "20 Min." },
+      { "name": "Nürtingen", "km": "ca. 18 km", "travelTime": "20 Min.", "url": "/nürtingen" },
+      { "name": "Kirchheim unter Teck", "km": "ca. 20 km", "travelTime": "20-25 Min.", "url": "/kirchheim-unter-teck" }
+    ]
   },
   {
     "name": "Tübingen",
@@ -45,7 +74,19 @@
     "travelTime": "5-10 min",
     "einzelItems": ["jbl-partybox-300-320", "max-party-bar", "mikrofon"],
     "einzelTitle": "Einzelgeräte für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Bernhausen", "km": "ca. 2 km", "travelTime": "5 Min." },
+      { "name": "Plattenhardt", "km": "ca. 3 km", "travelTime": "7 Min." },
+      { "name": "Leinfelden-Echterdingen", "km": "ca. 5 km", "travelTime": "10 Min.", "url": "/leinfelden-echterdingen" },
+      { "name": "Bonlanden", "km": "ca. 5 km", "travelTime": "10 Min." },
+      { "name": "Neuhausen auf den Fildern", "km": "ca. 6 km", "travelTime": "10 Min." },
+      { "name": "Harthausen", "km": "ca. 6 km", "travelTime": "10 Min." },
+      { "name": "Sielmingen", "km": "ca. 7 km", "travelTime": "12 Min." },
+      { "name": "Denkendorf", "km": "ca. 8 km", "travelTime": "12 Min." },
+      { "name": "Ostfildern", "km": "ca. 8 km", "travelTime": "12 Min.", "url": "/ostfildern" },
+      { "name": "Wolfschlugen", "km": "ca. 13 km", "travelTime": "18 Min." }
+    ]
   },
   {
     "name": "Leinfelden-Echterdingen",
@@ -57,7 +98,18 @@
     "travelTime": "0 min",
     "einzelItems": ["ld-maui-28g3", "kls-laser-bar", "yamaha-mischpult"],
     "einzelTitle": "Technik direkt vor Ort –",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Filderstadt", "km": "ca. 5 km", "travelTime": "10 Min.", "url": "/filderstadt" },
+      { "name": "Steinenbronn", "km": "ca. 5 km", "travelTime": "10 Min." },
+      { "name": "Neuhausen auf den Fildern", "km": "ca. 7 km", "travelTime": "12 Min." },
+      { "name": "Schönaich", "km": "ca. 8 km", "travelTime": "12 Min." },
+      { "name": "Waldenbuch", "km": "ca. 8 km", "travelTime": "12 Min." },
+      { "name": "Denkendorf", "km": "ca. 8 km", "travelTime": "12 Min." },
+      { "name": "Ostfildern", "km": "ca. 10 km", "travelTime": "15 Min.", "url": "/ostfildern" },
+      { "name": "Stuttgart", "km": "ca. 10 km", "travelTime": "15 Min.", "url": "/stuttgart" },
+      { "name": "Esslingen", "km": "ca. 20 km", "travelTime": "20 Min.", "url": "/esslingen" }
+    ]
   },
   {
     "name": "Kornwestheim",
@@ -93,7 +145,18 @@
     "travelTime": "20 min",
     "einzelItems": ["jbl-partybox-300-320", "kls-laser-bar", "max-party-bar"],
     "einzelTitle": "Einzelgeräte für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Schönaich", "km": "ca. 8 km", "travelTime": "12 Min." },
+      { "name": "Sindelfingen", "km": "ca. 20 km", "travelTime": "18 Min.", "url": "/sindelfingen" },
+      { "name": "Holzgerlingen", "km": "ca. 22 km", "travelTime": "20 Min." },
+      { "name": "Weil im Schönbuch", "km": "ca. 22 km", "travelTime": "20 Min." },
+      { "name": "Ehningen", "km": "ca. 24 km", "travelTime": "22 Min." },
+      { "name": "Altdorf", "km": "ca. 25 km", "travelTime": "22 Min." },
+      { "name": "Leonberg", "km": "ca. 25 km", "travelTime": "25 Min.", "url": "/leonberg" },
+      { "name": "Gärtringen", "km": "ca. 26 km", "travelTime": "25 Min." },
+      { "name": "Herrenberg", "km": "ca. 30 km", "travelTime": "30 Min.", "url": "/herrenberg" }
+    ]
   },
   {
     "name": "Sindelfingen",
@@ -105,7 +168,14 @@
     "travelTime": "20 min",
     "einzelItems": ["led-bossfx-nebelmaschine", "led-par-strahler", "beamz-mhl36"],
     "einzelTitle": "Licht & Effekte für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Böblingen", "km": "ca. 20 km", "travelTime": "18 Min.", "url": "/böblingen" },
+      { "name": "Ehningen", "km": "ca. 24 km", "travelTime": "22 Min." },
+      { "name": "Holzgerlingen", "km": "ca. 22 km", "travelTime": "20 Min." },
+      { "name": "Leonberg", "km": "ca. 25 km", "travelTime": "25 Min.", "url": "/leonberg" },
+      { "name": "Herrenberg", "km": "ca. 30 km", "travelTime": "30 Min.", "url": "/herrenberg" }
+    ]
   },
   {
     "name": "Leonberg",
@@ -165,7 +235,18 @@
     "travelTime": "25 min",
     "einzelItems": ["jbl-partybox-300-320", "led-par-lichter", "nebel-maschine"],
     "einzelTitle": "Einzelgeräte für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Plochingen", "km": "ca. 16 km", "travelTime": "18 Min." },
+      { "name": "Wendlingen am Neckar", "km": "ca. 18 km", "travelTime": "20 Min." },
+      { "name": "Nürtingen", "km": "ca. 18 km", "travelTime": "20 Min.", "url": "/nürtingen" },
+      { "name": "Metzingen", "km": "ca. 22 km", "travelTime": "22 Min.", "url": "/metzingen" },
+      { "name": "Notzingen", "km": "ca. 28 km", "travelTime": "25 Min." },
+      { "name": "Dettingen unter Teck", "km": "ca. 30 km", "travelTime": "28 Min." },
+      { "name": "Holzmaden", "km": "ca. 32 km", "travelTime": "30 Min." },
+      { "name": "Weilheim an der Teck", "km": "ca. 32 km", "travelTime": "30 Min." },
+      { "name": "Owen", "km": "ca. 33 km", "travelTime": "30 Min." }
+    ]
   },
   {
     "name": "Ostfildern",
@@ -177,6 +258,130 @@
     "travelTime": "15 min",
     "einzelItems": ["jbl-partybox-300-320", "max-party-bar", "mikrofon"],
     "einzelTitle": "Technik nach Wahl für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Plieningen", "km": "ca. 5 km", "travelTime": "10 Min." },
+      { "name": "Denkendorf", "km": "ca. 6 km", "travelTime": "10 Min." },
+      { "name": "Neuhausen auf den Fildern", "km": "ca. 7 km", "travelTime": "12 Min." },
+      { "name": "Esslingen", "km": "ca. 8 km", "travelTime": "12 Min.", "url": "/esslingen" },
+      { "name": "Scharnhausen", "km": "ca. 9 km", "travelTime": "14 Min." },
+      { "name": "Nellingen", "km": "ca. 10 km", "travelTime": "15 Min." },
+      { "name": "Scharnhauser Park", "km": "ca. 10 km", "travelTime": "15 Min." },
+      { "name": "Parksiedlung", "km": "ca. 11 km", "travelTime": "15 Min." },
+      { "name": "Ruit", "km": "ca. 11 km", "travelTime": "16 Min." },
+      { "name": "Stuttgart", "km": "ca. 12 km", "travelTime": "18 Min.", "url": "/stuttgart" }
+    ]
+  },
+  {
+    "name": "Fellbach",
+    "slug": "fellbach",
+    "image": "/img/cities/fellbach.webp",
+    "title": "Veranstaltungstechnik mieten",
+    "description": "Sound- und Lichttechnik für Feiern in Fellbach, Schmiden und Oeffingen.",
+    "distance": "25 km",
+    "travelTime": "25 min",
+    "einzelItems": ["jbl-partybox-300-320", "kls-laser-bar", "partylicht-moving-head"],
+    "einzelTitle": "Einzelgeräte für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Stuttgart", "km": "ca. 15 km", "travelTime": "20 Min.", "url": "/stuttgart" },
+      { "name": "Schmiden", "km": "ca. 20 km", "travelTime": "22 Min." },
+      { "name": "Oeffingen", "km": "ca. 20 km", "travelTime": "22 Min." },
+      { "name": "Waiblingen", "km": "ca. 25 km", "travelTime": "25 Min.", "url": "/waiblingen" },
+      { "name": "Kornwestheim", "km": "ca. 25 km", "travelTime": "25 Min.", "url": "/kornwestheim" },
+      { "name": "Remseck am Neckar", "km": "ca. 25 km", "travelTime": "25 Min." },
+      { "name": "Weinstadt", "km": "ca. 28 km", "travelTime": "30 Min." },
+      { "name": "Kernen im Remstal", "km": "ca. 28 km", "travelTime": "30 Min." }
+    ]
+  },
+  {
+    "name": "Herrenberg",
+    "slug": "herrenberg",
+    "image": "/img/cities/herrenberg.webp",
+    "title": "Veranstaltungstechnik mieten",
+    "description": "Sound- und Lichttechnik für Feiern in Herrenberg und dem Gäu.",
+    "distance": "30 km",
+    "travelTime": "30 min",
+    "einzelItems": ["jbl-partybox-300-320", "max-party-bar", "nebel-maschine"],
+    "einzelTitle": "Einzelgeräte für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Ehningen", "km": "ca. 24 km", "travelTime": "22 Min." },
+      { "name": "Gärtringen", "km": "ca. 26 km", "travelTime": "25 Min." },
+      { "name": "Böblingen", "km": "ca. 27 km", "travelTime": "25 Min.", "url": "/böblingen" },
+      { "name": "Nufringen", "km": "ca. 28 km", "travelTime": "25 Min." },
+      { "name": "Kuppingen", "km": "ca. 28 km", "travelTime": "28 Min." },
+      { "name": "Sindelfingen", "km": "ca. 28 km", "travelTime": "28 Min.", "url": "/sindelfingen" },
+      { "name": "Leonberg", "km": "ca. 30 km", "travelTime": "30 Min.", "url": "/leonberg" },
+      { "name": "Oberjesingen", "km": "ca. 30 km", "travelTime": "30 Min." },
+      { "name": "Bondorf", "km": "ca. 32 km", "travelTime": "30 Min." },
+      { "name": "Mötzingen", "km": "ca. 32 km", "travelTime": "30 Min." }
+    ]
+  },
+  {
+    "name": "Winnenden",
+    "slug": "winnenden",
+    "image": "/img/cities/winnenden.webp",
+    "title": "Veranstaltungstechnik mieten",
+    "description": "Sound- und Lichttechnik für Feiern in Winnenden und dem Rems-Murr-Kreis.",
+    "distance": "30 km",
+    "travelTime": "30 min",
+    "einzelItems": ["jbl-partybox-300-320", "led-par-lichter", "mikrofon"],
+    "einzelTitle": "Einzelgeräte für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Schwaikheim", "km": "ca. 28 km", "travelTime": "27 Min." },
+      { "name": "Leutenbach", "km": "ca. 30 km", "travelTime": "28 Min." },
+      { "name": "Weinstadt", "km": "ca. 28 km", "travelTime": "28 Min." },
+      { "name": "Waiblingen", "km": "ca. 30 km", "travelTime": "30 Min.", "url": "/waiblingen" },
+      { "name": "Fellbach", "km": "ca. 30 km", "travelTime": "30 Min.", "url": "/fellbach" },
+      { "name": "Kernen im Remstal", "km": "ca. 30 km", "travelTime": "30 Min." },
+      { "name": "Remshalden", "km": "ca. 32 km", "travelTime": "30 Min." },
+      { "name": "Berglen", "km": "ca. 33 km", "travelTime": "32 Min." }
+    ]
+  },
+  {
+    "name": "Backnang",
+    "slug": "backnang",
+    "image": "/img/cities/backnang.webp",
+    "title": "Veranstaltungstechnik mieten",
+    "description": "Sound- und Lichttechnik für Feiern in Backnang und Umgebung.",
+    "distance": "40 km",
+    "travelTime": "35 min",
+    "einzelItems": ["ld-maui-28g3", "led-bossfx-nebelmaschine", "showlight-stage-bar"],
+    "einzelTitle": "Einzelgeräte für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Winnenden", "km": "ca. 30 km", "travelTime": "30 Min.", "url": "/winnenden" },
+      { "name": "Waiblingen", "km": "ca. 32 km", "travelTime": "30 Min.", "url": "/waiblingen" },
+      { "name": "Burgstetten", "km": "ca. 34 km", "travelTime": "30 Min." },
+      { "name": "Allmersbach im Tal", "km": "ca. 36 km", "travelTime": "32 Min." },
+      { "name": "Aspach", "km": "ca. 36 km", "travelTime": "34 Min." },
+      { "name": "Oppenweiler", "km": "ca. 38 km", "travelTime": "35 Min." },
+      { "name": "Kirchberg an der Murr", "km": "ca. 38 km", "travelTime": "35 Min." },
+      { "name": "Sulzbach an der Murr", "km": "ca. 40 km", "travelTime": "38 Min." }
+    ]
+  },
+  {
+    "name": "Metzingen",
+    "slug": "metzingen",
+    "image": "/img/cities/metzingen.webp",
+    "title": "Veranstaltungstechnik mieten",
+    "description": "Sound- und Lichttechnik für Feiern in Metzingen und der Outletstadt.",
+    "distance": "22 km",
+    "travelTime": "22 min",
+    "einzelItems": ["jbl-partybox-300-320", "beamz-mhl36", "mini-party-beamer"],
+    "einzelTitle": "Einzelgeräte für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      { "name": "Dettingen an der Erms", "km": "ca. 20 km", "travelTime": "22 Min." },
+      { "name": "Eningen unter Achalm", "km": "ca. 22 km", "travelTime": "25 Min." },
+      { "name": "Reutlingen", "km": "ca. 22 km", "travelTime": "25 Min.", "url": "/reutlingen" },
+      { "name": "Neuffen", "km": "ca. 25 km", "travelTime": "28 Min." },
+      { "name": "Bad Urach", "km": "ca. 25 km", "travelTime": "28 Min." },
+      { "name": "Kusterdingen", "km": "ca. 25 km", "travelTime": "26 Min." },
+      { "name": "Kirchheim unter Teck", "km": "ca. 20 km", "travelTime": "20 Min.", "url": "/kirchheim-unter-teck" },
+      { "name": "Nürtingen", "km": "ca. 15 km", "travelTime": "17 Min.", "url": "/nürtingen" }
+    ]
   }
 ]

@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import CityHero from "../components/CityHero.astro";
 import CityPackages from "../components/CityPackages.astro";
 import CitySteps from "../components/CitySteps.astro";
+import CityAreas from "../components/CityAreas.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import ContactSection from "../components/ContactSection.astro";
 import FAQSection from "../components/FAQSection.astro";
@@ -102,6 +103,11 @@ const breadcrumbJsonLd = {
     />
   )}
   <CitySteps />
+
+  <CityAreas
+    areas={cityData?.areas ?? []}
+    intro="Wohnst du in Steinenbronn, Waldenbuch, Schönaich, Denkendorf oder Neuhausen auf den Fildern? Dann bist du in 10–15 Minuten bei mir in der Magellanstraße 4 – einfach abholen und losfeiern."
+  />
 
   <!-- FAQ -->
   <section class="section-padding bg-[var(--color-bg)]">

@@ -14,6 +14,28 @@
 - **Slug-Convention**: City = `<stadt>.astro`, Produkt = `vermietung/<produkt-slug>.astro`
 - **Title-Pattern**: `"<Keyword> mieten in <Stadt> | Sound & Licht Stuttgart"`
 - **Datenquellen**: Produktdaten aus `src/content/products/*.yml`, FAQs aus `src/data/faqs.json`
+- **Ich-Perspektive** in allem User-Facing-Text («du … bei mir»), nur `impressum.astro` bleibt «Wir»
+
+## Stufenstrategie für City-Keywords (Town / Einzugsgebiet / FAQ)
+
+Nicht jede Ortschaft bekommt eine eigene Stadtseite (Doorway-Risiko). Die Abdeckung erfolgt in drei Stufen,
+jeweils aus Abhol-Perspektive (Kunden holen in der Magellanstraße 4, 70771 Echterdingen ab – KEINE
+Werbung für Lieferung/Aufbau):
+
+1. **Stufe 1 – eigene City-Seite** (`src/pages/<slug>.astro`): nur für Einzugsstädte mit relevantem
+   Suchvolumen (aktuell 20 Seiten, u. a. stuttgart, esslingen, fellbach, herrenberg, winnenden,
+   backnang, metzingen, ostfildern). Kriterien: ausreichende Distanz/Ortsgröße UND eigenständiger
+   Keyword-Bedarf («Partybox mieten <Stadt>»).
+2. **Stufe 2 – Einzugsgebiet-Sektion** (`CityAreas`-Komponente + `areas[]` in `src/data/cities.json`):
+   für Stadtteile und Nachbarorte ohnehin vorhandener Seiten (z. B. Degerloch, Möhringen, Vaihingen,
+   Plieningen unter `stuttgart`). Entfernung ist IMMER die Distanz bis zur Abholung in Echterdingen.
+3. **Stufe 3 – FAQ-Paare** (`src/data/faqs.json`): «Wie weit ist Echterdingen von X entfernt?» /
+   «Wie komme ich von X zur Abholung?» pro Ort, gemappt auf die benachbarte(n) City-Seite(n) via `pages[]`.
+
+Stuttgarter Stadtteile werden NICHT als eigene Seiten umgesetzt (kein zusätzlicher öffentlicher
+Verleih in Stadtteilsuche abdeckbar + Doorway-Risiko), sondern nur Stufe 2 + 3.
+
+Nicht vergessen: nach neuem Seiten-Rollout `pnpm run build:full` + `pnpm run indexnow-submit`.
 
 ## SEO-Audit-Prozess (4 Phasen)
 

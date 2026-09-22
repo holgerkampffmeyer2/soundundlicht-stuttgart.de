@@ -1115,5 +1115,193 @@
     "pages": [
       "karaoke-paket"
     ]
+  },
+  {
+    "id": "stuttgart-plieningen-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Plieningen entfernt?",
+    "answer": "Plieningen grenzt direkt an Leinfelden-Echterdingen – nur ca. 4 km über die Flughafen- und Filderstraße. In knapp 10 Minuten bist du bei mir in der Magellanstraße 4, holst deine Technik ab und nimmst sie direkt mit.",
+    "pages": [
+      "stuttgart"
+    ]
+  },
+  {
+    "id": "stuttgart-möhringen-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Möhringen entfernt?",
+    "answer": "Möhringen liegt nur ca. 6 km von Leinfelden-Echterdingen entfernt. Über die B27 bist du in ca. 12 Minuten bei mir in der Magellanstraße 4 – viele meiner Kunden aus Möhringen holen die Technik direkt bei mir ab.",
+    "pages": [
+      "stuttgart"
+    ]
+  },
+  {
+    "id": "stuttgart-vaihingen-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Vaihingen entfernt?",
+    "answer": "Vaihingen liegt ca. 8 km von Leinfelden-Echterdingen entfernt – über die B27 Richtung Messe in ca. 15 Minuten bei mir in der Magellanstraße 4. Du holst deine Technik ab und nimmst sie direkt mit.",
+    "pages": [
+      "stuttgart"
+    ]
+  },
+  {
+    "id": "stuttgart-degerloch-anfahrt",
+    "question": "Wie komme ich von Degerloch zur Abholung in Leinfelden-Echterdingen?",
+    "answer": "Von Degerloch aus erreichst du mich in ca. 15 Minuten über die A8 oder die B27, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, direkt an der Ausfahrt gelegen – mit Parkplätzen vor der Tür.",
+    "pages": [
+      "stuttgart"
+    ]
+  },
+  {
+    "id": "fildern-steinenbronn-anfahrt",
+    "question": "Wie komme ich von Steinenbronn zu dir nach Leinfelden-Echterdingen?",
+    "answer": "Von Steinenbronn bist du in ca. 10 Minuten bei mir – nur ca. 5 km über die L1185 Richtung Echterdingen. Die Abholung ist in der Magellanstraße 4, verkehrsgünstig an A8 / B27.",
+    "pages": [
+      "filderstadt",
+      "leinfelden-echterdingen"
+    ]
+  },
+  {
+    "id": "fildern-waldenbuch-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Waldenbuch entfernt?",
+    "answer": "Waldenbuch liegt nur ca. 8 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 12 Minuten über die L1185. Du holst die Technik bequem bei mir ab und siehst sie vorher in Funktion.",
+    "pages": [
+      "filderstadt",
+      "leinfelden-echterdingen"
+    ]
+  },
+  {
+    "id": "fildern-neuhausen-mietbar",
+    "question": "Kann ich als Kunde aus Neuhausen auf den Fildern bei dir Technik mieten?",
+    "answer": "Ja, sehr gerne! Neuhausen auf den Fildern ist nur ca. 7 km von Leinfelden-Echterdingen entfernt. Du holst die Technik bei mir in der Magellanstraße 4 ab, bekommst eine Einweisung und nimmst sie direkt mit.",
+    "pages": [
+      "filderstadt",
+      "leinfelden-echterdingen"
+    ]
+  },
+  {
+    "id": "fildern-denkendorf-anfahrt",
+    "question": "Wie komme ich von Denkendorf zu dir nach Leinfelden-Echterdingen?",
+    "answer": "Von Denkendorf aus erreichst du mich in ca. 12 Minuten über die L1209 Richtung Neuhausen/Leinfelden-Echterdingen. Die Abholung ist in der Magellanstraße 4 – direkt an A8 / B27 gelegen.",
+    "pages": [
+      "filderstadt",
+      "leinfelden-echterdingen"
+    ]
+  },
+  {
+    "id": "bb-ehningen-anfahrt",
+    "question": "Wie komme ich von Ehningen zur Abholung in Leinfelden-Echterdingen?",
+    "answer": "Von Ehningen aus erreichst du mich in ca. 20-25 Minuten über die A8 Richtung Stuttgart, Ausfahrt Leinfelden-Echterdingen. Die Magellanstraße 4 liegt direkt an der Ausfahrt.",
+    "pages": [
+      "böblingen",
+      "sindelfingen"
+    ]
+  },
+  {
+    "id": "bb-herrenberg-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Herrenberg entfernt?",
+    "answer": "Herrenberg liegt ca. 30 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 30 Minuten über die A8. Du holst die Technik bei mir ab und bekommst eine ausführliche Einweisung.",
+    "pages": [
+      "böblingen",
+      "sindelfingen",
+      "herrenberg"
+    ]
+  },
+  {
+    "id": "bb-holzgerlingen-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Holzgerlingen entfernt?",
+    "answer": "Holzgerlingen liegt ca. 22 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8. Die Abholung ist in der Magellanstraße 4, direkt an der Ausfahrt.",
+    "pages": [
+      "böblingen",
+      "sindelfingen"
+    ]
+  },
+  {
+    "id": "es-plochingen-anfahrt",
+    "question": "Wie komme ich von Plochingen zu dir nach Leinfelden-Echterdingen?",
+    "answer": "Von Plochingen aus bist du in ca. 15-20 Minuten über die A8, Ausfahrt Leinfelden-Echterdingen, bei mir. Die Abholung ist in der Magellanstraße 4, verkehrsgünstig an A8 / B27.",
+    "pages": [
+      "esslingen",
+      "ostfildern",
+      "kirchheim-unter-teck"
+    ]
+  },
+  {
+    "id": "es-wendlingen-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Wendlingen am Neckar entfernt?",
+    "answer": "Wendlingen liegt ca. 18 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8. Du holst deine Technik direkt bei mir ab.",
+    "pages": [
+      "esslingen",
+      "kirchheim-unter-teck"
+    ]
+  },
+  {
+    "id": "kut-metzingen-anfahrt",
+    "question": "Wie komme ich von Metzingen zu dir nach Leinfelden-Echterdingen?",
+    "answer": "Von Metzingen aus erreichst du mich in ca. 20-25 Minuten über die A8 Richtung Stuttgart, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, direkt an A8 / B27 gelegen.",
+    "pages": [
+      "metzingen",
+      "kirchheim-unter-teck"
+    ]
+  },
+  {
+    "id": "metzingen-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Metzingen entfernt?",
+    "answer": "Metzingen liegt ca. 22 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8. Du holst die Technik bequem bei mir in der Magellanstraße 4 ab und nimmst sie direkt mit zur Feier.",
+    "pages": [
+      "metzingen"
+    ]
+  },
+  {
+    "id": "fellbach-anfahrt",
+    "question": "Wie komme ich von Fellbach zur Abholung in Leinfelden-Echterdingen?",
+    "answer": "Von Fellbach aus erreichst du mich in ca. 25 Minuten über die B14 Richtung Stuttgart und die A8, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, direkt an der Ausfahrt gelegen.",
+    "pages": [
+      "fellbach"
+    ]
+  },
+  {
+    "id": "fellbach-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Fellbach entfernt?",
+    "answer": "Fellbach liegt ca. 25 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 25 Minuten über die B14 und A8. Du holst die Technik bequem bei mir ab und bekommst eine persönliche Einweisung.",
+    "pages": [
+      "fellbach"
+    ]
+  },
+  {
+    "id": "herrenberg-anfahrt",
+    "question": "Wie komme ich von Herrenberg zur Abholung in Leinfelden-Echterdingen?",
+    "answer": "Von Herrenberg aus erreichst du mich in ca. 30 Minuten über die A8 Richtung Stuttgart, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, direkt an der Ausfahrt gelegen.",
+    "pages": [
+      "herrenberg"
+    ]
+  },
+  {
+    "id": "winnenden-anfahrt",
+    "question": "Wie komme ich von Winnenden zur Abholung in Leinfelden-Echterdingen?",
+    "answer": "Von Winnenden aus erreichst du mich in ca. 30 Minuten über die B14 Richtung Stuttgart und die A8, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, direkt an der Ausfahrt gelegen.",
+    "pages": [
+      "winnenden"
+    ]
+  },
+  {
+    "id": "winnenden-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Winnenden entfernt?",
+    "answer": "Winnenden liegt ca. 30 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 30 Minuten über die B14 und A8. Du holst die Technik bequem bei mir ab und nimmst sie direkt mit zur Feier.",
+    "pages": [
+      "winnenden"
+    ]
+  },
+  {
+    "id": "backnang-anfahrt",
+    "question": "Wie komme ich von Backnang zur Abholung in Leinfelden-Echterdingen?",
+    "answer": "Von Backnang aus erreichst du mich in ca. 35 Minuten über die B14 Richtung Stuttgart und die A8, Ausfahrt Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, direkt an der Ausfahrt gelegen.",
+    "pages": [
+      "backnang"
+    ]
+  },
+  {
+    "id": "backnang-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Backnang entfernt?",
+    "answer": "Backnang liegt ca. 40 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 35 Minuten über die B14 und A8. Du holst die Technik bequem bei mir ab und bekommst eine persönliche Einweisung.",
+    "pages": [
+      "backnang"
+    ]
   }
 ]

@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import CityHero from "../components/CityHero.astro";
 import CityPackages from "../components/CityPackages.astro";
 import CitySteps from "../components/CitySteps.astro";
+import CityAreas from "../components/CityAreas.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import ContactSection from "../components/ContactSection.astro";
 import FAQSection from "../components/FAQSection.astro";
@@ -104,6 +105,11 @@ const breadcrumbJsonLd = {
     />
   )}
   <CitySteps />
+
+  <CityAreas
+    areas={cityData?.areas ?? []}
+    intro="Auch aus Wendlingen, Plochingen, Metzingen, Weilheim oder Dettingen unter Teck kommst du über die A8 in 20–30 Minuten zu mir – die Abholung in Leinfelden-Echterdingen ist gut erreichbar."
+  />
 
   <!-- FAQ -->
   <section class="section-padding bg-[var(--color-bg)]">

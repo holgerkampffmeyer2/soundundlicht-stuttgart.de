@@ -37,6 +37,16 @@ const cities = defineCollection({
     description: z.string(),
     distance: z.string().optional(),
     travelTime: z.string().optional(),
+    areas: z
+      .array(
+        z.object({
+          name: z.string(),
+          km: z.string().optional(),
+          travelTime: z.string().optional(),
+          url: z.string().optional(),
+        })
+      )
+      .optional(),
   }),
 });
 

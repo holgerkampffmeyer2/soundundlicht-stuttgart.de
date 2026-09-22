@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import CityHero from "../components/CityHero.astro";
 import CityPackages from "../components/CityPackages.astro";
 import CitySteps from "../components/CitySteps.astro";
+import CityAreas from "../components/CityAreas.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import ContactSection from "../components/ContactSection.astro";
 import FAQSection from "../components/FAQSection.astro";
@@ -104,6 +105,11 @@ const breadcrumbJsonLd = {
     />
   )}
   <CitySteps />
+
+  <CityAreas
+    areas={cityData?.areas ?? []}
+    intro="Auch aus Ehningen, Holzgerlingen oder Herrenberg holst du deine Technik in 20–30 Minuten bei mir in Leinfelden-Echterdingen ab – gut erreichbar über die A8."
+  />
 
   <!-- FAQ -->
   <section class="section-padding bg-[var(--color-bg)]">

@@ -1,0 +1,77 @@
+---
+interface Area {
+  name: string;
+  km?: string;
+  travelTime?: string;
+  url?: string;
+}
+
+interface Props {
+  areas: Area[];
+  title?: string;
+  intro: string;
+  label?: string;
+}
+
+const {
+  areas,
+  title = "Schnell bei mir in Echterdingen",
+  intro,
+  label = "Einzugsgebiet",
+} = Astro.props;
+---
+
+<section id="einzugsgebiet" class="section-padding bg-[var(--color-surface)]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12 animate-on-scroll">
+      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+        {label}
+      </span>
+      <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
+        {title}
+      </h2>
+      <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
+        {intro}
+      </p>
+    </div>
+
+    <ul class="flex flex-wrap gap-3 justify-center">
+      {areas.map((area) => (
+        <li>
+          {area.url ? (
+            <a
+              href={area.url}
+              class="group flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)] px-5 py-2.5 transition-all hover:border-[var(--color-secondary)] hover:text-[var(--color-secondary)]"
+            >
+              <span class="font-semibold">{area.name}</span>
+              {area.km && (
+                <span class="text-sm text-[var(--color-text-muted)]">
+                  {area.km}
+                </span>
+              )}
+              {area.travelTime && (
+                <span class="text-sm text-[var(--color-text-muted)]">
+                  {area.travelTime}
+                </span>
+              )}
+            </a>
+          ) : (
+            <span class="flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)] px-5 py-2.5">
+              <span class="font-semibold">{area.name}</span>
+              {area.km && (
+                <span class="text-sm text-[var(--color-text-muted)]">
+                  {area.km}
+                </span>
+              )}
+              {area.travelTime && (
+                <span class="text-sm text-[var(--color-text-muted)]">
+                  {area.travelTime}
+                </span>
+              )}
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

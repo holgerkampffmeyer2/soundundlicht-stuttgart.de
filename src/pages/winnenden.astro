@@ -16,13 +16,13 @@ import citiesData from '../data/cities.json';
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
-  { label: "Böblingen" }
+  { label: "Winnenden" }
 ];
 
-const cityFaqs = await getFaqsForPage('böblingen');
+const cityFaqs = await getFaqsForPage('winnenden');
 const allProducts = await getCollection('products');
 const productsBySlug = Object.fromEntries(allProducts.map(p => [p.data.slug, p.data]));
-const cityData = citiesData.find(c => c.slug === 'böblingen');
+const cityData = citiesData.find(c => c.slug === 'winnenden');
 const einzelItems = (cityData?.einzelItems ?? [])
   .slice(0, 3)
   .map(slug => productsBySlug[slug])
@@ -44,16 +44,16 @@ const faqJsonLd = {
 const cityJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Veranstaltungstechnik Vermietung Böblingen",
-  "description": "PA-Anlagen, Partyboxen und Lichttechnik mieten in Böblingen und Umgebung. Komplettpakete für Geburtstage, Hochzeiten und Vereinsfeiern. Abholung in Leinfelden-Echterdingen, nur 15 km.",
+  "name": "Veranstaltungstechnik Vermietung Winnenden",
+  "description": "PA-Anlagen, Partyboxen und Lichttechnik mieten in Winnenden und Umgebung. Komplettpakete für Geburtstage, Hochzeiten und Vereinsfeiern. Abholung in Leinfelden-Echterdingen, ca. 30 km.",
   "provider": {
     "@type": "LocalBusiness",
     "@id": "https://soundundlicht-stuttgart.de/#business"
   },
-  "url": "https://soundundlicht-stuttgart.de/böblingen",
+  "url": "https://soundundlicht-stuttgart.de/winnenden",
   "areaServed": {
     "@type": "City",
-    "name": "Böblingen"
+    "name": "Winnenden"
   }
 };
 
@@ -70,16 +70,16 @@ const breadcrumbJsonLd = {
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Böblingen",
-      "item": "https://soundundlicht-stuttgart.de/böblingen"
+      "name": "Winnenden",
+      "item": "https://soundundlicht-stuttgart.de/winnenden"
     }
   ]
 };
 ---
 
 <Layout
-  title="PA-Anlage & Partybox mieten in Böblingen | Sound & Licht Stuttgart"
-  description="PA-Anlagen, Partyboxen und Lichttechnik mieten in Böblingen und Umgebung. Komplettpakete für Geburtstage, Hochzeiten und Vereinsfeiern. Abholung in Leinfelden-Echterdingen, nur 15 km."
+  title="PA-Anlage & Partybox mieten in Winnenden | Sound & Licht Stuttgart"
+  description="PA-Anlagen, Partyboxen und Lichttechnik mieten in Winnenden und Umgebung. Komplettpakete für Geburtstage, Hochzeiten und Vereinsfeiern. Abholung in Leinfelden-Echterdingen, ca. 30 km."
   image="/img/header.webp"
   jsonLd={[breadcrumbJsonLd, cityJsonLd, faqJsonLd]}
 >
@@ -88,17 +88,17 @@ const breadcrumbJsonLd = {
   <Breadcrumb segments={breadcrumbSegments} />
 
   <CityHero
-    image="/img/cities/böblingen.webp"
-    city="Böblingen"
-    title="PA-Anlage & Partybox mieten in Böblingen"
-    description="Du wohnst in Böblingen, Dagersheim oder Umgebung und brauchst eine Soundanlage oder Lichttechnik für deine Feier? Ich bin dein Verleiher direkt um die Ecke."
-    details="Mein Standort in Leinfelden-Echterdingen ist nur ca. 15 km von Böblingen entfernt, gut erreichbar über die A8. Du kannst die Technik bequem abholen, ich helfe dir beim Einladen und erkläre dir den Aufbau. Anders als bei Versandverleihern kannst du die Technik vor der Abholung in Funktion sehen und bekommst eine persönliche Einweisung – so weißt du genau, was dich erwartet."
+    image="/img/cities/winnenden.webp"
+    city="Winnenden"
+    title="PA-Anlage & Partybox mieten in Winnenden"
+    description="Du wohnst in Winnenden, Leutenbach, Schwaikheim oder der Umgebung im Rems-Murr-Kreis und brauchst eine Soundanlage oder Lichttechnik für deine Feier? Ich bin dein Verleiher im Großraum Stuttgart."
+    details="Mein Standort in Leinfelden-Echterdingen ist ca. 30 km von Winnenden entfernt, gut erreichbar. Du kannst die Technik bequem abholen, ich helfe dir beim Einladen und erkläre dir den Aufbau. Anders als bei Versandverleihern kannst du die Technik vor der Abholung in Funktion sehen und bekommst eine persönliche Einweisung – so weißt du genau, was dich erwartet."
   />
 
   <CityPackages />
   {einzelItems.length > 0 && (
     <CityEinzeltechnik
-      cityName="Böblingen"
+      cityName="Winnenden"
       items={einzelItems}
       title={cityData?.einzelTitle}
       description={cityData?.einzelDescription}
@@ -108,7 +108,7 @@ const breadcrumbJsonLd = {
 
   <CityAreas
     areas={cityData?.areas ?? []}
-    intro="Auch aus Ehningen, Holzgerlingen, Weil im Schönbuch oder Herrenberg kommst du bequem über die A8 zu mir – die Abholung ist in ca. 20–30 Minuten erreichbar."
+    intro="Auch aus Leutenbach, Schwaikheim, Weinstadt, Remshalden, Berglen oder Waiblingen kommst du zu mir – die Abholung in Leinfelden-Echterdingen ist in ca. 30 Minuten erreichbar."
   />
 
   <!-- FAQ -->
@@ -119,9 +119,9 @@ const breadcrumbJsonLd = {
   </section>
 
   <ContactSection
-    title="Technik mieten in Böblingen – einfach anfragen"
-    description="Du wohnst in Böblingen, Dagersheim oder Umgebung und brauchst Technik? Schreib mir eine E-Mail – die Abholung ist nur 15 km entfernt in Leinfelden-Echterdingen, Magellanstraße 4, verkehrsgünstig an A8. Ich melde mich innerhalb von 12 Stunden bei dir!"
-    distanceText="Nur ca. 15 km von Böblingen"
+    title="Technik mieten in Winnenden – einfach anfragen"
+    description="Du wohnst in Winnenden oder der Umgebung und brauchst Technik? Schreib mir eine E-Mail – die Abholung ist ca. 30 km entfernt in Leinfelden-Echterdingen, Magellanstraße 4, verkehrsgünstig an A8 / B27. Ich melde mich innerhalb von 12 Stunden bei dir!"
+    distanceText="Ca. 30 km von Winnenden"
   />
 
   <Footer />

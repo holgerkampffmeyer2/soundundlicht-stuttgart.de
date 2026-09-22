@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import CityHero from "../components/CityHero.astro";
 import CityPackages from "../components/CityPackages.astro";
 import CitySteps from "../components/CitySteps.astro";
+import CityAreas from "../components/CityAreas.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import ContactSection from "../components/ContactSection.astro";
 import FAQSection from "../components/FAQSection.astro";
@@ -107,6 +108,11 @@ const breadcrumbJsonLd = {
     />
   )}
   <CitySteps />
+
+  <CityAreas
+    areas={cityData?.areas ?? []}
+    intro="Du wohnst in Plieningen, Möhringen, Vaihingen oder Degerloch? Dann ist die Abholung bei mir in der Magellanstraße 4, Echterdingen, nur 10–25 Minuten entfernt – direkt an A8 / B27 gelegen."
+  />
 
   <!-- Tipps vom Profi -->
   <section class="section-padding bg-[var(--color-surface)]">
