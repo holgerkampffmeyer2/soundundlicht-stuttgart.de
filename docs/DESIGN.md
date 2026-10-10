@@ -22,7 +22,7 @@ src/
 ├── pages/                # Routen
 │   ├── index.astro       # Landing Page
 │   ├── vermietung.astro  # Vermietung Landing
-│   ├── vermietung/       # Produktseiten (10)
+│   ├── vermietung/       # Produktseiten (15)
 │   │   ├── partypaket-stuttgart.astro
 │   │   ├── djpaket-fildern.astro
 │   │   ├── veranstaltungspaket-stuttgart.astro
@@ -32,7 +32,12 @@ src/
 │   │   ├── ld-maui-28g3.astro
 │   │   ├── kls-laser-bar.astro
 │   │   ├── led-bossfx-nebelmaschine.astro
-│   │   └── partylicht-moving-head.astro
+│   │   ├── partylicht-moving-head.astro
+│   │   ├── powerstation.astro
+│   │   ├── mini-party-beamer.astro
+│   │   ├── max-party-bar.astro
+│   │   ├── mikrofon-mischpult.astro
+│   │   └── led-scheinwerfer.astro
 │   └── <stadt>.astro     # City Pages (15 Städte)
 ├── styles/
 │   ├── global.css
@@ -209,16 +214,16 @@ Jede Seite kann über Props im `<Layout>` mit Pagefind-Metadaten versehen werden
 
 Wird `pagefindType="produkt"` gesetzt, bekommt die Seite automatisch `data-pagefind-weight="2"` (doppeltes Gewicht in Suchergebnissen).
 
-### Produkte auf `/vermietung/` (ohne eigene Seite)
+### Produkte auf `/vermietung/` (Katalog-Matching)
 
-21 Produkte sind in `src/data/rental-catalog.ts` definiert. Nur 10 haben eigene Unterseiten in `src/pages/vermietung/`. Die restlichen 11 (Powerstation, Mikrofon, Beamer, …) existieren nur als Karten auf der `/vermietung/`-Seite.
+21 Produkte sind in `src/data/rental-catalog.ts` definiert. 15 haben eigene Unterseiten in `src/pages/vermietung/` (davon bündeln 2 Kategorieseiten je mehrere Geräte-Detailseiten über Anker, z. B. `/vermietung/led-scheinwerfer#led-par-lichter`). Alle Produkte tragen ein `detailPage` (Route oder Anker).
 
-Damit auch diese in der Suche gefunden werden:
+Damit auch Zubehör/Anker-Geräte in der Suche gefunden werden:
 
 1. **`/vermietung/`** hat `pagefindType="produkt"` und wird als Produktseite indexiert
 2. **Katalog-JSON**: Der gesamte `rentalItems[]`-Array wird als `<script id="rental-catalog-data" type="application/json">` in die Seite eingebettet
 3. **Client-Matching**: Die Suchfunktion `matchCatalogProducts(query)` durchsucht Titel, Beschreibung und Features aller 21 Produkte und rendert Treffer als reiche Produktkarten
-4. **Links**: Produkte ohne eigene Seite verlinken auf `vermietung/#item-<slug>`, Produkte mit eigener Seite auf die Detailseite
+4. **Links**: Produktkarten verlinken auf `detailPage` (Route oder Anker-Ziel); Nicht-Anker-Ziele werden gegen doppelte Pagefind-Treffer dedupliziert
 
 ### URL-Normalisierung
 

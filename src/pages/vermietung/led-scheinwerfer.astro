@@ -1,0 +1,304 @@
+---
+import CategoryLayout from '../../components/vermietung/CategoryLayout.astro';
+import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
+import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
+import DecisionHelp from '../../components/vermietung/DecisionHelp.astro';
+import RelatedLinks from '../../components/vermietung/RelatedLinks.astro';
+import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { serviceArea } from '../../data/jsonLd';
+
+const products = await getCollection('products');
+const strahler = products.find(i => i.data.slug === 'led-par-strahler')!.data;
+const lichter = products.find(i => i.data.slug === 'led-par-lichter')!.data;
+const akku = products.find(i => i.data.slug === 'akku-led-par')!.data;
+const stageBar = products.find(i => i.data.slug === 'showlight-stage-bar')!.data;
+const categoryProducts = [strahler, lichter, akku, stageBar];
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: "Vermietung", href: "/vermietung" },
+  { label: "LED-Scheinwerfer" }
+];
+
+const pageTitle = "LED-Scheinwerfer mieten in Stuttgart | Sound & Licht Stuttgart";
+
+const faqs = await getFaqsForPage('led-scheinwerfer');
+
+const images = [
+  "/img/vermietung/IMG_9129.webp",
+  "/img/vermietung/36-parlight.webp"
+];
+
+const siteUrl = "https://soundundlicht-stuttgart.de";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "LED-Scheinwerfer Vermietung",
+  "description": "Miete LED-Scheinwerfer für deine Feier: 270W LED PAR Strahler, 4er LED PAR Sets, Akku-LED-PARs und die Showlight Stage Bar mit Sound-zu-Licht Steuerung.",
+  "image": [
+    siteUrl + images[0],
+    siteUrl + images[1]
+  ],
+  "serviceType": "Veranstaltungstechnik-Vermietung",
+  "areaServed": serviceArea,
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://soundundlicht-stuttgart.de/#business"
+  },
+  "offers": categoryProducts.map((p: any) => ({
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Service",
+      "name": p.title,
+      "serviceType": "Veranstaltungstechnik-Vermietung",
+      "areaServed": serviceArea
+    },
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": p.priceValue,
+      "priceCurrency": "EUR",
+      "unitCode": "DAY"
+    }
+  }))
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq: any) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soundundlicht-stuttgart.de/"},
+    {"@type": "ListItem", "position": 2, "name": "Vermietung", "item": "https://soundundlicht-stuttgart.de/vermietung"},
+    {"@type": "ListItem", "position": 3, "name": "LED-Scheinwerfer", "item": "https://soundundlicht-stuttgart.de/vermietung/led-scheinwerfer"}
+  ]
+};
+
+const specsStrahler = {
+  "Modell": "2x 270W 18 LED PAR RGBW",
+  "LEDs": "18 x 15W RGBW 4-in-1",
+  "DMX-Kanäle": "9",
+  "Steuerung": "Sound-zu-Licht, DMX, Automatikprogramme",
+  "Gehäuse": "Robustes Aluminium",
+  "Besonderheiten": "Die hellsten Scheinwerfer im Verleih"
+};
+
+const specsLichter = {
+  "Modell": "4x 36LED RGB PAR Can",
+  "LEDs": "36 LEDs pro Scheinwerfer",
+  "Steuerung": "Sound-zu-Licht, Automatikmodi",
+  "Fernbedienung": "inklusive",
+  "Einsatz": "Grundbeleuchtung & Uplighting",
+  "Besonderheiten": "4 Stück im praktischen Set"
+};
+
+const specsAkku = {
+  "Modell": "2x Akku LED PAR RGBW",
+  "LEDs": "12 LEDs pro Scheinwerfer",
+  "Akku": "integriert, wiederaufladbar",
+  "Laufzeit": "mehrere Stunden pro Ladung",
+  "Fernbedienung": "inklusive",
+  "Besonderheiten": "Kabellos – ganz ohne Stromanschluss"
+};
+
+const specsStageBar = {
+  "Modell": "Showlight LED Stage Bar",
+  "LEDs": "216x LEDs",
+  "Steuerung": "Sound-zu-Licht, Automatikmodi",
+  "Effekte": "Strobe-Effekt, Auto Chaser",
+  "Einsatz": "Bühne, Bar & Uplighting",
+  "Besonderheiten": "Viele Effekte in einer Leiste"
+};
+
+const includesStrahler = [
+  "2x 270W LED PAR RGBW Strahler",
+  "Netzkabel & Anschlussleitung",
+  "Einweisung bei der Abholung"
+];
+
+const includesLichter = [
+  "4x LED PAR Can Scheinwerfer",
+  "1x Fernbedienung",
+  "Netzkabel & Anschlussleitung",
+  "Einweisung bei der Abholung"
+];
+
+const includesAkku = [
+  "2x Akku LED PAR RGBW",
+  "1x Fernbedienung",
+  "Ladekabel",
+  "Einweisung bei der Abholung"
+];
+
+const includesStageBar = [
+  "1x Showlight LED Stage Bar",
+  "Netzkabel & Anschlussleitung",
+  "Einweisung bei der Abholung"
+];
+
+const strahlerPackages = [
+  { name: "Partylicht & Moving Head", url: "/vermietung/partylicht-moving-head" }
+];
+
+const lichterPackages = [
+  { name: "Partypaket Stuttgart", url: "/vermietung/partypaket-stuttgart" },
+  { name: "DJ-Paket", url: "/vermietung/djpaket-fildern" },
+  { name: "Veranstaltungspaket", url: "/vermietung/veranstaltungspaket-stuttgart" }
+];
+
+const akkuPackages = [
+  { name: "Akku-Party-Paket", url: "/vermietung/akku-party-paket" }
+];
+
+const stageBarPackages = [
+  { name: "DJ-Paket", url: "/vermietung/djpaket-fildern" }
+];
+---
+
+<CategoryLayout
+  pageTitle={pageTitle}
+  description="Miete LED-Scheinwerfer für deine Feier: 270W LED PAR Strahler, 4er LED PAR Sets, Akku-LED-PARs und die Showlight Stage Bar mit Sound-zu-Licht Steuerung."
+  image="/img/vermietung/IMG_9129.webp"
+  preloadImage="/img/vermietung/IMG_9129.webp"
+  pagefindMeta={{ price: "ab 15€", image: images[0], category: "Licht", label: "LED-Scheinwerfer" }}
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}
+  breadcrumbSegments={breadcrumbSegments}
+  products={categoryProducts}
+>
+  <!-- Hero -->
+  <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/img/vermietung/IMG_9129.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="hero-overlay-accent"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+          <span class="price-badge">ab 15€ / Tag</span>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Inkl. Kabel & Einweisung
+          </span>
+        </div>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">LED-Scheinwerfer mieten</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Vom hellen 270W LED PAR Strahler über praktische 4er-Sets bis zur Akku-Variante ohne Stromanschluss und der vielseitigen Showlight Stage Bar:
+          Hier findest du für jede Feier die passenden LED-Scheinwerfer – einzeln oder als Kombination, mit Sound-zu-Licht oder DMX-Steuerung.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entscheidungshilfe -->
+  <DecisionHelp
+    heading="Welcher LED-Scheinwerfer passt zu dir?"
+    intro="Die richtige Wahl hängt davon ab, ob du helle Akzente, flächige Grundbeleuchtung, Unabhängigkeit vom Strom oder viele Effekte brauchst."
+    items={[
+      { title: "Helle Bühnenakzente", text: "Die zwei 270W LED PAR Strahler sind die hellsten im Verleih und per DMX programmierbar – ideal für Bühnen und große Räume." },
+      { title: "Grundbeleuchtung & Uplighting", text: "Die 4er LED PAR Lichter eignen sich hervorragend, um Wände und Tanzfläche gleichmäßig in Farbe zu tauchen." },
+      { title: "Ohne Stromanschluss", text: "Die 2 Akku LED PARs laufen mit eingebautem Akku – perfekt für Locations ohne Steckdose." },
+      { title: "Viele Effekte in einer Leiste", text: "Die Showlight Stage Bar liefert Strobe, Auto Chaser und Farbwechsel aus einem einzigen Gerät." },
+      { title: "Steuerung per DMX", text: "Wenn du individuelle Lichtshows programmieren willst, sind die 270W Strahler per DMX steuerbar." }
+    ]}
+  />
+
+  <!-- Gerät: LED PAR Strahler -->
+  <section id="led-par-strahler" class="anchor-section section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Gerät</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">2 helle 270W LED PAR RGBW Strahler</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Die zwei kräftigsten Scheinwerfer im Verleih: 270W mit RGBW-Farbmischung und 18 x 15W LEDs. Per DMX programmierbar und ideal, wenn du helle, klar gerichtete Akzente setzen willst.
+        </p>
+      </div>
+      <div class="mb-8 text-center"><span class="price-badge">{strahler.price}</span></div>
+      <TechnicalSpecs specs={specsStrahler} />
+      <RentalIncludes items={includesStrahler} />
+      <IncludedInPackages packages={strahlerPackages} />
+    </div>
+  </section>
+
+  <!-- Gerät: LED PAR Lichter -->
+  <section id="led-par-lichter" class="anchor-section section-padding bg-[var(--color-bg)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Gerät</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">4 Stück LED PAR Lichter</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Vier kompakte 36-LED RGB PAR Scheinwerfer mit Sound-zu-Licht und Automatikmodi. Das Set ist die unkomplizierte Wahl für stimmungsvolle Grundbeleuchtung und farbiges Uplighting.
+        </p>
+      </div>
+      <div class="mb-8 text-center"><span class="price-badge">{lichter.price}</span></div>
+      <TechnicalSpecs specs={specsLichter} />
+      <RentalIncludes items={includesLichter} />
+      <IncludedInPackages packages={lichterPackages} />
+    </div>
+  </section>
+
+  <!-- Gerät: Akku LED PAR -->
+  <section id="akku-led-par" class="anchor-section section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Gerät</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">2 Stück Akku LED PAR Lichter</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Zwei RGBW LED PAR Scheinwerfer mit integriertem, wiederaufladbarem Akku. Sie laufen mehrere Stunden pro Ladung – ganz ohne Kabel und Stromanschluss, ideal für Outdoor-Locations.
+        </p>
+      </div>
+      <div class="mb-8 text-center"><span class="price-badge">{akku.price}</span></div>
+      <TechnicalSpecs specs={specsAkku} />
+      <RentalIncludes items={includesAkku} />
+      <IncludedInPackages packages={akkuPackages} />
+    </div>
+  </section>
+
+  <!-- Gerät: Showlight Stage Bar -->
+  <section id="showlight-stage-bar" class="anchor-section section-padding bg-[var(--color-bg)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Gerät</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Showlight LED Stage Bar 216x LEDs</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Eine LED Stage Bar mit 216 LEDs, die Strobe, Auto Chaser und Farbwechsel in einem Gerät vereint. Mit Sound-zu-Licht bringt sie in Sekunden Bewegung und Effekte auf die Tanzfläche.
+        </p>
+      </div>
+      <div class="mb-8 text-center"><span class="price-badge">{stageBar.price}</span></div>
+      <TechnicalSpecs specs={specsStageBar} />
+      <RentalIncludes items={includesStageBar} />
+      <IncludedInPackages packages={stageBarPackages} />
+    </div>
+  </section>
+
+  <!-- Dazu passend -->
+  <RelatedLinks
+    items={[
+      { title: "Partylicht & Moving Head", url: "/vermietung/partylicht-moving-head", text: "Für programmierbare Lichtshows mit Moving Head und DMX-Controller – die nächste Ausbaustufe." },
+      { title: "Max Party Bar", url: "/vermietung/max-party-bar", text: "Die kompakte All-in-one-Lichtanlage für kleinere Räume und schnellen Aufbau." },
+      { title: "KLS Laser Bar", url: "/vermietung/kls-laser-bar", text: "Zusätzliche Laser-Effekte für spektakuläre Akzente – ganz ohne Laserschutzbeauftragten." }
+    ]}
+  />
+
+  <!-- FAQ -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto px-4 pt-8">
+      <FAQSection faqs={faqs} />
+    </div>
+  </section>
+</CategoryLayout>

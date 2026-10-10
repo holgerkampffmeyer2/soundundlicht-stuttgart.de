@@ -102,6 +102,15 @@ const specsNebelmaschine = {
   "Steuerung": "DMX, Fernbedienung"
 };
 
+const specsNebel = {
+  "Modell": "Uking 1200W Nebelmaschine",
+  "Leistung": "1200 W",
+  "LEDs": "9x RGB",
+  "Steuerung": "Fernbedienung",
+  "Fluid": "1 Tankfüllung inklusive",
+  "Besonderheiten": "Hoher Nebelausstoß für große Räume"
+};
+
 const rentalIncludes = [
   "1x Stairville LED BossFX-2 Pro Lichtanlage",
   "1x Stairville AF-150 Nebelmaschine",
@@ -226,6 +235,24 @@ const videoSchema = {
         <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">AF-150 Nebelmaschine</h2>
       </div>
       <TechnicalSpecs specs={specsNebelmaschine} />
+    </div>
+  </section>
+
+  <!-- 3c. Variante: 1200W Nebelmaschine -->
+  <section id="nebel-maschine" class="anchor-section section-padding bg-[var(--color-surface)]">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Variante</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Nebel-Maschine 1200W</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Für größere Räume und Bühnen: Die 1200W Nebelmaschine mit 9 RGB LEDs liefert deutlich mehr Nebelausstoß als die kompakte AF-150.
+          Während die AF-150 als platzsparende Kombi mit der LED BossFX für Feiern bis rund 100 Personen gedacht ist, sorgt die 1200W Variante für dichten Nebel auf größeren Flächen. Eine Tankfüllung Nebelfluid und die Fernbedienung sind enthalten.
+        </p>
+      </div>
+      <TechnicalSpecs specs={specsNebel} />
+      <p class="text-center text-[var(--color-text-muted)] mt-8">
+        Passend zur Nebelmaschine: <a href="/vermietung/max-party-bar" class="text-[var(--color-secondary)] hover:underline">Max Party Bar</a> für stimmungsvolle Lichteffekte.
+      </p>
     </div>
   </section>
 

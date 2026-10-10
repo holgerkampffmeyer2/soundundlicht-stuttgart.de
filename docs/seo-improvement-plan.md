@@ -156,8 +156,13 @@ bestehende, semantisch korrekte `Service`-Schema angereichert:
 
 ### Phase 3 – Backlog (nur Vormerkung)
 
-10. **11 fehlende Produkt-Detailseiten** (von 21) nach Stufe-1-Muster aus `docs/seo.md`
-    anlegen. Nicht Teil dieser Runde — als Backlog notiert.
+10. **11 fehlende Produkt-Detailseiten** (von 21) ✅
+    - Konsolidiert umgesetzt (statt 11 dünner Seiten): 3 Detailseiten
+      (`powerstation`, `mini-party-beamer`, `max-party-bar`), 2 Kategorieseiten
+      (`mikrofon-mischpult`, `led-scheinwerfer`) sowie 2 erweiterte Seiten
+      (`partylicht-moving-head#beamz-mhl36`, `led-bossfx-nebelmaschine#nebel-maschine`).
+    - OpenSpec-Change: `openspec/changes/add-product-detail-pages/`. Muster aus
+      `docs/seo.md` (`Service` + `BreadcrumbList` + `FAQPage`, kein `Product`).
 
 ### Off-Site-Maßnahmenplan
 

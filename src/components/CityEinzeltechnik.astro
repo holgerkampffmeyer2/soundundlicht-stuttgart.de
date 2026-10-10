@@ -81,6 +81,9 @@ const sectionDescription = description ?? `Einzelgeräte für deine Feier in ${c
                 <span class="text-base leading-tight">Merken</span>
               </span>
             </button>
+            {item.detailPage && (
+              <a href={item.detailPage} class="btn-secondary w-full text-center block">Details</a>
+            )}
           </div>
         </div>
       ))}
