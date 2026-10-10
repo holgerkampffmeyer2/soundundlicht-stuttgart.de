@@ -29,7 +29,7 @@ test.describe('Merkliste functionality', () => {
     await expect(badge).toBeVisible();
     await expect(badge).toHaveText('1');
 
-    await page.click('.merkliste-toggle', { force: true });
+    // Package cards open the merkliste drawer automatically after toggling
     const drawer = page.locator('#merkliste-drawer');
     await expect(drawer).toHaveClass(/open/);
     await expect(drawer.locator('h3')).toContainText(productTitle ?? '');
@@ -39,8 +39,8 @@ test.describe('Merkliste functionality', () => {
     await page.waitForSelector('#kontakt');
     await expect(page.locator('#kontakt')).toBeInViewport();
 
-    const equipmentTextarea = page.locator('#equipment');
-    const textareaValue = await equipmentTextarea.inputValue();
+    const messageTextarea = page.locator('#message');
+    const textareaValue = await messageTextarea.inputValue();
     expect(textareaValue).toContain(productTitle ?? '');
     expect(textareaValue).toMatch(/€/);
   });
@@ -97,8 +97,8 @@ test.describe('Merkliste functionality', () => {
     await page.waitForTimeout(300);
     await expect(page.locator('#kontakt')).toBeVisible();
 
-    const equipmentTextarea = page.locator('#equipment');
-    const textareaValue = await equipmentTextarea.inputValue();
+    const messageTextarea = page.locator('#message');
+    const textareaValue = await messageTextarea.inputValue();
     expect(textareaValue).toContain(productTitle ?? '');
     expect(textareaValue).toMatch(/€/);
   });
@@ -148,9 +148,8 @@ test.describe('Merkliste functionality', () => {
     await page.waitForTimeout(300);
     await expect(page.locator('#kontakt')).toBeVisible();
 
-    const equipmentTextarea = page.locator('#equipment');
-    const textareaValue = await equipmentTextarea.inputValue();
-    const matches = (textareaValue.match(/\(€\)/g) || []);
+    const messageTextarea = page.locator('#message');
+    const textareaValue = await messageTextarea.inputValue();
     expect(textareaValue).toMatch(/€/);
   });
 });
