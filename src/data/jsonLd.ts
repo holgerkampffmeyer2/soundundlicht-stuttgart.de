@@ -1,3 +1,5 @@
+import googleReviews from './google-reviews.json';
+
 export const serviceArea = [
   { "@type": "City" as const, "name": "Stuttgart" },
   { "@type": "City" as const, "name": "Leinfelden-Echterdingen" },
@@ -44,8 +46,8 @@ export const localBusinessJsonLd = {
   "areaServed": serviceArea,
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "21",
+    "ratingValue": Number(googleReviews.ratingValue ?? 5).toFixed(1),
+    "reviewCount": String(googleReviews.reviewCount ?? googleReviews.reviews.length),
     "bestRating": "5",
     "worstRating": "1"
   },
@@ -113,9 +115,75 @@ export function offerCatalogJsonLd(items: any[]) {
       "@type": "Offer",
       "itemOffered": {
         "@type": "Service",
-        "name": item.title
+        "name": item.title,
+        "serviceType": "Veranstaltungstechnik-Vermietung",
+        "areaServed": serviceArea
+      },
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": item.priceValue,
+        "priceCurrency": "EUR",
+        "unitCode": "DAY"
       },
       "description": item.features.join(", ")
     }))
   };
 }
+
+export const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://soundundlicht-stuttgart.de/#organization",
+  "name": "Sound & Licht Stuttgart – Holger Kampffmeyer",
+  "url": "https://soundundlicht-stuttgart.de",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://soundundlicht-stuttgart.de/img/djhulk_logo.webp"
+  },
+  "email": "holger.kampffmeyer+dj@gmail.com",
+  "telephone": "+491711467491",
+  "founder": { "@id": "https://soundundlicht-stuttgart.de/#person" },
+  "sameAs": [
+    "https://www.facebook.com/holgerkampffmeyerdj",
+    "https://www.instagram.com/djhulk_de",
+    "https://www.youtube.com/@djhulk_de",
+    "https://www.mixcloud.com/holger-kampffmeyer/",
+    "https://holger-kampffmeyer.de"
+  ]
+};
+
+export const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://soundundlicht-stuttgart.de/#person",
+  "name": "Holger Kampffmeyer",
+  "jobTitle": "DJ & Verleih von Veranstaltungstechnik",
+  "url": "https://soundundlicht-stuttgart.de",
+  "worksFor": { "@id": "https://soundundlicht-stuttgart.de/#organization" },
+  "sameAs": [
+    "https://www.facebook.com/holgerkampffmeyerdj",
+    "https://www.instagram.com/djhulk_de",
+    "https://www.youtube.com/@djhulk_de",
+    "https://www.mixcloud.com/holger-kampffmeyer/",
+    "https://holger-kampffmeyer.de"
+  ]
+};
+
+export const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://soundundlicht-stuttgart.de/#website",
+  "url": "https://soundundlicht-stuttgart.de",
+  "name": "Sound & Licht Stuttgart",
+  "inLanguage": "de-DE",
+  "publisher": { "@id": "https://soundundlicht-stuttgart.de/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://soundundlicht-stuttgart.de/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};

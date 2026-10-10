@@ -11,6 +11,23 @@ html {
   outline-offset: 2px;
 }
 
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-secondary);
+  color: var(--color-bg);
+  border-radius: 0 0 0.5rem 0.5rem;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg);
@@ -601,6 +618,9 @@ body {
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .animate-on-scroll {
     opacity: 1 !important;
     transform: none !important;

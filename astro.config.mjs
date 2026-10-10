@@ -23,6 +23,7 @@ export default defineConfig({
     },
   },
   integrations: [sitemap({
+    filter: (page) => !/\/(impressum|thankyou)\/?$/.test(page),
     serialize(item) {
       const url = new URL(item.url);
       const path = decodeURIComponent(url.pathname);

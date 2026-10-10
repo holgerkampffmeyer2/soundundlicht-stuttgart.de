@@ -1,5 +1,5 @@
 # Sound & Licht Stuttgart - Holger Kampffmeyer DJ Dienstleistungen
-# Last updated: 2026-06-05
+# Last updated: 2026-10-10
 
 > Vermietung von PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung.
 > Abholung in Leinfelden-Echterdingen (Magellanstraße 4, 70771 Echterdingen).
@@ -66,11 +66,22 @@ Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim, Ludwigsb
 
 ## Wichtige Seiten
 - Startseite: https://soundundlicht-stuttgart.de/
-- Vermietung: https://soundundlicht-stuttgart.de/vermietung/
-- Pakete: https://soundundlicht-stuttgart.de/#pakete
+- Vermietung (Übersicht): https://soundundlicht-stuttgart.de/vermietung
 - Galerie: https://soundundlicht-stuttgart.de/#galerie
-- Impressum/Datenschutz: https://holger-kampffmeyer.de/impressum.html
+- Impressum/Datenschutz: https://soundundlicht-stuttgart.de/impressum
 - RSS Feed: https://soundundlicht-stuttgart.de/rss.xml
+
+## Produktseiten (Miete)
+- Partypaket: https://soundundlicht-stuttgart.de/vermietung/partypaket-stuttgart
+- DJ-Paket: https://soundundlicht-stuttgart.de/vermietung/djpaket-fildern
+- Veranstaltungspaket: https://soundundlicht-stuttgart.de/vermietung/veranstaltungspaket-stuttgart
+- Akku-Party-Paket: https://soundundlicht-stuttgart.de/vermietung/akku-party-paket
+- Karaoke-Paket: https://soundundlicht-stuttgart.de/vermietung/karaoke-paket
+- LD Maui 28 G3: https://soundundlicht-stuttgart.de/vermietung/ld-maui-28g3
+- JBL Partybox 300/320: https://soundundlicht-stuttgart.de/vermietung/jbl-partybox-300-320
+- KLS Laser Bar: https://soundundlicht-stuttgart.de/vermietung/kls-laser-bar
+- LED BossFX-2 Pro + Nebel: https://soundundlicht-stuttgart.de/vermietung/led-bossfx-nebelmaschine
+- Partylicht & Moving Head: https://soundundlicht-stuttgart.de/vermietung/partylicht-moving-head
 
 ## Social Media
 - Facebook: https://www.facebook.com/holgerkampffmeyerdj

@@ -32,6 +32,7 @@ Astro 7.x SSG-Website für Veranstaltungstechnik-Verleih (PA-Anlagen, Partyboxen
 - `pnpm run lint:agent` — ESLint kompakt (`--format unix --quiet --cache`), token-optimiert für LLM/Agent-Checks (bevorzugt)
 - `pnpm test` — Unit-Tests (Vitest, `--pool=forks`)
 - `npx playwright test` — E2E-Tests (Playwright)
+- `pnpm run update-reviews` — Google-Rezensionen via `google-maps-scraper` (Docker-Container) in `src/data/google-reviews.json` aktualisieren (benötigt laufenden Docker; `--dry-run` zeigt nur den Docker-Befehl)
 
 Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist.txt`.
 

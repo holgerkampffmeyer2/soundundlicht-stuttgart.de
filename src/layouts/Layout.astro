@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import '../styles/fonts.css';
 import '../styles/theme-vars.css';
-import { localBusinessJsonLd, siteNavigationJsonLd } from '../data/jsonLd';
+import { localBusinessJsonLd, siteNavigationJsonLd, organizationJsonLd, personJsonLd, websiteJsonLd } from '../data/jsonLd';
 import WishlistDrawer from '../components/WishlistDrawer.astro';
 import RentalCatalogData from '../components/RentalCatalogData.astro';
 
@@ -91,6 +91,15 @@ const pagefindMetaKeys = Object.keys(pagefindMerged);
     <!-- Schema.org LocalBusiness -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
 
+    <!-- Schema.org Organization -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+
+    <!-- Schema.org Person -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+
+    <!-- Schema.org WebSite -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+
     <!-- JSON-LD SiteNavigationElement -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(siteNavigationJsonLd)} />
 
@@ -125,7 +134,10 @@ const pagefindMetaKeys = Object.keys(pagefindMerged);
   </style>
   </head>
   <body class="min-h-screen" data-pagefind-weight={pagefindBodyWeight}>
-    <slot />
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <main id="main">
+      <slot />
+    </main>
 
     <div class="rental-search-fixed">
       <div class="rental-search-wrapper">

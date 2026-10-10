@@ -239,3 +239,10 @@ input.addEventListener('keydown', onKeydown);
 input.addEventListener('focus', onFocus);
 document.addEventListener('click', onDocumentClick);
 
+const initialQuery = new URLSearchParams(window.location.search).get('q')?.trim();
+if (initialQuery && initialQuery.length >= 2) {
+  input.value = initialQuery;
+  input.focus();
+  showResults(initialQuery);
+}
+

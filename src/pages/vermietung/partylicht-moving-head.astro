@@ -7,6 +7,7 @@ import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
+import { serviceArea } from '../../data/jsonLd';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'partylicht-moving-head')!.data;
@@ -43,9 +44,22 @@ const serviceSchema = {
     siteUrl + images[0],
     siteUrl + images[1]
   ],
+  "serviceType": "Veranstaltungstechnik-Vermietung",
+  "areaServed": serviceArea,
   "provider": {
     "@type": "LocalBusiness",
     "@id": "https://soundundlicht-stuttgart.de/#business"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": product.priceValue,
+      "priceCurrency": "EUR",
+      "unitCode": "DAY"
+    }
   }
 };
 
