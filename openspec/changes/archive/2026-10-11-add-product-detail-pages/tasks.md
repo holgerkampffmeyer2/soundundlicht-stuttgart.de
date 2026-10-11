@@ -42,4 +42,4 @@
 - [x] 7.3 Schema-Validierung der neuen Seiten (Rich-Results-/Schema-Validator): `Service`, `BreadcrumbList`, `FAQPage` valide, kein `Product`
 - [x] 7.4 Linkcheck der neuen Seiten: keine Orphan-Seiten (von Übersicht/City/Paket verlinkt), keine toten Anker
 - [x] 7.5 `public/llms.txt` um neue Seiten ergänzen und `docs/seo-improvement-plan.md` Backlog-Punkt 10 aktualisieren
-- [ ] 7.6 `pnpm run build:full && pnpm run indexnow-submit` nach dem Merge; Verify: neue URLs in `urllist.txt` + Sitemap enthalten
+- [x] 7.6 `pnpm run build:full && pnpm run indexnow-submit` nach dem Merge; Verify: neue URLs in `urllist.txt` + Sitemap enthalten

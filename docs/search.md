@@ -23,16 +23,16 @@ Clientseitige Volltextsuche über `astro-pagefind`. Indexierung beim Build (sieh
 
 ## Katalog-Matching für `/vermietung/`
 
-- `rentalItems` aus `getCollection('products')` (21 Produkte) wird als JSON-Script eingebettet
+- `rentalItems` aus `getCollection('products')` (22 Produkte) wird als JSON-Script eingebettet
 - `matchCatalogProducts(query)` matcht Suchbegriffe gegen Titel/Description/Features
 - Funde werden als reiche Produktkarten gerendert, Link auf `detailPage` (Route oder Anker) bzw. `vermietung/` als Fallback
 - Katalogkarten zeigen immer dann einen Link, wenn `detailPage` gesetzt ist (inkl. Anker-Ziele wie `#led-par-lichter`); nur Nicht-Anker-`detailPage`s werden gegen doppelte Pagefind-Treffer dedupliziert
 
 ## Datenquellen
 
-- **Produktdaten**: `src/content/products/*.yml` (21 Dateien) via `getCollection('products')`
-- **FAQ-Daten**: `src/data/faqs.json` (179 Einträge) via `getCollection('faqs')`
-- **Städte**: `src/data/cities.json` (15 Städte) via `getCollection('cities')`
+- **Produktdaten**: `src/content/products/*.yml` (22 Dateien) via `getCollection('products')`
+- **FAQ-Daten**: `src/data/faqs.json` (183 Einträge) via `getCollection('faqs')`
+- **Städte**: `src/data/cities.json` (20 Städte) via `getCollection('cities')`
 - **"Mehr Infos"-Link** auf `/vermietung/` erscheint bei allen Produkten mit gesetztem `detailPage` (Route oder Anker). Auf City-Seiten rendert `CityEinzeltechnik.astro` einen "Details"-Link, wenn `detailPage` gesetzt ist.
 
 ## Tests

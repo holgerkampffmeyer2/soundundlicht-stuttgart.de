@@ -39,13 +39,14 @@ src/
 │   │   ├── max-party-bar.astro
 │   │   ├── mikrofon-mischpult.astro
 │   │   └── led-scheinwerfer.astro
-│   └── <stadt>.astro     # City Pages (15 Städte)
+│   └── <stadt>.astro     # City Pages (20 Städte)
 ├── styles/
 │   ├── global.css
-│   └── themes/*.css      # 5 Farb-Themes
-├── scripts/              # Build-Skripte
-│   ├── generate-rss.mjs
-│   └── update-sitemap.mjs
+│   ├── theme-vars.css    # Alt-Theme-Variablen (?theme=)
+│   └── themes/deep-bass.css  # @theme-Basis (Default)
+├── scripts/              # Client-Skripte (Build-Skripte: /scripts/)
+│   ├── search.ts
+│   └── scroll-animations.ts
 ├── content/
 │   └── products/         # 22 Produkt-YAMLs
 ├── lib/                  # Hilfsfunktionen
@@ -86,8 +87,8 @@ public/
 | `/vermietung/led-bossfx-nebelmaschine/` | LED + Nebelmaschine |
 | `/vermietung/nebelmaschinen/` | Nebelmaschinen (AF-150 & Uking 1200W) |
 | `/vermietung/partylicht-moving-head/` | Partylicht Moving Head |
-| 15 City Pages: `/stuttgart/`, `/esslingen/`, ... `/waiblingen/` | City Pages |
-| Weitere 11 Mietartikel (Powerstation, Mikrofon, Beamer, …) | Nur auf `/vermietung/#item-<slug>` (keine eigenen Seiten) |
+| 20 City Pages: `/stuttgart/`, `/esslingen/`, ... `/waiblingen/` | City Pages |
+| Anker-gebündelte Geräte (z. B. `/vermietung/led-scheinwerfer#led-par-lichter`, `/vermietung/nebelmaschinen#af-150`) | Als Abschnitt auf Kategorieseite, kein eigener Link |
 
 ---
 
@@ -101,14 +102,13 @@ public/
 | `--color-surface` | <span style="display:inline-block;width:12px;height:12px;background:#0a1628;border-radius:2px;border:1px solid #333;"></span> `#0a1628` | Karten, Sektionen |
 | `--color-primary` | <span style="display:inline-block;width:12px;height:12px;background:#2563eb;border-radius:2px;"></span> `#2563eb` | Primäre Akzente |
 | `--color-secondary` | <span style="display:inline-block;width:12px;height:12px;background:#1e40af;border-radius:2px;"></span> `#1e40af` | Sekundäre Akzente |
-| `--color-accent` | <span style="display:inline-block;width:12px;height:12px;background:#60a5fa;border-radius:2px;"></span> `#60a5fa` | Buttons, Links |
+| `--color-accent` | <span style="display:inline-block;width:12px;height:12px;background:#22c55e;border-radius:2px;"></span> `#22c55e` | Buttons, Links |
 
 ### Alle Themes
 
 | Theme | Stimmung | Status |
 |---|---|---|
 | `deep-bass` | <span style="display:inline-block;width:12px;height:12px;background:#050510;border-radius:2px;"></span> Navy/Blau | **Default** |
-| `default` | <span style="display:inline-block;width:12px;height:12px;background:#0891b2;border-radius:2px;"></span> Cyan/Orange | Alternativ |
 | `electric-night` | <span style="display:inline-block;width:12px;height:12px;background:#a855f7;border-radius:2px;"></span> Purple/Pink | Alternativ |
 | `golden-hour` | <span style="display:inline-block;width:12px;height:12px;background:#f59e0b;border-radius:2px;"></span> Amber/Gold | Alternativ |
 | `arctic-frost` | <span style="display:inline-block;width:12px;height:12px;background:#60a5fa;border-radius:2px;"></span> Hellblau/Lavendel | Alternativ |
@@ -125,7 +125,7 @@ Vollständige Token-Tabellen: [docs/theme-system.md](theme-system.md)
 
 ### Wartung
 
-Neues Theme: `src/styles/themes/<name>.css` → in Layout.astro Script + Style ergänzen.
+Neues Theme: Variablen in `src/styles/theme-vars.css` unter `html[data-theme="<name>"]` ergänzen + Namen in die `?theme=`-Regex in `Layout.astro` aufnehmen.
 
 ### Farbverarbeitung
 
@@ -185,9 +185,9 @@ pnpm run indexnow-submit    # URL-Submission an Suchmaschinen
 
 ## SEO
 
-- JSON-LD: LocalBusiness, Service, Product, FAQPage, OfferCatalog
+- JSON-LD: LocalBusiness, Service, FAQPage, OfferCatalog (kein `Product`)
 - City-Seiten: Service mit city-spezifischem `areaServed`
-- Sitemap: 29+ URLs via `@astrojs/sitemap`
+- Sitemap: 38 URLs via `@astrojs/sitemap`
 - RSS Feed: `public/rss.xml` (wird bei build generiert)
 - urllist.txt für Suchmaschinen
 
@@ -195,7 +195,7 @@ pnpm run indexnow-submit    # URL-Submission an Suchmaschinen
 
 ## Suchsystem (Pagefind)
 
-Die Site verwendet **Pagefind 2.0.0** (via `astro-pagefind`) für clientseitige Volltextsuche. Indexierung erfolgt automatisch beim Build (`pnpm run build` / `pnpm run build:full` → "Pagefind indexed N pages").
+Die Site verwendet **Pagefind 2.0.1** (via `astro-pagefind`) für clientseitige Volltextsuche. Indexierung erfolgt automatisch beim Build (`pnpm run build` / `pnpm run build:full` → "Pagefind indexed N pages").
 
 ### Funktionsweise
 
@@ -212,19 +212,19 @@ Jede Seite kann über Props im `<Layout>` mit Pagefind-Metadaten versehen werden
 | `pagefindType` | `string` | `"produkt"` |
 | `pagefindMeta` | `Record<string, string>` | `{{ price: "ab 80€", image: "/img/...", ... }}` |
 
-**Achtung**: `pagefindMeta` wird als **separate `<div>`-Elemente** pro Key-Value-Paar gerendert, nicht als kombinierter `;`-String. Pagefind 1.5.2 parst `;` nicht korrekt als Separator.
+**Achtung**: `pagefindMeta` wird als **separate `<div>`-Elemente** pro Key-Value-Paar gerendert, nicht als kombinierter `;`-String. Pagefind 2.0.1 parst `;` nicht korrekt als Separator.
 
 Wird `pagefindType="produkt"` gesetzt, bekommt die Seite automatisch `data-pagefind-weight="2"` (doppeltes Gewicht in Suchergebnissen).
 
 ### Produkte auf `/vermietung/` (Katalog-Matching)
 
-21 Produkte sind in `src/data/rental-catalog.ts` definiert. 15 haben eigene Unterseiten in `src/pages/vermietung/` (davon bündeln 2 Kategorieseiten je mehrere Geräte-Detailseiten über Anker, z. B. `/vermietung/led-scheinwerfer#led-par-lichter`). Alle Produkte tragen ein `detailPage` (Route oder Anker).
+22 Produkte sind als Content-Collection (`src/content/products/*.yml`) definiert und werden über `src/components/RentalCatalogData.astro` als `rentalItems` eingebettet. 16 Routen liegen in `src/pages/vermietung/` (davon bündeln 3 Kategorieseiten je mehrere Geräte-Detailseiten über Anker, z. B. `/vermietung/led-scheinwerfer#led-par-lichter`). Alle Produkte tragen ein `detailPage` (Route oder Anker).
 
 Damit auch Zubehör/Anker-Geräte in der Suche gefunden werden:
 
 1. **`/vermietung/`** hat `pagefindType="produkt"` und wird als Produktseite indexiert
 2. **Katalog-JSON**: Der gesamte `rentalItems[]`-Array wird als `<script id="rental-catalog-data" type="application/json">` in die Seite eingebettet
-3. **Client-Matching**: Die Suchfunktion `matchCatalogProducts(query)` durchsucht Titel, Beschreibung und Features aller 21 Produkte und rendert Treffer als reiche Produktkarten
+3. **Client-Matching**: Die Suchfunktion `matchCatalogProducts(query)` durchsucht Titel, Beschreibung und Features aller 22 Produkte und rendert Treffer als reiche Produktkarten
 4. **Links**: Produktkarten verlinken auf `detailPage` (Route oder Anker-Ziel); Nicht-Anker-Ziele werden gegen doppelte Pagefind-Treffer dedupliziert
 
 ### URL-Normalisierung

@@ -22,4 +22,4 @@
 - [x] 4.1 `docs/DESIGN.md` (Routenliste, Seitenübersicht, Produktanzahl) + `public/llms.txt` aktualisieren
 - [x] 4.2 `pnpm run lint:agent && pnpm run build` — fehlerfrei, Seite + Anker vorhanden
 - [x] 4.3 `pnpm test` (Vitest, `--pool=forks`) — grün
-- [ ] 4.4 Deploy: `pnpm run build:full && pnpm run indexnow-submit`
+- [x] 4.4 Deploy: `pnpm run build:full && pnpm run indexnow-submit`
