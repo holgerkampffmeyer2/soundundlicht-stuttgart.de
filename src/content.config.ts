@@ -11,6 +11,7 @@ const products = defineCollection({
     category: z.enum(['Paket', 'Sound', 'Licht']),
     price: z.string(),
     priceValue: z.number(),
+    order: z.number().optional(),
     features: z.array(z.string()),
     detailPage: z.string().optional(),
   }),

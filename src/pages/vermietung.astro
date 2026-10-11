@@ -15,7 +15,9 @@ import PackageCardGrid from '../components/PackageCardGrid.astro';
 import StickyMerkliste from '../components/StickyMerkliste.astro';
 
 const products = await getCollection('products');
-const rentalItems = products.map(i => i.data);
+const rentalItems = products
+  .map(i => i.data)
+  .sort((a, b) => (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER));
 const faqs = await getFaqsForPage('vermietung');
 
 function getWebpUrl(src: string): string {

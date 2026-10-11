@@ -3,6 +3,7 @@ title: "Partypaket"
 image: /img/vermietung/partypaket.webp
 description: "Lautsprecher, Partylicht und Mikrofon als fertiges Set. Musik per Spotify vom Handy, einfacher Aufbau. Ideal für Feiern bis 50 Personen."
 category: Paket
+order: 1
 price: "ab 160€ / Tag"
 priceValue: 160
 features:

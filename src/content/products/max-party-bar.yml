@@ -3,6 +3,7 @@ title: "Max Party Bar"
 image: /img/vermietung/MAX-Partybar10_kl.webp
 description: "Komplette LED Lichtanlage für spektakuläre Lichteffekte."
 category: Licht
+order: 11
 price: "ab 30€ / Tag"
 priceValue: 30
 features:

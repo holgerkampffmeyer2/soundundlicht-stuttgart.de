@@ -6,6 +6,7 @@ export interface ProductData {
   category: string;
   price: string;
   priceValue: number;
+  order?: number;
   features: string[];
   detailPage: string;
 }

@@ -3,6 +3,7 @@ title: "Mikrofon"
 image: /img/vermietung/mikrofon.webp
 description: "Mikrofon für Gesangseinlagen, Moderation, Ansprachen etc."
 category: Sound
+order: 4
 price: "ab 10€ / Tag"
 priceValue: 10
 features:
