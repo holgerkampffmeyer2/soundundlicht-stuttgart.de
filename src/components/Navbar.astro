@@ -10,22 +10,29 @@ interface Props {
 
 const { currentPage = 'home' } = Astro.props;
 
-const vermietungItems = [
-  { href: '/vermietung', label: 'Übersicht' },
-  { href: '/vermietung/partypaket-stuttgart', label: 'Partypaket' },
-  { href: '/vermietung/veranstaltungspaket-stuttgart', label: 'Veranstaltungspaket' },
-  { href: '/vermietung/djpaket-fildern', label: 'DJ-Paket' },
-  { href: '/vermietung/akku-party-paket', label: 'Akku-Party-Paket' },
-  { href: '/vermietung/karaoke-paket', label: 'Karaoke-Paket' },
-  { href: '/vermietung/ld-maui-28g3', label: 'LD Maui 28 G3' },
-  { href: '/vermietung/jbl-partybox-300-320', label: 'JBL Partybox 300/320' },
-  { href: '/vermietung/partylicht-moving-head', label: 'Partylicht & Moving Head' },
-  { href: '/vermietung/led-bossfx-nebelmaschine', label: 'LED BossFX & Nebelmaschine' },
-  { href: '/vermietung/kls-laser-bar', label: 'KLS Laser Bar' },
+const vermietungGroups = [
+  {
+    label: 'Pakete',
+    items: [
+      { href: '/vermietung/partypaket-stuttgart', label: 'Partypaket' },
+      { href: '/vermietung/veranstaltungspaket-stuttgart', label: 'Veranstaltungspaket' },
+      { href: '/vermietung/djpaket-fildern', label: 'DJ-Paket' },
+      { href: '/vermietung/akku-party-paket', label: 'Akku-Party-Paket' },
+      { href: '/vermietung/karaoke-paket', label: 'Karaoke-Paket' },
+    ],
+  },
+  {
+    label: 'Einzelgeräte',
+    items: [
+      { href: '/vermietung#sound', label: 'Sound – PA & Lautsprecher' },
+      { href: '/vermietung#licht', label: 'Licht & Effekte' },
+      { href: '/vermietung/nebelmaschinen', label: 'Nebelmaschinen' },
+    ],
+  },
 ];
 
 const isVermietungActive = currentPage.startsWith('/vermietung');
-const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietung', '') || '/' : null;
+const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietung', '') : null;
 ---
 
 <nav data-pagefind-ignore class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]" aria-label="Main navigation">
@@ -50,17 +57,31 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
             Vermietung
             <Icon name="chevron-down" class="h-4 w-4" />
           </a>
-          <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            {vermietungItems.map(item => (
-              <a 
-                href={item.href} 
-                class:list={[
-                  "block px-4 py-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] hover:bg-[var(--color-bg)] first:rounded-t-lg last:rounded-b-lg",
-                  { "text-[var(--color-secondary)] bg-[var(--color-bg)]": activeVermietungSlug === item.href.replace('/vermietung', '') }
-                ]}
-              >
-                {item.label}
-              </a>
+          <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2">
+            <a
+              href="/vermietung"
+              class:list={[
+                "block px-4 py-2 text-sm font-semibold text-[var(--color-text)] hover:text-[var(--color-secondary)] hover:bg-[var(--color-bg)]",
+                { "text-[var(--color-secondary)]": isVermietungActive }
+              ]}
+            >
+              Alle Geräte & Pakete
+            </a>
+            {vermietungGroups.map(group => (
+              <div class="mt-1">
+                <div class="px-4 pt-1 pb-1 text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)]">{group.label}</div>
+                {group.items.map(item => (
+                  <a
+                    href={item.href}
+                    class:list={[
+                      "block px-4 py-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] hover:bg-[var(--color-bg)]",
+                      { "text-[var(--color-secondary)] bg-[var(--color-bg)]": activeVermietungSlug === item.href.replace('/vermietung', '') }
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
             ))}
           </div>
         </div>
@@ -85,7 +106,29 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
   <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-surface)] border-t border-[var(--color-border)]">
     <div class="px-4 py-4 space-y-3">
       <a href="/" class:list={["block nav-link py-2", { active: currentPage === '/' || currentPage === 'home' }]}>Home</a>
-      <a href="/vermietung" class:list={["block nav-link py-2", { active: isVermietungActive }]}>Vermietung</a>
+      <div>
+        <button
+          type="button"
+          id="mobile-vermietung-btn"
+          class="flex w-full items-center justify-between nav-link py-2"
+          aria-expanded="false"
+          aria-controls="mobile-vermietung-sub"
+        >
+          <span>Vermietung</span>
+          <Icon name="chevron-down" class="h-4 w-4 transition-transform duration-200" />
+        </button>
+        <div id="mobile-vermietung-sub" class="hidden pl-3 ml-1 border-l border-[var(--color-border)] space-y-1">
+          <a href="/vermietung" class="block nav-link py-2 text-sm">Alle Geräte & Pakete</a>
+          {vermietungGroups.map(group => (
+            <div>
+              <div class="pt-2 pb-1 text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)]">{group.label}</div>
+              {group.items.map(item => (
+                <a href={item.href} class="block nav-link py-2 text-sm">{item.label}</a>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
       <a href="/#services" class="block nav-link py-2">Services</a>
       <a href="/#pakete" class="block nav-link py-2">Pakete</a>
       <a href="/#ablauf" class="block nav-link py-2">Ablauf</a>
@@ -106,6 +149,15 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
   
   menuBtn?.addEventListener('click', () => {
     mobileMenu?.classList.toggle('hidden');
+  });
+
+  const vermietungBtn = document.getElementById('mobile-vermietung-btn');
+  const vermietungSub = document.getElementById('mobile-vermietung-sub');
+  vermietungBtn?.addEventListener('click', () => {
+    const isOpen = !vermietungSub?.classList.contains('hidden');
+    vermietungSub?.classList.toggle('hidden', isOpen);
+    vermietungBtn.setAttribute('aria-expanded', String(!isOpen));
+    vermietungBtn.querySelector('svg')?.classList.toggle('rotate-180', !isOpen);
   });
   
   mobileMenu?.querySelectorAll('a').forEach(link => {
