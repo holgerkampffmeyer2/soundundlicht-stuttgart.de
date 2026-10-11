@@ -94,28 +94,28 @@ const specsAf150 = {
   "Leistung": "800 W",
   "Ausstoß": "ca. 110 m³/min",
   "Fluid": "1L inklusive",
-  "Steuerung": "DMX, Fernbedienung"
+  "Steuerung": "DMX & kabelgebundene Fernbedienung (Intensität, Ausstoßdauer, Frequenz regelbar)"
 };
 
 const specsNebel = {
   "Modell": "Uking 1200W Nebelmaschine",
   "Leistung": "1200 W",
   "LEDs": "9x RGB",
-  "Steuerung": "Fernbedienung",
+  "Steuerung": "Funkfernbedienung (nur An/Aus)",
   "Fluid": "1 Tankfüllung inklusive",
   "Besonderheiten": "Hoher Nebelausstoß für große Räume"
 };
 
 const includesAf150 = [
   "1x Stairville AF-150 Nebelmaschine",
-  "1x Fernbedienung",
+  "1x kabelgebundene Fernbedienung",
   "1L Nebelfluid",
   "Einweisung bei der Abholung"
 ];
 
 const includesNebel = [
   "1x Uking 1200W Nebelmaschine",
-  "1x Fernbedienung",
+  "1x Funkfernbedienung",
   "1 Tankfüllung Nebelfluid",
   "Einweisung bei der Abholung"
 ];
@@ -171,6 +171,7 @@ const af150Packages = [
       { title: "Größere Räume & Bühnen", text: "Die Uking 1200W erzeugt deutlich dichteren Nebel und verteilt ihn auch auf großen Flächen – ideal für Hallen und Bühnen." },
       { title: "Farbiges Licht inklusive", text: "Die Uking 1200W hat 9 RGB LEDs und bringt zusätzlich farbiges Licht in den Nebel." },
       { title: "Steuerung per DMX", text: "Wer den Nebel in eine Lichtshow einbinden will, greift zur AF-150 – sie ist per DMX steuerbar." },
+      { title: "Fein dosieren statt nur An/Aus", text: "Die AF-150 regelst du per kabelgebundener Fernbedienung in Intensität, Ausstoßdauer und zeitlicher Frequenz. Die Uking 1200W lässt sich per Funkfernbedienung nur ein- und ausschalten." },
       { title: "Sparsam am Abend", text: "Beide kommen mit einer Tankfüllung Nebelfluid aus, die für einen typischen Partyabend von 4-6 Stunden reicht." }
     ]}
   />
@@ -182,8 +183,9 @@ const af150Packages = [
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Gerät</span>
         <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Stairville AF-150 Nebelmaschine</h2>
         <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
-          Die kompakte 800W Nebelmaschine mit ca. 110 m³/min Ausstoß für Feiern bis rund 100 Personen. Sie ist per DMX
-          oder Fernbedienung steuerbar und damit die flexibelste Wahl, wenn du den Nebel in eine Lichtshow einbinden willst.
+          Die kompakte 800W Nebelmaschine mit ca. 110 m³/min Ausstoß für Feiern bis rund 100 Personen. Per DMX oder
+          kabelgebundener Fernbedienung regelst du Intensität, Ausstoßdauer und zeitliche Frequenz – die flexible Wahl,
+          wenn du den Nebel fein dosieren oder in eine Lichtshow einbinden willst.
         </p>
       </div>
       <div class="mb-8 text-center"><span class="price-badge">{af150.price}</span></div>
@@ -201,7 +203,8 @@ const af150Packages = [
         <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Uking 1200W Nebelmaschine</h2>
         <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
           Für größere Räume und Bühnen: 1200W Leistung mit 9 RGB LEDs liefern dichten Nebel und zusätzlich farbiges Licht.
-          Mit einer Tankfüllung Nebelfluid und Fernbedienung – die richtige Wahl, wenn du viel Nebel auf großer Fläche brauchst.
+          Mit einer Tankfüllung Nebelfluid und Funkfernbedienung – die richtige Wahl, wenn du viel Nebel auf großer Fläche
+          brauchst (Steuerung per Funkfernbedienung: nur An/Aus).
         </p>
       </div>
       <div class="mb-8 text-center"><span class="price-badge">{nebel.price}</span></div>
