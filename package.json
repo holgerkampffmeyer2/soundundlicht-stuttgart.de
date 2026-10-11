@@ -2,6 +2,9 @@
   "name": "soundundlicht-stuttgart",
   "type": "module",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -21,10 +24,10 @@
     "indexnow-submit": "node scripts/indexnow-submit.mjs"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.1",
-    "astro": "^7.3.2",
-    "astro-pagefind": "^2.0.0",
+    "astro": "^7.3.8",
+    "astro-pagefind": "^2.0.1",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.1",
     "vite": "^8.1.0"
