@@ -5,7 +5,7 @@
 - Landing (`/`): `Service` (general), `OfferCatalog` (Pakete & Einzelgeräte, `ab`-Preise), `FAQPage` (manuell via `faqJsonLd`)
 - Vermietung (`/vermietung/`): `Service`, `FAQPage` (manuell)
 - City-Seite (`/<stadt>/`): `Service` mit `areaServed: { City: "<Stadt>" }` + `provider: LocalBusiness`
-- Produktseite (`/vermietung/<produkt>/`): `Service`, `Product`, `FAQPage` (via `getFaqsForPage('<produkt-slug>')`)
+- Produktseite (`/vermietung/<produkt>/`): `Service`, `FAQPage` (via `getFaqsForPage('<produkt-slug>')`) — bewusst **kein** `Product`
 
 ## Regeln
 
@@ -68,7 +68,7 @@ Quelle: `seo-optimizer` Skill. Strikte Reihenfolge einhalten — jede Phase erst
 ### Phase 3: Strukturierte Daten (JSON-LD)
 
 1. Passende Schema.org-Typen je Seitentyp identifizieren (vgl. oben)
-2. JSON-LD implementieren (`Service`, `Product`, `FAQPage`, `OfferCatalog`, …)
+2. JSON-LD implementieren (`Service`, `FAQPage`, `OfferCatalog`, …) — kein `Product`
 3. Mit Google Rich Results Test validieren
 4. Rich-Snippet-Tauglichkeit testen
 5. Search Console auf Structured-Data-Fehler überwachen

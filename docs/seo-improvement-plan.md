@@ -54,7 +54,7 @@ Quelle: GEO-Paper (KDD '24), Anbieter-Guides 2026.
   mit `preload`, `<Picture>` mit AVIF/WebP, Pagefind-Suche.
 - Breadcrumb-/FAQ-/Service-Schema auf allen Seiten, Sitemap mit git-`lastmod`,
   IndexNow, RSS, `llms.txt`, AI-Crawler in `robots.txt` erlaubt.
-- 20 City-Landingpages + 10 Produktseiten mit einzigartigem Text, LocalBusiness-`areaServed`.
+- 20 City-Landingpages + 16 Produktseiten mit einzigartigem Text, LocalBusiness-`areaServed`.
 
 **Gefundene Lücken:**
 
@@ -108,9 +108,8 @@ bestehende, semantisch korrekte `Service`-Schema angereichert:
 
 ## 4. Umsetzungsplan
 
-> **Status:** Phase 1 (1–6) und Phase 2 (7–9) umgesetzt im Branch
-> `feat/seo-p1-p2-improvements`. Offen bleiben nur Backlog (10) und
-> Off-Site-Maßnahmen (11).
+> **Status:** Phase 1 (1–6), Phase 2 (7–9) und Backlog (10) umgesetzt.
+> Offen bleiben nur die Off-Site-Maßnahmen (11).
 
 ### Phase 1 – Quick Wins (Code)
 

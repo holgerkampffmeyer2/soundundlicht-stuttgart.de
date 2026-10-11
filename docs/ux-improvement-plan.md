@@ -23,8 +23,8 @@ Folgende Maßnahmen wurden bereits umgesetzt und getestet (Lint + Build bestande
 | Kontakt-Überschrift "Unverbindlich Verfügbarkeit prüfen" | ✅ Done | `vermietung.astro`, `index.astro` |
 | Ich-Perspektive: Gesamter User-Facing-Text auf "Ich" umgestellt (Einzelunternehmer, persönlich). Nur `impressum.astro` bleibt "Wir" | ✅ Done | Alle `.astro`-Dateien außer `impressum.astro` |
 | Merkliste-Button zeigt "Gemerkt" (btn-secondary) wenn Produkt schon in der Merkliste ist | ✅ Done | `PackageCardGrid.astro`, `WishlistButton.astro`, `StickyMerkliste.astro`, `Layout.astro` |
-| cartData.ts: Cart-Logik extrahiert (readRawCart, buildProductMap, formatCartItems, getCartData) mit 22 Unit-Tests | ✅ Done | `src/lib/cartData.ts`, `src/lib/cartData.test.ts` |
-| Textarea-Prefill: Merkliste-Items werden in "Weitere Informationen" des Kontaktformulars vorausgefüllt | ✅ Done | `ContactForm.astro`, `src/scripts/merkliste-prefill.ts` |
+| cartData.ts: Cart-Logik extrahiert (readRawCart, buildProductMap, formatCartItems, getCartData) mit 25 Unit-Tests | ✅ Done | `src/lib/cartData.ts`, `src/lib/cartData.test.ts` |
+| Textarea-Prefill: Merkliste-Items werden in "Weitere Informationen" des Kontaktformulars vorausgefüllt | ✅ Done | `ContactForm.astro` |
 | ContactForm: Kein Gäste-Feld, kein "Veranstaltungsort" — optionale Adressfelder (Straße, Hausnummer, PLZ, Stadt) | ✅ Done | `ContactForm.astro` |
 | WishlistDrawer "Jetzt anfragen" navigiert zu `/vermietung#kontakt` | ✅ Done | `WishlistDrawer.astro` |
 | Entscheidungshilfe-Box auf Paketkacheln: Kein schwarzer Balken mehr (border statt bg) | ✅ Done | `PackageCardGrid.astro` |

@@ -57,7 +57,7 @@ Herz-Icon via `Icon.astro` (`name="heart"`) – kein hardcodiertes SVG.
 
 ## Tests
 
-`tests/merkliste.spec.ts` (Playwright, 3 Tests) + `src/lib/merklisteStore.test.ts` (Vitest, 16 Tests) + `src/lib/cartData.test.ts` (Vitest, 22 Tests):
+`tests/merkliste.spec.ts` (Playwright, 3 Tests) + `src/lib/merklisteStore.test.ts` (Vitest, 12 Tests) + `src/lib/cartData.test.ts` (Vitest, 25 Tests) + `scripts/lastmod.test.mjs` (Vitest, 13 Tests):
 
 - Playwright: Produkt von `/vermietung/` + Detailseite + mehrere Produkte hinzufügen
 - Vitest (merklisteStore): Unit-Tests für alle Store-Funktionen (CRUD, Validierung, Ablauf 24h, hasItem)
