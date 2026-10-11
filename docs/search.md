@@ -23,7 +23,7 @@ Clientseitige Volltextsuche über `astro-pagefind`. Indexierung beim Build (sieh
 
 ## Katalog-Matching für `/vermietung/`
 
-- `rentalItems` aus `getCollection('products')` (22 Produkte) wird als JSON-Script eingebettet
+- `rentalItems` aus `getCollection('products')` (22 Produkte) wird als JSON-Script eingebettet (sortiert nach optionalem `order`-Feld je Kategorie)
 - `matchCatalogProducts(query)` matcht Suchbegriffe gegen Titel/Description/Features
 - Funde werden als reiche Produktkarten gerendert, Link auf `detailPage` (Route oder Anker) bzw. `vermietung/` als Fallback
 - Katalogkarten zeigen immer dann einen Link, wenn `detailPage` gesetzt ist (inkl. Anker-Ziele wie `#led-par-lichter`); nur Nicht-Anker-`detailPage`s werden gegen doppelte Pagefind-Treffer dedupliziert

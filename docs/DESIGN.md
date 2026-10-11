@@ -218,7 +218,7 @@ Wird `pagefindType="produkt"` gesetzt, bekommt die Seite automatisch `data-pagef
 
 ### Produkte auf `/vermietung/` (Katalog-Matching)
 
-22 Produkte sind als Content-Collection (`src/content/products/*.yml`) definiert und werden über `src/components/RentalCatalogData.astro` als `rentalItems` eingebettet. 16 Routen liegen in `src/pages/vermietung/` (davon bündeln 3 Kategorieseiten je mehrere Geräte-Detailseiten über Anker, z. B. `/vermietung/led-scheinwerfer#led-par-lichter`). Alle Produkte tragen ein `detailPage` (Route oder Anker).
+22 Produkte sind als Content-Collection (`src/content/products/*.yml`) definiert und werden über `src/components/RentalCatalogData.astro` als `rentalItems` eingebettet. 16 Routen liegen in `src/pages/vermietung/` (davon bündeln 3 Kategorieseiten je mehrere Geräte-Detailseiten über Anker, z. B. `/vermietung/led-scheinwerfer#led-par-lichter`). Alle Produkte tragen ein `detailPage` (Route oder Anker). Jede Produkt-YAML kann ein optionales `order`-Feld (Zahl, nach `category`) tragen: `/vermietung` und `RentalCatalogData.astro` sortieren danach und gruppieren so verwandte Geräte (z. B. beide Nebelmaschinen direkt beieinander).
 
 Damit auch Zubehör/Anker-Geräte in der Suche gefunden werden:
 
