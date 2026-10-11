@@ -22,7 +22,7 @@ src/
 ├── pages/                # Routen
 │   ├── index.astro       # Landing Page
 │   ├── vermietung.astro  # Vermietung Landing
-│   ├── vermietung/       # Produktseiten (10)
+│   ├── vermietung/       # Produktseiten (16)
 │   │   ├── partypaket-stuttgart.astro
 │   │   ├── djpaket-fildern.astro
 │   │   ├── veranstaltungspaket-stuttgart.astro
@@ -32,7 +32,13 @@ src/
 │   │   ├── ld-maui-28g3.astro
 │   │   ├── kls-laser-bar.astro
 │   │   ├── led-bossfx-nebelmaschine.astro
-│   │   └── partylicht-moving-head.astro
+│   │   ├── nebelmaschinen.astro
+│   │   ├── partylicht-moving-head.astro
+│   │   ├── powerstation.astro
+│   │   ├── mini-party-beamer.astro
+│   │   ├── max-party-bar.astro
+│   │   ├── mikrofon-mischpult.astro
+│   │   └── led-scheinwerfer.astro
 │   └── <stadt>.astro     # City Pages (15 Städte)
 ├── styles/
 │   ├── global.css
@@ -41,7 +47,7 @@ src/
 │   ├── generate-rss.mjs
 │   └── update-sitemap.mjs
 ├── content/
-│   └── products/         # 21 Produkt-YAMLs
+│   └── products/         # 22 Produkt-YAMLs
 ├── lib/                  # Hilfsfunktionen
 │   ├── cartData.ts       # Cart-Daten (readRawCart, buildProductMap, formatCartItems, getCartData)
 │   ├── cartData.test.ts  # Unit-Tests
@@ -68,7 +74,7 @@ public/
 | Pfad | Typ |
 |------|-----|
 | `/` | Landing Page |
-| `/vermietung/` | Vermietung Landing (auch `type:produkt`, 21 Einzelartikel via Katalog-Matching) |
+| `/vermietung/` | Vermietung Landing (auch `type:produkt`, 22 Einzelartikel via Katalog-Matching) |
 | `/vermietung/partypaket-stuttgart/` | Partypaket |
 | `/vermietung/djpaket-fildern/` | DJ-Paket |
 | `/vermietung/veranstaltungspaket-stuttgart/` | Veranstaltungspaket |
@@ -78,6 +84,7 @@ public/
 | `/vermietung/ld-maui-28g3/` | LD Maui 28 G3 |
 | `/vermietung/kls-laser-bar/` | KLS Laser Bar |
 | `/vermietung/led-bossfx-nebelmaschine/` | LED + Nebelmaschine |
+| `/vermietung/nebelmaschinen/` | Nebelmaschinen (AF-150 & Uking 1200W) |
 | `/vermietung/partylicht-moving-head/` | Partylicht Moving Head |
 | 15 City Pages: `/stuttgart/`, `/esslingen/`, ... `/waiblingen/` | City Pages |
 | Weitere 11 Mietartikel (Powerstation, Mikrofon, Beamer, …) | Nur auf `/vermietung/#item-<slug>` (keine eigenen Seiten) |
@@ -209,16 +216,16 @@ Jede Seite kann über Props im `<Layout>` mit Pagefind-Metadaten versehen werden
 
 Wird `pagefindType="produkt"` gesetzt, bekommt die Seite automatisch `data-pagefind-weight="2"` (doppeltes Gewicht in Suchergebnissen).
 
-### Produkte auf `/vermietung/` (ohne eigene Seite)
+### Produkte auf `/vermietung/` (Katalog-Matching)
 
-21 Produkte sind in `src/data/rental-catalog.ts` definiert. Nur 10 haben eigene Unterseiten in `src/pages/vermietung/`. Die restlichen 11 (Powerstation, Mikrofon, Beamer, …) existieren nur als Karten auf der `/vermietung/`-Seite.
+21 Produkte sind in `src/data/rental-catalog.ts` definiert. 15 haben eigene Unterseiten in `src/pages/vermietung/` (davon bündeln 2 Kategorieseiten je mehrere Geräte-Detailseiten über Anker, z. B. `/vermietung/led-scheinwerfer#led-par-lichter`). Alle Produkte tragen ein `detailPage` (Route oder Anker).
 
-Damit auch diese in der Suche gefunden werden:
+Damit auch Zubehör/Anker-Geräte in der Suche gefunden werden:
 
 1. **`/vermietung/`** hat `pagefindType="produkt"` und wird als Produktseite indexiert
 2. **Katalog-JSON**: Der gesamte `rentalItems[]`-Array wird als `<script id="rental-catalog-data" type="application/json">` in die Seite eingebettet
 3. **Client-Matching**: Die Suchfunktion `matchCatalogProducts(query)` durchsucht Titel, Beschreibung und Features aller 21 Produkte und rendert Treffer als reiche Produktkarten
-4. **Links**: Produkte ohne eigene Seite verlinken auf `vermietung/#item-<slug>`, Produkte mit eigener Seite auf die Detailseite
+4. **Links**: Produktkarten verlinken auf `detailPage` (Route oder Anker-Ziel); Nicht-Anker-Ziele werden gegen doppelte Pagefind-Treffer dedupliziert
 
 ### URL-Normalisierung
 

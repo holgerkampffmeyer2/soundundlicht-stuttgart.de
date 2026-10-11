@@ -432,6 +432,11 @@ body {
   scroll-margin-top: 160px;
 }
 
+/* Anchor sections (category / variant anchor targets) */
+.anchor-section[id] {
+  scroll-margin-top: 160px;
+}
+
 /* Testimonials */
 .testimonial-card {
   background: var(--color-surface);

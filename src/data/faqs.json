@@ -373,6 +373,38 @@
     ]
   },
   {
+    "id": "nebelmaschinen-auswahl",
+    "question": "Welche Nebelmaschine passt zu meiner Feier?",
+    "answer": "Für private Feiern und Räume bis rund 100 Personen reicht die kompakte Stairville AF-150 mit 800W und 110 m³/min völlig aus. Für größere Räume, Bühnen und dichten Nebel auf großer Fläche empfehle ich die Uking 1200W mit deutlich höherem Ausstoß und 9 RGB LEDs. Beide sind ab 20€ pro Tag mietbar.",
+    "pages": [
+      "nebelmaschinen"
+    ]
+  },
+  {
+    "id": "nebelmaschinen-einzeln",
+    "question": "Kann ich eine Nebelmaschine einzeln mieten?",
+    "answer": "Ja, sowohl die AF-150 als auch die 1200W Nebelmaschine kannst du einzeln mieten – ab 20€ pro Tag inklusive einer Tankfüllung Nebelfluid. Du musst nicht das komplette Licht-Set nehmen.",
+    "pages": [
+      "nebelmaschinen"
+    ]
+  },
+  {
+    "id": "nebelmaschinen-unterschied",
+    "question": "Was ist der Unterschied zwischen der AF-150 und der 1200W Nebelmaschine?",
+    "answer": "Die AF-150 ist eine kompakte 800W DMX-Nebelmaschine mit ca. 110 m³/min Ausstoß – ideal für Feiern bis rund 100 Personen. Die Uking 1200W liefert mit 1200W Leistung und 9 RGB LEDs deutlich mehr Nebel und zusätzlich farbiges Licht, perfekt für größere Räume und Bühnen.",
+    "pages": [
+      "nebelmaschinen"
+    ]
+  },
+  {
+    "id": "nebelmaschinen-fluid",
+    "question": "Wie viel Nebelfluid brauche ich für einen Abend?",
+    "answer": "Im Mietpreis ist eine Tankfüllung (ca. 1 Liter) Nebelfluid enthalten. Das reicht für einen typischen Partyabend von rund 4-6 Stunden. Sparsam eingesetzt deckt der Nebel die Lichteffekte gut ab – mehr Fluid kannst du bei Bedarf dazubekommen.",
+    "pages": [
+      "nebelmaschinen"
+    ]
+  },
+  {
     "id": "laser-bar-schutzbeauftragter",
     "question": "Brauche ich einen Laserschutzbeauftragten für die Laser Bar?",
     "answer": "Nein, bei der Eurolite KLS Laser Bar handelt es sich um einen Laser der Klasse 2M. Dies bedeutet, dass kein Laserschutzbeauftragter erforderlich ist. Du solltest jedoch darauf achten, nicht direkt in den Laserstrahl zu blicken.",
@@ -1302,6 +1334,182 @@
     "answer": "Backnang liegt ca. 40 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 35 Minuten über die B14 und A8. Du holst die Technik bequem bei mir ab und bekommst eine persönliche Einweisung.",
     "pages": [
       "backnang"
+    ]
+  },
+  {
+    "id": "powerstation-was",
+    "question": "Was kann ich mit der Powerstation betreiben?",
+    "answer": "Mit der EnginStar R350 betreibst du problemlos Lautsprecher, Partyboxen, Lichttechnik und kleinere DJ-Setups. Über 2x 230V, USB-A und USB-C schließt du bis zu mehrere Geräte gleichzeitig an – ideal, wenn vor Ort kein Stromanschluss vorhanden ist.",
+    "pages": [
+      "powerstation"
+    ]
+  },
+  {
+    "id": "powerstation-laufzeit",
+    "question": "Wie lange hält die Powerstation durch?",
+    "answer": "Die 296Wh Kapazität reicht je nach Verbraucher für mehrere Stunden Beschallung oder einen ganzen Partyabend mit Licht. Für längere Einsätze kombiniere ich die Powerstation gern mit den Akku-Geräten aus meinem Verleih.",
+    "pages": [
+      "powerstation"
+    ]
+  },
+  {
+    "id": "powerstation-outdoor",
+    "question": "Eignet sich die Powerstation für Outdoor-Partys ohne Strom?",
+    "answer": "Ja, genau dafür ist sie gedacht. Ob Garten, Festwiese oder Location ohne Steckdose – die Powerstation versorgt Sound und Licht zuverlässig mit reiner Sinuswelle, sodass empfindliche Elektronik keinen Schaden nimmt.",
+    "pages": [
+      "powerstation"
+    ]
+  },
+  {
+    "id": "powerstation-geraete",
+    "question": "Wie viele Geräte kann ich gleichzeitig anschließen?",
+    "answer": "Du hast 2x 230V Schuko, 2x USB-A und 1x USB-C zur Verfügung. Damit laufen in der Regel eine Partybox plus Licht und Handy-Laden parallel. Bei größerem Bedarf berate ich dich gern zur passenden Kombination.",
+    "pages": [
+      "powerstation"
+    ]
+  },
+  {
+    "id": "beamer-verdunkelung",
+    "question": "Brauche ich einen dunklen Raum für den Beamer?",
+    "answer": "Für ein brillantes Bild ja – je dunkler der Raum, desto kräftiger wirkt die Projektion. Für Filme, Diashows oder Präsentationen bei Dämmerung reichen 7000 Lumen gut aus; bei Tageslicht empfehle ich eine Verdunklung.",
+    "pages": [
+      "mini-party-beamer"
+    ]
+  },
+  {
+    "id": "beamer-leinwand",
+    "question": "Ist eine Leinwand im Mietpreis enthalten?",
+    "answer": "Eine Leinwand ist nicht automatisch dabei, da viele sie gar nicht brauchen. Eine weiße Wand genügt meist. Wenn du eine Leinwand möchtest, sag mir einfach in der Anfrage Bescheid – dann stimmen wir die passende Lösung ab.",
+    "pages": [
+      "mini-party-beamer"
+    ]
+  },
+  {
+    "id": "beamer-anwendung",
+    "question": "Wofür eignet sich der Mini Party Beamer?",
+    "answer": "Er ist ideal für Filme im Garten, Diashows bei Hochzeiten, Geburtstagsvideos, Fußball-Liveticker oder Präsentationen. Über EZCast kannst du vom Handy kabellos streamen, alternativ per HDMI, USB oder VGA.",
+    "pages": [
+      "mini-party-beamer"
+    ]
+  },
+  {
+    "id": "beamer-anschluss",
+    "question": "Wie schließe ich Laptop oder Handy an den Beamer an?",
+    "answer": "Du hast HDMI, USB und VGA direkt am Gerät. Für kabelloses Streaming vom Smartphone nutzt du die EZCast App. Die gängigen Kabel lege ich gern mit dazu – sprich mich bei der Anfrage einfach darauf an.",
+    "pages": [
+      "mini-party-beamer"
+    ]
+  },
+  {
+    "id": "partybar-steuerung",
+    "question": "Wie wird die Max Party Bar gesteuert?",
+    "answer": "Die Max Party Bar läuft im Sound-zu-Licht-Modus und reagiert automatisch auf die Musik – ganz ohne Technikkenntnisse. Alternativ lassen sich die Effekte auch manuell per Steuerung anpassen.",
+    "pages": [
+      "max-party-bar"
+    ]
+  },
+  {
+    "id": "partybar-aufbau",
+    "question": "Wie lange dauert der Aufbau der Max Party Bar?",
+    "answer": "Der Aufbau gelingt in wenigen Minuten: Die Bar wird auf das mitgelieferte Stativ gesetzt, angeschlossen und läuft im Automatikmodus sofort los. Eine Einweisung bekommst du bei der Abholung dazu.",
+    "pages": [
+      "max-party-bar"
+    ]
+  },
+  {
+    "id": "partybar-groesse",
+    "question": "Für welche Raumgröße reicht die Max Party Bar?",
+    "answer": "Mit PAR-Strahlern, Jelly Moon, UV und Strobe eignet sich die Bar für Feiern bis etwa 50 Personen. Für größere Räume oder Bühnen kombinierst du sie ideal mit einem Moving Head oder zusätzlichen LED-Scheinwerfern.",
+    "pages": [
+      "max-party-bar"
+    ]
+  },
+  {
+    "id": "partybar-dmx",
+    "question": "Brauche ich eine DMX-Konsole für die Max Party Bar?",
+    "answer": "Nein. Die Bar läuft im Sound-zu-Licht- und Automatikmodus vollkommen eigenständig. Eine DMX-Steuerung ist nur nötig, wenn du individuelle Lichtshows programmieren möchtest.",
+    "pages": [
+      "max-party-bar"
+    ]
+  },
+  {
+    "id": "mikpult-unterschied",
+    "question": "Was ist der Unterschied zwischen Mikrofon und Mischpult?",
+    "answer": "Das Mikrofon wandelt deine Stimme in ein Signal um und bringt ein 10m XLR-Kabel mit. Das Yamaha MG06 Mischpult mischt mehrere Tonquellen – etwa Mikrofone, Musik vom Handy oder Computer – und gibt sie sauber an Lautsprecher oder PA weiter.",
+    "pages": [
+      "mikrofon-mischpult"
+    ]
+  },
+  {
+    "id": "mikpult-kabel",
+    "question": "Welches Kabel brauche ich für das Mikrofon?",
+    "answer": "Ein 10m XLR-Kabel ist beim Mikrofon bereits dabei. Für den Anschluss an ein Mischpult oder eine Partybox mit XLR-Eingang passt es direkt; bei Klinkeneingängen berate ich dich gern zum passenden Adapter.",
+    "pages": [
+      "mikrofon-mischpult"
+    ]
+  },
+  {
+    "id": "mikpult-einsatz",
+    "question": "Wann brauche ich ein Mischpult, wann reicht das Mikrofon?",
+    "answer": "Wenn du nur Moderieren oder singen und parallel Musik von einer Quelle zuspielen willst, reicht oft das Mikrofon allein. Sobald mehrere Mikrofone, Instrumente und Zuspieler zusammenkommen, sorgt das Yamaha MG06 für einen sauberen, ausgewogenen Mix.",
+    "pages": [
+      "mikrofon-mischpult"
+    ]
+  },
+  {
+    "id": "mikpult-partybox",
+    "question": "Kann ich Mikrofon und Mischpult mit meiner Partybox kombinieren?",
+    "answer": "Ja, das ist die klassische Kombination: Musik per Bluetooth oder Kabel zuspielen und dazu moderieren oder singen. Ich stimme die Geräte bei der Abholung aufeinander ab, damit alles direkt zusammenspielt.",
+    "pages": [
+      "mikrofon-mischpult"
+    ]
+  },
+  {
+    "id": "mikpult-karaoke",
+    "question": "Eignet sich das Set für Karaoke?",
+    "answer": "Ja. Mit Mikrofon und Mischpult baust du dir einen einfachen Karaoke-Aufbau. Wenn du zwei Mikrofone für Duette möchtest, ist mein fertiges Karaoke-Paket mit 2x Mikrofon und JBL Partyboxen die bequemere Lösung.",
+    "pages": [
+      "mikrofon-mischpult"
+    ]
+  },
+  {
+    "id": "ledscheinwerfer-unterschied",
+    "question": "Worin unterscheiden sich die LED-Scheinwerfer?",
+    "answer": "Die zwei 270W LED PAR Strahler sind die hellsten und per DMX programmierbar. Die 4er-Sets und die Stage Bar punkten mit Sound-zu-Licht und Automatikmodi, die Akku-PARs laufen ganz ohne Strom. So findest du für jede Situation den passenden Scheinwerfer.",
+    "pages": [
+      "led-scheinwerfer"
+    ]
+  },
+  {
+    "id": "ledscheinwerfer-akku",
+    "question": "Welche LED-Scheinwerfer funktionieren ohne Stromanschluss?",
+    "answer": "Die 2 Akku LED PARs arbeiten mit eingebautem Akku und sind ideal für Locations ohne Steckdose. Für längere Einsätze draußen kombiniere ich sie gern mit meiner Powerstation.",
+    "pages": [
+      "led-scheinwerfer"
+    ]
+  },
+  {
+    "id": "ledscheinwerfer-dmx",
+    "question": "Sind die LED-Scheinwerfer per DMX steuerbar?",
+    "answer": "Die 270W LED PAR Strahler sind DMX-fähig und so programmierbar. Die übrigen Scheinwerfer laufen über Sound-zu-Licht und Automatikprogramme – perfekt für alle, die ohne Lichtpult schnell tolle Effekte wollen.",
+    "pages": [
+      "led-scheinwerfer"
+    ]
+  },
+  {
+    "id": "ledscheinwerfer-anwendung",
+    "question": "Welche LED-Scheinwerfer eignen sich für meine Feier?",
+    "answer": "Für stimmungsvolle Grundbeleuchtung bis 50 Personen reichen die 4er-PAR-Sets oder die Stage Bar. Für helle Bühnenakzente nimm die 270W-Strahler, für scheinwerferlose Locations die Akku-Variante. Ich berate dich gern zur passenden Anzahl.",
+    "pages": [
+      "led-scheinwerfer"
+    ]
+  },
+  {
+    "id": "ledscheinwerfer-anzahl",
+    "question": "Wie viele LED-Scheinwerfer brauche ich?",
+    "answer": "Als Faustregel beleuchten 4 Scheinwerfer eine Fläche bis rund 50 Personen. Für Bühnen oder größere Räume erhöhst du die Anzahl oder ergänzt Moving Heads. Sag mir Raumgröße und Anlass, dann stelle ich dir ein passendes Set zusammen.",
+    "pages": [
+      "led-scheinwerfer"
     ]
   }
 ]

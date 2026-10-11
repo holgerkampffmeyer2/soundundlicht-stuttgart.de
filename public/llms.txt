@@ -1,5 +1,5 @@
 # Sound & Licht Stuttgart - Holger Kampffmeyer DJ Dienstleistungen
-# Last updated: 2026-10-10
+# Last updated: 2026-10-11
 
 > Vermietung von PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen und Umgebung.
 > Abholung in Leinfelden-Echterdingen (Magellanstraße 4, 70771 Echterdingen).
@@ -50,10 +50,15 @@
 - LD Maui 28 G3 Säulen-PA: ab 120€/Tag (bis 150 Personen, 2060W Peak)
 - JBL Partybox Set (2x): ab 80€/Tag (50-80 Personen)
 - Partylichtanlage (LED-Effekte): ab 50€/Tag
-- Nebelmaschine: ab 30€/Tag (inkl. Fluid)
+- Nebelmaschinen: ab 20€/Tag (inkl. Fluid)
 - Moving Head: ab 40€/Tag
 - Laser Bar: ab 45€/Tag
 - Mischpult (6-Kanal): ab 35€/Tag
+- Powerstation (350W/296Wh): ab 30€/Tag
+- Mini-Party-Beamer: ab 15€/Tag
+- Max Party Bar: ab 30€/Tag
+- Mikrofon: ab 10€/Tag
+- LED-Scheinwerfer (PAR): ab 15€/Tag
 
 ## Einsatzgebiet
 Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim, Ludwigsburg, Böblingen, Sindelfingen, Leonberg, Waiblingen, Nürtingen, Reutlingen, Kirchheim unter Teck, Ostfildern und Umgebung (A8 / B27 verkehrsgünstig gelegen).
@@ -81,7 +86,13 @@ Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen, Kornwestheim, Ludwigsb
 - JBL Partybox 300/320: https://soundundlicht-stuttgart.de/vermietung/jbl-partybox-300-320
 - KLS Laser Bar: https://soundundlicht-stuttgart.de/vermietung/kls-laser-bar
 - LED BossFX-2 Pro + Nebel: https://soundundlicht-stuttgart.de/vermietung/led-bossfx-nebelmaschine
+- Nebelmaschinen (AF-150 & Uking 1200W): https://soundundlicht-stuttgart.de/vermietung/nebelmaschinen
 - Partylicht & Moving Head: https://soundundlicht-stuttgart.de/vermietung/partylicht-moving-head
+- Powerstation: https://soundundlicht-stuttgart.de/vermietung/powerstation
+- Mini-Party-Beamer: https://soundundlicht-stuttgart.de/vermietung/mini-party-beamer
+- Max Party Bar: https://soundundlicht-stuttgart.de/vermietung/max-party-bar
+- Mikrofon & Mischpult: https://soundundlicht-stuttgart.de/vermietung/mikrofon-mischpult
+- LED-Scheinwerfer: https://soundundlicht-stuttgart.de/vermietung/led-scheinwerfer
 
 ## Social Media
 - Facebook: https://www.facebook.com/holgerkampffmeyerdj

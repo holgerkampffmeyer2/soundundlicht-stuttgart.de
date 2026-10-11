@@ -204,6 +204,19 @@ const pagefindMetaKeys = Object.keys(pagefindMerged);
 
     document.dispatchEvent(new CustomEvent('merkliste-prefill'));
   });
+
+  function syncMerklisteBadges() {
+    const cart = getCart();
+    const totalItems = (cart.items || []).length;
+    document.querySelectorAll('.merkliste-badge').forEach(badge => {
+      badge.textContent = String(totalItems);
+      badge.classList.toggle('hidden', totalItems === 0);
+    });
+  }
+
+  syncMerklisteBadges();
+  window.addEventListener('pageshow', syncMerklisteBadges);
+  document.addEventListener('astro:page-load', syncMerklisteBadges);
 </script>
 </body>
 </html>

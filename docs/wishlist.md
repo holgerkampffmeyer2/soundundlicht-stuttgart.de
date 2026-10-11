@@ -39,6 +39,11 @@ Herz-Icon via `Icon.astro` (`name="heart"`) – kein hardcodiertes SVG.
 - `toggle-merkliste` → Drawer öffnen/schließen
 - `merkliste-prefill` → Kontaktformular vorbereiten (Items in Textarea vorausfüllen)
 
+### Verhalten
+
+- **Badge-Sync beim Laden:** Alle `.merkliste-badge` (Navbar + Sticky) werden bei jedem Seitenaufruf aus localStorage synchronisiert (`Layout.astro`, `pageshow`/`astro:page-load`) – nicht nur nach Client-Events.
+- **Auto-Open:** "Merken" auf Paketkacheln (`PackageCardGrid.astro`) und der "Jetzt anfragen"-CTA auf Produktseiten (`ProductCTA.astro`) öffnen den Drawer automatisch per `toggle-merkliste`. `WishlistButton.astro` (Einzel-Produktseiten) fügt nur hinzu, ohne den Drawer zu öffnen.
+
 ## Data-Actions
 
 - `add-to-wishlist` → Produkt auf Merkliste (toggle: add/remove)

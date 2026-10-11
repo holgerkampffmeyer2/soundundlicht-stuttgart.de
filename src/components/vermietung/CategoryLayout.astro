@@ -1,0 +1,157 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Footer from '../../components/Footer.astro';
+import StickyMerkliste from '../../components/StickyMerkliste.astro';
+import Icon from '../../components/Icon.astro';
+import { getWebpUrl, getThumbUrl } from '../../lib/imageUtils';
+
+interface CategoryProduct {
+  slug: string;
+  title: string;
+  image: string;
+  price: string;
+  description: string;
+  features: string[];
+}
+
+interface JsonLdItem {
+  '@context': string;
+  '@type': string;
+  [key: string]: unknown;
+}
+
+interface BreadcrumbSegment {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  pageTitle: string;
+  title?: string;
+  description: string;
+  image: string;
+  preloadImage: string;
+  pagefindMeta: Record<string, string>;
+  jsonLd: JsonLdItem[];
+  breadcrumbSegments: BreadcrumbSegment[];
+  products: CategoryProduct[];
+}
+
+const { pageTitle, title, description, image, preloadImage, pagefindMeta, jsonLd, breadcrumbSegments, products } = Astro.props;
+const layoutTitle = title ?? pageTitle;
+---
+
+<Layout
+  title={layoutTitle}
+  description={description}
+  image={image}
+  preloadImage={preloadImage}
+  pagefindType="produkt"
+  pagefindMeta={pagefindMeta}
+  jsonLd={jsonLd}
+>
+  <Navbar currentPage="/vermietung" />
+  <Breadcrumb segments={breadcrumbSegments} />
+
+  <slot name="hero" />
+
+  <!-- Geräte im Überblick -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Im Überblick</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Diese Geräte kannst du einzeln mieten</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Jedes Gerät ist einzeln buchbar und lässt sich flexibel kombinieren. Springe direkt zum gewünschten Gerät oder merke es dir für deine Anfrage.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {products.map((product, index) => (
+          <div id={`karte-${product.slug}`} class="card-base equipment-card" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="relative">
+              <picture>
+                <source srcset={`${getThumbUrl(product.image)} 480w, ${getWebpUrl(product.image)} 960w`} type="image/webp" />
+                <img src={product.image} alt={product.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
+              </picture>
+              <span class="plug-badge">
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                Inkl. Kabel &amp; Einweisung
+              </span>
+            </div>
+            <span class="price-badge">{product.price}</span>
+            <h3 class="text-xl font-bold mt-2 mb-3">{product.title}</h3>
+            <p class="text-[var(--color-text-muted)] text-sm mb-4">{product.description}</p>
+            <ul class="text-[var(--color-text-muted)] text-sm space-y-1 mb-4">
+              {product.features.map(feature => (
+                <li class="flex items-center gap-2">
+                  <span class="text-[var(--color-secondary)]">•</span> {feature}
+                </li>
+              ))}
+            </ul>
+            <div class="flex flex-col gap-2 mt-auto">
+              <a href={`#${product.slug}`} class="btn-secondary w-full text-center block">Details ansehen</a>
+              <button data-action="add-to-wishlist" data-slug={product.slug} class="btn-primary w-full !px-3" aria-pressed="false">
+                <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
+                  <Icon name="heart" class="w-6 h-6 mt-0.5 shrink-0" />
+                  <span class="text-base leading-tight">Merken</span>
+                </span>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <slot />
+
+  <!-- CTA -->
+  <section class="cta-section section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h2 class="font-play text-3xl md:text-4xl font-bold mb-2">Noch unsicher, was du brauchst?</h2>
+      <p class="text-[var(--color-text-muted)] mb-6">
+        Sag mir Anlass, Raumgröße und Personenzahl – ich stelle dir die passende Kombination zusammen und prüfe die Verfügbarkeit.
+      </p>
+      <a href="/vermietung#kontakt" class="btn-primary inline-block max-w-sm mx-auto mb-6">
+        <span class="flex items-center justify-center gap-2">
+          <Icon name="email" class="w-5 h-5" />
+          Jetzt anfragen
+        </span>
+      </a>
+      <div>
+        <a href="/vermietung" class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)] text-sm inline-flex items-center gap-1 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+          Zurück zur Übersicht
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <StickyMerkliste href="/vermietung#kontakt" />
+
+  <Footer />
+
+  <script>
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('[data-action="add-to-wishlist"]')) {
+        const btn = target.closest('[data-action="add-to-wishlist"]') as HTMLElement;
+        const slug = btn?.getAttribute('data-slug');
+        if (slug) {
+          document.dispatchEvent(new CustomEvent('add-to-wishlist', { detail: { slug } }));
+        }
+      }
+    });
+  </script>
+</Layout>
+
+<style>
+  .cta-section {
+    text-align: center;
+  }
+</style>

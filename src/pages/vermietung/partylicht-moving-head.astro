@@ -114,6 +114,15 @@ const specsStativ = {
   "Montagepunkte": "4 für PAR-Lichter und Moving Heads"
 };
 
+const specsBeamz = {
+  "Modell": "2x BeamZ MHL36 Wash Moving Head",
+  "LEDs": "4x 9W 4-in-1 LEDs",
+  "Farbmischung": "RGBW",
+  "Shows": "4 vorprogrammierte Shows",
+  "Steuerung": "Sound-zu-Licht",
+  "Besonderheiten": "Breiter, weicher Wash-Effekt für Farbflächen"
+};
+
 const rentalIncludes = [
   "1x LED Spot Moving Head 18 Prisma",
   "2x LED PAR RGBW Strahler",
@@ -207,6 +216,24 @@ const events = [
         <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">T-Bar Stativ</h2>
       </div>
       <TechnicalSpecs specs={specsStativ} />
+    </div>
+  </section>
+
+  <!-- 3d. Variante: BeamZ MHL36 Wash Moving Heads -->
+  <section id="beamz-mhl36" class="anchor-section section-padding bg-[var(--color-bg)]">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Variante</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">2x BeamZ MHL36 Wash Moving Heads</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Der Gegenpol zum Gobo Moving Head: Statt eines scharfen, gerichteten Musters werfen die beiden kompakten Wash Moving Heads weiches, flächiges Licht.
+          Mit 4 vorprogrammierten Shows im Sound-zu-Licht-Modus eignen sie sich ideal für farbige Akzente in kleineren Räumen – oder als Ergänzung zum Gobo Head, wenn du sowohl Fläche als auch Effekt ausleuchten willst.
+        </p>
+      </div>
+      <TechnicalSpecs specs={specsBeamz} />
+      <p class="text-center text-[var(--color-text-muted)] mt-8">
+        Du brauchst breite Farbflächen? Dann schau dir zusätzlich meine <a href="/vermietung/led-scheinwerfer" class="text-[var(--color-secondary)] hover:underline">LED-Scheinwerfer</a> an.
+      </p>
     </div>
   </section>
 

@@ -1,0 +1,215 @@
+---
+import ProductLayout from '../../components/vermietung/ProductLayout.astro';
+import Icon from '../../components/Icon.astro';
+import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
+import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
+import RentalPricing from '../../components/vermietung/RentalPricing.astro';
+import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
+import DecisionHelp from '../../components/vermietung/DecisionHelp.astro';
+import RelatedLinks from '../../components/vermietung/RelatedLinks.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { serviceArea } from '../../data/jsonLd';
+
+const products = await getCollection('products');
+const product = products.find(i => i.data.slug === 'max-party-bar')!.data;
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: "Vermietung", href: "/vermietung" },
+  { label: "Max Party Bar" }
+];
+
+const pageTitle = "Max Party Bar mieten in Stuttgart | Sound & Licht Stuttgart";
+
+const faqs = await getFaqsForPage('max-party-bar');
+
+const images = [
+  "/img/vermietung/MAX-Partybar10_kl.webp"
+];
+
+const siteUrl = "https://soundundlicht-stuttgart.de";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Max Party Bar Vermietung",
+  "description": "Miete die Max Party Bar LED-Lichtanlage mit PAR-Strahlern, Jelly-Moon-Effekten und UV/Strobe für stimmungsvolle Lichteffekte mit Sound-zu-Licht-Steuerung.",
+  "image": [
+    siteUrl + images[0]
+  ],
+  "serviceType": "Veranstaltungstechnik-Vermietung",
+  "areaServed": serviceArea,
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://soundundlicht-stuttgart.de/#business"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": product.priceValue,
+      "priceCurrency": "EUR",
+      "unitCode": "DAY"
+    }
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq: any) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soundundlicht-stuttgart.de/"},
+    {"@type": "ListItem", "position": 2, "name": "Vermietung", "item": "https://soundundlicht-stuttgart.de/vermietung"},
+    {"@type": "ListItem", "position": 3, "name": "Max Party Bar", "item": "https://soundundlicht-stuttgart.de/vermietung/max-party-bar"}
+  ]
+};
+
+const specs = {
+  "Modell": "Max Party Bar LED-Lichtanlage",
+  "PAR-Strahler": "2x PAR mit je 3x 3W 4-in-1 LEDs",
+  "Jelly Moon Effekte": "2x Jelly Moon mit je 4x 3W",
+  "UV / Strobe": "6x 2W",
+  "Steuerung": "Sound-zu-Licht, Automatikmodus",
+  "Besonderheiten": "Komplette Lichtanlage in einer Bar"
+};
+
+const rentalIncludes = [
+  "1x Max Party Bar",
+  "Netz- und Anschlusskabel",
+  "Einweisung bei der Abholung"
+];
+
+const events = [
+  {
+    title: "Hochzeit",
+    description: "Jelly-Moon-Effekte und farbiges Licht schaffen eine festliche Atmosphäre auf der Tanzfläche – ganz ohne Lichtpult.",
+    personCount: "bis 50 Personen"
+  },
+  {
+    title: "Firmenfeier",
+    description: "Für Betriebsfeiern und Jubiläen sorgt die Party Bar mit Sound-zu-Licht für passende Stimmung im Raum.",
+    personCount: "bis 50 Personen"
+  },
+  {
+    title: "Geburtstagsfeier",
+    description: "Ob Wohnzimmer, Partyraum oder Garten: Die kompakte Lichtanlage bringt Farbe und Effekte auf jede Feier.",
+    personCount: "bis 50 Personen"
+  }
+];
+---
+
+<ProductLayout
+  product={product}
+  pageTitle={pageTitle}
+  description="Miete die Max Party Bar LED-Lichtanlage mit PAR-Strahlern, Jelly-Moon-Effekten und UV/Strobe für stimmungsvolle Lichteffekte mit Sound-zu-Licht-Steuerung."
+  image="/img/vermietung/MAX-Partybar10_kl.webp"
+  preloadImage="/img/vermietung/MAX-Partybar10_kl.webp"
+  pagefindType="produkt"
+  pagefindMeta={{ price: product.price, image: images[0], category: "Licht", label: "Max Party Bar Lichtanlage" }}
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}
+  breadcrumbSegments={breadcrumbSegments}
+>
+  <!-- Hero -->
+  <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/img/vermietung/MAX-Partybar10_kl.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="hero-overlay-accent"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+          <span class="price-badge">{product.price}</span>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Inkl. Kabel & Einweisung
+          </span>
+        </div>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Max Party Bar mieten</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Die Max Party Bar vereint eine komplette LED-Lichtanlage in einem kompakten Gehäuse: zwei PAR-Strahler, zwei Jelly-Moon-Effekte sowie UV- und Strobe-Lichter.
+          Über die Sound-zu-Licht-Steuerung reagiert sie automatisch auf die Musik – ideal für Feiern, bei denen du dich nicht um die Lichttechnik kümmern willst.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Preis & Kaution -->
+  <RentalPricing price={product.price} deposit={100} />
+
+  <!-- 3. Technische Spezifikation -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Technische Daten</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Max Party Bar</h2>
+      </div>
+      <TechnicalSpecs specs={specs} />
+    </div>
+  </section>
+
+  <!-- 4. Entscheidungshilfe -->
+  <DecisionHelp
+    heading="Wann brauchst du die Max Party Bar?"
+    intro="Die Party Bar ist die unkomplizierte Lichtlösung, wenn du ohne Technikkenntnisse schnell für Stimmung sorgen willst."
+    items={[
+      { title: "Kompakter Raum", text: "Eine Lichtanlage, viele Effekte: Die Bar passt auf kleine Bühnen, in Partyräume und auf Terrassen – ideal bis etwa 50 Personen." },
+      { title: "Ohne Lichtpult", text: "Dank Sound-zu-Licht läuft alles automatisch im Takt der Musik. Du musst nichts programmieren oder bedienen." },
+      { title: "Schneller Aufbau", text: "Aufstellen, anschließen, fertig: Die Max Party Bar ist in wenigen Minuten einsatzbereit." },
+      { title: "Mehr Licht gewünscht", text: "Für größere Flächen oder Bühnenakzente kombinierst du die Bar mit LED-Scheinwerfern oder einem Moving Head." }
+    ]}
+  />
+
+  <!-- 5. Lieferumfang -->
+  <RentalIncludes items={rentalIncludes} />
+
+  <!-- 6. Beispielanwendungen -->
+  <ExampleEvents events={events} />
+
+  <!-- 6b. Dazu passend -->
+  <RelatedLinks
+    items={[
+      { title: "LED-Scheinwerfer", url: "/vermietung/led-scheinwerfer", text: "Zusätzliche PAR-Strahler und Akku-Lichter für helle Bühnenakzente und größere Räume." },
+      { title: "Partylicht & Moving Head", url: "/vermietung/partylicht-moving-head", text: "Für programmierbare Lichtshows mit DMX-Controller – die nächste Ausbaustufe." },
+      { title: "Partypaket Stuttgart", url: "/vermietung/partypaket-stuttgart", text: "Sound und Licht als fertiges Komplettpaket für Feiern bis 50 Personen." }
+    ]}
+  />
+
+  <!-- FAQ -->
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-play text-2xl md:text-3xl font-bold text-center mb-10">
+        Häufig gestellte Fragen
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="faq-details bg-[var(--color-surface)] rounded-xl p-4 cursor-pointer">
+            <summary class="font-bold cursor-pointer flex items-center gap-3 list-none">
+              <span class="faq-icon">
+                <Icon name="chevron-right" class="w-3 h-3" />
+              </span>
+              {faq.question}
+            </summary>
+            <p class="text-[var(--color-text-muted)] mt-3 ml-9">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</ProductLayout>

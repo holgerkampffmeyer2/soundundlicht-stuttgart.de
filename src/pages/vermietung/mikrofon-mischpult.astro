@@ -1,0 +1,228 @@
+---
+import CategoryLayout from '../../components/vermietung/CategoryLayout.astro';
+import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
+import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
+import DecisionHelp from '../../components/vermietung/DecisionHelp.astro';
+import RelatedLinks from '../../components/vermietung/RelatedLinks.astro';
+import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { serviceArea } from '../../data/jsonLd';
+
+const products = await getCollection('products');
+const mikrofon = products.find(i => i.data.slug === 'mikrofon')!.data;
+const mischpult = products.find(i => i.data.slug === 'yamaha-mischpult')!.data;
+const categoryProducts = [mikrofon, mischpult];
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: "Vermietung", href: "/vermietung" },
+  { label: "Mikrofon & Mischpult" }
+];
+
+const pageTitle = "Mikrofon & Mischpult mieten in Stuttgart | Sound & Licht Stuttgart";
+
+const faqs = await getFaqsForPage('mikrofon-mischpult');
+
+const images = [
+  "/img/vermietung/mikrofon.webp",
+  "/img/vermietung/yamaha_mg6_kl.webp"
+];
+
+const siteUrl = "https://soundundlicht-stuttgart.de";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Mikrofon & Mischpult Vermietung",
+  "description": "Miete Mikrofon und Yamaha MG06 Mischpult für Moderation, Gesang und Musikzuspielung. Flexibel kombinierbar mit Partyboxen und PA-Anlagen.",
+  "image": [
+    siteUrl + images[0],
+    siteUrl + images[1]
+  ],
+  "serviceType": "Veranstaltungstechnik-Vermietung",
+  "areaServed": serviceArea,
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://soundundlicht-stuttgart.de/#business"
+  },
+  "offers": categoryProducts.map((p: any) => ({
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Service",
+      "name": p.title,
+      "serviceType": "Veranstaltungstechnik-Vermietung",
+      "areaServed": serviceArea
+    },
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": p.priceValue,
+      "priceCurrency": "EUR",
+      "unitCode": "DAY"
+    }
+  }))
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq: any) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soundundlicht-stuttgart.de/"},
+    {"@type": "ListItem", "position": 2, "name": "Vermietung", "item": "https://soundundlicht-stuttgart.de/vermietung"},
+    {"@type": "ListItem", "position": 3, "name": "Mikrofon & Mischpult", "item": "https://soundundlicht-stuttgart.de/vermietung/mikrofon-mischpult"}
+  ]
+};
+
+const specsMikrofon = {
+  "Typ": "Dynamisches Gesangs- und Sprachmikrofon",
+  "Anschluss": "XLR",
+  "Kabel": "10m XLR-Kabel inklusive",
+  "Einsatz": "Gesang, Moderation, Ansprachen",
+  "Besonderheiten": "Robust und sofort einsatzbereit"
+};
+
+const specsMischpult = {
+  "Modell": "Yamaha MG06 6-Kanal Mischpult",
+  "Mikrofoneingänge": "2x XLR",
+  "Stereo-Eingänge": "2x Klinke",
+  "Ausgänge": "2x Stereo XLR",
+  "Einsatz": "Musikzuspielung, Mikrofon-Mix",
+  "Besonderheiten": "Kompakt und intuitiv bedienbar"
+};
+
+const includesMikrofon = [
+  "1x Mikrofon",
+  "1x 10m XLR-Kabel",
+  "Einweisung bei der Abholung"
+];
+
+const includesMischpult = [
+  "1x Yamaha MG06 Mischpult",
+  "1x Netzteil",
+  "Einweisung bei der Abholung"
+];
+
+const mikrofonPackages = [
+  { name: "Karaoke-Paket", url: "/vermietung/karaoke-paket" },
+  { name: "Partypaket Stuttgart", url: "/vermietung/partypaket-stuttgart" }
+];
+
+const mischpultPackages = [
+  { name: "Karaoke-Paket", url: "/vermietung/karaoke-paket" },
+  { name: "Veranstaltungspaket", url: "/vermietung/veranstaltungspaket-stuttgart" },
+  { name: "DJ-Paket", url: "/vermietung/djpaket-fildern" }
+];
+---
+
+<CategoryLayout
+  pageTitle={pageTitle}
+  description="Miete Mikrofon und Yamaha MG06 Mischpult für Moderation, Gesang und Musikzuspielung. Flexibel kombinierbar mit Partyboxen und PA-Anlagen."
+  image="/img/vermietung/mikrofon.webp"
+  preloadImage="/img/vermietung/mikrofon.webp"
+  pagefindMeta={{ price: "ab 10€", image: images[0], category: "Sound", label: "Mikrofon & Mischpult" }}
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}
+  breadcrumbSegments={breadcrumbSegments}
+  products={categoryProducts}
+>
+  <!-- Hero -->
+  <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/img/vermietung/mikrofon.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="hero-overlay-accent"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+          <span class="price-badge">{mikrofon.price}</span>
+          <span class="price-badge">{mischpult.price}</span>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Inkl. Kabel & Einweisung
+          </span>
+        </div>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Mikrofon & Mischpult mieten</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Für Moderation, Gesang und Musikzuspielung: Miete ein Mikrofon mit 10m XLR-Kabel oder das kompakte Yamaha MG06 Mischpult – einzeln oder als Kombination.
+          Beide Geräte lassen sich direkt mit meinen Partyboxen und PA-Anlagen verbinden, sodass du sofort loslegen kannst.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entscheidungshilfe -->
+  <DecisionHelp
+    heading="Welches Gerät passt zu dir?"
+    intro="Mikrofon und Mischpult erfüllen unterschiedliche Aufgaben – oft ergeben sie zusammen den saubersten Aufbau."
+    items={[
+      { title: "Nur Moderation oder Gesang", text: "Du willst ansagen, anstoßen oder singen und parallel Musik von einer Quelle zuspielen? Dann reicht meist das Mikrofon." },
+      { title: "Mehrere Tonquellen", text: "Sobald zwei Mikrofone, ein Instrument und Musik zusammenkommen, sorgt das Mischpult für einen ausgewogenen Mix." },
+      { title: "Kabellos Musik zuspielen", text: "Musik kommt vom Handy oder Laptop – das Mischpult führt alles zusammen und gibt es sauber an die Lautsprecher weiter." },
+      { title: "Das Set", text: "Für Karaoke, Ansprachen und Musik im Wechsel ist die Kombination aus Mikrofon und Mischpult die flexibelste Lösung." }
+    ]}
+  />
+
+  <!-- Gerät: Mikrofon -->
+  <section id="mikrofon" class="anchor-section section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Gerät</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Mikrofon</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Ein robustes Gesangs- und Sprachmikrofon mit XLR-Anschluss. Das 10m XLR-Kabel ist bereits dabei, sodass du das Mikrofon frei auf der Tanzfläche oder am Rednerpult bewegen kannst.
+        </p>
+      </div>
+      <div class="mb-8 text-center"><span class="price-badge">{mikrofon.price}</span></div>
+      <TechnicalSpecs specs={specsMikrofon} />
+      <RentalIncludes items={includesMikrofon} />
+      <IncludedInPackages packages={mikrofonPackages} />
+    </div>
+  </section>
+
+  <!-- Gerät: Yamaha Mischpult -->
+  <section id="yamaha-mischpult" class="anchor-section section-padding bg-[var(--color-bg)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Gerät</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Yamaha MG06 Mischpult</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Ein 6-Kanal Mischpult für die Zuspielung und den Mix mehrerer Tonquellen. Zwei Mikrofoneingänge, zwei Stereo-Eingänge und XLR-Ausgänge machen es zum zuverlässigen Herzstück deines Aufbaus.
+        </p>
+      </div>
+      <div class="mb-8 text-center"><span class="price-badge">{mischpult.price}</span></div>
+      <TechnicalSpecs specs={specsMischpult} />
+      <RentalIncludes items={includesMischpult} />
+      <IncludedInPackages packages={mischpultPackages} />
+    </div>
+  </section>
+
+  <!-- Dazu passend -->
+  <RelatedLinks
+    items={[
+      { title: "Karaoke-Paket", url: "/vermietung/karaoke-paket", text: "2x Mikrofon, Yamaha Mischpult und JBL Partyboxen als fertiges Paket für Karaoke-Abende." },
+      { title: "JBL Partybox 300/320", url: "/vermietung/jbl-partybox-300-320", text: "Der mobile Lautsprecher, an den du Mikrofon und Mischpult direkt anschließen kannst." },
+      { title: "LD Maui 28 G3", url: "/vermietung/ld-maui-28g3", text: "Die Säulen-PA mit integriertem Mischpult für größere Feiern und Redner-Einsätze." }
+    ]}
+  />
+
+  <!-- FAQ -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto px-4 pt-8">
+      <FAQSection faqs={faqs} />
+    </div>
+  </section>
+</CategoryLayout>
