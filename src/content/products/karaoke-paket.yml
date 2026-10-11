@@ -3,6 +3,7 @@ title: "Karaoke-Paket"
 image: /img/vermietung/karaoke-paket-hero.webp
 description: "2 Lautsprecher, 2 Mikrofone, Mischpult – alles für einen Karaoke-Abend mit Freunden."
 category: Paket
+order: 5
 price: "ab 130€ / Tag"
 priceValue: 130
 features:

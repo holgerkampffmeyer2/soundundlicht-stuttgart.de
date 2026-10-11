@@ -3,6 +3,7 @@ title: "Veranstaltungspaket"
 image: /img/vermietung/veranstaltungspaket.webp
 description: "Rundum-sorglos für Hochzeiten, Firmenfeiern und größere Events. Sound, Licht und Effekte als Komplettset."
 category: Paket
+order: 2
 price: "ab 200€ / Tag"
 priceValue: 200
 features:

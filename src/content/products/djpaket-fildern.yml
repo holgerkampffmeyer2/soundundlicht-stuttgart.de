@@ -3,6 +3,7 @@ title: "DJ-Paket"
 image: /img/vermietung/djpaket.webp
 description: "Professionelles Setup für DJs und größere Feiern bis 150 Personen. Kraftvoller Sound, Lichteffekte und Mischpult."
 category: Paket
+order: 3
 price: "ab 200€ / Tag"
 priceValue: 200
 features:
