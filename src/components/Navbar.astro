@@ -68,13 +68,13 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
               Alle Geräte & Pakete
             </a>
             {vermietungGroups.map(group => (
-              <div class="mt-1">
+              <div class="mt-1 border-t border-[var(--color-border)] pt-1">
                 <div class="px-4 pt-1 pb-1 text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)]">{group.label}</div>
                 {group.items.map(item => (
                   <a
                     href={item.href}
                     class:list={[
-                      "block px-4 py-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] hover:bg-[var(--color-bg)]",
+                      "block pl-7 pr-4 py-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] hover:bg-[var(--color-bg)]",
                       { "text-[var(--color-secondary)] bg-[var(--color-bg)]": activeVermietungSlug === item.href.replace('/vermietung', '') }
                     ]}
                   >
@@ -117,13 +117,13 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
           <span>Vermietung</span>
           <Icon name="chevron-down" class="h-4 w-4 transition-transform duration-200" />
         </button>
-        <div id="mobile-vermietung-sub" class="hidden pl-3 ml-1 border-l border-[var(--color-border)] space-y-1">
-          <a href="/vermietung" class="block nav-link py-2 text-sm">Alle Geräte & Pakete</a>
+        <div id="mobile-vermietung-sub" class="hidden pl-4 ml-1 border-l border-[var(--color-border)] space-y-0.5">
+          <a href="/vermietung" class="block nav-link py-2 text-sm font-semibold">Alle Geräte & Pakete</a>
           {vermietungGroups.map(group => (
             <div>
-              <div class="pt-2 pb-1 text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)]">{group.label}</div>
+              <div class="pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)]">{group.label}</div>
               {group.items.map(item => (
-                <a href={item.href} class="block nav-link py-2 text-sm">{item.label}</a>
+                <a href={item.href} class="block nav-link py-2 pl-3 text-sm">{item.label}</a>
               ))}
             </div>
           ))}
