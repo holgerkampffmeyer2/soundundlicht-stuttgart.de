@@ -1,0 +1,228 @@
+---
+import CategoryLayout from '../../components/vermietung/CategoryLayout.astro';
+import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
+import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
+import DecisionHelp from '../../components/vermietung/DecisionHelp.astro';
+import RelatedLinks from '../../components/vermietung/RelatedLinks.astro';
+import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { serviceArea } from '../../data/jsonLd';
+
+const products = await getCollection('products');
+const nebel = products.find(i => i.data.slug === 'nebel-maschine')!.data;
+const af150 = products.find(i => i.data.slug === 'af-150')!.data;
+const categoryProducts = [nebel, af150];
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: "Vermietung", href: "/vermietung" },
+  { label: "Nebelmaschinen" }
+];
+
+const pageTitle = "Nebelmaschinen mieten in Stuttgart | Sound & Licht Stuttgart";
+
+const faqs = await getFaqsForPage('nebelmaschinen');
+
+const images = [
+  "/img/vermietung/uking_fogger-1200.webp",
+  "/img/vermietung/stairville-af-150-fog-machine.webp"
+];
+
+const siteUrl = "https://soundundlicht-stuttgart.de";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Nebelmaschinen Vermietung",
+  "description": "Miete Nebelmaschinen für deine Feier: die kompakte Stairville AF-150 mit 800W und die Uking 1200W mit hohem Nebelausstoß und 9 RGB LEDs. Inklusive Nebelfluid.",
+  "image": [
+    siteUrl + images[0],
+    siteUrl + images[1]
+  ],
+  "serviceType": "Veranstaltungstechnik-Vermietung",
+  "areaServed": serviceArea,
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://soundundlicht-stuttgart.de/#business"
+  },
+  "offers": categoryProducts.map((p: any) => ({
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Service",
+      "name": p.title,
+      "serviceType": "Veranstaltungstechnik-Vermietung",
+      "areaServed": serviceArea
+    },
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": p.priceValue,
+      "priceCurrency": "EUR",
+      "unitCode": "DAY"
+    }
+  }))
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq: any) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soundundlicht-stuttgart.de/"},
+    {"@type": "ListItem", "position": 2, "name": "Vermietung", "item": "https://soundundlicht-stuttgart.de/vermietung"},
+    {"@type": "ListItem", "position": 3, "name": "Nebelmaschinen", "item": "https://soundundlicht-stuttgart.de/vermietung/nebelmaschinen"}
+  ]
+};
+
+const specsAf150 = {
+  "Modell": "Stairville AF-150 DMX",
+  "Leistung": "800 W",
+  "Ausstoß": "ca. 110 m³/min",
+  "Fluid": "1L inklusive",
+  "Steuerung": "DMX, Fernbedienung"
+};
+
+const specsNebel = {
+  "Modell": "Uking 1200W Nebelmaschine",
+  "Leistung": "1200 W",
+  "LEDs": "9x RGB",
+  "Steuerung": "Fernbedienung",
+  "Fluid": "1 Tankfüllung inklusive",
+  "Besonderheiten": "Hoher Nebelausstoß für große Räume"
+};
+
+const includesAf150 = [
+  "1x Stairville AF-150 Nebelmaschine",
+  "1x Fernbedienung",
+  "1L Nebelfluid",
+  "Einweisung bei der Abholung"
+];
+
+const includesNebel = [
+  "1x Uking 1200W Nebelmaschine",
+  "1x Fernbedienung",
+  "1 Tankfüllung Nebelfluid",
+  "Einweisung bei der Abholung"
+];
+
+const af150Packages = [
+  { name: "LED BossFX-2 Pro Set", url: "/vermietung/led-bossfx-nebelmaschine" },
+  { name: "Partypaket", url: "/vermietung/partypaket-stuttgart" },
+  { name: "Veranstaltungspaket", url: "/vermietung/veranstaltungspaket-stuttgart" },
+  { name: "DJ-Paket", url: "/vermietung/djpaket-fildern" }
+];
+---
+
+<CategoryLayout
+  pageTitle={pageTitle}
+  description="Miete Nebelmaschinen für deine Feier: die kompakte Stairville AF-150 mit 800W und die Uking 1200W mit hohem Nebelausstoß und 9 RGB LEDs. Inklusive Nebelfluid."
+  image="/img/vermietung/uking_fogger-1200.webp"
+  preloadImage="/img/vermietung/uking_fogger-1200.webp"
+  pagefindMeta={{ price: "ab 20€", image: images[0], category: "Licht", label: "Nebelmaschinen" }}
+  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema]}
+  breadcrumbSegments={breadcrumbSegments}
+  products={categoryProducts}
+>
+  <!-- Hero -->
+  <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/img/vermietung/uking_fogger-1200.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="hero-overlay-accent"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+          <span class="price-badge">ab 20€ / Tag</span>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Inkl. Nebelfluid & Einweisung
+          </span>
+        </div>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Nebelmaschinen mieten</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Nebel macht Lichteffekte erst richtig sichtbar. Von der kompakten Stairville AF-150 für private Feiern bis zur
+          Uking 1200W mit hohem Ausstoß für größere Räume und Bühnen – hier findest du die passende Nebelmaschine einzeln mietbar,
+          inklusive einer Tankfüllung Nebelfluid.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entscheidungshilfe -->
+  <DecisionHelp
+    heading="Welche Nebelmaschine passt zu dir?"
+    intro="Die richtige Wahl hängt vor allem von der Raumgröße und der gewünschten Nebeldichte ab."
+    items={[
+      { title: "Private Feiern bis ca. 100 Personen", text: "Die kompakte Stairville AF-150 mit 800W liefert ca. 110 m³/min – für Wohnzimmer, Partyräume und kleinere Säle völlig ausreichend." },
+      { title: "Größere Räume & Bühnen", text: "Die Uking 1200W erzeugt deutlich dichteren Nebel und verteilt ihn auch auf großen Flächen – ideal für Hallen und Bühnen." },
+      { title: "Farbiges Licht inklusive", text: "Die Uking 1200W hat 9 RGB LEDs und bringt zusätzlich farbiges Licht in den Nebel." },
+      { title: "Steuerung per DMX", text: "Wer den Nebel in eine Lichtshow einbinden will, greift zur AF-150 – sie ist per DMX steuerbar." },
+      { title: "Sparsam am Abend", text: "Beide kommen mit einer Tankfüllung Nebelfluid aus, die für einen typischen Partyabend von 4-6 Stunden reicht." }
+    ]}
+  />
+
+  <!-- Gerät: Stairville AF-150 -->
+  <section id="af-150" class="anchor-section section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Gerät</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Stairville AF-150 Nebelmaschine</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Die kompakte 800W Nebelmaschine mit ca. 110 m³/min Ausstoß für Feiern bis rund 100 Personen. Sie ist per DMX
+          oder Fernbedienung steuerbar und damit die flexibelste Wahl, wenn du den Nebel in eine Lichtshow einbinden willst.
+        </p>
+      </div>
+      <div class="mb-8 text-center"><span class="price-badge">{af150.price}</span></div>
+      <TechnicalSpecs specs={specsAf150} />
+      <RentalIncludes items={includesAf150} />
+      <IncludedInPackages packages={af150Packages} />
+    </div>
+  </section>
+
+  <!-- Gerät: Uking 1200W -->
+  <section id="nebel-maschine" class="anchor-section section-padding bg-[var(--color-bg)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Gerät</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Uking 1200W Nebelmaschine</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Für größere Räume und Bühnen: 1200W Leistung mit 9 RGB LEDs liefern dichten Nebel und zusätzlich farbiges Licht.
+          Mit einer Tankfüllung Nebelfluid und Fernbedienung – die richtige Wahl, wenn du viel Nebel auf großer Fläche brauchst.
+        </p>
+      </div>
+      <div class="mb-8 text-center"><span class="price-badge">{nebel.price}</span></div>
+      <TechnicalSpecs specs={specsNebel} />
+      <RentalIncludes items={includesNebel} />
+    </div>
+  </section>
+
+  <!-- Dazu passend -->
+  <RelatedLinks
+    items={[
+      { title: "LED BossFX-2 Pro Set", url: "/vermietung/led-bossfx-nebelmaschine", text: "Lichtanlage und AF-150 Nebelmaschine als Komplettset – die fertige Party-Kombi." },
+      { title: "KLS Laser Bar", url: "/vermietung/kls-laser-bar", text: "Laserstrahlen werden durch Nebel erst richtig sichtbar – die perfekte Ergänzung." },
+      { title: "LED-Scheinwerfer", url: "/vermietung/led-scheinwerfer", text: "Dazu passende Lichtakzente: LED PAR Strahler für Flächen und Uplighting." }
+    ]}
+  />
+
+  <!-- FAQ -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto px-4 pt-8">
+      <FAQSection faqs={faqs} />
+    </div>
+  </section>
+</CategoryLayout>

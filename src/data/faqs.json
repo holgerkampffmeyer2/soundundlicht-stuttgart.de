@@ -373,6 +373,38 @@
     ]
   },
   {
+    "id": "nebelmaschinen-auswahl",
+    "question": "Welche Nebelmaschine passt zu meiner Feier?",
+    "answer": "Für private Feiern und Räume bis rund 100 Personen reicht die kompakte Stairville AF-150 mit 800W und 110 m³/min völlig aus. Für größere Räume, Bühnen und dichten Nebel auf großer Fläche empfehle ich die Uking 1200W mit deutlich höherem Ausstoß und 9 RGB LEDs. Beide sind ab 20€ pro Tag mietbar.",
+    "pages": [
+      "nebelmaschinen"
+    ]
+  },
+  {
+    "id": "nebelmaschinen-einzeln",
+    "question": "Kann ich eine Nebelmaschine einzeln mieten?",
+    "answer": "Ja, sowohl die AF-150 als auch die 1200W Nebelmaschine kannst du einzeln mieten – ab 20€ pro Tag inklusive einer Tankfüllung Nebelfluid. Du musst nicht das komplette Licht-Set nehmen.",
+    "pages": [
+      "nebelmaschinen"
+    ]
+  },
+  {
+    "id": "nebelmaschinen-unterschied",
+    "question": "Was ist der Unterschied zwischen der AF-150 und der 1200W Nebelmaschine?",
+    "answer": "Die AF-150 ist eine kompakte 800W DMX-Nebelmaschine mit ca. 110 m³/min Ausstoß – ideal für Feiern bis rund 100 Personen. Die Uking 1200W liefert mit 1200W Leistung und 9 RGB LEDs deutlich mehr Nebel und zusätzlich farbiges Licht, perfekt für größere Räume und Bühnen.",
+    "pages": [
+      "nebelmaschinen"
+    ]
+  },
+  {
+    "id": "nebelmaschinen-fluid",
+    "question": "Wie viel Nebelfluid brauche ich für einen Abend?",
+    "answer": "Im Mietpreis ist eine Tankfüllung (ca. 1 Liter) Nebelfluid enthalten. Das reicht für einen typischen Partyabend von rund 4-6 Stunden. Sparsam eingesetzt deckt der Nebel die Lichteffekte gut ab – mehr Fluid kannst du bei Bedarf dazubekommen.",
+    "pages": [
+      "nebelmaschinen"
+    ]
+  },
+  {
     "id": "laser-bar-schutzbeauftragter",
     "question": "Brauche ich einen Laserschutzbeauftragten für die Laser Bar?",
     "answer": "Nein, bei der Eurolite KLS Laser Bar handelt es sich um einen Laser der Klasse 2M. Dies bedeutet, dass kein Laserschutzbeauftragter erforderlich ist. Du solltest jedoch darauf achten, nicht direkt in den Laserstrahl zu blicken.",

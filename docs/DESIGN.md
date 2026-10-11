@@ -22,7 +22,7 @@ src/
 ├── pages/                # Routen
 │   ├── index.astro       # Landing Page
 │   ├── vermietung.astro  # Vermietung Landing
-│   ├── vermietung/       # Produktseiten (15)
+│   ├── vermietung/       # Produktseiten (16)
 │   │   ├── partypaket-stuttgart.astro
 │   │   ├── djpaket-fildern.astro
 │   │   ├── veranstaltungspaket-stuttgart.astro
@@ -32,6 +32,7 @@ src/
 │   │   ├── ld-maui-28g3.astro
 │   │   ├── kls-laser-bar.astro
 │   │   ├── led-bossfx-nebelmaschine.astro
+│   │   ├── nebelmaschinen.astro
 │   │   ├── partylicht-moving-head.astro
 │   │   ├── powerstation.astro
 │   │   ├── mini-party-beamer.astro
@@ -46,7 +47,7 @@ src/
 │   ├── generate-rss.mjs
 │   └── update-sitemap.mjs
 ├── content/
-│   └── products/         # 21 Produkt-YAMLs
+│   └── products/         # 22 Produkt-YAMLs
 ├── lib/                  # Hilfsfunktionen
 │   ├── cartData.ts       # Cart-Daten (readRawCart, buildProductMap, formatCartItems, getCartData)
 │   ├── cartData.test.ts  # Unit-Tests
@@ -73,7 +74,7 @@ public/
 | Pfad | Typ |
 |------|-----|
 | `/` | Landing Page |
-| `/vermietung/` | Vermietung Landing (auch `type:produkt`, 21 Einzelartikel via Katalog-Matching) |
+| `/vermietung/` | Vermietung Landing (auch `type:produkt`, 22 Einzelartikel via Katalog-Matching) |
 | `/vermietung/partypaket-stuttgart/` | Partypaket |
 | `/vermietung/djpaket-fildern/` | DJ-Paket |
 | `/vermietung/veranstaltungspaket-stuttgart/` | Veranstaltungspaket |
@@ -83,6 +84,7 @@ public/
 | `/vermietung/ld-maui-28g3/` | LD Maui 28 G3 |
 | `/vermietung/kls-laser-bar/` | KLS Laser Bar |
 | `/vermietung/led-bossfx-nebelmaschine/` | LED + Nebelmaschine |
+| `/vermietung/nebelmaschinen/` | Nebelmaschinen (AF-150 & Uking 1200W) |
 | `/vermietung/partylicht-moving-head/` | Partylicht Moving Head |
 | 15 City Pages: `/stuttgart/`, `/esslingen/`, ... `/waiblingen/` | City Pages |
 | Weitere 11 Mietartikel (Powerstation, Mikrofon, Beamer, …) | Nur auf `/vermietung/#item-<slug>` (keine eigenen Seiten) |

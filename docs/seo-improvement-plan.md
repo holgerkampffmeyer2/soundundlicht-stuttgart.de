@@ -161,6 +161,10 @@ bestehende, semantisch korrekte `Service`-Schema angereichert:
       (`powerstation`, `mini-party-beamer`, `max-party-bar`), 2 Kategorieseiten
       (`mikrofon-mischpult`, `led-scheinwerfer`) sowie 2 erweiterte Seiten
       (`partylicht-moving-head#beamz-mhl36`, `led-bossfx-nebelmaschine#nebel-maschine`).
+    - Nachbesserung: `nebel-maschine` als eigene Kategorieseite `nebelmaschinen`
+      herausgelöst (mit `led-bossfx-nebelmaschine#nebel-maschine` als Variante
+      verworfen) und AF-150 als eigenständiges Mietgerät ergänzt
+      (`openspec/changes/add-nebelmaschinen-page/`).
     - OpenSpec-Change: `openspec/changes/add-product-detail-pages/`. Muster aus
       `docs/seo.md` (`Service` + `BreadcrumbList` + `FAQPage`, kein `Product`).
 
