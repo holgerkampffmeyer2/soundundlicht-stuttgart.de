@@ -11,7 +11,7 @@ The platform SHALL use Astro 7.x Static Site Generation (SSG) with Tailwind CSS 
 - **THEN** it includes the responsive Navbar and Footer marked with `data-pagefind-ignore`, dynamic mobile menu, and WishlistIcon badge
 
 ### Requirement: Product Content Collections and Catalog
-The platform SHALL manage rental products via Astro content collections (`src/content/products/*.yml`) with 21 items.
+The platform SHALL manage rental products via Astro content collections (`src/content/products/*.yml`) with 22 items.
 
 #### Scenario: Product catalog and detail pages
 - **WHEN** users browse `/vermietung/` or product detail pages (`/vermietung/<slug>/`)
@@ -22,14 +22,14 @@ The platform SHALL manage rental products via Astro content collections (`src/co
 - **THEN** each product card with a real detail page (no `#` anchor) SHALL display a "Details & Buchung ↗" link styled as `btn-primary`, matching the visual pattern used in the Komplettpakete section
 
 ### Requirement: FAQ Collection and Utility
-The platform SHALL manage FAQs via `src/data/faqs.json` (135 entries) filtered by page identifiers via `getFaqsForPage(pageId)`.
+The platform SHALL manage FAQs via `src/data/faqs.json` (183 entries) filtered by page identifiers via `getFaqsForPage(pageId)`.
 
 #### Scenario: FAQ rendering and schema
 - **WHEN** a product, city, or landing page renders FAQs
 - **THEN** relevant FAQs are filtered and displayed with corresponding FAQPage JSON-LD structured data
 
 ### Requirement: Geographic City Pages
-The platform SHALL generate landing pages for 15 target cities based on `src/data/cities.json`.
+The platform SHALL generate landing pages for 20 target cities based on `src/data/cities.json`.
 
 #### Scenario: City page generation and SEO
 - **WHEN** a user visits `/<stadt>/`

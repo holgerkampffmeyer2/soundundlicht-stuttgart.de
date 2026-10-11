@@ -1,8 +1,10 @@
 # city-einzeltechnik Specification
 
 ## Purpose
-TBD - created by archiving change city-einzeltechnik-section. Update Purpose after archive.
+Jede City-Seite zeigt eine Sektion mit den für die jeweilige Stadt konfigurierten Einzelgeräten (Nicht-Pakete) aus dem Produktkatalog.
+
 ## Requirements
+
 ### Requirement: City pages SHALL display an Einzeltechnik section
 Each city page SHALL render a section showcasing individual (non-package) equipment items that are configured for that specific city.
 
@@ -26,15 +28,15 @@ The `cities.json` schema SHALL accept an `einzelItems` array of product slug str
 - **THEN** the section is omitted and no error occurs during build
 
 ### Requirement: Einzeltechnik cards SHALL use consistent product card design
-Each product card in the Einzeltechnik section SHALL display: image (WebP with thumbnail srcset), title, description, price, features list, a "Merken" wishlist button, and a "Mehr Infos" link (if `detailPage` is present and not a hash-link).
+Each product card in the Einzeltechnik section SHALL display: image (WebP with thumbnail srcset), title, description, price, features list, a "Merken" wishlist button, and a "Details" link whenever `detailPage` is present (including anchor/hash targets such as `/vermietung/<category>#<slug>`).
 
 #### Scenario: Product card with detail page
-- **WHEN** a product has a `detailPage` value that does not start with `#`
-- **THEN** the card includes a "Mehr Infos" button linking to that page
+- **WHEN** a product has a non-empty `detailPage` value (a direct route or a route with an anchor)
+- **THEN** the card includes a "Details" link to that target
 
 #### Scenario: Product card without detail page
-- **WHEN** a product has no `detailPage` or it starts with `#`
-- **THEN** the card shows only the "Merken" button, no "Mehr Infos" link
+- **WHEN** a product has no `detailPage`
+- **THEN** the card shows only the "Merken" button, no "Details" link
 
 ### Requirement: Section heading SHALL be configurable per city
 The Einzeltechnik section heading and description text SHALL be configurable per city via `einzelTitle` and `einzelDescription` fields in `cities.json`.
@@ -60,4 +62,3 @@ The Einzeltechnik section SHALL display a maximum of 3 product cards. If `einzel
 #### Scenario: More than 3 items configured
 - **WHEN** `einzelItems` contains 5 product slugs
 - **THEN** only the first 3 products are rendered as cards
-
