@@ -2,18 +2,93 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import { getCollection } from "astro:content";
+import Icon from "../components/Icon.astro";
+import faqsData from "../data/faqs.json";
+import citiesData from "../data/cities.json";
 
-const faqs = await getCollection("faqs");
-const faqItems = faqs.map((f) => ({
-  question: f.data.question,
-  answer: f.data.answer,
-}));
+interface FaqEntry {
+  id: string;
+  question: string;
+  answer: string;
+  tags?: string[];
+  pages?: string[];
+}
+
+const PACKAGES = [
+  "partypaket-stuttgart",
+  "veranstaltungspaket-stuttgart",
+  "djpaket-fildern",
+  "akku-party-paket",
+  "karaoke-paket",
+];
+const SOUND = ["jbl-partybox-300-320", "ld-maui-28g3", "mikrofon-mischpult"];
+const LIGHT = [
+  "kls-laser-bar",
+  "led-bossfx-nebelmaschine",
+  "partylicht-moving-head",
+  "led-scheinwerfer",
+  "nebelmaschinen",
+  "max-party-bar",
+  "mini-party-beamer",
+  "powerstation",
+];
+const CITY_SLUGS = citiesData.map((c) => c.slug);
+const CITY_NAMES = new Map(citiesData.map((c) => [c.slug, c.name]));
+
+const faqs = faqsData as FaqEntry[];
+
+function categoryOf(faq: FaqEntry): string {
+  const pages = faq.pages ?? [];
+  const has = (list: string[]) => pages.some((p) => list.includes(p));
+  if (pages.includes("index")) return "allgemein";
+  if (pages.includes("vermietung")) return "katalog";
+  if (has(PACKAGES)) return "pakete";
+  if (has(SOUND)) return "sound";
+  if (has(LIGHT)) return "licht";
+  if (has(CITY_SLUGS)) return "cities";
+  return "sonstiges";
+}
+
+const grouped: Record<string, FaqEntry[]> = {};
+for (const faq of faqs) {
+  const cat = categoryOf(faq);
+  (grouped[cat] ??= []).push(faq);
+}
+
+const SECTIONS = [
+  { id: "allgemein", title: "Allgemein & Buchung" },
+  { id: "pakete", title: "Komplettpakete" },
+  { id: "sound", title: "Sound & PA-Anlagen" },
+  { id: "licht", title: "Licht & Effekte" },
+  { id: "sonstiges", title: "Weitere Fragen" },
+];
+const sections = SECTIONS.filter((s) => grouped[s.id]?.length);
+
+const primaryCityOf = (faq: FaqEntry): string | undefined =>
+  CITY_SLUGS.find((slug) => (faq.pages ?? []).includes(slug));
+
+const cityGroups = citiesData
+  .map((city) => ({
+    slug: city.slug,
+    name: city.name,
+    items: (grouped.cities ?? []).filter(
+      (faq) => primaryCityOf(faq) === city.slug
+    ),
+  }))
+  .filter((group) => group.items.length > 0);
+
+const cityCount = grouped.cities?.length ?? 0;
+const toc = [
+  ...sections,
+  ...(cityCount ? [{ id: "standorte", title: "Standorte & Lieferung" }] : []),
+];
+
+const totalCount = faqs.length;
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqItems.map((item) => ({
+  "mainEntity": faqs.map((item) => ({
     "@type": "Question",
     "name": item.question,
     "acceptedAnswer": {
@@ -25,33 +100,110 @@ const faqJsonLd = {
 ---
 
 <Layout
-  title="FAQ – Häufige Fragen zur Veranstaltungstechnik mieten | Sound & Licht Stuttgart"
-  description="Antworten zu Anlieferung, Aufbau, Abrechnung, Stornierung, Transport & Technikverleih in Stuttgart, Leinfelden-Echterdingen und Umgebung."
+  title="FAQ – Alle häufigen Fragen zur Veranstaltungstechnik mieten | Sound & Licht Stuttgart"
+  description="Alle Antworten zur Veranstaltungstechnik-Vermietung: Preise, Buchung, Sound, Licht, Komplettpakete sowie Anlieferung & Abholung in Stuttgart und Umgebung."
   jsonLd={[faqJsonLd]}
 >
   <Navbar currentPage="/faq" />
 
+  <!-- Hero -->
   <section class="hero-gradient pt-40 pb-20 md:pt-48 md:pb-24 px-4 text-center">
     <div class="max-w-3xl mx-auto">
       <h1 class="font-play text-5xl md:text-7xl font-bold mb-6 gradient-text">FAQ</h1>
       <p class="text-[var(--color-text-muted)] text-xl md:text-2xl max-w-2xl mx-auto">
-        Häufige Fragen zur Veranstaltungstechnik-Vermietung
+        Alle häufigen Fragen zur Veranstaltungstechnik-Vermietung
       </p>
     </div>
   </section>
 
   <section class="section-padding bg-[var(--color-bg)]">
     <div class="max-w-4xl mx-auto">
-      <div class="bg-[var(--color-surface)] rounded-xl p-6 md:p-8">
-        <div class="space-y-4">
-          {faqItems.map((item) => (
-            <details class="border border-[var(--color-surface-hover)] rounded-lg p-4">
-              <summary class="font-semibold cursor-pointer text-lg">{item.question}</summary>
-              <p class="mt-3 text-[var(--color-text-muted)] whitespace-pre-line leading-relaxed">{item.answer}</p>
-            </details>
+      <!-- Inhaltsverzeichnis -->
+      <nav aria-label="Inhaltsverzeichnis" class="bg-[var(--color-surface)] rounded-xl p-6 md:p-8 mb-10">
+        <h2 class="font-play text-xl font-bold mb-4">Inhaltsverzeichnis</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[var(--color-text-muted)]">
+          {toc.map((item) => (
+            <li>
+              <a href={`#${item.id}`} class="hover:text-[var(--color-secondary)] transition-colors">
+                {item.title}
+              </a>
+            </li>
           ))}
-        </div>
-      </div>
+        </ul>
+      </nav>
+
+      <!-- Themenabschnitte -->
+      {sections.map((section) => (
+        <section id={section.id} class="mb-12 scroll-mt-28">
+          <h2 class="font-play text-2xl md:text-3xl font-bold mb-6">
+            {section.title}
+          </h2>
+          <div class="space-y-4">
+            {grouped[section.id].map((faq) => (
+              <details class="faq-details bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-4">
+                <summary class="font-bold cursor-pointer flex items-center gap-3 list-none relative">
+                  <span class="faq-icon shrink-0">
+                    <Icon name="chevron-right" class="w-3 h-3 transition-transform duration-200" />
+                  </span>
+                  {faq.question}
+                </summary>
+                <p class="text-[var(--color-text-muted)] mt-3 ml-9 whitespace-pre-line">
+                  {faq.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <!-- Standorte & Lieferung -->
+      {cityCount > 0 && (
+        <section id="standorte" class="mb-12 scroll-mt-28">
+          <h2 class="font-play text-2xl md:text-3xl font-bold mb-6">
+            Standorte & Lieferung
+          </h2>
+          <div class="space-y-8">
+            {cityGroups.map((group) => (
+              <div>
+                <h3 class="font-play text-lg font-bold mb-3 text-[var(--color-secondary)]">
+                  {group.name}
+                </h3>
+                <div class="space-y-4">
+                  {group.items.map((faq) => (
+                    <details class="faq-details bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-4">
+                      <summary class="font-bold cursor-pointer flex items-center gap-3 list-none relative">
+                        <span class="faq-icon shrink-0">
+                          <Icon name="chevron-right" class="w-3 h-3 transition-transform duration-200" />
+                        </span>
+                        {faq.question}
+                      </summary>
+                      <p class="text-[var(--color-text-muted)] mt-3 ml-9 whitespace-pre-line">
+                        {faq.answer}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <p class="text-center text-[var(--color-text-muted)] mt-10">
+        Deine Frage ist nicht dabei? {""}
+        <a href="/#kontakt" class="text-[var(--color-secondary)] hover:underline font-semibold">
+          Schreib mir einfach →
+        </a>
+      </p>
+
+      <style>
+        .faq-details summary .faq-icon svg {
+          transition: transform 0.2s ease-in-out;
+        }
+        .faq-details[open] summary .faq-icon svg {
+          transform: rotate(90deg);
+        }
+      </style>
     </div>
   </section>
 
