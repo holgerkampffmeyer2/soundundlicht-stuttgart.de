@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import JsonLdFAQ from '../../components/JsonLdFAQ.astro';
 import { getCollection } from 'astro:content';
 
 const faqs = await getCollection('faqs');
@@ -8,11 +7,25 @@ const faqItems = faqs.map((f) => ({
   question: f.data.question,
   answer: f.data.answer,
 }));
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer,
+    },
+  })),
+};
 ---
 
 <Layout
   title="FAQ – Häufige Fragen zur Veranstaltungstechnik mieten | Sound & Licht Stuttgart"
   description="Antworten zu Anlieferung, Aufbau, Abrechnung, Stornierung & Technikverleih in Stuttgart und Umgebung."
+  jsonLd={[faqJsonLd]}
 >
   <main class="container mx-auto px-4 py-12">
     <h1 class="text-3xl font-bold mb-8">Häufige Fragen</h1>
@@ -25,6 +38,4 @@ const faqItems = faqs.map((f) => ({
       ))}
     </div>
   </main>
-
-  <JsonLdFAQ faqs={faqItems} />
 </Layout>
