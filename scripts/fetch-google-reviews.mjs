@@ -17,6 +17,16 @@ const IMAGE = 'gosom/google-maps-scraper:latest';
 const CACHE_VOLUME = 'gmaps-playwright-cache';
 const DRY_RUN = process.argv.includes('--dry-run');
 
+function getLimit() {
+  const idx = process.argv.indexOf('--limit');
+  if (idx >= 0 && process.argv[idx + 1]) {
+    const n = parseInt(process.argv[idx + 1], 10);
+    if (!Number.isNaN(n) && n > 0) return n;
+  }
+  return 22;
+}
+const LIMIT = getLimit();
+
 // cid aus dem Scraper wird als JS-Number (float) geparst -> gleiche Rundung beim Vergleich.
 const expectedCid = Number(BigInt(PLACE_ID.split(':')[1]));
 
@@ -150,20 +160,27 @@ function main() {
   const newCount = reviews.filter((review) => !existingKeys.has(reviewKey(review))).length;
   const seen = new Set(reviews.map(reviewKey));
   const kept = existing.reviews.filter((review) => !seen.has(reviewKey(review)));
-  const merged = [...reviews, ...kept];
+  const merged = [...reviews, ...kept].sort((a, b) => {
+    const ta = a.time ? new Date(a.time).getTime() : -Infinity;
+    const tb = b.time ? new Date(b.time).getTime() : -Infinity;
+    if (ta !== tb) return tb - ta;
+    return 0;
+  });
+  const hasAnyTime = merged.some((r) => r.time);
+  const finalReviews = LIMIT && hasAnyTime && merged.length > LIMIT ? merged.slice(0, LIMIT) : merged;
 
   const output = {
     ratingValue: match.review_rating ?? 5,
-    reviewCount: match.review_count ?? merged.length,
+    reviewCount: match.review_count ?? finalReviews.length,
     fetchedAt: new Date().toISOString(),
-    reviews: merged,
+    reviews: finalReviews,
   };
 
   fs.writeFileSync(reviewsFilePath, JSON.stringify(output, null, 2) + '\n', 'utf-8');
   console.log(
     `✅ Geschrieben: ${path.relative(process.cwd(), reviewsFilePath)} ` +
       `(ratingValue=${output.ratingValue}, reviewCount=${output.reviewCount}, ` +
-      `gespeichert=${merged.length}, davon neu: ${newCount})`
+      `gespeichert=${finalReviews.length}, davon neu: ${newCount})`
   );
 }
 
