@@ -432,8 +432,8 @@ body {
   scroll-margin-top: 160px;
 }
 
-/* Anchor sections (category / variant anchor targets) */
-.anchor-section[id] {
+/* Anchor sections (category / variant anchor targets, Testimonials #bewertungen) */
+section[id] {
   scroll-margin-top: 160px;
 }
 
