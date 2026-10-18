@@ -21,6 +21,7 @@
     "generate-rss": "node scripts/generate-rss.mjs",
     "generate-urllist": "node scripts/update-sitemap.mjs",
     "update-reviews": "node scripts/fetch-google-reviews.mjs",
+    "gmaps:login": "node scripts/gmaps-login.mjs",
     "indexnow-submit": "node scripts/indexnow-submit.mjs"
   },
   "dependencies": {

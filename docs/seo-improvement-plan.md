@@ -234,30 +234,30 @@ bestehende, semantisch korrekte `Service`-Schema angereichert:
 `70655ff` gelöscht** (fragil: abgelaufene Session-Tokens, wechselnde DOM-Selektoren,
 Scraping-ToS). Seitdem wird die Datei **manuell** gepflegt.
 
-### 6.2 Entscheidung: `google-maps-scraper` (Docker) in `scripts/fetch-google-reviews.mjs`
-- Der offizielle OSS-Scraper **`gosom/google-maps-scraper`** läuft lokal als
-  Docker-Container — **kein Google-API-Key nötig**.
-- Query: `Holger Kampffmeyer DJ Dienstleistungen Leinfelden-Echterdingen`.
-- Aufruf intern:
-  ```
-  docker run --rm -v gmaps-playwright-cache:/opt \
-    -v <queries>:/queries.txt:ro -v <out>:/out \
-    gosom/google-maps-scraper:latest \
-    -input /queries.txt -results /out/results.json \
-    -depth 1 -lang de -exit-on-inactivity 1m -json -extra-reviews
-  ```
-- Treffer-Match über `cid` (= zweiter Teil der Place-ID
-  `0x4799c318ddfada49:0x8c761bb0db8ae55e` als Dezimalzahl); Fallback: Titel enthält
-  „Kampffmeyer“.
-- Ausgabe nach `src/data/google-reviews.json`:
-  - `ratingValue` = `review_rating`
-  - `reviewCount` = `review_count`
-  - `reviews[]` = `user_reviews` + bestehende (Dedup über Autor + Text-Präfix) — erhält
-    die bisherigen Texte
-- Aufruf: `pnpm run update-reviews` (benötigt laufenden Docker; `--dry-run` zeigt nur den
-  Docker-Befehl).
-- **Vorteil gegenüber der Places API:** kein Key, mehr Rezensionen (`-extra-reviews`
-  liefert aktuell 8 statt der auf 5 begrenzten API-Reviews) und vollständige Texte.
+### 6.2 Entscheidung: Playwright-Scraper mit persistentem Profil (`scripts/fetch-google-reviews.mjs`)
+- **Grundlage:** Die RPC-Pagination (`/maps/rpc/listugcposts`) liefert für abgemeldete
+  Sessions `403` (Upstream-Bug gosom/google-maps-scraper#327); anonymes Scrolling im
+  DOM lädt nur 5–10 Reviews. Vollständige Reviews (31) sind nur mit **angemeldeter
+  Google-Session** verfügbar.
+- **Lösung:** Playwright mit `launchPersistentContext` und Profil unter
+  `~/.cache/sls-gmaps-profile`.
+  - Einmalig `pnpm run gmaps:login` ausführen → Fenster öffnet sich → als Betriebs-
+    Inhaber anmelden → Profil bleibt gespeichert.
+  - `pnpm run update-reviews` nutzt dasselbe Profil (headless).
+- Ablauf (`scripts/lib/scrape-reviews.mjs`):
+  1. Place-URL öffnen (Titel-Check „Kampffmeyer“, Anmelde-Check via `SID`/`HSID`/`APISID`).
+  2. Aggregate (`ratingValue`, `reviewCount`) aus `.F7nice` lesen.
+  3. Tab „Rezensionen“ → „Alle Rezensionen“ (falls vorhanden) → Sortierung „Neueste“
+     (best effort; Fallback: Relevanz).
+  4. Scroll-Panel (`.m6QErb…`) scrollen + „Mehr anzeigen“ klicken, bis `reviewCount`
+     erreicht oder 5 Pässe ohne Zuwachs.
+  5. Karten (`.jftiEf`/`[data-review-id]`) parsen: Autor (`.d4r55`), Sterne
+     (`[role="img"][aria-label*="Stern"]`), Datum (`.rsqaWe`), Text (`.wiI7pd`).
+- Merge (`scripts/lib/review-pipeline.mjs`): Scraper-Reihenfolge ist maßgeblich
+  (Google listet neueste zuerst); bestehende Reviews ohne Zeitstempel werden angehängt;
+  Limit greift nur, wenn Zeitstempel vorhanden sind.
+- Aufruf: `pnpm run update-reviews` (`--dry-run` zeigt den geplanten Ablauf).
+- **Vorteil gegenüber der Places API:** kein Key, vollständige Texte, alle 31 Reviews.
 - `jsonLd.ts` liest `ratingValue`/`reviewCount` aus derselben Datei (eine Quelle
   der Wahrheit).
 
