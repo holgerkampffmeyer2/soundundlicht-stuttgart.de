@@ -41,18 +41,6 @@ describe('mapReview', () => {
     });
   });
 
-  it('falls back to legacy docker field names', () => {
-    const mapped = mapReview({ Name: '  A  ', Rating: 4, text_original: '  Alt  ', When: 'früher' });
-    expect(mapped).toEqual({
-      author_name: 'A',
-      rating: 4,
-      text: 'Alt',
-      relative_time_description: 'früher',
-      time: undefined,
-    });
-    expect(mapReview({ Name: 'A', Description: 'fallback' }).text).toBe('fallback');
-  });
-
   it('defaults author to Anonym and rating to 5', () => {
     expect(mapReview({ text: 'x' }).author_name).toBe('Anonym');
     expect(mapReview({ text: 'x' }).rating).toBe(5);
@@ -217,12 +205,6 @@ describe('buildOutput', () => {
       fetchedAt: '2026-10-15T18:39:10.848Z',
       reviews: [siteReview()],
     });
-  });
-
-  it('falls back to legacy docker field names', () => {
-    const output = buildOutput({ match: { review_rating: 4.5, review_count: 10 }, reviews: [] });
-    expect(output.ratingValue).toBe(4.5);
-    expect(output.reviewCount).toBe(10);
   });
 
   it('falls back to 5 and the review count when aggregate values are missing', () => {

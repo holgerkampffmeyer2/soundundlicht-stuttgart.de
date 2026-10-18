@@ -1,17 +1,19 @@
-export const DEFAULT_LIMIT = 22;
+const DEFAULT_LIMIT = 22;
 
 export const reviewKey = (review) =>
   `${(review.author_name || '').trim().toLowerCase()}|${(review.text || '').trim().slice(0, 40)}`;
 
 // Normalisiert eine Scraper-Rezension in die Site-Form.
 // Playwright-Scraper liefert bereits Site-Form, daher nur Trim/Fallbacks.
+// Normalisiert eine Scraper-Rezension in die Site-Form.
+// Playwright-Scraper liefert bereits Site-Form, daher nur Trim/Fallbacks.
 export function mapReview(raw) {
   return {
-    author_name: (raw.author_name || raw.Name || 'Anonym').trim(),
-    rating: raw.rating ?? raw.Rating ?? 5,
-    text: (raw.text || raw.text_original || raw.Description || '').trim(),
-    relative_time_description: raw.relative_time_description || raw.When || '',
-    time: raw.time || raw.published_at || undefined,
+    author_name: (raw.author_name || 'Anonym').trim(),
+    rating: raw.rating ?? 5,
+    text: (raw.text || '').trim(),
+    relative_time_description: raw.relative_time_description || '',
+    time: raw.time || undefined,
   };
 }
 
@@ -24,7 +26,7 @@ export function parseLimit(argv = process.argv, defaultLimit = DEFAULT_LIMIT) {
   return defaultLimit;
 }
 
-export function reviewTime(review) {
+function reviewTime(review) {
   return review.time ? new Date(review.time).getTime() : Number.NEGATIVE_INFINITY;
 }
 
@@ -51,8 +53,8 @@ export function mergeReviews(scraped, existing, limit = 0) {
 
 export function buildOutput({ match, reviews, now = new Date() }) {
   return {
-    ratingValue: match.ratingValue ?? match.review_rating ?? 5,
-    reviewCount: match.reviewCount ?? match.review_count ?? reviews.length,
+    ratingValue: match.ratingValue ?? 5,
+    reviewCount: match.reviewCount ?? reviews.length,
     fetchedAt: now.toISOString(),
     reviews,
   };
