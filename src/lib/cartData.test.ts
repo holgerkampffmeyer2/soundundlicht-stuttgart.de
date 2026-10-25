@@ -29,6 +29,8 @@ const sampleProducts = [
   { slug: 'partylicht-moving-head', title: '18 Prisma 10 Gobo LED Moving Head', price: 'ab 50€ / Tag' },
 ];
 
+const sampleProductMap = buildProductMap(sampleProducts);
+
 function setCart(items: Array<{ slug: string; addedAt?: number }>, lastUpdated?: number) {
   storage.setItem(STORAGE_KEY, JSON.stringify({
     items,
@@ -162,17 +164,17 @@ describe('getCartData (integration)', () => {
   it('returns empty string for expired cart', () => {
     const old = Date.now() - 25 * 60 * 60 * 1000;
     setCart([{ slug: 'jbl-partybox-300-320' }], old);
-    expect(getCartData(storage, sampleProducts)).toBe('');
+    expect(getCartData(storage, sampleProductMap)).toBe('');
   });
 
   it('returns empty string for invalid JSON', () => {
     storage.setItem(STORAGE_KEY, 'broken');
-    expect(getCartData(storage, sampleProducts)).toBe('');
+    expect(getCartData(storage, sampleProductMap)).toBe('');
   });
 
   it('returns empty string for cart with no items', () => {
     storage.setItem(STORAGE_KEY, JSON.stringify({ items: [], lastUpdated: Date.now() }));
-    expect(getCartData(storage, sampleProducts)).toBe('');
+    expect(getCartData(storage, sampleProductMap)).toBe('');
   });
 
   it('returns all items when 2+ items on merkliste', () => {
@@ -192,13 +194,13 @@ describe('getCartData (integration)', () => {
 
   it('falls back to slug for unknown products', () => {
     setCart([{ slug: 'some-new-device' }]);
-    expect(getCartData(storage, sampleProducts)).toBe('some-new-device ()');
+    expect(getCartData(storage, sampleProductMap)).toBe('some-new-device ()');
   });
 
   it('cleans up expired cart from storage', () => {
     const old = Date.now() - 25 * 60 * 60 * 1000;
     setCart([{ slug: 'jbl-partybox-300-320' }], old);
-    getCartData(storage, sampleProducts);
+    getCartData(storage, sampleProductMap);
     expect(storage.getItem(STORAGE_KEY)).toBeNull();
   });
 });

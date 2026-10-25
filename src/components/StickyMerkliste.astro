@@ -35,13 +35,13 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
 
   (function() {
     function updateBadge() {
-      var badges = document.querySelectorAll('.sticky-merkliste .merkliste-badge');
+      var badges = document.querySelectorAll<HTMLSpanElement>('.sticky-merkliste .merkliste-badge');
       var cart = getCart();
       var items = cart.items || [];
       var count = items.length;
       for (var j = 0; j < badges.length; j++) {
         var badge = badges[j];
-        badge.textContent = count;
+        badge.textContent = String(count);
         if (count > 0) {
           badge.classList.remove('hidden');
         } else {
@@ -50,9 +50,9 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
       }
     }
 
-    var cta = document.querySelector('.sticky-merkliste');
+    var cta = document.querySelector<HTMLElement>('.sticky-merkliste');
     if (!cta) return;
-    var threshold = parseInt(cta.dataset.threshold || '15');
+    var threshold = parseInt(cta.dataset.threshold || '15', 10);
     var ticking = false;
 
     function onScroll() {
@@ -60,7 +60,7 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
       var viewportH = window.innerHeight;
       var docH = document.documentElement.scrollHeight;
       var scrollPercent = (scrollY / (docH - viewportH)) * 100;
-      cta.classList.toggle('visible', scrollPercent > threshold);
+      cta!.classList.toggle('visible', scrollPercent > threshold);
     }
 
     window.addEventListener('scroll', function() {
@@ -78,9 +78,9 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
     updateBadge();
 
     (function() {
-      var addBtn = document.querySelector('[data-action="add-to-wishlist"][data-product-slug]');
+      var addBtn = document.querySelector<HTMLButtonElement>('[data-action="add-to-wishlist"][data-product-slug]');
       if (addBtn) {
-        var slug = addBtn.dataset.productSlug;
+        var slug = addBtn.dataset.productSlug ?? undefined;
         var cart = getCart();
         var items = cart.items || [];
         var inCart = false;
@@ -95,29 +95,30 @@ const { threshold = 15, href = "#kontakt", productSlug } = Astro.props;
     })();
 
     document.addEventListener('click', function(e) {
-      var btn = e.target.closest('[data-action="add-to-wishlist"]');
+      var target = e.target as HTMLElement;
+      var btn = target.closest('[data-action="add-to-wishlist"]');
       if (btn) {
-        var slug = btn.dataset.productSlug;
+        var slug = (btn as HTMLElement).dataset.productSlug;
         if (slug) {
           document.dispatchEvent(new CustomEvent('add-to-wishlist', { detail: { slug } }));
         }
         return;
       }
 
-      btn = e.target.closest('[data-action="toggle-wishlist"]');
+      btn = target.closest('[data-action="toggle-wishlist"]');
       if (btn) {
         document.dispatchEvent(new CustomEvent('toggle-merkliste'));
         return;
       }
 
-      btn = e.target.closest('[data-action="request-now"]');
+      btn = target.closest('[data-action="request-now"]');
       if (btn) {
-        var slug = btn.closest('[data-product-slug]') ? btn.closest('[data-product-slug]').dataset.productSlug : null;
         var panel = btn.closest('.sticky-panel');
+        var slug: string | undefined = undefined;
         if (panel) {
-          var addBtn = panel.querySelector('[data-action="add-to-wishlist"]');
+          var addBtn = panel.querySelector<HTMLButtonElement>('[data-action="add-to-wishlist"]');
           if (addBtn) {
-            slug = addBtn.dataset.productSlug;
+            slug = addBtn.dataset.productSlug ?? undefined;
           }
         }
         if (slug) {

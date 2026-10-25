@@ -21,14 +21,21 @@ import Icon from './Icon.astro';
 </div>
 
 <script>
-  import { getCart, addItem, removeItem } from '../lib/merklisteStore';
+  import { getCart, removeItem } from '../lib/merklisteStore';
 
-  function getCatalog() {
+  interface CatalogProduct {
+    slug: string;
+    title: string;
+    image: string;
+    price: string;
+  }
+
+  function getCatalog(): Record<string, CatalogProduct> {
     var script = document.getElementById('rental-catalog-data');
     if (!script) return {};
     try {
-      var products = JSON.parse(script.textContent);
-      var map = {};
+      var products: CatalogProduct[] = JSON.parse(script.textContent);
+      var map: Record<string, CatalogProduct> = {};
       for (var i = 0; i < products.length; i++) {
         map[products[i].slug] = products[i];
       }
@@ -38,14 +45,14 @@ import Icon from './Icon.astro';
 
   function escapeHtml(s: string): string {
     if (!s) return '';
-    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    return String(s).replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>').replace(/"/g, '"');
   }
 
   function updateBadge(count: number): void {
-    var badges = document.querySelectorAll('.merkliste-badge');
+    var badges = document.querySelectorAll<HTMLSpanElement>('.merkliste-badge');
     for (var i = 0; i < badges.length; i++) {
       var badge = badges[i];
-      badge.textContent = count;
+      badge.textContent = String(count);
       if (count > 0) {
         badge.classList.remove('hidden');
       } else {
@@ -110,7 +117,7 @@ import Icon from './Icon.astro';
 
       updateBadge(items.length);
 
-      var cartInput = document.getElementById('merkliste-data');
+      var cartInput = document.getElementById('merkliste-data') as HTMLTextAreaElement | null;
       if (cartInput) {
         var vals = items.map(function(it) {
           var prod = catalog[it.slug];
@@ -134,8 +141,8 @@ import Icon from './Icon.astro';
     if (!drawer) return;
     drawer.classList.add('open');
     renderMerkliste();
-    var closeBtn = document.getElementById('merkliste-close');
-    if (closeBtn) setTimeout(function() { closeBtn.focus(); }, 50);
+    var closeBtn = document.getElementById('merkliste-close') as HTMLButtonElement | null;
+    if (closeBtn) setTimeout(function() { closeBtn!.focus(); }, 50);
   }
 
   function toggleDrawer(): void {
@@ -150,7 +157,7 @@ import Icon from './Icon.astro';
 
   document.addEventListener('toggle-merkliste', function() {
     toggleDrawer();
-    var toggleBtn = document.querySelector('[data-action="toggle-wishlist"]');
+    var toggleBtn = document.querySelector<HTMLButtonElement>('[data-action="toggle-wishlist"]');
     if (toggleBtn) {
       var isOpen = document.getElementById('merkliste-drawer')?.classList.contains('open');
       toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
@@ -168,9 +175,9 @@ import Icon from './Icon.astro';
   });
 
   document.addEventListener('click', function(e) {
-    var target = e.target.closest('[data-action]') || e.target;
-    var action = target.dataset.action;
-    var slug = target.dataset.slug;
+    var target = (e.target as HTMLElement).closest('[data-action]') || e.target;
+    var action = (target as HTMLElement).dataset.action;
+    var slug = (target as HTMLElement).dataset.slug;
     if (!action || !slug) return;
 
     if (action === 'remove') {
@@ -180,7 +187,7 @@ import Icon from './Icon.astro';
   });
 
   document.getElementById('request-btn')?.addEventListener('click', function() {
-    var cartInput = document.getElementById('merkliste-data');
+    var cartInput = document.getElementById('merkliste-data') as HTMLTextAreaElement | null;
     if (cartInput) {
       var data = getCart();
       var items = data.items || [];

@@ -32,10 +32,10 @@ const isInCart = cart.items.some(item => item.slug === product.slug);
 </button>
 
 <script>
-  import { addItem, getCart } from '../lib/merklisteStore';
+  import { getCart } from '../lib/merklisteStore';
 
   function initButtons() {
-    document.querySelectorAll('button.wishlist-btn[data-wishlist-slug]').forEach(button => {
+    document.querySelectorAll<HTMLButtonElement>('button.wishlist-btn[data-wishlist-slug]').forEach(button => {
       const slug = button.dataset.wishlistSlug;
       if (!slug) return;
 

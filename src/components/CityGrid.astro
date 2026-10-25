@@ -35,14 +35,14 @@ function thumbSrc(src: string): string {
       <div class="carousel-viewport">
         <div class="carousel-track" id="carousel-track">
 {cities.at(-1) && (
-<a href={`/${cities.at(-1).slug}`} class="carousel-slide" data-index="-1" aria-hidden="true" tabindex="-1">
-                <img class="city-card-bg" data-src={cities.at(-1).image} data-srcset={thumbSrc(cities.at(-1).image) + ' 480w, ' + cities.at(-1).image + ' 960w'} src={cities.at(-1).image} alt="" />
+<a href={`/${cities.at(-1)!.slug}`} class="carousel-slide" data-index="-1" aria-hidden="true" tabindex="-1">
+                <img class="city-card-bg" data-src={cities.at(-1)!.image} data-srcset={thumbSrc(cities.at(-1)!.image) + ' 480w, ' + cities.at(-1)!.image + ' 960w'} src={cities.at(-1)!.image} alt="" />
                <div class="city-card-overlay"></div>
                <div class="city-card-content">
-                 <span class="city-card-label">{cities.at(-1).name}</span>
-                 <h3 class="city-card-title">{cities.at(-1).title}</h3>
-                 <p class="city-card-desc">{cities.at(-1).description}</p>
-                 <span class="city-card-link">Zur Vermietung in {cities.at(-1).name} →</span>
+                 <span class="city-card-label">{cities.at(-1)!.name}</span>
+                 <h3 class="city-card-title">{cities.at(-1)!.title}</h3>
+                 <p class="city-card-desc">{cities.at(-1)!.description}</p>
+                 <span class="city-card-link">Zur Vermietung in {cities.at(-1)!.name} →</span>
                </div>
              </a>
            )}
@@ -88,30 +88,33 @@ function thumbSrc(src: string): string {
 
 <script>
   (function () {
-    const track = document.getElementById("carousel-track");
-    const prevBtn = document.getElementById("carousel-prev");
-    const nextBtn = document.getElementById("carousel-next");
-    const dots = document.querySelectorAll(".carousel-dot");
-    const slides = track.querySelectorAll(".carousel-slide");
+    const track = document.getElementById("carousel-track") as HTMLDivElement | null;
+    const prevBtn = document.getElementById("carousel-prev") as HTMLButtonElement | null;
+    const nextBtn = document.getElementById("carousel-next") as HTMLButtonElement | null;
+    const dots = document.querySelectorAll<HTMLButtonElement>(".carousel-dot");
+    const carousel = document.querySelector<HTMLElement>(".city-carousel");
+    if (!track || !prevBtn || !nextBtn || !carousel) return;
+    
+    const slides = track.querySelectorAll<HTMLAnchorElement>(".carousel-slide");
     const total = slides.length - 2;
     let current = 1;
     let isAnimating = false;
 
-function loadSlide(index) {
-       const slide = slides[index];
-       if (!slide) return;
-       const bg = slide.querySelector(".city-card-bg");
-       if (!bg) return;
-       const url = bg.getAttribute("data-src");
-       const srcset = bg.getAttribute("data-srcset");
-       if (!url || bg.getAttribute('src') === url) return;
-       bg.src = url;
-       if (srcset && bg.getAttribute('srcset') !== srcset) {
-         bg.srcset = srcset;
-       }
-     }
+    function loadSlide(index: number) {
+      const slide = slides[index];
+      if (!slide) return;
+      const bg = slide.querySelector<HTMLImageElement>(".city-card-bg");
+      if (!bg) return;
+      const url = bg.getAttribute("data-src");
+      const srcset = bg.getAttribute("data-srcset");
+      if (!url || bg.getAttribute('src') === url) return;
+      bg.src = url;
+      if (srcset && bg.getAttribute('srcset') !== srcset) {
+        bg.srcset = srcset;
+      }
+    }
 
-    function loadRange(start, end) {
+    function loadRange(start: number, end: number) {
       for (var i = start; i <= end; i++) loadSlide(i);
     }
     function loadAllSlides() {
@@ -120,7 +123,7 @@ function loadSlide(index) {
     }
 
     function update() {
-      track.style.transform = "translateX(-" + (current * 100) + "%)";
+      track!.style.transform = "translateX(-" + (current * 100) + "%)";
       dots.forEach(function (dot, i) {
         dot.classList.toggle("active", i === (current - 1 + total) % total);
       });
@@ -130,19 +133,19 @@ function loadSlide(index) {
       });
     }
 
-    function jumpTo(index) {
+    function jumpTo(index: number) {
       current = index;
-      track.style.transition = "none";
+      track!.style.transition = "none";
       update();
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          track.style.transition = "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)";
+          track!.style.transition = "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)";
           isAnimating = false;
         });
       });
     }
 
-    function slide(dir) {
+    function slide(dir: number) {
       if (isAnimating) return;
       isAnimating = true;
       const next = current + dir;
@@ -169,7 +172,7 @@ function loadSlide(index) {
     dots.forEach(function (dot) {
       dot.addEventListener("click", function () {
         if (isAnimating) return;
-        var target = parseInt(dot.dataset.index) + 1;
+        var target = parseInt(dot.dataset.index || '0', 10) + 1;
         if (target === current) return;
         isAnimating = true;
         current = target;
@@ -179,7 +182,6 @@ function loadSlide(index) {
 
     var autoPlay = setInterval(function () { slide(1); }, 6000);
 
-    var carousel = document.querySelector(".city-carousel");
     carousel.addEventListener("mouseenter", function () { clearInterval(autoPlay); });
     carousel.addEventListener("mouseleave", function () { autoPlay = setInterval(function () { slide(1); }, 6000); });
     carousel.addEventListener("touchstart", function () { clearInterval(autoPlay); }, { passive: true });
@@ -190,11 +192,11 @@ function loadSlide(index) {
       if (e.key === "ArrowRight") slide(1);
     });
 
-    track.style.transition = "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)";
+    track!.style.transition = "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)";
     loadAllSlides();
     update();
 
-    track.addEventListener("transitionend", function () {
+    track!.addEventListener("transitionend", function () {
       if (current === 0) jumpTo(total);
       if (current === total + 1) jumpTo(1);
       isAnimating = false;

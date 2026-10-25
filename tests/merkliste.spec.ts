@@ -51,19 +51,20 @@ test.describe('Merkliste functionality', () => {
 
     const cards = page.locator('.equipment-card');
     const count = await cards.count();
-    let productLink = null;
+    let productLink: ReturnType<typeof page.locator> | null = null;
     let productTitle = '';
     for (let i = 0; i < count; i++) {
       const card = cards.nth(i);
       const link = card.locator('a.btn-secondary, a[href*="/vermietung/"]').first();
       if (await link.count() > 0) {
         productLink = link;
-        productTitle = await card.locator('h3').textContent();
+        const title = await card.locator('h3').textContent();
+        if (title) productTitle = title;
         break;
       }
     }
     if (!productLink) {
-      test.skip('No product with detail link found');
+      test.skip();
       return;
     }
 

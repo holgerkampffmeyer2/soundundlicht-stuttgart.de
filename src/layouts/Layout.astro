@@ -173,15 +173,16 @@ const pagefindMetaKeys = Object.keys(pagefindMerged);
 <script>
   import { addItem, getCart } from '../lib/merklisteStore';
 
-  document.addEventListener('add-to-wishlist', (e: CustomEvent<{ slug: string }>) => {
-    const slug = e.detail?.slug;
+  function handleAddToWishlist(e: Event) {
+    const customEvent = e as CustomEvent<{ slug: string }>;
+    const slug = customEvent.detail?.slug;
     if (!slug) return;
 
     addItem(slug);
 
     document.querySelectorAll(`[data-action="add-to-wishlist"][data-slug="${slug}"], [data-action="add-to-wishlist"][data-product-slug="${slug}"], [data-wishlist-slug="${slug}"]`).forEach(btn => {
       const cart = getCart();
-      const inCart = (cart.items || []).some((i: any) => i.slug === slug);
+      const inCart = (cart.items || []).some((i: { slug: string }) => i.slug === slug);
 
       if (inCart) {
         btn.innerHTML = `
@@ -195,7 +196,7 @@ const pagefindMetaKeys = Object.keys(pagefindMerged);
       }
     });
 
-    document.querySelectorAll('.merkliste-badge').forEach(badge => {
+    document.querySelectorAll<HTMLSpanElement>('.merkliste-badge').forEach(badge => {
       const cart = getCart();
       const totalItems = (cart.items || []).length;
       badge.textContent = String(totalItems);
@@ -203,17 +204,18 @@ const pagefindMetaKeys = Object.keys(pagefindMerged);
     });
 
     document.dispatchEvent(new CustomEvent('merkliste-prefill'));
-  });
+  }
 
   function syncMerklisteBadges() {
     const cart = getCart();
     const totalItems = (cart.items || []).length;
-    document.querySelectorAll('.merkliste-badge').forEach(badge => {
+    document.querySelectorAll<HTMLSpanElement>('.merkliste-badge').forEach(badge => {
       badge.textContent = String(totalItems);
       badge.classList.toggle('hidden', totalItems === 0);
     });
   }
 
+  document.addEventListener('add-to-wishlist', handleAddToWishlist);
   syncMerklisteBadges();
   window.addEventListener('pageshow', syncMerklisteBadges);
   document.addEventListener('astro:page-load', syncMerklisteBadges);

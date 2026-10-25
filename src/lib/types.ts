@@ -8,5 +8,5 @@ export interface ProductData {
   priceValue: number;
   order?: number;
   features: string[];
-  detailPage: string;
+  detailPage?: string;
 }

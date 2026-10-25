@@ -156,18 +156,19 @@ import Icon from './Icon.astro';
   document.addEventListener('astro:page-load', initButtons);
 
   document.addEventListener('click', (e) => {
-    const target = e.target.closest('[data-action="add-to-wishlist"]') as HTMLElement | null;
-    if (!target) return;
-    if (!target.closest('[data-package-grid]')) return;
-    const slug = target.dataset.slug;
+    const targetEl = (e.target as HTMLElement).closest('[data-action="add-to-wishlist"]');
+    if (!targetEl) return;
+    const pkgGrid = targetEl.closest('[data-package-grid]');
+    if (!pkgGrid) return;
+    const slug = (targetEl as HTMLElement).dataset.slug;
     if (!slug) return;
 
     if (hasItem(slug)) {
       removeItem(slug);
-      updateButton(target, false);
+      updateButton(targetEl as HTMLElement, false);
     } else {
       addItem(slug);
-      updateButton(target, true);
+      updateButton(targetEl as HTMLElement, true);
     }
     document.dispatchEvent(new CustomEvent('toggle-merkliste'));
   });

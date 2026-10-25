@@ -37,7 +37,7 @@ function loadPagefind(): Promise<PagefindInstance | null> {
     pagefindPromise = pf
       ? Promise.race([
           pf,
-          new Promise(resolve => setTimeout(() => resolve(null), 10000)),
+          new Promise<null>(resolve => setTimeout(() => resolve(null), 10000)),
         ])
       : Promise.resolve(null);
   }

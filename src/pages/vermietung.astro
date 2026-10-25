@@ -377,13 +377,11 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
   <Footer />
 
   <script>
-    import { addItem } from '../lib/merklisteStore';
-
     document.addEventListener('click', (e) => {
-      const target = e.target.closest('[data-action="add-to-wishlist"]');
+      const target = (e.target as HTMLElement).closest('[data-action="add-to-wishlist"]');
       if (!target) return;
       if (target.closest('#pakete')) return;
-      const slug = target.dataset.slug;
+      const slug = (target as HTMLElement).dataset.slug;
       if (!slug) return;
 
       document.dispatchEvent(new CustomEvent('add-to-wishlist', { detail: { slug } }));

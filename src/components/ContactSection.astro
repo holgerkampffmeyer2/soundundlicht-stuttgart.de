@@ -82,7 +82,7 @@ const {
 
 <script>
   (function () {
-    function loadMap(placeholder) {
+    function loadMap(placeholder: HTMLElement) {
       const src = placeholder.getAttribute('data-map-src');
       if (!src) return;
 
@@ -104,7 +104,7 @@ const {
       if (!button) return;
       const placeholder = button.closest('.map-placeholder');
       if (!placeholder) return;
-      loadMap(placeholder);
+      loadMap(placeholder as HTMLElement);
     });
   })();
 </script>

@@ -94,8 +94,8 @@ import Icon from "../components/Icon.astro";
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const productScript = document.getElementById('rental-catalog-data');
-      const products = productScript ? JSON.parse(productScript.textContent) : [];
-      const productsBySlug = {};
+      const products: Array<{ slug: string; title: string; image: string; price: string }> = productScript ? JSON.parse(productScript.textContent) : [];
+      const productsBySlug: Record<string, { slug: string; title: string; image: string; price: string }> = {};
       for (let i = 0; i < products.length; i++) {
         productsBySlug[products[i].slug] = products[i];
       }
@@ -105,15 +105,15 @@ import Icon from "../components/Icon.astro";
       
       try {
         const cart = JSON.parse(localStorage.getItem('sls_merkliste') || '{}');
-        const items = cart.items || [];
+        const items: Array<{ slug: string }> = cart.items || [];
         if (items.length === 0) {
           cartSummary.innerHTML = '<p class="text-[var(--color-text-muted)]">Ihre Merkliste ist leer.</p>';
           return;
         }
         
         let rows = '';
-        items.forEach(item => {
-          const product = productsBySlug?.[item.slug];
+        items.forEach((item: { slug: string }) => {
+          const product = productsBySlug[item.slug];
           if (!product) {
             rows += `<div class="mb-4"><span class="font-semibold">${item.slug}</span> (Produkt nicht gefunden)</div>`;
             return;

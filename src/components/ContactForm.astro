@@ -201,13 +201,13 @@
   import { getCartData, buildProductMap } from '../lib/cartData';
 
   (function() {
-    const form = document.querySelector('.contact-form');
+    const form = document.querySelector<HTMLFormElement>('.contact-form');
     if (!form) return;
-    const submitBtn = form.querySelector('.form-submit');
-    const submitText = form.querySelector('.submit-text');
-    const submitSpinner = form.querySelector('.submit-spinner');
-    const messageTextarea = document.getElementById('message');
-    const merklisteHidden = document.getElementById('merkliste-items-hidden');
+    const submitBtn = form.querySelector<HTMLButtonElement>('.form-submit');
+    const submitText = form.querySelector<HTMLElement>('.submit-text');
+    const submitSpinner = form.querySelector<HTMLElement>('.submit-spinner');
+    const messageTextarea = document.getElementById('message') as HTMLTextAreaElement | null;
+    const merklisteHidden = document.getElementById('merkliste-items-hidden') as HTMLInputElement | null;
 
     function resolveProductMap() {
       const productScript = document.getElementById('rental-catalog-data');
@@ -220,7 +220,7 @@
     }
 
     // Date inputs: min=today
-    var startInput = document.getElementById('rental_start');
+    var startInput = document.getElementById('rental_start') as HTMLInputElement | null;
     function getTodayISO() {
       var d = new Date();
       return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
@@ -230,14 +230,14 @@
       startInput.min = today;
     }
 
-    var errorStart = document.getElementById('error-start');
+    var errorStart = document.getElementById('error-start') as HTMLElement | null;
     function clearErrors() {
-      if (errorStart) { errorStart.textContent = ''; startInput.classList.remove('is-invalid'); }
+      if (errorStart && startInput) { errorStart.textContent = ''; startInput.classList.remove('is-invalid'); }
     }
-    function showError(el, input, msg) {
-      el.textContent = msg;
-      input.classList.add('is-invalid');
-      input.focus();
+    function showError(el: HTMLElement | null, input: HTMLInputElement | null, msg: string) {
+      if (el) el.textContent = msg;
+      if (input) input.classList.add('is-invalid');
+      if (input) input.focus();
     }
     if (startInput) startInput.addEventListener('input', clearErrors);
 
@@ -255,9 +255,9 @@
       if (merklisteHidden) merklisteHidden.value = cartText;
 
       // Disable button and show spinner
-      submitBtn.disabled = true;
-      submitText.style.display = 'none';
-      submitSpinner.style.display = 'inline-flex';
+      if (submitBtn) submitBtn.disabled = true;
+      if (submitText) submitText.style.display = 'none';
+      if (submitSpinner) submitSpinner.style.display = 'inline-flex';
     });
 
     // Prefill textarea with merkliste items
