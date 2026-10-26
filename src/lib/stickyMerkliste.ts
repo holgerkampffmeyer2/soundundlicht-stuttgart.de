@@ -18,8 +18,9 @@ export function initStickyMerkliste(): void {
 
   const cta = document.querySelector<HTMLElement>('.sticky-merkliste');
   if (!cta) return;
+  const c = cta;
 
-  const threshold = parseInt(cta.dataset.threshold || '15', 10);
+  const threshold = parseInt(c.dataset.threshold || '15', 10);
   let ticking = false;
 
   function onScroll(): void {
@@ -27,7 +28,7 @@ export function initStickyMerkliste(): void {
     const viewportH = window.innerHeight;
     const docH = document.documentElement.scrollHeight;
     const scrollPercent = (scrollY / (docH - viewportH)) * 100;
-    cta.classList.toggle('visible', scrollPercent > threshold);
+    c.classList.toggle('visible', scrollPercent > threshold);
   }
 
   window.addEventListener('scroll', () => {

@@ -1,12 +1,7 @@
-import { getCartData, buildProductMap } from './cartData';
+import { getCartData, buildProductMap, type Product } from './cartData';
 
 interface ResolvedProductMap {
-  [slug: string]: {
-    slug: string;
-    title: string;
-    image: string;
-    price: string;
-  };
+  [slug: string]: Product & { image?: string };
 }
 
 function resolveProductMap(): ResolvedProductMap {

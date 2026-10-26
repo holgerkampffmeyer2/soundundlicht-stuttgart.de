@@ -16,7 +16,8 @@ export function initCityCarousel(config: CityCarouselConfig): void {
 
   if (!track || !prevBtn || !nextBtn || !carousel) return;
 
-  const slides = track.querySelectorAll<HTMLAnchorElement>('.carousel-slide');
+  const t = track;
+  const slides = t.querySelectorAll<HTMLAnchorElement>('.carousel-slide');
   const total = slides.length - 2;
   let current = 1;
   let isAnimating = false;
@@ -44,7 +45,7 @@ export function initCityCarousel(config: CityCarouselConfig): void {
   }
 
   function update(): void {
-    track.style.transform = `translateX(-${current * 100}%)`;
+    t.style.transform = `translateX(-${current * 100}%)`;
     dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === (current - 1 + total) % total);
     });
@@ -56,11 +57,11 @@ export function initCityCarousel(config: CityCarouselConfig): void {
 
   function jumpTo(index: number): void {
     current = index;
-    track.style.transition = 'none';
+    t.style.transition = 'none';
     update();
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        track.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+        t.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
         isAnimating = false;
       });
     });
@@ -112,11 +113,11 @@ export function initCityCarousel(config: CityCarouselConfig): void {
     if (e.key === 'ArrowRight') slide(1);
   });
 
-  track.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+  t.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
   loadAllSlides();
   update();
 
-  track.addEventListener('transitionend', () => {
+  t.addEventListener('transitionend', () => {
     if (current === 0) jumpTo(total);
     if (current === total + 1) jumpTo(1);
     isAnimating = false;

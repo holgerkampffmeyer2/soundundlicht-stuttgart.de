@@ -11,7 +11,7 @@ interface Cart {
   lastUpdated?: number;
 }
 
-interface Product {
+export interface Product {
   slug: string;
   title: string;
   price: string;
