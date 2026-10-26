@@ -27,6 +27,7 @@ export function initCityCarousel(config: CityCarouselConfig): void {
     if (!slide) return;
     const bg = slide.querySelector<HTMLImageElement>('.city-card-bg');
     if (!bg) return;
+    // Safe: data-src is a static image URL from Astro build, assigned to img.src (not innerHTML)
     const url = bg.getAttribute('data-src');
     const srcset = bg.getAttribute('data-srcset');
     if (!url || bg.getAttribute('src') === url) return;

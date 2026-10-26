@@ -1,4 +1,5 @@
 function loadMap(placeholder: HTMLElement): void {
+  // Safe: data-map-src is a static Google Maps embed URL from Astro template, assigned to iframe.src (not innerHTML)
   const src = placeholder.getAttribute('data-map-src');
   if (!src) return;
 

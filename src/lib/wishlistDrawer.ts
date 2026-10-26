@@ -25,10 +25,10 @@ function getCatalog(): Record<string, CatalogProduct> {
 function escapeHtml(s: string): string {
   if (!s) return '';
   return String(s)
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/"/g, '"');
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 function updateBadge(count: number): void {
