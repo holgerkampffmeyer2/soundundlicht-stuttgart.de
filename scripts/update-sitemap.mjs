@@ -16,24 +16,24 @@ function findHtmlPages() {
     if (!fs.existsSync(dir)) return;
     const entries = fs.readdirSync(dir, { withFileTypes: true });
 
-    let hasIndex = false;
     for (const entry of entries) {
-      if (entry.isFile() && entry.name === 'index.html') {
-        hasIndex = true;
-        break;
-      }
-    }
-
-    if (hasIndex) {
-      const pagePath = relativePrefix || '/';
-      const html = fs.readFileSync(path.join(dir, 'index.html'), 'utf-8');
-      if (!html.includes('noindex')) {
-        pages.push(`${baseUrl}${encodeURI(pagePath)}`);
-      }
-    }
-
-    for (const entry of entries) {
-      if (entry.isDirectory()) {
+      if (entry.isFile() && entry.name.endsWith('.html')) {
+        if (entry.name === 'index.html') {
+          const pagePath = relativePrefix || '/';
+          const html = fs.readFileSync(path.join(dir, 'index.html'), 'utf-8');
+          if (!html.includes('noindex')) {
+            pages.push(`${baseUrl}${encodeURI(pagePath)}`);
+          }
+        } else {
+          const pageName = entry.name.replace(/\.html$/, '');
+          const pagePath = `${relativePrefix}${pageName}`;
+          const html = fs.readFileSync(path.join(dir, entry.name), 'utf-8');
+          if (!html.includes('noindex')) {
+            pages.push(`${baseUrl}${encodeURI(pagePath)}`);
+          }
+        }
+      } else if (entry.isDirectory()) {
+        // In Unterverzeichnisse recursieren, aber KEINEN Trailing Slash für das Verzeichnis selbst hinzufügen
         walkDir(path.join(dir, entry.name), `${relativePrefix}${entry.name}/`);
       }
     }

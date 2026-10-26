@@ -12,7 +12,7 @@ export default defineConfig({
   trailingSlash: 'never',
   compressHTML: true,
   build: {
-    format: 'directory',
+    format: 'file',
   },
   image: {
     service: {
