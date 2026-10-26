@@ -86,122 +86,16 @@ function thumbSrc(src: string): string {
   </div>
 </section>
 
-<script>
-  (function () {
-    const track = document.getElementById("carousel-track") as HTMLDivElement | null;
-    const prevBtn = document.getElementById("carousel-prev") as HTMLButtonElement | null;
-    const nextBtn = document.getElementById("carousel-next") as HTMLButtonElement | null;
-    const dots = document.querySelectorAll<HTMLButtonElement>(".carousel-dot");
-    const carousel = document.querySelector<HTMLElement>(".city-carousel");
-    if (!track || !prevBtn || !nextBtn || !carousel) return;
-    
-    const slides = track.querySelectorAll<HTMLAnchorElement>(".carousel-slide");
-    const total = slides.length - 2;
-    let current = 1;
-    let isAnimating = false;
-
-    function loadSlide(index: number) {
-      const slide = slides[index];
-      if (!slide) return;
-      const bg = slide.querySelector<HTMLImageElement>(".city-card-bg");
-      if (!bg) return;
-      const url = bg.getAttribute("data-src");
-      const srcset = bg.getAttribute("data-srcset");
-      if (!url || bg.getAttribute('src') === url) return;
-      bg.src = url;
-      if (srcset && bg.getAttribute('srcset') !== srcset) {
-        bg.srcset = srcset;
-      }
-    }
-
-    function loadRange(start: number, end: number) {
-      for (var i = start; i <= end; i++) loadSlide(i);
-    }
-    function loadAllSlides() {
-      // Only load visible + adjacent slides (current ±1) + cloned slides
-      loadRange(0, 3);  // first slide, clone before, clone after + slide 2
-    }
-
-    function update() {
-      track!.style.transform = "translateX(-" + (current * 100) + "%)";
-      dots.forEach(function (dot, i) {
-        dot.classList.toggle("active", i === (current - 1 + total) % total);
-      });
-      slides.forEach(function (slide, i) {
-        var isVisible = i === current || i === current + 1 || i === current - 1;
-        slide.setAttribute("tabindex", isVisible ? "0" : "-1");
-      });
-    }
-
-    function jumpTo(index: number) {
-      current = index;
-      track!.style.transition = "none";
-      update();
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          track!.style.transition = "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)";
-          isAnimating = false;
-        });
-      });
-    }
-
-    function slide(dir: number) {
-      if (isAnimating) return;
-      isAnimating = true;
-      const next = current + dir;
-      if (next > total) {
-        current = total + 1;
-        update();
-        setTimeout(function () { jumpTo(1); }, 700);
-      } else if (next < 1) {
-        current = 0;
-        update();
-        setTimeout(function () { jumpTo(total); }, 700);
-      } else {
-        current = next;
-        update();
-      }
-      // Preload adjacent slides
-      loadSlide(current + dir);
-      loadSlide(current - dir);
-    }
-
-    nextBtn.addEventListener("click", function () { slide(1); });
-    prevBtn.addEventListener("click", function () { slide(-1); });
-
-    dots.forEach(function (dot) {
-      dot.addEventListener("click", function () {
-        if (isAnimating) return;
-        var target = parseInt(dot.dataset.index || '0', 10) + 1;
-        if (target === current) return;
-        isAnimating = true;
-        current = target;
-        update();
-      });
-    });
-
-    var autoPlay = setInterval(function () { slide(1); }, 6000);
-
-    carousel.addEventListener("mouseenter", function () { clearInterval(autoPlay); });
-    carousel.addEventListener("mouseleave", function () { autoPlay = setInterval(function () { slide(1); }, 6000); });
-    carousel.addEventListener("touchstart", function () { clearInterval(autoPlay); }, { passive: true });
-    carousel.addEventListener("touchend", function () { autoPlay = setInterval(function () { slide(1); }, 6000); }, { passive: true });
-
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowLeft") slide(-1);
-      if (e.key === "ArrowRight") slide(1);
-    });
-
-    track!.style.transition = "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)";
-    loadAllSlides();
-    update();
-
-    track!.addEventListener("transitionend", function () {
-      if (current === 0) jumpTo(total);
-      if (current === total + 1) jumpTo(1);
-      isAnimating = false;
-    });
-  })();
+<script type="module">
+  import { initCityCarousel } from '../lib/cityCarousel.js';
+  initCityCarousel({
+    trackId: 'carousel-track',
+    prevBtnId: 'carousel-prev',
+    nextBtnId: 'carousel-next',
+    dotSelector: '.carousel-dot',
+    carouselSelector: '.city-carousel',
+    autoPlayInterval: 6000,
+  });
 </script>
 
 <style>

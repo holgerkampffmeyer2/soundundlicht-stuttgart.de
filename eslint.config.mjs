@@ -62,6 +62,14 @@ export default [
     },
   },
   {
+    files: ['src/lib/*.ts', '!src/lib/merklisteStore.ts', '!src/lib/merklisteStore.test.ts'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
+  },
+  {
     files: ['**/*.js', '**/*.mjs'],
     languageOptions: {
       globals: {
