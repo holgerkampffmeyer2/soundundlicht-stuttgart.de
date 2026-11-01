@@ -46,62 +46,64 @@ function getSlideImage(path: string) {
     const isLcp = index === 0;
     return (
     <div class={`slide slide-${index + 1} ${index === 0 ? "active" : ""}`} data-slide={index} tabindex={index === 0 ? undefined : "-1"} aria-hidden={index === 0 ? undefined : "true"}>
-{imgMeta ? (
-         <Picture
-           src={imgMeta}
-           formats={['avif', 'webp', 'jpeg']}
-           alt=""
-           class="hero-bg-img"
-           width={1920}
-           height={1080}
-           loading={isLcp ? "eager" : "lazy"}
-           fetchpriority={isLcp ? "high" : "low"}
-         />
-       ) : (
-         <img
-           src={imgSrc}
-           alt=""
-           class="hero-bg-img"
-           width="1920"
-           height="1080"
-           fetchpriority={isLcp ? "high" : "low"}
-           loading={isLcp ? "eager" : "lazy"}
-         />
-       )}
-      <div class="slide-overlay" style={slide.gradient ? `background: ${slide.gradient}` : undefined}></div>
-      <div class="slide-content">
-        <div class="container mx-auto px-4">
-          <div class={`max-w-5xl ${slide.ptClass || ""}`}>
-            {slide.category && (
-              <span
-                class="text-lg tracking-widest uppercase"
-                style={slide.categoryColor ? `color: ${slide.categoryColor}` : undefined}
-              >
-                {slide.category}
-              </span>
-            )}
-            {slide.titleTag === "h2" ? (
-              <h2 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
-                {slide.title}
-              </h2>
-            ) : (
-              <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
-                {slide.title}
-              </h1>
-            )}
-            <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-4xl">
-              {slide.description}
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-              {slide.buttons.map((btn) => (
-                <a href={btn.href} class={btn.class || "btn-primary"}>{btn.text}</a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    );
+      {isLcp && imgMeta ? (
+          <Picture
+            src={imgMeta}
+            formats={['avif', 'webp', 'jpeg']}
+            alt=""
+            class="hero-bg-img"
+            width={1920}
+            height={1080}
+            loading="eager"
+            fetchpriority="high"
+          />
+        ) : isLcp ? (
+          <img
+            src={imgSrc}
+            alt=""
+            class="hero-bg-img"
+            width="1920"
+            height="1080"
+            fetchpriority="high"
+            loading="eager"
+          />
+        ) : (
+          <div class="hero-bg-img slide-bg" style={`background-image: url("${imgSrc}");`}></div>
+        )}
+       <div class="slide-overlay" style={slide.gradient ? `background: ${slide.gradient}` : undefined}></div>
+       <div class="slide-content">
+         <div class="container mx-auto px-4">
+           <div class={`max-w-5xl ${slide.ptClass || ""}`}>
+             {slide.category && (
+               <span
+                 class="text-lg tracking-widest uppercase"
+                 style={slide.categoryColor ? `color: ${slide.categoryColor}` : undefined}
+               >
+                 {slide.category}
+               </span>
+             )}
+             {slide.titleTag === "h2" ? (
+               <h2 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
+                 {slide.title}
+               </h2>
+             ) : (
+               <h1 class="font-play text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text">
+                 {slide.title}
+               </h1>
+             )}
+             <p class="text-[var(--color-text-muted)] text-xl md:text-2xl mb-8 max-w-4xl">
+               {slide.description}
+             </p>
+             <div class="flex flex-col sm:flex-row gap-4">
+               {slide.buttons.map((btn) => (
+                 <a href={btn.href} class={btn.class || "btn-primary"}>{btn.text}</a>
+               ))}
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     );
   })}
 
   <button class="slider-nav prev" id="slider-prev" aria-label="Vorheriger Slide">
@@ -121,6 +123,15 @@ function getSlideImage(path: string) {
     ))}
   </div>
   <slot />
+  <style>
+    .slide-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  </style>
   <script>
   (function() {
     const section = document.querySelector(".hero-slider") as HTMLElement | null;
