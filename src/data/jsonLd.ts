@@ -1,4 +1,5 @@
 import googleReviews from './google-reviews.json';
+import type { ProductData, BreadcrumbSegment, JsonLdItem, FaqEntry } from '../lib/types';
 
 export const serviceArea = [
   { "@type": "City" as const, "name": "Stuttgart" },
@@ -105,7 +106,80 @@ export const siteNavigationJsonLd = {
   ]
 };
 
-export function offerCatalogJsonLd(items: any[]) {
+export function serviceJsonLd(product: { title: string; description: string; priceValue: number; features: string[] }, images: string[]): JsonLdItem {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": product.title,
+    "description": product.description,
+    "image": images,
+    "serviceType": "Veranstaltungstechnik-Vermietung",
+    "areaServed": serviceArea,
+    "provider": { "@type": "LocalBusiness", "@id": "https://soundundlicht-stuttgart.de/#business" },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": product.priceValue,
+        "priceCurrency": "EUR",
+        "unitCode": "DAY"
+      }
+    }
+  };
+}
+
+export function videoJsonLd(
+  videoId: string,
+  title: string,
+  description: string,
+  thumbnailUrl: string,
+  publisher: { '@type': 'Organization'; name: string; logo: { '@type': 'ImageObject'; url: string } }
+): JsonLdItem {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": title,
+    "description": description,
+    "thumbnailUrl": [thumbnailUrl],
+    "contentUrl": `https://www.youtube.com/watch?v=${videoId}`,
+    "embedUrl": `https://www.youtube.com/embed/${videoId}`,
+    "uploadDate": "2024-03-15T00:00:00+00:00",
+    "duration": "PT1M32S",
+    "publisher": publisher
+  };
+}
+
+export function faqPageJsonLd(faqs: FaqEntry[]): JsonLdItem {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+}
+
+export function breadcrumbJsonLd(segments: BreadcrumbSegment[]): JsonLdItem {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": segments.map((segment, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": segment.label,
+      "item": segment.href
+    }))
+  };
+}
+
+export function offerCatalogJsonLd(items: ProductData[]): JsonLdItem {
   const detailItems = items.filter(i => i.detailPage && !i.detailPage.includes('#'));
   return {
     "@context": "https://schema.org",

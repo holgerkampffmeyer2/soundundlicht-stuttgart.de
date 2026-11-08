@@ -8,7 +8,7 @@ import CityGrid from "../components/CityGrid.astro";
 import FAQSection from "../components/FAQSection.astro";
 import { getFaqsForPage } from '../lib/faqUtils';
 import { getCollection } from 'astro:content';
-import { serviceArea, offerCatalogJsonLd } from '../data/jsonLd';
+import { serviceArea, offerCatalogJsonLd, serviceJsonLd, faqPageJsonLd } from '../data/jsonLd';
 import HeroSlider from "../components/HeroSlider.astro";
 import BieteSection from "../components/BieteSection.astro";
 import PackageCardGrid from '../components/PackageCardGrid.astro';
@@ -19,32 +19,7 @@ const products = await getCollection('products');
 const rentalItems = products.map(i => i.data);
 const indexFaqs = await getFaqsForPage('index');
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": indexFaqs.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-};
-
 const komplettPakete = rentalItems.filter(i => i.category === 'Paket');
-
-const serviceJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Veranstaltungstechnik Vermietung",
-  "description": "Verleih von PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart und Umgebung",
-  "provider": {
-    "@type": "LocalBusiness",
-    "@id": "https://soundundlicht-stuttgart.de/#business"
-  },
-  "areaServed": serviceArea
-};
 ---
 
 <Layout
@@ -52,7 +27,16 @@ const serviceJsonLd = {
   description="Vermietung von PA-Anlagen, Partyboxen & Lichttechnik in Stuttgart, Leinfelden-Echterdingen, Esslingen, Tübingen. Ab 160€ pro Tag. DJ-Service, persönliche Beratung, einfache Abholung."
   image="/img/slider/slide1.webp"
 
-  jsonLd={[serviceJsonLd, faqJsonLd, offerCatalogJsonLd(rentalItems)]}
+  jsonLd={[
+    serviceJsonLd({
+      title: "Veranstaltungstechnik Vermietung",
+      description: "Verleih von PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment in Stuttgart und Umgebung",
+      priceValue: 0,
+      features: []
+    }, ["/img/slider/slide1.webp"]),
+    faqPageJsonLd(indexFaqs),
+    offerCatalogJsonLd(rentalItems)
+  ]}
 >
   <Navbar currentPage="home" />
 
