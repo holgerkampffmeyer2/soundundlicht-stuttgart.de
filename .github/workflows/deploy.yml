@@ -37,7 +37,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts=false
 
       - name: Build Astro site
         run: pnpm run build:full
@@ -62,7 +62,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts=false
 
       - name: TypeScript check
         run: pnpm run check
@@ -83,7 +83,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts=false
 
       - name: Run ESLint
         run: pnpm run lint
@@ -104,7 +104,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts=false
 
       - name: Unit tests
         run: pnpm test
