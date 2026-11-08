@@ -64,11 +64,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --shamefully-hoist
 
-      - name: Configure pnpm for hoisting
-        run: pnpm config set shamefully-hoist true
-
       - name: TypeScript check
-        run: pnpm run check
+        run: |
+          pnpm install --shamefully-hoist
+          pnpm run check
 
   # Linting - runs in parallel with build and check
   lint:
