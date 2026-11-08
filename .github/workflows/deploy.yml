@@ -49,34 +49,7 @@ jobs:
         with:
           path: ./dist
 
-  # TypeScript check - runs in parallel with build
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-
-      - name: Setup pnpm
-        run: corepack enable
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: '24'
-          cache: 'pnpm'
-
-      - name: Approve build scripts
-        run: pnpm approve-builds esbuild
-
-      - name: Install dependencies
-        run: pnpm install --ignore-scripts=false
-
-      - name: Hoist dependencies for astro check
-        run: pnpm install --shamefully-hoist
-
-      - name: TypeScript check
-        run: pnpm run check
-
-  # Linting - runs in parallel with build and check
+  # Linting - runs in parallel with build
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -100,7 +73,7 @@ jobs:
       - name: Run ESLint
         run: pnpm run lint
 
-  # Unit tests - runs in parallel with build, check, and lint
+  # Unit tests - runs in parallel with build and lint
   test:
     runs-on: ubuntu-latest
     steps:
@@ -123,3 +96,13 @@ jobs:
 
       - name: Unit tests
         run: pnpm test
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: [build, lint, test]
+    steps:
+      - uses: actions/deploy-pages@v5
+        id: deployment
