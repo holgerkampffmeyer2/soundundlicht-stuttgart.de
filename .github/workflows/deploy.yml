@@ -52,6 +52,8 @@ jobs:
   # TypeScript check - runs in parallel with build
   check:
     runs-on: ubuntu-latest
+    env:
+      PNPM_HOIST_PATTERN: '*'
     steps:
       - uses: actions/checkout@v7
 
