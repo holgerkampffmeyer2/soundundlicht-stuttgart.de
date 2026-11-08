@@ -55,7 +55,16 @@ const layoutTitle = title ?? pageTitle;
             <div class="relative">
               <picture>
                 <source srcset={`${getThumbUrl(product.image)} 480w, ${getWebpUrl(product.image)} 960w`} type="image/webp" />
-                <img src={product.image} alt={product.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
+                <img 
+                  src={product.image} 
+                  alt={product.title} 
+                  width="400" 
+                  height="256" 
+                  loading="lazy" 
+                  decoding="async" 
+                  class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
               </picture>
               <span class="plug-badge">
                 <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>

@@ -36,7 +36,7 @@ function thumbSrc(src: string): string {
         <div class="carousel-track" id="carousel-track">
 {cities.at(-1) && (
 <a href={`/${cities.at(-1)!.slug}`} class="carousel-slide" data-index="-1" aria-hidden="true" tabindex="-1">
-                <img class="city-card-bg" data-src={cities.at(-1)!.image} data-srcset={thumbSrc(cities.at(-1)!.image) + ' 480w, ' + cities.at(-1)!.image + ' 960w'} src={cities.at(-1)!.image} alt="" />
+                <img class="city-card-bg" data-src={cities.at(-1)!.image} data-srcset={thumbSrc(cities.at(-1)!.image) + ' 480w, ' + cities.at(-1)!.image + ' 960w'} src={cities.at(-1)!.image} alt="" sizes="100vw" />
                <div class="city-card-overlay"></div>
                <div class="city-card-content">
                  <span class="city-card-label">{cities.at(-1)!.name}</span>
@@ -48,7 +48,7 @@ function thumbSrc(src: string): string {
            )}
 {cities.map((city, i) => (
              <a href={`/${city.slug}`} class="carousel-slide" data-index={i}>
-               <img class="city-card-bg" data-src={city.image} data-srcset={thumbSrc(city.image) + ' 480w, ' + city.image + ' 960w'} src="data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOQ==" alt="" />
+               <img class="city-card-bg" data-src={city.image} data-srcset={thumbSrc(city.image) + ' 480w, ' + city.image + ' 960w'} src="data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOQ==" alt="" sizes="100vw" />
               <div class="city-card-overlay"></div>
               <div class="city-card-content">
                 <span class="city-card-label">{city.name}</span>
@@ -59,7 +59,7 @@ function thumbSrc(src: string): string {
             </a>
           ))}
 <a href={`/${cities[0].slug}/`} class="carousel-slide" data-index={total} aria-hidden="true" tabindex="-1">
-             <img class="city-card-bg" data-src={cities[0].image} data-srcset={thumbSrc(cities[0].image) + ' 480w, ' + cities[0].image + ' 960w'} src="data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOQ==" alt="" />
+             <img class="city-card-bg" data-src={cities[0].image} data-srcset={thumbSrc(cities[0].image) + ' 480w, ' + cities[0].image + ' 960w'} src="data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOQ==" alt="" sizes="100vw" />
             <div class="city-card-overlay"></div>
             <div class="city-card-content">
               <span class="city-card-label">{cities[0].name}</span>

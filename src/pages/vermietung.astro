@@ -237,7 +237,16 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
             <div class="relative">
               <picture>
                 <source srcset={`${getThumbUrl(item.image)} 480w, ${getWebpUrl(item.image)} 960w`} type="image/webp" />
-                <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  width="400" 
+                  height="256" 
+                  loading="lazy" 
+                  decoding="async" 
+                  class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
               </picture>
               <span class="plug-badge">
                 <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -291,11 +300,20 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
          {lichtEquipment.map((item, index) => (
            <div id={`item-${item.slug}`} class="card-base equipment-card" style={`animation-delay: ${index * 0.1}s`}>
              <div class="relative">
-               <picture>
-                 <source srcset={`${getThumbUrl(item.image)} 480w, ${getWebpUrl(item.image)} 960w`} type="image/webp" />
-                 <img src={item.image} alt={item.title} width="400" height="256" loading="lazy" decoding="async" class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]" />
-               </picture>
-               <span class="plug-badge">
+<picture>
+                  <source srcset={`${getThumbUrl(item.image)} 480w, ${getWebpUrl(item.image)} 960w`} type="image/webp" />
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    width="400" 
+                    height="256" 
+                    loading="lazy" 
+                    decoding="async" 
+                    class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </picture>
+                <span class="plug-badge">
                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
                  Inkl. Kabel & Einweisung
                </span>
