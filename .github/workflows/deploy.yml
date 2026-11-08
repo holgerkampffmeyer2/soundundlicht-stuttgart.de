@@ -49,6 +49,8 @@ jobs:
   # TypeScript check - runs in parallel with build
   check:
     runs-on: ubuntu-latest
+    env:
+      PNPM_HOIST_PATTERN: '*'
     steps:
       - uses: actions/checkout@v7
 
@@ -65,9 +67,7 @@ jobs:
         run: pnpm install --shamefully-hoist
 
       - name: TypeScript check
-        run: |
-          pnpm install --shamefully-hoist
-          pnpm run check
+        run: pnpm run check
 
   # Linting - runs in parallel with build and check
   lint:
