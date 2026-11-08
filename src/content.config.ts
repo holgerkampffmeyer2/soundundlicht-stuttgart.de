@@ -49,6 +49,16 @@ const cities = defineCollection({
         })
       )
       .optional(),
+    // Prosa-Felder für dynamische City-Pages (optional, Defaults in Page)
+    heroTitle: z.string().optional(),
+    heroDescription: z.string().optional(),
+    heroDetails: z.string().optional(),
+    einzelTitle: z.string().optional(),
+    einzelDescription: z.string().optional(),
+    areasIntro: z.string().optional(),
+    contactDescription: z.string().optional(),
+    distanceText: z.string().optional(),
+    travelTimeText: z.string().optional(),
   }),
 });
 

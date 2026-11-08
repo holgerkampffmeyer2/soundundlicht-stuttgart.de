@@ -1,0 +1,137 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import CityHero from "../components/CityHero.astro";
+import CityPackages from "../components/CityPackages.astro";
+import CitySteps from "../components/CitySteps.astro";
+import CityAreas from "../components/CityAreas.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import ContactSection from "../components/ContactSection.astro";
+import FAQSection from "../components/FAQSection.astro";
+import CityEinzeltechnik from "../components/CityEinzeltechnik.astro";
+import Icon from "../components/Icon.astro";
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../lib/faqUtils';
+import citiesData from '../data/cities.json';
+import { breadcrumbJsonLd, serviceJsonLd, faqPageJsonLd } from '../data/jsonLd';
+
+export async function getStaticPaths() {
+  const cities = await getCollection('cities');
+  return cities.map(city => ({
+    params: { city: city.data.slug },
+    props: { cityData: city.data }
+  }));
+}
+
+const { cityData } = Astro.props;
+const citySlug = cityData.slug;
+const cityName = cityData.name;
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: cityName }
+];
+
+const cityFaqs = getFaqsForPage(citySlug);
+
+const allProducts = await getCollection('products');
+const productsBySlug = Object.fromEntries(allProducts.map(p => [p.data.slug, p.data]));
+const cityDataRaw = citiesData.find(c => c.slug === citySlug);
+const einzelItems = (cityDataRaw?.einzelItems ?? [])
+  .slice(0, 3)
+  .map(slug => productsBySlug[slug])
+  .filter(Boolean);
+
+// Defaults for optional prose fields
+const heroTitle = cityData.heroTitle ?? `PA-Anlage & Partybox mieten in ${cityName}`;
+const heroDescription = cityData.heroDescription ?? `Du planst eine Feier in ${cityName} und brauchst zuverlässige Veranstaltungstechnik? Ob Geburtstag im Kreis der Familie, Hochzeit in einer der vielen ${cityName}er Locations oder Firmenfeier im Ballsaal – ich habe die passende Technik für dich.`;
+const heroDetails = cityData.heroDetails ?? `Meine Pakete umfassen PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment. Die Abholung erfolgt in Leinfelden-Echterdingen – von ${cityName} aus nur ca. ${cityData.travelTime} Minuten über die A8 oder B27. Ich erkläre dir den Aufbau und stehe bei Fragen zur Seite. Anders als bei Versandverleihern hast du die Technik vorab in der Hand und bekommst eine persönliche Einweisung – so weißt du genau, was dich erwartet.`;
+const einzelTitle = cityData.einzelTitle ?? `Einzeltechnik für ${cityName}`;
+const einzelDescription = cityData.einzelDescription ?? `Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.`;
+const areasIntro = cityData.areasIntro ?? `Du wohnst in ${cityName} oder Umgebung? Dann ist die Abholung bei mir in der Magellanstraße 4, Echterdingen, nur ${cityData.distance} entfernt – direkt an A8 / B27 gelegen.`;
+const contactDescription = cityData.contactDescription ?? `Du wohnst in ${cityName} oder Umgebung und möchtest Technik für deine Party mieten? Schreib mir eine E-Mail mit deinem Wunschdatum und der gewünschten Ausrüstung. Die Abholung ist in Leinfelden-Echterdingen, Magellanstraße 4 – verkehrsgünstig an A8 / B27, nur ${cityData.distance} km bzw. ${cityData.travelTime} Minuten von ${cityName}. Ich melde mich innerhalb von 12 Stunden bei dir!`;
+const distanceText = cityData.distanceText ?? `Nur ${cityData.distance} km von ${cityName} – verkehrsgünstig an A8 / B27`;
+const travelTimeText = cityData.travelTimeText ?? cityData.travelTime;
+
+// JSON-LD Builders
+const breadcrumbJsonLdData = breadcrumbJsonLd([
+  { label: "Startseite", href: "https://soundundlicht-stuttgart.de/" },
+  { label: cityName, href: `https://soundundlicht-stuttgart.de/${citySlug}` }
+]);
+
+const serviceJsonLdData = serviceJsonLd({
+  title: `Veranstaltungstechnik Vermietung ${cityName}`,
+  description: `PA-Anlagen, Partyboxen und Lichttechnik mieten in ${cityName} und Umgebung. Komplettpakete für Geburtstage, Hochzeiten und Vereinsfeiern. Abholung in Leinfelden-Echterdingen, nur ${cityData.distance}.`,
+  priceValue: 0,
+  features: []
+}, [cityData.image]);
+
+const faqPageJsonLdData = faqPageJsonLd(cityFaqs);
+---
+
+<Layout
+  title={`PA-Anlage & Partybox mieten in ${cityName} | Sound & Licht Stuttgart`}
+  description={`Partytechnik mieten in ${cityName}: PA-Anlagen, Partyboxen, Lichttechnik und Komplettpakete für deine Feier. Abholung in Leinfelden-Echterdingen, verkehrsgünstig an A8/B27 – nur ${travelTimeText} Minuten von ${cityName}.`}
+  image="/img/header.webp"
+  preloadImage={cityData.image}
+  jsonLd={[breadcrumbJsonLdData, serviceJsonLdData, faqPageJsonLdData]}
+>
+  <Navbar currentPage="city" />
+
+  <Breadcrumb segments={breadcrumbSegments} />
+
+  <CityHero
+    image={cityData.image}
+    city={cityName}
+    title={heroTitle}
+    description={heroDescription}
+    details={heroDetails}
+  />
+
+  <CityPackages />
+  {einzelItems.length > 0 && (
+    <CityEinzeltechnik
+      cityName={cityName}
+      items={einzelItems}
+      title={einzelTitle}
+      description={einzelDescription}
+    />
+  )}
+  <CitySteps />
+
+  <CityAreas
+    areas={cityData.areas ?? []}
+    intro={areasIntro}
+  />
+
+  <!-- Tipps vom Profi -->
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-[var(--color-bg)] border border-[var(--color-secondary)]/20 rounded-xl p-6">
+        <h2 class="font-play text-xl font-bold mb-2 flex items-center gap-2">
+          <Icon name="light-bulb" class="w-5 h-5 text-[var(--color-secondary)] shrink-0" />
+          Diese 5 Fehler beim Partytechnik mieten vermeiden
+        </h2>
+        <p class="text-[var(--color-text-muted)] text-sm">
+          Bevor du in {cityName} Partytechnik mietest, wirf einen Blick auf meinen Medium-Artikel: <a href="https://medium.com/@holger.kampffmeyer/partytechnik-mieten-in-stuttgart-die-5-h%C3%A4ufigsten-fehler-und-warum-ich-meinen-eigenen-verleih-45c4189edbc6" target="_blank" rel="noopener" class="text-[var(--color-secondary)] hover:underline">Die 5 häufigsten Fehler – und warum ich meinen eigenen Verleih gegründet habe →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-4xl mx-auto">
+      <FAQSection faqs={cityFaqs} />
+    </div>
+  </section>
+
+  <ContactSection
+    title={`Technik mieten in ${cityName} – einfach anfragen`}
+    description={contactDescription}
+    distanceText={distanceText}
+  />
+
+  <Footer />
+</Layout>

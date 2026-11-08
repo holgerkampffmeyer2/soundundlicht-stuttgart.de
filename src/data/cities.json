@@ -90,7 +90,14 @@
         "km": "ca. 19 km",
         "travelTime": "25 Min."
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Esslingen",
@@ -161,7 +168,14 @@
         "travelTime": "30 Min.",
         "url": "/kirchheim-unter-teck"
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Tübingen",
@@ -177,7 +191,14 @@
       "powerstation"
     ],
     "einzelTitle": "Outdoor-Technik für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Filderstadt",
@@ -247,7 +268,14 @@
         "km": "ca. 13 km",
         "travelTime": "18 Min."
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Leinfelden-Echterdingen",
@@ -314,7 +342,14 @@
         "travelTime": "20 Min.",
         "url": "/esslingen"
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Kornwestheim",
@@ -330,7 +365,14 @@
       "nebel-maschine"
     ],
     "einzelTitle": "Einzeltechnik für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Ludwigsburg",
@@ -346,7 +388,14 @@
       "showlight-stage-bar"
     ],
     "einzelTitle": "Technik nach Wahl für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Böblingen",
@@ -412,7 +461,14 @@
         "travelTime": "30 Min.",
         "url": "/herrenberg"
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Sindelfingen",
@@ -458,7 +514,14 @@
         "travelTime": "30 Min.",
         "url": "/herrenberg"
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Leonberg",
@@ -474,7 +537,14 @@
       "mini-party-beamer"
     ],
     "einzelTitle": "Einzeltechnik für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Waiblingen",
@@ -490,7 +560,14 @@
       "partylicht-moving-head"
     ],
     "einzelTitle": "Technik nach Wahl für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Nürtingen",
@@ -506,7 +583,14 @@
       "powerstation"
     ],
     "einzelTitle": "Outdoor-Technik für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Reutlingen",
@@ -522,7 +606,14 @@
       "showlight-stage-bar"
     ],
     "einzelTitle": "Einzeltechnik für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite."
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Kirchheim unter Teck",
@@ -587,7 +678,14 @@
         "km": "ca. 34 km",
         "travelTime": "35 Min."
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Ostfildern",
@@ -657,7 +755,14 @@
         "travelTime": "20 Min.",
         "url": "/stuttgart"
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Fellbach",
@@ -718,7 +823,14 @@
         "km": "ca. 22 km",
         "travelTime": "26 Min."
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Herrenberg",
@@ -789,7 +901,14 @@
         "km": "ca. 34 km",
         "travelTime": "35 Min."
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Winnenden",
@@ -849,7 +968,14 @@
         "km": "ca. 33 km",
         "travelTime": "35 Min."
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Backnang",
@@ -909,7 +1035,14 @@
         "km": "ca. 46 km",
         "travelTime": "45 Min."
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   },
   {
     "name": "Metzingen",
@@ -970,6 +1103,13 @@
         "travelTime": "22 Min.",
         "url": "/nürtingen"
       }
-    ]
+    ],
+    "heroTitle": "",
+    "heroDescription": "",
+    "heroDetails": "",
+    "areasIntro": "",
+    "contactDescription": "",
+    "distanceText": "",
+    "travelTimeText": ""
   }
 ]

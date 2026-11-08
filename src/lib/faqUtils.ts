@@ -8,7 +8,7 @@ export interface FaqEntry {
   pages?: string[];
 }
 
-export async function getFaqsForPage(currentPage: string): Promise<FaqEntry[]> {
+export function getFaqsForPage(currentPage: string): FaqEntry[] {
   return faqsData.filter((faq: FaqEntry) => {
     if (!faq.pages) return true;
     if (faq.pages.length === 0) return true;
