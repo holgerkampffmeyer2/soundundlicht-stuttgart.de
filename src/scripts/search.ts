@@ -1,3 +1,5 @@
+import type { CatalogProduct } from '../lib/types';
+
 const DEBOUNCE_MS = 300;
 const MAX_RESULTS = 10;
 
@@ -74,17 +76,6 @@ try {
   const catScript = document.getElementById('rental-catalog-data');
   if (catScript) rentalCatalog = JSON.parse(catScript.textContent || '[]');
 } catch {}
-
-interface CatalogProduct {
-  slug: string;
-  title: string;
-  image: string;
-  description: string;
-  category: string;
-  price: string;
-  features: string[];
-  detailPage?: string;
-}
 
 function matchCatalogProducts(query: string): CatalogProduct[] {
   if (!query || !rentalCatalog) return [];

@@ -6,26 +6,7 @@ import Footer from '../../components/Footer.astro';
 import StickyMerkliste from '../../components/StickyMerkliste.astro';
 import Icon from '../../components/Icon.astro';
 import { getWebpUrl, getThumbUrl } from '../../lib/imageUtils';
-
-interface CategoryProduct {
-  slug: string;
-  title: string;
-  image: string;
-  price: string;
-  description: string;
-  features: string[];
-}
-
-interface JsonLdItem {
-  '@context': string;
-  '@type': string;
-  [key: string]: unknown;
-}
-
-interface BreadcrumbSegment {
-  label: string;
-  href?: string;
-}
+import type { ProductData, JsonLdItem, BreadcrumbSegment } from '@lib/types';
 
 interface Props {
   pageTitle: string;
@@ -36,7 +17,7 @@ interface Props {
   pagefindMeta: Record<string, string>;
   jsonLd: JsonLdItem[];
   breadcrumbSegments: BreadcrumbSegment[];
-  products: CategoryProduct[];
+  products: ProductData[];
 }
 
 const { pageTitle, title, description, image, preloadImage, pagefindMeta, jsonLd, breadcrumbSegments, products } = Astro.props;

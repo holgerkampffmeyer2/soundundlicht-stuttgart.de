@@ -5,14 +5,7 @@ import Footer from "../components/Footer.astro";
 import Icon from "../components/Icon.astro";
 import faqsData from "../data/faqs.json";
 import citiesData from "../data/cities.json";
-
-interface FaqEntry {
-  id: string;
-  question: string;
-  answer: string;
-  tags?: string[];
-  pages?: string[];
-}
+import type { FaqEntry } from "../lib/faqUtils";
 
 const PACKAGES = [
   "partypaket-stuttgart",
@@ -33,9 +26,9 @@ const LIGHT = [
   "powerstation",
 ];
 const CITY_SLUGS = citiesData.map((c) => c.slug);
-const CITY_NAMES = new Map(citiesData.map((c) => [c.slug, c.name]));
+// const CITY_NAMES = new Map(citiesData.map((c) => [c.slug, c.name])); // unused
 
-const faqs = faqsData as FaqEntry[];
+const faqs: FaqEntry[] = faqsData;
 
 function categoryOf(faq: FaqEntry): string {
   const pages = faq.pages ?? [];
@@ -82,8 +75,6 @@ const toc = [
   ...sections,
   ...(cityCount ? [{ id: "standorte", title: "Standorte & Lieferung" }] : []),
 ];
-
-const totalCount = faqs.length;
 
 const faqJsonLd = {
   "@context": "https://schema.org",

@@ -6,31 +6,7 @@ import Footer from '../../components/Footer.astro';
 import ProductGallery from './ProductGallery.astro';
 import ProductCTA from '../ProductCTA.astro';
 import StickyMerkliste from '../StickyMerkliste.astro';
-
-interface ProductData {
-  slug: string;
-  title: string;
-  images?: string[];
-  ctaLabel?: string;
-}
-
-interface PagefindMeta {
-  price?: string;
-  image?: string;
-  category?: string;
-  label?: string;
-}
-
-interface JsonLdItem {
-  '@context': string;
-  '@type': string;
-  [key: string]: unknown;
-}
-
-interface BreadcrumbSegment {
-  label: string;
-  href?: string;
-}
+import type { ProductData, PagefindMeta, JsonLdItem, BreadcrumbSegment } from '@lib/types';
 
 interface Props {
   product: ProductData;

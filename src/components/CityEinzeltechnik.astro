@@ -1,17 +1,7 @@
 ---
 import { getWebpUrl, getThumbUrl } from '../lib/imageUtils';
 import Icon from './Icon.astro';
-
-interface ProductData {
-  slug: string;
-  title: string;
-  image: string;
-  description: string;
-  category: string;
-  price: string;
-  features: string[];
-  detailPage?: string;
-}
+import type { ProductData } from '../lib/types';
 
 interface Props {
   cityName: string;

@@ -1,11 +1,5 @@
 import { getCart, removeItem } from './merklisteStore';
-
-export interface CatalogProduct {
-  slug: string;
-  title: string;
-  image: string;
-  price: string;
-}
+import type { CatalogProduct } from './types';
 
 function getCatalog(): Record<string, CatalogProduct> {
   const script = document.getElementById('rental-catalog-data');
