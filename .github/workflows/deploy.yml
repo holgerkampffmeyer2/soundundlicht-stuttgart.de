@@ -37,7 +37,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Approve build scripts
-        run: pnpm approve-builds esbuild --save
+        run: pnpm approve-builds esbuild
 
       - name: Install dependencies
         run: pnpm install --ignore-scripts=false
@@ -65,7 +65,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Approve build scripts
-        run: pnpm approve-builds esbuild --save
+        run: pnpm approve-builds esbuild
 
       - name: Install dependencies
         run: pnpm install --ignore-scripts=false
@@ -89,7 +89,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Approve build scripts
-        run: pnpm approve-builds esbuild --save
+        run: pnpm approve-builds esbuild
 
       - name: Install dependencies
         run: pnpm install --ignore-scripts=false
@@ -113,7 +113,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Approve build scripts
-        run: pnpm approve-builds esbuild --save
+        run: pnpm approve-builds esbuild
 
       - name: Install dependencies
         run: pnpm install --ignore-scripts=false
