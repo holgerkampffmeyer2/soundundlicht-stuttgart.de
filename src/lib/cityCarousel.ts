@@ -1,3 +1,5 @@
+import { sanitizeUrl } from './urlUtils';
+
 export interface CityCarouselConfig {
   trackId: string;
   prevBtnId: string;
@@ -27,8 +29,7 @@ export function initCityCarousel(config: CityCarouselConfig): void {
     if (!slide) return;
     const bg = slide.querySelector<HTMLImageElement>('.city-card-bg');
     if (!bg) return;
-    // Safe: data-src is a static image URL from Astro build, assigned to img.src (not innerHTML)
-    const url = bg.getAttribute('data-src');
+    const url = sanitizeUrl(bg.getAttribute('data-src'), { protocols: ['http:', 'https:'] });
     const srcset = bg.getAttribute('data-srcset');
     if (!url || bg.getAttribute('src') === url) return;
     bg.src = url;

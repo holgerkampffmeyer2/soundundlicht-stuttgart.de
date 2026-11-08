@@ -1,6 +1,11 @@
+import { sanitizeUrl } from './urlUtils';
+
 function loadMap(placeholder: HTMLElement): void {
-  // Safe: data-map-src is a static Google Maps embed URL from Astro template, assigned to iframe.src (not innerHTML)
-  const src = placeholder.getAttribute('data-map-src');
+  const src = sanitizeUrl(placeholder.getAttribute('data-map-src'), {
+    protocols: ['https:'],
+    hostnames: ['www.google.com'],
+    pathnamePrefix: '/maps/embed',
+  });
   if (!src) return;
 
   const iframe = document.createElement('iframe');
