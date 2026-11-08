@@ -62,7 +62,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --shamefully-hoist
 
       - name: TypeScript check
         run: pnpm run check
