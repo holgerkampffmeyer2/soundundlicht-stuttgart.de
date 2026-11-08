@@ -20,6 +20,9 @@ importers:
 
   .:
     dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.12
+        version: 0.9.12(@emnapi/runtime@2.0.0-beta.2)(prettier@3.9.10)(typescript@6.0.3)
       '@astrojs/sitemap':
         specifier: ^3.7.4
         version: 3.7.4
@@ -42,9 +45,6 @@ importers:
         specifier: ^8.3.4
         version: 8.3.4(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.1)
     devDependencies:
-      '@astrojs/check':
-        specifier: ^0.9.12
-        version: 0.9.12(@emnapi/runtime@2.0.0-beta.2)(prettier@3.9.10)(typescript@6.0.3)
       '@eslint/js':
         specifier: ^10.0.1
         version: 10.0.1(eslint@10.12.0(jiti@2.7.0))
