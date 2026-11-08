@@ -26,6 +26,7 @@
     "indexnow-submit": "node scripts/indexnow-submit.mjs"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.12",
     "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "7.4.7",
@@ -35,7 +36,6 @@
     "vite": "^8.3.4"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.12",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.64.0",
     "@typescript-eslint/eslint-plugin": "^8.71.1",
