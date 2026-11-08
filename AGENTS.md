@@ -24,7 +24,7 @@ Astro 7.x SSG-Website für Veranstaltungstechnik-Verleih (PA-Anlagen, Partyboxen
 - `pnpm run dev` — Dev server
 - `pnpm run build` — Production build → dist/ (für tägliche Entwicklung)
 - `pnpm run build:full` — Build + RSS + urllist (für Deploy)
-  - **Timeout:** Build braucht ~22s → Agent muss min. 60s Timeout setzen
+  - **Timeout:** Build braucht ~17–22s → Agent muss min. 60s Timeout setzen
 - `pnpm run build:images` — WebP-Optimierung via Sharp (JPG/PNG in `public/img/`)
 - `pnpm run build:full-with-images` — Images + Build + RSS + urllist
 - `pnpm run preview` — Preview build
@@ -34,7 +34,7 @@ Astro 7.x SSG-Website für Veranstaltungstechnik-Verleih (PA-Anlagen, Partyboxen
 - `npx playwright test` — E2E-Tests (Playwright)
 - `pnpm run update-reviews` — Google-Rezensionen via Playwright-Scraper (angemeldete Session, Profil unter `~/.cache/sls-gmaps-profile`) in `src/data/google-reviews.json` aktualisieren (einmalig `pnpm run gmaps:login` ausführen; `--dry-run` zeigt nur den geplanten Ablauf)
 
-Build output: `dist/` (static HTML + sitemap), `public/rss.xml`, `public/urllist.txt`.
+Build output: `dist/` (static HTML + sitemap), `dist/marketplace.json` (JSON-Produktfeed für externe Marketplace-Integrationen, aus Content Collections, nicht in der Sitemap), `public/rss.xml`, `public/urllist.txt`.
 
 ## CLI-Proxy `rtk`
 

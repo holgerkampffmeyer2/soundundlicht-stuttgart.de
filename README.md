@@ -46,6 +46,7 @@ pnpm run indexnow-submit  # an Bing, Yandex, Naver, Seznam, Yep senden
 ## Build-Outputs
 
 - `dist/` – statische HTML-Seiten
+- `dist/marketplace.json` – JSON-Produktfeed für externe Marketplace-Integrationen (aus Content Collections, nicht in der Sitemap)
 - `public/rss.xml` – RSS-Feed (wird bei `pnpm run build:full` generiert)
 - `public/urllist.txt` – URL-Liste für Suchmaschinen (wird bei `pnpm run build:full` generiert)
 
