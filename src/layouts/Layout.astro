@@ -28,7 +28,12 @@ const {
   pagefindMeta
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// build.format = 'file' yields paths like "/sindelfingen.html" / "/index.html".
+// Canonical + sitemap must use the clean extensionless URLs.
+const canonicalPath = Astro.url.pathname
+  .replace(/\/index\.html$/, "/")
+  .replace(/\.html$/, "");
+const canonicalURL = new URL(canonicalPath, Astro.site);
 
 const pagefindBodyWeight = pagefindType === 'produkt' ? '2' : undefined;
 const pagefindMerged: Record<string, string> = {};
