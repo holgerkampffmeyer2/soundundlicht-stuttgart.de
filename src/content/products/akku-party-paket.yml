@@ -20,3 +20,7 @@ setupTime: "~30 Min."
 spotifyReady: true
 micIncluded: false
 lightIncluded: true
+brands:
+  - JBL
+  - Stairville
+  - EnginStar

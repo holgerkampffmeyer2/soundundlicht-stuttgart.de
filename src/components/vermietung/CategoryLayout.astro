@@ -5,6 +5,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import Footer from '../../components/Footer.astro';
 import StickyMerkliste from '../../components/StickyMerkliste.astro';
 import Icon from '../../components/Icon.astro';
+import BrandBadges from '../vermietung/BrandBadges.astro';
 import { getWebpUrl, getThumbUrl } from '../../lib/imageUtils';
 import type { ProductData, JsonLdItem, BreadcrumbSegment } from '@lib/types';
 
@@ -49,7 +50,7 @@ const layoutTitle = title ?? pageTitle;
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class={`grid grid-cols-1 md:grid-cols-2 ${products.length > 2 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'} gap-8`}>
         {products.map((product, index) => (
           <div id={`karte-${product.slug}`} class="card-base equipment-card" style={`animation-delay: ${index * 0.1}s`}>
             <div class="relative">
@@ -72,6 +73,7 @@ const layoutTitle = title ?? pageTitle;
               </span>
             </div>
             <span class="price-badge">{product.price}</span>
+            <BrandBadges brands={product.brands} class="mt-2" />
             <h3 class="text-xl font-bold mt-2 mb-3">{product.title}</h3>
             <p class="text-[var(--color-text-muted)] text-sm mb-4">{product.description}</p>
             <ul class="text-[var(--color-text-muted)] text-sm space-y-1 mb-4">
@@ -83,6 +85,14 @@ const layoutTitle = title ?? pageTitle;
             </ul>
             <div class="flex flex-col gap-2 mt-auto">
               <a href={`#${product.slug}`} class="btn-secondary w-full text-center block">Details ansehen</a>
+              {product.packages && product.packages.length > 0 && (
+                <div class="text-center text-xs text-[var(--color-text-muted)]">
+                  In Paketen:{" "}
+                  {product.packages.map((pkg, i) => (
+                    <a href={pkg.url} class="text-[var(--color-secondary)] hover:underline mx-1" key={i}>{pkg.name}</a>
+                  ))}
+                </div>
+              )}
               <button data-action="add-to-wishlist" data-slug={product.slug} class="btn-primary w-full !px-3" aria-pressed="false">
                 <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
                   <Icon name="heart" class="w-6 h-6 mt-0.5 shrink-0" />

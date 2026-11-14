@@ -6,6 +6,7 @@ import DecisionHelp from '../../components/vermietung/DecisionHelp.astro';
 import RelatedLinks from '../../components/vermietung/RelatedLinks.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
 import FAQSection from '../../components/FAQSection.astro';
+import BrandBadges from '../../components/vermietung/BrandBadges.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
 import { serviceArea } from '../../data/jsonLd';
@@ -14,6 +15,9 @@ const products = await getCollection('products');
 const nebel = products.find(i => i.data.slug === 'nebel-maschine')!.data;
 const af150 = products.find(i => i.data.slug === 'af-150')!.data;
 const categoryProducts = [nebel, af150];
+
+// Aggregierte Marken für Hero: Stairville (AF-150) + Uking (Nebel-Maschine)
+const nebelHeroBrands = [...new Set(categoryProducts.flatMap(p => p.brands ?? []))];
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -151,6 +155,7 @@ const af150Packages = [
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             Inkl. Nebelfluid & Einweisung
           </span>
+          <BrandBadges brands={nebelHeroBrands} />
         </div>
         <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Nebelmaschinen mieten</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">
@@ -189,6 +194,7 @@ const af150Packages = [
         </p>
       </div>
       <div class="mb-8 text-center"><span class="price-badge">{af150.price}</span></div>
+      <BrandBadges brands={af150.brands} class="justify-center" />
       <TechnicalSpecs specs={specsAf150} />
       <RentalIncludes items={includesAf150} />
       <IncludedInPackages packages={af150Packages} />
@@ -208,6 +214,7 @@ const af150Packages = [
         </p>
       </div>
       <div class="mb-8 text-center"><span class="price-badge">{nebel.price}</span></div>
+      <BrandBadges brands={nebel.brands} class="justify-center" />
       <TechnicalSpecs specs={specsNebel} />
       <RentalIncludes items={includesNebel} />
     </div>

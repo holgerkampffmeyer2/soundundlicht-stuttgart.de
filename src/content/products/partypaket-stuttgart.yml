@@ -20,3 +20,7 @@ setupTime: "~30 Min."
 spotifyReady: true
 micIncluded: true
 lightIncluded: true
+brands:
+  - JBL
+  - Eurolite
+  - Uking

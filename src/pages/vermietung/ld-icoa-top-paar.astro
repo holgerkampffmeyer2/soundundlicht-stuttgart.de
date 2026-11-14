@@ -1,0 +1,167 @@
+---
+import ProductLayout from '../../components/vermietung/ProductLayout.astro';
+import Icon from '../../components/Icon.astro';
+import PackageContents from '../../components/vermietung/PackageContents.astro';
+import RentalPricing from '../../components/vermietung/RentalPricing.astro';
+import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
+import RelatedLinks from '../../components/vermietung/RelatedLinks.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import BrandBadges from '../../components/vermietung/BrandBadges.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { serviceJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
+
+const products = await getCollection('products');
+const product = products.find(i => i.data.slug === 'ld-icoa-top-paar')!.data;
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: "Vermietung", href: "/vermietung" },
+  { label: "Top-Paar LD ICOA" }
+];
+
+const pageTitle = "ICOA Top-Paar mieten in Stuttgart | Sound & Licht Stuttgart";
+const faqs = await getFaqsForPage('ld-icoa-top-paar');
+
+const images = ["/img/vermietung/icoa-placeholder.webp"];
+
+const packageItems = [
+  { name: "2x LD Systems ICOA 12 A Topteile", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-12-a" },
+  { name: "2x Dreibein-Lautsprecherstativ", detailPage: "/vermietung/ld-systems-icoa-series#zubehoer" },
+  { name: "XLR- und Stromkabel" }
+];
+
+const events = [
+  {
+    title: "Kleine Feiern",
+    description: "Für Geburtstage, Gartenpartys oder kleine Firmenfeiern liefert das Top-Paar klaren Sound für Sprache und Hintergrundmusik. Für basslastige Partymusik empfehle ich zusätzlich einen Sub.",
+    personCount: "30–80 Personen"
+  },
+  {
+    title: "Bühnenmonitoring",
+    description: "Beide ICOA 12 A lassen sich mit 55°-Winkel horizontal als Bodenmonitor aufstellen. Für Bands und Theater ist das Top-Paar eine flexible Monitorlösung ohne zusätzliche Stative.",
+    personCount: "flexibel"
+  },
+  {
+    title: "Theater, Lesung & Vortrag",
+    description: "Die Koaxial-Tops bleiben auch bei Sprache klar und ortbar. Für kleine Bühnen und Lesungen reicht das Paar oft schon ohne Subwoofer.",
+    personCount: "bis 80 Personen"
+  },
+  {
+    title: "Ersatz-PA bei Ausfall",
+    description: "Wenn eine Anlage kurzfristig ausfällt, sind zwei ICOA-Tops mit Stativen die schnellste Lösung. Kompakt, leicht zu transportieren und in wenigen Minuten aufgebaut.",
+    personCount: "kurzfristig möglich"
+  }
+];
+
+const packageFeatures = [
+  "2x ICOA 12 A mit 1200 W Peak und 126 dB max. SPL",
+  "DynX DSP mit 4 Presets und 3-Band-EQ",
+  "90° x 50°-Abstrahlung für breite Beschallung",
+  "55°-Monitorwinkel für Bühnenmonitoring",
+  "2x Dreibein-Lautsprecherstativ inklusive",
+  "XLR- und Stromkabel inklusive",
+  "Passt in einen Kombi oder Kleinwagen",
+  "Persönliche Einweisung bei der Abholung"
+];
+
+const serviceJsonLdData = JSON.parse(JSON.stringify(serviceJsonLd(product, images)));
+const breadcrumbJsonLdData = JSON.parse(JSON.stringify(breadcrumbJsonLd(breadcrumbSegments)));
+const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
+---
+
+<ProductLayout
+  product={product}
+  pageTitle={pageTitle}
+  description="Miete das LD ICOA Top-Paar in Stuttgart: 2x ICOA 12 A mit Stativen und Kabeln. Ideal als kleine PA, Bühnenmonitor oder kurzfristige Ersatz-PA für Feiern bis ca. 80 Personen."
+  image="/img/vermietung/icoa-placeholder.webp"
+  preloadImage="/img/vermietung/icoa-placeholder.webp"
+  pagefindType="produkt"
+  pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Top-Paar LD ICOA" }}
+  jsonLd={[serviceJsonLdData, breadcrumbJsonLdData, faqPageJsonLdData]}
+  breadcrumbSegments={breadcrumbSegments}
+>
+  <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/img/vermietung/icoa-placeholder.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="hero-overlay-accent"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+          <span class="price-badge">{product.price}</span>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Inkl. Stative, Kabel & Einweisung
+          </span>
+          <BrandBadges brands={product.brands} />
+        </div>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Top-Paar LD ICOA</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Zwei ICOA 12 A Topteile mit zwei Dreibeinstative und Kabeln: Das kleinste ICOA-Paket ist gleichzeitig das flexibelste. Nutze es als kleine PA für Feiern, als Bühnenmonitor-Paar für Bands oder als schnelle Ersatz-PA, wenn kurzfristig eine Anlage ausfällt.<br />
+          Die Tops lassen sich horizontal mit 55°-Winkel als Monitor aufstellen. Für mehr Bass kannst du später einen ICOA SUB 15 A dazunehmen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-[var(--color-surface)]">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Highlights</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Klein, flexibel, laut genug</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {packageFeatures.map((feature) => (
+          <div class="bg-[var(--color-bg)] p-6 rounded-xl border border-[var(--color-border)] hover:border-[var(--color-secondary)] transition-all duration-300">
+            <div class="flex items-start gap-3">
+              <span class="text-[var(--color-secondary)] text-2xl">✓</span>
+              <p class="text-[var(--color-text)]">{feature}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <RentalPricing price={product.price} deposit={200} />
+
+  <PackageContents title="Enthalten im Top-Paar" items={packageItems} />
+
+  <ExampleEvents events={events} />
+
+  <RelatedLinks
+    items={[
+      { title: "Partypaket XL LD ICOA", url: "/vermietung/ld-icoa-party-paket", text: "Mit einem ICOA SUB 15 A für mehr Bass bei Privat-Partys, DJs und Bandproben." },
+      { title: "Club-Paket LD ICOA", url: "/vermietung/ld-icoa-club-paket", text: "Die große Lösung mit zwei Subs für mobile DJs und Partys bis ca. 200 Personen." },
+      { title: "ICOA System & Einzelgeräte", url: "/vermietung/ld-systems-icoa-series", text: "Top und Sub einzeln mieten, technische Daten und Zubehör im Überblick." }
+    ]}
+  />
+
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-play text-2xl md:text-3xl font-bold text-center mb-10">
+        Häufig gestellte Fragen
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="faq-details bg-[var(--color-surface)] rounded-xl p-4 cursor-pointer">
+            <summary class="font-bold cursor-pointer flex items-center gap-3 list-none">
+              <span class="faq-icon">
+                <Icon name="chevron-right" class="w-3 h-3" />
+              </span>
+              {faq.question}
+            </summary>
+            <p class="text-[var(--color-text-muted)] mt-3 ml-9">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+      <p class="text-center mt-6">
+        <a href="/faq" class="text-[var(--color-secondary)] hover:underline font-semibold">Alle Fragen zur Veranstaltungstechnik ansehen →</a>
+      </p>
+    </div>
+  </section>
+
+  <Testimonials />
+</ProductLayout>

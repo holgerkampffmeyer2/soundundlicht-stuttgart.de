@@ -37,7 +37,7 @@ describe('City Page Utilities', () => {
       expect(result['@type']).toBe('Service');
       expect(result.name).toBe('Test Product');
       expect(result.description).toBe('Test Description');
-      expect(result.image).toEqual(['/img/test.webp']);
+      expect(result.image).toEqual(['https://soundundlicht-stuttgart.de/img/test.webp']);
       expect(result.serviceType).toBe('Veranstaltungstechnik-Vermietung');
       expect(result.areaServed).toBeDefined();
       expect(result.provider).toEqual({ '@type': 'LocalBusiness', '@id': 'https://soundundlicht-stuttgart.de/#business' });

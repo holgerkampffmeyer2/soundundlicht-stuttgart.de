@@ -1511,5 +1511,205 @@
     "pages": [
       "led-scheinwerfer"
     ]
+  },
+  {
+    "id": "icoa-club-personen",
+    "question": "Für wie viele Personen reicht das ICOA Club-Paket?",
+    "answer": "Das Club-Paket mit 2x ICOA 12 A und 2x ICOA SUB 15 A ist meine Haupt-PA für mobile DJs, Bands und größere Feiern. Je nach Raum, Musikrichtung und gewünschtem Pegel passt es für rund 100 bis 200 Personen. Im Freien oder bei basslastiger Musik plane ich lieber etwas mehr Reserven ein – sag mir einfach Venue und Personenzahl, dann berate ich dich konkret.",
+    "pages": [
+      "ld-icoa-club-paket"
+    ]
+  },
+  {
+    "id": "icoa-club-ersatz-pa",
+    "question": "Kann ich das Club-Paket kurzfristig als Ersatz-PA mieten?",
+    "answer": "Ja. Wenn deine Anlage kurzfristig ausfällt, melde dich telefonisch – oft sind die Geräte mit 1 bis 3 Tagen Vorlauf noch frei. Das Club-Paket ist als Ersatz-PA besonders flexibel, weil du es mit 2 Tops und 2 Subs schnell auf- und wieder abbaust.",
+    "pages": [
+      "ld-icoa-club-paket"
+    ]
+  },
+  {
+    "id": "icoa-club-aufbau",
+    "question": "Wie baue ich das Club-Paket auf?",
+    "answer": "Du stellst die beiden Subs auf, steckst die Gravity-Distanzstangen in die M20-Gewinde und setzt die ICOA 12 A oben drauf. Danach verbindest du die Tops per XLR mit den Subs und wählst am DSP das passende Crossover-Preset. Mit Einweisung dauert der Aufbau etwa 45 Minuten.",
+    "pages": [
+      "ld-icoa-club-paket"
+    ]
+  },
+  {
+    "id": "icoa-club-cardioid",
+    "question": "Kann ich die ICOA-Subs im Cardioid-Modus betreiben?",
+    "answer": "Ja. Der ICOA SUB 15 A hat ein Cardioid-Preset. Dafür stellst du einen zusätzlichen Sub mit der Rückseite zur Bühne auf und aktivierst das Preset. So wird der Bass nach hinten deutlich reduziert, während vorne der volle Punch bleibt. Ich erkläre dir die Aufstellung bei der Abholung.",
+    "pages": [
+      "ld-icoa-club-paket"
+    ]
+  },
+  {
+    "id": "icoa-party-bandprobe",
+    "question": "Reicht das Partypaket XL für eine Bandprobe?",
+    "answer": "Für Gesang, Gitarre, Keys und E-Drums reicht das Partypaket XL mit 2x ICOA 12 A und 1x ICOA SUB 15 A in den meisten Proberäumen gut aus. Bei einem akustischen Schlagzeug oder sehr lauter Band kann ein zweiter Sub sinnvoll sein – dann ist das Club-Paket die bessere Wahl.",
+    "pages": [
+      "ld-icoa-party-paket"
+    ]
+  },
+  {
+    "id": "icoa-party-monitor",
+    "question": "Kann ich die ICOA 12 A im Partypaket XL als Monitor verwenden?",
+    "answer": "Ja. Die ICOA 12 A hat einen 55°-Monitorwinkel und lässt sich horizontal als Bodenmonitor einsetzen. Die Koaxial-Bauweise sorgt auch als Monitor für eine saubere Ortung. Im Partypaket XL kannst du die Tops flexibel als PA oder als Monitoring nutzen.",
+    "pages": [
+      "ld-icoa-party-paket"
+    ]
+  },
+  {
+    "id": "icoa-party-theater",
+    "question": "Eignet sich das Partypaket XL für Theater und Lesungen?",
+    "answer": "Ja, gerade für Sprache ist das Paket sehr gut geeignet: Die ICOA 12 A strahlt mit 90° x 50° breit ab und bleibt auch bei höheren Pegeln verständlich. Für Musik oder Einspieler kommt der ICOA SUB 15 A dazu. Für kleinere Bühnen kannst du eines der Tops zusätzlich als Monitor nutzen.",
+    "pages": [
+      "ld-icoa-party-paket"
+    ]
+  },
+  {
+    "id": "icoa-party-upgrade",
+    "question": "Kann ich das Partypaket XL später zum Club-Paket erweitern?",
+    "answer": "Ja. Du kannst einen zweiten ICOA SUB 15 A und eine zweite Distanzstange dazunehmen. Wenn beide Subs verfügbar sind, baue ich dir das Club-Paket daraus. Sag bei der Anfrage einfach, dass du später erweitern möchtest, dann prüfe ich die Verfügbarkeit direkt mit.",
+    "pages": [
+      "ld-icoa-party-paket"
+    ]
+  },
+  {
+    "id": "icoa-top-personen",
+    "question": "Wie viele Personen schafft das Top-Paar ohne Subwoofer?",
+    "answer": "Das Top-Paar aus 2x ICOA 12 A reicht für kleine Feiern und Beschallung mit Sprache oder akustischer Musik für etwa 30 bis 80 Personen – je nach Raum und Pegel. Für basslastige Partymusik empfehle ich zusätzlich einen ICOA SUB 15 A, damit die Tops entlastet werden.",
+    "pages": [
+      "ld-icoa-top-paar"
+    ]
+  },
+  {
+    "id": "icoa-top-monitor",
+    "question": "Kann ich das Top-Paar als Bühnenmonitor nutzen?",
+    "answer": "Ja. Beide ICOA 12 A lassen sich mit 55°-Winkel horizontal als Bodenmonitor aufstellen. Für Monitoring brauchst du keine Stative. Die Stative sind trotzdem dabei, falls du die Tops als kleine PA aufstellen willst.",
+    "pages": [
+      "ld-icoa-top-paar"
+    ]
+  },
+  {
+    "id": "icoa-top-ersatz",
+    "question": "Ist das Top-Paar als kurzfristige Ersatz-PA geeignet?",
+    "answer": "Ja. Das Top-Paar ist kompakt, schnell aufgebaut und passt in einen Kombi. Wenn eine Anlage kurzfristig ausfällt, sind die zwei Tops oft die schnellste Lösung für Sprache, Hintergrundmusik oder eine kleine Feier. Melde dich telefonisch, dann prüfe ich die Verfügbarkeit sofort.",
+    "pages": [
+      "ld-icoa-top-paar"
+    ]
+  },
+  {
+    "id": "icoa-top-sub-upgrade",
+    "question": "Kann ich später einen Subwoofer zum Top-Paar dazumieten?",
+    "answer": "Ja. Du kannst einen einzelnen ICOA SUB 15 A für ab 60€/Tag dazunehmen oder direkt auf das Partypaket XL wechseln. Mit einem Sub kommt deutlich mehr Tiefton dazu, die Tops werden entlastet und die Anlage klingt auch bei Party-Pegel entspannter.",
+    "pages": [
+      "ld-icoa-top-paar"
+    ]
+  },
+  {
+    "id": "icoa-system-unterschied",
+    "question": "Was ist der Unterschied zwischen ICOA 12 A und ICOA SUB 15 A?",
+    "answer": "Das ICOA 12 A ist ein aktives 12\"-Koaxial-Topteil für den vollen Frequenzbereich, Sprache und Musik – allein oder als Satellit auf einem Sub. Der ICOA SUB 15 A ist der aktive 15\"-Subwoofer für den Tiefton bis 36 Hz. Zusammen ergeben sie ein volles PA-System mit mehr Bassreserven und klarerem Klang bei hohen Pegeln.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-einzeln",
+    "question": "Kann ich Top und Sub einzeln mieten?",
+    "answer": "Ja. Das ICOA 12 A kostet ab 50€/Tag, der ICOA SUB 15 A ab 60€/Tag. Du kannst beide einzeln buchen oder als Bühnen- bzw. Club-Paket kombinieren. Für die passende Anzahl und Verkabelung berate ich dich gern.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-kombination",
+    "question": "Kann ich die ICOA-Geräte mit meiner bestehenden PA kombinieren?",
+    "answer": "Ja, über die symmetrischen XLR-Anschlüsse. Der ICOA SUB 15 A hat einstellbare Crossover-Frequenzen und eine Delay-Funktion, damit du ihn an bestehende Tops anpassen kannst. Achte auf die Polarität und die Laufzeitunterschiede – bei der Einweisung zeige ich dir die wichtigsten Einstellungen.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-anschluesse",
+    "question": "Welche Kabel und Anschlüsse brauche ich für das ICOA-System?",
+    "answer": "Die ICOA 12 A hat zwei XLR/Klinke-Kombieingänge, einen 3,5-mm-Aux-Eingang und einen XLR-Ausgang. Der ICOA SUB 15 A bietet zwei Kombieingänge und zwei XLR-Ausgänge. XLR- und Stromkabel sind bei den Paketen dabei; für eigene Aufbauten kannst du vorhandene XLR-Kabel nutzen.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-paket-vergleich",
+    "question": "Was ist der Unterschied zwischen Top-Paar, Partypaket XL und Club-Paket?",
+    "answer": "Das Top-Paar (ab 100€) sind nur zwei Tops ohne Sub – ideal für Sprache, Monitoring und kleine Feiern. Das Partypaket XL (ab 130€) hat 2 Tops + 1 Sub – die kompakte Wahl für Privat-Partys, DJs, Bandproben, Theater oder wenn wenig Platz für zwei Subs ist. Das Club-Paket (ab 150€) mit 2 Tops + 2 Subs ist die Haupt-PA für mobile DJs, Clubs und größere Feiern bis 200 Personen – inklusive Cardioid-Modus für kontrollierten Bass.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-cardioid",
+    "question": "Was bringt der Cardioid-Modus beim ICOA SUB 15 A?",
+    "answer": "Im Cardioid-Modus stellst du einen zusätzlichen Sub mit der Rückseite zur Bühne auf und aktivierst das Preset. Der Bass wird nach hinten deutlich reduziert (bis zu 15 dB Dämpfung), während vorne der volle Punch bleibt. Ideal für Clubs, Bühnen oder Events, wo der Bass nicht in Nebenräume oder zur Bühne zurückstrahlen soll. Im Club-Paket sind zwei Subs dabei – perfekt für Cardioid-Betrieb.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-outdoor",
+    "question": "Kann ich das ICOA-System im Freien nutzen?",
+    "answer": "Ja, das ICOA-System ist für Outdoor-Einsätze geeignet. Achte auf trockene Stellplätze, sichere Stromversorgung (Schuko/CEE) und Schutz vor Nässe (Plane, Pavillon). Bei Wind empfiehlt sich zusätzliche Ballastierung der Stative. Für größere Open-Air-Events ist das Club-Paket mit zwei Subs die bessere Wahl, da der Bass im Freien schneller abfällt.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-transport",
+    "question": "Wie transportiere ich das ICOA-System?",
+    "answer": "Das Top-Paar (2 Tops + 2 Stative) passt in einen Kombi. Das Partypaket XL (2 Tops, 1 Sub, 1 Distanzstange, 1 Stativ) braucht einen Kombi mit umgeklappter Rückbank oder einen kleinen Transporter (Sprinter-Klasse). Das Club-Paket (2 Tops, 2 Subs, 2 Distanzstangen) braucht einen Transporter. Alle Geräte haben Tragegriffe und Rollen an den Subs. Kabel und Zubehör sind in Taschen verpackt.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-strom",
+    "question": "Welche Stromversorgung braucht das ICOA-System?",
+    "answer": "Alle ICOA-Geräte laufen an normaler 230 V Schuko-Steckdose. Ein Top zieht ca. 3–4 A, ein Sub ca. 5–6 A bei Volllast. Für das Club-Paket (2 Tops + 2 Subs) solltest du mindestens zwei getrennte 16 A Stromkreise einplanen. Alle Kabel sind bei den Paketen dabei. Prüfe vor Ort die Absicherung (B16/C16).",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-dsp",
+    "question": "Welche DSP-Presets gibt es und wofür sind sie?",
+    "answer": "Die ICOA 12 A hat 4 Presets: FOH (Front of House), Monitor, Speech, Music. Der SUB 15 A hat Crossover-Presets (80/100/120 Hz), Cardioid, Delay und Polarity. Für Sprache wählst du 'Speech' am Top und 100 Hz Crossover am Sub. Für Party-Musik 'Music' am Top und 80 Hz. Als Monitor 'Monitor' am Top. Die Presets wählst du direkt am Gerät oder per LD Systems Software per USB.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-aufbauzeit",
+    "question": "Wie lange dauert der Aufbau der ICOA-Pakete?",
+    "answer": "Top-Paar: ca. 10–15 Min. (2 Tops auf Stative, Kabel ran). Partypaket XL: ca. 20–30 Min. (Sub positionieren, Distanzstange, Top drauf, zweites Top auf Stativ, Kabel). Club-Paket: ca. 35–45 Min. (2 Subs positionieren, 2 Distanzstangen, 2 Tops drauf, Kabel, ggf. Cardioid konfigurieren). Einweisung bei Abholung ca. 10 Min. inklusive.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-weather",
+    "question": "Wie schütze ich das ICOA-System bei Regen/Feuchtigkeit?",
+    "answer": "Die Geräte sind nicht wasserdicht (IP20). Bei Outdoor-Einsätzen unbedingt Pavillon, Plane oder Wetterschutzhaube nutzen. Subs leicht erhöht auf Paletten/Stellfüßen stellen, damit kein Wasser in die Bassreflex-Öffnungen läuft. Kabelverbindungen mit Schutzhüllen (IP44) oder Kabelbrücken abdecken. Bei Starkregen: abbauen und trocken stellen.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
+  },
+  {
+    "id": "icoa-system-kompetitor",
+    "question": "Wie schneidet ICOA gegen QSC K.2, JBL EON oder TurboSound ab?",
+    "answer": "Die ICOA 12 A spielt in der gleichen Liga wie QSC K12.2, JBL EON712 oder TurboSound iQ12. Vorteile ICOA: Koaxial-Chassis für exzellente Phasen-Kohärenz, sehr breite 90°x50° Abstrahlung, sehr geringes Gewicht (19,95 kg), DynX DSP mit 4 Presets + 3-Band-EQ + Delay, Cardioid-Sub-Option, Made in Germany (LD Systems). Preis-Leistung bei Miete oft besser, da Geräte sehr zuverlässig und servicefreundlich sind.",
+    "pages": [
+      "ld-systems-icoa-series"
+    ]
   }
 ]

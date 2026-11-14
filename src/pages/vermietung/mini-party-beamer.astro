@@ -7,6 +7,7 @@ import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import DecisionHelp from '../../components/vermietung/DecisionHelp.astro';
 import RelatedLinks from '../../components/vermietung/RelatedLinks.astro';
+import BrandBadges from '../../components/vermietung/BrandBadges.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
 import { serviceArea } from '../../data/jsonLd';
@@ -133,12 +134,13 @@ const events = [
     <div class="relative z-10 w-full py-32 px-4">
       <div class="max-w-6xl mx-auto">
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
-        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+<div class="flex flex-wrap gap-3 mt-3 mb-2">
           <span class="price-badge">{product.price}</span>
           <span class="plug-badge-inline">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             Inkl. Kabel & Einweisung
           </span>
+          <BrandBadges brands={product.brands} />
         </div>
         <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Party Beamer mieten</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">

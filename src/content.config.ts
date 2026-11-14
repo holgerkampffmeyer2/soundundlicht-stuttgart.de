@@ -15,6 +15,7 @@ const products = defineCollection({
     order: z.number().optional(),
     features: z.array(z.string()),
     detailPage: z.string().optional(),
+    brands: z.array(z.string()).optional(),
   }),
 });
 

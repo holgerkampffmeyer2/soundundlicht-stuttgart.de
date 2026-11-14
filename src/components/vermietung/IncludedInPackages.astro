@@ -42,15 +42,15 @@ const { packages } = Astro.props;
   .included-in-packages-link {
     color: var(--color-secondary);
     font-weight: 600;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
 
   .included-in-packages-link:hover {
     color: white;
-    text-decoration-color: white;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
   }
 
   .separator {

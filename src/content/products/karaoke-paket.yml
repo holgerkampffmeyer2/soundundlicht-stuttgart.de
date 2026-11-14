@@ -20,3 +20,6 @@ setupTime: "~15 Min."
 spotifyReady: true
 micIncluded: true
 lightIncluded: false
+brands:
+  - JBL
+  - Yamaha

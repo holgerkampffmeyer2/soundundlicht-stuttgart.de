@@ -4,6 +4,7 @@ import type { FaqEntry as FaqEntryType } from './faqUtils';
 export type ProductData = CollectionEntry<'products'>['data'] & {
   ctaLabel?: string;
   images?: string[];
+  packages?: { name: string; url: string }[];
 };
 export type CityData = CollectionEntry<'cities'>['data'];
 export type FaqEntry = FaqEntryType; // re-export

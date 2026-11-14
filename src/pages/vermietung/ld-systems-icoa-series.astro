@@ -1,0 +1,317 @@
+---
+import CategoryLayout from '../../components/vermietung/CategoryLayout.astro';
+import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
+import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
+import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
+import DecisionHelp from '../../components/vermietung/DecisionHelp.astro';
+import RelatedLinks from '../../components/vermietung/RelatedLinks.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import BrandBadges from '../../components/vermietung/BrandBadges.astro';
+import Icon from '../../components/Icon.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { serviceArea, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
+import { getWebpUrl, getThumbUrl } from '../../lib/imageUtils';
+
+const products = await getCollection('products');
+const top = products.find(i => i.data.slug === 'ld-icoa-12-a')!.data;
+const sub = products.find(i => i.data.slug === 'ld-icoa-sub-15-a')!.data;
+const topPaar = products.find(i => i.data.slug === 'ld-icoa-top-paar')!.data;
+const partyPaket = products.find(i => i.data.slug === 'ld-icoa-party-paket')!.data;
+const clubPaket = products.find(i => i.data.slug === 'ld-icoa-club-paket')!.data;
+const icoaPackages = [topPaar, partyPaket, clubPaket];
+
+// Pakete für CategoryLayout-Kacheln
+const topPackages = [
+  { name: "Partypaket XL", url: "/vermietung/ld-icoa-party-paket" },
+  { name: "Club-Paket", url: "/vermietung/ld-icoa-club-paket" },
+  { name: "Top-Paar", url: "/vermietung/ld-icoa-top-paar" }
+];
+const subPackages = [
+  { name: "Partypaket XL", url: "/vermietung/ld-icoa-party-paket" },
+  { name: "Club-Paket", url: "/vermietung/ld-icoa-club-paket" }
+];
+
+const topWithPackages = { ...top, packages: topPackages };
+const subWithPackages = { ...sub, packages: subPackages };
+
+const breadcrumbSegments = [
+  { label: "Startseite", href: "/" },
+  { label: "Vermietung", href: "/vermietung" },
+  { label: "LD ICOA System" }
+];
+
+const pageTitle = "LD ICOA PA-System mieten in Stuttgart | Sound & Licht Stuttgart";
+const faqs = await getFaqsForPage('ld-systems-icoa-series');
+
+const images = ["/img/vermietung/icoa-placeholder.webp"];
+
+const topSpecs = {
+  "Bauart": "Aktives 12\"-Koaxial-Topteil",
+  "Leistung": "1200 W Peak / 300 W RMS",
+  "Max. Schalldruck": "126 dB",
+  "Frequenzgang": "50 Hz – 20 kHz",
+  "Abstrahlung": "90° x 50°",
+  "Monitorwinkel": "55°",
+  "DSP": "DynX DSP mit 4 Presets, 3-Band-EQ, Delay",
+  "Anschlüsse": "2x XLR/Klinke-Kombi, 3,5-mm-Aux, XLR-Ausgang",
+  "Stativaufnahme": "36 mm, 0° / 5°",
+  "Gewicht": "19,95 kg"
+};
+
+const subSpecs = {
+  "Bauart": "Aktiver 15\"-Bassreflex-Subwoofer",
+  "Leistung": "1600 W Peak / 400 W RMS",
+  "Max. Schalldruck": "131 dB",
+  "Frequenzgang": "36 Hz – 150 Hz",
+  "DSP": "DynX DSP mit Crossover 80/100/120 Hz und Cardioid-Preset",
+  "Anschlüsse": "2x XLR/Klinke-Kombi, 2x XLR-Ausgang",
+  "Distanzstange": "M20-Gewinde",
+  "Gewicht": "32,5 kg"
+};
+
+const accessorySpecs = {
+  "Distanzstange": "Gravity SP 2332 B, M20 auf 35 mm, 820–1400 mm, bis 40 kg",
+  "Lautsprecherstativ": "Dreibein-Stativ mit 35-mm-Aufnahme, höhenverstellbar",
+  "Kabel": "XLR-Signalkabel und Stromkabel in passender Länge",
+  "Transport": "Kombi oder kleiner Transporter empfohlen"
+};
+
+const serviceJsonLdData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "LD ICOA PA-System",
+  "description": "Aktives PA-System von LD Systems mit ICOA 12 A Topteilen und ICOA SUB 15 A Subwoofern zur Miete in Stuttgart.",
+  "image": images,
+  "serviceType": "Veranstaltungstechnik-Vermietung",
+  "areaServed": serviceArea,
+  "provider": { "@type": "LocalBusiness", "@id": "https://soundundlicht-stuttgart.de/#business" },
+  "offers": [top, sub].map((item) => ({
+    "@type": "Offer",
+    "name": item.title,
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": item.priceValue,
+      "priceCurrency": "EUR",
+      "unitCode": "DAY"
+    }
+  }))
+};
+
+const breadcrumbJsonLdData = JSON.parse(JSON.stringify(breadcrumbJsonLd(breadcrumbSegments)));
+const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
+
+// Aggregierte Marken für Hero: LD Systems + Gravity (aus Paketen)
+const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? []), 'Gravity'])];
+---
+
+<CategoryLayout
+  pageTitle={pageTitle}
+  description="Miete das LD ICOA PA-System in Stuttgart: ICOA 12 A Topteile ab 50€/Tag, ICOA SUB 15 A ab 60€/Tag. Pakete: Top-Paar ab 100€, Partypaket XL (2 Tops + 1 Sub) ab 130€, Club-Paket (2 Tops + 2 Subs) ab 150€/Tag."
+  image="/img/vermietung/icoa-placeholder.webp"
+  preloadImage="/img/vermietung/icoa-placeholder.webp"
+  pagefindMeta={{ category: "Sound", label: "LD ICOA System" }}
+  jsonLd={[serviceJsonLdData, breadcrumbJsonLdData, faqPageJsonLdData]}
+  breadcrumbSegments={breadcrumbSegments}
+  products={[topWithPackages, subWithPackages]}
+>
+  <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/img/vermietung/icoa-placeholder.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="hero-overlay-accent"></div>
+    <div class="relative z-10 w-full py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Vermietung</span>
+        <div class="flex flex-wrap gap-3 mt-3 mb-2">
+          <span class="price-badge">Top ab 50€ / Tag</span>
+          <span class="price-badge">Sub ab 60€ / Tag</span>
+          <span class="price-badge">Top-Paar ab 100€</span>
+          <span class="price-badge">Bühnen-Paket ab 130€</span>
+          <span class="price-badge">Club-Paket ab 150€</span>
+          <span class="plug-badge-inline">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Einzeln oder im Paket
+          </span>
+          <BrandBadges brands={icoaHeroBrands} />
+        </div>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">LD ICOA PA-System mieten</h1>
+        <p class="text-[var(--color-text)] text-xl max-w-2xl">
+          Das ICOA-System von LD Systems besteht aus dem aktiven 12"-Koaxial-Topteil ICOA 12 A und dem aktiven 15"-Subwoofer ICOA SUB 15 A. Beide Geräte haben DSP, XLR-Anschlüsse und lassen sich einzeln oder als Komplettpaket mieten.<br />
+          Für kleine Feiern und Sprache reicht das Top-Paar (ab 100€). Das Partypaket XL (2 Tops + 1 Sub, ab 130€) eignet sich für Privat-Partys, DJs, Bandproben, Theater oder wenn wenig Platz für zwei Subs ist. Das Club-Paket (2 Tops + 2 Subs, ab 150€) ist die Haupt-PA für mobile DJs, Clubs und größere Feiern bis ca. 200 Personen. Die passende Konfiguration stelle ich dir gern zusammen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <DecisionHelp
+    heading="Welche ICOA-Konfiguration passt zu dir?"
+    intro="Die drei Pakete unterscheiden sich vor allem in der Anzahl der Subs. Wenn du unsicher bist, hilft dir diese Übersicht bei der Auswahl."
+    items={[
+      { title: "Top-Paar – ab 100€ / Tag", text: "2x ICOA 12 A mit zwei Stativen. Ideal für kleine Feiern, Lesungen, Bühnenmonitoring, Theater, Sprache oder als kurzfristige Ersatz-PA. Ohne Sub für Sprache und moderate Lautstärke völlig ausreichend." },
+      { title: "Partypaket XL – ab 130€ / Tag", text: "2x ICOA 12 A, 1x ICOA SUB 15 A, Distanzstange und Stativ. Ideal für Privat-Partys, DJs, Bandproben, Theater oder wenn wenig Platz für zwei Subs ist. Ein Sub reicht für Bassfundament bei moderater Lautstärke bis ca. 120 Personen." },
+      { title: "Club-Paket – ab 150€ / Tag", text: "2x ICOA 12 A auf 2x ICOA SUB 15 A. Die Haupt-PA für mobile DJs, Clubs, Bands und größere Feiern bis ca. 200 Personen. Cardioid-Modus für kontrollierten Bass nach hinten möglich." }
+    ]}
+  />
+
+  <section id="pakete" class="scroll-mt-24">
+    <div class="section-padding bg-[var(--color-surface)]">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Pakete</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">LD Systems PA Pakete</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Drei vorkonfigurierte Pakete für unterschiedliche Einsatzzwecke – vom kleinen Top-Paar bis zur Club-PA. Alle Pakete enthalten Kabel, Stative/Distanzstangen und persönliche Einweisung.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+        {icoaPackages.map((pkg, index) => (
+          <div id={`karte-${pkg.slug}`} class="card-base equipment-card" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="relative">
+              <picture>
+                <source srcset={`${getThumbUrl(pkg.image)} 480w, ${getWebpUrl(pkg.image)} 960w`} type="image/webp" />
+                <img 
+                  src={pkg.image} 
+                  alt={pkg.title} 
+                  width="400" 
+                  height="256" 
+                  loading="lazy" 
+                  decoding="async" 
+                  class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </picture>
+              <span class="plug-badge">
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                Inkl. Kabel & Einweisung
+              </span>
+            </div>
+            <span class="price-badge">{pkg.price}</span>
+            <BrandBadges brands={pkg.brands} class="mt-2" />
+            <h3 class="text-xl font-bold mt-2 mb-3">{pkg.title}</h3>
+            <p class="text-[var(--color-text-muted)] text-sm mb-4">{pkg.description}</p>
+            <ul class="text-[var(--color-text-muted)] text-sm space-y-1 mb-4">
+              {pkg.features.map(feature => (
+                <li class="flex items-center gap-2">
+                  <span class="text-[var(--color-secondary)]">•</span> {feature}
+                </li>
+              ))}
+            </ul>
+            <div class="flex flex-col gap-2 mt-auto">
+              <a href={pkg.detailPage} class="btn-secondary w-full text-center block">Details ansehen</a>
+              <button data-action="add-to-wishlist" data-slug={pkg.slug} class="btn-primary w-full !px-3" aria-pressed="false">
+                <span class="grid grid-cols-[auto_1fr] gap-4 items-start text-left">
+                  <Icon name="heart" class="w-6 h-6 mt-0.5 shrink-0" />
+                  <span class="text-base leading-tight">Merken</span>
+                </span>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="ld-icoa-12-a" class="scroll-mt-24">
+    <div class="section-padding bg-[var(--color-bg)] pb-0">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Topteil</span>
+        <div class="flex flex-wrap justify-center gap-3 mt-3">
+          <span class="price-badge">{top.price}</span>
+          <span class="price-badge">126 dB max. SPL</span>
+          <BrandBadges brands={top.brands} />
+        </div>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">LD Systems ICOA 12 A</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Das ICOA 12 A ist ein aktives 12"-Koaxial-Topteil mit 1200 W Peak und 126 dB max. Schalldruck. Es funktioniert allein als Vollbereichslautsprecher, auf einem Subwoofer als Satellit oder horizontal als Bühnenmonitor. Der 36-mm-Stativflansch lässt sich auf 0° oder 5° neigen.
+        </p>
+      </div>
+    </div>
+    <TechnicalSpecs specs={topSpecs} />
+    <RentalIncludes
+      title="Beim ICOA 12 A inklusive"
+      items={[
+        "Stromkabel",
+        "XLR-Signalkabel auf Anfrage",
+        "Einweisung in DSP und Aufstellung",
+        "36-mm-Stativaufnahme für vorhandene Stative"
+      ]}
+    />
+    <IncludedInPackages
+      packages={[
+        { name: "Top-Paar", url: "/vermietung/ld-icoa-top-paar" },
+        { name: "Partypaket XL", url: "/vermietung/ld-icoa-party-paket" },
+        { name: "Club-Paket", url: "/vermietung/ld-icoa-club-paket" }
+      ]}
+    />
+  </section>
+
+  <section id="ld-icoa-sub-15-a" class="scroll-mt-24">
+    <div class="section-padding bg-[var(--color-surface)] pb-0">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Subwoofer</span>
+        <div class="flex flex-wrap justify-center gap-3 mt-3">
+          <span class="price-badge">{sub.price}</span>
+          <span class="price-badge">131 dB max. SPL</span>
+          <BrandBadges brands={sub.brands} />
+        </div>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">LD Systems ICOA SUB 15 A</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Der ICOA SUB 15 A ist ein aktiver 15"-Bassreflex-Subwoofer mit 1600 W Peak und 131 dB max. Schalldruck. Er reicht bis 36 Hz und hat ein M20-Gewinde für Distanzstangen. Im DSP findest du Crossover-Presets bei 80, 100 und 120 Hz sowie einen Cardioid-Modus für kontrollierten Bass nach hinten.
+        </p>
+      </div>
+    </div>
+    <TechnicalSpecs specs={subSpecs} />
+    <RentalIncludes
+      title="Beim ICOA SUB 15 A inklusive"
+      items={[
+        "Stromkabel",
+        "XLR-Signalkabel auf Anfrage",
+        "Einweisung in Crossover und Cardioid-Aufstellung",
+        "M20-Gewinde für Distanzstangen"
+      ]}
+    />
+    <IncludedInPackages
+      packages={[
+        { name: "Partypaket XL", url: "/vermietung/ld-icoa-party-paket" },
+        { name: "Club-Paket", url: "/vermietung/ld-icoa-club-paket" }
+      ]}
+    />
+  </section>
+
+  <section id="zubehoer" class="scroll-mt-24">
+    <div class="section-padding bg-[var(--color-bg)] pb-0">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Zubehör</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Distanzstangen, Stative & Kabel</h2>
+        <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
+          Distanzstangen, Lautsprecherstative und Kabel sind kein separates Mietgerät, sondern gehören zum jeweiligen Paket. So bekommst du alles, was du für den Aufbau brauchst, ohne einzelne Kleinteile buchen zu müssen.
+        </p>
+      </div>
+    </div>
+    <RentalIncludes
+      title="Zubehör im Überblick"
+      items={[
+        "Gravity SP 2332 B Distanzstange (M20 auf 35 mm)",
+        "Dreibein-Lautsprecherstative für die Tops",
+        "XLR-Signalkabel in passender Länge",
+        "Stromkabel und Mehrfachsteckdosen"
+      ]}
+    />
+    <TechnicalSpecs specs={accessorySpecs} />
+  </section>
+
+  <RelatedLinks
+    items={[
+      { title: "Club-Paket LD ICOA", url: "/vermietung/ld-icoa-club-paket", text: "2x Top und 2x Sub für mobile DJs und größere Feiern." },
+      { title: "Partypaket XL LD ICOA", url: "/vermietung/ld-icoa-party-paket", text: "2x Top und 1x Sub für Privat-Partys, DJs, Bandproben bei begrenztem Platz." },
+      { title: "Top-Paar LD ICOA", url: "/vermietung/ld-icoa-top-paar", text: "2x Top mit Stativen für kleine Feiern und Monitoring." },
+      { title: "LED-Scheinwerfer", url: "/vermietung/led-scheinwerfer", text: "PAR Strahler, Akku-LED & Stage Bar – für Uplighting & Effekte zur ICOA-PA." },
+      { title: "Max Party Bar", url: "/vermietung/max-party-bar", text: "Kompakte All-in-One Lichtanlage für kleinere Feiern & schnellen Aufbau." },
+      { title: "KLS Laser Bar", url: "/vermietung/kls-laser-bar", text: "Laser-Effekte & Nebel – perfekte Ergänzung zur ICOA-PA." }
+    ]}
+  />
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <FAQSection faqs={faqs} />
+  </div>
+</CategoryLayout>
