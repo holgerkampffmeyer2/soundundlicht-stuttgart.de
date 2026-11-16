@@ -17,17 +17,18 @@ const product = products.find(i => i.data.slug === 'ld-icoa-party-paket')!.data;
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
   { label: "Vermietung", href: "/vermietung" },
-  { label: "Partypaket XL LD ICOA" }
+  { label: "LD ICOA System", href: "/vermietung/ld-systems-icoa-series" },
+  { label: "Partypaket XL" }
 ];
 
-const pageTitle = "Partypaket XL LD ICOA mieten in Stuttgart | Sound & Licht Stuttgart";
+const pageTitle = "2x ICOA Fullrange-Lautsprecher + 1x Bassreflex-PA-Subwoofer mieten in Stuttgart | Sound & Licht Stuttgart";
 const faqs = await getFaqsForPage('ld-icoa-party-paket');
 
-const images = ["/img/vermietung/icoa-placeholder.webp"];
+const images = ["/img/vermietung/icoa-placeholder.webp", "/img/vermietung/icoa/ld-icoa-party-paket-digital.svg"];
 
 const packageItems = [
-  { name: "2x LD Systems ICOA 12 A Topteile", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-12-a" },
-  { name: "1x LD Systems ICOA SUB 15 A Subwoofer", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-sub-15-a" },
+  { name: "2x LD Systems ICOA 12 A – Aktive Fullrange-Lautsprecher", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-12-a" },
+  { name: "1x LD Systems ICOA SUB 15 A – Aktiver Bassreflex-PA-Subwoofer", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-sub-15-a" },
   { name: "1x Gravity SP 2332 B Distanzstange", detailPage: "/vermietung/ld-systems-icoa-series#zubehoer" },
   { name: "1x Dreibein-Lautsprecherstativ", detailPage: "/vermietung/ld-systems-icoa-series#zubehoer" },
   { name: "XLR- und Stromkabel" }
@@ -62,11 +63,11 @@ const events = [
 ];
 
 const packageFeatures = [
-  "2x ICOA 12 A mit 1200 W Peak und 126 dB max. SPL",
-  "1x ICOA SUB 15 A mit 1600 W Peak und Bass bis 36 Hz",
+  "2x ICOA 12 A Fullrange-Lautsprecher, 300 W RMS / 1200 W Peak, 126 dB max. SPL",
+  "1x ICOA SUB 15 A Bassreflex-PA-Subwoofer, 400 W RMS / 1600 W Peak, Bass bis 36 Hz",
   "Distanzstange für den Sub, ein Dreibein-Stativ für das zweite Top",
-  "Tops auch horizontal als Monitor nutzbar (55° Winkel)",
-  "DynX DSP mit Crossover-Presets für saubere Trennung",
+  "Fullrange-Lautsprecher auch horizontal als Monitor nutzbar (55° Winkel)",
+  "DynX DSP mit 4 Presets (Crossover 80/100/120 Hz + Cardioid)",
   "XLR- und Stromkabel inklusive",
   "Kompaktes Paket für Kombi oder kleinen Transporter",
   "Ideal bei begrenztem Platz: nur ein Sub nötig",
@@ -87,6 +88,8 @@ const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Partypaket XL LD ICOA" }}
   jsonLd={[serviceJsonLdData, breadcrumbJsonLdData, faqPageJsonLdData]}
+  galleryImages={images}
+  downloads={[{ label: "Anleitung herunterladen (PDF)", href: "/downloads/icoa/ld-icoa-party-paket-druck.pdf", filename: "ld-icoa-party-paket-druck.pdf" }]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
@@ -103,14 +106,15 @@ const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
           </span>
           <BrandBadges brands={product.brands} />
         </div>
-        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Partypaket XL LD ICOA</h1>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">2x ICOA Fullrange-Lautsprecher + 1x Bassreflex-PA-Subwoofer</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">
-          Das kompakte Party-Paket: zwei ICOA 12 A Topteile, ein ICOA SUB 15 A, Distanzstange und ein Dreibein-Stativ. Ein Top steht auf dem Sub, das andere auf dem Stativ – oder beide als Monitore.<br />
+          Das kompakte Party-Paket: zwei ICOA 12 A Fullrange-Lautsprecher, ein ICOA SUB 15 A Bassreflex-PA-Subwoofer, Distanzstange und ein Dreibein-Stativ. Ein Fullrange-Lautsprecher steht auf dem Sub, das andere auf dem Stativ – oder beide als Monitore.<br />
           Das XL-Paket für Privat-Partys, DJs und Bandproben: ein Sub liefert Bassfundament bei kompaktem Footprint. Ideal bei begrenztem Platz. Kabel & Einweisung inklusive.
         </p>
       </div>
     </div>
   </section>
+
 
   <section class="section-padding bg-[var(--color-surface)]">
     <div class="max-w-6xl mx-auto px-4">

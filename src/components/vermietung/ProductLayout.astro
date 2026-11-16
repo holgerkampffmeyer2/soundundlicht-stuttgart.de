@@ -20,9 +20,10 @@ interface Props {
   jsonLd: JsonLdItem[];
   breadcrumbSegments: BreadcrumbSegment[];
   galleryImages?: string[];
+  downloads?: { label: string; href: string; filename: string }[];
 }
 
-const { product, pageTitle, title, description, image, preloadImage, pagefindMeta, pagefindType = 'produkt', jsonLd, breadcrumbSegments, galleryImages } = Astro.props;
+const { product, pageTitle, title, description, image, preloadImage, pagefindMeta, pagefindType = 'produkt', jsonLd, breadcrumbSegments, galleryImages, downloads } = Astro.props;
 const layoutTitle = title ?? pageTitle;
 const gallery = galleryImages ?? product.images ?? [];
 const productSlug = product.slug;
@@ -51,6 +52,23 @@ if (pagefindMeta.label) pagefindMetaRecord.label = pagefindMeta.label;
   <slot name="hero" />
   {gallery.length > 0 && (
     <ProductGallery images={gallery} title={pageTitle} />
+  )}
+  {downloads && downloads.length > 0 && (
+    <section class="section-padding bg-[var(--color-bg)]">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Anleitung</span>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4 mb-4">Aufbauschema als PDF</h2>
+        <p class="text-[var(--color-text-muted)] mb-8">Druckfreundliche Anleitung zum Aufbau und Anschluss.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          {downloads.map((d) => (
+            <a href={d.href} download={d.filename} class="inline-flex items-center gap-3 bg-[var(--color-secondary)] text-[var(--color-bg)] font-bold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+              {d.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
   )}
   <slot />
 

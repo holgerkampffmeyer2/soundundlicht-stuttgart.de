@@ -17,16 +17,17 @@ const product = products.find(i => i.data.slug === 'ld-icoa-top-paar')!.data;
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
   { label: "Vermietung", href: "/vermietung" },
-  { label: "Top-Paar LD ICOA" }
+  { label: "LD ICOA System", href: "/vermietung/ld-systems-icoa-series" },
+  { label: "Top-Paar" }
 ];
 
-const pageTitle = "ICOA Top-Paar mieten in Stuttgart | Sound & Licht Stuttgart";
+const pageTitle = "2x ICOA Fullrange-Lautsprecher mieten in Stuttgart | Sound & Licht Stuttgart";
 const faqs = await getFaqsForPage('ld-icoa-top-paar');
 
-const images = ["/img/vermietung/icoa-placeholder.webp"];
+const images = ["/img/vermietung/icoa-placeholder.webp", "/img/vermietung/icoa/ld-icoa-top-paar-digital.svg"];
 
 const packageItems = [
-  { name: "2x LD Systems ICOA 12 A Topteile", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-12-a" },
+  { name: "2x LD Systems ICOA 12 A – Aktive Fullrange-Lautsprecher", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-12-a" },
   { name: "2x Dreibein-Lautsprecherstativ", detailPage: "/vermietung/ld-systems-icoa-series#zubehoer" },
   { name: "XLR- und Stromkabel" }
 ];
@@ -55,9 +56,9 @@ const events = [
 ];
 
 const packageFeatures = [
-  "2x ICOA 12 A mit 1200 W Peak und 126 dB max. SPL",
-  "DynX DSP mit 4 Presets und 3-Band-EQ",
-  "90° x 50°-Abstrahlung für breite Beschallung",
+  "2x ICOA 12 A Fullrange-Lautsprecher, 300 W RMS / 1200 W Peak, 126 dB max. SPL",
+  "DynX DSP: 4 Presets (Fullrange, Satellit, Monitor, Flat), 3-Band-EQ, Delay",
+  "90° × 50° Abstrahlung (drehbares BEM-Horn)",
   "55°-Monitorwinkel für Bühnenmonitoring",
   "2x Dreibein-Lautsprecherstativ inklusive",
   "XLR- und Stromkabel inklusive",
@@ -79,6 +80,8 @@ const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Top-Paar LD ICOA" }}
   jsonLd={[serviceJsonLdData, breadcrumbJsonLdData, faqPageJsonLdData]}
+  galleryImages={images}
+  downloads={[{ label: "Anleitung herunterladen (PDF)", href: "/downloads/icoa/ld-icoa-top-paar-druck.pdf", filename: "ld-icoa-top-paar-druck.pdf" }]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
@@ -95,20 +98,21 @@ const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
           </span>
           <BrandBadges brands={product.brands} />
         </div>
-        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Top-Paar LD ICOA</h1>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">2x ICOA Fullrange-Lautsprecher</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">
-          Zwei ICOA 12 A Topteile mit zwei Dreibeinstative und Kabeln: Das kleinste ICOA-Paket ist gleichzeitig das flexibelste. Nutze es als kleine PA für Feiern, als Bühnenmonitor-Paar für Bands oder als schnelle Ersatz-PA, wenn kurzfristig eine Anlage ausfällt.<br />
-          Die Tops lassen sich horizontal mit 55°-Winkel als Monitor aufstellen. Für mehr Bass kannst du später einen ICOA SUB 15 A dazunehmen.
+          Zwei professionelle ICOA 12 A Fullrange-Lautsprecher (je 300 W RMS / 1200 W Peak, 126 dB) mit Dreibeinstativen und Kabeln. Das ist keine Partybox – das ist echte PA: koaxiales Design mit drehbarem Horn, DynX DSP mit 4 Presets, M10-Flugpunkte für Installation. Als Fullrange-PA für Sprache & Musik, als Satellit auf Subs oder horizontal als Bühnenmonitor (55°) einsetzbar.<br />
+          Im Gegensatz zu Consumer-Partyboxen (JBL Partybox & Co.) liefert der ICOA 12 A professionellen Headroom, präzise Abstrahlung und DSP-Kontrolle – für Events, bei denen Klangqualität und Zuverlässigkeit zählen. Für mehr Bass einfach einen ICOA SUB 15 A dazunehmen.
         </p>
       </div>
     </div>
   </section>
 
+
   <section class="section-padding bg-[var(--color-surface)]">
     <div class="max-w-6xl mx-auto px-4">
       <div class="text-center mb-12">
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Highlights</span>
-        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Klein, flexibel, laut genug</h2>
+        <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Professionelle PA, keine Partybox</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {packageFeatures.map((feature) => (

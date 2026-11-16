@@ -17,22 +17,28 @@ const product = products.find(i => i.data.slug === 'ld-icoa-club-paket')!.data;
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
   { label: "Vermietung", href: "/vermietung" },
-  { label: "Club-Paket LD ICOA" }
+  { label: "LD ICOA System", href: "/vermietung/ld-systems-icoa-series" },
+  { label: "Club-Paket" }
 ];
 
-const pageTitle = "Club-Paket mieten in Stuttgart | Sound & Licht Stuttgart";
+const pageTitle = "2x ICOA Fullrange-Lautsprecher + 2x Bassreflex-PA-Subwoofer mieten in Stuttgart | Sound & Licht Stuttgart";
 const faqs = await getFaqsForPage('ld-icoa-club-paket');
 
-const images = ["/img/vermietung/icoa-placeholder.webp"];
+const images = ["/img/vermietung/icoa-placeholder.webp", "/img/vermietung/icoa/ld-icoa-club-paket-digital.svg"];
 
 const packageItems = [
-  { name: "2x LD Systems ICOA 12 A Topteile", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-12-a" },
-  { name: "2x LD Systems ICOA SUB 15 A Subwoofer", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-sub-15-a" },
+  { name: "2x LD Systems ICOA 12 A – Aktive Fullrange-Lautsprecher", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-12-a" },
+  { name: "2x LD Systems ICOA SUB 15 A – Aktive Bassreflex-PA-Subwoofer", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-sub-15-a" },
   { name: "2x Gravity SP 2332 B Distanzstange", detailPage: "/vermietung/ld-systems-icoa-series#zubehoer" },
   { name: "XLR- und Stromkabel" }
 ];
 
 const events = [
+  {
+    title: "DJ Kollektive & Raves",
+    description: "Zwei 15\"-Subs mit 131 dB und Bass bis 36 Hz liefern den druckvollen Tiefton, den Techno, House und Bass Music brauchen. Cardioid-Modus hält den Bass auf der Tanzfläche, nicht hinter der Bühne. Kompakt genug für Transporter/Kombi – ideal für mobile Raves, Open-Airs und Club-Übernahmen.",
+    personCount: "100–200 Personen"
+  },
   {
     title: "Mobile DJs & Club-Abende",
     description: "Zwei 15\"-Subs und zwei 12\"-Tops liefern den Druck und die Klarheit für Tanzabende, Club-Nächte und mobile DJ-Gigs. Mit dem Cardioid-Preset bleibt der Bass auf der Bühne kontrolliert.",
@@ -56,13 +62,13 @@ const events = [
 ];
 
 const packageFeatures = [
-  "2x ICOA 12 A mit 1200 W Peak und 126 dB max. SPL",
-  "2x ICOA SUB 15 A mit 1600 W Peak und Bass bis 36 Hz",
-  "DynX DSP mit Crossover-Presets und Cardioid-Modus",
-  "Tops auf Distanzstangen direkt auf den Subs",
+  "2x ICOA 12 A Fullrange-Lautsprecher, 300 W RMS / 1200 W Peak, 126 dB max. SPL",
+  "2x ICOA SUB 15 A Bassreflex-PA-Subwoofer, 400 W RMS / 1600 W Peak, Bass bis 36 Hz – <strong>ideal für Bass Music, Techno, House</strong>",
+  "DynX DSP mit 4 Presets (Crossover 80/100/120 Hz + Cardioid) – <strong>kontrollierter Bass auf der Tanzfläche</strong>",
+  "Fullrange-Lautsprecher auf Distanzstangen direkt auf den Subs",
   "XLR- und Stromkabel inklusive",
   "Auch als Ersatz-PA oder für Live-Musik nutzbar",
-  "Kompakt genug für den Transport im Kombi",
+  "Kompakt für Kombi/Transporter – <strong>perfekt für mobile Raves & Open-Airs</strong>",
   "Persönliche Einweisung bei der Abholung"
 ];
 
@@ -74,12 +80,14 @@ const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
 <ProductLayout
   product={product}
   pageTitle={pageTitle}
-  description="Miete das LD ICOA Club-Paket in Stuttgart: 2x ICOA 12 A, 2x ICOA SUB 15 A, Distanzstangen und Kabel ab 150€/Tag. Haupt-PA für mobile DJs, Clubs, Bands und Feiern bis ca. 200 Personen."
+  description="Miete das LD ICOA Club-Paket in Stuttgart: 2x ICOA 12 A, 2x ICOA SUB 15 A (Bass bis 36 Hz, 131 dB), Distanzstangen & Kabel ab 150€/Tag. Haupt-PA für mobile DJs, DJ-Kollektive, Raves, Clubs, Bands & Feiern bis 200 Pers. Cardioid-ready, kombi-transportabel."
   image="/img/vermietung/icoa-placeholder.webp"
   preloadImage="/img/vermietung/icoa-placeholder.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Club-Paket LD ICOA" }}
   jsonLd={[serviceJsonLdData, breadcrumbJsonLdData, faqPageJsonLdData]}
+  galleryImages={images}
+  downloads={[{ label: "Anleitung herunterladen (PDF)", href: "/downloads/icoa/ld-icoa-club-paket-druck.pdf", filename: "ld-icoa-club-paket-druck.pdf" }]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
@@ -96,14 +104,15 @@ const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
           </span>
           <BrandBadges brands={product.brands} />
         </div>
-        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Club-Paket LD ICOA</h1>
+        <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">2x ICOA Fullrange-Lautsprecher + 2x Bassreflex-PA-Subwoofer</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">
-          Das größte ICOA-Paket: zwei ICOA 12 A Topteile auf zwei ICOA SUB 15 A Subwoofern, verbunden mit Gravity-Distanzstangen. Zusammen ergibt das eine kompakte, aktiv betriebene PA mit viel Bassreserve für mobile DJs, Bands und größere Feiern.<br />
+          Das größte ICOA-Paket: zwei ICOA 12 A Fullrange-Lautsprecher auf zwei ICOA SUB 15 A Bassreflex-PA-Subwoofern, verbunden mit Gravity-Distanzstangen. Zusammen ergibt das eine kompakte, aktiv betriebene PA mit viel Bassreserve für mobile DJs, DJ-Kollektive, Raves, Bands und größere Feiern.<br />
           XLR- und Stromkabel sind ebenso inklusive wie die Einweisung. Du holst das Paket ab, baust es in etwa 45 Minuten auf und legst los – ohne zusätzliche Endstufen oder externes DSP.
         </p>
       </div>
     </div>
   </section>
+
 
   <section class="section-padding bg-[var(--color-surface)]">
     <div class="max-w-6xl mx-auto px-4">
@@ -116,7 +125,7 @@ const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
           <div class="bg-[var(--color-bg)] p-6 rounded-xl border border-[var(--color-border)] hover:border-[var(--color-secondary)] transition-all duration-300">
             <div class="flex items-start gap-3">
               <span class="text-[var(--color-secondary)] text-2xl">✓</span>
-              <p class="text-[var(--color-text)]">{feature}</p>
+              <p class="text-[var(--color-text)]" set:html={feature}></p>
             </div>
           </div>
         ))}
