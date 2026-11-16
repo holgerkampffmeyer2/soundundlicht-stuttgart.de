@@ -23,13 +23,13 @@ const icoaPackages = [topPaar, partyPaket, clubPaket];
 
 // Pakete für CategoryLayout-Kacheln
 const topPackages = [
-  { name: "Partypaket XL", url: "/vermietung/ld-icoa-party-paket" },
-  { name: "Club-Paket", url: "/vermietung/ld-icoa-club-paket" },
-  { name: "Top-Paar", url: "/vermietung/ld-icoa-top-paar" }
+  { name: "2x Fullrange + 1x Sub (Partypaket XL)", url: "/vermietung/ld-icoa-party-paket" },
+  { name: "2x Fullrange + 2x Sub (Club-Paket)", url: "/vermietung/ld-icoa-club-paket" },
+  { name: "2x Fullrange (Top-Paar)", url: "/vermietung/ld-icoa-top-paar" }
 ];
 const subPackages = [
-  { name: "Partypaket XL", url: "/vermietung/ld-icoa-party-paket" },
-  { name: "Club-Paket", url: "/vermietung/ld-icoa-club-paket" }
+  { name: "2x Fullrange + 1x Sub (Partypaket XL)", url: "/vermietung/ld-icoa-party-paket" },
+  { name: "2x Fullrange + 2x Sub (Club-Paket)", url: "/vermietung/ld-icoa-club-paket" }
 ];
 
 const topWithPackages = { ...top, packages: topPackages };
@@ -47,26 +47,30 @@ const faqs = await getFaqsForPage('ld-systems-icoa-series');
 const images = ["/img/vermietung/icoa-placeholder.webp"];
 
 const topSpecs = {
-  "Bauart": "Aktives 12\"-Koaxial-Topteil",
-  "Leistung": "1200 W Peak / 300 W RMS",
+  "Bauart": "Aktiver 12\"-Fullrange-Lautsprecher (Koaxial)",
+  "Leistung": "300 W RMS / 1200 W Peak (Class D)",
   "Max. Schalldruck": "126 dB",
   "Frequenzgang": "50 Hz – 20 kHz",
-  "Abstrahlung": "90° x 50°",
+  "Abstrahlung": "90° × 50° (drehbares BEM-Horn)",
   "Monitorwinkel": "55°",
-  "DSP": "DynX DSP mit 4 Presets, 3-Band-EQ, Delay",
-  "Anschlüsse": "2x XLR/Klinke-Kombi, 3,5-mm-Aux, XLR-Ausgang",
-  "Stativaufnahme": "36 mm, 0° / 5°",
+  "DSP": "DynX DSP: 4 Presets, 3-Band-EQ, Delay",
+  "Anschlüsse": "2× XLR/Klinke Combo, 3,5 mm Aux, XLR Mix-Out",
+  "Stativaufnahme": "2× 36 mm Dual-Tilt (0° / 5°)",
+  "Flugpunkte": "6× M10",
+  "Gehäuse": "Polypropylen, stapelbar",
   "Gewicht": "19,95 kg"
 };
 
 const subSpecs = {
-  "Bauart": "Aktiver 15\"-Bassreflex-Subwoofer",
-  "Leistung": "1600 W Peak / 400 W RMS",
+  "Bauart": "Aktiver 15\"-Bassreflex-PA-Subwoofer",
+  "Leistung": "400 W RMS / 1600 W Peak (Class D)",
   "Max. Schalldruck": "131 dB",
-  "Frequenzgang": "36 Hz – 150 Hz",
-  "DSP": "DynX DSP mit Crossover 80/100/120 Hz und Cardioid-Preset",
-  "Anschlüsse": "2x XLR/Klinke-Kombi, 2x XLR-Ausgang",
+  "Frequenzgang": "36 Hz – presetabhängig (-10 dB)",
+  "DSP": "DynX DSP: 4 Presets (Crossover 80/100/120 Hz + Cardioid), Polarität, Delay ≤10 m",
+  "Anschlüsse": "2× XLR/Klinke Combo, 2× XLR-Ausgang",
   "Distanzstange": "M20-Gewinde",
+  "Gehäuse": "18 mm Schichtholz, stapelbar, Frontgitter",
+  "Griffe": "4× Aluminium, gummiert",
   "Gewicht": "32,5 kg"
 };
 
@@ -109,7 +113,7 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
 
 <CategoryLayout
   pageTitle={pageTitle}
-  description="Miete das LD ICOA PA-System in Stuttgart: ICOA 12 A Topteile ab 50€/Tag, ICOA SUB 15 A ab 60€/Tag. Pakete: Top-Paar ab 100€, Partypaket XL (2 Tops + 1 Sub) ab 130€, Club-Paket (2 Tops + 2 Subs) ab 150€/Tag."
+  description="Miete das LD ICOA PA-System in Stuttgart: ICOA 12 A (Aktiver Fullrange-Lautsprecher) ab 50€/Tag, ICOA SUB 15 A (Aktiver Bassreflex-PA-Subwoofer) ab 60€/Tag. Pakete: Top-Paar ab 100€, Partypaket XL (2 Tops + 1 Sub) ab 130€, Club-Paket (2 Tops + 2 Subs) ab 150€/Tag."
   image="/img/vermietung/icoa-placeholder.webp"
   preloadImage="/img/vermietung/icoa-placeholder.webp"
   pagefindMeta={{ category: "Sound", label: "LD ICOA System" }}
@@ -137,7 +141,7 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
         </div>
         <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">LD ICOA PA-System mieten</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">
-          Das ICOA-System von LD Systems besteht aus dem aktiven 12"-Koaxial-Topteil ICOA 12 A und dem aktiven 15"-Subwoofer ICOA SUB 15 A. Beide Geräte haben DSP, XLR-Anschlüsse und lassen sich einzeln oder als Komplettpaket mieten.<br />
+          Das ICOA-System von LD Systems besteht aus dem aktiven 12"-Fullrange-Lautsprecher ICOA 12 A (koaxial, drehbares Horn) und dem aktiven 15"-Bassreflex-PA-Subwoofer ICOA SUB 15 A. Beide Geräte haben DynX DSP, XLR/Klinke-Combos und lassen sich einzeln oder als Komplettpaket mieten.<br />
           Für kleine Feiern und Sprache reicht das Top-Paar (ab 100€). Das Partypaket XL (2 Tops + 1 Sub, ab 130€) eignet sich für Privat-Partys, DJs, Bandproben, Theater oder wenn wenig Platz für zwei Subs ist. Das Club-Paket (2 Tops + 2 Subs, ab 150€) ist die Haupt-PA für mobile DJs, Clubs und größere Feiern bis ca. 200 Personen. Die passende Konfiguration stelle ich dir gern zusammen.
         </p>
       </div>
@@ -148,9 +152,9 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
     heading="Welche ICOA-Konfiguration passt zu dir?"
     intro="Die drei Pakete unterscheiden sich vor allem in der Anzahl der Subs. Wenn du unsicher bist, hilft dir diese Übersicht bei der Auswahl."
     items={[
-      { title: "Top-Paar – ab 100€ / Tag", text: "2x ICOA 12 A mit zwei Stativen. Ideal für kleine Feiern, Lesungen, Bühnenmonitoring, Theater, Sprache oder als kurzfristige Ersatz-PA. Ohne Sub für Sprache und moderate Lautstärke völlig ausreichend." },
+      { title: "Top-Paar (2× Fullrange) – ab 100€ / Tag", text: "2x ICOA 12 A Fullrange-Lautsprecher (je 300 W RMS, 126 dB) mit Stativen. Professionelle PA für Sprache, Theater, Lesungen, Bühnenmonitoring (55°) oder als Ersatz-PA. Koaxiales Design, DSP-Kontrolle, M10-Flugpunkte. Für basslastige Musik Subwoofer ergänzen." },
       { title: "Partypaket XL – ab 130€ / Tag", text: "2x ICOA 12 A, 1x ICOA SUB 15 A, Distanzstange und Stativ. Ideal für Privat-Partys, DJs, Bandproben, Theater oder wenn wenig Platz für zwei Subs ist. Ein Sub reicht für Bassfundament bei moderater Lautstärke bis ca. 120 Personen." },
-      { title: "Club-Paket – ab 150€ / Tag", text: "2x ICOA 12 A auf 2x ICOA SUB 15 A. Die Haupt-PA für mobile DJs, Clubs, Bands und größere Feiern bis ca. 200 Personen. Cardioid-Modus für kontrollierten Bass nach hinten möglich." }
+      { title: "Club-Paket – ab 150€ / Tag", text: "2x ICOA 12 A auf 2x ICOA SUB 15 A. Die Haupt-PA für mobile DJs, DJ-Kollektive & Raves, Clubs, Bands und größere Feiern bis ca. 200 Personen. Bass bis 36 Hz, 131 dB, Cardioid-Modus für kontrollierten Bass auf der Tanzfläche. Kompakt für Kombi/Transporter – ideal für mobile Raves & Open-Airs." }
     ]}
   />
 
@@ -214,7 +218,7 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
   <section id="ld-icoa-12-a" class="scroll-mt-24">
     <div class="section-padding bg-[var(--color-bg)] pb-0">
       <div class="max-w-4xl mx-auto px-4 text-center">
-        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Topteil</span>
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Fullrange-Lautsprecher</span>
         <div class="flex flex-wrap justify-center gap-3 mt-3">
           <span class="price-badge">{top.price}</span>
           <span class="price-badge">126 dB max. SPL</span>
@@ -222,7 +226,7 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
         </div>
         <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">LD Systems ICOA 12 A</h2>
         <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
-          Das ICOA 12 A ist ein aktives 12"-Koaxial-Topteil mit 1200 W Peak und 126 dB max. Schalldruck. Es funktioniert allein als Vollbereichslautsprecher, auf einem Subwoofer als Satellit oder horizontal als Bühnenmonitor. Der 36-mm-Stativflansch lässt sich auf 0° oder 5° neigen.
+          Der ICOA 12 A ist ein professioneller 12"-Fullrange-Lautsprecher (koaxial, drehbares BEM-Horn) mit 300 W RMS / 1200 W Peak Class D, 126 dB max. SPL. DynX DSP mit 4 Presets (Fullrange, Satellit, Monitor, Flat), 3-Band-EQ, Delay. Als Vollbereichslautsprecher, Satellit oder Bühnenmonitor (55°) einsetzbar. 2× 36-mm-Dual-Tilt-Stativflansch, 6× M10-Flugpunkte für Installation, 4 Griffe, 19,95 kg. Thomann nennt ihn „echten Allrounder“ – für mobile DJs, Bands, Installateure, Verleiher.
         </p>
       </div>
     </div>
@@ -248,7 +252,7 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
   <section id="ld-icoa-sub-15-a" class="scroll-mt-24">
     <div class="section-padding bg-[var(--color-surface)] pb-0">
       <div class="max-w-4xl mx-auto px-4 text-center">
-        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Subwoofer</span>
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Bassreflex-PA-Subwoofer</span>
         <div class="flex flex-wrap justify-center gap-3 mt-3">
           <span class="price-badge">{sub.price}</span>
           <span class="price-badge">131 dB max. SPL</span>
@@ -256,7 +260,7 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
         </div>
         <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">LD Systems ICOA SUB 15 A</h2>
         <p class="text-[var(--color-text-muted)] mt-4 max-w-2xl mx-auto">
-          Der ICOA SUB 15 A ist ein aktiver 15"-Bassreflex-Subwoofer mit 1600 W Peak und 131 dB max. Schalldruck. Er reicht bis 36 Hz und hat ein M20-Gewinde für Distanzstangen. Im DSP findest du Crossover-Presets bei 80, 100 und 120 Hz sowie einen Cardioid-Modus für kontrollierten Bass nach hinten.
+          Der ICOA SUB 15 A ist ein aktiver 15"-Bassreflex-PA-Subwoofer mit 400 W RMS / 1600 W Peak (Class D), 131 dB max. SPL, Frequenzgang bis 36 Hz. DynX DSP mit 4 Presets (Crossover 80/100/120 Hz + Cardioid), umschaltbare Polarität, Delay ≤10 m. 18 mm Schichtholz-Gehäuse, stapelbar, M20-Gewinde, 4 gummierte Alu-Griffe, 32,5 kg.
         </p>
       </div>
     </div>
@@ -302,9 +306,9 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
 
   <RelatedLinks
     items={[
-      { title: "Club-Paket LD ICOA", url: "/vermietung/ld-icoa-club-paket", text: "2x Top und 2x Sub für mobile DJs und größere Feiern." },
-      { title: "Partypaket XL LD ICOA", url: "/vermietung/ld-icoa-party-paket", text: "2x Top und 1x Sub für Privat-Partys, DJs, Bandproben bei begrenztem Platz." },
-      { title: "Top-Paar LD ICOA", url: "/vermietung/ld-icoa-top-paar", text: "2x Top mit Stativen für kleine Feiern und Monitoring." },
+      { title: "Club-Paket LD ICOA", url: "/vermietung/ld-icoa-club-paket", text: "2× Fullrange-Lautsprecher + 2× Bassreflex-PA-Subwoofer für mobile DJs, Raves & größere Feiern." },
+      { title: "Partypaket XL LD ICOA", url: "/vermietung/ld-icoa-party-paket", text: "2× Fullrange-Lautsprecher + 1× Bassreflex-PA-Subwoofer für Privat-Partys, DJs, Bandproben." },
+      { title: "Top-Paar LD ICOA", url: "/vermietung/ld-icoa-top-paar", text: "2× Fullrange-Lautsprecher mit Stativen für kleine Feiern & Monitoring." },
       { title: "LED-Scheinwerfer", url: "/vermietung/led-scheinwerfer", text: "PAR Strahler, Akku-LED & Stage Bar – für Uplighting & Effekte zur ICOA-PA." },
       { title: "Max Party Bar", url: "/vermietung/max-party-bar", text: "Kompakte All-in-One Lichtanlage für kleinere Feiern & schnellen Aufbau." },
       { title: "KLS Laser Bar", url: "/vermietung/kls-laser-bar", text: "Laser-Effekte & Nebel – perfekte Ergänzung zur ICOA-PA." }
