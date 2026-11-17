@@ -1,6 +1,17 @@
 import googleReviews from './google-reviews.json';
 import type { ProductData, BreadcrumbSegment, JsonLdItem, FaqEntry } from '../lib/types';
 
+export const SITE_URL = "https://soundundlicht-stuttgart.de";
+
+export function absoluteUrl(path: string): string {
+  if (!path) return path;
+  try {
+    return new URL(path, SITE_URL).href;
+  } catch {
+    return path;
+  }
+}
+
 export const serviceArea = [
   { "@type": "City" as const, "name": "Stuttgart" },
   { "@type": "City" as const, "name": "Leinfelden-Echterdingen" },
@@ -112,7 +123,7 @@ export function serviceJsonLd(product: { title: string; description: string; pri
     "@type": "Service",
     "name": product.title,
     "description": product.description,
-    "image": images,
+    "image": images.map(absoluteUrl),
     "serviceType": "Veranstaltungstechnik-Vermietung",
     "areaServed": serviceArea,
     "provider": { "@type": "LocalBusiness", "@id": "https://soundundlicht-stuttgart.de/#business" },
@@ -135,18 +146,19 @@ export function videoJsonLd(
   title: string,
   description: string,
   thumbnailUrl: string,
-  publisher: { '@type': 'Organization'; name: string; logo: { '@type': 'ImageObject'; url: string } }
+  publisher: { '@type': 'Organization'; name: string; logo: { '@type': 'ImageObject'; url: string } },
+  meta?: { uploadDate?: string; duration?: string }
 ): JsonLdItem {
   return {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": title,
     "description": description,
-    "thumbnailUrl": [thumbnailUrl],
+    "thumbnailUrl": [absoluteUrl(thumbnailUrl)],
     "contentUrl": `https://www.youtube.com/watch?v=${videoId}`,
     "embedUrl": `https://www.youtube.com/embed/${videoId}`,
-    "uploadDate": "2024-03-15T00:00:00+00:00",
-    "duration": "PT1M32S",
+    "uploadDate": meta?.uploadDate ?? "2024-03-15T00:00:00+00:00",
+    "duration": meta?.duration ?? "PT1M32S",
     "publisher": publisher
   };
 }
@@ -174,7 +186,7 @@ export function breadcrumbJsonLd(segments: BreadcrumbSegment[]): JsonLdItem {
       "@type": "ListItem",
       "position": index + 1,
       "name": segment.label,
-      "item": segment.href
+      "item": segment.href ? absoluteUrl(segment.href) : undefined
     }))
   };
 }

@@ -5,9 +5,10 @@ import PackageContents from '../../components/vermietung/PackageContents.astro';
 import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import Testimonials from '../../components/Testimonials.astro';
+import BrandBadges from '../../components/vermietung/BrandBadges.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { serviceArea } from '../../data/jsonLd';
+import { serviceJsonLd, videoJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'partypaket-stuttgart')!.data;
@@ -74,60 +75,22 @@ const packageFeatures = [
   "Passt in einen Kombi oder Kleinwagen mit umgeklappter Rückbank"
 ];
 
-const siteUrl = "https://soundundlicht-stuttgart.de";
-
-const serviceSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Partypaket Stuttgart Vermietung",
-  "description": "Miete das Partypaket für deine Party in Stuttgart und Umgebung. Komplette Partytechnik mit JBL Partyboxen, Licht, Nebel und Mikrofon für bis zu 50 Personen.",
-  "image": [
-    siteUrl + images[0],
-    siteUrl + images[1]
-  ],
-  "serviceType": "Veranstaltungstechnik-Vermietung",
-  "areaServed": serviceArea,
-  "provider": {
-    "@type": "LocalBusiness",
-    "@id": "https://soundundlicht-stuttgart.de/#business"
-  },
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "priceSpecification": {
-      "@type": "UnitPriceSpecification",
-      "price": product.priceValue,
-      "priceCurrency": "EUR",
-      "unitCode": "DAY"
-    }
-  }
+const videoPublisher = {
+  "@type": "Organization",
+  "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
+  "logo": { "@type": "ImageObject", "url": "https://soundundlicht-stuttgart.de/img/djhulk_logo.webp" }
 };
-
-
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soundundlicht-stuttgart.de/"},
-    {"@type": "ListItem", "position": 2, "name": "Vermietung", "item": "https://soundundlicht-stuttgart.de/vermietung"},
-    {"@type": "ListItem", "position": 3, "name": "Partypaket Stuttgart", "item": "https://soundundlicht-stuttgart.de/vermietung/partypaket-stuttgart"}
-  ]
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-};
+const serviceJsonLdData = JSON.parse(JSON.stringify(serviceJsonLd(product, images)));
+const breadcrumbJsonLdData = JSON.parse(JSON.stringify(breadcrumbJsonLd(breadcrumbSegments)));
+const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
+const videoJsonLdData = JSON.parse(JSON.stringify(videoJsonLd(
+  "Ivch0DqKkW0",
+  "Partypaket Stuttgart Demo",
+  "Demo des Partypakets Stuttgart - JBL Partyboxen, LED Licht und Nebelmaschine",
+  "/img/vermietung/partypaket.webp",
+  videoPublisher,
+  { uploadDate: "2024-01-20T00:00:00+00:00", duration: "PT1M30S" }
+)));
 ---
 
 <ProductLayout 
@@ -139,25 +102,7 @@ const faqSchema = {
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Partypaket" }}
   galleryImages={images}
-  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "name": "Partypaket Stuttgart Demo",
-    "description": "Demo des Partypakets Stuttgart - JBL Partyboxen, LED Licht und Nebelmaschine",
-    "thumbnailUrl": [siteUrl + "/img/vermietung/partypaket.webp"],
-    "contentUrl": "https://www.youtube.com/watch?v=Ivch0DqKkW0",
-    "embedUrl": "https://www.youtube.com/embed/Ivch0DqKkW0",
-    "uploadDate": "2024-01-20T00:00:00+00:00",
-    "duration": "PT1M30S",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
-      "logo": {
-        "@type": "ImageObject",
-        "url": siteUrl + "/img/djhulk_logo.webp"
-      }
-    }
-  }]}
+  jsonLd={[serviceJsonLdData, breadcrumbJsonLdData, faqPageJsonLdData, videoJsonLdData]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <!-- Hero -->
@@ -173,6 +118,7 @@ const faqSchema = {
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             Inkl. Kabel & Einweisung
           </span>
+          <BrandBadges brands={product.brands} />
         </div>
         <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Partypaket Stuttgart</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">

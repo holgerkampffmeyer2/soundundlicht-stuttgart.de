@@ -1,0 +1,41 @@
+---
+interface Props {
+  brands: string[];
+}
+
+const { brands } = Astro.props;
+---
+
+{brands.length > 0 && (
+  <span class="brand-badges" aria-label={`Marken: ${brands.join(", ")}`}>
+    {brands.map((brand) => (
+      <span class="brand-badge" aria-label={`Marke: ${brand}`}>
+        {brand}
+      </span>
+    ))}
+  </span>
+)}
+
+<style>
+  .brand-badges {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .brand-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    background: color-mix(in srgb, var(--color-surface) 70%, transparent);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+  }
+</style>

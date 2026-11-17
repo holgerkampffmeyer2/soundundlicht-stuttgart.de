@@ -13,3 +13,5 @@ features:
   - "LED-Leuchte (3 Modi)"
   - "inkl. Transporttasche"
 detailPage: "/vermietung/powerstation"
+brands:
+  - EnginStar

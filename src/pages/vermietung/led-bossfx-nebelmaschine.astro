@@ -5,9 +5,10 @@ import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
 import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
 import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
+import BrandBadges from '../../components/vermietung/BrandBadges.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { serviceArea } from '../../data/jsonLd';
+import { serviceJsonLd, videoJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'led-bossfx-nebelmaschine')!.data;
@@ -33,58 +34,13 @@ const images = [
 
 const siteUrl = "https://soundundlicht-stuttgart.de";
 
-const serviceSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "LED BossFX-2 Pro & Nebelmaschine Vermietung",
-  "description": "Miete die LED Party-Lichtanlage BossFX-2 Pro mit AF-150 Nebelmaschine. Sound-zu-Licht Modus und DMX-Steuerung für deine Party.",
-  "image": [
-    siteUrl + images[0],
-    siteUrl + images[1]
-  ],
-  "serviceType": "Veranstaltungstechnik-Vermietung",
-  "areaServed": serviceArea,
-  "provider": {
-    "@type": "LocalBusiness",
-    "@id": "https://soundundlicht-stuttgart.de/#business"
-  },
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "priceSpecification": {
-      "@type": "UnitPriceSpecification",
-      "price": product.priceValue,
-      "priceCurrency": "EUR",
-      "unitCode": "DAY"
-    }
-  }
-};
 
 
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map((faq: any) => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-};
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soundundlicht-stuttgart.de/"},
-    {"@type": "ListItem", "position": 2, "name": "Vermietung", "item": "https://soundundlicht-stuttgart.de/vermietung"},
-    {"@type": "ListItem", "position": 3, "name": "LED BossFX-2 Pro & Nebelmaschine", "item": "https://soundundlicht-stuttgart.de/vermietung/led-bossfx-nebelmaschine"}
-  ]
-};
+
+
+
 
 const specsPartylicht = {
   "Modell": "Stairville LED BossFX-2 Pro",
@@ -128,25 +84,21 @@ const events = [
   }
 ];
 
-const videoSchema = {
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "LED BossFX & Nebelmaschine Demo",
-  "description": "Demo der LED BossFX-2 Pro Partylichtanlage mit AF-150 Nebelmaschine in Aktion",
-  "thumbnailUrl": [siteUrl + "/img/vermietung/LED-BossFX2-Pro-Nebel-AI.webp"],
-  "contentUrl": "https://www.youtube.com/watch?v=MzCgO9gkBzQ",
-  "embedUrl": "https://www.youtube.com/embed/MzCgO9gkBzQ",
-  "uploadDate": "2024-02-10T00:00:00+00:00",
-  "duration": "PT45S",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
-    "logo": {
-      "@type": "ImageObject",
-      "url": siteUrl + "/img/djhulk_logo.webp"
-    }
-  }
+const videoPublisher = {
+  "@type": "Organization",
+  "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
+  "logo": { "@type": "ImageObject", "url": "https://soundundlicht-stuttgart.de/img/djhulk_logo.webp" }
 };
+const serviceJsonLdData = JSON.parse(JSON.stringify(serviceJsonLd(product, images)));
+const breadcrumbJsonLdData = JSON.parse(JSON.stringify(breadcrumbJsonLd(breadcrumbSegments)));
+const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
+const videoJsonLdData = JSON.parse(JSON.stringify(videoJsonLd(
+  "MzCgO9gkBzQ",
+  "LED BossFX & Nebelmaschine Demo",
+  "Demo der LED BossFX-2 Pro Partylichtanlage mit AF-150 Nebelmaschine in Aktion",
+  "/img/vermietung/LED-BossFX2-Pro-Nebel-AI.webp",
+  videoPublisher
+)));
 ---
 
 <ProductLayout 
@@ -158,7 +110,7 @@ const videoSchema = {
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Licht", label: "Lichtanlage LED BossFX-2 Pro und AF-150 Fog Machine" }}
   galleryImages={images}
-  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+  jsonLd={[serviceJsonLdData, breadcrumbJsonLdData, faqPageJsonLdData, videoJsonLdData]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <!-- Header -->
@@ -174,6 +126,7 @@ const videoSchema = {
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             Inkl. Kabel & Einweisung
           </span>
+          <BrandBadges brands={product.brands} />
         </div>
         <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">LED BossFX-2 Pro & Nebelmaschine</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">

@@ -6,6 +6,7 @@ import DecisionHelp from '../../components/vermietung/DecisionHelp.astro';
 import RelatedLinks from '../../components/vermietung/RelatedLinks.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
 import FAQSection from '../../components/FAQSection.astro';
+import BrandBadges from '../../components/vermietung/BrandBadges.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
 import { serviceArea } from '../../data/jsonLd';
@@ -154,6 +155,7 @@ const mischpultPackages = [
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             Inkl. Kabel & Einweisung
           </span>
+          <BrandBadges brands={mischpult.brands} />
         </div>
         <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Mikrofon & Mischpult mieten</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">
@@ -187,6 +189,7 @@ const mischpultPackages = [
         </p>
       </div>
       <div class="mb-8 text-center"><span class="price-badge">{mikrofon.price}</span></div>
+      <BrandBadges brands={mikrofon.brands} class="justify-center" />
       <TechnicalSpecs specs={specsMikrofon} />
       <RentalIncludes items={includesMikrofon} />
       <IncludedInPackages packages={mikrofonPackages} />
@@ -204,6 +207,7 @@ const mischpultPackages = [
         </p>
       </div>
       <div class="mb-8 text-center"><span class="price-badge">{mischpult.price}</span></div>
+      <BrandBadges brands={mischpult.brands} class="justify-center" />
       <TechnicalSpecs specs={specsMischpult} />
       <RentalIncludes items={includesMischpult} />
       <IncludedInPackages packages={mischpultPackages} />

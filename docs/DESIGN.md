@@ -16,13 +16,13 @@
 ```
 src/
 ├── components/           # UI-Komponenten
-│   └── vermietung/       # Vermietung-spezifische Komponenten
+│   └── vermietung/       # Vermietung-spezifische Komponenten (u. a. ProductLayout, ProductGallery)
 ├── layouts/
 │   └── Layout.astro
 ├── pages/                # Routen
 │   ├── index.astro       # Landing Page
 │   ├── vermietung.astro  # Vermietung Landing
-│   ├── vermietung/       # Produktseiten (16)
+│   ├── vermietung/       # Produkt- & Kategorieseiten (inkl. ICOA-System/-Pakete, Redirects)
 │   │   ├── partypaket-stuttgart.astro
 │   │   ├── djpaket-fildern.astro
 │   │   ├── veranstaltungspaket-stuttgart.astro
@@ -30,6 +30,11 @@ src/
 │   │   ├── karaoke-paket.astro
 │   │   ├── jbl-partybox-300-320.astro
 │   │   ├── ld-maui-28g3.astro
+│   │   ├── ld-systems-icoa-series.astro   # ICOA-System (Kategorie)
+│   │   ├── ld-icoa-top-paar.astro         # ICOA-Paket
+│   │   ├── ld-icoa-party-paket.astro      # ICOA-Paket (Partypaket XL)
+│   │   ├── ld-icoa-club-paket.astro       # ICOA-Paket
+│   │   ├── ld-icoa-buehnen-paket.astro    # Redirect → Partypaket XL
 │   │   ├── kls-laser-bar.astro
 │   │   ├── led-bossfx-nebelmaschine.astro
 │   │   ├── nebelmaschinen.astro
@@ -48,7 +53,7 @@ src/
 │   ├── search.ts
 │   └── scroll-animations.ts
 ├── content/
-│   └── products/         # 22 Produkt-YAMLs
+│   └── products/         # 27 Produkt-YAMLs
 ├── lib/                  # Hilfsfunktionen
 │   ├── cartData.ts       # Cart-Daten (readRawCart, buildProductMap, formatCartItems, getCartData)
 │   ├── cartData.test.ts  # Unit-Tests
@@ -62,10 +67,17 @@ src/
 │   ├── faqs.json
 │   └── google-reviews.json
 public/
+├── downloads/            # Downloadbare Dateien (z. B. PDF-Anleitungen)
+│   └── icoa/             # Druck-PDFs der ICOA-Aufbauschemata
 ├── img/
 │   ├── cities/           # City Hero-Bilder (slug.webp + -thumb.webp)
+│   ├── vermietung/
+│   │   └── icoa/         # Digitale ICOA-Aufbauschemata (SVG) für Galerie
 │   └── header.webp
 └── rss.xml
+docs/
+└── diagrams/
+    └── icoa/             # Quell-Dateien der ICOA-Aufbauschemata (.drawio, .svg, .pdf)
 ```
 
 ---
@@ -75,7 +87,7 @@ public/
 | Pfad | Typ |
 |------|-----|
 | `/` | Landing Page |
-| `/vermietung/` | Vermietung Landing (auch `type:produkt`, 22 Einzelartikel via Katalog-Matching) |
+| `/vermietung/` | Vermietung Landing (auch `type:produkt`, 27 Einzelartikel via Katalog-Matching) |
 | `/vermietung/partypaket-stuttgart/` | Partypaket |
 | `/vermietung/djpaket-fildern/` | DJ-Paket |
 | `/vermietung/veranstaltungspaket-stuttgart/` | Veranstaltungspaket |
@@ -83,12 +95,18 @@ public/
 | `/vermietung/karaoke-paket/` | Karaoke-Paket |
 | `/vermietung/jbl-partybox-300-320/` | JBL Partybox |
 | `/vermietung/ld-maui-28g3/` | LD Maui 28 G3 |
+| `/vermietung/ld-systems-icoa-series/` | LD ICOA System (Kategorie) |
+| `/vermietung/ld-icoa-top-paar/` | ICOA-Paket: Top-Paar (unter ICOA System) |
+| `/vermietung/ld-icoa-party-paket/` | ICOA-Paket: Partypaket XL (unter ICOA System) |
+| `/vermietung/ld-icoa-club-paket/` | ICOA-Paket: Club-Paket (unter ICOA System) |
 | `/vermietung/kls-laser-bar/` | KLS Laser Bar |
 | `/vermietung/led-bossfx-nebelmaschine/` | LED + Nebelmaschine |
 | `/vermietung/nebelmaschinen/` | Nebelmaschinen (AF-150 & Uking 1200W) |
 | `/vermietung/partylicht-moving-head/` | Partylicht Moving Head |
 | 20 City Pages: `/stuttgart/`, `/esslingen/`, ... `/waiblingen/` | City Pages |
 | Anker-gebündelte Geräte (z. B. `/vermietung/led-scheinwerfer#led-par-lichter`, `/vermietung/nebelmaschinen#af-150`) | Als Abschnitt auf Kategorieseite, kein eigener Link |
+
+> Hinweis: `/vermietung/ld-icoa-buehnen-paket/` leitet auf `/vermietung/ld-icoa-party-paket/` weiter. Die ICOA-Paketseiten sind per Breadcrumb unter `/vermietung/ld-systems-icoa-series/` eingeordnet.
 
 ---
 
@@ -151,10 +169,12 @@ box-shadow: 0 0 30px color-mix(in srgb, var(--color-primary) 30%, transparent);
 
 ## Bildkonventionen
 
-- **Format**: WebP primär, JPG-Fallback via `<picture>`-Element
+- **Format**: WebP primär, JPG-Fallback via `<picture>`-Element; Ausnahmen für Diagramme/Illustrationen (z. B. SVG-Aufbauschemata in Galerien)
 - **City Hero**: `public/img/cities/<slug>.webp` (1920px, quality 85)
 - **City Thumb**: `public/img/cities/<slug>-thumb.webp` (600px, quality 75)
-- **Galerie**: `public/img/vermietung/<name>.webp` + Fallback `.jpg`
+- **Galerie**: `public/img/vermietung/<name>.webp` + Fallback `.jpg` (oder SVG z. B. unter `public/img/vermietung/<gruppe>/`)
+- **Downloads**: `public/downloads/<gruppe>/` für druckfreundliche PDFs/Anleitungen (z. B. ICOA-Aufbauschemata); Quellen dazu in `docs/diagrams/<gruppe>/`
+- **Produktlayout**: `ProductLayout` (`galleryImages?: string[]`) rendert die Galerie; optional `downloads?: { label, href, filename }[]` zeigt unter der Galerie einen „Anleitung / Aufbauschema als PDF“-Downloadblock
 - **Optimierung**: `node scripts/optimize-images.mjs` (WebP via Sharp, CLI: `-w`, `-q`, `--concurrency`, `-d`)
 - **Attribution**: CC-Lizenzen im HTML-Kommentar vermerken
 
@@ -187,7 +207,7 @@ pnpm run indexnow-submit    # URL-Submission an Suchmaschinen
 
 - JSON-LD: LocalBusiness, Service, FAQPage, OfferCatalog (kein `Product`)
 - City-Seiten: Service mit city-spezifischem `areaServed`
-- Sitemap: 38 URLs via `@astrojs/sitemap`
+- Sitemap: via `@astrojs/sitemap` (derzeit 46 indexierte Seiten laut Build)
 - RSS Feed: `public/rss.xml` (wird bei build generiert)
 - urllist.txt für Suchmaschinen
 
@@ -218,13 +238,13 @@ Wird `pagefindType="produkt"` gesetzt, bekommt die Seite automatisch `data-pagef
 
 ### Produkte auf `/vermietung/` (Katalog-Matching)
 
-22 Produkte sind als Content-Collection (`src/content/products/*.yml`) definiert und werden über `src/components/RentalCatalogData.astro` als `rentalItems` eingebettet. 16 Routen liegen in `src/pages/vermietung/` (davon bündeln 3 Kategorieseiten je mehrere Geräte-Detailseiten über Anker, z. B. `/vermietung/led-scheinwerfer#led-par-lichter`). Alle Produkte tragen ein `detailPage` (Route oder Anker). Jede Produkt-YAML kann ein optionales `order`-Feld (Zahl, nach `category`) tragen: `/vermietung` und `RentalCatalogData.astro` sortieren danach und gruppieren so verwandte Geräte (z. B. beide Nebelmaschinen direkt beieinander).
+27 Produkte sind als Content-Collection (`src/content/products/*.yml`) definiert und werden über `src/components/RentalCatalogData.astro` als `rentalItems` eingebettet. Produkt- und Kategorieseiten liegen in `src/pages/vermietung/` (mehrere Geräte-Detailseiten werden über Anker auf Kategorieseiten gebündelt, z. B. `/vermietung/led-scheinwerfer#led-par-lichter`). Alle Produkte tragen ein `detailPage` (Route oder Anker). Jede Produkt-YAML kann ein optionales `order`-Feld (Zahl, nach `category`) tragen: `/vermietung` und `RentalCatalogData.astro` sortieren danach und gruppieren so verwandte Geräte (z. B. beide Nebelmaschinen direkt beieinander).
 
 Damit auch Zubehör/Anker-Geräte in der Suche gefunden werden:
 
 1. **`/vermietung/`** hat `pagefindType="produkt"` und wird als Produktseite indexiert
 2. **Katalog-JSON**: Der gesamte `rentalItems[]`-Array wird als `<script id="rental-catalog-data" type="application/json">` in die Seite eingebettet
-3. **Client-Matching**: Die Suchfunktion `matchCatalogProducts(query)` durchsucht Titel, Beschreibung und Features aller 22 Produkte und rendert Treffer als reiche Produktkarten
+3. **Client-Matching**: Die Suchfunktion `matchCatalogProducts(query)` durchsucht Titel, Beschreibung und Features aller Katalog-Produkte und rendert Treffer als reiche Produktkarten
 4. **Links**: Produktkarten verlinken auf `detailPage` (Route oder Anker-Ziel); Nicht-Anker-Ziele werden gegen doppelte Pagefind-Treffer dedupliziert
 
 ### URL-Normalisierung

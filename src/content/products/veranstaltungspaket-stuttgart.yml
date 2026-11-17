@@ -22,3 +22,8 @@ setupTime: "~60 Min."
 spotifyReady: false
 micIncluded: true
 lightIncluded: true
+brands:
+  - LD Systems
+  - Yamaha
+  - Eurolite
+  - Uking

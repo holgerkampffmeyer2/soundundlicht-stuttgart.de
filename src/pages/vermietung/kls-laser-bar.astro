@@ -5,9 +5,10 @@ import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
 import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
 import RentalPricing from '../../components/vermietung/RentalPricing.astro';
 import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
+import BrandBadges from '../../components/vermietung/BrandBadges.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { serviceArea } from '../../data/jsonLd';
+import { serviceJsonLd, videoJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'kls-laser-bar')!.data;
@@ -31,58 +32,13 @@ const images = [
 
 const siteUrl = "https://soundundlicht-stuttgart.de";
 
-const serviceSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Eurolite KLS Laser Bar & Nebelmaschine Vermietung",
-  "description": "Miete die Eurolite KLS Laser Bar FX mit 1200W Nebelmaschine. Sound-zu-Licht Steuerung für deine Party.",
-  "image": [
-    siteUrl + images[0],
-    siteUrl + images[1]
-  ],
-  "serviceType": "Veranstaltungstechnik-Vermietung",
-  "areaServed": serviceArea,
-  "provider": {
-    "@type": "LocalBusiness",
-    "@id": "https://soundundlicht-stuttgart.de/#business"
-  },
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "priceSpecification": {
-      "@type": "UnitPriceSpecification",
-      "price": product.priceValue,
-      "priceCurrency": "EUR",
-      "unitCode": "DAY"
-    }
-  }
-};
 
 
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map((faq: any) => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-};
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soundundlicht-stuttgart.de/"},
-    {"@type": "ListItem", "position": 2, "name": "Vermietung", "item": "https://soundundlicht-stuttgart.de/vermietung"},
-    {"@type": "ListItem", "position": 3, "name": "KLS Laser Bar", "item": "https://soundundlicht-stuttgart.de/vermietung/kls-laser-bar"}
-  ]
-};
+
+
+
 
 const specsLaserBar = {
   "Modell": "Eurolite KLS Laser Bar FX",
@@ -127,25 +83,21 @@ const events = [
   }
 ];
 
-const videoSchema = {
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "KLS Laser Bar & Nebelmaschine Demo",
-  "description": "Demo der Eurolite KLS Laser Bar FX mit 1200W Nebelmaschine - Laser-Effekte und Nebel in Aktion",
-  "thumbnailUrl": [siteUrl + "/img/vermietung/kls-laserbar-ai.webp"],
-  "contentUrl": "https://www.youtube.com/watch?v=namuAf4RySA",
-  "embedUrl": "https://www.youtube.com/embed/namuAf4RySA",
-  "uploadDate": "2024-02-05T00:00:00+00:00",
-  "duration": "PT38S",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
-    "logo": {
-      "@type": "ImageObject",
-      "url": siteUrl + "/img/djhulk_logo.webp"
-    }
-  }
+const videoPublisher = {
+  "@type": "Organization",
+  "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
+  "logo": { "@type": "ImageObject", "url": "https://soundundlicht-stuttgart.de/img/djhulk_logo.webp" }
 };
+const serviceJsonLdData = JSON.parse(JSON.stringify(serviceJsonLd(product, images)));
+const breadcrumbJsonLdData = JSON.parse(JSON.stringify(breadcrumbJsonLd(breadcrumbSegments)));
+const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
+const videoJsonLdData = JSON.parse(JSON.stringify(videoJsonLd(
+  "namuAf4RySA",
+  "KLS Laser Bar & Nebelmaschine Demo",
+  "Demo der Eurolite KLS Laser Bar FX mit 1200W Nebelmaschine - Laser-Effekte und Nebel in Aktion",
+  "/img/vermietung/kls-laserbar-ai.webp",
+  videoPublisher
+)));
 ---
 
 <ProductLayout 
@@ -157,7 +109,7 @@ const videoSchema = {
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Licht", label: "Eurolite KLS Laser Bar" }}
   galleryImages={images}
-  jsonLd={[serviceSchema, breadcrumbSchema, faqSchema, videoSchema]}
+  jsonLd={[serviceJsonLdData, breadcrumbJsonLdData, faqPageJsonLdData, videoJsonLdData]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <!-- Hero -->
@@ -173,6 +125,7 @@ const videoSchema = {
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             Inkl. Kabel & Einweisung
           </span>
+          <BrandBadges brands={product.brands} />
         </div>
         <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">Eurolite KLS Laser Bar FX</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">

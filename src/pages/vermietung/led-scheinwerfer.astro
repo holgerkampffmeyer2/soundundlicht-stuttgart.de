@@ -6,6 +6,7 @@ import DecisionHelp from '../../components/vermietung/DecisionHelp.astro';
 import RelatedLinks from '../../components/vermietung/RelatedLinks.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
 import FAQSection from '../../components/FAQSection.astro';
+import BrandBadges from '../../components/vermietung/BrandBadges.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
 import { serviceArea } from '../../data/jsonLd';
@@ -16,6 +17,9 @@ const lichter = products.find(i => i.data.slug === 'led-par-lichter')!.data;
 const akku = products.find(i => i.data.slug === 'akku-led-par')!.data;
 const stageBar = products.find(i => i.data.slug === 'showlight-stage-bar')!.data;
 const categoryProducts = [strahler, lichter, akku, stageBar];
+
+// Aggregierte Marken für Hero: nur Showlight (Stage Bar)
+const ledHeroBrands = [...new Set(categoryProducts.flatMap(p => p.brands ?? []))];
 
 const breadcrumbSegments = [
   { label: "Startseite", href: "/" },
@@ -195,6 +199,7 @@ const stageBarPackages = [
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             Inkl. Kabel & Einweisung
           </span>
+          <BrandBadges brands={ledHeroBrands} />
         </div>
         <h1 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text">LED-Scheinwerfer mieten</h1>
         <p class="text-[var(--color-text)] text-xl max-w-2xl">
@@ -229,6 +234,7 @@ const stageBarPackages = [
         </p>
       </div>
       <div class="mb-8 text-center"><span class="price-badge">{strahler.price}</span></div>
+      <BrandBadges brands={strahler.brands} class="justify-center" />
       <TechnicalSpecs specs={specsStrahler} />
       <RentalIncludes items={includesStrahler} />
       <IncludedInPackages packages={strahlerPackages} />
@@ -246,6 +252,7 @@ const stageBarPackages = [
         </p>
       </div>
       <div class="mb-8 text-center"><span class="price-badge">{lichter.price}</span></div>
+      <BrandBadges brands={lichter.brands} class="justify-center" />
       <TechnicalSpecs specs={specsLichter} />
       <RentalIncludes items={includesLichter} />
       <IncludedInPackages packages={lichterPackages} />
@@ -263,6 +270,7 @@ const stageBarPackages = [
         </p>
       </div>
       <div class="mb-8 text-center"><span class="price-badge">{akku.price}</span></div>
+      <BrandBadges brands={akku.brands} class="justify-center" />
       <TechnicalSpecs specs={specsAkku} />
       <RentalIncludes items={includesAkku} />
       <IncludedInPackages packages={akkuPackages} />
@@ -280,6 +288,7 @@ const stageBarPackages = [
         </p>
       </div>
       <div class="mb-8 text-center"><span class="price-badge">{stageBar.price}</span></div>
+      <BrandBadges brands={stageBar.brands} class="justify-center" />
       <TechnicalSpecs specs={specsStageBar} />
       <RentalIncludes items={includesStageBar} />
       <IncludedInPackages packages={stageBarPackages} />
