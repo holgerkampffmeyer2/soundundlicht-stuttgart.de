@@ -9,7 +9,7 @@ import Testimonials from '../../components/Testimonials.astro';
 import BrandBadges from '../../components/vermietung/BrandBadges.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { serviceJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
+import { serviceJsonLd, videoJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'ld-icoa-club-paket')!.data;
@@ -24,7 +24,19 @@ const breadcrumbSegments = [
 const pageTitle = "2x ICOA Fullrange-Lautsprecher + 2x Bassreflex-PA-Subwoofer mieten in Stuttgart | Sound & Licht Stuttgart";
 const faqs = await getFaqsForPage('ld-icoa-club-paket');
 
-const images = ["/img/vermietung/icoa-placeholder.webp", "/img/vermietung/icoa/ld-icoa-club-paket-digital.svg"];
+const images = [
+  "/img/vermietung/icoa/LD-Systems-Icoa-Club-Paket.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-2sat-2subs.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-2sat-2-subs-2.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-sat-front.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-sat-detail-front.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-sat-detail-back.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-Sat-detail.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-detail-sat-and-sub.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-sub-front.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-Sub-detail.webp",
+  "/img/vermietung/icoa/ld-icoa-club-paket-digital.svg"
+];
 
 const packageItems = [
   { name: "2x LD Systems ICOA 12 A – Aktive Fullrange-Lautsprecher", detailPage: "/vermietung/ld-systems-icoa-series#ld-icoa-12-a" },
@@ -75,23 +87,37 @@ const packageFeatures = [
 const serviceJsonLdData = JSON.parse(JSON.stringify(serviceJsonLd(product, images)));
 const breadcrumbJsonLdData = JSON.parse(JSON.stringify(breadcrumbJsonLd(breadcrumbSegments)));
 const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
+
+const videoPublisher = {
+  "@type": "Organization",
+  "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
+  "logo": { "@type": "ImageObject", "url": "https://soundundlicht-stuttgart.de/img/djhulk_logo.webp" }
+};
+const videoJsonLdData = JSON.parse(JSON.stringify(videoJsonLd(
+  "j5Fz4n10jyI",
+  "Showcase LD Systems Icoa Bundle: 2 15Inch Subs and 2 12Inch Satellites",
+  "Kurzes Produktvideo zum LD Systems ICOA System: 12-Zoll-Topteile und 15-Zoll-Subwoofer im Einsatz.",
+  images[0],
+  videoPublisher,
+  { uploadDate: "2026-11-17T18:56:18+00:00", duration: "PT42S" }
+)));
 ---
 
 <ProductLayout
   product={product}
   pageTitle={pageTitle}
   description="Miete das LD ICOA Club-Paket in Stuttgart: 2x ICOA 12 A, 2x ICOA SUB 15 A (Bass bis 36 Hz, 131 dB), Distanzstangen & Kabel ab 150€/Tag. Haupt-PA für mobile DJs, DJ-Kollektive, Raves, Clubs, Bands & Feiern bis 200 Pers. Cardioid-ready, kombi-transportabel."
-  image="/img/vermietung/icoa-placeholder.webp"
-  preloadImage="/img/vermietung/icoa-placeholder.webp"
+  image="/img/vermietung/icoa/LD-Systems-Icoa-Club-Paket.webp"
+  preloadImage="/img/vermietung/icoa/LD-Systems-Icoa-Club-Paket.webp"
   pagefindType="produkt"
   pagefindMeta={{ price: product.price, image: images[0], category: "Paket", label: "Club-Paket LD ICOA" }}
-  jsonLd={[serviceJsonLdData, breadcrumbJsonLdData, faqPageJsonLdData]}
+  jsonLd={[serviceJsonLdData, breadcrumbJsonLdData, faqPageJsonLdData, videoJsonLdData]}
   galleryImages={images}
   downloads={[{ label: "Anleitung herunterladen (PDF)", href: "/downloads/icoa/ld-icoa-club-paket-druck.pdf", filename: "ld-icoa-club-paket-druck.pdf" }]}
   breadcrumbSegments={breadcrumbSegments}
 >
   <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
-    <img src="/img/vermietung/icoa-placeholder.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <img src="/img/vermietung/icoa/LD-Systems-Icoa-Club-Paket.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
     <div class="hero-overlay-accent"></div>
     <div class="relative z-10 w-full py-32 px-4">
       <div class="max-w-6xl mx-auto">
@@ -129,6 +155,26 @@ const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Produktvideo -->
+  <section class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Video</span>
+        <h2 class="font-play text-3xl font-bold mt-2">ICOA im Einsatz</h2>
+        <p class="text-[var(--color-text-muted)] mt-2">Ein kurzer Eindruck vom LD Systems ICOA System in Aktion</p>
+      </div>
+      <div class="mx-auto w-full max-w-[360px] aspect-[9/16] rounded-xl overflow-hidden bg-[var(--color-surface)]">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/j5Fz4n10jyI"
+          title="Showcase LD Systems Icoa Bundle: 2 15Inch Subs and 2 12Inch Satellites"
+          class="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   </section>

@@ -44,7 +44,12 @@ const breadcrumbSegments = [
 const pageTitle = "LD ICOA PA-System mieten in Stuttgart | Sound & Licht Stuttgart";
 const faqs = await getFaqsForPage('ld-systems-icoa-series');
 
-const images = ["/img/vermietung/icoa-placeholder.webp"];
+const images = [
+  "/img/vermietung/icoa/LD-Systems-Icoa-Club-Paket.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-Tops-Paket.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-Party-Paket.webp",
+  "/img/vermietung/icoa/LD-Systems-Icoa-detail-sat-and-sub.webp"
+];
 
 const topSpecs = {
   "Bauart": "Aktiver 12\"-Fullrange-Lautsprecher (Koaxial)",
@@ -114,15 +119,15 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
 <CategoryLayout
   pageTitle={pageTitle}
   description="Miete das LD ICOA PA-System in Stuttgart: ICOA 12 A (Aktiver Fullrange-Lautsprecher) ab 50€/Tag, ICOA SUB 15 A (Aktiver Bassreflex-PA-Subwoofer) ab 60€/Tag. Pakete: Top-Paar ab 100€, Partypaket XL (2 Tops + 1 Sub) ab 130€, Club-Paket (2 Tops + 2 Subs) ab 150€/Tag."
-  image="/img/vermietung/icoa-placeholder.webp"
-  preloadImage="/img/vermietung/icoa-placeholder.webp"
+  image="/img/vermietung/icoa/LD-Systems-Icoa-Club-Paket.webp"
+  preloadImage="/img/vermietung/icoa/LD-Systems-Icoa-Club-Paket.webp"
   pagefindMeta={{ category: "Sound", label: "LD ICOA System" }}
   jsonLd={[serviceJsonLdData, breadcrumbJsonLdData, faqPageJsonLdData]}
   breadcrumbSegments={breadcrumbSegments}
   products={[topWithPackages, subWithPackages]}
 >
   <section slot="hero" class="relative min-h-[60vh] flex items-center overflow-hidden">
-    <img src="/img/vermietung/icoa-placeholder.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+    <img src="/img/vermietung/icoa/LD-Systems-Icoa-Club-Paket.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
     <div class="hero-overlay-accent"></div>
     <div class="relative z-10 w-full py-32 px-4">
       <div class="max-w-6xl mx-auto">
