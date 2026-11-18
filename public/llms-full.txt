@@ -38,16 +38,15 @@ Vermietung in Stuttgart und Umgebung, u. a.: Stuttgart, Leinfelden-Echterdingen,
 - **Website:** https://soundundlicht-stuttgart.de/
 - **E-Mail:** holger.kampffmeyer+dj@gmail.com
 - **Telefon:** 0171 / 1467491
-- **Kontaktformular:** https://soundundlicht-stuttgart.de/kontakt/
+- **Kontaktformular:** https://soundundlicht-stuttgart.de/vermietung#kontakt
 
 ## Wichtige Seiten (Übersicht)
 - Startseite: https://soundundlicht-stuttgart.de/
-- Vermietung (Katalog): https://soundundlicht-stuttgart.de/vermietung/
-- FAQ: https://soundundlicht-stuttgart.de/faq/
-- Über uns: https://soundundlicht-stuttgart.de/ueber-uns/
-- Standorte: https://soundundlicht-stuttgart.de/standorte/
-- Stadtseiten: u. a. Stuttgart, LE, Filderstadt, Böblingen, Sindelfingen, Tübingen, Reutlingen, Esslingen, Göppingen, Waiblingen, Ludwigsburg
-- Rechtliches: https://soundundlicht-stuttgart.de/impressum/, https://soundundlicht-stuttgart.de/datenschutz/
+- Vermietung (Katalog): https://soundundlicht-stuttgart.de/vermietung
+- FAQ: https://soundundlicht-stuttgart.de/faq
+- Standort & Abholung: https://soundundlicht-stuttgart.de/leinfelden-echterdingen
+- Stadtseiten: u. a. Stuttgart, LE, Filderstadt, Böblingen, Sindelfingen, Tübingen, Reutlingen, Esslingen, Waiblingen, Ludwigsburg
+- Rechtliches: https://soundundlicht-stuttgart.de/impressum
 
 ## Anmerkung
 Alle Angaben dienen der Orientierung für LLMs. Aktuelle Verfügbarkeiten, exakte Preise und Details werden individuell bei der Anfrage geklärt.
