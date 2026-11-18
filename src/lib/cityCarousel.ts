@@ -34,6 +34,7 @@ export function initCityCarousel(config: CityCarouselConfig): void {
     if (!url || bg.getAttribute('src') === url) return;
     bg.src = url;
     if (srcset && bg.getAttribute('srcset') !== srcset) {
+      bg.sizes = '100vw';
       bg.srcset = srcset;
     }
   }
