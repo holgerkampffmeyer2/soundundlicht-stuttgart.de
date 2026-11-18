@@ -7,9 +7,9 @@ const { brands } = Astro.props;
 ---
 
 {brands.length > 0 && (
-  <span class="brand-badges" aria-label={`Marken: ${brands.join(", ")}`}>
+  <span class="brand-badges" role="list" aria-label={`Marken: ${brands.join(", ")}`}>
     {brands.map((brand) => (
-      <span class="brand-badge" aria-label={`Marke: ${brand}`}>
+      <span class="brand-badge" role="listitem">
         {brand}
       </span>
     ))}

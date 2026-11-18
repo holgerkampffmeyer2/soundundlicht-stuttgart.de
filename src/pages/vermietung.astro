@@ -247,7 +247,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
           <div id={`item-${item.slug}`} class="card-base equipment-card" style={`animation-delay: ${index * 0.1}s`}>
             <div class="relative">
               <picture>
-                <source srcset={`${getThumbUrl(item.image)} 480w, ${getWebpUrl(item.image)} 960w`} type="image/webp" />
+                <source srcset={`${getThumbUrl(item.image)} 480w, ${getWebpUrl(item.image)} 960w`} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp" />
                 <img 
                   src={item.image} 
                   alt={item.title} 
@@ -256,7 +256,6 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
                   loading="lazy" 
                   decoding="async" 
                   class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </picture>
               <span class="plug-badge">
@@ -312,7 +311,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
            <div id={`item-${item.slug}`} class="card-base equipment-card" style={`animation-delay: ${index * 0.1}s`}>
              <div class="relative">
 <picture>
-                  <source srcset={`${getThumbUrl(item.image)} 480w, ${getWebpUrl(item.image)} 960w`} type="image/webp" />
+                  <source srcset={`${getThumbUrl(item.image)} 480w, ${getWebpUrl(item.image)} 960w`} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp" />
                   <img 
                     src={item.image} 
                     alt={item.title} 
@@ -321,7 +320,6 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
                     loading="lazy" 
                     decoding="async" 
                     class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </picture>
                 <span class="plug-badge">
