@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import CityHero from "../components/CityHero.astro";
 import CityPackages from "../components/CityPackages.astro";
+import CityIcoaPackages from "../components/CityIcoaPackages.astro";
 import CitySteps from "../components/CitySteps.astro";
 import CityAreas from "../components/CityAreas.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
@@ -90,6 +91,7 @@ const faqPageJsonLdData = faqPageJsonLd(cityFaqs);
   />
 
   <CityPackages />
+  <CityIcoaPackages cityName={cityName} />
   {einzelItems.length > 0 && (
     <CityEinzeltechnik
       cityName={cityName}

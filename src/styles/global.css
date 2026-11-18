@@ -913,6 +913,22 @@ input[data-rental-search]::placeholder {
   z-index: 1;
 }
 
+.new-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-secondary);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  box-shadow: var(--shadow-cta);
+  z-index: 2;
+}
+
 .plug-badge-inline {
   display: inline-flex;
   align-items: center;

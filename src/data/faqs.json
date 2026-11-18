@@ -1711,5 +1711,45 @@
     "pages": [
       "ld-systems-icoa-series"
     ]
+  },
+  {
+    "id": "göppingen-anfahrt",
+    "question": "Wie komme ich von Göppingen zu dir nach Leinfelden-Echterdingen?",
+    "answer": "Von Göppingen aus erreichst du mich in ca. 37 Minuten über die A8 Richtung Stuttgart und Leinfelden-Echterdingen. Mein Standort ist die Magellanstraße 4, direkt an der A8 gelegen.",
+    "pages": [
+      "göppingen"
+    ]
+  },
+  {
+    "id": "göppingen-mietbar",
+    "question": "Kann ich als Kunde aus Göppingen bei dir Technik mieten?",
+    "answer": "Ja, sehr gerne! Göppingen ist ca. 44 km entfernt. Du holst die Technik in Leinfelden-Echterdingen ab und bekommst eine ausführliche Einweisung vor Ort.",
+    "pages": [
+      "göppingen"
+    ]
+  },
+  {
+    "id": "göppingen-entfernung",
+    "question": "Wie weit ist Leinfelden-Echterdingen von Göppingen entfernt?",
+    "answer": "Leinfelden-Echterdingen liegt ca. 44 km von Göppingen entfernt – eine Fahrtzeit von etwa 37 Minuten über die A8.",
+    "pages": [
+      "göppingen"
+    ]
+  },
+  {
+    "id": "göppingen-empfehlung",
+    "question": "Welche Technik empfiehlst du für eine Feier in Göppingen?",
+    "answer": "Das kommt auf deine Gästezahl an: Für bis zu 50 Gäste reicht das Partypaket. Für größere Feiern bis 150 Personen empfehle ich das DJ-Paket oder das Veranstaltungspaket mit professioneller Licht- und Soundtechnik.",
+    "pages": [
+      "göppingen"
+    ]
+  },
+  {
+    "id": "göppingen-umgebung",
+    "question": "Kommen auch Kunden aus Eislingen, Salach oder Uhingen zu dir?",
+    "answer": "Ja, aus dem gesamten Göppinger Raum holst du bei mir ab – auch aus Eislingen, Salach, Süßen und Uhingen. Die Abholung in Leinfelden-Echterdingen ist von überall gut erreichbar.",
+    "pages": [
+      "göppingen"
+    ]
   }
 ]
