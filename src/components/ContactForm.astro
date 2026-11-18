@@ -8,7 +8,6 @@
   <input type="hidden" name="subject" value="Neue Anfrage von soundundlicht-stuttgart.de" />
   <input type="hidden" name="from_name" value="Sound & Licht Stuttgart Kontaktformular" />
   <input type="hidden" name="redirect" value="https://soundundlicht-stuttgart.de/thankyou" />
-  <input type="hidden" name="cart" />
   <input type="hidden" name="access_key" value="b7b5a28d-9d9b-460f-901a-01955f3e5122" />
 
   <div class="form-grid">
@@ -17,7 +16,7 @@
       <input
         type="date"
         id="rental_start"
-        name="rental_start"
+        name="Miettermin"
         required
         class="form-input"
         autocomplete="off"
@@ -27,7 +26,7 @@
 
     <div class="form-group">
       <label for="event_type" class="form-label">Was ist der Anlass?</label>
-      <select id="event_type" name="event_type" class="form-input">
+      <select id="event_type" name="Anlass" class="form-input">
         <option value="">Bitte wählen…</option>
         <option value="Geburtstag">Geburtstag</option>
         <option value="Hochzeit">Hochzeit</option>
@@ -42,7 +41,7 @@
 
   <div class="form-group">
     <label for="music_source" class="form-label">Wie möchtest du Musik abspielen?</label>
-    <select id="music_source" name="music_source" class="form-input">
+    <select id="music_source" name="Musikwiedergabe" class="form-input">
       <option value="">Bitte wählen…</option>
       <option value="Spotify/Handy">Spotify oder Musik-App vom Handy</option>
       <option value="Laptop">Laptop</option>
@@ -59,7 +58,7 @@
       <input
         type="text"
         id="street"
-        name="street"
+        name="Straße"
         class="form-input"
         placeholder="Musterstraße"
         autocomplete="address-line1"
@@ -71,7 +70,7 @@
       <input
         type="text"
         id="housenumber"
-        name="housenumber"
+        name="Hausnummer"
         class="form-input"
         placeholder="42"
         autocomplete="address-line2"
@@ -85,7 +84,7 @@
       <input
         type="text"
         id="zip"
-        name="zip"
+        name="PLZ"
         class="form-input"
         placeholder="70567"
         autocomplete="postal-code"
@@ -98,7 +97,7 @@
       <input
         type="text"
         id="address_city"
-        name="address_city"
+        name="Stadt"
         class="form-input"
         placeholder="Stuttgart"
         autocomplete="address-level2"
@@ -116,7 +115,7 @@
         <span class="price-info-popup">Unverbindliche Preisangabe. Das finale Angebot erhalte ich nach Absenden des Formulars.</span>
       </span>
     </label>
-    <select id="equipment" name="equipment" class="form-input">
+    <select id="equipment" name="Gewünschte Technik" class="form-input">
       <option value="Empfehlung brauchen">Ich brauche eine Empfehlung</option>
       <option value="Lautsprecher und Licht">Lautsprecher und Licht</option>
       <option value="Nur Lautsprecher">Nur Lautsprecher</option>
@@ -159,7 +158,7 @@
     <input
       type="tel"
       id="phone"
-      name="phone"
+      name="Telefonnummer"
       class="form-input"
       placeholder="0171 146 7491"
       autocomplete="tel"
@@ -170,11 +169,11 @@
     <label for="message" class="form-label">Weitere Informationen <span class="text-[var(--color-text-muted)] text-sm font-normal">(optional)</span></label>
     <textarea
       id="message"
-      name="message"
+      name="Weitere Informationen"
       class="form-input form-textarea"
       placeholder="Besondere Wünsche, Fragen oder Anmerkungen…"
     ></textarea>
-    <input type="hidden" name="merkliste_items" id="merkliste-items-hidden" />
+    <input type="hidden" name="Merkliste" id="merkliste-items-hidden" />
   </div>
 
   <p class="text-[var(--color-text-muted)] text-sm mb-4 text-center">
