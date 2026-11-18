@@ -4,9 +4,13 @@ import PackageCardGrid from './PackageCardGrid.astro';
 
 interface Props {
   cityName: string;
+  title?: string;
+  intro?: string;
 }
 
-const { cityName } = Astro.props;
+const { cityName, title, intro } = Astro.props;
+const sectionTitle = title ?? `LD Systems ICOA für ${cityName}`;
+const sectionDescription = intro ?? `Ich habe die ICOA-Serie neu im Sortiment: kompakte PA-Pakete mit klarem Sound und ordentlich Bass – ideal, wenn du in ${cityName} wenig Platz, aber viel Wirkung brauchst.`;
 const slugs = ['ld-icoa-party-paket', 'ld-icoa-club-paket', 'ld-icoa-top-paar'];
 
 const products = await getCollection('products');
@@ -41,10 +45,10 @@ const pakete = slugs
           Neu bei mir
         </span>
         <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
-          LD Systems ICOA für {cityName}
+          {sectionTitle}
         </h2>
         <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
-          Ich habe die ICOA-Serie neu im Sortiment: kompakte PA-Pakete mit klarem Sound und ordentlich Bass – ideal, wenn du in {cityName} wenig Platz, aber viel Wirkung brauchst.
+          {sectionDescription}
         </p>
       </div>
 

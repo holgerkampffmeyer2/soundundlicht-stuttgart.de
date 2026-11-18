@@ -66,6 +66,8 @@ const cities = defineCollection({
     einzelTitle: z.string().optional(),
     einzelDescription: z.string().optional(),
     areasIntro: z.string().optional(),
+    icoaTitle: z.string().optional(),
+    icoaIntro: z.string().optional(),
     contactDescription: z.string().optional(),
     distanceText: z.string().optional(),
     travelTimeText: z.string().optional(),

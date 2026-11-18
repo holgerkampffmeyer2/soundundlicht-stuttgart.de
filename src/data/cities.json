@@ -92,12 +92,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Du feierst in Stuttgart und suchst Technik, die schnell in deinen Kofferraum passt? Ich stelle dir PA, Licht und Mikrofon für Wohnung, Keller oder Saal zusammen – passend zu deiner Gästezahl.",
+    "heroDetails": "Mein Abholort in Echterdingen ist ca. 12 km bzw. 20 Min. von Stuttgart entfernt. Für Plieningen, Hohenheim und Sonnenberg ist das der kürzeste Weg; ich zeige dir vor der Abholung, wie alles zusammengesteckt wird.",
+    "areasIntro": "Aus Plieningen, Hohenheim und Sonnenberg kommst du genauso zu mir wie aus der Stuttgarter Innenstadt – die Fahrt nach Echterdingen lohnt sich.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "ICOA-PA für Stuttgarter Feiern",
+    "icoaIntro": "Wenn du in Stuttgart wenig Stellfläche hast, sind die ICOA-Tops mit dem kleinen Sub die richtige Wahl. Ich empfehle das Partypaket XL für bis ca. 120 Gäste und das Top-Paar, wenn du nur eine kompakte Beschallung brauchst."
   },
   {
     "name": "Esslingen",
@@ -170,12 +172,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Für eine Hochzeit in der Esslinger Altstadt oder eine Geburtstagsparty im Vereinsheim habe ich die passende Technik. Du holst sie bei mir ab und bekommst eine klare Einweisung.",
+    "heroDetails": "Von Esslingen aus sind es ca. 15 km / 20 Min. zu mir nach Echterdingen. Über Denkendorf und Ostfildern bist du schnell da; für größere Räume nehme ich lieber die LD Maui 28 G3 statt einer kleinen Partybox.",
+    "areasIntro": "Auch aus Denkendorf, Ostfildern und Altbach ist mein Standort gut erreichbar – besonders, wenn du kurzfristig Technik für deine Feier brauchst.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "Kompakte ICOA-Sets für Esslingen",
+    "icoaIntro": "In Esslinger Kellerräumen und Vereinsheimen ist Platz oft knapp. Die ICOA-Pakete liefern trotzdem ordentlich Sound; das Club-Paket nehme ich, wenn du mehr Bass für DJ-lastige Feiern willst."
   },
   {
     "name": "Tübingen",
@@ -193,9 +197,9 @@
     "einzelTitle": "Outdoor-Technik für",
     "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Ob Studentenparty, Firmenfeier oder Geburtstag in Tübingen – ich habe Sound und Licht, das du selbst abholen und sicher aufbauen kannst.",
+    "heroDetails": "Von Tübingen aus fährst du ca. 30 km bzw. 30 Min. nach Echterdingen. Kusterdingen und Gomaringen liegen auf dem Weg; bei engen Räumen empfehle ich die ICOA-Tops statt großer PA-Säulen.",
+    "areasIntro": "Aus Kusterdingen, Gomaringen und Rottenburg kommst du genauso zu mir wie aus der Tübinger Innenstadt.",
     "contactDescription": "",
     "distanceText": "",
     "travelTimeText": "",
@@ -243,7 +247,9 @@
         "travelTime": "23 Min.",
         "url": "/metzingen"
       }
-    ]
+    ],
+    "icoaTitle": "ICOA für Tübinger Partys",
+    "icoaIntro": "Für Tübinger Feiern in Wohnungen oder kleinen Locations sind die ICOA-Tops praktisch: schnell gestellt, trotzdem kräftig. Das Top-Paar reicht für kleine Runden, das Partypaket XL für größere."
   },
   {
     "name": "Filderstadt",
@@ -315,12 +321,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Du wohnst direkt auf den Fildern? Bei mir holst du PA, Partyboxen und Licht in wenigen Minuten ab – ideal für kurzfristige Feiern in Filderstadt.",
+    "heroDetails": "Mein Standort in Leinfelden-Echterdingen ist nur ca. 5 km bzw. 10 Min. von Filderstadt entfernt. Über Bernhausen und Plattenhardt bist du schnell da; ich zeige dir die Kabel und Einstellungen vor der Abfahrt.",
+    "areasIntro": "Bernhausen, Plattenhardt und Neuhausen liegen praktisch vor der Haustür – die Abholung bei mir ist besonders entspannt.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "ICOA direkt auf den Fildern",
+    "icoaIntro": "Wenn du in Filderstadt spontan eine Feier planst, sind die ICOA-Pakete eine gute Wahl. Ich habe sie kompakt im Kombi untergebracht und erkläre dir kurz, wie du Tops und Sub richtig kombinierst."
   },
   {
     "name": "Leinfelden-Echterdingen",
@@ -389,12 +397,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Du bist direkt hier in Leinfelden-Echterdingen? Dann kannst du dir die Technik bei mir abholen, in Ruhe ansehen und sofort mitnehmen.",
+    "heroDetails": "Mein Abholort ist die Magellanstraße 4 – für dich quasi um die Ecke. Ich nehme mir Zeit für eine persönliche Einweisung, damit du weißt, wie alles zusammenhängt.",
+    "areasIntro": "Auch aus Filderstadt, Steinenbronn und Neuhausen auf den Fildern bist du in wenigen Minuten bei mir.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "ICOA-Technik direkt abholen",
+    "icoaIntro": "Bei mir kannst du die ICOA-Serie vor dem Mieten ansehen und direkt testen. Das Partypaket XL ist mein Favorit für private Feiern, das Club-Paket für bassstarke DJ-Abende."
   },
   {
     "name": "Kornwestheim",
@@ -412,9 +422,9 @@
     "einzelTitle": "Einzeltechnik für",
     "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Für deine Feier in Kornwestheim stelle ich dir ein Set aus Lautsprechern, Mikrofon und Licht zusammen – du holst es bei mir ab und bekommst alles erklärt.",
+    "heroDetails": "Von Kornwestheim aus sind es ca. 25 km / 25 Min. nach Echterdingen. Über Ludwigsburg und Fellbach bist du gut angebunden; für größere Feiern empfehle ich die LD Maui 28 G3.",
+    "areasIntro": "Auch aus Ludwigsburg, Remseck und Fellbach kommst du zu mir – besonders, wenn du am Wochenende kurzfristig Technik brauchst.",
     "contactDescription": "",
     "distanceText": "",
     "travelTimeText": "",
@@ -464,7 +474,9 @@
         "km": "ca. 41 km",
         "travelTime": "32 Min."
       }
-    ]
+    ],
+    "icoaTitle": "ICOA-Sound für Kornwestheim",
+    "icoaIntro": "In Kornwestheimer Vereinsräumen sind die ICOA-Tops praktisch, weil sie wenig Platz brauchen. Für mehr Bass nehme ich das Club-Paket, für eine kleine Party das Top-Paar."
   },
   {
     "name": "Ludwigsburg",
@@ -482,9 +494,9 @@
     "einzelTitle": "Technik nach Wahl für",
     "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Ob Geburtstag in der Ludwigsburger Innenstadt oder Firmenfeier im Betrieb – ich habe PA und Licht, das du selbst abholen und bedienen kannst.",
+    "heroDetails": "Mein Standort ist ca. 25 km bzw. 28 Min. von Ludwigsburg entfernt. Über Kornwestheim und Marbach kommst du schnell hier an; ich erkläre dir vorab, wie du die Technik aufbaust.",
+    "areasIntro": "Aus Kornwestheim, Marbach und Remseck ist die Abholung bei mir genauso möglich wie aus Ludwigsburg selbst.",
     "contactDescription": "",
     "distanceText": "",
     "travelTimeText": "",
@@ -528,7 +540,9 @@
         "travelTime": "19 Min.",
         "url": "/leonberg"
       }
-    ]
+    ],
+    "icoaTitle": "ICOA für Ludwigsburger Feiern",
+    "icoaIntro": "Für Ludwigsburger Partys in kleineren Räumen empfehle ich die ICOA-Tops mit einem Sub. Das Partypaket XL ist ein guter Mittelweg, wenn du nicht zu viel Technik transportieren willst."
   },
   {
     "name": "Böblingen",
@@ -596,12 +610,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Du planst eine Feier in Böblingen? Ich stelle dir Sound und Licht für deine Gästezahl zusammen – abholen kannst du es bei mir in Echterdingen.",
+    "heroDetails": "Von Böblingen aus bist du ca. 16 km bzw. 20 Min. unterwegs. Schönaich und Sindelfingen liegen auf dem Weg; ich zeige dir vor Abholung, welche Kabel du brauchst.",
+    "areasIntro": "Auch aus Schönaich, Sindelfingen und Holzgerlingen ist mein Standort leicht erreichbar.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "Kompakte ICOA-Pakete für Böblingen",
+    "icoaIntro": "In Böblinger Wohnungen und Kellern sind die ICOA-Pakete praktisch: wenig Stellfläche, klarer Sound. Für DJ-Sets mit mehr Druck nehme ich das Club-Paket."
   },
   {
     "name": "Sindelfingen",
@@ -649,12 +665,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Für Geburtstage und Vereinsfeiern in Sindelfingen habe ich komplette Technik-Sets – du holst sie bei mir ab und bekommst eine persönliche Einweisung.",
+    "heroDetails": "Mein Abholort ist ca. 18 km / 20 Min. von Sindelfingen entfernt. Über Böblingen und Ehningen bist du schnell da; für große Räume empfehle ich die LD Maui 28 G3.",
+    "areasIntro": "Auch aus Ehningen und Holzgerlingen kommst du zu mir – die Fahrt ist kurz und die Technik ist schnell verladen.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "ICOA für Sindelfinger Partys",
+    "icoaIntro": "Wenn du in Sindelfingen eine Feier mit begrenztem Platz planst, sind die ICOA-Tops eine gute Basis. Das Partypaket XL bringt einen Sub dazu, ohne den Kofferraum zu füllen."
   },
   {
     "name": "Leonberg",
@@ -672,9 +690,9 @@
     "einzelTitle": "Einzeltechnik für",
     "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Du feierst in Leonberg und brauchst Technik, die du selbst abholen kannst? Ich habe PA, Mikrofon und Licht für unterschiedlichste Räume.",
+    "heroDetails": "Von Leonberg aus sind es ca. 20 km bzw. 25 Min. nach Echterdingen. Sindelfingen und Korntal-Münchingen liegen unweit entfernt; ich helfe dir bei der Auswahl passend zu deinem Raum.",
+    "areasIntro": "Aus Korntal-Münchingen, Weil der Stadt und Renningen kommst du ebenfalls zu mir – auch wenn du erst kurz vor der Feier etwas brauchst.",
     "contactDescription": "",
     "distanceText": "",
     "travelTimeText": "",
@@ -718,7 +736,9 @@
         "travelTime": "30 Min.",
         "url": "/herrenberg"
       }
-    ]
+    ],
+    "icoaTitle": "ICOA-Sets für Leonberg",
+    "icoaIntro": "Für Leonberger Feiern in kleineren Locations sind die ICOA-Tops praktisch. Ich empfehle das Top-Paar als Monitor oder das Club-Paket, wenn du einen bassstarken DJ-Abend planst."
   },
   {
     "name": "Waiblingen",
@@ -736,9 +756,9 @@
     "einzelTitle": "Technik nach Wahl für",
     "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Von der Altstadtfeier bis zur Firmenparty in Waiblingen: Ich stelle dir Sound und Licht zusammen, das du bei mir abholen und sicher aufbauen kannst.",
+    "heroDetails": "Du fährst von Waiblingen ca. 25 km bzw. 28 Min. zu mir nach Echterdingen. Über Fellbach und Remseck ist das gut machbar; ich zeige dir die Steckverbindungen vorher.",
+    "areasIntro": "Auch aus Fellbach, Winnenden und Backnang kommst du zu mir – besonders, wenn du Technik für mehrere Tage brauchst.",
     "contactDescription": "",
     "distanceText": "",
     "travelTimeText": "",
@@ -788,7 +808,9 @@
         "km": "ca. 40 km",
         "travelTime": "42 Min."
       }
-    ]
+    ],
+    "icoaTitle": "ICOA für Waiblinger Feiern",
+    "icoaIntro": "In Waiblingen sind viele Feiern in engen Räumen – da sind die ICOA-Pakete im Vorteil. Das Partypaket XL ist kompakt, das Club-Paket bringt mehr Bass für größere Runden."
   },
   {
     "name": "Nürtingen",
@@ -806,9 +828,9 @@
     "einzelTitle": "Outdoor-Technik für",
     "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Für deine Feier in Nürtingen habe ich PA, Partyboxen und Licht – du holst die Technik bei mir ab und bekommst alles vorher erklärt.",
+    "heroDetails": "Von Nürtingen aus bist du ca. 20 km / 22 Min. unterwegs. Über Wendlingen und Esslingen erreichst du mich schnell; für größere Locations nehme ich die LD Maui 28 G3.",
+    "areasIntro": "Auch aus Wendlingen, Esslingen und Kirchheim kommst du zu mir – die Fahrt nach Echterdingen bleibt kurz.",
     "contactDescription": "",
     "distanceText": "",
     "travelTimeText": "",
@@ -860,7 +882,9 @@
         "travelTime": "2 Min.",
         "url": "/leinfelden-echterdingen"
       }
-    ]
+    ],
+    "icoaTitle": "ICOA für Nürtingen",
+    "icoaIntro": "Nürtinger Feiern in Wohnzimmern oder Gemeinderäumen profitieren von den kompakten ICOA-Tops. Für mehr Bass empfehle ich das Partypaket XL, für Monitorzwecke das Top-Paar."
   },
   {
     "name": "Reutlingen",
@@ -878,9 +902,9 @@
     "einzelTitle": "Einzeltechnik für",
     "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Ob Geburtstag in Reutlingen oder Feier im Vereinsheim – ich habe die passende Technik und übergebe sie dir mit einer klaren Einweisung.",
+    "heroDetails": "Reutlingen liegt ca. 30 km bzw. 30 Min. von meinem Abholort entfernt. Über Pfullingen und Eningen kommst du schnell hier an; ich helfe dir bei der Wahl zwischen Partybox und PA-Säule.",
+    "areasIntro": "Aus Pfullingen, Eningen und Gomaringen ist mein Standort gut erreichbar – auch für kurzfristige Anfragen.",
     "contactDescription": "",
     "distanceText": "",
     "travelTimeText": "",
@@ -929,7 +953,9 @@
         "travelTime": "22 Min.",
         "url": "/kirchheim-unter-teck"
       }
-    ]
+    ],
+    "icoaTitle": "ICOA-PA für Reutlingen",
+    "icoaIntro": "Für Reutlinger Feiern mit wenig Stellfläche sind die ICOA-Tops eine gute Wahl. Das Club-Paket ist mein Tipp, wenn du bassstarke Musik für größere Räume brauchst."
   },
   {
     "name": "Kirchheim unter Teck",
@@ -996,12 +1022,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Du feierst in Kirchheim unter Teck? Ich stelle dir ein Set aus Lautsprechern, Licht und Mikrofon zusammen, das du bei mir abholen kannst.",
+    "heroDetails": "Von Kirchheim aus fährst du ca. 28 km bzw. 30 Min. nach Echterdingen. Über Plochingen und Wendlingen bist du schnell da; ich erkläre dir vorher den Aufbau.",
+    "areasIntro": "Auch aus Plochingen, Wendlingen und Nürtingen kommst du zu mir – die Anfahrt ist unkompliziert.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "ICOA für Kirchheim unter Teck",
+    "icoaIntro": "In Kirchheimer Kellerräumen sind die ICOA-Tops praktisch, weil sie wenig Platz wegnehmen. Für größere Feiern nehme ich das Partypaket XL mit einem Sub."
   },
   {
     "name": "Ostfildern",
@@ -1073,12 +1101,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Du bist in Ostfildern direkt neben meinem Standort? Dann holst du dir die Technik in wenigen Minuten ab und kannst sie vorher in Ruhe testen.",
+    "heroDetails": "Mein Abholort ist ca. 10 km bzw. 15 Min. von Ostfildern entfernt. Plieningen und Denkendorf sind quasi Nachbarn; ich nehme mir Zeit für eine persönliche Einweisung.",
+    "areasIntro": "Aus Plieningen, Denkendorf und Neuhausen bist du in wenigen Minuten bei mir – auch kurzfristig.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "ICOA direkt bei dir",
+    "icoaIntro": "Weil Ostfildern so nah ist, kannst du dir die ICOA-Pakete bei mir ansehen, bevor du dich entscheidest. Das Top-Paar reicht für kleine Feiern, das Club-Paket für mehr Druck."
   },
   {
     "name": "Fellbach",
@@ -1141,12 +1171,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Für Feiern in Fellbach stelle ich dir PA und Licht zusammen – abholen kannst du alles bei mir in Echterdingen, mit Einweisung inklusive.",
+    "heroDetails": "Von Fellbach aus sind es ca. 20 km / 25 Min. zu mir. Über Stuttgart und Bad Cannstatt bist du gut angebunden; für enge Räume empfehle ich die ICOA-Tops.",
+    "areasIntro": "Auch aus Schmiden, Oeffingen und Stuttgart kommst du zu mir – besonders, wenn du am selben Tag noch Technik brauchst.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "ICOA für Fellbacher Feiern",
+    "icoaIntro": "In Fellbacher Wohnungen und Vereinsheimen sind die ICOA-Tops eine gute Lösung. Das Partypaket XL liefert zusätzlichen Bass, ohne viel Stellfläche zu brauchen."
   },
   {
     "name": "Herrenberg",
@@ -1219,12 +1251,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Du planst eine Feier in Herrenberg? Ich habe Technik für Geburtstage, Hochzeiten und Firmenfeiern – du holst sie bei mir ab.",
+    "heroDetails": "Von Herrenberg aus fährst du ca. 30 km bzw. 30 Min. nach Echterdingen. Über Ehningen und Gärtringen bist du gut unterwegs; ich zeige dir vorher, wie du alles anschließt.",
+    "areasIntro": "Auch aus Ehningen, Gärtringen und Böblingen ist die Abholung bei mir gut machbar.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "ICOA für Herrenberg",
+    "icoaIntro": "Für Herrenberger Feiern in kleinen Räumen sind die ICOA-Tops ideal. Wenn du mehr Bass für deine Playlist willst, empfehle ich das Club-Paket mit zwei Subs."
   },
   {
     "name": "Winnenden",
@@ -1286,12 +1320,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Ob Geburtstag in Winnenden oder Feier im Betrieb – ich stelle dir die passende Technik zusammen und übergebe sie dir mit einer Einweisung.",
+    "heroDetails": "Winnenden liegt ca. 30 km / 30 Min. von meinem Standort entfernt. Über Schwaikheim und Weinstadt erreichst du mich; für größere Feiern nehme ich die LD Maui 28 G3.",
+    "areasIntro": "Auch aus Schwaikheim, Leutenbach und Weinstadt kommst du zu mir – die Fahrt nach Echterdingen ist gut möglich.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "ICOA für Winnenden",
+    "icoaIntro": "In Winnender Kellern und Vereinsheimen sind die ICOA-Pakete praktisch. Das Partypaket XL ist mein Tipp, wenn du kompakt anfangen und später aufrüsten willst."
   },
   {
     "name": "Backnang",
@@ -1353,12 +1389,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Du feierst in Backnang und brauchst Technik, die du selbst holen kannst? Ich habe Sets für kleine und größere Feiern.",
+    "heroDetails": "Von Backnang aus bist du ca. 40 km bzw. 35 Min. unterwegs. Über Winnenden und Waiblingen kommst du zu mir; ich helfe dir, das Set an deinen Raum anzupassen.",
+    "areasIntro": "Auch aus Winnenden, Waiblingen und Burgstetten ist mein Standort erreichbar – plane einfach genug Zeit für die Anfahrt ein.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "ICOA für Backnanger Feiern",
+    "icoaIntro": "Für Backnanger Feiern mit begrenztem Platz sind die ICOA-Tops eine gute Basis. Das Club-Paket bringt mehr Bass, wenn du viele Gäste und basslastige Musik hast."
   },
   {
     "name": "Metzingen",
@@ -1421,12 +1459,14 @@
       }
     ],
     "heroTitle": "",
-    "heroDescription": "",
-    "heroDetails": "",
-    "areasIntro": "",
+    "heroDescription": "Für eine Party in Metzingen oder eine Feier im Umland habe ich PA, Licht und Mikrofon – du holst es bei mir ab und bekommst alles erklärt.",
+    "heroDetails": "Metzingen ist ca. 22 km / 22 Min. von mir entfernt. Über Dettingen und Eningen bist du schnell da; ich zeige dir vorher, wie du Tops und Sub kombinierst.",
+    "areasIntro": "Aus Dettingen an der Erms, Eningen und Reutlingen kommst du genauso zu mir wie aus Metzingen selbst.",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "icoaTitle": "ICOA für Metzingen",
+    "icoaIntro": "In Metzinger Räumen mit wenig Stellfläche sind die ICOA-Pakete praktisch. Das Top-Paar reicht für kleine Feiern, das Partypaket XL für bis ca. 120 Gäste."
   },
   {
     "name": "Göppingen",
@@ -1503,6 +1543,8 @@
     "areasIntro": "Auch aus Eislingen, Salach, Süßen, Uhingen und dem ganzen Göppinger Raum kommst du zu mir – die Abholung in Leinfelden-Echterdingen ist direkt an der A8 erreichbar.",
     "contactDescription": "Du wohnst in Göppingen oder Umgebung und möchtest Technik für deine Party mieten? Schreib mir eine E-Mail mit deinem Wunschdatum und der gewünschten Ausrüstung. Die Abholung ist in Leinfelden-Echterdingen, Magellanstraße 4 – verkehrsgünstig an A8 / B27, nur ca. 44 km bzw. 37 Minuten von Göppingen. Ich melde mich innerhalb von 12 Stunden bei dir!",
     "distanceText": "Nur ca. 44 km von Göppingen – verkehrsgünstig an A8 / B27",
-    "travelTimeText": "37 Min."
+    "travelTimeText": "37 Min.",
+    "icoaTitle": "ICOA für Feiern in Göppingen",
+    "icoaIntro": "Von Göppingen aus holst du dir die kompakte ICOA-Technik in Echterdingen. Für Feiern in Eislingen, Salach oder Uhingen empfehle ich das Partypaket XL, wenn du einen Sub dazu willst."
   }
 ]

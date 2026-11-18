@@ -91,7 +91,7 @@ const faqPageJsonLdData = faqPageJsonLd(cityFaqs);
   />
 
   <CityPackages />
-  <CityIcoaPackages cityName={cityName} />
+  <CityIcoaPackages cityName={cityName} title={cityData.icoaTitle} intro={cityData.icoaIntro} />
   {einzelItems.length > 0 && (
     <CityEinzeltechnik
       cityName={cityName}

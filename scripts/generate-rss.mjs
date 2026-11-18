@@ -13,7 +13,7 @@ const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep
 
 const site = 'https://soundundlicht-stuttgart.de';
 
-const excludePaths = ['/impressum', '/links'];
+const excludePaths = ['/impressum', '/links', '/thankyou', '/404'];
 
 function escapeXml(str) {
   return str
@@ -65,34 +65,29 @@ function findHtmlPages() {
     if (!fs.existsSync(dir)) return;
     const entries = fs.readdirSync(dir, { withFileTypes: true });
 
-    let hasIndex = false;
-    for (const entry of entries) {
-      if (entry.isFile() && entry.name === 'index.html') {
-        hasIndex = true;
-        break;
-      }
-    }
-
-    if (hasIndex) {
-      const pagePath = relativePrefix || '/';
-      const shouldExclude = excludePaths.some(ex => pagePath.startsWith(ex));
-      if (!shouldExclude) {
-        const fullPath = path.join(dir, 'index.html');
-        const html = fs.readFileSync(fullPath, 'utf-8');
-        const meta = extractMeta(html);
-        if (!meta.title.startsWith('Redirecting')) {
-          const pubDate =
-            lastModifiedFor(resolveSourceFiles(pagePath)) ||
-            fs.statSync(fullPath).mtime.toISOString().split('T')[0];
-          pageMap.set(pagePath, { path: pagePath, title: meta.title, description: meta.description, pubDate });
-        }
-      }
-    }
-
     for (const entry of entries) {
       if (entry.isDirectory()) {
         walkDir(path.join(dir, entry.name), `${relativePrefix}${entry.name}/`);
+        continue;
       }
+
+      if (!entry.isFile() || !entry.name.endsWith('.html')) continue;
+
+      const pagePath = entry.name === 'index.html'
+        ? (relativePrefix || '/')
+        : `${relativePrefix}${entry.name.replace(/\.html$/, '')}`;
+
+      if (excludePaths.some(ex => pagePath.startsWith(ex))) continue;
+
+      const fullPath = path.join(dir, entry.name);
+      const html = fs.readFileSync(fullPath, 'utf-8');
+      const meta = extractMeta(html);
+      if (meta.title.startsWith('Redirecting')) continue;
+
+      const pubDate =
+        lastModifiedFor(resolveSourceFiles(pagePath)) ||
+        fs.statSync(fullPath).mtime.toISOString().split('T')[0];
+      pageMap.set(pagePath, { path: pagePath, title: meta.title, description: meta.description, pubDate });
     }
   }
 
