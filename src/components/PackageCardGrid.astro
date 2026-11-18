@@ -7,6 +7,7 @@ interface PaketItem {
   price: string;
   features: string[];
   detailPage?: string;
+  isNew?: boolean;
   audienceTag?: string;
   audienceDescription?: string;
   personRange?: string;
@@ -45,8 +46,13 @@ import Icon from './Icon.astro';
             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             Inkl. Kabel & Einweisung
           </span>
+          {item.isNew && (
+            <span class="new-badge">
+              Neu eingetroffen
+            </span>
+          )}
           {item.audienceTag && (
-            <span class="absolute top-3 left-3 bg-[var(--color-accent)] text-white text-xs font-bold px-3 py-1 rounded-full">
+            <span class="absolute bottom-3 left-3 rounded-full bg-[var(--color-accent)] px-3 py-1 text-xs font-bold text-white">
               {item.audienceTag}
             </span>
           )}

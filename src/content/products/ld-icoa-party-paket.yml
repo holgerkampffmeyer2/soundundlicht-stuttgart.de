@@ -4,6 +4,8 @@ image: /img/vermietung/icoa/LD-Systems-Icoa-Party-Paket.webp
 description: "Das kompakte Party-Paket: 2x ICOA 12 A, 1x ICOA SUB 15 A, Distanzstange und Dreibein-Stativ. Ein Sub für Bassfundament bei kompaktem Footprint – ideal für Privat-Partys, DJs und kleinere Feiern mit begrenztem Platz."
 category: Paket
 order: 7
+shortTitle: "ICOA Partypaket XL"
+isNew: true
 price: "ab 130€ / Tag"
 priceValue: 130
 features:

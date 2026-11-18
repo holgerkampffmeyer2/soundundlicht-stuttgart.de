@@ -44,7 +44,7 @@ src/
 │   │   ├── max-party-bar.astro
 │   │   ├── mikrofon-mischpult.astro
 │   │   └── led-scheinwerfer.astro
-│   └── <stadt>.astro     # City Pages (20 Städte)
+│   └── [city].astro       # City Pages (21 Städte, dynamisch aus cities.json)
 ├── styles/
 │   ├── global.css
 │   ├── theme-vars.css    # Alt-Theme-Variablen (?theme=)
@@ -103,7 +103,7 @@ docs/
 | `/vermietung/led-bossfx-nebelmaschine/` | LED + Nebelmaschine |
 | `/vermietung/nebelmaschinen/` | Nebelmaschinen (AF-150 & Uking 1200W) |
 | `/vermietung/partylicht-moving-head/` | Partylicht Moving Head |
-| 20 City Pages: `/stuttgart/`, `/esslingen/`, ... `/waiblingen/` | City Pages |
+| 21 City Pages: `/stuttgart/`, `/esslingen/`, ... `/göppingen/` | City Pages |
 | Anker-gebündelte Geräte (z. B. `/vermietung/led-scheinwerfer#led-par-lichter`, `/vermietung/nebelmaschinen#af-150`) | Als Abschnitt auf Kategorieseite, kein eigener Link |
 
 > Hinweis: `/vermietung/ld-icoa-buehnen-paket/` leitet auf `/vermietung/ld-icoa-party-paket/` weiter. Die ICOA-Paketseiten sind per Breadcrumb unter `/vermietung/ld-systems-icoa-series/` eingeordnet.

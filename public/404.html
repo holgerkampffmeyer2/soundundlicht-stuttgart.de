@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seite nicht gefunden – Sound &amp; Licht Stuttgart</title>
+  <script>
+    (function () {
+      var path = window.location.pathname;
+      var normalized = path.length > 1 ? path.replace(/\/+$/, '') : path;
+      var targets = {
+        '/kontakt': '/vermietung#kontakt',
+        '/ueber-uns': '/',
+        '/standorte': '/leinfelden-echterdingen',
+        '/vermietung/stuttgart': '/stuttgart',
+        '/vermietung/leinfelden-echterdingen': '/leinfelden-echterdingen',
+        '/vermietung/filderstadt': '/filderstadt',
+        '/vermietung/boeblingen': '/b%C3%B6blingen',
+        '/vermietung/sindelfingen': '/sindelfingen',
+        '/vermietung/tuebingen': '/t%C3%BCbingen',
+        '/vermietung/reutlingen': '/reutlingen',
+        '/vermietung/esslingen': '/esslingen',
+        '/vermietung/waiblingen': '/waiblingen',
+        '/vermietung/ludwigsburg': '/ludwigsburg',
+        '/goeppingen': '/g%C3%B6ppingen',
+        '/vermietung/goeppingen': '/g%C3%B6ppingen'
+      };
+      var target = targets[normalized];
+      if (!target && normalized !== path) target = normalized;
+      if (!target) return;
+      var url = new URL(target, window.location.origin);
+      url.search = window.location.search;
+      if (target.indexOf('#') === -1) url.hash = window.location.hash;
+      window.location.replace(url.pathname + url.search + url.hash);
+    })();
+  </script>
+</head>
+<body>
+  <p>Diese Seite wurde verschoben oder existiert nicht mehr. <a href="/">Zur Startseite</a></p>
+</body>
+</html>

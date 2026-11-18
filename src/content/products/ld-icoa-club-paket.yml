@@ -4,6 +4,8 @@ image: /img/vermietung/icoa/LD-Systems-Icoa-Club-Paket.webp
 description: "Kompakte Club-PA mit 2x ICOA 12 A und 2x ICOA SUB 15 A. Druckvoller Bass, klare Höhen und genug Reserven für mobile DJs, Bands und größere Feiern."
 category: Paket
 order: 6
+shortTitle: "ICOA Club-Paket"
+isNew: true
 price: "ab 150€ / Tag"
 priceValue: 150
 features:

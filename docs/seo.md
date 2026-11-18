@@ -22,9 +22,9 @@ Nicht jede Ortschaft bekommt eine eigene Stadtseite (Doorway-Risiko). Die Abdeck
 jeweils aus Abhol-Perspektive (Kunden holen in der Magellanstraße 4, 70771 Echterdingen ab – KEINE
 Werbung für Lieferung/Aufbau):
 
-1. **Stufe 1 – eigene City-Seite** (`src/pages/<slug>.astro`): nur für Einzugsstädte mit relevantem
-   Suchvolumen (aktuell 20 Seiten, u. a. stuttgart, esslingen, fellbach, herrenberg, winnenden,
-   backnang, metzingen, ostfildern). Kriterien: ausreichende Distanz/Ortsgröße UND eigenständiger
+1. **Stufe 1 – eigene City-Seite** (`src/pages/[city].astro` + Eintrag in `src/data/cities.json`): nur für Einzugsstädte mit relevantem
+   Suchvolumen (aktuell 21 Seiten, u. a. stuttgart, esslingen, fellbach, herrenberg, winnenden,
+   backnang, metzingen, göppingen, ostfildern). Kriterien: ausreichende Distanz/Ortsgröße UND eigenständiger
    Keyword-Bedarf («Partybox mieten <Stadt>»).
 2. **Stufe 2 – Einzugsgebiet-Sektion** (`CityAreas`-Komponente + `areas[]` in `src/data/cities.json`):
    für Stadtteile und Nachbarorte ohnehin vorhandener Seiten (z. B. Degerloch, Möhringen, Vaihingen,

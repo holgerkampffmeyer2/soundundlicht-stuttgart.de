@@ -1,67 +1,77 @@
 # City Page hinzufügen
 
-## 1. Image
-- Find a CC-licensed city photo on Wikimedia Commons
-- Download to `/tmp/<slug>_orig.jpg`
-- Convert to WebP: hero at 1920px wide (quality 85), thumbnail at 600px (quality 75)
-- Save as `public/img/cities/<slug>.webp` and `public/img/cities/<slug>-thumb.webp`
-- Usage: `<CityHero image="/img/cities/<slug>.webp" ... />` and CityGrid thumbnail
+City Pages werden dynamisch über `src/pages/[city].astro` aus der Collection `cities` erzeugt. Eine neue Stadt ist daher ein Eintrag in `src/data/cities.json` – eine eigene `.astro`-Datei wird nicht angelegt.
 
-## 2. City Page
-- Copy an existing city page (e.g., `src/pages/stuttgart.astro`)
-- Adjust `cityJsonLd` (name, areaServed name)
-- Adjust `<Layout>` title/description
-- Adjust `<CityHero>` props (image, city, title, description, details with city-specific distance/time)
-- Adjust contact section text (city name, distance from LE)
-- Save as `src/pages/<slug>.astro`
+## 1. Bild
 
-## 3. Register in CityGrid
-- CityGrid (`src/components/CityGrid.astro`) reads the `cities` Content Collection,
-  so add an entry to `src/data/cities.json`:
-  ```json
-  {
-    "name": "<CityName>",
-    "slug": "<slug>",
-    "image": "/img/cities/<slug>.webp",
-    "title": "Veranstaltungstechnik mieten",
-    "description": "<Brief description>",
-    "distance": "<X km>",
-    "travelTime": "<X min>",
-    "einzelItems": ["<product-slug-a>", "<product-slug-b>", "<product-slug-c>"],
-    "einzelTitle": "Einzelgeräte für",
-    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
-    "areas": [
-      { "name": "<Ortsname>", "km": "ca. X km", "travelTime": "X Min." },
-      { "name": "<Ort mit eigener Seite>", "km": "ca. X km", "travelTime": "X Min.", "url": "/<slug>" }
-    ]
-  }
-  ```
-- `areas[]` = Einzugsgebiet-Chips: `km`/`travelTime` ist immer die Distanz **bis zur Abholung
-  in Leinfelden-Echterdingen (Magellanstraße 4)**, nicht zur Stadt der Seite. Orte mit eigener
-  City-Seite verlinken per `url`.
+- WebP (16:4, z. B. 1920x480) und Thumb (600x150) in `public/img/cities/`.
+- Dateiname: `<slug>.webp` und `<slug>-thumb.webp`.
+- Quelle und Lizenz dokumentieren. Beispiel Göppingen: `0 5890 Panorama Göppingen.jpg`, W. Bulach, CC BY-SA 4.0, Wikimedia Commons.
 
-## 4. Einzugsgebiet-Sektion im Page
-- Import + Einfügen `CityAreas` (nach `<CitySteps />`):
-  ```astro
-  import CityAreas from "../components/CityAreas.astro";
-  ```
-  ```astro
-  <CityAreas areas={cityData?.areas ?? []} intro="Auch aus <Umgebung> kommst du zu mir – die Abholung in Leinfelden-Echterdingen ist erreichbar." />
-  ```
-  `cityData` kommt aus `import citiesData from '../data/cities.json'` (siehe bestehende Seiten).
-- Wenn die Seite keine eigenen `areas[]` hat, `<CityAreas areas={[]} />` weglassen
-  (Sektion rendert nur bei mind. 1 Chip).
+## 2. Eintrag in `src/data/cities.json`
 
-## 5. FAQs (Abhol-Perspektive)
-- In `src/data/faqs.json` ein "Anfahrt"- und ein "Entfernung"-FAQ-Paar je Stadt anhängen
-  (`pages: ["<slug>"]`). Immer Ich-Perspektive („du … bei mir"), KEIN Liefer-/Aufbau-Wording
-  – Kunden holen in der Magellanstraße 4 ab.
-- FAQ-Paare können zusätzlich benachbarte Cities bedienen (z. B. `pages: ["metzingen", "kirchheim-unter-teck"]`).
+Pflichtfelder:
 
-## 6. Register in Footer
-- Add link in Footer.astro Einzugsgebiet section: `<li><a href="/<slug>/">...</a></li>`
+| Feld | Zweck |
+| --- | --- |
+| `name`, `slug` | Anzeigename und URL-Segment |
+| `image` | Pfad zum Hero-Bild |
+| `title`, `description` | Meta-Titel und Kurzbeschreibung |
+| `distance`, `travelTime` | Entfernung/Fahrtzeit ab Magellanstraße 4, Leinfelden-Echterdingen |
+| `einzelItems` | 2–3 Produkt-Slugs für die Einzelgeräte-Sektion |
+| `areas[]` | Orte im Einzugsgebiet der Stadt |
 
-## 7. Build & Verify
-- `pnpm run build`
-- Check `dist/sitemap-index.xml` includes new URL
-- Verify dist output for the new page
+Optionale Prosa-Felder: `heroTitle`, `heroDescription`, `heroDetails`, `areasIntro`, `contactDescription`, `distanceText`, `travelTimeText`, `einzelTitle`, `einzelDescription`. Fehlt eines, greift der Standardtext in `src/pages/[city].astro`.
+
+`areas[]` ist der einheitliche Standard für die Sektion „Schnell bei mir in Echterdingen“. Jede Stadt sollte 6–10 Einträge mit `name`, `km` (`ca. X km`) und `travelTime` (`X Min.`) haben. Für Orte mit eigener City Page zusätzlich `url` setzen. Alle Distanzen immer ab dem Abholort in Leinfelden-Echterdingen messen, nicht ab der Stadt selbst.
+
+## 3. Einzeltechnik
+
+`einzelItems` enthält 2–3 Slugs aus `src/content/products/`, z. B. `jbl-partybox-300-320`, `kls-laser-bar` oder `partylicht-moving-head`. Die Komponente zeigt nur Produkte an, die in der Collection gefunden werden; ungültige Slugs werden übersprungen.
+
+## 4. Einzugsgebiet-Sektion
+
+`src/pages/[city].astro` rendert `CityAreas` automatisch für jede Stadt. Eine manuelle Ergänzung in einer Seiten-Datei ist nicht nötig. Die Sektion erscheint nur, wenn `areas[]` mindestens einen Eintrag enthält. `areasIntro` überschreibt den Standard-Text; ohne eigenes Feld wird der Default aus `city.areasIntro ?? ...` verwendet.
+
+## 5. FAQs
+
+Neue FAQ-Einträge nach dem bestehenden Muster in `src/data/faqs.json` ergänzen:
+
+```json
+{
+  "id": "göppingen-anfahrt",
+  "question": "Wie komme ich von Göppingen zu dir nach Leinfelden-Echterdingen?",
+  "answer": "...",
+  "pages": ["göppingen"]
+}
+```
+
+Der Slug in `pages` muss exakt dem `slug` aus `cities.json` entsprechen. `src/lib/faqUtils.ts` übernimmt das Matching.
+
+## 6. Footer
+
+Die neue Stadt im statischen Einzugsgebiet-Linkblock in `src/components/Footer.astro` ergänzen:
+
+```astro
+<li><a href="/göppingen" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Göppingen</a></li>
+```
+
+Die Liste wird nicht automatisch aus `cities.json` erzeugt.
+
+## 7. Weitere Registrierungen
+
+- `public/llms.txt`: Link im Abschnitt „Einzugsgebiet“ ergänzen.
+- `public/llms-full.txt`: Stadt in „Einzugsgebiet“ und „Stadtseiten“ ergänzen, Anzahl anpassen.
+- `public/404.html`: Redirect für alte/transliterierte Slugs ergänzen, z. B. `/goeppingen` → `/g%C3%B6ppingen`.
+- `public/urllist.txt` und `sitemap-index.xml` werden über `pnpm run build:full` erzeugt.
+
+## 8. Prüfen
+
+```bash
+pnpm run lint:agent
+pnpm run build
+pnpm test
+curl -I https://soundundlicht-stuttgart.de/<slug>
+```
+
+Nach dem Deployment `pnpm run indexnow-submit` ausführen.

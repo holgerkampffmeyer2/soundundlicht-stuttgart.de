@@ -32,22 +32,21 @@ Sound & Licht Stuttgart bietet sowohl komplette Plug-&-Play-Pakete (inkl. Kabel,
 Preise werden stets als „ab XX €“ angegeben. Die Endpreise richten sich nach Mietdauer, Umfang und Termin.
 
 ## Einzugsgebiet
-Vermietung in Stuttgart und Umgebung, u. a.: Stuttgart, Leinfelden-Echterdingen, Esslingen, Böblingen, Sindelfingen, Tübingen, Reutlingen, Ludwigsburg, Filderstadt, Ostfildern, Leonberg, Waiblingen, Winnenden, Backnang, Nürtingen, Kirchheim unter Teck, Metzingen, Herrenberg, Fellbach.
+Vermietung in Stuttgart und Umgebung – alle 21 Städte: Stuttgart, Leinfelden-Echterdingen, Esslingen, Böblingen, Sindelfingen, Tübingen, Reutlingen, Ludwigsburg, Filderstadt, Ostfildern, Leonberg, Waiblingen, Winnenden, Backnang, Nürtingen, Kirchheim unter Teck, Kornwestheim, Metzingen, Herrenberg, Fellbach, Göppingen.
 
 ## Kontakt & Buchung
 - **Website:** https://soundundlicht-stuttgart.de/
 - **E-Mail:** holger.kampffmeyer+dj@gmail.com
 - **Telefon:** 0171 / 1467491
-- **Kontaktformular:** https://soundundlicht-stuttgart.de/kontakt/
+- **Kontaktformular:** https://soundundlicht-stuttgart.de/vermietung#kontakt
 
 ## Wichtige Seiten (Übersicht)
 - Startseite: https://soundundlicht-stuttgart.de/
-- Vermietung (Katalog): https://soundundlicht-stuttgart.de/vermietung/
-- FAQ: https://soundundlicht-stuttgart.de/faq/
-- Über uns: https://soundundlicht-stuttgart.de/ueber-uns/
-- Standorte: https://soundundlicht-stuttgart.de/standorte/
-- Stadtseiten: u. a. Stuttgart, LE, Filderstadt, Böblingen, Sindelfingen, Tübingen, Reutlingen, Esslingen, Göppingen, Waiblingen, Ludwigsburg
-- Rechtliches: https://soundundlicht-stuttgart.de/impressum/, https://soundundlicht-stuttgart.de/datenschutz/
+- Vermietung (Katalog): https://soundundlicht-stuttgart.de/vermietung
+- FAQ: https://soundundlicht-stuttgart.de/faq
+- Standort & Abholung: https://soundundlicht-stuttgart.de/leinfelden-echterdingen
+- Stadtseiten: alle 21 (Stuttgart, Leinfelden-Echterdingen, Filderstadt, Böblingen, Sindelfingen, Tübingen, Reutlingen, Esslingen, Waiblingen, Ludwigsburg, Backnang, Fellbach, Herrenberg, Kirchheim unter Teck, Kornwestheim, Leonberg, Metzingen, Nürtingen, Ostfildern, Winnenden, Göppingen)
+- Rechtliches: https://soundundlicht-stuttgart.de/impressum
 
 ## Anmerkung
 Alle Angaben dienen der Orientierung für LLMs. Aktuelle Verfügbarkeiten, exakte Preise und Details werden individuell bei der Anfrage geklärt.

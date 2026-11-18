@@ -9,28 +9,36 @@
 
 ## Core Pages
 - [Startseite](/): Veranstaltungstechnik mieten in Stuttgart und Umgebung
-- [Vermietung](/vermietung/): Mietkatalog PA, Licht, Partyboxen, Zubehör
-- [Kontakt](/kontakt/): Anfrageformular für Equipment-Vermietung
-- [Über uns](/ueber-uns/): DJ & Veranstaltungstechnik seit Jahren
-- [Standorte](/standorte/): Vermietung in Stuttgart und Umgebung
-- [FAQ](/faq/): Häufige Fragen zur Vermietung
+- [Vermietung](/vermietung): Mietkatalog PA, Licht, Partyboxen, Zubehör
+- [Kontakt](/vermietung#kontakt): Anfrageformular für Equipment-Vermietung
+- [Standort & Abholung](/leinfelden-echterdingen): Magellanstraße 4, 70771 Leinfelden-Echterdingen
+- [FAQ](/faq): Häufige Fragen zur Vermietung
 
 ## Stadtseiten (City Pages)
-- [Stuttgart](/vermietung/stuttgart/): Veranstaltungstechnik mieten in Stuttgart
-- [Leinfelden-Echterdingen](/vermietung/leinfelden-echterdingen/): Technik mieten in LE
-- [Filderstadt](/vermietung/filderstadt/): Veranstaltungstechnik mieten in Filderstadt
-- [Böblingen](/vermietung/boeblingen/): Technik mieten in Böblingen
-- [Sindelfingen](/vermietung/sindelfingen/): Veranstaltungstechnik mieten in Sindelfingen
-- [Tübingen](/vermietung/tuebingen/): Technik mieten in Tübingen
-- [Reutlingen](/vermietung/reutlingen/): Technik mieten in Reutlingen
-- [Esslingen](/vermietung/esslingen/): Technik mieten in Esslingen
-- [Göppingen](/vermietung/goeppingen/): Technik mieten in Göppingen
-- [Waiblingen](/vermietung/waiblingen/): Technik mieten in Waiblingen
-- [Ludwigsburg](/vermietung/ludwigsburg/): Technik mieten in Ludwigsburg
+- [Stuttgart](/stuttgart): Veranstaltungstechnik mieten in Stuttgart
+- [Leinfelden-Echterdingen](/leinfelden-echterdingen): Technik mieten in LE
+- [Filderstadt](/filderstadt): Technik mieten in Filderstadt
+- [Böblingen](/b%C3%B6blingen): Technik mieten in Böblingen
+- [Sindelfingen](/sindelfingen): Technik mieten in Sindelfingen
+- [Tübingen](/t%C3%BCbingen): Technik mieten in Tübingen
+- [Reutlingen](/reutlingen): Technik mieten in Reutlingen
+- [Esslingen](/esslingen): Technik mieten in Esslingen
+- [Waiblingen](/waiblingen): Technik mieten in Waiblingen
+- [Ludwigsburg](/ludwigsburg): Technik mieten in Ludwigsburg
+- [Backnang](/backnang): Technik mieten in Backnang
+- [Fellbach](/fellbach): Technik mieten in Fellbach
+- [Herrenberg](/herrenberg): Technik mieten in Herrenberg
+- [Kirchheim unter Teck](/kirchheim-unter-teck): Technik mieten in Kirchheim unter Teck
+- [Kornwestheim](/kornwestheim): Technik mieten in Kornwestheim
+- [Leonberg](/leonberg): Technik mieten in Leonberg
+- [Metzingen](/metzingen): Technik mieten in Metzingen
+- [Nürtingen](/n%C3%BCrtingen): Technik mieten in Nürtingen
+- [Ostfildern](/ostfildern): Technik mieten in Ostfildern
+- [Winnenden](/winnenden): Technik mieten in Winnenden
+- [Göppingen](/g%C3%B6ppingen): Technik mieten in Göppingen
 
 ## Weitere Seiten
-- [Impressum](/impressum/): Rechtliche Informationen
-- [Datenschutz](/datenschutz/): Datenschutzerklärung
+- [Impressum](/impressum): Rechtliche Informationen
 
 ## Optional
 - [RSS Feed](/rss.xml): Neuigkeiten & Updates

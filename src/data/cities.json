@@ -198,7 +198,52 @@
     "areasIntro": "",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "areas": [
+      {
+        "name": "Kusterdingen",
+        "km": "ca. 32 km",
+        "travelTime": "27 Min."
+      },
+      {
+        "name": "Gomaringen",
+        "km": "ca. 42 km",
+        "travelTime": "35 Min."
+      },
+      {
+        "name": "Rottenburg am Neckar",
+        "km": "ca. 45 km",
+        "travelTime": "40 Min."
+      },
+      {
+        "name": "Mössingen",
+        "km": "ca. 47 km",
+        "travelTime": "40 Min."
+      },
+      {
+        "name": "Hechingen",
+        "km": "ca. 56 km",
+        "travelTime": "57 Min."
+      },
+      {
+        "name": "Reutlingen",
+        "km": "ca. 31 km",
+        "travelTime": "28 Min.",
+        "url": "/reutlingen"
+      },
+      {
+        "name": "Herrenberg",
+        "km": "ca. 36 km",
+        "travelTime": "30 Min.",
+        "url": "/herrenberg"
+      },
+      {
+        "name": "Metzingen",
+        "km": "ca. 25 km",
+        "travelTime": "23 Min.",
+        "url": "/metzingen"
+      }
+    ]
   },
   {
     "name": "Filderstadt",
@@ -372,7 +417,54 @@
     "areasIntro": "",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "areas": [
+      {
+        "name": "Ludwigsburg",
+        "km": "ca. 37 km",
+        "travelTime": "32 Min.",
+        "url": "/ludwigsburg"
+      },
+      {
+        "name": "Remseck am Neckar",
+        "km": "ca. 30 km",
+        "travelTime": "37 Min."
+      },
+      {
+        "name": "Fellbach",
+        "km": "ca. 20 km",
+        "travelTime": "29 Min.",
+        "url": "/fellbach"
+      },
+      {
+        "name": "Waiblingen",
+        "km": "ca. 27 km",
+        "travelTime": "32 Min.",
+        "url": "/waiblingen"
+      },
+      {
+        "name": "Marbach am Neckar",
+        "km": "ca. 49 km",
+        "travelTime": "38 Min."
+      },
+      {
+        "name": "Leonberg",
+        "km": "ca. 21 km",
+        "travelTime": "19 Min.",
+        "url": "/leonberg"
+      },
+      {
+        "name": "Stuttgart",
+        "km": "ca. 13 km",
+        "travelTime": "17 Min.",
+        "url": "/stuttgart"
+      },
+      {
+        "name": "Bietigheim-Bissingen",
+        "km": "ca. 41 km",
+        "travelTime": "32 Min."
+      }
+    ]
   },
   {
     "name": "Ludwigsburg",
@@ -395,7 +487,48 @@
     "areasIntro": "",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "areas": [
+      {
+        "name": "Kornwestheim",
+        "km": "ca. 37 km",
+        "travelTime": "31 Min.",
+        "url": "/kornwestheim"
+      },
+      {
+        "name": "Marbach am Neckar",
+        "km": "ca. 49 km",
+        "travelTime": "38 Min."
+      },
+      {
+        "name": "Remseck am Neckar",
+        "km": "ca. 30 km",
+        "travelTime": "37 Min."
+      },
+      {
+        "name": "Waiblingen",
+        "km": "ca. 27 km",
+        "travelTime": "32 Min.",
+        "url": "/waiblingen"
+      },
+      {
+        "name": "Bietigheim-Bissingen",
+        "km": "ca. 41 km",
+        "travelTime": "32 Min."
+      },
+      {
+        "name": "Stuttgart",
+        "km": "ca. 13 km",
+        "travelTime": "17 Min.",
+        "url": "/stuttgart"
+      },
+      {
+        "name": "Leonberg",
+        "km": "ca. 21 km",
+        "travelTime": "19 Min.",
+        "url": "/leonberg"
+      }
+    ]
   },
   {
     "name": "Böblingen",
@@ -544,7 +677,48 @@
     "areasIntro": "",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "areas": [
+      {
+        "name": "Sindelfingen",
+        "km": "ca. 17 km",
+        "travelTime": "16 Min.",
+        "url": "/sindelfingen"
+      },
+      {
+        "name": "Böblingen",
+        "km": "ca. 18 km",
+        "travelTime": "20 Min.",
+        "url": "/böblingen"
+      },
+      {
+        "name": "Korntal-Münchingen",
+        "km": "ca. 32 km",
+        "travelTime": "32 Min."
+      },
+      {
+        "name": "Weil der Stadt",
+        "km": "ca. 31 km",
+        "travelTime": "27 Min."
+      },
+      {
+        "name": "Renningen",
+        "km": "ca. 25 km",
+        "travelTime": "21 Min."
+      },
+      {
+        "name": "Stuttgart",
+        "km": "ca. 13 km",
+        "travelTime": "17 Min.",
+        "url": "/stuttgart"
+      },
+      {
+        "name": "Herrenberg",
+        "km": "ca. 36 km",
+        "travelTime": "30 Min.",
+        "url": "/herrenberg"
+      }
+    ]
   },
   {
     "name": "Waiblingen",
@@ -567,7 +741,54 @@
     "areasIntro": "",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "areas": [
+      {
+        "name": "Fellbach",
+        "km": "ca. 20 km",
+        "travelTime": "29 Min.",
+        "url": "/fellbach"
+      },
+      {
+        "name": "Winnenden",
+        "km": "ca. 33 km",
+        "travelTime": "37 Min.",
+        "url": "/winnenden"
+      },
+      {
+        "name": "Backnang",
+        "km": "ca. 42 km",
+        "travelTime": "44 Min.",
+        "url": "/backnang"
+      },
+      {
+        "name": "Kornwestheim",
+        "km": "ca. 37 km",
+        "travelTime": "31 Min.",
+        "url": "/kornwestheim"
+      },
+      {
+        "name": "Ludwigsburg",
+        "km": "ca. 37 km",
+        "travelTime": "32 Min.",
+        "url": "/ludwigsburg"
+      },
+      {
+        "name": "Remseck am Neckar",
+        "km": "ca. 30 km",
+        "travelTime": "37 Min."
+      },
+      {
+        "name": "Weinstadt",
+        "km": "ca. 29 km",
+        "travelTime": "31 Min."
+      },
+      {
+        "name": "Schorndorf",
+        "km": "ca. 40 km",
+        "travelTime": "42 Min."
+      }
+    ]
   },
   {
     "name": "Nürtingen",
@@ -590,7 +811,56 @@
     "areasIntro": "",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "areas": [
+      {
+        "name": "Wendlingen am Neckar",
+        "km": "ca. 20 km",
+        "travelTime": "17 Min."
+      },
+      {
+        "name": "Esslingen",
+        "km": "ca. 21 km",
+        "travelTime": "23 Min.",
+        "url": "/esslingen"
+      },
+      {
+        "name": "Ostfildern",
+        "km": "ca. 14 km",
+        "travelTime": "15 Min.",
+        "url": "/ostfildern"
+      },
+      {
+        "name": "Kirchheim unter Teck",
+        "km": "ca. 28 km",
+        "travelTime": "22 Min.",
+        "url": "/kirchheim-unter-teck"
+      },
+      {
+        "name": "Metzingen",
+        "km": "ca. 25 km",
+        "travelTime": "23 Min.",
+        "url": "/metzingen"
+      },
+      {
+        "name": "Reutlingen",
+        "km": "ca. 31 km",
+        "travelTime": "28 Min.",
+        "url": "/reutlingen"
+      },
+      {
+        "name": "Filderstadt",
+        "km": "ca. 9 km",
+        "travelTime": "9 Min.",
+        "url": "/filderstadt"
+      },
+      {
+        "name": "Leinfelden-Echterdingen",
+        "km": "ca. 1 km",
+        "travelTime": "2 Min.",
+        "url": "/leinfelden-echterdingen"
+      }
+    ]
   },
   {
     "name": "Reutlingen",
@@ -613,7 +883,53 @@
     "areasIntro": "",
     "contactDescription": "",
     "distanceText": "",
-    "travelTimeText": ""
+    "travelTimeText": "",
+    "areas": [
+      {
+        "name": "Pfullingen",
+        "km": "ca. 35 km",
+        "travelTime": "32 Min."
+      },
+      {
+        "name": "Eningen unter Achalm",
+        "km": "ca. 34 km",
+        "travelTime": "33 Min."
+      },
+      {
+        "name": "Tübingen",
+        "km": "ca. 36 km",
+        "travelTime": "32 Min.",
+        "url": "/tübingen"
+      },
+      {
+        "name": "Metzingen",
+        "km": "ca. 25 km",
+        "travelTime": "23 Min.",
+        "url": "/metzingen"
+      },
+      {
+        "name": "Herrenberg",
+        "km": "ca. 36 km",
+        "travelTime": "30 Min.",
+        "url": "/herrenberg"
+      },
+      {
+        "name": "Gomaringen",
+        "km": "ca. 42 km",
+        "travelTime": "35 Min."
+      },
+      {
+        "name": "Münsingen",
+        "km": "ca. 52 km",
+        "travelTime": "48 Min."
+      },
+      {
+        "name": "Kirchheim unter Teck",
+        "km": "ca. 28 km",
+        "travelTime": "22 Min.",
+        "url": "/kirchheim-unter-teck"
+      }
+    ]
   },
   {
     "name": "Kirchheim unter Teck",
@@ -1111,5 +1427,82 @@
     "contactDescription": "",
     "distanceText": "",
     "travelTimeText": ""
+  },
+  {
+    "name": "Göppingen",
+    "slug": "göppingen",
+    "image": "/img/cities/göppingen.webp",
+    "title": "Veranstaltungstechnik mieten",
+    "description": "PA-Anlagen, Partyboxen und Licht für Feiern in Göppingen und Umgebung.",
+    "distance": "ca. 44 km",
+    "travelTime": "37 Min.",
+    "einzelItems": [
+      "jbl-partybox-300-320",
+      "kls-laser-bar",
+      "partylicht-moving-head"
+    ],
+    "einzelTitle": "Einzelgeräte für",
+    "einzelDescription": "Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.",
+    "areas": [
+      {
+        "name": "Eislingen/Fils",
+        "km": "ca. 47 km",
+        "travelTime": "36 Min."
+      },
+      {
+        "name": "Salach",
+        "km": "ca. 50 km",
+        "travelTime": "38 Min."
+      },
+      {
+        "name": "Süßen",
+        "km": "ca. 49 km",
+        "travelTime": "35 Min."
+      },
+      {
+        "name": "Uhingen",
+        "km": "ca. 37 km",
+        "travelTime": "30 Min."
+      },
+      {
+        "name": "Ebersbach an der Fils",
+        "km": "ca. 32 km",
+        "travelTime": "26 Min."
+      },
+      {
+        "name": "Donzdorf",
+        "km": "ca. 56 km",
+        "travelTime": "42 Min."
+      },
+      {
+        "name": "Geislingen an der Steige",
+        "km": "ca. 58 km",
+        "travelTime": "46 Min."
+      },
+      {
+        "name": "Wäschenbeuren",
+        "km": "ca. 49 km",
+        "travelTime": "46 Min."
+      },
+      {
+        "name": "Kirchheim unter Teck",
+        "km": "ca. 28 km",
+        "travelTime": "22 Min.",
+        "url": "/kirchheim-unter-teck"
+      },
+      {
+        "name": "Reutlingen",
+        "km": "ca. 31 km",
+        "travelTime": "28 Min.",
+        "url": "/reutlingen"
+      }
+    ],
+    "heroTitle": "PA-Anlage & Partybox mieten in Göppingen",
+    "heroDescription": "Du planst eine Feier in Göppingen und brauchst zuverlässige Veranstaltungstechnik? Ob Geburtstag im Kreis der Familie, Hochzeit in einer der vielen Göppinger Locations oder Firmenfeier im Ballsaal – ich habe die passende Technik für dich.",
+    "heroDetails": "Meine Pakete umfassen PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment. Die Abholung erfolgt in Leinfelden-Echterdingen – von Göppingen aus nur ca. 37 Minuten über die A8. Ich erkläre dir den Aufbau und stehe bei Fragen zur Seite. Anders als bei Versandverleihern hast du die Technik vorab in der Hand und bekommst eine persönliche Einweisung – so weißt du genau, was dich erwartet.",
+    "areasIntro": "Auch aus Eislingen, Salach, Süßen, Uhingen und dem ganzen Göppinger Raum kommst du zu mir – die Abholung in Leinfelden-Echterdingen ist direkt an der A8 erreichbar.",
+    "contactDescription": "Du wohnst in Göppingen oder Umgebung und möchtest Technik für deine Party mieten? Schreib mir eine E-Mail mit deinem Wunschdatum und der gewünschten Ausrüstung. Die Abholung ist in Leinfelden-Echterdingen, Magellanstraße 4 – verkehrsgünstig an A8 / B27, nur ca. 44 km bzw. 37 Minuten von Göppingen. Ich melde mich innerhalb von 12 Stunden bei dir!",
+    "distanceText": "Nur ca. 44 km von Göppingen – verkehrsgünstig an A8 / B27",
+    "travelTimeText": "37 Min."
   }
 ]

@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import PackageCardGrid from './PackageCardGrid.astro';
+
+interface Props {
+  cityName: string;
+}
+
+const { cityName } = Astro.props;
+const slugs = ['ld-icoa-party-paket', 'ld-icoa-club-paket', 'ld-icoa-top-paar'];
+
+const products = await getCollection('products');
+const bySlug = new Map(products.map(product => [product.data.slug, product.data]));
+const pakete = slugs
+  .map(slug => bySlug.get(slug))
+  .filter((item): item is NonNullable<typeof item> => Boolean(item))
+  .map(item => ({
+    slug: item.slug,
+    title: item.shortTitle ?? item.title,
+    description: item.description,
+    image: item.image,
+    price: item.price,
+    features: item.features.slice(0, 5),
+    detailPage: item.detailPage,
+    isNew: item.isNew,
+    audienceTag: item.audienceTag,
+    audienceDescription: item.audienceDescription,
+    personRange: item.personRange,
+    setupTime: item.setupTime,
+    spotifyReady: item.spotifyReady,
+    micIncluded: item.micIncluded,
+    lightIncluded: item.lightIncluded,
+  }));
+---
+
+{pakete.length > 0 && (
+  <section class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 animate-on-scroll">
+        <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
+          Neu bei mir
+        </span>
+        <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
+          LD Systems ICOA für {cityName}
+        </h2>
+        <p class="text-[var(--color-text-muted)] max-w-3xl mx-auto">
+          Ich habe die ICOA-Serie neu im Sortiment: kompakte PA-Pakete mit klarem Sound und ordentlich Bass – ideal, wenn du in {cityName} wenig Platz, aber viel Wirkung brauchst.
+        </p>
+      </div>
+
+      <PackageCardGrid pakete={pakete} />
+
+      <div class="text-center mt-12 animate-on-scroll">
+        <a href="/vermietung/ld-systems-icoa-series" class="btn-secondary inline-block text-base py-3 px-8">
+          Alle ICOA-Pakete ansehen ↗
+        </a>
+      </div>
+    </div>
+  </section>
+)}
