@@ -4,7 +4,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function clickElement(page, locator, timeout = 6000) {
+async function clickElement(locator, timeout = 6000) {
   try {
     await locator.click({ timeout });
     return true;
@@ -18,7 +18,7 @@ async function openReviewsPanel(page) {
     .locator('button[role="tab"], div[role="tab"], a, span[role="tab"]')
     .filter({ hasText: /^Rezensionen/ })
     .first();
-  if (await clickElement(page, tab, 8000)) {
+  if (await clickElement(tab, 8000)) {
     await sleep(3000);
   }
 
@@ -26,21 +26,21 @@ async function openReviewsPanel(page) {
     .locator('button, a, div[role="button"], span[role="button"]')
     .filter({ hasText: /^Alle Rezensionen/ })
     .first();
-  if (await clickElement(page, allReviews, 4000)) {
+  if (await clickElement(allReviews, 4000)) {
     await sleep(3000);
   }
 }
 
 async function sortNewestFirst(page) {
   const sortButton = page.getByRole('button', { name: /sortieren/i }).first();
-  if (!(await clickElement(page, sortButton, 6000))) return false;
+  if (!(await clickElement(sortButton, 6000))) return false;
   await sleep(1500);
 
   for (const locator of [
     page.locator('[role="menuitemradio"], [role="menuitem"], [role="option"]').filter({ hasText: /^Neueste/ }).first(),
     page.getByText(/^Neueste$/, { exact: true }).first(),
   ]) {
-    if (await clickElement(page, locator, 3000)) {
+    if (await clickElement(locator, 3000)) {
       await sleep(2500);
       return true;
     }

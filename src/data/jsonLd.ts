@@ -141,6 +141,12 @@ export function serviceJsonLd(product: { title: string; description: string; pri
   };
 }
 
+export const videoPublisherJsonLd = {
+  "@type": "Organization",
+  "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
+  "logo": { "@type": "ImageObject", "url": "https://soundundlicht-stuttgart.de/img/djhulk_logo.webp" }
+} as const;
+
 export function videoJsonLd(
   videoId: string,
   title: string,

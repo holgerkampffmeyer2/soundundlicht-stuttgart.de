@@ -8,7 +8,7 @@ import ExampleEvents from '../../components/vermietung/ExampleEvents.astro';
 import BrandBadges from '../../components/vermietung/BrandBadges.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { serviceJsonLd, videoJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
+import { serviceJsonLd, videoJsonLd, videoPublisherJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'ld-maui-28g3')!.data;
@@ -20,7 +20,7 @@ const breadcrumbSegments = [
 ];
 
 const pageTitle = "LD Maui 28 G3 | Sound und Licht Stuttgart - Holger Kampffmeyer";
-const faqs = await getFaqsForPage('ld-maui-28g3');
+const faqs = getFaqsForPage('ld-maui-28g3');
 
 const images = [
   "/img/vermietung/djpaket.webp",
@@ -37,7 +37,6 @@ const images = [
   "/img/vermietung/IMG_7142.webp"
 ];
 
-const siteUrl = "https://soundundlicht-stuttgart.de";
 
 
 
@@ -69,11 +68,6 @@ const events = [
   { title: "Vereinsfeier", description: "Egal ob Sportverein, Musikverein oder sonstige Vereinsfeier - der kraftvolle Sound sorgt für beste Stimmung bei allen Gästen.", personCount: "bis 150 Personen" }
 ];
 
-const videoPublisher = {
-  "@type": "Organization",
-  "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
-  "logo": { "@type": "ImageObject", "url": "https://soundundlicht-stuttgart.de/img/djhulk_logo.webp" }
-};
 const serviceJsonLdData = JSON.parse(JSON.stringify(serviceJsonLd(product, images)));
 const breadcrumbJsonLdData = JSON.parse(JSON.stringify(breadcrumbJsonLd(breadcrumbSegments)));
 const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
@@ -82,7 +76,7 @@ const videoJsonLdData = JSON.parse(JSON.stringify(videoJsonLd(
   "LD Maui 28 G3 Sound-Check Demo",
   "Sound-Check der LD Maui 28 G3 PA Anlage in Aktion - professionelles Säulensystem mit 2060W Peak-Leistung",
   "/img/vermietung/djpaket.webp",
-  videoPublisher
+  videoPublisherJsonLd
 )));
 ---
 

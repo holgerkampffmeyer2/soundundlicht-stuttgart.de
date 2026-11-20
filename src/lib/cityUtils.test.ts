@@ -2,6 +2,34 @@
 import { describe, it, expect } from 'vitest';
 import { breadcrumbJsonLd, serviceJsonLd, faqPageJsonLd } from '../data/jsonLd';
 
+type BreadcrumbListJsonLd = {
+  '@context': string;
+  '@type': string;
+  itemListElement: Array<{ '@type': string; position: number; name: string; item: string }>;
+};
+
+type ServiceJsonLd = {
+  '@context': string;
+  '@type': string;
+  name: string;
+  description: string;
+  image: string[];
+  serviceType: string;
+  areaServed: unknown;
+  provider: { '@type': string; '@id': string };
+  offers: { priceSpecification: { price: number } };
+};
+
+type FaqPageJsonLd = {
+  '@context': string;
+  '@type': string;
+  mainEntity: Array<{
+    '@type': string;
+    name: string;
+    acceptedAnswer: { '@type': string; text: string };
+  }>;
+};
+
 describe('City Page Utilities', () => {
   describe('[REQ-CITY-04] breadcrumbJsonLd', () => {
     it('generates correct BreadcrumbList structure', () => {
@@ -9,7 +37,7 @@ describe('City Page Utilities', () => {
         { label: 'Startseite', href: 'https://soundundlicht-stuttgart.de/' },
         { label: 'Stuttgart', href: 'https://soundundlicht-stuttgart.de/stuttgart' }
       ];
-      const result = breadcrumbJsonLd(segments);
+      const result = breadcrumbJsonLd(segments) as BreadcrumbListJsonLd;
       expect(result['@context']).toBe('https://schema.org');
       expect(result['@type']).toBe('BreadcrumbList');
       expect(result.itemListElement).toHaveLength(2);
@@ -32,7 +60,7 @@ describe('City Page Utilities', () => {
         features: ['Feature 1', 'Feature 2']
       };
       const images = ['/img/test.webp'];
-      const result = serviceJsonLd(product, images);
+      const result = serviceJsonLd(product, images) as ServiceJsonLd;
       expect(result['@context']).toBe('https://schema.org');
       expect(result['@type']).toBe('Service');
       expect(result.name).toBe('Test Product');
@@ -52,7 +80,7 @@ describe('City Page Utilities', () => {
         { id: '1', question: 'Question 1?', answer: 'Answer 1' },
         { id: '2', question: 'Question 2?', answer: 'Answer 2' }
       ];
-      const result = faqPageJsonLd(faqs);
+      const result = faqPageJsonLd(faqs) as FaqPageJsonLd;
       expect(result['@context']).toBe('https://schema.org');
       expect(result['@type']).toBe('FAQPage');
       expect(result.mainEntity).toHaveLength(2);
@@ -63,7 +91,7 @@ describe('City Page Utilities', () => {
     });
 
     it('handles empty FAQ array', () => {
-      const result = faqPageJsonLd([]);
+      const result = faqPageJsonLd([]) as FaqPageJsonLd;
       expect(result.mainEntity).toHaveLength(0);
     });
   });

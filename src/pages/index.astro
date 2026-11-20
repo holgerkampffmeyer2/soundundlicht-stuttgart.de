@@ -8,7 +8,7 @@ import CityGrid from "../components/CityGrid.astro";
 import FAQSection from "../components/FAQSection.astro";
 import { getFaqsForPage } from '../lib/faqUtils';
 import { getCollection } from 'astro:content';
-import { serviceArea, offerCatalogJsonLd, serviceJsonLd, faqPageJsonLd } from '../data/jsonLd';
+import { offerCatalogJsonLd, serviceJsonLd, faqPageJsonLd } from '../data/jsonLd';
 import HeroSlider from "../components/HeroSlider.astro";
 import BieteSection from "../components/BieteSection.astro";
 import PackageCardGrid from '../components/PackageCardGrid.astro';
@@ -17,7 +17,7 @@ import CitySteps from '../components/CitySteps.astro';
 
 const products = await getCollection('products');
 const rentalItems = products.map(i => i.data);
-const indexFaqs = await getFaqsForPage('index');
+const indexFaqs = getFaqsForPage('index');
 
 const komplettPakete = rentalItems.filter(i => i.category === 'Paket');
 ---

@@ -8,7 +8,7 @@ import Testimonials from '../../components/Testimonials.astro';
 import BrandBadges from '../../components/vermietung/BrandBadges.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { serviceJsonLd, videoJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
+import { serviceJsonLd, videoJsonLd, videoPublisherJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'veranstaltungspaket-stuttgart')!.data;
@@ -21,7 +21,7 @@ const breadcrumbSegments = [
 
 const pageTitle = "Veranstaltungspaket | Sound und Licht Stuttgart - Holger Kampffmeyer";
 
-const faqs = await getFaqsForPage('veranstaltungspaket-stuttgart');
+const faqs = getFaqsForPage('veranstaltungspaket-stuttgart');
 
 const images = [
   "/img/vermietung/ldmaui3.webp",
@@ -51,7 +51,6 @@ const packageItems = [
   { name: "Stromkabel und alle notwendigen Anschlusskabel mit dabei" }
 ];
 
-const siteUrl = "https://soundundlicht-stuttgart.de";
 
 
 
@@ -91,11 +90,6 @@ const packageFeatures = [
   "Passt in einen Kombi oder Kleinwagen mit umgeklappter Rückbank"
 ];
 
-const videoPublisher = {
-  "@type": "Organization",
-  "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
-  "logo": { "@type": "ImageObject", "url": "https://soundundlicht-stuttgart.de/img/djhulk_logo.webp" }
-};
 const serviceJsonLdData = JSON.parse(JSON.stringify(serviceJsonLd(product, images)));
 const breadcrumbJsonLdData = JSON.parse(JSON.stringify(breadcrumbJsonLd(breadcrumbSegments)));
 const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
@@ -104,7 +98,7 @@ const videoJsonLdData = JSON.parse(JSON.stringify(videoJsonLd(
   "Veranstaltungspaket Stuttgart Sound-Check",
   "Sound-Check der LD Maui 28 G3 PA Anlage - Teil des Veranstaltungspakets Stuttgart mit professionellem Säulensystem und 2060W Peak-Leistung",
   "/img/vermietung/ldmaui3.webp",
-  videoPublisher
+  videoPublisherJsonLd
 )));
 ---
 

@@ -1,13 +1,14 @@
 ---
 interface Props {
-  brands: string[];
+  brands?: string[];
+  class?: string;
 }
 
-const { brands } = Astro.props;
+const { brands = [], class: className } = Astro.props;
 ---
 
 {brands.length > 0 && (
-  <span class="brand-badges" role="list" aria-label={`Marken: ${brands.join(", ")}`}>
+  <span class:list={["brand-badges", className]} role="list" aria-label={`Marken: ${brands.join(", ")}`}>
     {brands.map((brand) => (
       <span class="brand-badge" role="listitem">
         {brand}

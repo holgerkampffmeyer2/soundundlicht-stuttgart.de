@@ -54,7 +54,7 @@ Build output: `dist/` (static HTML + sitemap), `dist/marketplace.json` (JSON-Pro
 - Keine Secrets (API-Keys, Passwörter) committen
 
 ## Definition of Done
-- Nach Quellcode-Änderungen: `pnpm run lint:agent && pnpm run build` (Tests falls betroffen)
+- Nach Quellcode-Änderungen: `pnpm run lint:agent && pnpm run check && pnpm run build` (Tests falls betroffen)
 - Nach reinen .md-Änderungen: direkt push (kein lint/build)
 - Keine offenen TODOs im finalen Code hinterlassen
 

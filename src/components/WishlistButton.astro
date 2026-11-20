@@ -32,8 +32,6 @@ const isInCart = cart.items.some(item => item.slug === product.slug);
 </button>
 
 <script>
-  import { getCart } from '../lib/merklisteStore';
-
   function initButtons() {
     document.querySelectorAll<HTMLButtonElement>('button.wishlist-btn[data-wishlist-slug]').forEach(button => {
       const slug = button.dataset.wishlistSlug;

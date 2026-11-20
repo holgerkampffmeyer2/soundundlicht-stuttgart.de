@@ -18,7 +18,7 @@ const products = await getCollection('products');
 const rentalItems = products
   .map(i => i.data)
   .sort((a, b) => (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER));
-const faqs = await getFaqsForPage('vermietung');
+const faqs = getFaqsForPage('vermietung');
 
 function getWebpUrl(src: string): string {
   // Convert JPG/PNG to WebP, keep WebP as-is

@@ -9,7 +9,7 @@ import Testimonials from '../../components/Testimonials.astro';
 import BrandBadges from '../../components/vermietung/BrandBadges.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
-import { serviceJsonLd, videoJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
+import { serviceJsonLd, videoJsonLd, videoPublisherJsonLd, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
 
 const products = await getCollection('products');
 const product = products.find(i => i.data.slug === 'ld-icoa-top-paar')!.data;
@@ -22,7 +22,7 @@ const breadcrumbSegments = [
 ];
 
 const pageTitle = "2x ICOA Fullrange-Lautsprecher mieten in Stuttgart | Sound & Licht Stuttgart";
-const faqs = await getFaqsForPage('ld-icoa-top-paar');
+const faqs = getFaqsForPage('ld-icoa-top-paar');
 
 const images = [
   "/img/vermietung/icoa/LD-Systems-Icoa-Tops-Paket.webp",
@@ -82,17 +82,12 @@ const serviceJsonLdData = JSON.parse(JSON.stringify(serviceJsonLd(product, image
 const breadcrumbJsonLdData = JSON.parse(JSON.stringify(breadcrumbJsonLd(breadcrumbSegments)));
 const faqPageJsonLdData = JSON.parse(JSON.stringify(faqPageJsonLd(faqs)));
 
-const videoPublisher = {
-  "@type": "Organization",
-  "name": "Sound und Licht Stuttgart - Holger Kampffmeyer",
-  "logo": { "@type": "ImageObject", "url": "https://soundundlicht-stuttgart.de/img/djhulk_logo.webp" }
-};
 const videoJsonLdData = JSON.parse(JSON.stringify(videoJsonLd(
   "j5Fz4n10jyI",
   "Showcase LD Systems Icoa Bundle: 2 15Inch Subs and 2 12Inch Satellites",
   "Kurzes Produktvideo zum LD Systems ICOA System: 12-Zoll-Topteile und 15-Zoll-Subwoofer im Einsatz.",
   images[0],
-  videoPublisher,
+  videoPublisherJsonLd,
   { uploadDate: "2026-11-17T18:56:18+00:00", duration: "PT42S" }
 )));
 ---

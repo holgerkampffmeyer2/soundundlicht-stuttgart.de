@@ -1,1 +1,7 @@
 shamefullyHoist: true
+
+overrides:
+  "@napi-rs/wasm-runtime@1.2.4>@emnapi/runtime:peer": "1.11.3"
+
+allowBuilds:
+  esbuild: true
