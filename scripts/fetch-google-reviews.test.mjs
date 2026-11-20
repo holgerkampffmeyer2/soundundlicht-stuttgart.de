@@ -30,7 +30,7 @@ function scrapedReview(overrides = {}) {
   };
 }
 
-describe('mapReview', () => {
+describe('[REQ-REVIEW-02] mapReview', () => {
   it('keeps site-shaped scraper fields and trims them', () => {
     expect(mapReview(scrapedReview({ author_name: '  Jonas K.  ' }))).toEqual({
       author_name: 'Jonas K.',
@@ -52,7 +52,7 @@ describe('mapReview', () => {
   });
 });
 
-describe('reviewKey', () => {
+describe('[REQ-REVIEW-02] reviewKey', () => {
   it('is case- and whitespace-insensitive on the author name', () => {
     const a = siteReview({ author_name: '  Jonas K. ' });
     const b = siteReview({ author_name: 'jonas k.' });
@@ -72,7 +72,7 @@ describe('reviewKey', () => {
   });
 });
 
-describe('parseLimit', () => {
+describe('[REQ-REVIEW-02] parseLimit', () => {
   it('defaults to 22', () => {
     expect(parseLimit(['node', 'script.mjs'])).toBe(22);
   });
@@ -90,7 +90,7 @@ describe('parseLimit', () => {
   });
 });
 
-describe('sortReviewsByTimeDesc', () => {
+describe('[REQ-REVIEW-02] sortReviewsByTimeDesc', () => {
   it('orders newest first', () => {
     const sorted = sortReviewsByTimeDesc([
       siteReview({ time: '2026-04-21T10:22:10.106016Z' }),
@@ -122,7 +122,7 @@ describe('sortReviewsByTimeDesc', () => {
   });
 });
 
-describe('mergeReviews', () => {
+describe('[REQ-REVIEW-02] mergeReviews', () => {
   const scraped = [
     scrapedReview({ author_name: 'Neu' }),
     scrapedReview({ author_name: 'Auch neu', text: 'Anderer Text' }),
@@ -193,7 +193,7 @@ describe('mergeReviews', () => {
   });
 });
 
-describe('buildOutput', () => {
+describe('[REQ-REVIEW-02] buildOutput', () => {
   const match = { ratingValue: 4.8, reviewCount: 31 };
 
   it('uses scraper aggregate values and an ISO fetchedAt', () => {

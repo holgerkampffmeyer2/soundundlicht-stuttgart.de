@@ -67,29 +67,6 @@ The page SHALL render YouTube embed in hero slot when `videoId` present, using `
 - **WHEN** product has `videoId: 'vE5PQ7IUdrg'`
 - **THEN** hero section contains `<iframe src="https://www.youtube-nocookie.com/embed/vE5PQ7IUdrg">`
 
-## ADDED Requirements (Modified Capabilities)
-
-### Requirement: Dynamic Route Replaces Manual Pages (product-detail-pages)
-The system SHALL generate product pages via dynamic route instead of 16 manual `.astro` files. All 16 products SHALL have equivalent content, SEO, JSON-LD, Specs, Includes, Events, Gallery, Video output.
-
-#### Scenario: Build output matches manual pages
-- **WHEN** comparing `dist/vermietung/ld-maui-28g3.html` (dynamic) vs. previous manual page
-- **THEN** title, hero, specs, includes, events, gallery, video, FAQ, JSON-LD are equivalent
-
-### Requirement: Eliminate `any` in JSON-LD Mapping (typescript-any-cleanup)
-The dynamic page SHALL use typed `ProductData`, `FaqEntry` for JSON-LD mapping, no `any`.
-
-#### Scenario: TypeScript check passes
-- **WHEN** `pnpm exec astro check`
-- **THEN** no `any`-related hints for `[slug].astro`
-
-### Requirement: JSON-LD Builders Used (jsonld-builders)
-The page SHALL use `serviceJsonLd`, `videoJsonLd`, `faqPageJsonLd`, `breadcrumbJsonLd` from `jsonld-builders` instead of inline objects.
-
-#### Scenario: JSON-LD from builders
-- **WHEN** page renders
-- **THEN** all `<script type="application/ld+json">` tags contain output from builder functions
-
 ## REMOVED Requirements
 
 ### Requirement: 16 Manual Product Page Files

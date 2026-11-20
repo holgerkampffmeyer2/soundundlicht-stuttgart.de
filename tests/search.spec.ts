@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Search functionality', () => {
-  test('search input should exist and have correct placeholder', async ({ page }) => {
+  test('[REQ-SEARCH-01] search input should exist and have correct placeholder', async ({ page }) => {
     await page.goto('/vermietung');
     await page.waitForLoadState('domcontentloaded');
 
@@ -10,7 +10,7 @@ test.describe('Search functionality', () => {
     await expect(searchInput).toHaveAttribute('placeholder', /Technik.*durchsuchen/);
   });
 
-  test('should show results for a valid product query', async ({ page }) => {
+  test('[REQ-SEARCH-01] should show results for a valid product query', async ({ page }) => {
     await page.goto('/vermietung');
     await page.waitForLoadState('domcontentloaded');
 
@@ -31,7 +31,7 @@ test.describe('Search functionality', () => {
     expect(count).toBeGreaterThan(0);
   });
 
-  test('should close overlay when clicking outside', async ({ page }) => {
+  test('[REQ-SEARCH-01] should close overlay when clicking outside', async ({ page }) => {
     await page.goto('/vermietung');
     await page.waitForLoadState('domcontentloaded');
 
@@ -49,7 +49,7 @@ test.describe('Search functionality', () => {
     await expect(overlay).not.toBeVisible();
   });
 
-  test('should not show overlay for short queries (below 2 chars)', async ({ page }) => {
+  test('[REQ-SEARCH-01] should not show overlay for short queries (below 2 chars)', async ({ page }) => {
     await page.goto('/vermietung');
     await page.waitForLoadState('domcontentloaded');
 

@@ -11,7 +11,7 @@ test.describe('Merkliste functionality', () => {
     await page.waitForLoadState('domcontentloaded');
   });
 
-  test('should add product from vermietung page, update badge, show in drawer, and prefill form', async ({ page }) => {
+  test('[REQ-MERKLISTE-01] should add product from vermietung page, update badge, show in drawer, and prefill form', async ({ page }) => {
     await page.goto('/vermietung');
     await page.waitForSelector('.equipment-card');
 
@@ -45,7 +45,7 @@ test.describe('Merkliste functionality', () => {
     expect(textareaValue).toMatch(/€/);
   });
 
-  test('should add product from detail page, update badge, show in drawer, and prefill form', async ({ page }) => {
+  test('[REQ-MERKLISTE-01] should add product from detail page, update badge, show in drawer, and prefill form', async ({ page }) => {
     await page.goto('/vermietung');
     await page.waitForSelector('.equipment-card');
 
@@ -104,28 +104,34 @@ test.describe('Merkliste functionality', () => {
     expect(textareaValue).toMatch(/€/);
   });
 
-  test('should add multiple products and see them in drawer and form', async ({ page }) => {
+  test('[REQ-MERKLISTE-01] should add multiple products and see them in drawer and form', async ({ page }) => {
     await page.goto('/vermietung');
     await page.waitForSelector('.equipment-card');
 
     const cards = page.locator('.equipment-card');
     const count = await cards.count();
     let addedCount = 0;
-    for (let i = 0; i < Math.min(count, 2); i++) {
+    for (let i = 0; i < count && addedCount < 2; i++) {
       const card = cards.nth(i);
       const link = card.locator('a.btn-secondary, a[href*="/vermietung/"]').first();
-      if (await link.count() > 0) {
-        await link.click({ force: true });
-        await page.waitForLoadState('load');
-        const addButton = page.locator('button.wishlist-btn');
-        await expect(addButton).toBeVisible({ timeout: 5000 });
-        await addButton.click({ force: true });
-        await page.waitForTimeout(300);
-        await page.goBack();
+      if (await link.count() === 0) continue;
+
+      await link.click({ force: true });
+      await page.waitForLoadState('load');
+      const addButton = page.locator('button.wishlist-btn');
+      if (await addButton.count() === 0) {
+        await page.goto('/vermietung');
         await page.waitForSelector('.equipment-card');
-        addedCount++;
+        continue;
       }
+
+      await addButton.click({ force: true });
+      await page.waitForTimeout(300);
+      await page.goto('/vermietung');
+      await page.waitForSelector('.equipment-card');
+      addedCount++;
     }
+    expect(addedCount).toBe(2);
 
     const badge = page.locator('.merkliste-badge').first();
     await expect(badge).toBeVisible();

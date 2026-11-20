@@ -29,7 +29,7 @@ afterEach(() => {
   delete globals.localStorage;
 });
 
-describe('merklisteStore', () => {
+describe('[REQ-MERKLISTE-01] merklisteStore', () => {
 
   it('should initialize with empty merkliste', () => {
     const cart = getCart();

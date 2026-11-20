@@ -32,7 +32,7 @@ Clientseitige Volltextsuche über `astro-pagefind`. Indexierung beim Build (sieh
 
 - **Produktdaten**: `src/content/products/*.yml` (22 Dateien) via `getCollection('products')`
 - **FAQ-Daten**: `src/data/faqs.json` (183 Einträge) via `getCollection('faqs')`
-- **Städte**: `src/data/cities.json` (20 Städte) via `getCollection('cities')`
+- **Städte**: `src/data/cities.json` (21 Städte) via `getCollection('cities')`
 - **"Mehr Infos"-Link** auf `/vermietung/` erscheint bei allen Produkten mit gesetztem `detailPage` (Route oder Anker). Auf City-Seiten rendert `CityEinzeltechnik.astro` einen "Details"-Link, wenn `detailPage` gesetzt ist.
 
 ## Tests

@@ -64,3 +64,8 @@ Rollback: `git revert`; keine Schema-Migration.
 ## Open Questions
 
 Keine.
+
+## Cross-Capability Notes
+
+- **typescript-any-cleanup**: Builder-Signaturen und -Implementierungen SHALL kein `any` verwenden; stattdessen `ProductData`, `FaqEntry`, `CityData`, `BreadcrumbSegment`, `JsonLdItem` aus `types.ts`. Verifikation: `pnpm exec astro check` ohne `any`-Hinweise für `jsonLd.ts` und Consumers.
+- **product-detail-pages**: Produktseiten SHALL JSON-LD über `serviceJsonLd`, `videoJsonLd`, `faqPageJsonLd`, `breadcrumbJsonLd` statt Inline-Objekten rendern. Verifikation: `/vermietung/ld-maui-28g3` enthält nur Builder-Output.

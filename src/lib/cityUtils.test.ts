@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest';
 import { breadcrumbJsonLd, serviceJsonLd, faqPageJsonLd } from '../data/jsonLd';
 
 describe('City Page Utilities', () => {
-  describe('breadcrumbJsonLd', () => {
+  describe('[REQ-CITY-04] breadcrumbJsonLd', () => {
     it('generates correct BreadcrumbList structure', () => {
       const segments = [
         { label: 'Startseite', href: 'https://soundundlicht-stuttgart.de/' },
@@ -23,7 +23,7 @@ describe('City Page Utilities', () => {
     });
   });
 
-  describe('serviceJsonLd', () => {
+  describe('[REQ-CITY-04] serviceJsonLd', () => {
     it('generates Service schema with correct structure', () => {
       const product = {
         title: 'Test Product',
@@ -46,7 +46,7 @@ describe('City Page Utilities', () => {
     });
   });
 
-  describe('faqPageJsonLd', () => {
+  describe('[REQ-FAQ-02] faqPageJsonLd', () => {
     it('generates FAQPage schema with correct structure', () => {
       const faqs = [
         { id: '1', question: 'Question 1?', answer: 'Answer 1' },

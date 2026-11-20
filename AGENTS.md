@@ -63,6 +63,7 @@ Build output: `dist/` (static HTML + sitemap), `dist/marketplace.json` (JSON-Pro
 - Bestehende Patterns zuerst wiederverwenden, dann abstrahieren
 - Bei unklaren Anforderungen lieber vorhandene Komponenten erweitern statt neue Systeme einführen
 - **Serena als Hauptwerkzeug** für Suche & Code-Anpassungen nutzen (statt grep/sed/perl): `search_for_pattern`/`find_symbol` zum Auffinden, `replace_in_files` für Massen-Edits, `edit`/`replace_content` für Einzel-Edits. Bei `replace_in_files` den Repl ohne `\n` formulieren (das Tool fügt `\n` als Literal ein) — stattdessen den Needle bis in den Folgekontext ziehen.
+- **Spec-Traceability:** Anforderungen in `openspec/specs/**/spec.md` tragen stabile IDs (`### Requirement: [REQ-…]`); Tests referenzieren sie als Präfix im Testnamen. OpenSpec plant Changes, die Tests sind die ausführbare Wahrheit.
 
 ## Wichtige Regeln & Grenzen
 

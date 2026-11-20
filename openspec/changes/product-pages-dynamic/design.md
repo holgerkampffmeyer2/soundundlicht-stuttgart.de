@@ -72,3 +72,9 @@ Rollback: `git revert`; gelöschte Pages via `git restore` wiederherstellbar.
 
 - **Migrations-Skript**: Automatisch (Pages parsen → YAML befüllen) oder manuell? Beeinflusst Aufwand stark.
 - **Snapshot-Referenzen**: Alte `dist/` archivieren für HTML-Diff?
+
+## Cross-Capability Notes
+
+- **product-detail-pages**: Der dynamische Route SHALL die 16 manuellen `.astro`-Seiten ersetzen; alle Produkte SHALL äquivalenten Content, SEO, JSON-LD, Specs, Includes, Events, Gallery und Video ausgeben.
+- **typescript-any-cleanup**: Die dynamische Seite SHALL für JSON-LD-Mapping typisierte `ProductData`/`FaqEntry` statt `any` verwenden; Verifikation über `pnpm exec astro check`.
+- **jsonld-builders**: Die Seite SHALL `serviceJsonLd`, `videoJsonLd`, `faqPageJsonLd`, `breadcrumbJsonLd` statt Inline-Objekten verwenden.

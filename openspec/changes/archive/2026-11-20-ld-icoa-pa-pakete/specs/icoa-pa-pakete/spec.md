@@ -4,7 +4,7 @@
 
 Erweitert den Verleihkatalog um die LD-Systems-ICOA-PA-Linie mit drei Paketgrößen und Einzelmiete von Top und Sub. Zubehör wird wie Kabel behandelt und nur innerhalb der Pakete ausgewiesen.
 
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Drei ICOA-Pakete mit definiertem Inhalt und Preis
 

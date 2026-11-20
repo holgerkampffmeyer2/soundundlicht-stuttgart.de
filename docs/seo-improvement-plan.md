@@ -109,7 +109,7 @@ bestehende, semantisch korrekte `Service`-Schema angereichert:
 ## 4. Umsetzungsplan
 
 > **Status:** Phase 1 (1–6), Phase 2 (7–9) und Backlog (10) umgesetzt.
-> Offen bleiben nur die Off-Site-Maßnahmen (11).
+> Offen bleiben nur die Off-Site-Maßnahmen (11) — siehe [`docs/seo-offsite.md`](seo-offsite.md).
 
 ### Phase 1 – Quick Wins (Code)
 
@@ -163,8 +163,8 @@ bestehende, semantisch korrekte `Service`-Schema angereichert:
     - Nachbesserung: `nebel-maschine` als eigene Kategorieseite `nebelmaschinen`
       herausgelöst (mit `led-bossfx-nebelmaschine#nebel-maschine` als Variante
       verworfen) und AF-150 als eigenständiges Mietgerät ergänzt
-      (`openspec/changes/add-nebelmaschinen-page/`).
-    - OpenSpec-Change: `openspec/changes/add-product-detail-pages/`. Muster aus
+      (`openspec/changes/archive/2026-10-11-add-nebelmaschinen-page/`).
+    - OpenSpec-Change: `openspec/changes/archive/2026-10-11-add-product-detail-pages/`. Muster aus
       `docs/seo.md` (`Service` + `BreadcrumbList` + `FAQPage`, kein `Product`).
 
 ### Off-Site-Maßnahmenplan
@@ -175,6 +175,8 @@ bestehende, semantisch korrekte `Service`-Schema angereichert:
 ---
 
 ## 5. Off-Site-Maßnahmenplan
+
+> Wiederkehrend manuell umzusetzen — Checklisten und Run-Log: [`docs/seo-offsite.md`](seo-offsite.md).
 
 ### 5.1 Google Business Profile (GBP) — größter kontrollierbarer Hebel (32 %)
 > Profil existiert bereits: „Holger Kampffmeyer DJ Dienstleistungen",

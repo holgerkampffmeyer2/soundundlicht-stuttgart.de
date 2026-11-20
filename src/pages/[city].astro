@@ -45,15 +45,15 @@ const einzelItems = (cityDataRaw?.einzelItems ?? [])
   .filter(Boolean);
 
 // Defaults for optional prose fields
-const heroTitle = cityData.heroTitle ?? `PA-Anlage & Partybox mieten in ${cityName}`;
-const heroDescription = cityData.heroDescription ?? `Du planst eine Feier in ${cityName} und brauchst zuverlässige Veranstaltungstechnik? Ob Geburtstag im Kreis der Familie, Hochzeit in einer der vielen ${cityName}er Locations oder Firmenfeier im Ballsaal – ich habe die passende Technik für dich.`;
-const heroDetails = cityData.heroDetails ?? `Meine Pakete umfassen PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment. Die Abholung erfolgt in Leinfelden-Echterdingen – von ${cityName} aus nur ca. ${cityData.travelTime} Minuten über die A8 oder B27. Ich erkläre dir den Aufbau und stehe bei Fragen zur Seite. Anders als bei Versandverleihern hast du die Technik vorab in der Hand und bekommst eine persönliche Einweisung – so weißt du genau, was dich erwartet.`;
-const einzelTitle = cityData.einzelTitle ?? `Einzeltechnik für ${cityName}`;
-const einzelDescription = cityData.einzelDescription ?? `Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.`;
-const areasIntro = cityData.areasIntro ?? `Du wohnst in ${cityName} oder Umgebung? Dann ist die Abholung bei mir in der Magellanstraße 4, Echterdingen, nur ${cityData.distance} entfernt – direkt an A8 / B27 gelegen.`;
-const contactDescription = cityData.contactDescription ?? `Du wohnst in ${cityName} oder Umgebung und möchtest Technik für deine Party mieten? Schreib mir eine E-Mail mit deinem Wunschdatum und der gewünschten Ausrüstung. Die Abholung ist in Leinfelden-Echterdingen, Magellanstraße 4 – verkehrsgünstig an A8 / B27, nur ${cityData.distance} km bzw. ${cityData.travelTime} Minuten von ${cityName}. Ich melde mich innerhalb von 12 Stunden bei dir!`;
-const distanceText = cityData.distanceText ?? `Nur ${cityData.distance} km von ${cityName} – verkehrsgünstig an A8 / B27`;
-const travelTimeText = cityData.travelTimeText ?? cityData.travelTime;
+const heroTitle = cityData.heroTitle || `PA-Anlage & Partybox mieten in ${cityName}`;
+const heroDescription = cityData.heroDescription || `Du planst eine Feier in ${cityName} und brauchst zuverlässige Veranstaltungstechnik? Ob Geburtstag im Kreis der Familie, Hochzeit in einer der vielen ${cityName}er Locations oder Firmenfeier im Ballsaal – ich habe die passende Technik für dich.`;
+const heroDetails = cityData.heroDetails || `Meine Pakete umfassen PA-Anlagen, Partyboxen, Lichttechnik und DJ-Equipment. Die Abholung erfolgt in Leinfelden-Echterdingen – von ${cityName} aus nur ca. ${cityData.travelTime} Minuten über die A8 oder B27. Ich erkläre dir den Aufbau und stehe bei Fragen zur Seite. Anders als bei Versandverleihern hast du die Technik vorab in der Hand und bekommst eine persönliche Einweisung – so weißt du genau, was dich erwartet.`;
+const einzelTitle = cityData.einzelTitle || `Einzeltechnik für ${cityName}`;
+const einzelDescription = cityData.einzelDescription || `Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.`;
+const areasIntro = cityData.areasIntro || `Du wohnst in ${cityName} oder Umgebung? Dann ist die Abholung bei mir in der Magellanstraße 4, Echterdingen, nur ${cityData.distance} entfernt – direkt an A8 / B27 gelegen.`;
+const contactDescription = cityData.contactDescription || `Du wohnst in ${cityName} oder Umgebung und möchtest Technik für deine Party mieten? Schreib mir eine E-Mail mit deinem Wunschdatum und der gewünschten Ausrüstung. Die Abholung ist in Leinfelden-Echterdingen, Magellanstraße 4 – verkehrsgünstig an A8 / B27, nur ${cityData.distance} km bzw. ${cityData.travelTime} Minuten von ${cityName}. Ich melde mich innerhalb von 12 Stunden bei dir!`;
+const distanceText = cityData.distanceText || `Nur ${cityData.distance} km von ${cityName} – verkehrsgünstig an A8 / B27`;
+const travelTimeText = cityData.travelTimeText || cityData.travelTime;
 
 // JSON-LD Builders
 const breadcrumbJsonLdData = breadcrumbJsonLd([

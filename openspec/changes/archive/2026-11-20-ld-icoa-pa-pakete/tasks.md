@@ -43,4 +43,4 @@
 - [x] 6.4 `pnpm test`
 - [x] 6.5 `npx playwright test tests/icoa-pa-pakete.spec.ts`
 - [x] 6.6 `pnpm run build:full`
-- [ ] 6.7 Change archivieren: `openspec archive ld-icoa-pa-pakete -y`
+- [x] 6.7 Change archivieren: `openspec archive ld-icoa-pa-pakete -y`

@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import { getFaqsForPage } from './faqUtils';
 
-describe('getFaqsForPage', () => {
+describe('[REQ-FAQ-01] getFaqsForPage', () => {
   it('returns all FAQs when page is "index" and FAQ has pages=["index"]', () => {
     const result = getFaqsForPage('index');
     expect(result.length).toBeGreaterThan(0);

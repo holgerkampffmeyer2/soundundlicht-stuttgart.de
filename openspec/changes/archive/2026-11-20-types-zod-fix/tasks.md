@@ -2,10 +2,10 @@
 
 ## 1. Zod-Import migrieren & types.ts erweitern
 
-- [ ] 1.1 `src/content.config.ts`: Import `z` aus `astro/zod` statt `astro:content` ändern
+- [x] 1.1 `src/content.config.ts`: Import `z` aus `astro/zod` statt `astro:content` ändern
   - Verifikation: `pnpm exec astro check` zeigt keine `ts(6385)` Hints mehr für content.config.ts
 
-- [ ] 1.2 `src/lib/types.ts` erweitern – zentrale Typ-Exports:
+- [x] 1.2 `src/lib/types.ts` erweitern – zentrale Typ-Exports:
   ```ts
   import type { CollectionEntry } from 'astro:content';
   import type { FaqEntry } from './faqUtils';
@@ -23,31 +23,31 @@
 
 ## 2. Duplizierte Interfaces entfernen & Imports umstellen
 
-- [ ] 2.1 `src/components/CityEinzeltechnik.astro`: Interface `ProductData` entfernen, `import type { ProductData } from '../../lib/types'`
+- [x] 2.1 `src/components/CityEinzeltechnik.astro`: Interface `ProductData` entfernen, `import type { ProductData } from '../../lib/types'`
   - Verifikation: `pnpm exec astro check` grün für Datei
 
-- [ ] 2.2 `src/components/vermietung/CategoryLayout.astro`: Interface `CategoryProduct` entfernen, `import type { ProductData } from '../../../lib/types'`; Props `products: ProductData[]`
+- [x] 2.2 `src/components/vermietung/CategoryLayout.astro`: Interface `CategoryProduct` entfernen, `import type { ProductData } from '../../../lib/types'`; Props `products: ProductData[]`
   - Verifikation: `pnpm exec astro check` grün
 
-- [ ] 2.3 `src/components/vermietung/ProductLayout.astro`: Interface `ProductData` entfernen, `import type { ProductData } from '../../../lib/types'`
+- [x] 2.3 `src/components/vermietung/ProductLayout.astro`: Interface `ProductData` entfernen, `import type { ProductData } from '../../../lib/types'`
   - Verifikation: `pnpm exec astro check` grün
 
-- [ ] 2.4 `src/lib/wishlistDrawer.ts`: Interface `CatalogProduct` entfernen, `import type { CatalogProduct } from '../types'`
+- [x] 2.4 `src/lib/wishlistDrawer.ts`: Interface `CatalogProduct` entfernen, `import type { CatalogProduct } from '../types'`
   - Verifikation: `pnpm exec astro check` grün; `pnpm test` (wishlistDrawer wird nicht direkt getestet, aber Build + merkliste Tests grün)
 
-- [ ] 2.5 `src/scripts/search.ts`: Interface `CatalogProduct` (Zeile 78) entfernen, `import type { CatalogProduct } from '../lib/types'`
+- [x] 2.5 `src/scripts/search.ts`: Interface `CatalogProduct` (Zeile 78) entfernen, `import type { CatalogProduct } from '../lib/types'`
   - Verifikation: `pnpm exec astro check` grün; Playwright Search-Tests grün
 
-- [ ] 2.6 `src/pages/faq.astro`: Interface `FaqEntry` (Zeile 9) entfernen, `import type { FaqEntry } from '../lib/faqUtils'`
+- [x] 2.6 `src/pages/faq.astro`: Interface `FaqEntry` (Zeile 9) entfernen, `import type { FaqEntry } from '../lib/faqUtils'`
   - Verifikation: `pnpm exec astro check` grün; ungenutzte `CITY_NAMES`, `totalCount` Variablen optional entfernen
 
 ## 3. Verifikation & Cleanup
 
-- [ ] 3.1 `pnpm exec astro check` → 0 Errors, 0 Warnings, 0 Hints
-- [ ] 3.2 `pnpm run lint:agent` → keine Fehler
-- [ ] 3.3 `pnpm test` → alle Unit-Tests grün
-- [ ] 3.4 `pnpm run build` → Build erfolgreich, alle 41 Pages generiert
-- [ ] 3.5 Optional: `npx playwright test` → E2E grün (Merkliste, Suche, City/Produkt-Seiten)
+- [x] 3.1 `pnpm exec astro check` → 0 Errors, 0 Warnings, 0 Hints
+- [x] 3.2 `pnpm run lint:agent` → keine Fehler
+- [x] 3.3 `pnpm test` → alle Unit-Tests grün
+- [x] 3.4 `pnpm run build` → Build erfolgreich, alle 41 Pages generiert
+- [x] 3.5 Optional: `npx playwright test` → E2E grün (Merkliste, Suche, City/Produkt-Seiten)
 
 ## Workflow follow-up
 

@@ -79,3 +79,9 @@ Rollback: `git revert`; gelöschte Pages via `git restore` wiederherstellbar.
 
 - **Migrations-Skript**: Automatisch (Pages parsen → JSON befüllen) oder manuell Copy-Paste? Beeinflusst Aufwand stark.
 - **Snapshot-Referenzen**: Alte `dist/` archivieren für HTML-Diff, oder nur Build + E2E?
+
+## Cross-Capability Notes
+
+- **feature-inventory**: Der dynamische Route SHALL die 20 manuellen `.astro`-Stadtseiten ersetzen; alle Städte SHALL äquivalente Inhalte, SEO und JSON-LD ausgeben.
+- **typescript-any-cleanup**: Die dynamische Seite SHALL für FAQ-JSON-LD typisierte `FaqEntry` statt `any` verwenden.
+- **jsonld-builders**: Die Seite SHALL `breadcrumbJsonLd`, `serviceJsonLd`, `faqPageJsonLd` statt Inline-Objekten verwenden.

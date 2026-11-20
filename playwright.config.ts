@@ -1,5 +1,5 @@
 // playwright.config.ts
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
@@ -17,7 +17,7 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'pnpm run preview',
+    command: 'node scripts/preview-server.mjs',
     port: 4321,
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,

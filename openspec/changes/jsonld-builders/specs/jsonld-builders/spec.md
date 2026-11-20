@@ -48,18 +48,3 @@ The system SHALL export pre-built constant objects: `localBusinessJsonLd`, `orga
 - **WHEN** importing `localBusinessJsonLd` from `jsonLd.ts`
 - **THEN** object equals current inline definition in `Layout.astro` (deep equal)
 
-## ADDED Requirements (Modified Capabilities)
-
-### Requirement: Eliminate `any` in JSON-LD (typescript-any-cleanup)
-The system SHALL NOT use `any` type in any JSON-LD builder signature or implementation. All builders SHALL use `ProductData`, `FaqEntry`, `CityData`, `BreadcrumbSegment`, `JsonLdItem` from `types.ts`.
-
-#### Scenario: TypeScript compilation without `any`
-- **WHEN** running `pnpm exec astro check`
-- **THEN** no `ts(6385)` or `any`-related hints for `jsonLd.ts` or consumers
-
-### Requirement: Product pages use builders (product-detail-pages)
-The system SHALL render product detail pages using `serviceJsonLd`, `videoJsonLd`, `faqPageJsonLd`, `breadcrumbJsonLd` instead of inline objects.
-
-#### Scenario: Product page JSON-LD from builders
-- **WHEN** building `/vermietung/ld-maui-28g3`
-- **THEN** page's `<script type="application/ld+json">` tags contain output from builder functions, no inline object literals

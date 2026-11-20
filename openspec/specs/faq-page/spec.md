@@ -1,11 +1,11 @@
 # faq-page Specification
 
 ## Purpose
-TBD - created by archiving change reviews-faq-spec-completeness. Update Purpose after archive.
+Beschreibt die zentrale FAQ-Themenseite und die vollständige FAQPage-Struktur: alle Einträge aus `src/data/faqs.json` werden nach Themen und Städten gruppiert und mit ungefiltertem JSON-LD ausgegeben.
 
 ## Requirements
 
-### Requirement: Themenseite `/faq` mit Themen-Gruppierung
+### Requirement: [REQ-FAQ-01] Themenseite `/faq` mit Themen-Gruppierung
 
 Die Seite `src/pages/faq.astro` SHALL alle Einträge aus `src/data/faqs.json` nach Themen gruppieren (Allgemein & Buchung, Komplettpakete, Sound & PA-Anlagen, Licht & Effekte, Standorte & Lieferung, Weitere Fragen) und je Stadt die FAQs der Stadt zuordnen.
 
@@ -19,7 +19,7 @@ Die Seite `src/pages/faq.astro` SHALL alle Einträge aus `src/data/faqs.json` na
 - **WHEN** die Seite gerendert wird
 - **THEN** zeigt das Inhaltsverzeichnis die vorhandenen Themenabschnitte plus „Standorte & Lieferung" (falls städtische FAQs existieren), und jede Stadt mit FAQs hat einen eigenen Ankerabschnitt
 
-### Requirement: FAQPage-JSON-LD mit allen Einträgen
+### Requirement: [REQ-FAQ-02] FAQPage-JSON-LD mit allen Einträgen
 
 `src/pages/faq.astro` SHALL inline ein `FAQPage`-JSON-LD mit **allen** FAQs (ungefiltert) ausgeben.
 

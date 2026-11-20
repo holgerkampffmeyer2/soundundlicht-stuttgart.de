@@ -50,10 +50,12 @@
 ## 8. Tests & Verifikation
 
 - [x] 8.1 Unit-Test `tests/jsonld.spec.ts`: `videoJsonLd` mit/ohne Meta, `absoluteUrl`, `serviceJsonLd` absolute Images, `breadcrumbJsonLd` absolute Items; Verify: `pnpm test` → alle grün
-- [ ] 8.2 Playwright-Test `tests/brand-badges.spec.ts`: Detailseite `karaoke-paket` → Badge „JBL“ + „Yamaha“ sichtbar; Paketseite `partypaket-stuttgart` → 3 Badges; Kategorie `ld-systems-icoa-series` Hero → 2 Badges; Verify: `npx playwright test tests/brand-badges.spec.ts`
-- [ ] 8.3 Playwright-Test `tests/jsonld-placeholders.spec.ts`: 5 Seiten ohne Video → kein `VideoObject`; 7 Seiten mit Video → `VideoObject` vorhanden; Karaoke/Partypaket → korrekte `uploadDate`/`duration`; Verify: `npx playwright test tests/jsonld-placeholders.spec.ts`
-- [ ] 8.4 Playwright-Test `tests/link-format.spec.ts`: `IncludedInPackages` Links auf `ld-systems-icoa-series` → kein permanenter Underline, nur Hover; Verify: `npx playwright test tests/link-format.spec.ts`
+- [-] 8.2 Playwright-Test `tests/brand-badges.spec.ts`: Detailseite `karaoke-paket` → Badge „JBL“ + „Yamaha“ sichtbar; Paketseite `partypaket-stuttgart` → 3 Badges; Kategorie `ld-systems-icoa-series` Hero → 2 Badges; Verify: `npx playwright test tests/brand-badges.spec.ts`
+- [-] 8.3 Playwright-Test `tests/jsonld-placeholders.spec.ts`: 5 Seiten ohne Video → kein `VideoObject`; 7 Seiten mit Video → `VideoObject` vorhanden; Karaoke/Partypaket → korrekte `uploadDate`/`duration`; Verify: `npx playwright test tests/jsonld-placeholders.spec.ts`
+- [-] 8.4 Playwright-Test `tests/link-format.spec.ts`: `IncludedInPackages` Links auf `ld-systems-icoa-series` → kein permanenter Underline, nur Hover; Verify: `npx playwright test tests/link-format.spec.ts`
 - [x] 8.5 Full-Build & Lint: `pnpm run lint:agent && pnpm run build:full && pnpm test && npx playwright test`; Verify: Alle grün, `dist/urllist.txt` sauber
+
+> **Hinweis:** 8.2–8.4 bewusst fallengelassen (keine E2E-Tests angelegt); Verifikation über 8.1 + Full-Build.
 
 ## Workflow follow-up
 

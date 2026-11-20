@@ -37,13 +37,13 @@
 - [ ] 2.4 Tests für `faqPageJsonLd`: `mainEntity` Länge = Input, `Question`/`Answer` Struktur
   - Verifikation: Test grün
 
-- [ ] 2.4 Tests für `breadcrumbJsonLd`: Positionen 1..n, `item` URLs korrekt
+- [ ] 2.5 Tests für `breadcrumbJsonLd`: Positionen 1..n, `item` URLs korrekt
   - Verifikation: Test grün
 
-- [ ] 2.5 Tests für `offerCatalogJsonLd`: Filter `detailPage` ohne `#`, `price` = `priceValue`, `priceCurrency: 'EUR'`
+- [ ] 2.6 Tests für `offerCatalogJsonLd`: Filter `detailPage` ohne `#`, `price` = `priceValue`, `priceCurrency: 'EUR'`
   - Verifikation: Test grün
 
-- [ ] 2.6 Snapshot-Tests: Jeder Builder-Output tief-verschachtelt gegen Referenz-Objekt (aus aktuellen Inline-Definitionen extrahiert)
+- [ ] 2.7 Snapshot-Tests: Jeder Builder-Output tief-verschachtelt gegen Referenz-Objekt (aus aktuellen Inline-Definitionen extrahiert)
   - Verifikation: `pnpm test` → alle jsonLd Tests grün
 
 ## 3. Seiten-Migration: Inline-Objekte durch Builder ersetzen

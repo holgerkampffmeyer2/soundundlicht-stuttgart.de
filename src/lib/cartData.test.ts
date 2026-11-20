@@ -42,7 +42,7 @@ beforeEach(() => {
   storage = createStorageMock();
 });
 
-describe('readRawCart', () => {
+describe('[REQ-MERKLISTE-01] readRawCart', () => {
   it('returns null when no cart exists', () => {
     expect(readRawCart(storage)).toBeNull();
   });
@@ -84,7 +84,7 @@ describe('readRawCart', () => {
   });
 });
 
-describe('buildProductMap', () => {
+describe('[REQ-MERKLISTE-01] buildProductMap', () => {
   it('creates a lookup map from product array', () => {
     const map = buildProductMap(sampleProducts);
     expect(map['jbl-partybox-300-320'].title).toBe('JBL Partyboxen (Paar)');
@@ -96,7 +96,7 @@ describe('buildProductMap', () => {
   });
 });
 
-describe('formatCartItems', () => {
+describe('[REQ-MERKLISTE-01] formatCartItems', () => {
   it('formats single item with product data', () => {
     const cart = { items: [{ slug: 'jbl-partybox-300-320' }] };
     const map = buildProductMap(sampleProducts);
@@ -143,7 +143,7 @@ describe('formatCartItems', () => {
   });
 });
 
-describe('getCartData (integration)', () => {
+describe('[REQ-MERKLISTE-01] getCartData (integration)', () => {
   it('returns empty string when no cart exists', () => {
     expect(getCartData(storage, {})).toBe('');
   });
@@ -205,7 +205,7 @@ describe('getCartData (integration)', () => {
   });
 });
 
-describe('form textarea prefill logic', () => {
+describe('[REQ-MERKLISTE-01] form textarea prefill logic', () => {
   const merklisteHeader = 'Gewünschte Geräte aus der Merkliste:';
 
   it('prefill produces header + items text', () => {

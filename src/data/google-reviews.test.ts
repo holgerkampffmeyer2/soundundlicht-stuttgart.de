@@ -28,7 +28,7 @@ const reviewKey = (review: SiteReview) =>
 
 const ISO_UTC = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
 
-describe('src/data/google-reviews.json', () => {
+describe('[REQ-REVIEW-03] src/data/google-reviews.json', () => {
   it('has the aggregate fields consumed by jsonLd.ts', () => {
     expect(typeof data.ratingValue).toBe('number');
     expect(data.ratingValue).toBeGreaterThanOrEqual(1);
