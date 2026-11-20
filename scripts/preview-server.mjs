@@ -47,7 +47,16 @@ const server = http.createServer((req, res) => {
     file += '.html';
   }
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) {
-    file = path.join(ROOT, '404.html');
+    const notFoundFile = path.join(ROOT, '404.html');
+    if (fs.existsSync(notFoundFile) && fs.statSync(notFoundFile).isFile()) {
+      res.writeHead(404, {
+        'Content-Type': CONTENT_TYPES['.html'],
+      });
+      fs.createReadStream(notFoundFile).pipe(res);
+      return;
+    }
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }).end('Not Found');
+    return;
   }
 
   res.writeHead(200, {
