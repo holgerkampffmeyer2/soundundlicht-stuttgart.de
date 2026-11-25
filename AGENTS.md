@@ -36,17 +36,6 @@ Astro 7.x SSG-Website für Veranstaltungstechnik-Verleih (PA-Anlagen, Partyboxen
 
 Build output: `dist/` (static HTML + sitemap), `dist/marketplace.json` (JSON-Produktfeed für externe Marketplace-Integrationen, aus Content Collections, nicht in der Sitemap), `public/rss.xml`, `public/urllist.txt`.
 
-## CLI-Proxy `rtk`
-
-- Befehle können über den Proxy `rtk` (z.B. `rtk pnpm run build`, `rtk pnpm run lint:agent`) gefiltert werden.
-- **Veralteter Workaround:** Der direkte Subcommand `rtk lint` hat weiterhin einen JSON-Parse-Bug (`ESLint output (JSON parse failed: EOF ...)`). Stattdessen `rtk pnpm run lint:agent` verwenden (funktioniert).
-- Falls `rtk <cmd>` dennoch fehlerhaft/leer läuft, Proxy deaktivieren:
-  ```bash
-  RTK_DISABLED=1 pnpm run lint:agent
-  ```
-- `RTK_DISABLED=1` schaltet die Hook-/Proxy-Funktion von rtk komplett ab (kein Wrapping, volle Rohausgabe).
-- **Verifiziert funktionierend** (Stand 2026-08): `rtk pnpm run lint:agent`, `rtk pnpm run build`, `rtk npx vitest run --pool=forks` (Vitest: `threads`-Pool hängt in WSL, `forks` nutzen). `RTK_DISABLED=1` nur als letzter Fallback verwenden, wenn `rtk <cmd>` tatsächlich fehlschlägt — nicht pauschal setzen.
-
 ## Git-Workflow
 - Conventional Commits: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `ci:`
 - Features auf eigenen Branches entwickeln

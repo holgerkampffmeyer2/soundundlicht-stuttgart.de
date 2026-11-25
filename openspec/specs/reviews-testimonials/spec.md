@@ -24,6 +24,25 @@ Regelt die Anzeige der Google-Rezensionen als paginierte Testimonials, die Scrap
 - **WHEN** ein Nutzer über Navbar, Footer oder `/#bewertungen` zur Sektion springt
 - **THEN** positioniert der Browser die Sektion unter der fixen Navigation (`section[id]` hat `scroll-margin-top: 160px`)
 
+### Requirement: [REQ-REVIEW-04] Barrierearme Rezensionsdarstellung mit Theme-Akzenten
+
+`src/components/Testimonials.astro` SHALL Rezensionen als hochwertige Karten mit Aggregatbewertung, SVG-Sternen, SVG-Icons, lesbarem Text und zugänglicher Paginierung darstellen; die Farbgebung SHALL Theme-Tokens nutzen und SHALL sich nicht auf Blautöne beschränken.
+
+#### Scenario: Aggregatbewertung und SVG-Sterne
+
+- **WHEN** die Testimonials-Sektion gerendert wird
+- **THEN** zeigt sie `ratingValue` als deutsche Dezimalzahl und `reviewCount` aus `google-reviews.json`, und sowohl Aggregat als auch Einzelbewertungen verwenden `aria-hidden="true"`-SVG-Sterne mit `role="img"`-Textalternative
+
+#### Scenario: Lange Rezensionen
+
+- **WHEN** eine Rezension länger als 420 Zeichen ist
+- **THEN** zeigt die Karte eine Vorschau und ein natives `<details>`-Element „Mehr lesen", das den vollständigen Text ohne Verlust von Zeilenumbrücken zugänglich macht
+
+#### Scenario: Paginierung mit Status und Fokus
+
+- **WHEN** die Seite gewechselt wird
+- **THEN** markieren die Seiten-Buttons den aktiven Zustand per `data-active` und `aria-current`, ein `aria-live`-Status nennt die aktuelle Seite, und alle Buttons haben sichtbare Fokusrahmen in `--color-accent`
+
 ### Requirement: [REQ-REVIEW-02] Review-Datenpipeline via Playwright mit angemeldeter Session
 
 `scripts/fetch-google-reviews.mjs` (Aufruf `pnpm run update-reviews`) SHALL die vollständige Rezensionenliste des Betriebs über Playwright mit persistentem Browserprofil (`~/.cache/sls-gmaps-profile`) laden und nach `src/data/google-reviews.json` schreiben. Die einmalige Anmeldung erfolgt über `pnpm run gmaps:login`.

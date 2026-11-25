@@ -509,43 +509,33 @@ section[id] {
 /* FAQ Styles */
 .faq-item {
   background: var(--color-surface);
-  border-radius: 0.5rem;
-  padding: 1rem 1.5rem;
-  cursor: pointer;
+  border-radius: 0.75rem;
   border: 1px solid var(--color-border);
-  transition: all 0.3s ease;
+  overflow: hidden;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .faq-item:hover {
-  border-color: var(--color-secondary);
+  border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+  background: var(--color-surface-hover);
 }
 
 .faq-item summary {
   list-style: none;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-weight: 600;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 1.25rem 1.5rem;
 }
 
 .faq-item summary::-webkit-details-marker {
   display: none;
 }
 
-.faq-item summary::after {
-  content: '+';
-  font-size: 1.5rem;
-  color: var(--color-secondary);
-  transition: transform 0.3s ease;
-}
-
-.faq-item[open] summary::after {
-  transform: rotate(45deg);
-}
-
 .faq-item[open] summary {
-  color: var(--color-secondary);
-  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* Theme-aware component utilities */
@@ -597,14 +587,6 @@ section[id] {
   background: color-mix(in srgb, var(--color-secondary) 20%, transparent);
   color: var(--color-secondary);
   transition: transform 0.3s ease;
-}
-
-.star-active {
-  color: var(--color-secondary);
-}
-
-.review-card-hover:hover {
-  box-shadow: 0 0 30px color-mix(in srgb, var(--color-secondary) 30%, transparent);
 }
 
 .hero-overlay-accent {

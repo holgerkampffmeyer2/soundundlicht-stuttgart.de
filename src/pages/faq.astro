@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import Icon from "../components/Icon.astro";
 import faqsData from "../data/faqs.json";
 import citiesData from "../data/cities.json";
 import type { FaqEntry } from "../lib/faqUtils";
@@ -26,7 +27,6 @@ const LIGHT = [
   "powerstation",
 ];
 const CITY_SLUGS = citiesData.map((c) => c.slug);
-// const CITY_NAMES = new Map(citiesData.map((c) => [c.slug, c.name])); // unused
 
 const faqs: FaqEntry[] = faqsData;
 
@@ -49,11 +49,11 @@ for (const faq of faqs) {
 }
 
 const SECTIONS = [
-  { id: "allgemein", title: "Allgemein & Buchung" },
-  { id: "pakete", title: "Komplettpakete" },
-  { id: "sound", title: "Sound & PA-Anlagen" },
-  { id: "licht", title: "Licht & Effekte" },
-  { id: "sonstiges", title: "Weitere Fragen" },
+  { id: "allgemein", title: "Allgemein & Buchung", icon: "info" },
+  { id: "pakete", title: "Komplettpakete", icon: "package" },
+  { id: "sound", title: "Sound & PA-Anlagen", icon: "volume-up" },
+  { id: "licht", title: "Licht & Effekte", icon: "light-bulb" },
+  { id: "sonstiges", title: "Weitere Fragen", icon: "chat" },
 ];
 const sections = SECTIONS.filter((s) => grouped[s.id]?.length);
 
@@ -73,7 +73,9 @@ const cityGroups = citiesData
 const cityCount = grouped.cities?.length ?? 0;
 const toc = [
   ...sections,
-  ...(cityCount ? [{ id: "standorte", title: "Standorte & Lieferung" }] : []),
+  ...(cityCount
+    ? [{ id: "standorte", title: "Standorte & Lieferung", icon: "map-pin" }]
+    : []),
 ];
 ---
 
@@ -84,86 +86,326 @@ const toc = [
 >
   <Navbar currentPage="/faq" />
 
-  <!-- Hero -->
-  <section class="hero-gradient pt-40 pb-20 md:pt-48 md:pb-24 px-4 text-center">
-    <div class="max-w-3xl mx-auto">
-      <h1 class="font-play text-5xl md:text-7xl font-bold mb-6 gradient-text">FAQ</h1>
-      <p class="text-[var(--color-text-muted)] text-xl md:text-2xl max-w-2xl mx-auto">
-        Alle häufigen Fragen zur Veranstaltungstechnik-Vermietung
-      </p>
-    </div>
-  </section>
+  <div class="faq-page">
+    <section class="faq-hero hero-gradient pt-40 pb-20 md:pt-48 md:pb-24 px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <span class="faq-eyebrow">
+          <Icon name="chat" />
+          {faqs.length} Fragen &amp; Antworten
+        </span>
+        <h1 class="font-play text-5xl md:text-7xl mb-6 gradient-text">FAQ</h1>
+        <p class="faq-subtitle text-xl md:text-2xl max-w-2xl mx-auto">
+          Alle häufigen Fragen zur Veranstaltungstechnik-Vermietung
+        </p>
+      </div>
+    </section>
 
-  <!-- TOC -->
-  <section class="section-padding bg-[var(--color-surface)]">
-    <div class="max-w-4xl mx-auto">
-      <nav class="toc mb-12 animate-on-scroll" aria-label="Inhaltsverzeichnis">
-        <ul class="flex flex-wrap gap-3 md:gap-4">
-          {toc.map((section) => (
-            <li>
-              <a
-                href={`#${section.id}`}
-                class="inline-block px-4 py-2 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] text-sm font-medium hover:border-[var(--color-secondary)] hover:bg-[var(--color-bg)] transition-all duration-200"
-              >
-                {section.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <section class="faq-toc-section section-padding">
+      <div class="max-w-4xl mx-auto">
+        <nav class="toc mb-12 animate-on-scroll" aria-label="Inhaltsverzeichnis">
+          <ul class="toc-list">
+            {toc.map((section) => (
+              <li>
+                <a href={`#${section.id}`} class="toc-chip" data-tone={section.id}>
+                  <Icon name={section.icon} />
+                  {section.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-      {sections.map((section) => {
-        const items = grouped[section.id];
-        if (!items?.length) return null;
-        return (
-          <section id={section.id} class="mb-16 animate-on-scroll">
-            <h2 class="font-play text-3xl font-bold mb-8 pb-3 border-b border-[var(--color-border)]">
-              {section.title}
-            </h2>
+        {sections.map((section) => {
+          const items = grouped[section.id];
+          if (!items?.length) return null;
+          return (
+            <section id={section.id} class="faq-section mb-16 animate-on-scroll" data-topic={section.id}>
+              <div class="faq-section-head">
+                <span class="faq-section-icon">
+                  <Icon name={section.icon} />
+                </span>
+                <div>
+                  <h2 class="font-play text-3xl">{section.title}</h2>
+                  <span class="faq-section-meta">{items.length} Fragen</span>
+                </div>
+              </div>
+              <div class="space-y-4">
+                {items.map((faq) => (
+                  <details class="faq-item">
+                    <summary>
+                      <span class="faq-question-icon">
+                        <Icon name={section.icon} />
+                      </span>
+                      <span class="flex-1">{faq.question}</span>
+                      <Icon name="chevron-down" class="faq-chevron" />
+                    </summary>
+                    <div class="faq-answer">
+                      <p>{faq.answer}</p>
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </section>
+          );
+        })}
+
+        {cityCount > 0 && (
+          <section id="standorte" class="faq-section animate-on-scroll" data-topic="standorte">
+            <div class="faq-section-head">
+              <span class="faq-section-icon">
+                <Icon name="map-pin" />
+              </span>
+              <div>
+                <h2 class="font-play text-3xl">Standorte &amp; Lieferung</h2>
+                <span class="faq-section-meta">{cityCount} Städte</span>
+              </div>
+            </div>
             <div class="space-y-4">
-              {items.map((faq) => (
-                <details class="faq-item bg-[var(--color-surface)] rounded-xl p-6 border border-[var(--color-border)]">
-                  <summary class="font-bold cursor-pointer flex items-center gap-3 list-none">
-                    <span class="text-[var(--color-secondary)]">?</span>
-                    {faq.question}
+              {cityGroups.map((group) => (
+                <details class="faq-item">
+                  <summary>
+                    <span class="faq-question-icon">
+                      <Icon name="map-pin" />
+                    </span>
+                    <span class="flex-1">{group.name}</span>
+                    <Icon name="chevron-down" class="faq-chevron" />
                   </summary>
-                  <div class="mt-4 pt-4 border-t border-[var(--color-border)]">
-                    <p class="text-[var(--color-text-muted)] leading-relaxed">{faq.answer}</p>
+                  <div class="faq-answer city-answers">
+                    {group.items.map((faq) => (
+                      <div class="city-answer">
+                        <p class="city-question">{faq.question}</p>
+                        <p>{faq.answer}</p>
+                      </div>
+                    ))}
                   </div>
                 </details>
               ))}
             </div>
           </section>
-        );
-      })}
-
-      {cityCount > 0 && (
-        <section id="standorte" class="animate-on-scroll">
-          <h2 class="font-play text-3xl font-bold mb-8 pb-3 border-b border-[var(--color-border)]">
-            Standorte & Lieferung
-          </h2>
-          <div class="space-y-4">
-            {cityGroups.map((group) => (
-              <details class="faq-item bg-[var(--color-surface)] rounded-xl p-6 border border-[var(--color-border)]">
-                <summary class="font-bold cursor-pointer flex items-center gap-3 list-none">
-                  <span class="text-[var(--color-secondary)]">📍</span>
-                  {group.name}
-                </summary>
-                <div class="mt-4 pt-4 border-t border-[var(--color-border)] space-y-4">
-                  {group.items.map((faq) => (
-                    <div class="text-[var(--color-text-muted)] leading-relaxed">
-                      <p class="font-semibold mb-1">{faq.question}</p>
-                      <p>{faq.answer}</p>
-                    </div>
-                  ))}
-                </div>
-              </details>
-            ))}
-          </div>
-        </section>
-      )}
-    </div>
-  </section>
+        )}
+      </div>
+    </section>
+  </div>
 
   <Footer />
 </Layout>
+
+<style>
+  .faq-page {
+    --faq-tone: var(--color-accent);
+  }
+
+  .faq-page [data-tone="pakete"],
+  .faq-page [data-topic="pakete"] {
+    --faq-tone: var(--color-primary);
+  }
+
+  .faq-page [data-tone="sound"],
+  .faq-page [data-topic="sound"] {
+    --faq-tone: color-mix(in srgb, var(--color-primary) 45%, var(--color-accent));
+  }
+
+  .faq-page [data-tone="licht"],
+  .faq-page [data-topic="licht"] {
+    --faq-tone: var(--color-primary-hover);
+  }
+
+  .faq-page [data-tone="sonstiges"],
+  .faq-page [data-topic="sonstiges"] {
+    --faq-tone: color-mix(in srgb, var(--color-text-muted) 65%, var(--color-accent));
+  }
+
+  .faq-page [data-tone="standorte"],
+  .faq-page [data-topic="standorte"] {
+    --faq-tone: color-mix(in srgb, var(--color-accent) 70%, var(--color-primary));
+  }
+
+  .faq-hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .faq-hero > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  .faq-hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 20% -35% 20%;
+    height: 18rem;
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--color-accent) 18%, transparent),
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .faq-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    margin-bottom: 1.5rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+    color: var(--color-accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .faq-eyebrow svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .faq-subtitle {
+    color: color-mix(in srgb, var(--color-text) 85%, var(--color-text-muted));
+  }
+
+  .faq-toc-section {
+    background: color-mix(in srgb, var(--color-surface) 85%, var(--color-bg));
+    border-block: 1px solid var(--color-border);
+  }
+
+  .toc-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .toc-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--faq-tone) 40%, var(--color-border));
+    background: color-mix(in srgb, var(--faq-tone) 9%, var(--color-surface));
+    color: var(--color-text);
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .toc-chip svg {
+    width: 1rem;
+    height: 1rem;
+    color: var(--faq-tone);
+  }
+
+  .toc-chip:hover {
+    border-color: var(--faq-tone);
+    background: color-mix(in srgb, var(--faq-tone) 18%, var(--color-surface));
+    transform: translateY(-1px);
+  }
+
+  .toc-chip:focus-visible,
+  .faq-item summary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+
+  .faq-section-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .faq-section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 3rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--faq-tone) 35%, transparent);
+    background: color-mix(in srgb, var(--faq-tone) 15%, transparent);
+    color: var(--faq-tone);
+  }
+
+  .faq-section-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .faq-section-meta {
+    display: inline-block;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: color-mix(in srgb, var(--color-text) 75%, var(--color-text-muted));
+  }
+
+  .faq-item {
+    border-left: 3px solid color-mix(in srgb, var(--faq-tone) 55%, var(--color-border));
+  }
+
+  .faq-item:hover {
+    border-color: color-mix(in srgb, var(--faq-tone) 45%, var(--color-border));
+    border-left-color: color-mix(in srgb, var(--faq-tone) 70%, var(--color-border));
+  }
+
+  .faq-item summary {
+    color: var(--color-text);
+  }
+
+  .faq-question-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 1.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.5rem;
+    background: color-mix(in srgb, var(--faq-tone) 16%, transparent);
+    color: var(--faq-tone);
+  }
+
+  .faq-question-icon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .faq-chevron {
+    margin-left: auto;
+    color: var(--faq-tone);
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 1.25rem 1.5rem;
+    color: var(--color-text);
+    line-height: 1.7;
+  }
+
+  .city-answer + .city-answer {
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .city-question {
+    color: var(--color-text);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .toc-chip,
+    .faq-chevron {
+      transition: none;
+    }
+  }
+</style>

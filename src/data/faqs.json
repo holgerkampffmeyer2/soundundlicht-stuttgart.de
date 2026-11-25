@@ -3,17 +3,18 @@
     "id": "general-pricing",
     "question": "Wie viel kostet es, eine Partybox in Stuttgart zu mieten?",
     "answer": "Unsere Partyboxen (z.B. JBL Partybox) sind bereits ab 80€ pro Boxenpaar und Tag verfügbar. Eine einzelne Box kostet 50€ pro Tag.",
+    "tags": ["jbl"],
     "pages": [
       "jbl-partybox-300-320",
       "index",
-      "vermietung",
-      "veranstaltungspaket-stuttgart"
+      "vermietung"
     ]
   },
   {
     "id": "pa-anlage-50-personen",
     "question": "Welche PA-Anlage eignet sich für 50 Personen?",
     "answer": "Für Veranstaltungen mit 50-80 Personen empfehle ich unsere JBL Partyboxen oder das LD Maui 28 G3 Komplettset. Beide sind Plug & Play und in 5 Minuten aufgebaut.",
+    "tags": ["ld"],
     "pages": [
       "ld-maui-28g3",
       "index",
@@ -25,6 +26,7 @@
     "id": "zahlungsmethoden",
     "question": "Wie funktioniert die Bezahlung?",
     "answer": "Die Bezahlung erfolgt bei Abholung. Ich biete Barzahlung und PayPal an!",
+    "tags": ["global"],
     "pages": [
       "index",
       "vermietung"
@@ -34,6 +36,7 @@
     "id": "abholort",
     "question": "Wo kann ich die Technik abholen?",
     "answer": "Die Technik kann direkt in Leinfelden-Echterdingen (Magellanstraße 4) abgeholt werden. Ich erkläre dir ausführlich den Aufbau und gebe dir eine Einweisung.",
+    "tags": ["global"],
     "pages": [
       "index",
       "vermietung"
@@ -43,6 +46,7 @@
     "id": "lichtanlage-preis",
     "question": "Was kostet eine Party-Lichtanlage?",
     "answer": "Eine vollständige Partylichtanlage mit verschiedenen Effekten ist bereits ab 50€ pro Tag verfügbar. Inklusive persönlicher Beratung und Einweisung.",
+    "tags": ["licht"],
     "pages": [
       "index",
       "vermietung",
@@ -53,6 +57,7 @@
     "id": "nebelmaschine-pakete",
     "question": "Bietest du auch Pakete mit Nebelmaschine?",
     "answer": "Ja, ich biete die Partylichtanlagen auch zusammen mit einer Nebelmaschine an. Das Komplettpaket gibt es ab 60€ pro Tag.",
+    "tags": ["nebel"],
     "pages": [
       "index",
       "vermietung",
@@ -63,6 +68,7 @@
     "id": "vorkenntnisse",
     "question": "Brauche ich Vorkenntnisse, um die Anlage zu bedienen?",
     "answer": "Nein, ich biete eine umfassende Einweisung an. Die Technik ist für jeden Benutzer einfach zu bedienen. Und das ist der Unterschied zu Versandverleihern: bei mir siehst und testest du die Technik vorher. Du bekommst kein 'Überraschungspaket', sondern weißt genau, was dich erwartet.",
+    "tags": ["global"],
     "pages": [
       "index",
       "vermietung"
@@ -72,6 +78,7 @@
     "id": "transport-fahrzeug",
     "question": "Reicht ein normales Auto für den Transport oder brauche ich einen Kombi/Transporter?",
     "answer": "Die einzelnen Komponenten sind gut in einem Kombi oder Kleinwagen mit umklappbarer Rückbank zu transportieren. Für größere Pakete oder mehrere Boxen empfehle ich einen Kombi oder Transporter. Ich berate dich gerne, welche Fahrzeuge geeignet sind.",
+    "tags": ["global"],
     "pages": [
       "index",
       "vermietung",
@@ -84,6 +91,7 @@
     "id": "vs-versand-vorlauf",
     "question": "Wie kurzfristig kann ich Technik mieten?",
     "answer": "Bei mir reichen oft 1-3 Tage Vorlauf. Viele Versandverleiher benötigen Wochen oder einen Monat Vorlauf, weil erst die Zahlung eingehen muss, dann der Versand mit Puffer geplant wird und nach der Party die Rücksendung abgewartet wird. Bei mir: Anfrage stellen, Termin bestätigen, abholen, feiern – so einfach ist das.",
+    "tags": ["global"],
     "pages": [
       "index",
       "vermietung",
@@ -101,6 +109,7 @@
     "id": "vs-versand-lieferrisiko",
     "question": "Was passiert, wenn die Technik zu spät ankommt?",
     "answer": "Bei mir passiert das nicht – du holst die Technik persönlich ab und nimmst sie sofort mit. Anders als bei Versandverleihern gibt es kein Risiko, dass der Paketdienst zu spät kommt, die Lieferung beschädigt ist oder deine Party ohne Technik starten muss. Du siehst die Geräte vor Ort, testest sie und fährst los – deine Party ist sicher.",
+    "tags": ["global"],
     "pages": [
       "index",
       "vermietung"
@@ -110,6 +119,7 @@
     "id": "vs-versand-beratung",
     "question": "Bekomme ich Hilfe beim Aufbau der Technik?",
     "answer": "Ja auf jeden Fall! Bei der Abholung erkläre ich dir ausführlich den Aufbau und die Bedienung. Du kannst die Geräte vorher in Funktion sehen und alle Fragen stellen. Das ist der große Vorteil gegenüber Versandverleihern – dort bekommst du nur einen Karton zugeschickt und musst dich alleine durchkämpfen.",
+    "tags": ["global"],
     "pages": [
       "index",
       "vermietung"
@@ -119,6 +129,7 @@
     "id": "kurzfristig-notfall",
     "question": "Was tun, wenn die Party schon in 3 Tagen ist?",
     "answer": "Ja, ich reagiere auch kurzfristig! Anfragen bis zu 2 Tagen vor der Veranstaltung sind meist noch möglich. Am besten rufst du mich direkt an unter 0171/1467491 für schnelle Abstimmung. Ich habe oft noch freie Geräte verfügbar.",
+    "tags": ["global"],
     "pages": [
       "index",
       "vermietung",
@@ -136,6 +147,7 @@
     "id": "jbl-akkulaufzeit",
     "question": "Wie lange hält der Akku der JBL Partybox?",
     "answer": "Die JBL Partybox 300 und 320 bieten bis zu 18 Stunden Akkulaufzeit. Die tatsächliche Laufzeit hängt von der Lautstärke und der Nutzung der Lichteffekte ab. Bei voller Lautstärke mit Light Show sind es ca. 6-8 Stunden.",
+    "tags": ["jbl"],
     "pages": [
       "jbl-partybox-300-320"
     ]
@@ -144,6 +156,7 @@
     "id": "jbl-verbindung",
     "question": "Kann ich zwei Partyboxen miteinander verbinden?",
     "answer": "Ja! Im Paket ist ein Verbindungskabel (5M) fürdie Verbindung der zwei Boxen enthalten. Das ist perfekt für größere Räume oder wenn du mehr Power brauchst.",
+    "tags": ["jbl"],
     "pages": [
       "jbl-partybox-300-320"
     ]
@@ -152,6 +165,7 @@
     "id": "jbl-musikwiedergabe",
     "question": "Wie spiele ich Musik auf den Partyboxen ab?",
     "answer": "Du hast mehrere Möglichkeiten: Bluetooth (von Smartphone/Tablet), USB-Stick, 3,5mm Klinke (AUX) oder sogar ein Mikrofon/Gitarre direkt anschließen. Bei Bedarf lege ich ein passendes Kabel für den Anschluss eines Laptops bei.",
+    "tags": ["jbl"],
     "pages": [
       "jbl-partybox-300-320"
     ]
@@ -160,6 +174,7 @@
     "id": "jbl-wasserdicht",
     "question": "Sind die Boxen wasserdicht?",
     "answer": "Die JBL Partybox 320 ist nach IPX4 spritzwassergeschützt und kann daher auch im Freien bei leichtem Regen genutzt werden. Die Partybox 300 ist nicht wasserdicht und sollte vor Nässe geschützt werden.",
+    "tags": ["jbl"],
     "pages": [
       "jbl-partybox-300-320"
     ]
@@ -168,6 +183,7 @@
     "id": "jbl-lieferumfang",
     "question": "Wie groß ist der Lieferumfang?",
     "answer": "Im Mietpaket enthalten sind: 1x JBL Partybox 300, 1x JBL Partybox 320, 2x Stromkabel und 1x Verbindungskabel (5m) für die Kopplung der 2 Boxen. Bei Bedarf lege ich noch ein Verbindungskabel für die Zuspielung von Musik über einen Laptop bei. Alles was du für den Start brauchst!",
+    "tags": ["jbl"],
     "pages": [
       "jbl-partybox-300-320"
     ]
@@ -296,6 +312,7 @@
     "id": "moving-head-dmx",
     "question": "Brauche ich DMX-Kenntnisse, um die Lichtanlage zu bedienen?",
     "answer": "Nein, du brauchst nicht zwingend DMX-Kenntnisse! Die Lichtanlage kann im Sound-zu-Licht-Modus betrieben werden, sodass sie automatisch auf die Musik reagiert. Optional kannst du aber auch den DMX-Controller nutzen für eigene Programme.",
+    "tags": ["licht"],
     "pages": [
       "partylicht-moving-head"
     ]
@@ -304,6 +321,7 @@
     "id": "moving-head-aufbauzeit",
     "question": "Wie lange dauert der Aufbau der Lichtanlage?",
     "answer": "Der Aufbau dauert in der Regel 15-20 Minuten. Das T-Bar Stativ wird einfach aufgebaut, die Geräte montiert und angeschlossen. Ich erkläre dir bei der Abholung ausführlich, wie alles funktioniert.",
+    "tags": ["licht"],
     "pages": [
       "partylicht-moving-head"
     ]
@@ -312,6 +330,7 @@
     "id": "moving-head-ohne-nebel",
     "question": "Kann ich die Lichter auch ohne Nebelmaschine nutzen?",
     "answer": "Ja, die Lichter funktionieren auch ohne Nebelmaschine. Allerdings kommen die Effekte viel besser zur Geltung, wenn Nebel eingesetzt wird. Eine Nebelmaschine kann optional dazgemietet werden.",
+    "tags": ["licht"],
     "pages": [
       "partylicht-moving-head"
     ]
@@ -320,6 +339,7 @@
     "id": "moving-head-effekte",
     "question": "Welche Effekte bietet der Moving Head?",
     "answer": "Der 18 Prisma LED Spot verfügt über 10 verschiedene Gobo-Muster (Schablonen), ein 18-fach Prisma für spektakuläre Lichteffekte und RGBW-Farbmischung. Er kann sich horizontal und vertikal bewegen für dynamische Shows.",
+    "tags": ["licht"],
     "pages": [
       "partylicht-moving-head"
     ]
@@ -328,6 +348,7 @@
     "id": "moving-head-hoehens",
     "question": "Wie hoch sollte das Stativ montiert werden?",
     "answer": "Das T-Bar Stativ ist flexibel von 100 cm bis 180 cm höhenverstellbar. Für beste Ergebnisse empfehle ich eine Höhe von ca. 150-180 cm, sodass die Lichter über die Köpfe der Gäste leuchten können.",
+    "tags": ["licht"],
     "pages": [
       "partylicht-moving-head"
     ]
@@ -336,6 +357,7 @@
     "id": "nebelmaschine-fluid",
     "question": "Ist Nebelfluid im Mietpreis enthalten?",
     "answer": "Ja, 1 Tankfüllung (ca. 1 Liter) Nebelfluid ist im Mietpreis inbegriffen. Das reicht für einen typischen Partyabend von ca. 4-6 Stunden. Falls du mehr benötigst, kannst du zusätzliches Fluid erhalten.",
+    "tags": ["nebel"],
     "pages": [
       "led-bossfx-nebelmaschine"
     ]
@@ -344,6 +366,7 @@
     "id": "nebelmaschine-dauer",
     "question": "Wie lange hält der Nebel an?",
     "answer": "Die AF-150 Nebelmaschine mit 800W Leistung erzeugt ca. 110 m³ Nebel pro Minute. Der Nebel verfliegt je nach Raumgröße und Belüftung nach etwa 30-60 Sekunden. Du kannst die Intensität über die Fernbedienung oder DMX steuern.",
+    "tags": ["nebel"],
     "pages": [
       "led-bossfx-nebelmaschine"
     ]
@@ -352,6 +375,7 @@
     "id": "nebelmaschine-gesundheit",
     "question": "Ist die Nutzung von Nebel gesundheitlich unbedenklich?",
     "answer": "Ja, wir verwenden nur hochwertiges, speziell für Veranstaltungen entwickeltes Nebelfluid. Es ist gesundheitlich unbedenklich und hinterlässt keine Rückstände. Es sollte jedoch bei sehr empfindlichen Personen mit Atemwegserkrankungen vorsichtig eingesetzt werden.",
+    "tags": ["nebel"],
     "pages": [
       "led-bossfx-nebelmaschine"
     ]
@@ -360,6 +384,7 @@
     "id": "nebelmaschine-steuerung",
     "question": "Welche Steuerungsmöglichkeiten gibt es?",
     "answer": "Die LED BossFX-2 Pro kann per Sound-zu-Licht (automatisch auf Musik reagierend), über die mitgelieferte Fernbedienung oder per DMX gesteuert werden. Die Nebelmaschine wird per Fernbedienung oder DMX gesteuert.",
+    "tags": ["nebel"],
     "pages": [
       "led-bossfx-nebelmaschine"
     ]
@@ -368,6 +393,7 @@
     "id": "nebelmaschine-ohne-nebel",
     "question": "Kann ich das Set auch ohne Nebelmaschine mieten?",
     "answer": "Ja, die LED BossFX-2 Pro kann auch einzeln ohne Nebelmaschine gemietet werden. Allerdings kommen die Lichteffekte, besonders die Derby-Beams und Strobe-Effekte, viel besser zur Geltung, wenn Nebel eingesetzt wird.",
+    "tags": ["nebel"],
     "pages": [
       "led-bossfx-nebelmaschine"
     ]
@@ -376,6 +402,7 @@
     "id": "nebelmaschinen-auswahl",
     "question": "Welche Nebelmaschine passt zu meiner Feier?",
     "answer": "Für private Feiern und Räume bis rund 100 Personen reicht die kompakte Stairville AF-150 mit 800W und 110 m³/min völlig aus. Für größere Räume, Bühnen und dichten Nebel auf großer Fläche empfehle ich die Uking 1200W mit deutlich höherem Ausstoß und 9 RGB LEDs. Beide sind ab 20€ pro Tag mietbar.",
+    "tags": ["nebel"],
     "pages": [
       "nebelmaschinen"
     ]
@@ -384,6 +411,7 @@
     "id": "nebelmaschinen-einzeln",
     "question": "Kann ich eine Nebelmaschine einzeln mieten?",
     "answer": "Ja, sowohl die AF-150 als auch die 1200W Nebelmaschine kannst du einzeln mieten – ab 20€ pro Tag inklusive einer Tankfüllung Nebelfluid. Du musst nicht das komplette Licht-Set nehmen.",
+    "tags": ["nebel"],
     "pages": [
       "nebelmaschinen"
     ]
@@ -392,6 +420,7 @@
     "id": "nebelmaschinen-unterschied",
     "question": "Was ist der Unterschied zwischen der AF-150 und der 1200W Nebelmaschine?",
     "answer": "Der Unterschied liegt in Leistung und Steuerung. Die AF-150 ist kompakter (800W, ca. 110 m³/min) und lässt sich per kabelgebundener Fernbedienung fein regeln – Intensität, Ausstoßdauer und zeitliche Frequenz – zusätzlich per DMX. Die Uking 1200W liefert deutlich mehr Nebel und 9 RGB LEDs, lässt sich per Funkfernbedienung aber nur ein- und ausschalten. Für große Räume und Bühnen nimmst du die Uking, für fein dosierten Nebel bei privaten Feiern die AF-150.",
+    "tags": ["nebel"],
     "pages": [
       "nebelmaschinen"
     ]
@@ -400,6 +429,7 @@
     "id": "nebelmaschinen-fluid",
     "question": "Wie viel Nebelfluid brauche ich für einen Abend?",
     "answer": "Im Mietpreis ist eine Tankfüllung (ca. 1 Liter) Nebelfluid enthalten. Das reicht für einen typischen Partyabend von rund 4-6 Stunden. Sparsam eingesetzt deckt der Nebel die Lichteffekte gut ab – mehr Fluid kannst du bei Bedarf dazubekommen.",
+    "tags": ["nebel"],
     "pages": [
       "nebelmaschinen"
     ]
@@ -408,6 +438,7 @@
     "id": "laser-bar-schutzbeauftragter",
     "question": "Brauche ich einen Laserschutzbeauftragten für die Laser Bar?",
     "answer": "Nein, bei der Eurolite KLS Laser Bar handelt es sich um einen Laser der Klasse 2M. Dies bedeutet, dass kein Laserschutzbeauftragter erforderlich ist. Du solltest jedoch darauf achten, nicht direkt in den Laserstrahl zu blicken.",
+    "tags": ["licht"],
     "pages": [
       "kls-laser-bar"
     ]
@@ -416,6 +447,7 @@
     "id": "laser-bar-sicherheit",
     "question": "Wie sicher ist der Laser im Partybetrieb?",
     "answer": "Der Laser der KLS Bar FX ist ein RG-Laser (Rot-Grün) der Klasse 2M. Er ist sicher für den Partygebrauch und Augensicherheit ist gewährleistet, solange man nicht absichtlich direkt in den Strahl schaut. Die Nutzung ist auch ohne spezielle Genehmigung erlaubt.",
+    "tags": ["licht"],
     "pages": [
       "kls-laser-bar"
     ]
@@ -424,6 +456,7 @@
     "id": "laser-bar-effekte",
     "question": "Welche Effekte bietet die Laser Bar?",
     "answer": "Die Eurolite KLS Laser Bar FX vereint 4 Effekte in einem: 2 Derby-Beams mit drehenden Mustern, 2 LED-Spots für Flächeneffekte, 4 weiße Strobe-LEDs für Blitzlichter und einen Laser für spektakuläre Strahleneffekte.",
+    "tags": ["licht"],
     "pages": [
       "kls-laser-bar"
     ]
@@ -432,6 +465,7 @@
     "id": "laser-bar-ohne-nebel",
     "question": "Kann ich die Laser Bar auch ohne Nebelmaschine nutzen?",
     "answer": "Ja, die Laser Bar funktioniert auch ohne Nebelmaschine. Allerdings kommen die Laserstrahlen und Effekte viel besser zur Geltung, wenn leichter Nebel die Luft vernebelt. Die 1200W Nebelmaschine kann optional dazugemietet werden.",
+    "tags": ["licht"],
     "pages": [
       "kls-laser-bar"
     ]
@@ -440,6 +474,7 @@
     "id": "laser-bar-steuerung",
     "question": "Wie wird die Laser Bar gesteuert?",
     "answer": "Die Steuerung erfolgt wahlweise per Sound-zu-Licht (automatisch auf Musik reagierend), über die mitgelieferte Fernbedienung oder per DMX. Der Sound-zu-Licht-Modus ist perfekt für Einsteiger geeignet.",
+    "tags": ["licht"],
     "pages": [
       "kls-laser-bar"
     ]
@@ -448,6 +483,7 @@
     "id": "ld-maui-personen",
     "question": "Wie viele Personen können mit der LD Maui 28 G3 beschallt werden?",
     "answer": "Die LD Maui 28 G3 eignet sich perfekt für Veranstaltungen mit bis zu 150 Personen. Mit 2060W Peak-Leistung und 127 dB Schalldruck liefert sie kraftvollen Sound auch für größere Räume.",
+    "tags": ["ld"],
     "pages": [
       "ld-maui-28g3"
     ]
@@ -456,6 +492,7 @@
     "id": "ld-maui-anschluss",
     "question": "Wie schließe ich die Anlage an?",
     "answer": "Die LD Maui 28 G3 ist ein echtes Plug-and-Play-System. Schließe einfach die beiden Säulen an den Subwoofer an, verbinde die Stromkabel und los geht's. Du kannst per Bluetooth, USB, AUX oder XLR Musik zuspielen.",
+    "tags": ["ld"],
     "pages": [
       "ld-maui-28g3"
     ]
@@ -464,6 +501,7 @@
     "id": "ld-maui-outdoor",
     "question": "Kann ich die Anlage auch im Freien nutzen?",
     "answer": "Ja, die LD Maui 28 G3 kann auch im Außenbereich eingesetzt werden. Achte jedoch darauf, dass die Elektronik vor Regen und direkter Nässe geschützt wird. Bei Unsicherheit berate ich dich gerne persönlich.",
+    "tags": ["ld"],
     "pages": [
       "ld-maui-28g3"
     ]
@@ -472,6 +510,7 @@
     "id": "ld-maui-kabel",
     "question": "Brauche ich zusätzliche Kabel oder Adapter?",
     "answer": "Im Mietpreis inbegriffen sind alle notwendigen Kabel: 2x Stromkabel und 2x XLR-Kabel (5m). Achte darauf, dass dein Mischpult XLR-Ausgänge hat oder miete das Yamaha Mischpult dazu.",
+    "tags": ["ld"],
     "pages": [
       "ld-maui-28g3"
     ]
@@ -480,6 +519,7 @@
     "id": "ld-maui-transport",
     "question": "Wie schwer ist der Transport?",
     "answer": "Das Gesamtsystem wiegt ca. 35 kg. Die einzelnen Komponenten sind gut in einem Kombi oder Kleinwagen mit umklappbarer Rückbank zu transportieren. Für den Aufbau solltest du ca. 15-20 Minuten einplanen.",
+    "tags": ["ld"],
     "pages": [
       "ld-maui-28g3"
     ]
@@ -1404,6 +1444,7 @@
     "id": "partybar-steuerung",
     "question": "Wie wird die Max Party Bar gesteuert?",
     "answer": "Die Max Party Bar läuft im Sound-zu-Licht-Modus und reagiert automatisch auf die Musik – ganz ohne Technikkenntnisse. Alternativ lassen sich die Effekte auch manuell per Steuerung anpassen.",
+    "tags": ["licht"],
     "pages": [
       "max-party-bar"
     ]
@@ -1412,6 +1453,7 @@
     "id": "partybar-aufbau",
     "question": "Wie lange dauert der Aufbau der Max Party Bar?",
     "answer": "Der Aufbau gelingt in wenigen Minuten: Die Bar wird auf das mitgelieferte Stativ gesetzt, angeschlossen und läuft im Automatikmodus sofort los. Eine Einweisung bekommst du bei der Abholung dazu.",
+    "tags": ["licht"],
     "pages": [
       "max-party-bar"
     ]
@@ -1420,6 +1462,7 @@
     "id": "partybar-groesse",
     "question": "Für welche Raumgröße reicht die Max Party Bar?",
     "answer": "Mit PAR-Strahlern, Jelly Moon, UV und Strobe eignet sich die Bar für Feiern bis etwa 50 Personen. Für größere Räume oder Bühnen kombinierst du sie ideal mit einem Moving Head oder zusätzlichen LED-Scheinwerfern.",
+    "tags": ["licht"],
     "pages": [
       "max-party-bar"
     ]
@@ -1428,6 +1471,7 @@
     "id": "partybar-dmx",
     "question": "Brauche ich eine DMX-Konsole für die Max Party Bar?",
     "answer": "Nein. Die Bar läuft im Sound-zu-Licht- und Automatikmodus vollkommen eigenständig. Eine DMX-Steuerung ist nur nötig, wenn du individuelle Lichtshows programmieren möchtest.",
+    "tags": ["licht"],
     "pages": [
       "max-party-bar"
     ]
@@ -1476,6 +1520,7 @@
     "id": "ledscheinwerfer-unterschied",
     "question": "Worin unterscheiden sich die LED-Scheinwerfer?",
     "answer": "Die zwei 270W LED PAR Strahler sind die hellsten und per DMX programmierbar. Die 4er-Sets und die Stage Bar punkten mit Sound-zu-Licht und Automatikmodi, die Akku-PARs laufen ganz ohne Strom. So findest du für jede Situation den passenden Scheinwerfer.",
+    "tags": ["licht"],
     "pages": [
       "led-scheinwerfer"
     ]
@@ -1484,6 +1529,7 @@
     "id": "ledscheinwerfer-akku",
     "question": "Welche LED-Scheinwerfer funktionieren ohne Stromanschluss?",
     "answer": "Die 2 Akku LED PARs arbeiten mit eingebautem Akku und sind ideal für Locations ohne Steckdose. Für längere Einsätze draußen kombiniere ich sie gern mit meiner Powerstation.",
+    "tags": ["licht"],
     "pages": [
       "led-scheinwerfer"
     ]
@@ -1492,6 +1538,7 @@
     "id": "ledscheinwerfer-dmx",
     "question": "Sind die LED-Scheinwerfer per DMX steuerbar?",
     "answer": "Die 270W LED PAR Strahler sind DMX-fähig und so programmierbar. Die übrigen Scheinwerfer laufen über Sound-zu-Licht und Automatikprogramme – perfekt für alle, die ohne Lichtpult schnell tolle Effekte wollen.",
+    "tags": ["licht"],
     "pages": [
       "led-scheinwerfer"
     ]
@@ -1500,6 +1547,7 @@
     "id": "ledscheinwerfer-anwendung",
     "question": "Welche LED-Scheinwerfer eignen sich für meine Feier?",
     "answer": "Für stimmungsvolle Grundbeleuchtung bis 50 Personen reichen die 4er-PAR-Sets oder die Stage Bar. Für helle Bühnenakzente nimm die 270W-Strahler, für scheinwerferlose Locations die Akku-Variante. Ich berate dich gern zur passenden Anzahl.",
+    "tags": ["licht"],
     "pages": [
       "led-scheinwerfer"
     ]
@@ -1508,6 +1556,7 @@
     "id": "ledscheinwerfer-anzahl",
     "question": "Wie viele LED-Scheinwerfer brauche ich?",
     "answer": "Als Faustregel beleuchten 4 Scheinwerfer eine Fläche bis rund 50 Personen. Für Bühnen oder größere Räume erhöhst du die Anzahl oder ergänzt Moving Heads. Sag mir Raumgröße und Anlass, dann stelle ich dir ein passendes Set zusammen.",
+    "tags": ["licht"],
     "pages": [
       "led-scheinwerfer"
     ]
@@ -1516,6 +1565,7 @@
     "id": "icoa-club-personen",
     "question": "Für wie viele Personen reicht das ICOA Club-Paket?",
     "answer": "Das Club-Paket mit 2x ICOA 12 A und 2x ICOA SUB 15 A ist meine Haupt-PA für mobile DJs, Bands und größere Feiern. Je nach Raum, Musikrichtung und gewünschtem Pegel passt es für rund 100 bis 200 Personen. Im Freien oder bei basslastiger Musik plane ich lieber etwas mehr Reserven ein – sag mir einfach Venue und Personenzahl, dann berate ich dich konkret.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-club-paket"
     ]
@@ -1524,6 +1574,7 @@
     "id": "icoa-club-ersatz-pa",
     "question": "Kann ich das Club-Paket kurzfristig als Ersatz-PA mieten?",
     "answer": "Ja. Wenn deine Anlage kurzfristig ausfällt, melde dich telefonisch – oft sind die Geräte mit 1 bis 3 Tagen Vorlauf noch frei. Das Club-Paket ist als Ersatz-PA besonders flexibel, weil du es mit 2 Tops und 2 Subs schnell auf- und wieder abbaust.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-club-paket"
     ]
@@ -1532,6 +1583,7 @@
     "id": "icoa-club-aufbau",
     "question": "Wie baue ich das Club-Paket auf?",
     "answer": "Du stellst die beiden Subs auf, steckst die Gravity-Distanzstangen in die M20-Gewinde und setzt die ICOA 12 A oben drauf. Danach verbindest du die Tops per XLR mit den Subs und wählst am DSP das passende Crossover-Preset. Mit Einweisung dauert der Aufbau etwa 45 Minuten.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-club-paket"
     ]
@@ -1540,6 +1592,7 @@
     "id": "icoa-club-cardioid",
     "question": "Kann ich die ICOA-Subs im Cardioid-Modus betreiben?",
     "answer": "Ja. Der ICOA SUB 15 A hat ein Cardioid-Preset. Dafür stellst du einen zusätzlichen Sub mit der Rückseite zur Bühne auf und aktivierst das Preset. So wird der Bass nach hinten deutlich reduziert, während vorne der volle Punch bleibt. Ich erkläre dir die Aufstellung bei der Abholung.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-club-paket"
     ]
@@ -1548,6 +1601,7 @@
     "id": "icoa-party-bandprobe",
     "question": "Reicht das Partypaket XL für eine Bandprobe?",
     "answer": "Für Gesang, Gitarre, Keys und E-Drums reicht das Partypaket XL mit 2x ICOA 12 A und 1x ICOA SUB 15 A in den meisten Proberäumen gut aus. Bei einem akustischen Schlagzeug oder sehr lauter Band kann ein zweiter Sub sinnvoll sein – dann ist das Club-Paket die bessere Wahl.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-party-paket"
     ]
@@ -1556,6 +1610,7 @@
     "id": "icoa-party-monitor",
     "question": "Kann ich die ICOA 12 A im Partypaket XL als Monitor verwenden?",
     "answer": "Ja. Die ICOA 12 A hat einen 55°-Monitorwinkel und lässt sich horizontal als Bodenmonitor einsetzen. Die Koaxial-Bauweise sorgt auch als Monitor für eine saubere Ortung. Im Partypaket XL kannst du die Tops flexibel als PA oder als Monitoring nutzen.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-party-paket"
     ]
@@ -1564,6 +1619,7 @@
     "id": "icoa-party-theater",
     "question": "Eignet sich das Partypaket XL für Theater und Lesungen?",
     "answer": "Ja, gerade für Sprache ist das Paket sehr gut geeignet: Die ICOA 12 A strahlt mit 90° x 50° breit ab und bleibt auch bei höheren Pegeln verständlich. Für Musik oder Einspieler kommt der ICOA SUB 15 A dazu. Für kleinere Bühnen kannst du eines der Tops zusätzlich als Monitor nutzen.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-party-paket"
     ]
@@ -1572,6 +1628,7 @@
     "id": "icoa-party-upgrade",
     "question": "Kann ich das Partypaket XL später zum Club-Paket erweitern?",
     "answer": "Ja. Du kannst einen zweiten ICOA SUB 15 A und eine zweite Distanzstange dazunehmen. Wenn beide Subs verfügbar sind, baue ich dir das Club-Paket daraus. Sag bei der Anfrage einfach, dass du später erweitern möchtest, dann prüfe ich die Verfügbarkeit direkt mit.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-party-paket"
     ]
@@ -1580,6 +1637,7 @@
     "id": "icoa-top-personen",
     "question": "Wie viele Personen schafft das Top-Paar ohne Subwoofer?",
     "answer": "Das Top-Paar aus 2x ICOA 12 A reicht für kleine Feiern und Beschallung mit Sprache oder akustischer Musik für etwa 30 bis 80 Personen – je nach Raum und Pegel. Für basslastige Partymusik empfehle ich zusätzlich einen ICOA SUB 15 A, damit die Tops entlastet werden.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-top-paar"
     ]
@@ -1588,6 +1646,7 @@
     "id": "icoa-top-monitor",
     "question": "Kann ich das Top-Paar als Bühnenmonitor nutzen?",
     "answer": "Ja. Beide ICOA 12 A lassen sich mit 55°-Winkel horizontal als Bodenmonitor aufstellen. Für Monitoring brauchst du keine Stative. Die Stative sind trotzdem dabei, falls du die Tops als kleine PA aufstellen willst.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-top-paar"
     ]
@@ -1596,6 +1655,7 @@
     "id": "icoa-top-ersatz",
     "question": "Ist das Top-Paar als kurzfristige Ersatz-PA geeignet?",
     "answer": "Ja. Das Top-Paar ist kompakt, schnell aufgebaut und passt in einen Kombi. Wenn eine Anlage kurzfristig ausfällt, sind die zwei Tops oft die schnellste Lösung für Sprache, Hintergrundmusik oder eine kleine Feier. Melde dich telefonisch, dann prüfe ich die Verfügbarkeit sofort.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-top-paar"
     ]
@@ -1604,6 +1664,7 @@
     "id": "icoa-top-sub-upgrade",
     "question": "Kann ich später einen Subwoofer zum Top-Paar dazumieten?",
     "answer": "Ja. Du kannst einen einzelnen ICOA SUB 15 A für ab 60€/Tag dazunehmen oder direkt auf das Partypaket XL wechseln. Mit einem Sub kommt deutlich mehr Tiefton dazu, die Tops werden entlastet und die Anlage klingt auch bei Party-Pegel entspannter.",
+    "tags": ["ld"],
     "pages": [
       "ld-icoa-top-paar"
     ]
@@ -1612,6 +1673,7 @@
     "id": "icoa-system-unterschied",
     "question": "Was ist der Unterschied zwischen ICOA 12 A und ICOA SUB 15 A?",
     "answer": "Das ICOA 12 A ist ein aktives 12\"-Koaxial-Topteil für den vollen Frequenzbereich, Sprache und Musik – allein oder als Satellit auf einem Sub. Der ICOA SUB 15 A ist der aktive 15\"-Subwoofer für den Tiefton bis 36 Hz. Zusammen ergeben sie ein volles PA-System mit mehr Bassreserven und klarerem Klang bei hohen Pegeln.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1620,6 +1682,7 @@
     "id": "icoa-system-einzeln",
     "question": "Kann ich Top und Sub einzeln mieten?",
     "answer": "Ja. Das ICOA 12 A kostet ab 50€/Tag, der ICOA SUB 15 A ab 60€/Tag. Du kannst beide einzeln buchen oder als Bühnen- bzw. Club-Paket kombinieren. Für die passende Anzahl und Verkabelung berate ich dich gern.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1628,6 +1691,7 @@
     "id": "icoa-system-kombination",
     "question": "Kann ich die ICOA-Geräte mit meiner bestehenden PA kombinieren?",
     "answer": "Ja, über die symmetrischen XLR-Anschlüsse. Der ICOA SUB 15 A hat einstellbare Crossover-Frequenzen und eine Delay-Funktion, damit du ihn an bestehende Tops anpassen kannst. Achte auf die Polarität und die Laufzeitunterschiede – bei der Einweisung zeige ich dir die wichtigsten Einstellungen.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1636,6 +1700,7 @@
     "id": "icoa-system-anschluesse",
     "question": "Welche Kabel und Anschlüsse brauche ich für das ICOA-System?",
     "answer": "Die ICOA 12 A hat zwei XLR/Klinke-Kombieingänge, einen 3,5-mm-Aux-Eingang und einen XLR-Ausgang. Der ICOA SUB 15 A bietet zwei Kombieingänge und zwei XLR-Ausgänge. XLR- und Stromkabel sind bei den Paketen dabei; für eigene Aufbauten kannst du vorhandene XLR-Kabel nutzen.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1644,6 +1709,7 @@
     "id": "icoa-system-paket-vergleich",
     "question": "Was ist der Unterschied zwischen Top-Paar, Partypaket XL und Club-Paket?",
     "answer": "Das Top-Paar (ab 100€) sind nur zwei Tops ohne Sub – ideal für Sprache, Monitoring und kleine Feiern. Das Partypaket XL (ab 130€) hat 2 Tops + 1 Sub – die kompakte Wahl für Privat-Partys, DJs, Bandproben, Theater oder wenn wenig Platz für zwei Subs ist. Das Club-Paket (ab 150€) mit 2 Tops + 2 Subs ist die Haupt-PA für mobile DJs, Clubs und größere Feiern bis 200 Personen – inklusive Cardioid-Modus für kontrollierten Bass.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1652,6 +1718,7 @@
     "id": "icoa-system-cardioid",
     "question": "Was bringt der Cardioid-Modus beim ICOA SUB 15 A?",
     "answer": "Im Cardioid-Modus stellst du einen zusätzlichen Sub mit der Rückseite zur Bühne auf und aktivierst das Preset. Der Bass wird nach hinten deutlich reduziert (bis zu 15 dB Dämpfung), während vorne der volle Punch bleibt. Ideal für Clubs, Bühnen oder Events, wo der Bass nicht in Nebenräume oder zur Bühne zurückstrahlen soll. Im Club-Paket sind zwei Subs dabei – perfekt für Cardioid-Betrieb.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1660,6 +1727,7 @@
     "id": "icoa-system-outdoor",
     "question": "Kann ich das ICOA-System im Freien nutzen?",
     "answer": "Ja, das ICOA-System ist für Outdoor-Einsätze geeignet. Achte auf trockene Stellplätze, sichere Stromversorgung (Schuko/CEE) und Schutz vor Nässe (Plane, Pavillon). Bei Wind empfiehlt sich zusätzliche Ballastierung der Stative. Für größere Open-Air-Events ist das Club-Paket mit zwei Subs die bessere Wahl, da der Bass im Freien schneller abfällt.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1668,6 +1736,7 @@
     "id": "icoa-system-transport",
     "question": "Wie transportiere ich das ICOA-System?",
     "answer": "Das Top-Paar (2 Tops + 2 Stative) passt in einen Kombi. Das Partypaket XL (2 Tops, 1 Sub, 1 Distanzstange, 1 Stativ) braucht einen Kombi mit umgeklappter Rückbank oder einen kleinen Transporter (Sprinter-Klasse). Das Club-Paket (2 Tops, 2 Subs, 2 Distanzstangen) braucht einen Transporter. Alle Geräte haben Tragegriffe und Rollen an den Subs. Kabel und Zubehör sind in Taschen verpackt.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1676,6 +1745,7 @@
     "id": "icoa-system-strom",
     "question": "Welche Stromversorgung braucht das ICOA-System?",
     "answer": "Alle ICOA-Geräte laufen an normaler 230 V Schuko-Steckdose. Ein Top zieht ca. 3–4 A, ein Sub ca. 5–6 A bei Volllast. Für das Club-Paket (2 Tops + 2 Subs) solltest du mindestens zwei getrennte 16 A Stromkreise einplanen. Alle Kabel sind bei den Paketen dabei. Prüfe vor Ort die Absicherung (B16/C16).",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1684,6 +1754,7 @@
     "id": "icoa-system-dsp",
     "question": "Welche DSP-Presets gibt es und wofür sind sie?",
     "answer": "Die ICOA 12 A hat 4 Presets: FOH (Front of House), Monitor, Speech, Music. Der SUB 15 A hat Crossover-Presets (80/100/120 Hz), Cardioid, Delay und Polarity. Für Sprache wählst du 'Speech' am Top und 100 Hz Crossover am Sub. Für Party-Musik 'Music' am Top und 80 Hz. Als Monitor 'Monitor' am Top. Die Presets wählst du direkt am Gerät oder per LD Systems Software per USB.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1692,6 +1763,7 @@
     "id": "icoa-system-aufbauzeit",
     "question": "Wie lange dauert der Aufbau der ICOA-Pakete?",
     "answer": "Top-Paar: ca. 10–15 Min. (2 Tops auf Stative, Kabel ran). Partypaket XL: ca. 20–30 Min. (Sub positionieren, Distanzstange, Top drauf, zweites Top auf Stativ, Kabel). Club-Paket: ca. 35–45 Min. (2 Subs positionieren, 2 Distanzstangen, 2 Tops drauf, Kabel, ggf. Cardioid konfigurieren). Einweisung bei Abholung ca. 10 Min. inklusive.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1700,6 +1772,7 @@
     "id": "icoa-system-weather",
     "question": "Wie schütze ich das ICOA-System bei Regen/Feuchtigkeit?",
     "answer": "Die Geräte sind nicht wasserdicht (IP20). Bei Outdoor-Einsätzen unbedingt Pavillon, Plane oder Wetterschutzhaube nutzen. Subs leicht erhöht auf Paletten/Stellfüßen stellen, damit kein Wasser in die Bassreflex-Öffnungen läuft. Kabelverbindungen mit Schutzhüllen (IP44) oder Kabelbrücken abdecken. Bei Starkregen: abbauen und trocken stellen.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]
@@ -1708,6 +1781,7 @@
     "id": "icoa-system-kompetitor",
     "question": "Wie schneidet ICOA gegen QSC K.2, JBL EON oder TurboSound ab?",
     "answer": "Die ICOA 12 A spielt in der gleichen Liga wie QSC K12.2, JBL EON712 oder TurboSound iQ12. Vorteile ICOA: Koaxial-Chassis für exzellente Phasen-Kohärenz, sehr breite 90°x50° Abstrahlung, sehr geringes Gewicht (19,95 kg), DynX DSP mit 4 Presets + 3-Band-EQ + Delay, Cardioid-Sub-Option, Made in Germany (LD Systems). Preis-Leistung bei Miete oft besser, da Geräte sehr zuverlässig und servicefreundlich sind.",
+    "tags": ["ld"],
     "pages": [
       "ld-systems-icoa-series"
     ]

@@ -34,7 +34,7 @@ const faqs = defineCollection({
     id: z.string(),
     question: z.string(),
     answer: z.string(),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(z.enum(['global', 'jbl', 'ld', 'licht', 'nebel'])).optional(),
     pages: z.array(z.string()).optional(),
   }),
 });

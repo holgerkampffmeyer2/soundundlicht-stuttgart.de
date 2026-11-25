@@ -15,50 +15,106 @@ interface Review {
 
 const allReviews: Review[] = googleReviewsData.reviews || [];
 const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
+const ratingValue = Number(googleReviewsData.ratingValue ?? 0);
+const ratingLabel = ratingValue.toFixed(1).replace('.', ',');
+const activeSummaryStars = Math.round(ratingValue);
+
+const initialsOf = (name: string): string =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? '')
+    .join('');
+
+const previewOf = (text: string, max = 420): { preview: string; rest: string } => {
+  if (text.length <= max) return { preview: text, rest: '' };
+  const cut = text.lastIndexOf(' ', max);
+  const end = cut > 0 ? cut : max;
+  return { preview: `${text.slice(0, end).trimEnd()} …`, rest: text.slice(end).trim() };
+};
 ---
 
-<section id={id} class="section-padding bg-[var(--color-surface)]">
+<section id={id} class="section-padding reviews-section">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16">
-      <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Rezensionen</span>
-      <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">Was sagen meine Kunden?</h2>
+    <div class="reviews-header">
+      <span class="reviews-eyebrow">
+        <Icon name="star" />
+        Google Rezensionen
+      </span>
+      <h2 class="font-play text-4xl md:text-5xl">Was sagen meine Kunden?</h2>
+      <div class="reviews-summary">
+        <div class="reviews-summary-stars" role="img" aria-label={`${ratingLabel} von 5 Sternen`}>
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Icon name="star" class={i < activeSummaryStars ? 'is-active' : ''} />
+          ))}
+        </div>
+        <strong class="reviews-score">{ratingLabel}</strong>
+        <span class="reviews-count">{googleReviewsData.reviewCount} Rezensionen</span>
+      </div>
     </div>
 
     {allReviews.length === 0 ? (
       <p class="text-center text-[var(--color-text-muted)]">Noch keine Rezensionen vorhanden. Kommen bald wieder!</p>
     ) : (
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="reviewsGrid">
-        {allReviews.map((review, index) => (
-          <div class="review-card bg-[var(--color-bg)] rounded-xl p-6 border border-[var(--color-border)] hover:border-[var(--color-secondary)] review-card-hover transition-all duration-300" data-page={Math.floor(index / ITEMS_PER_PAGE) + 1}>
-            <div class="flex gap-1 mb-4">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Icon name="star" class={`w-5 h-5 ${i < review.rating ? 'star-active' : 'text-[var(--color-text-muted)]'}`} />
-              ))}
-              <Icon name="google" class="w-4 h-4 ml-2 text-[var(--color-text-muted)]" />
-            </div>
-            <p class="text-[var(--color-text-muted)] mb-4">{review.text}</p>
-            <div class="border-t border-[var(--color-border)] pt-4">
-              <h3 class="font-bold">{review.author_name}</h3>
-              <span class="text-sm text-[var(--color-text-muted)]">{review.relative_time_description}</span>
-            </div>
-          </div>
-        ))}
+        {allReviews.map((review, index) => {
+          const { preview, rest } = previewOf(review.text);
+          return (
+            <article class="review-card" data-page={Math.floor(index / ITEMS_PER_PAGE) + 1}>
+              <div class="review-card-top">
+                <span class="review-quote" aria-hidden="true">
+                  <Icon name="quote" />
+                </span>
+                <div class="review-stars" role="img" aria-label={`${review.rating} von 5 Sternen`}>
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Icon name="star" class={i < review.rating ? 'is-active' : ''} />
+                  ))}
+                </div>
+              </div>
+
+              <p class="review-text">{preview}</p>
+
+              {rest && (
+                <details class="review-more">
+                  <summary>
+                    <span class="more-label">Mehr lesen</span>
+                    <span class="less-label">Weniger anzeigen</span>
+                    <Icon name="chevron-down" />
+                  </summary>
+                  <p>{rest}</p>
+                </details>
+              )}
+
+              <footer class="review-footer">
+                <span class="review-avatar" aria-hidden="true">{initialsOf(review.author_name)}</span>
+                <div class="review-author">
+                  <h3>{review.author_name}</h3>
+                  <span>{review.relative_time_description}</span>
+                </div>
+                <span class="review-source">
+                  <Icon name="google" />
+                  <span class="sr-only">Google Rezension</span>
+                </span>
+              </footer>
+            </article>
+          );
+        })}
       </div>
     )}
 
     {totalPages > 1 && (
-      <nav class="flex justify-center mt-12" aria-label="Pagination">
-        <ul class="flex items-center -space-x-px h-10 text-base">
+      <nav class="reviews-pagination" aria-label="Rezensionsseiten">
+        <ul class="review-pagination-list">
           <li>
             <button
               id="prevPage"
-              class="flex items-center justify-center px-4 h-10 ms-0 leading-tight border border-[var(--color-border)] rounded-s-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)] disabled:opacity-50 disabled:cursor-not-allowed"
+              type="button"
+              class="review-page-btn"
+              aria-label="Vorherige Seite"
               disabled
             >
-              <span class="sr-only">Previous</span>
-              <svg class="w-3 h-3" aria-hidden="true" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-              </svg>
+              <Icon name="chevron-right" class="review-nav-icon review-nav-prev" />
             </button>
           </li>
           {[...Array(totalPages)].map((_, i) => {
@@ -66,8 +122,12 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
             return (
               <li>
                 <button
-                  class="page-btn flex items-center justify-center px-4 h-10 leading-tight border border-[var(--color-border)] text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)]"
+                  type="button"
+                  class="page-btn review-page-btn"
                   data-page={pageNumber}
+                  data-active={pageNumber === 1}
+                  aria-label={`Seite ${pageNumber}`}
+                  aria-current={pageNumber === 1 ? 'page' : undefined}
                 >
                   {pageNumber}
                 </button>
@@ -77,54 +137,55 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
           <li>
             <button
               id="nextPage"
-              class="flex items-center justify-center px-4 h-10 leading-tight border border-[var(--color-border)] rounded-e-lg text-[var(--color-text)] bg-[var(--color-bg)] hover:bg-[var(--color-surface)] hover:text-[var(--color-secondary)]"
+              type="button"
+              class="review-page-btn"
+              aria-label="Nächste Seite"
             >
-              <span class="sr-only">Next</span>
-              <svg class="w-3 h-3" aria-hidden="true" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 9l4-4-4-4"/>
-              </svg>
+              <Icon name="chevron-right" class="review-nav-icon" />
             </button>
           </li>
         </ul>
+        <p id="reviewsStatus" class="sr-only" aria-live="polite">Seite 1 von {totalPages}</p>
       </nav>
     )}
   </div>
 </section>
 
-<script is:inline type="module" define:vars={{ totalPages, ITEMS_PER_PAGE }}>
+<script is:inline type="module" define:vars={{ totalPages }}>
   (() => {
-    let currentPage = 1;
     const cards = document.querySelectorAll('.review-card');
     const pageBtns = document.querySelectorAll('.page-btn');
     const prevBtn = document.getElementById('prevPage');
     const nextBtn = document.getElementById('nextPage');
+    const status = document.getElementById('reviewsStatus');
+
+    if (!prevBtn || !nextBtn || totalPages < 2) return;
+
+    let currentPage = 1;
 
     function showPage(page) {
-      cards.forEach((card, index) => {
-        const cardPage = Math.floor(index / ITEMS_PER_PAGE) + 1;
-        card.style.display = cardPage === page ? 'block' : 'none';
+      cards.forEach((card) => {
+        card.hidden = Number(card.dataset.page) !== page;
       });
 
-      pageBtns.forEach(btn => {
-        const btnPage = parseInt(btn.dataset.page);
-        if (btnPage === page) {
-          btn.classList.add('bg-[var(--color-secondary)]', 'text-[var(--color-bg)]', 'border-[var(--color-secondary)]');
-          btn.classList.remove('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-[var(--color-border)]');
+      pageBtns.forEach((btn) => {
+        const active = Number(btn.dataset.page) === page;
+        btn.dataset.active = String(active);
+        if (active) {
+          btn.setAttribute('aria-current', 'page');
         } else {
-          btn.classList.remove('bg-[var(--color-secondary)]', 'text-[var(--color-bg)]', 'border-[var(--color-secondary)]');
-          btn.classList.add('text-[var(--color-text)]', 'bg-[var(--color-bg)]', 'border-[var(--color-border)]');
+          btn.removeAttribute('aria-current');
         }
       });
 
       prevBtn.disabled = page === 1;
       nextBtn.disabled = page === totalPages;
+      if (status) status.textContent = `Seite ${page} von ${totalPages}`;
       currentPage = page;
     }
 
-    pageBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        showPage(parseInt(btn.dataset.page));
-      });
+    pageBtns.forEach((btn) => {
+      btn.addEventListener('click', () => showPage(Number(btn.dataset.page)));
     });
 
     prevBtn.addEventListener('click', () => {
@@ -138,3 +199,308 @@ const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
     showPage(1);
   })();
 </script>
+
+<style>
+  .reviews-section {
+    background: color-mix(in srgb, var(--color-surface) 92%, var(--color-bg));
+    border-block: 1px solid var(--color-border);
+  }
+
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .reviews-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+    color: var(--color-accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .reviews-eyebrow svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .reviews-header h2 {
+    margin-top: 1rem;
+  }
+
+  .reviews-summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .reviews-summary-stars,
+  .review-stars {
+    display: flex;
+    gap: 0.15rem;
+    color: color-mix(in srgb, var(--color-text-muted) 55%, transparent);
+  }
+
+  .reviews-summary-stars svg,
+  .review-stars svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .reviews-summary-stars svg.is-active,
+  .review-stars svg.is-active {
+    color: var(--color-accent);
+  }
+
+  .reviews-score {
+    color: var(--color-text);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .reviews-count {
+    color: color-mix(in srgb, var(--color-text) 75%, var(--color-text-muted));
+    font-size: 0.95rem;
+  }
+
+  .review-card[hidden] {
+    display: none !important;
+  }
+
+  .review-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+    background: linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--color-surface) 70%, var(--color-bg)),
+      var(--color-bg)
+    );
+    box-shadow: var(--shadow-card-soft);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .review-card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--color-accent) 50%, var(--color-border));
+    box-shadow: 0 18px 36px color-mix(in srgb, var(--color-accent) 12%, transparent);
+  }
+
+  .review-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .review-quote {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+    color: var(--color-accent);
+  }
+
+  .review-quote svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .review-stars {
+    margin-top: 0.35rem;
+  }
+
+  .review-text {
+    flex: 1;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+
+  .review-more {
+    margin-bottom: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .review-more summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    list-style: none;
+    cursor: pointer;
+    color: var(--color-accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .review-more summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .review-more summary svg {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .review-more[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .review-more .less-label {
+    display: none;
+  }
+
+  .review-more[open] .more-label {
+    display: none;
+  }
+
+  .review-more[open] .less-label {
+    display: inline;
+  }
+
+  .review-more p {
+    margin-top: 0.75rem;
+    color: var(--color-text);
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+
+  .review-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .review-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-primary) 24%, var(--color-surface));
+    color: var(--color-text);
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .review-author {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .review-author h3 {
+    color: var(--color-text);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .review-author span {
+    color: color-mix(in srgb, var(--color-text) 75%, var(--color-text-muted));
+    font-size: 0.875rem;
+  }
+
+  .review-source {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-muted);
+  }
+
+  .review-source svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .reviews-pagination {
+    margin-top: 3rem;
+  }
+
+  .review-pagination-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .review-page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    padding: 0 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.65rem;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-weight: 600;
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+
+  .review-page-btn:hover:not(:disabled) {
+    border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+    background: color-mix(in srgb, var(--color-accent) 12%, var(--color-bg));
+  }
+
+  .review-page-btn[data-active='true'] {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .review-page-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .review-page-btn:focus-visible,
+  .review-more summary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .review-nav-icon {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  .review-nav-prev {
+    transform: rotate(180deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .review-card,
+    .review-page-btn,
+    .review-more summary svg {
+      transition: none;
+    }
+
+    .review-card:hover {
+      transform: none;
+    }
+  }
+</style>
