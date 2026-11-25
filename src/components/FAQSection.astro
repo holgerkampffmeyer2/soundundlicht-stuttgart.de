@@ -6,42 +6,62 @@ interface Faq {
   answer: string;
 }
 
-const { faqs } = Astro.props as { faqs: Faq[] };
+interface Props {
+  faqs: Faq[];
+  tone?: string;
+  heading?: string;
+  id?: string;
+  showLink?: boolean;
+}
+
+const {
+  faqs,
+  tone = "allgemein",
+  heading = "Häufig gestellte Fragen",
+  id,
+  showLink = true,
+} = Astro.props as Props;
+
+const TONE_ICONS: Record<string, string> = {
+  allgemein: "chat",
+  pakete: "package",
+  sound: "volume-up",
+  licht: "light-bulb",
+  nebel: "light-bulb",
+  standorte: "map-pin",
+};
+
+const icon = TONE_ICONS[tone] ?? "chat";
 ---
-<div class="mt-16 mb-16">
+<div class="faq-list mt-16 mb-16" data-tone={tone} id={id}>
   <h2 class="font-play text-2xl md:text-3xl font-bold text-center mb-10">
-    Häufig gestellte Fragen
+    {heading}
   </h2>
   {faqs.length === 0 ? (
     <p class="text-center text-[var(--color-text-muted)]">No FAQs found for this page.</p>
   ) : (
     <div class="max-w-3xl mx-auto space-y-4">
       {faqs.map((faq: Faq) => (
-        <details class="faq-details bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-4 cursor-pointer">
-          <summary class="font-bold cursor-pointer flex items-center gap-3 list-none relative">
-            <span class="faq-icon shrink-0">
-              <Icon name="chevron-right" class="w-3 h-3 transition-transform duration-200" />
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question-icon">
+              <Icon name={icon} />
             </span>
-            {faq.question}
+            <span class="flex-1">{faq.question}</span>
+            <Icon name="chevron-down" class="faq-chevron" />
           </summary>
-          <p class="text-[var(--color-text-muted)] mt-3 ml-9">
-            {faq.answer}
-          </p>
+          <div class="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
         </details>
       ))}
     </div>
   )}
-  <p class="text-center mt-8">
-    <a href="/faq" class="text-[var(--color-secondary)] hover:underline font-semibold">
-      Alle Fragen zur Veranstaltungstechnik ansehen →
-    </a>
-  </p>
-  <style>
-    .faq-details summary .faq-icon svg {
-      transition: transform 0.2s ease-in-out;
-    }
-    .faq-details[open] summary .faq-icon svg {
-      transform: rotate(90deg);
-    }
-  </style>
+  {showLink && (
+    <p class="text-center mt-8">
+      <a href="/faq" class="text-[var(--color-accent)] hover:underline font-semibold">
+        Alle Fragen zur Veranstaltungstechnik ansehen →
+      </a>
+    </p>
+  )}
 </div>

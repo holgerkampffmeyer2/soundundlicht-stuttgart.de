@@ -71,6 +71,20 @@ Die Seite `src/pages/faq.astro` SHALL alle Einträge aus `src/data/faqs.json` na
 - **WHEN** eine FAQ geöffnet oder geschlossen wird
 - **THEN** zeigt jede `summary` genau einen Chevron-SVG-Indikator; es gibt keinen CSS-`content`-Indikator (`+`/`?`/`📍`) mehr
 
+### Requirement: [REQ-FAQ-05] Einheitliche FAQ-Darstellung auf allen Seiten
+
+Alle FAQ-Blöcke SHALL dieselbe SVG-/Karten-Darstellung wie `/faq` nutzen; FAQ-Abschnitte SHALL eine eigene `h2` besitzen oder als `div` ohne Überschrift gerendert werden.
+
+#### Scenario: Gemeinsame FAQ-Komponente
+
+- **WHEN** eine Seite FAQs rendert
+- **THEN** verwendet sie `FAQSection.astro` mit `.faq-item`, `.faq-question-icon`, `.faq-chevron` und `.faq-answer`, und es gibt kein `.faq-details`/`.faq-icon` mehr
+
+#### Scenario: Abschnittsüberschriften
+
+- **WHEN** ein FAQ-Abschnitt als `section` gerendert wird
+- **THEN** enthält er eine eigene `h2`, einschließlich des Inhaltsverzeichnisses auf `/faq`
+
 ### Requirement: FAQ-Verlinkung
 
 Die FAQ-Seite SHALL über den Footer erreichbar sein; die Navbar SHALL keinen FAQ-Eintrag führen (Vermeidung von Nav-Überladung).

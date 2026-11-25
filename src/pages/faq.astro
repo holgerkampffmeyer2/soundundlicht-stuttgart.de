@@ -102,6 +102,7 @@ const toc = [
 
     <section class="faq-toc-section section-padding">
       <div class="max-w-4xl mx-auto">
+        <h2 class="sr-only">Themenübersicht</h2>
         <nav class="toc mb-12 animate-on-scroll" aria-label="Inhaltsverzeichnis">
           <ul class="toc-list">
             {toc.map((section) => (
@@ -191,35 +192,6 @@ const toc = [
 </Layout>
 
 <style>
-  .faq-page {
-    --faq-tone: var(--color-accent);
-  }
-
-  .faq-page [data-tone="pakete"],
-  .faq-page [data-topic="pakete"] {
-    --faq-tone: var(--color-primary);
-  }
-
-  .faq-page [data-tone="sound"],
-  .faq-page [data-topic="sound"] {
-    --faq-tone: color-mix(in srgb, var(--color-primary) 45%, var(--color-accent));
-  }
-
-  .faq-page [data-tone="licht"],
-  .faq-page [data-topic="licht"] {
-    --faq-tone: var(--color-primary-hover);
-  }
-
-  .faq-page [data-tone="sonstiges"],
-  .faq-page [data-topic="sonstiges"] {
-    --faq-tone: color-mix(in srgb, var(--color-text-muted) 65%, var(--color-accent));
-  }
-
-  .faq-page [data-tone="standorte"],
-  .faq-page [data-topic="standorte"] {
-    --faq-tone: color-mix(in srgb, var(--color-accent) 70%, var(--color-primary));
-  }
-
   .faq-hero {
     position: relative;
     overflow: hidden;
@@ -303,8 +275,7 @@ const toc = [
     transform: translateY(-1px);
   }
 
-  .toc-chip:focus-visible,
-  .faq-item summary:focus-visible {
+  .toc-chip:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
     border-radius: 0.5rem;
@@ -344,67 +315,8 @@ const toc = [
     color: color-mix(in srgb, var(--color-text) 75%, var(--color-text-muted));
   }
 
-  .faq-item {
-    border-left: 3px solid color-mix(in srgb, var(--faq-tone) 55%, var(--color-border));
-  }
-
-  .faq-item:hover {
-    border-color: color-mix(in srgb, var(--faq-tone) 45%, var(--color-border));
-    border-left-color: color-mix(in srgb, var(--faq-tone) 70%, var(--color-border));
-  }
-
-  .faq-item summary {
-    color: var(--color-text);
-  }
-
-  .faq-question-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 1.75rem;
-    width: 1.75rem;
-    height: 1.75rem;
-    border-radius: 0.5rem;
-    background: color-mix(in srgb, var(--faq-tone) 16%, transparent);
-    color: var(--faq-tone);
-  }
-
-  .faq-question-icon svg {
-    width: 1rem;
-    height: 1rem;
-  }
-
-  .faq-chevron {
-    margin-left: auto;
-    color: var(--faq-tone);
-    transition: transform 0.2s ease;
-  }
-
-  .faq-item[open] .faq-chevron {
-    transform: rotate(180deg);
-  }
-
-  .faq-answer {
-    padding: 1.25rem 1.5rem;
-    color: var(--color-text);
-    line-height: 1.7;
-  }
-
-  .city-answer + .city-answer {
-    padding-top: 1rem;
-    margin-top: 1rem;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .city-question {
-    color: var(--color-text);
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .toc-chip,
-    .faq-chevron {
+    .toc-chip {
       transition: none;
     }
   }

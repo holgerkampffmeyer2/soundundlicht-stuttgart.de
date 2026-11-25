@@ -45,7 +45,7 @@ test.describe('LD ICOA PA-Pakete', () => {
 
       test('[REQ-ICOA-04] hat eigene FAQs', async ({ page }) => {
         await expect(page.getByText('Häufig gestellte Fragen')).toBeVisible();
-        expect(await page.locator('details.faq-details').count()).toBeGreaterThanOrEqual(3);
+        expect(await page.locator('details.faq-item').count()).toBeGreaterThanOrEqual(3);
       });
 
       test('[REQ-ICOA-05] hat geparstes Service-, Breadcrumb- und FAQ-JSON-LD ohne Product', async ({ page }) => {

@@ -85,6 +85,18 @@ test.describe('JSON-LD-Seitentypen', () => {
     expect(answerColor).toBe(bodyColor);
   });
 
+  test('[REQ-FAQ-05] FAQ-Darstellung ist auf allen Seitentypen einheitlich', async ({ page }) => {
+    for (const path of ['/', '/vermietung', '/stuttgart', '/vermietung/partypaket-stuttgart']) {
+      await visit(page, path);
+      expect(await page.locator('details.faq-item').count()).toBeGreaterThan(0);
+      expect(await page.locator('.faq-details').count()).toBe(0);
+      expect(await page.locator('details.faq-item summary svg[aria-hidden="true"]').count()).toBeGreaterThan(0);
+    }
+
+    await visit(page, '/faq');
+    expect(await page.locator('.faq-toc-section > div > h2').count()).toBe(1);
+  });
+
   test('[REQ-JSONLD-01] Impressum hat nur die Basistypen', async ({ page }) => {
     await visit(page, '/impressum');
 
