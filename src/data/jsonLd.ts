@@ -117,7 +117,7 @@ export const siteNavigationJsonLd = {
   ]
 };
 
-export function serviceJsonLd(product: { title: string; description: string; priceValue: number; features: string[] }, images: string[]): JsonLdItem {
+export function serviceJsonLd(product: { title: string; description: string; priceValue?: number; features: string[] }, images: string[], areaServed: typeof serviceArea = serviceArea): JsonLdItem {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -125,19 +125,23 @@ export function serviceJsonLd(product: { title: string; description: string; pri
     "description": product.description,
     "image": images.map(absoluteUrl),
     "serviceType": "Veranstaltungstechnik-Vermietung",
-    "areaServed": serviceArea,
+    "areaServed": areaServed,
     "provider": { "@type": "LocalBusiness", "@id": "https://soundundlicht-stuttgart.de/#business" },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "availability": "https://schema.org/InStock",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": product.priceValue,
-        "priceCurrency": "EUR",
-        "unitCode": "DAY"
-      }
-    }
+    ...(product.priceValue !== undefined
+      ? {
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": product.priceValue,
+              "priceCurrency": "EUR",
+              "unitCode": "DAY"
+            }
+          }
+        }
+      : {})
   };
 }
 

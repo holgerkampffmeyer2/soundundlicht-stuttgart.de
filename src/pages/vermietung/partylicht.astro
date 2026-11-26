@@ -1,0 +1,51 @@
+---
+import TechnicalLandingLayout from '../../components/vermietung/TechnicalLandingLayout.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { technicalLandingData } from '../../lib/technicalLanding';
+
+const allProducts = await getCollection('products');
+const slugs = ['partylicht-moving-head', 'led-par-lichter', 'beamz-mhl36', 'led-bossfx-nebelmaschine'];
+const products = slugs
+  .map((slug) => allProducts.find((entry) => entry.data.slug === slug)?.data)
+  .filter((product) => product !== undefined);
+
+const faqs = getFaqsForPage('partylicht');
+const priceValue = 20;
+const title = 'Partylicht mieten in Stuttgart';
+const description = 'Moving Heads, PAR-Lichter und Nebel für Geburtstage und Vereinsfeiern. Lichtshow nach Raumgröße, persönlich eingewiesen, ab 20€ pro Tag.';
+const { breadcrumbSegments, jsonLd } = technicalLandingData({
+  title,
+  description,
+  label: 'Partylicht',
+  priceValue,
+  products,
+  faqs,
+});
+---
+
+<TechnicalLandingLayout
+  pageTitle="Partylicht mieten in Stuttgart | Sound & Licht Stuttgart"
+  title={title}
+  description={description}
+  image="/img/vermietung/licht1.webp"
+  keyword="Partylicht mieten Stuttgart"
+  intro="Du willst deiner Feier mehr Atmosphäre geben? Ich setze Effekte so ein, dass sie zur Musik und zum Raum passen – mit PAR-Lichtern, Moving Heads und auf Wunsch Nebel."
+  details="Du kannst dir die Lichttechnik in Echterdingen vorher ansehen. Ich zeige dir Steuerung, Stromanschlüsse und Aufbau, damit die Show sicher läuft und nicht mehr Licht als nötig im Raum steht."
+  benefits={[
+    { title: 'Licht nach Raum', text: 'In kleinen Räumen reichen PAR-Lichter; Moving Heads kommen erst bei größeren Flächen zum Einsatz.' },
+    { title: 'Nebel nur wenn erlaubt', text: 'Ich frage vorher nach, ob Nebel in deiner Location erwünscht ist, und plane die Maschine entsprechend ein.' },
+    { title: 'Einfache Steuerung', text: 'Du bekommst die Geräte mit Kabeln und einer kurzen Einweisung für den schnellen Aufbau.' },
+  ]}
+  steps={[
+    'Nenne mir Raumgröße und ob du Nebel einsetzen darfst.',
+    'Ich stelle PAR, Moving Heads oder eine Kombination zusammen.',
+    'Bei der Abholung zeige ich dir Anschlüsse und Grundsteuerung.',
+  ]}
+  products={products}
+  faqs={faqs}
+  jsonLd={jsonLd}
+  breadcrumbSegments={breadcrumbSegments}
+  startingPrice={priceValue}
+  tone="licht"
+/>

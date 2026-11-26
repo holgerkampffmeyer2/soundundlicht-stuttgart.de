@@ -1,6 +1,14 @@
 import { test, expect } from '@playwright/test';
 
 const BASE_URL = 'https://soundundlicht-stuttgart.de';
+const TECHNICAL_PAGES = [
+  '/vermietung/pakete',
+  '/vermietung/musikanlage',
+  '/vermietung/lautsprecher',
+  '/vermietung/pa-anlage',
+  '/vermietung/dj-equipment',
+  '/vermietung/partylicht',
+];
 
 test.describe('SEO-Build-Artefakte', () => {
   test('[REQ-SEO-01] sitemap-index und sitemap-0 enthalten nur öffentliche Seiten', async ({ request }) => {
@@ -17,6 +25,9 @@ test.describe('SEO-Build-Artefakte', () => {
     const sitemapXml = await sitemapResponse.text();
     expect(sitemapXml).toContain(`${BASE_URL}/stuttgart`);
     expect(sitemapXml).toContain(`${BASE_URL}/vermietung/ld-maui-28g3`);
+    for (const path of TECHNICAL_PAGES) {
+      expect(sitemapXml).toContain(`${BASE_URL}${path}`);
+    }
     expect(sitemapXml).not.toContain('/impressum');
     expect(sitemapXml).not.toContain('/thankyou');
     expect(sitemapXml.match(/<loc>/g)?.length).toBeGreaterThan(20);
@@ -34,6 +45,9 @@ test.describe('SEO-Build-Artefakte', () => {
       expect(url).not.toContain('/thankyou');
     }
     expect(urls).toContain(`${BASE_URL}/stuttgart`);
+    for (const path of TECHNICAL_PAGES) {
+      expect(urls).toContain(`${BASE_URL}${path}`);
+    }
   });
 
   test('[REQ-SEO-01] rss.xml ist gültiger RSS-2.0-Feed', async ({ request }) => {
@@ -45,6 +59,9 @@ test.describe('SEO-Build-Artefakte', () => {
     expect(xml).toContain('<channel>');
     expect(xml).toContain('<atom:link');
     expect(xml.match(/<item>/g)?.length).toBeGreaterThan(20);
+    for (const path of TECHNICAL_PAGES) {
+      expect(xml).toContain(`${BASE_URL}${path}`);
+    }
     expect(xml).not.toContain('/thankyou');
   });
 

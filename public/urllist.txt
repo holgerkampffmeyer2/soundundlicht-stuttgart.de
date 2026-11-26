@@ -1,5 +1,4 @@
 https://soundundlicht-stuttgart.de/
-https://soundundlicht-stuttgart.de/404
 https://soundundlicht-stuttgart.de/b%C3%B6blingen
 https://soundundlicht-stuttgart.de/backnang
 https://soundundlicht-stuttgart.de/esslingen
@@ -22,10 +21,12 @@ https://soundundlicht-stuttgart.de/stuttgart
 https://soundundlicht-stuttgart.de/t%C3%BCbingen
 https://soundundlicht-stuttgart.de/vermietung
 https://soundundlicht-stuttgart.de/vermietung/akku-party-paket
+https://soundundlicht-stuttgart.de/vermietung/dj-equipment
 https://soundundlicht-stuttgart.de/vermietung/djpaket-fildern
 https://soundundlicht-stuttgart.de/vermietung/jbl-partybox-300-320
 https://soundundlicht-stuttgart.de/vermietung/karaoke-paket
 https://soundundlicht-stuttgart.de/vermietung/kls-laser-bar
+https://soundundlicht-stuttgart.de/vermietung/lautsprecher
 https://soundundlicht-stuttgart.de/vermietung/ld-icoa-buehnen-paket
 https://soundundlicht-stuttgart.de/vermietung/ld-icoa-club-paket
 https://soundundlicht-stuttgart.de/vermietung/ld-icoa-party-paket
@@ -37,7 +38,11 @@ https://soundundlicht-stuttgart.de/vermietung/led-scheinwerfer
 https://soundundlicht-stuttgart.de/vermietung/max-party-bar
 https://soundundlicht-stuttgart.de/vermietung/mikrofon-mischpult
 https://soundundlicht-stuttgart.de/vermietung/mini-party-beamer
+https://soundundlicht-stuttgart.de/vermietung/musikanlage
 https://soundundlicht-stuttgart.de/vermietung/nebelmaschinen
+https://soundundlicht-stuttgart.de/vermietung/pa-anlage
+https://soundundlicht-stuttgart.de/vermietung/pakete
+https://soundundlicht-stuttgart.de/vermietung/partylicht
 https://soundundlicht-stuttgart.de/vermietung/partylicht-moving-head
 https://soundundlicht-stuttgart.de/vermietung/partypaket-stuttgart
 https://soundundlicht-stuttgart.de/vermietung/powerstation

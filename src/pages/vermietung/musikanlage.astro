@@ -1,0 +1,51 @@
+---
+import TechnicalLandingLayout from '../../components/vermietung/TechnicalLandingLayout.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { technicalLandingData } from '../../lib/technicalLanding';
+
+const allProducts = await getCollection('products');
+const slugs = ['ld-maui-28g3', 'ld-icoa-top-paar', 'jbl-partybox-300-320', 'ld-icoa-12-a'];
+const products = slugs
+  .map((slug) => allProducts.find((entry) => entry.data.slug === slug)?.data)
+  .filter((product) => product !== undefined);
+
+const faqs = getFaqsForPage('musikanlage');
+const priceValue = 50;
+const title = 'Musikanlage mieten in Stuttgart';
+const description = 'PA-Säulen, ICOA-Tops und Partyboxen für Geburtstage, Hochzeiten und Firmenfeiern. Klarer Sound für Musik und Reden, persönlich eingewiesen, ab 50€ pro Tag.';
+const { breadcrumbSegments, jsonLd } = technicalLandingData({
+  title,
+  description,
+  label: 'Musikanlagen',
+  priceValue,
+  products,
+  faqs,
+});
+---
+
+<TechnicalLandingLayout
+  pageTitle="Musikanlage mieten in Stuttgart | Sound & Licht Stuttgart"
+  title={title}
+  description={description}
+  image="/img/vermietung/djpaket.webp"
+  keyword="Musikanlage mieten Stuttgart"
+  intro="Du planst eine Feier und brauchst Beschallung? Ich stelle das Passende zusammen – von der kompakten Box bis zur PA-Säule für größere Räume. Entscheidend ist deine Gästezahl, nicht die höchste Wattzahl im Katalog."
+  details="Alle Geräte kannst du in Leinfelden-Echterdingen abholen und vor Ort ansehen. Ich erkläre dir Anschlüsse, Bluetooth oder XLR und die richtige Aufstellung, damit der Sound im Raum gleichmäßig ankommt."
+  benefits={[
+    { title: 'Musik und Reden', text: 'Eine gute Musikanlage spielt nicht nur laut, sondern lässt Ansagen und Durchsagen verständlich bleiben.' },
+    { title: 'Passend zum Raum', text: 'Für den Keller reicht eine Box, für den Saal eine PA mit Sub – ich berate nach deinen Gegebenheiten.' },
+    { title: 'Selbst abholen', text: 'Du siehst die Anlage vor der Miete und bekommst Kabel und Einweisung direkt dazu.' },
+  ]}
+  steps={[
+    'Sag mir, ob du eher Musik, Reden oder beides brauchst.',
+    'Ich empfehle eine Anlage für deine Gästezahl und Raumgröße.',
+    'Bei der Abholung teste ich Kabel und Einstellungen mit dir.',
+  ]}
+  products={products}
+  faqs={faqs}
+  jsonLd={jsonLd}
+  breadcrumbSegments={breadcrumbSegments}
+  startingPrice={priceValue}
+  tone="sound"
+/>

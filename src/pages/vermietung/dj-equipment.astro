@@ -1,0 +1,51 @@
+---
+import TechnicalLandingLayout from '../../components/vermietung/TechnicalLandingLayout.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { technicalLandingData } from '../../lib/technicalLanding';
+
+const allProducts = await getCollection('products');
+const slugs = ['djpaket-fildern', 'yamaha-mischpult', 'mikrofon', 'kls-laser-bar'];
+const products = slugs
+  .map((slug) => allProducts.find((entry) => entry.data.slug === slug)?.data)
+  .filter((product) => product !== undefined);
+
+const faqs = getFaqsForPage('dj-equipment');
+const priceValue = 200;
+const title = 'DJ-Equipment mieten in Stuttgart';
+const description = 'DJ-Paket, Mischpult, Mikrofon und Laserbar für deinen Auftritt. Alles aufeinander abgestimmt, kurz eingewiesen und ab 200€ pro Tag mietbar.';
+const { breadcrumbSegments, jsonLd } = technicalLandingData({
+  title,
+  description,
+  label: 'DJ-Equipment',
+  priceValue,
+  products,
+  faqs,
+});
+---
+
+<TechnicalLandingLayout
+  pageTitle="DJ-Equipment mieten in Stuttgart | Sound & Licht Stuttgart"
+  title={title}
+  description={description}
+  image="/img/vermietung/djpaket.webp"
+  keyword="DJ-Equipment mieten Stuttgart"
+  intro="Du willst selbst auflegen? Ich stelle ein Set zusammen, das vom Einstieg bis zum letzten Track funktioniert – mit Zuspielung, Mischpult, Mikrofon und Licht nach deinem Setup."
+  details="Du holst das Equipment bei mir in Echterdingen ab. Ich zeige dir Signalweg, Kabel und die wichtigsten Einstellungen, damit du auf der Feier nicht nach Anschlüssen suchen musst."
+  benefits={[
+    { title: 'Aufeinander abgestimmt', text: 'Mischer, Mikrofon und Licht passen zusammen – du musst keine fremden Geräte kombinieren.' },
+    { title: 'Für Gäste und Reden', text: 'Ein Mikrofon dazu ist oft wichtiger als ein weiteres Effektgerät, wenn Programm geplant ist.' },
+    { title: 'Kurz eingewiesen', text: 'Ich erkläre dir bei der Abholung den Signalweg und wie du alles wieder zusammenpackst.' },
+  ]}
+  steps={[
+    'Sag mir, ob du eigene Controller oder CDs mitbringst.',
+    'Ich stelle Mischpult, Mikrofon und Licht passend zusammen.',
+    'Vor der Abfahrt prüfe ich Kabel und Signalweg mit dir.',
+  ]}
+  products={products}
+  faqs={faqs}
+  jsonLd={jsonLd}
+  breadcrumbSegments={breadcrumbSegments}
+  startingPrice={priceValue}
+  tone="sound"
+/>

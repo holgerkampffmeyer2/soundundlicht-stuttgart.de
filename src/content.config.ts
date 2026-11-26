@@ -47,6 +47,9 @@ const cities = defineCollection({
     image: z.string(),
     title: z.string(),
     description: z.string(),
+    primaryKeyword: z.string().optional(),
+    seoTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
     distance: z.string().optional(),
     travelTime: z.string().optional(),
     areas: z

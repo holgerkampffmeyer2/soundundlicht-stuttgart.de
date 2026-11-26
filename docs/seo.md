@@ -16,6 +16,23 @@
 - **Datenquellen**: Produktdaten aus `src/content/products/*.yml`, FAQs aus `src/data/faqs.json`
 - **Ich-Perspektive** in allem User-Facing-Text («du … bei mir»), nur `impressum.astro` bleibt «Wir»
 
+## Keyword-Aufteilung 2026
+
+Die 21 City-Seiten tragen je ein eigenes Stadt-Longtail via `primaryKeyword`, `seoTitle` und `metaDescription` (`src/data/cities.json`). Google bestraft austauschbare Seiten mit nur variiertem Stadtnamen: Deshalb müssen Hero-Prosa, Einzeltechnik-Begründung, Areas-Intro und mindestens zwei FAQs pro Stadt inhaltlich verschieden sein.
+
+Die sechs Stuttgart-Headterms werden ausschließlich auf technischen Landingpages optimiert:
+
+| URL | Primärkeyword |
+| --- | --- |
+| `/vermietung/pakete` | Pakete mieten in Stuttgart |
+| `/vermietung/musikanlage` | Musikanlage mieten in Stuttgart |
+| `/vermietung/lautsprecher` | Lautsprecher mieten in Stuttgart |
+| `/vermietung/pa-anlage` | PA Anlage mieten in Stuttgart |
+| `/vermietung/dj-equipment` | DJ Equipment mieten in Stuttgart |
+| `/vermietung/partylicht` | Partylicht mieten in Stuttgart |
+
+`Musikbox mieten` ist ein Synonym auf `/vermietung/jbl-partybox-300-320` und bekommt keine eigene URL.
+
 ## Stufenstrategie für City-Keywords (Town / Einzugsgebiet / FAQ)
 
 Nicht jede Ortschaft bekommt eine eigene Stadtseite (Doorway-Risiko). Die Abdeckung erfolgt in drei Stufen,

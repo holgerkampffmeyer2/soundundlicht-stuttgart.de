@@ -10,6 +10,12 @@
 ## Core Pages
 - [Startseite](/): Veranstaltungstechnik mieten in Stuttgart und Umgebung
 - [Vermietung](/vermietung): Mietkatalog PA, Licht, Partyboxen, Zubehör
+- [Pakete mieten in Stuttgart](/vermietung/pakete): Party-, Veranstaltungs- und Akku-Pakete
+- [Musikanlage mieten in Stuttgart](/vermietung/musikanlage): PA-Säulen, ICOA-Tops und Partyboxen
+- [Lautsprecher mieten in Stuttgart](/vermietung/lautsprecher): Partyboxen und PA-Lautsprecher
+- [PA Anlage mieten in Stuttgart](/vermietung/pa-anlage): Maui 28 G3, ICOA-Tops und Subwoofer
+- [DJ Equipment mieten in Stuttgart](/vermietung/dj-equipment): DJ-Paket, Mischpult und Mikrofon
+- [Partylicht mieten in Stuttgart](/vermietung/partylicht): Moving Heads, PAR und Nebel
 - [Kontakt](/vermietung#kontakt): Anfrageformular für Equipment-Vermietung
 - [Standort & Abholung](/leinfelden-echterdingen): Magellanstraße 4, 70771 Leinfelden-Echterdingen
 - [FAQ](/faq): Häufige Fragen zur Vermietung

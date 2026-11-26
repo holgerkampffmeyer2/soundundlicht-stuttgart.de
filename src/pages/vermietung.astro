@@ -228,6 +228,7 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
       <div class="text-center mb-12">
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Komplettpakete</span>
         <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">Alles aus einer Hand</h2>
+        <a href="/vermietung/pakete" class="mt-4 inline-block text-sm font-semibold text-[var(--color-secondary)] underline underline-offset-4 hover:text-[var(--color-accent)]">Alle Pakete und Preise im Detail →</a>
       </div>
       
       <PackageCardGrid pakete={komplettPakete} />
@@ -240,6 +241,12 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
       <div class="text-center mb-12">
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Sound</span>
         <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">PA-Anlagen & Lautsprecher</h2>
+        <div class="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm">
+          <a href="/vermietung/musikanlage" class="font-semibold text-[var(--color-secondary)] underline underline-offset-4 hover:text-[var(--color-accent)]">Musikanlage</a>
+          <a href="/vermietung/lautsprecher" class="font-semibold text-[var(--color-secondary)] underline underline-offset-4 hover:text-[var(--color-accent)]">Lautsprecher</a>
+          <a href="/vermietung/pa-anlage" class="font-semibold text-[var(--color-secondary)] underline underline-offset-4 hover:text-[var(--color-accent)]">PA-Anlage</a>
+          <a href="/vermietung/dj-equipment" class="font-semibold text-[var(--color-secondary)] underline underline-offset-4 hover:text-[var(--color-accent)]">DJ-Equipment</a>
+        </div>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -301,10 +308,11 @@ const lichtEquipment = rentalItems.filter(i => i.category === 'Licht');
      <!-- Licht Equipment -->
    <section id="licht" class="section-padding bg-[var(--color-surface)]">
      <div class="max-w-7xl mx-auto">
-       <div class="text-center mb-12">
-         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Licht</span>
-         <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">Lichttechnik & Effekte</h2>
-       </div>
+        <div class="text-center mb-12">
+          <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Licht</span>
+          <h2 class="font-play text-4xl md:text-5xl font-bold mt-4">Lichttechnik & Effekte</h2>
+          <a href="/vermietung/partylicht" class="mt-4 inline-block text-sm font-semibold text-[var(--color-secondary)] underline underline-offset-4 hover:text-[var(--color-accent)]">Partylicht im Detail →</a>
+        </div>
        
        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
          {lichtEquipment.map((item, index) => (

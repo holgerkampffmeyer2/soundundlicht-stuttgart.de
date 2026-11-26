@@ -121,6 +121,21 @@ body {
   }
 }
 
+.section-padding[class~="bg-[var(--color-surface)]"] {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-secondary) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-secondary) 6%, transparent) 1px, transparent 1px),
+    radial-gradient(circle, color-mix(in srgb, var(--color-primary) 10%, transparent) 1px, transparent 1.5px);
+  background-size: 48px 48px;
+  background-position: 0 0, 0 0, 0 0;
+}
+
+@media (prefers-contrast: more) {
+  .section-padding[class~="bg-[var(--color-surface)]"] {
+    background-image: none;
+  }
+}
+
 .nav-link {
   color: var(--color-text-muted);
   transition: all 0.3s ease;
@@ -388,11 +403,18 @@ body {
 
 /* Card Base (shared by service + equipment) */
 .card-base {
-  background: var(--color-surface);
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--color-surface) 70%, var(--color-bg)),
+    var(--color-bg)
+  );
   border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card-soft);
   padding: 2rem;
   transition: all 0.4s ease;
   position: relative;
+  overflow: hidden;
 }
 
 .card-base::before {

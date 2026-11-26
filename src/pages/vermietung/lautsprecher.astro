@@ -1,0 +1,51 @@
+---
+import TechnicalLandingLayout from '../../components/vermietung/TechnicalLandingLayout.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { technicalLandingData } from '../../lib/technicalLanding';
+
+const allProducts = await getCollection('products');
+const slugs = ['jbl-partybox-300-320', 'ld-icoa-top-paar', 'ld-maui-28g3', 'ld-icoa-12-a'];
+const products = slugs
+  .map((slug) => allProducts.find((entry) => entry.data.slug === slug)?.data)
+  .filter((product) => product !== undefined);
+
+const faqs = getFaqsForPage('lautsprecher');
+const priceValue = 50;
+const title = 'Lautsprecher mieten in Stuttgart';
+const description = 'Partyboxen, ICOA-Tops und PA-Säulen für Feiern von 20 bis 150 Personen. Bluetooth oder XLR, mit Kabeln und Einweisung – ab 50€ pro Tag.';
+const { breadcrumbSegments, jsonLd } = technicalLandingData({
+  title,
+  description,
+  label: 'Lautsprecher',
+  priceValue,
+  products,
+  faqs,
+});
+---
+
+<TechnicalLandingLayout
+  pageTitle="Lautsprecher mieten in Stuttgart | Sound & Licht Stuttgart"
+  title={title}
+  description={description}
+  image="/img/vermietung/jblpartyboxen.webp"
+  keyword="Lautsprecher mieten Stuttgart"
+  intro="Du suchst die passende Box für deinen Raum? Ich unterscheide zwischen mobilen Partyboxen mit Lightshow und echten PA-Lautsprechern mit DSP und Headroom."
+  details="Du kannst dir die Lautsprecher in Echterdingen vorher anhören und im Auto testen. Ich zeige dir, wie du sie stellst, koppelst und anschließt – und welche Box bei deiner Gästezahl wirklich reicht."
+  benefits={[
+    { title: 'Partybox oder PA', text: 'Bis etwa 50 Gäste reicht oft eine Box; für größere Räume empfehle ich ICOA-Tops oder eine Maui-Säule.' },
+    { title: 'Akku oder Steckdose', text: 'Für Garten und Gemeinderaum ohne Strom stelle ich Akku-Lautsprecher mit Powerstation zusammen.' },
+    { title: 'Vor Ort vergleichen', text: 'Du hörst dir bei der Abholung mehrere Systeme an und entscheidest erst dann.' },
+  ]}
+  steps={[
+    'Nenne mir Raumgröße, Gästezahl und ob Strom vorhanden ist.',
+    'Ich empfehle einen Lautsprechertyp und die passende Anzahl.',
+    'In Echterdingen prüfe ich Klang und Passgenauigkeit für dein Auto mit dir.',
+  ]}
+  products={products}
+  faqs={faqs}
+  jsonLd={jsonLd}
+  breadcrumbSegments={breadcrumbSegments}
+  startingPrice={priceValue}
+  tone="sound"
+/>

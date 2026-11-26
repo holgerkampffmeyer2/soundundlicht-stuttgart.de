@@ -1,0 +1,58 @@
+---
+import TechnicalLandingLayout from '../../components/vermietung/TechnicalLandingLayout.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { technicalLandingData } from '../../lib/technicalLanding';
+
+const allProducts = await getCollection('products');
+const slugs = [
+  'partypaket-stuttgart',
+  'veranstaltungspaket-stuttgart',
+  'ld-icoa-party-paket',
+  'akku-party-paket',
+  'djpaket-fildern',
+  'karaoke-paket',
+];
+const products = slugs
+  .map((slug) => allProducts.find((entry) => entry.data.slug === slug)?.data)
+  .filter((product) => product !== undefined);
+
+const faqs = getFaqsForPage('pakete');
+const priceValue = 130;
+const title = 'Pakete mieten in Stuttgart';
+const description = 'Partytechnik, Veranstaltungstechnik, DJ-Set und Akku-Pakete. Komplett zusammengestellt, persönlich eingewiesen und zu Tagespreisen ab 130€.';
+const { breadcrumbSegments, jsonLd } = technicalLandingData({
+  title,
+  description,
+  label: 'Pakete',
+  priceValue,
+  products,
+  faqs,
+});
+---
+
+<TechnicalLandingLayout
+  pageTitle="Party- & Veranstaltungspakete mieten in Stuttgart | Sound & Licht Stuttgart"
+  title={title}
+  description={description}
+  image="/img/vermietung/partypaket.webp"
+  keyword="Partypaket mieten in Stuttgart"
+  intro="Du willst nicht Einzelteile zusammenrechnen? Ich stelle ein abgestimmtes Set aus Beschallung, wahlweise Licht und Zubehör zusammen – passend zu Anlass, Gästezahl und Raum."
+  details="Ob Geburtstag, Hochzeit, Firmenfeier oder Karaoke-Abend – du holst das Paket in Leinfelden-Echterdingen ab und bekommst eine persönliche Einweisung. Alle Preise verstehen sich als Tagespreise ab 130€."
+  benefits={[
+    { title: 'Abgestimmt statt Einzelteile', text: 'Je nach Paket sind Lautsprecher, Licht, Kabel oder Mikrofon enthalten – ich zeige dir genau, was dazugehört.' },
+    { title: 'Nach Gästezahl gewählt', text: 'Ich frage nach Raumgröße und Personenzahl, bevor ich ein Paket empfehle – nicht nach dem größten Katalogeintrag.' },
+    { title: 'Persönliche Übergabe', text: 'Bei der Abholung zeige ich dir Aufbau und Einstellungen, damit du sicher loslegen kannst.' },
+  ]}
+  steps={[
+    'Nenne mir Anlass, Datum und ungefähre Gästezahl.',
+    'Ich empfehle dir eines der Pakete und prüfe die Verfügbarkeit.',
+    'Du holst die Technik in der Magellanstraße 4 ab und bekommst alles kurz erklärt.',
+  ]}
+  products={products}
+  faqs={faqs}
+  jsonLd={jsonLd}
+  breadcrumbSegments={breadcrumbSegments}
+  startingPrice={priceValue}
+  tone="pakete"
+/>

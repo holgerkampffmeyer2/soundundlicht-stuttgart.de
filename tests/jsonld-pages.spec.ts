@@ -55,6 +55,30 @@ test.describe('JSON-LD-Seitentypen', () => {
     expect(types).not.toContain('VideoObject');
   });
 
+  test('[REQ-TECHLP-01][REQ-TECHLP-02] technische Landingpages haben Service, Breadcrumb, FAQ und kein Product', async ({ page }) => {
+    const paths = [
+      '/vermietung/pakete',
+      '/vermietung/musikanlage',
+      '/vermietung/lautsprecher',
+      '/vermietung/pa-anlage',
+      '/vermietung/dj-equipment',
+      '/vermietung/partylicht',
+    ];
+
+    for (const path of paths) {
+      await visit(page, path);
+      const types = jsonLdTypes(await getJsonLdNodes(page));
+      for (const type of [...BASE_TYPES, 'Service', 'BreadcrumbList', 'FAQPage']) {
+        expect(types, path).toContain(type);
+      }
+      expect(types, path).not.toContain('Product');
+      const heading = await page.locator('h1').first().innerText();
+      const intro = await page.locator('section p').first().innerText();
+      expect(heading, path).toContain('mieten in Stuttgart');
+      expect(intro.toLowerCase(), path).not.toContain(heading.toLowerCase());
+    }
+  });
+
   test('[REQ-JSONLD-01] FAQ-Seite hat FAQPage, aber kein Product', async ({ page }) => {
     await visit(page, '/faq');
 
@@ -125,5 +149,12 @@ test.describe('JSON-LD-Seitentypen', () => {
       const names = ((faq?.mainEntity as Array<Record<string, unknown>>) ?? []).map((entry) => entry.name);
       expect(names).not.toContain(question);
     }
+  });
+
+  test('[REQ-TECHLP-04] Musikbox mieten ist ein Synonym auf der JBL-Partybox-Seite', async ({ page }) => {
+    await visit(page, '/vermietung/jbl-partybox-300-320');
+    expect(await page.title()).toContain('Musikbox');
+    expect(await page.locator('h1').first().innerText()).toContain('Musikbox mieten');
+    await expect(page.getByText('Was bedeutet „Musikbox mieten“ bei dir?', { exact: false })).toBeVisible();
   });
 });

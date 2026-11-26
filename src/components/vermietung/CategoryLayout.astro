@@ -34,7 +34,7 @@ const layoutTitle = title ?? pageTitle;
   pagefindMeta={pagefindMeta}
   jsonLd={jsonLd}
 >
-  <Navbar currentPage="/vermietung" />
+  <Navbar currentPage={Astro.url.pathname} />
   <Breadcrumb segments={breadcrumbSegments} />
 
   <slot name="hero" />

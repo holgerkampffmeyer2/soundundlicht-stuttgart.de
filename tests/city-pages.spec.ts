@@ -60,3 +60,77 @@ test.describe('City Pages', () => {
     });
   }
 });
+
+test.describe('City-SEO-Differenzierung', () => {
+  const allCitySlugs = [
+    'stuttgart', 'esslingen', 'tübingen', 'filderstadt', 'leinfelden-echterdingen',
+    'kornwestheim', 'ludwigsburg', 'böblingen', 'sindelfingen', 'leonberg',
+    'waiblingen', 'nürtingen', 'reutlingen', 'kirchheim-unter-teck', 'ostfildern',
+    'fellbach', 'herrenberg', 'winnenden', 'backnang', 'metzingen', 'göppingen',
+  ];
+
+  type CityMeta = {
+    slug: string;
+    title: string;
+    h1: string;
+    description: string;
+    canonical: string;
+  };
+
+  test('[REQ-CITY-SEO-01][REQ-CITY-SEO-02] alle 21 Städte haben eindeutige Titles, H1, Descriptions und Canonicals', async ({ page }) => {
+    const pages: CityMeta[] = [];
+
+    for (const slug of allCitySlugs) {
+      await page.goto(`/${encodeURI(slug)}`);
+      const meta = await page.evaluate(() => ({
+        title: document.title,
+        h1: document.querySelector('h1')?.textContent?.trim() ?? '',
+        description: document.querySelector('meta[name="description"]')?.getAttribute('content')?.trim() ?? '',
+        canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '',
+      }));
+      pages.push({ slug, ...meta });
+    }
+
+    for (const key of ['title', 'h1', 'description', 'canonical'] as const) {
+      expect(new Set(pages.map((entry) => entry[key])).size).toBe(allCitySlugs.length);
+    }
+
+    for (const entry of pages) {
+      expect(entry.h1).not.toContain('PA-Anlage & Partybox mieten');
+      expect(entry.description.length).toBeGreaterThan(80);
+      expect(entry.canonical).toBe(`${BASE_URL}/${encodeURI(entry.slug)}`);
+    }
+  });
+
+  test('[REQ-CITY-SEO-03] jede Stadt hat eigene Begriffe in Title, H1 und Description', async ({ page }) => {
+    const occurrences = new Map<string, number>();
+
+    for (const slug of allCitySlugs) {
+      await page.goto(`/${encodeURI(slug)}`);
+      const text = await page.evaluate(() => [
+        document.title,
+        document.querySelector('h1')?.textContent ?? '',
+        document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '',
+      ].join(' '));
+
+      for (const word of new Set(text.toLowerCase().match(/[a-zäöüß]{4,}/g) ?? [])) {
+        occurrences.set(word, (occurrences.get(word) ?? 0) + 1);
+      }
+    }
+
+    const uniqueWords = [...occurrences.values()].filter((count) => count === 1);
+    expect(uniqueWords.length).toBeGreaterThan(allCitySlugs.length * 3);
+  });
+
+  test('[REQ-CITY-SEO-04][REQ-CITY-SEO-05] JSON-LD und FAQs sind stadtbezogen', async ({ page }) => {
+    await page.goto('/esslingen');
+    const nodes = await getJsonLdNodes(page);
+    const service = nodes.find((node) => node['@type'] === 'Service');
+    expect(service?.areaServed).toEqual([{ '@type': 'City', name: 'Esslingen' }]);
+    await expect(page.getByText('Wann reicht schlanke Beschallung in Esslinger Altstadt-Räumen?', { exact: false })).toBeVisible();
+
+    await page.goto('/nürtingen');
+    await expect(page.getByText('Brauche ich für Nürtinger Feiern Akku-Box oder Netzstrom?', { exact: false })).toBeVisible();
+    await expect(page.getByText('Wann lohnt sich „Akku-Licht für Tübinger Gartenpartys“?', { exact: false })).toHaveCount(0);
+  });
+});

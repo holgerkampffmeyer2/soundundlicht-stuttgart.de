@@ -9,12 +9,13 @@ interface Props {
 }
 
 const { currentPage = 'home' } = Astro.props;
+const normalizedCurrentPage = currentPage.replace(/\.html$/, '').replace(/\/$/, '') || '/';
 
 const vermietungGroups = [
   {
     label: 'Pakete',
     items: [
-      { href: '/vermietung#pakete', label: 'Alle Pakete' },
+      { href: '/vermietung/pakete', label: 'Pakete mieten' },
       { href: '/vermietung/partypaket-stuttgart', label: 'Partypaket' },
       { href: '/vermietung/veranstaltungspaket-stuttgart', label: 'Veranstaltungspaket' },
       { href: '/vermietung/djpaket-fildern', label: 'DJ-Paket' },
@@ -24,18 +25,28 @@ const vermietungGroups = [
     ],
   },
   {
-    label: 'Einzelgeräte',
+    label: 'Sound & DJ',
     items: [
+      { href: '/vermietung/musikanlage', label: 'Musikanlage mieten' },
+      { href: '/vermietung/lautsprecher', label: 'Lautsprecher mieten' },
+      { href: '/vermietung/pa-anlage', label: 'PA-Anlage mieten' },
+      { href: '/vermietung/dj-equipment', label: 'DJ-Equipment mieten' },
       { href: '/vermietung#sound', label: 'Sound – PA & Lautsprecher' },
+      { href: '/vermietung/ld-systems-icoa-series#einzelgeraete', label: 'LD ICOA Einzelgeräte' },
+    ],
+  },
+  {
+    label: 'Licht',
+    items: [
+      { href: '/vermietung/partylicht', label: 'Partylicht mieten' },
       { href: '/vermietung#licht', label: 'Licht & Effekte' },
       { href: '/vermietung/nebelmaschinen', label: 'Nebelmaschinen' },
-      { href: '/vermietung/ld-systems-icoa-series#einzelgeraete', label: 'LD ICOA Einzelgeräte' },
     ],
   },
 ];
 
-const isVermietungActive = currentPage.startsWith('/vermietung');
-const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietung', '') : null;
+const isVermietungActive = normalizedCurrentPage.startsWith('/vermietung');
+const activeVermietungSlug = isVermietungActive ? normalizedCurrentPage.replace('/vermietung', '') : null;
 ---
 
 <nav data-pagefind-ignore class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]" aria-label="Main navigation">
@@ -49,7 +60,7 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
       
       <!-- Desktop Menu -->
       <div class="desktop-menu hidden md:flex items-center space-x-6">
-        <a href="/" class:list={["nav-link", { active: currentPage === '/' || currentPage === 'home' }]}>Home</a>
+        <a href="/" class:list={["nav-link", { active: normalizedCurrentPage === '/' || normalizedCurrentPage === 'home' }]}>Home</a>
         
         <!-- Vermietung Dropdown -->
         <div class="relative group">
@@ -60,7 +71,7 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
             Vermietung
             <Icon name="chevron-down" class="h-4 w-4" />
           </a>
-          <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2">
+          <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 max-h-[min(70vh,30rem)] overflow-y-auto bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2">
             <a
               href="/vermietung"
               class:list={[
@@ -78,7 +89,7 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
                     href={item.href}
                     class:list={[
                       "block pl-7 pr-4 py-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] hover:bg-[var(--color-bg)]",
-                      { "text-[var(--color-secondary)] bg-[var(--color-bg)]": activeVermietungSlug === item.href.replace('/vermietung', '') }
+                      { "active text-[var(--color-secondary)] bg-[var(--color-bg)]": activeVermietungSlug === item.href.replace('/vermietung', '') }
                     ]}
                   >
                     {item.label}
@@ -108,7 +119,7 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-surface)] border-t border-[var(--color-border)]">
     <div class="px-4 py-4 space-y-3">
-      <a href="/" class:list={["block nav-link py-2", { active: currentPage === '/' || currentPage === 'home' }]}>Home</a>
+      <a href="/" class:list={["block nav-link py-2", { active: normalizedCurrentPage === '/' || normalizedCurrentPage === 'home' }]}>Home</a>
       <div>
         <button
           type="button"
@@ -126,7 +137,15 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
             <div>
               <div class="pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)]">{group.label}</div>
               {group.items.map(item => (
-                <a href={item.href} class="block nav-link py-2 pl-3 text-sm">{item.label}</a>
+                <a
+                  href={item.href}
+                  class:list={[
+                    "block nav-link py-2 pl-3 text-sm",
+                    { "active text-[var(--color-secondary)] bg-[var(--color-bg)]": activeVermietungSlug === item.href.replace('/vermietung', '') }
+                  ]}
+                >
+                  {item.label}
+                </a>
               ))}
             </div>
           ))}
@@ -194,6 +213,10 @@ const activeVermietungSlug = isVermietungActive ? currentPage.replace('/vermietu
       }
       
       if (href === '/vermietung' && window.location.pathname.startsWith('/vermietung')) {
+        link.classList.add('active');
+      }
+
+      if (href === window.location.pathname) {
         link.classList.add('active');
       }
       

@@ -1,0 +1,51 @@
+---
+import TechnicalLandingLayout from '../../components/vermietung/TechnicalLandingLayout.astro';
+import { getCollection } from 'astro:content';
+import { getFaqsForPage } from '../../lib/faqUtils';
+import { technicalLandingData } from '../../lib/technicalLanding';
+
+const allProducts = await getCollection('products');
+const slugs = ['ld-maui-28g3', 'ld-icoa-club-paket', 'ld-icoa-top-paar', 'ld-icoa-sub-15-a'];
+const products = slugs
+  .map((slug) => allProducts.find((entry) => entry.data.slug === slug)?.data)
+  .filter((product) => product !== undefined);
+
+const faqs = getFaqsForPage('pa-anlage');
+const priceValue = 50;
+const title = 'PA-Anlage mieten in Stuttgart';
+const description = 'Kompakte ICOA-Systeme und LD Maui 28 G3 für 50 bis 150 Personen. Klarer Sound für Musik, Reden und Durchsagen, mit optionalem Sub und Mikrofon – ab 50€ pro Tag.';
+const { breadcrumbSegments, jsonLd } = technicalLandingData({
+  title,
+  description,
+  label: 'PA-Anlagen',
+  priceValue,
+  products,
+  faqs,
+});
+---
+
+<TechnicalLandingLayout
+  pageTitle="PA-Anlage mieten in Stuttgart | Sound & Licht Stuttgart"
+  title={title}
+  description={description}
+  image="/img/vermietung/djpaket.webp"
+  keyword="PA-Anlage mieten Stuttgart"
+  intro="Du planst Musik und Ansagen für eine Feier? Dann zählt gleichmäßiger Schall im ganzen Raum. Ich stelle Systeme zusammen, die Musik tragen und gleichzeitig Ansagen verständlich lassen."
+  details="Die LD Maui 28 G3 reicht für bis rund 150 Gäste, ICOA-Tops mit Sub sind flexibel für kleinere und mittlere Räume. Bei der Abholung erkläre ich dir DSP-Presets, Aufstellung und Kabelwege."
+  benefits={[
+    { title: 'Für Reden und Musik', text: 'Eine PA ist mehr als Lautstärke: Mikrofone und gleichmäßige Abstrahlung machen Ansagen hörbar.' },
+    { title: 'Mit oder ohne Sub', text: 'Für Sprache reichen Tops; für Tanzfläche und Bass ergänze ich einen Subwoofer.' },
+    { title: 'Profiklang zum Mitnehmen', text: 'Du bekommst eine echte PA mit DSP und Headroom, keine Consumer-Box mit übertriebenen Wattangaben.' },
+  ]}
+  steps={[
+    'Nenne mir die Gästezahl und ob Reden oder Musik im Vordergrund stehen.',
+    'Ich wähle Top-Paar, Maui-Säule oder Club-Paket mit Sub.',
+    'Bei der Übergabe stelle ich Presets und Aufstellung mit dir ein.',
+  ]}
+  products={products}
+  faqs={faqs}
+  jsonLd={jsonLd}
+  breadcrumbSegments={breadcrumbSegments}
+  startingPrice={priceValue}
+  tone="sound"
+/>

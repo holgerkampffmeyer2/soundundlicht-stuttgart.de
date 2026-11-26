@@ -70,6 +70,26 @@ function findImages(rootDir) {
   return images;
 }
 
+function findWebpOnlyImages(rootDir) {
+  const images = [];
+  if (!fs.existsSync(rootDir)) return images;
+
+  const files = fs.readdirSync(rootDir, { recursive: true }).filter((file) => typeof file === 'string');
+  const sourceBases = new Set(
+    files
+      .filter((file) => /\.(jpe?g|png)$/i.test(file))
+      .map((file) => file.replace(/\.(jpe?g|png)$/i, '').toLowerCase())
+  );
+
+  for (const file of files) {
+    if (!/\.webp$/i.test(file) || /-thumb\.webp$/i.test(file)) continue;
+    if (sourceBases.has(file.replace(/\.webp$/i, '').toLowerCase())) continue;
+    images.push(path.join(rootDir, file));
+  }
+
+  return images;
+}
+
 async function processImage(filePath, options) {
   const baseName = path.basename(filePath);
   const webpPath = filePath.replace(/\.(jpe?g|png)$/i, '.webp');
@@ -129,6 +149,28 @@ async function processImage(filePath, options) {
   }
 }
 
+async function generateWebpThumb(filePath) {
+  const thumbPath = filePath.replace(/\.webp$/i, '-thumb.webp');
+  if (fs.existsSync(thumbPath)) return false;
+
+  try {
+    const metadata = await sharp(filePath).metadata();
+    if (!metadata.width || metadata.width <= 480) return false;
+
+    await sharp(filePath)
+      .resize({ width: 480, withoutEnlargement: true, fit: 'inside' })
+      .webp({ quality: 75 })
+      .toFile(thumbPath);
+
+    const thumbSize = fs.statSync(thumbPath).size;
+    console.log(`  ✓ thumb: ${path.basename(thumbPath)} (${(thumbSize / 1024).toFixed(1)}KB)`);
+    return true;
+  } catch (err) {
+    console.error(`  ✗ Error: ${path.basename(filePath)} - ${err.message}`);
+    return false;
+  }
+}
+
 async function processAll(images, options) {
   let converted = 0;
   const queue = [...images];
@@ -157,14 +199,26 @@ async function main() {
       continue;
     }
     const images = findImages(dir);
-    if (images.length === 0) {
+    const webpOnlyImages = findWebpOnlyImages(dir);
+    if (images.length === 0 && webpOnlyImages.length === 0) {
       console.log(`No images found in: ${dir}`);
       continue;
     }
-    console.log(`Processing ${images.length} images in: ${dir}`);
-    const converted = await processAll(images, options);
-    console.log(`[${dir}] ${converted} files converted to WebP`);
-    totalConverted += converted;
+    if (images.length > 0) {
+      console.log(`Processing ${images.length} images in: ${dir}`);
+      const converted = await processAll(images, options);
+      console.log(`[${dir}] ${converted} files converted to WebP`);
+      totalConverted += converted;
+    }
+    if (webpOnlyImages.length > 0) {
+      console.log(`Processing ${webpOnlyImages.length} standalone WebP images in: ${dir}`);
+      let thumbs = 0;
+      for (const filePath of webpOnlyImages) {
+        if (await generateWebpThumb(filePath)) thumbs++;
+      }
+      console.log(`[${dir}] ${thumbs} WebP thumbs generated`);
+      totalConverted += thumbs;
+    }
   }
 
   console.log(`\n✅ Total: ${totalConverted} WebP images created`);

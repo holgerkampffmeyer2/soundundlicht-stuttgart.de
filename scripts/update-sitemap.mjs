@@ -21,14 +21,14 @@ function findHtmlPages() {
         if (entry.name === 'index.html') {
           const pagePath = relativePrefix || '/';
           const html = fs.readFileSync(path.join(dir, 'index.html'), 'utf-8');
-          if (!html.includes('noindex')) {
+          if (!/^\/404\/?$/.test(pagePath) && !html.includes('noindex')) {
             pages.push(`${baseUrl}${encodeURI(pagePath)}`);
           }
         } else {
           const pageName = entry.name.replace(/\.html$/, '');
           const pagePath = `${relativePrefix}${pageName}`;
           const html = fs.readFileSync(path.join(dir, entry.name), 'utf-8');
-          if (!html.includes('noindex')) {
+          if (!/^\/404\/?$/.test(pagePath) && !html.includes('noindex')) {
             pages.push(`${baseUrl}${encodeURI(pagePath)}`);
           }
         }
