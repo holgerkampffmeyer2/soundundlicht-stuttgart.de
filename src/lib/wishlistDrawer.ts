@@ -1,4 +1,5 @@
 import { getCart, removeItem } from './merklisteStore';
+import { getThumbUrl } from './imageUtils';
 import type { CatalogProduct } from './types';
 
 function getCatalog(): Record<string, CatalogProduct> {
@@ -65,7 +66,7 @@ function renderMerkliste(): void {
 
       let imgHtml = '';
       if (image) {
-        const thumbWebp = image.replace(/\.(jpe?g|png)$/i, '-thumb.webp');
+        const thumbWebp = getThumbUrl(image);
         imgHtml = '<picture class="shrink-0">' +
           '<source srcset="' + escapeHtml(thumbWebp) + '" type="image/webp" />' +
           '<img src="' + escapeHtml(image) + '" alt="' + title + '" width="60" height="60" class="rounded-xl object-cover" />' +
