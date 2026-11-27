@@ -1,28 +1,28 @@
 # citygrid-bugfix Specification
 
 ## Purpose
-Definiert die Korrekturen am CityGrid-Carousel aus dem Code-Review: genau eine getypte `thumbSrc`-Funktion für Bild-Thumbnails sowie ein zuverlässiges Zurücksetzen des Navigations-Locks (`isAnimating`) nach jedem Sprung.
+Definiert die Korrekturen am CityGrid-Carousel aus dem Code-Review: zentrale, getypte Thumbnail-Erzeugung über `imageUtils` sowie ein zuverlässiges Zurücksetzen des Navigations-Locks (`isAnimating`) nach jedem Sprung.
 
 ## Requirements
 
-### Requirement: CityGrid hat genau eine getypte `thumbSrc`-Funktion
+### Requirement: CityGrid nutzt den zentralen Thumbnail-Helper
 
-Der Carousel-Code in `src/components/CityGrid.astro` SHALL genau eine Funktion `thumbSrc(src: string): string` verwenden, die Bildpfade per Regex `/\.(webp|jpe?g|png)$/i` in einen Thumbnail-Pfad umwandelt.
+`src/components/CityGrid.astro` SHALL `getThumbUrl` aus `src/lib/imageUtils` für alle `data-srcset`-Werte verwenden und SHALL keine eigene `thumbSrc`-Funktion definieren.
 
-#### Scenario: Doppelte Funktion ist entfernt
+#### Scenario: Keine lokale Duplikat-Funktion
 
 - **WHEN** `src/components/CityGrid.astro` analysiert wird
-- **THEN** existiert nur eine `thumbSrc`-Funktion, mit Parameter- und Return-Typ `string`
-- **THEN** existiert keine ungetypte Duplikat-Funktion mit abweichendem Regex
+- **THEN** existiert keine lokale `thumbSrc`-Funktion
+- **THEN** wird `getThumbUrl` aus `../lib/imageUtils` importiert und für alle Stadtbilder verwendet
 
 #### Scenario: Bild-URLs werden korrekt umgewandelt
 
-- **WHEN** `thumbSrc` mit einem `.jpg`-, `.jpeg`-, `.png`- oder `.webp`-Pfad aufgerufen wird
+- **WHEN** `getThumbUrl` mit einem Bildpfad aufgerufen wird
 - **THEN** liefert sie den Pfad mit `-thumb.webp`-Endung
 
 ### Requirement: Carousel-Lock wird nach dem Sprung zurückgesetzt
 
-`jumpTo()` in `src/components/CityGrid.astro` SHALL `isAnimating = false` nach dem `requestAnimationFrame`-Callback setzen, damit die Steuerung nicht blockiert bleibt.
+`jumpTo()` in `src/lib/cityCarousel.ts` SHALL `isAnimating = false` nach dem verschachtelten `requestAnimationFrame`-Callback setzen, damit die Steuerung nicht blockiert bleibt.
 
 #### Scenario: Nach dem Sprung ist das Carousel wieder bedienbar
 
