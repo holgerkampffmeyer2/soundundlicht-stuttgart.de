@@ -1,5 +1,6 @@
 ---
 import ProductLayout from '../../components/vermietung/ProductLayout.astro';
+import Icon from '../../components/Icon.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
 import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
@@ -101,7 +102,7 @@ const videoJsonLdData = JSON.parse(JSON.stringify(videoJsonLd(
         <div class="flex flex-wrap gap-3 mt-3 mb-2">
             <span class="price-badge">{product.price}</span>
           <span class="plug-badge-inline">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            <Icon name="check" class="w-3.5 h-3.5" />
             Inkl. Kabel & Einweisung
           </span>
           <BrandBadges brands={product.brands} />
@@ -139,10 +140,6 @@ const videoJsonLdData = JSON.parse(JSON.stringify(videoJsonLd(
   <RentalIncludes items={rentalIncludes} />
   <ExampleEvents events={events} />
 
-  <section class="section-padding">
-    <div class="max-w-4xl mx-auto px-4">
-      <FAQSection faqs={faqs} tone="sound" />
-    </div>
-  </section>
+  <FAQSection faqs={faqs} />
 </ProductLayout>
 

@@ -1,5 +1,6 @@
 ---
 import CategoryLayout from '../../components/vermietung/CategoryLayout.astro';
+import Icon from '../../components/Icon.astro';
 import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
 import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
 import DecisionHelp from '../../components/vermietung/DecisionHelp.astro';
@@ -152,7 +153,7 @@ const af150Packages = [
         <div class="flex flex-wrap gap-3 mt-3 mb-2">
           <span class="price-badge">ab 20€ / Tag</span>
           <span class="plug-badge-inline">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            <Icon name="check" class="w-3.5 h-3.5" />
             Inkl. Nebelfluid & Einweisung
           </span>
           <BrandBadges brands={nebelHeroBrands} />
@@ -230,9 +231,5 @@ const af150Packages = [
   />
 
   <!-- FAQ -->
-  <section class="section-padding bg-[var(--color-surface)]">
-    <div class="max-w-4xl mx-auto px-4 pt-8">
-      <FAQSection faqs={faqs} tone="licht" />
-    </div>
-  </section>
+  <FAQSection faqs={faqs} />
 </CategoryLayout>

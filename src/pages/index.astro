@@ -346,11 +346,7 @@ const komplettPakete = rentalItems.filter(i => i.category === 'Paket');
   <CityGrid />
 
   <!-- FAQ Section -->
-  <section id="faq" class="section-padding bg-[var(--color-bg)]">
-    <div class="max-w-4xl mx-auto">
-      <FAQSection faqs={indexFaqs} />
-    </div>
-  </section>
+  <FAQSection faqs={indexFaqs} id="faq" />
 
   <!-- DJ Section -->
   <section class="section-padding bg-[var(--color-bg)]">

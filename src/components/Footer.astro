@@ -1,12 +1,58 @@
 ---
 import { Picture } from 'astro:assets';
 import logo from '@assets/logo/djhulk_logo.webp';
+import Icon from './Icon.astro';
 const currentYear = new Date().getFullYear();
+const linkClass = 'text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors';
+const technikGroups = [
+  {
+    label: 'Pakete',
+    links: [
+      { href: '/vermietung/pakete', label: 'Alle Pakete' },
+      { href: '/vermietung/partypaket-stuttgart', label: 'Partypaket' },
+      { href: '/vermietung/veranstaltungspaket-stuttgart', label: 'Veranstaltungspaket' },
+      { href: '/vermietung/djpaket-fildern', label: 'DJ-Paket' },
+      { href: '/vermietung/akku-party-paket', label: 'Akku-Party-Paket' },
+      { href: '/vermietung/karaoke-paket', label: 'Karaoke-Paket' },
+      { href: '/vermietung/ld-systems-icoa-series', label: 'LD Systems PA Pakete' },
+      { href: '/vermietung/ld-icoa-club-paket', label: 'LD ICOA Club-Paket' },
+      { href: '/vermietung/ld-icoa-party-paket', label: 'LD ICOA Party-Paket' },
+      { href: '/vermietung/ld-icoa-buehnen-paket', label: 'LD ICOA Bühnen-Paket' },
+      { href: '/vermietung/ld-icoa-top-paar', label: 'LD ICOA Top-Paar' },
+    ],
+  },
+  {
+    label: 'Sound & DJ',
+    links: [
+      { href: '/vermietung/musikanlage', label: 'Musikanlage' },
+      { href: '/vermietung/lautsprecher', label: 'Lautsprecher' },
+      { href: '/vermietung/pa-anlage', label: 'PA-Anlage' },
+      { href: '/vermietung/dj-equipment', label: 'DJ-Equipment' },
+      { href: '/vermietung/jbl-partybox-300-320', label: 'JBL Partybox 300/320' },
+      { href: '/vermietung/ld-maui-28g3', label: 'LD Maui 28 G3' },
+      { href: '/vermietung/mikrofon-mischpult', label: 'Mikrofon & Mischpult' },
+      { href: '/vermietung/powerstation', label: 'Powerstation' },
+    ],
+  },
+  {
+    label: 'Licht & Effekte',
+    links: [
+      { href: '/vermietung/partylicht', label: 'Partylicht' },
+      { href: '/vermietung/partylicht-moving-head', label: 'Moving Heads' },
+      { href: '/vermietung/led-scheinwerfer', label: 'LED-Scheinwerfer' },
+      { href: '/vermietung/kls-laser-bar', label: 'KLS Laser Bar' },
+      { href: '/vermietung/nebelmaschinen', label: 'Nebelmaschinen' },
+      { href: '/vermietung/led-bossfx-nebelmaschine', label: 'LED BossFX Nebelmaschine' },
+      { href: '/vermietung/max-party-bar', label: 'MAX Partybar' },
+      { href: '/vermietung/mini-party-beamer', label: 'Mini Party Beamer' },
+    ],
+  },
+];
 ---
 
 <footer data-pagefind-ignore class="bg-[var(--color-bg)]/90 border-t border-[var(--color-border)] py-12">
   <div class="max-w-7xl mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Company Info -->
       <div>
         <div class="flex items-center space-x-3 mb-4">
@@ -21,28 +67,49 @@ const currentYear = new Date().getFullYear();
           Magellanstraße 4<br>
           70771 Echterdingen
         </p>
+
+        <div class="mt-6">
+          <h3 class="font-play font-bold text-lg mb-4">Externe Links</h3>
+          <ul class="space-y-2">
+            <li><a href="/faq" class={linkClass}>FAQ</a></li>
+            <li><a href="/rss.xml" class={linkClass}>RSS Feed</a></li>
+            <li><a href="/impressum" class={linkClass}>Impressum / Datenschutz</a></li>
+            <li><a href="https://holger-kampffmeyer.de/" target="_blank" rel="noopener" class={linkClass}>DJ Hulk – Electronic Music →</a></li>
+            <li><a href="https://medium.com/@holger.kampffmeyer/partytechnik-mieten-in-stuttgart-die-5-h%C3%A4ufigsten-fehler-und-warum-ich-meinen-eigenen-verleih-45c4189edbc6" target="_blank" rel="noopener" class={linkClass}>Tipps &amp; Tricks auf Medium →</a></li>
+          </ul>
+          <div class="flex gap-4 mt-4">
+            <a href="https://www.facebook.com/holgerkampffmeyerdj" target="_blank" rel="noopener noreferrer nofollow" class="social-link" aria-label="Facebook">
+              <Icon name="facebook" />
+            </a>
+            <a href="https://www.instagram.com/djhulk_de/" target="_blank" rel="noopener noreferrer nofollow" class="social-link" aria-label="Instagram">
+              <Icon name="instagram" />
+            </a>
+          </div>
+        </div>
       </div>
       
-      <!-- Quick Links -->
+      <!-- Technik -->
       <div>
-        <h3 class="font-play font-bold text-lg mb-4">Schnelllinks</h3>
-        <ul class="space-y-2">
-          <li><a href="/" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Home</a></li>
-          <li><a href="/vermietung" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Vermietung Musik / Licht</a></li>
-          <li><a href="/#services" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Services</a></li>
-          <li><a href="/#pakete" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Pakete</a></li>
-          <li><a href="/#services" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Equipment / Miettechnik</a></li>
-          <li><a href="/#bewertungen" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Bewertungen</a></li>
-          <li><a href="/faq" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">FAQ</a></li>
-          <li><a href="/#kontakt" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Kontakt</a></li>
-        </ul>
+        <h3 class="font-play font-bold text-lg mb-4">Technik</h3>
+        <div class="grid grid-cols-[repeat(2,minmax(0,1fr))] gap-x-6 gap-y-6">
+          {technikGroups.map(group => (
+            <div class="min-w-0 break-words">
+              <h4 class="font-semibold text-sm mb-2">{group.label}</h4>
+              <ul class="space-y-2">
+                {group.links.map(link => (
+                  <li><a href={link.href} class={linkClass}>{link.label}</a></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
 
       <!-- Einzugsgebiet -->
       <div>
         <h3 class="font-play font-bold text-lg mb-4">Einzugsgebiet</h3>
-        <div class="grid grid-cols-2 gap-x-4">
-          <ul class="space-y-2">
+        <div class="grid grid-cols-[repeat(2,minmax(0,1fr))] gap-x-6">
+          <ul class="space-y-2 min-w-0 break-words">
             <li><a href="/stuttgart" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Stuttgart</a></li>
             <li><a href="/esslingen" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Esslingen</a></li>
             <li><a href="/tübingen" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Tübingen</a></li>
@@ -54,7 +121,7 @@ const currentYear = new Date().getFullYear();
             <li><a href="/sindelfingen" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Sindelfingen</a></li>
             <li><a href="/leonberg" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Leonberg</a></li>
           </ul>
-          <ul class="space-y-2">
+          <ul class="space-y-2 min-w-0 break-words">
             <li><a href="/waiblingen" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Waiblingen</a></li>
             <li><a href="/nürtingen" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Nürtingen</a></li>
             <li><a href="/reutlingen" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Reutlingen</a></li>
@@ -70,28 +137,6 @@ const currentYear = new Date().getFullYear();
         </div>
       </div>
 
-      <!-- External Links -->
-      <div>
-        <h3 class="font-play font-bold text-lg mb-4">Externe Links</h3>
-        <ul class="space-y-2">
-          <li><a href="/rss.xml" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">RSS Feed</a></li>
-          <li><a href="/impressum" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Impressum / Datenschutz</a></li>
-          <li><a href="https://holger-kampffmeyer.de/" target="_blank" rel="noopener" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">DJ Hulk – Electronic Music →</a></li>
-          <li><a href="https://medium.com/@holger.kampffmeyer/partytechnik-mieten-in-stuttgart-die-5-h%C3%A4ufigsten-fehler-und-warum-ich-meinen-eigenen-verleih-45c4189edbc6" target="_blank" rel="noopener" class="text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-colors">Tipps &amp; Tricks auf Medium →</a></li>
-        </ul>
-        <div class="flex gap-4 mt-4">
-           <a href="https://www.facebook.com/holgerkampffmeyerdj" target="_blank" rel="noopener noreferrer nofollow" class="social-link" aria-label="Facebook">
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-             </svg>
-           </a>
-           <a href="https://www.instagram.com/djhulk_de/" target="_blank" rel="noopener noreferrer nofollow" class="social-link" aria-label="Instagram">
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79 4-4 0-2.209 1.791-4 4-4s4 1.791-4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-             </svg>
-           </a>
-         </div>
-      </div>
     </div>
     
     <div class="border-t border-[var(--color-border)] mt-8 pt-8 text-center">

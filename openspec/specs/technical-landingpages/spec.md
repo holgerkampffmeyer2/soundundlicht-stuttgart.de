@@ -45,12 +45,18 @@ All six technical landingpages SHALL be present in sitemap, `urllist.txt`, RSS a
 - **THEN** sitemap and urllist contain all six new clean URLs without `.html` suffix
 
 ### Requirement: [REQ-TECHLP-06] Navigation und aktive Markierung
-The main navigation SHALL link all six technical landingpages in the groups Pakete, Sound & DJ and Licht. On each technical landingpage the matching navigation link SHALL be marked as active.
+The main navigation SHALL offer exactly four Vermietung entry links (`/vermietung`, `/vermietung/pakete`, `/vermietung#sound`, `/vermietung#licht`) in desktop and mobile views, with no links to individual technical landingpages. The six landingpages SHALL remain linked from the footer and the `/vermietung` hub sections. On `/vermietung*` the parent link SHALL be active; `/vermietung/pakete` SHALL also be active when it is the current page.
+
+#### Scenario: Vermietung entry links are present
+- **WHEN** a visitor opens the desktop or mobile Vermietung navigation
+- **THEN** links to `/vermietung`, `/vermietung/pakete`, `/vermietung#sound` and `/vermietung#licht` are present
+- **THEN** no links to individual technical landingpages are present in the dropdown
 
 #### Scenario: Technical landingpages are discoverable
-- **WHEN** a visitor opens the desktop or mobile Vermietung navigation
-- **THEN** links to `/vermietung/pakete`, `/vermietung/musikanlage`, `/vermietung/lautsprecher`, `/vermietung/pa-anlage`, `/vermietung/dj-equipment` and `/vermietung/partylicht` are present
+- **WHEN** any page is rendered
+- **THEN** the footer contains links to `/vermietung/pakete`, `/vermietung/musikanlage`, `/vermietung/lautsprecher`, `/vermietung/pa-anlage`, `/vermietung/dj-equipment` and `/vermietung/partylicht`
+- **THEN** the hub sections on `/vermietung` still link to these six technical landingpages
 
 #### Scenario: Active navigation state
 - **WHEN** a visitor opens `/vermietung/pa-anlage`
-- **THEN** the `PA-Anlage mieten` link in the Vermietung navigation has the active class
+- **THEN** the Vermietung parent link in the main navigation has the active class

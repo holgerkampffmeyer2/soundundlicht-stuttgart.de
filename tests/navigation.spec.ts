@@ -1,22 +1,46 @@
 import { test, expect } from '@playwright/test';
 
+const navEntries = [
+  { href: '/vermietung', label: 'Alle Geräte & Pakete' },
+  { href: '/vermietung/pakete', label: 'Pakete' },
+  { href: '/vermietung#sound', label: 'Soundtechnik' },
+  { href: '/vermietung#licht', label: 'Lichttechnik' },
+];
+
 const technicalPages = [
-  { href: '/vermietung/pakete', label: 'Pakete mieten' },
-  { href: '/vermietung/musikanlage', label: 'Musikanlage mieten' },
-  { href: '/vermietung/lautsprecher', label: 'Lautsprecher mieten' },
-  { href: '/vermietung/pa-anlage', label: 'PA-Anlage mieten' },
-  { href: '/vermietung/dj-equipment', label: 'DJ-Equipment mieten' },
-  { href: '/vermietung/partylicht', label: 'Partylicht mieten' },
+  '/vermietung/pakete',
+  '/vermietung/musikanlage',
+  '/vermietung/lautsprecher',
+  '/vermietung/pa-anlage',
+  '/vermietung/dj-equipment',
+  '/vermietung/partylicht',
 ];
 
 test.describe('Vermietung Navigation', () => {
-  test('[REQ-TECHLP-06] Themenpages sind in Desktop- und Mobile-Navigation verlinkt', async ({ page }) => {
+  test('[REQ-TECHLP-06] Vier Einstiege in Desktop- und Mobile-Navigation', async ({ page }) => {
     await page.goto('/vermietung');
 
-    for (const { href, label } of technicalPages) {
-      await expect(page.locator(`.desktop-menu a[href="${href}"]`), `${label} desktop`).toHaveCount(1);
+    for (const { href, label } of navEntries) {
+      await expect(page.locator(`[data-vermietung-dropdown] a[href="${href}"]`), `${label} desktop`).toHaveCount(1);
       await expect(page.locator(`#mobile-vermietung-sub a[href="${href}"]`), `${label} mobile`).toHaveCount(1);
     }
+
+    for (const href of technicalPages.filter(href => !navEntries.some(entry => entry.href === href))) {
+      await expect(page.locator(`[data-vermietung-dropdown] a[href="${href}"]`)).toHaveCount(0);
+      await expect(page.locator(`#mobile-vermietung-sub a[href="${href}"]`)).toHaveCount(0);
+    }
+  });
+
+  test('[REQ-TECHLP-06] Themenpages und FAQ sind im Footer verlinkt', async ({ page }) => {
+    await page.goto('/');
+
+    for (const href of technicalPages) {
+      await expect(page.locator(`footer a[href="${href}"]`), `footer ${href}`).toHaveCount(1);
+    }
+
+    await expect(page.locator('footer a[href="/faq"]')).toHaveCount(1);
+    await expect(page.locator('.desktop-menu a[href="/faq"]')).toHaveCount(0);
+    await expect(page.locator('#mobile-menu a[href="/faq"]')).toHaveCount(0);
   });
 
   test('[REQ-TECHLP-06] Vermietungs-Hub verlinkt die Themenpages', async ({ page }) => {
@@ -30,12 +54,17 @@ test.describe('Vermietung Navigation', () => {
     await expect(page.locator('#licht a[href="/vermietung/partylicht"]')).toHaveCount(1);
   });
 
-  for (const { href, label } of technicalPages) {
-    test(`[REQ-TECHLP-06] aktiver Nav-Punkt auf ${label}`, async ({ page }) => {
-      await page.goto(href);
+  test('[REQ-TECHLP-06] aktiver Nav-Punkt auf einer Detailseite', async ({ page }) => {
+    await page.goto('/vermietung/pa-anlage');
 
-      await expect(page.locator(`.desktop-menu a[href="${href}"].active`)).toHaveCount(1);
-      await expect(page.locator(`#mobile-vermietung-sub a[href="${href}"].active`)).toHaveCount(1);
-    });
-  }
+    await expect(page.locator('.desktop-menu a[href="/vermietung"].active')).toHaveCount(1);
+    await expect(page.locator('#mobile-vermietung-sub a[href="/vermietung"].active')).toHaveCount(1);
+  });
+
+  test('[REQ-TECHLP-06] aktiver Nav-Punkt auf /vermietung/pakete', async ({ page }) => {
+    await page.goto('/vermietung/pakete');
+
+    await expect(page.locator('[data-vermietung-dropdown] a[href="/vermietung/pakete"].active')).toHaveCount(1);
+    await expect(page.locator('#mobile-vermietung-sub a[href="/vermietung/pakete"].active')).toHaveCount(1);
+  });
 });

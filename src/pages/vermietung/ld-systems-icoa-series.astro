@@ -1,5 +1,6 @@
 ---
 import CategoryLayout from '../../components/vermietung/CategoryLayout.astro';
+import Icon from '../../components/Icon.astro';
 import TechnicalSpecs from '../../components/vermietung/TechnicalSpecs.astro';
 import RentalIncludes from '../../components/vermietung/RentalIncludes.astro';
 import IncludedInPackages from '../../components/vermietung/IncludedInPackages.astro';
@@ -7,7 +8,6 @@ import DecisionHelp from '../../components/vermietung/DecisionHelp.astro';
 import RelatedLinks from '../../components/vermietung/RelatedLinks.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import BrandBadges from '../../components/vermietung/BrandBadges.astro';
-import Icon from '../../components/Icon.astro';
 import { getCollection } from 'astro:content';
 import { getFaqsForPage } from '../../lib/faqUtils';
 import { serviceArea, faqPageJsonLd, breadcrumbJsonLd } from '../../data/jsonLd';
@@ -139,7 +139,7 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
           <span class="price-badge">Bühnen-Paket ab 130€</span>
           <span class="price-badge">Club-Paket ab 150€</span>
           <span class="plug-badge-inline">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            <Icon name="check" class="w-3.5 h-3.5" />
             Einzeln oder im Paket
           </span>
           <BrandBadges brands={icoaHeroBrands} />
@@ -189,7 +189,7 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
                 />
               </picture>
               <span class="plug-badge">
-                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <Icon name="check" class="w-3 h-3" />
                 Inkl. Kabel & Einweisung
               </span>
             </div>
@@ -319,7 +319,5 @@ const icoaHeroBrands = [...new Set([...(top.brands ?? []), ...(sub.brands ?? [])
     ]}
   />
 
-  <div class="max-w-4xl mx-auto px-4 py-12">
-    <FAQSection faqs={faqs} tone="sound" />
-  </div>
+  <FAQSection faqs={faqs} />
 </CategoryLayout>

@@ -123,11 +123,7 @@ const faqPageJsonLdData = faqPageJsonLd(cityFaqs);
   </section>
 
   <!-- FAQ -->
-  <section class="section-padding bg-[var(--color-bg)]">
-    <div class="max-w-4xl mx-auto">
-      <FAQSection faqs={cityFaqs} />
-    </div>
-  </section>
+  <FAQSection faqs={cityFaqs} />
 
   <ContactSection
     title={`Technik mieten in ${cityName} – einfach anfragen`}

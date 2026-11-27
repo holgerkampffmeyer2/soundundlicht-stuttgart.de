@@ -1,4 +1,6 @@
 ---
+import Icon from '../../components/Icon.astro';
+
 interface Props {
   items: string[];
   title?: string;
@@ -18,9 +20,7 @@ const { items, title = "Im Vermietungspaket enthalten" } = Astro.props;
       {items.map((item, index) => (
         <div class="include-item" style={`animation-delay: ${index * 0.1}s`}>
           <div class="include-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-            </svg>
+            <Icon name="check" class="w-6 h-6" />
           </div>
           <span class="include-text">{item}</span>
         </div>
@@ -69,6 +69,8 @@ const { items, title = "Im Vermietungspaket enthalten" } = Astro.props;
   .include-text {
     color: var(--color-text);
     font-weight: 500;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   @keyframes fadeInUp {

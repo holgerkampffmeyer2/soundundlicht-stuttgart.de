@@ -40,8 +40,8 @@ const layoutTitle = title ?? pageTitle;
   <slot name="hero" />
 
   <!-- Geräte im Überblick -->
-  <section class="section-padding bg-[var(--color-surface)]">
-    <div class="max-w-7xl mx-auto">
+  <section class="section-padding bg-[var(--color-bg)]">
+    <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">Im Überblick</span>
         <h2 class="font-play text-3xl md:text-4xl font-bold mt-4">Diese Geräte kannst du einzeln mieten</h2>
@@ -50,10 +50,10 @@ const layoutTitle = title ?? pageTitle;
         </p>
       </div>
 
-      <div class={`grid grid-cols-1 md:grid-cols-2 ${products.length > 2 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'} gap-8`}>
+      <div class={`grid grid-cols-1 md:grid-cols-2 ${products.length > 2 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'} gap-6`}>
         {products.map((product, index) => (
-          <div id={`karte-${product.slug}`} class="card-base equipment-card" style={`animation-delay: ${index * 0.1}s`}>
-            <div class="relative">
+          <div id={`karte-${product.slug}`} class="card-base equipment-card min-w-0 flex flex-col" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="relative min-w-0">
               <picture>
                 <source srcset={`${getThumbUrl(product.image)} 480w, ${getWebpUrl(product.image)} 960w`} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp" />
                 <img 
@@ -63,18 +63,18 @@ const layoutTitle = title ?? pageTitle;
                   height="256" 
                   loading="lazy" 
                   decoding="async" 
-                  class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]"
+                  class="rounded-xl w-full aspect-[16/10] object-cover mb-4 bg-[var(--color-surface)]"
                 />
               </picture>
               <span class="plug-badge">
-                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <Icon name="check" class="w-3 h-3" />
                 Inkl. Kabel &amp; Einweisung
               </span>
             </div>
             <span class="price-badge">{product.price}</span>
             <BrandBadges brands={product.brands} class="mt-2" />
-            <h3 class="text-xl font-bold mt-2 mb-3">{product.title}</h3>
-            <p class="text-[var(--color-text-muted)] text-sm mb-4">{product.description}</p>
+            <h3 class="text-xl font-bold mt-2 mb-3 break-words">{product.title}</h3>
+            <p class="text-[var(--color-text-muted)] text-sm mb-4 break-words">{product.description}</p>
             <ul class="text-[var(--color-text-muted)] text-sm space-y-1 mb-4">
               {product.features.map(feature => (
                 <li class="flex items-center gap-2">
@@ -122,9 +122,7 @@ const layoutTitle = title ?? pageTitle;
       </a>
       <div>
         <a href="/vermietung" class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)] text-sm inline-flex items-center gap-1 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-          </svg>
+          <Icon name="arrow-left" class="w-3.5 h-3.5" />
           Zurück zur Übersicht
         </a>
       </div>

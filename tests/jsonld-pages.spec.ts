@@ -110,11 +110,21 @@ test.describe('JSON-LD-Seitentypen', () => {
   });
 
   test('[REQ-FAQ-05] FAQ-Darstellung ist auf allen Seitentypen einheitlich', async ({ page }) => {
-    for (const path of ['/', '/vermietung', '/stuttgart', '/vermietung/partypaket-stuttgart']) {
+    let reference: { tone: string | null; icon: string; background: string } | undefined;
+
+    for (const path of ['/', '/vermietung', '/stuttgart', '/vermietung/partypaket-stuttgart', '/vermietung/partylicht']) {
       await visit(page, path);
       expect(await page.locator('details.faq-item').count()).toBeGreaterThan(0);
       expect(await page.locator('.faq-details').count()).toBe(0);
       expect(await page.locator('details.faq-item summary svg[aria-hidden="true"]').count()).toBeGreaterThan(0);
+
+      const formatting = {
+        tone: await page.locator('.faq-list').first().getAttribute('data-tone'),
+        icon: await page.locator('.faq-list .faq-question-icon svg').first().evaluate(el => el.outerHTML),
+        background: await page.locator('section').filter({ has: page.locator('.faq-list') }).first().evaluate(el => getComputedStyle(el).backgroundColor),
+      };
+      reference ??= formatting;
+      expect(formatting).toEqual(reference);
     }
 
     await visit(page, '/faq');

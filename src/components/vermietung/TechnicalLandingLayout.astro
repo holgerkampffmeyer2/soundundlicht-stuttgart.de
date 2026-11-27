@@ -25,7 +25,6 @@ interface Props {
   jsonLd: JsonLdItem[];
   breadcrumbSegments: BreadcrumbSegment[];
   startingPrice: number;
-  tone: string;
 }
 
 const {
@@ -43,7 +42,6 @@ const {
   jsonLd,
   breadcrumbSegments,
   startingPrice,
-  tone,
 } = Astro.props;
 ---
 
@@ -79,12 +77,12 @@ const {
     </div>
   </section>
 
-  <section class="section-padding bg-[var(--color-surface)]">
+  <section class="section-padding bg-[var(--color-bg)]">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="font-play text-3xl md:text-4xl font-bold mb-8 text-center">Worauf es bei der Auswahl ankommt</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {benefits.map((benefit) => (
-          <div class="card-base p-6">
+          <div class="min-w-0 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-all duration-200 hover:border-[var(--color-secondary)]">
             <h3 class="text-xl font-bold mb-2">{benefit.title}</h3>
             <p class="text-[var(--color-text-muted)] text-sm">{benefit.text}</p>
           </div>
@@ -93,13 +91,13 @@ const {
     </div>
   </section>
 
-  <section class="section-padding">
+  <section class="section-padding bg-[var(--color-bg)]">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="font-play text-3xl md:text-4xl font-bold mb-8 text-center">Passende Angebote aus meinem Verleih</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product, index) => (
-          <div class="card-base equipment-card" style={`animation-delay: ${index * 0.1}s`}>
-            <div class="relative">
+          <div class="card-base equipment-card min-w-0 flex flex-col" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="relative min-w-0">
               <picture>
                 <source srcset={`${getThumbUrl(product.image)} 480w, ${getWebpUrl(product.image)} 960w`} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp" />
                 <img
@@ -109,18 +107,18 @@ const {
                   height="256"
                   loading="lazy"
                   decoding="async"
-                  class="rounded-xl w-full h-64 object-cover mb-4 bg-[var(--color-surface)]"
+                  class="rounded-xl w-full aspect-[16/10] object-cover mb-4 bg-[var(--color-surface)]"
                 />
               </picture>
               <span class="plug-badge">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <Icon name="check" class="w-3 h-3" />
                 Inkl. Kabel &amp; Einweisung
               </span>
             </div>
             <span class="price-badge">{product.price}</span>
             <BrandBadges brands={product.brands} class="mt-2" />
-            <h3 class="text-xl font-bold mt-2 mb-3">{product.title}</h3>
-            <p class="text-[var(--color-text-muted)] text-sm mb-4">{product.description}</p>
+            <h3 class="text-xl font-bold mt-2 mb-3 break-words">{product.title}</h3>
+            <p class="text-[var(--color-text-muted)] text-sm mb-4 break-words">{product.description}</p>
             {product.features.length > 0 && (
               <ul class="text-[var(--color-text-muted)] text-sm space-y-1 mb-4">
                 {product.features.slice(0, 3).map(feature => (
@@ -167,11 +165,7 @@ const {
     </div>
   </section>
 
-  <section class="section-padding">
-    <div class="max-w-4xl mx-auto px-4">
-      <FAQSection faqs={faqs} tone={tone} />
-    </div>
-  </section>
+  <FAQSection faqs={faqs} />
 
   <section class="cta-section section-padding bg-[var(--color-surface)]">
     <div class="max-w-3xl mx-auto text-center px-4">
