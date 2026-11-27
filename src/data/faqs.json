@@ -1752,7 +1752,7 @@
   {
     "id": "icoa-top-personen",
     "question": "Wie viele Personen schafft das Top-Paar ohne Subwoofer?",
-    "answer": "Das Top-Paar aus 2x ICOA 12 A reicht für kleine Feiern und Beschallung mit Sprache oder akustischer Musik für etwa 30 bis 80 Personen – je nach Raum und Pegel. Für basslastige Partymusik empfehle ich zusätzlich einen ICOA SUB 15 A, damit die Tops entlastet werden.",
+    "answer": "Das Top-Paar aus 2x ICOA 12 A reicht für Beschallung mit Sprache oder akustischer Musik für etwa 30 bis 80 Personen – je nach Raum und Pegel. Für basslastige Partymusik, DJs und größere Räume empfehle ich ein ICOA-Paket mit einem oder zwei Subs, damit die Tops entlastet werden.",
     "tags": [
       "ld"
     ],
@@ -1763,7 +1763,7 @@
   {
     "id": "icoa-top-monitor",
     "question": "Kann ich das Top-Paar als Bühnenmonitor nutzen?",
-    "answer": "Ja. Beide ICOA 12 A lassen sich mit 55°-Winkel horizontal als Bodenmonitor aufstellen. Für Monitoring brauchst du keine Stative. Die Stative sind trotzdem dabei, falls du die Tops als kleine PA aufstellen willst.",
+    "answer": "Ja. Beide ICOA 12 A lassen sich mit 55°-Winkel horizontal als Bodenmonitor aufstellen. Für Monitoring brauchst du keine Stative. Die Stative sind trotzdem dabei, falls du die Tops als eigenständige PA aufstellen willst.",
     "tags": [
       "ld"
     ],
@@ -1774,7 +1774,7 @@
   {
     "id": "icoa-top-ersatz",
     "question": "Ist das Top-Paar als kurzfristige Ersatz-PA geeignet?",
-    "answer": "Ja. Das Top-Paar ist kompakt, schnell aufgebaut und passt in einen Kombi. Wenn eine Anlage kurzfristig ausfällt, sind die zwei Tops oft die schnellste Lösung für Sprache, Hintergrundmusik oder eine kleine Feier. Melde dich telefonisch, dann prüfe ich die Verfügbarkeit sofort.",
+    "answer": "Ja. Das Top-Paar ist schnell aufgebaut und passt in einen Kombi. Wenn eine Anlage kurzfristig ausfällt, ist es die schnellste Lösung für Sprache und Hintergrundmusik; für DJs und Parties empfehle ich ein ICOA-Paket mit Sub. Melde dich telefonisch, dann prüfe ich die Verfügbarkeit sofort.",
     "tags": [
       "ld"
     ],
@@ -1840,7 +1840,7 @@
   {
     "id": "icoa-system-paket-vergleich",
     "question": "Was ist der Unterschied zwischen Top-Paar, Partypaket XL und Club-Paket?",
-    "answer": "Das Top-Paar (ab 100€) sind nur zwei Tops ohne Sub – ideal für Sprache, Monitoring und kleine Feiern. Das Partypaket XL (ab 130€) hat 2 Tops + 1 Sub – die kompakte Wahl für Privat-Partys, DJs, Bandproben, Theater oder wenn wenig Platz für zwei Subs ist. Das Club-Paket (ab 150€) mit 2 Tops + 2 Subs ist die Haupt-PA für mobile DJs, Clubs und größere Feiern bis 200 Personen – inklusive Cardioid-Modus für kontrollierten Bass.",
+    "answer": "Das Top-Paar (ab 100€) sind zwei Tops ohne Sub – für Sprache und Monitoring. Das Partypaket XL (ab 130€) hat 2 Tops + 1 Sub und ist meine leistungsfähige PA für Privat-Partys, DJs, Bandproben, Theater und größere Räume bis 120 Gäste. Das Club-Paket (ab 150€) mit 2 Tops + 2 Subs ist die Haupt-PA für mobile DJs, DJ-Kollektive, Clubs und größere Feiern bis 200 Personen – inklusive Cardioid-Modus für kontrollierten Bass.",
     "tags": [
       "ld"
     ],
@@ -1986,8 +1986,8 @@
   },
   {
     "id": "city-stuttgart-unique-2",
-    "question": "Wann lohnt sich kompakte PA in einem Stuttgarter Keller?",
-    "answer": "Wenn in deiner Wohnung wenig Stellfläche bleibt, empfehle ich das ICOA-Top-Paar mit kleinem Sub. Für bis etwa 120 Gäste reicht das Partypaket XL; für reine Hintergrundmusik genügt ein Top-Paar. Aus Plieningen, Hohenheim und Vaihingen bist du in 10 bis 15 Minuten bei mir; die Innenstadt erreichst du über die A8 ebenfalls zügig.",
+    "question": "Wann lohnt sich eine leistungsfähige PA in Stuttgart?",
+    "answer": "Wenn in Stuttgart getanzt wird, brauchst du eine PA mit Reserven nach oben. Für bis etwa 120 Gäste empfehle ich das ICOA-Partypaket mit Sub, für DJ-Abende und größere Räume das Club-Paket mit zwei Subs. Aus Plieningen, Hohenheim und Vaihingen bist du in 10 bis 15 Minuten bei mir; die Innenstadt erreichst du über die A8 ebenfalls zügig.",
     "pages": [
       "stuttgart"
     ]
@@ -2002,24 +2002,24 @@
   },
   {
     "id": "city-esslingen-unique-2",
-    "question": "Wann reicht schlanke Beschallung in Esslinger Altstadt-Räumen?",
-    "answer": "In historischen Räumen bleibt oft wenig Platz für große Lautsprecher. Die ICOA-Tops mit kleinem Sub liefern trotzdem sauberen Sound; für Vereinsheime in Altbach oder Deizisau reicht meist das Partypaket XL. Auch aus Denkendorf, Ostfildern, Altbach und Deizisau kommst du zügig zur Abholung; ich nenne dir beim Anruf die passende Anfahrt.",
+    "question": "Wann brauche ich eine leistungsfähige PA in Esslinger Altstadt-Räumen?",
+    "answer": "Auch in historischen Räumen in Esslingen brauchst du genug Leistung, wenn Musik und Reden getragen werden sollen. Die ICOA-Pakete mit Sub liefern klaren Sound und ordentlich Bass; für Vereinsheime in Altbach oder Deizisau empfehle ich das Club-Paket, wenn getanzt wird. Auch aus Denkendorf, Ostfildern, Altbach und Deizisau kommst du zügig zur Abholung; ich nenne dir beim Anruf die passende Anfahrt.",
     "pages": [
       "esslingen"
     ]
   },
   {
     "id": "city-tübingen-unique-1",
-    "question": "Brauche ich für eine Tübinger Gartenparty Akku-Technik?",
-    "answer": "Für Tübingen packe ich eher Akku-Box und Powerstation als ein großes Steckernetzteil ein. Schreib mir, ob deine Feier in Tübingen auf dem Campus, in einer WG oder im Garten stattfindet. Ich stelle Akku-Technik zusammen und weise dich bei der Abholung ein.",
+    "question": "Brauche ich für eine Tübinger Studentenparty eine leistungsfähige PA?",
+    "answer": "Wenn auf dem Campus oder in der WG getanzt wird, reicht eine kleine Box meist nicht. Für bis etwa 80 Gäste empfehle ich das ICOA-Partypaket mit einem Sub, für größere Räume das Club-Paket mit zwei Subs. Schreib mir Gästezahl und Raumgröße – ich stelle die PA mit Licht und Mikrofon zusammen und weise dich bei der Abholung ein.",
     "pages": [
       "tübingen"
     ]
   },
   {
     "id": "city-tübingen-unique-2",
-    "question": "Wann ist Akku-Licht für Tübinger Gartenpartys sinnvoll?",
-    "answer": "Wenn keine Steckdose erreichbar ist, nehme ich Akku-LEDs statt großer Scheinwerfer mit. Für bis 50 Gäste im Garten reicht eine Box mit Lightshow; für größere Räume empfehle ich das Akku-Party-Paket. Aus Kusterdingen und Gomaringen kommst du über die B27 direkt nach Echterdingen; in der Tübinger Innenstadt plane ich die Anfahrt mit dir vorher.",
+    "question": "Wann lohnt sich das Club-Setup für Tübinger Studentenparties?",
+    "answer": "Wenn in Tübingen mehr als etwa 80 Gäste kommen oder der Bass tragen soll, empfehle ich das ICOA-Club-Paket mit zwei Subs. Für DJ-Crews stelle ich Licht und Mikrofon dazu. Aus Kusterdingen und Gomaringen kommst du über die B27 direkt nach Echterdingen; in der Tübinger Innenstadt plane ich die Anfahrt mit dir vorher.",
     "pages": [
       "tübingen"
     ]
@@ -2034,8 +2034,8 @@
   },
   {
     "id": "city-filderstadt-unique-2",
-    "question": "Wann reicht kompakte Technik für eine Filderstädter Wohnung?",
-    "answer": "In Wohnungen auf dem Fildern achte ich auf niedriges Gewicht und wenig Stellfläche. Ein ICOA-Top-Paar oder eine Partybox ist meist besser als ein großes Sub-Setup. Aus Bernhausen, Plattenhardt und Neuhausen bist du in wenigen Minuten in der Magellanstraße; die L1209 führt dich direkt zum Abholort.",
+    "question": "Wann lohnt sich eine leistungsfähige PA auf dem Fildern?",
+    "answer": "Ob Studentenparty, DJ-Crew oder größere Feier auf dem Fildern – ich empfehle die ICOA-Pakete, wenn der Sound tragen soll. Das Partypaket mit einem Sub reicht für bis etwa 120 Gäste, für DJ-Abende und größere Räume nehme ich das Club-Paket mit zwei Subs. Aus Bernhausen, Plattenhardt und Neuhausen bist du in wenigen Minuten in der Magellanstraße; die L1209 führt dich direkt zum Abholort.",
     "pages": [
       "filderstadt"
     ]
@@ -2050,8 +2050,8 @@
   },
   {
     "id": "city-leinfelden-echterdingen-unique-2",
-    "question": "Kann ich die Technik in Echterdingen vorher anhören?",
-    "answer": "Du kannst dir die ICOA-Tops und Partyboxen bei der Abholung ansehen und anhören. So weißt du vor der Feier, wie laut und wie kompakt das Set für deinen Raum wirklich ist. Aus Steinenbronn, Waldenbuch und Musberg kommst du direkt zur Magellanstraße 4; Parkplätze findest du vor dem Haus.",
+    "question": "Kann ich die PA in Echterdingen vorher anhören?",
+    "answer": "Du kannst dir die ICOA-Pakete bei der Abholung ansehen und anhören. So weißt du vor der Feier, wie viel Leistung und Bass deine PA für den Raum in Leinfelden oder Echterdingen tatsächlich braucht. Aus Steinenbronn, Waldenbuch und Musberg kommst du direkt zur Magellanstraße 4; Parkplätze findest du vor dem Haus.",
     "pages": [
       "leinfelden-echterdingen"
     ]
@@ -2066,8 +2066,8 @@
   },
   {
     "id": "city-kornwestheim-unique-2",
-    "question": "Wann nehme ich eine Box statt einer PA in Kornwestheim?",
-    "answer": "Für kleine Räume reicht eine Partybox, für größere Feiern mit Reden nehme ich ICOA-Tops mit Sub. Das Partypaket XL ist ein guter Mittelweg, wenn du flexibel bleiben willst. Aus Remseck, Bietigheim-Bissingen und dem Kern von Kornwestheim bist du über A81/A8 schnell bei mir.",
+    "question": "Wann empfiehlst du die ICOA-PA in Kornwestheim?",
+    "answer": "Für Reden und Musik in Kornwestheimer Vereinsräumen empfehle ich die ICOA-Pakete mit Sub – das ist meine leistungsfähigste PA. Für DJ-Abende oder größere Räume nehme ich das Club-Paket mit zwei Subs; ich entscheide mit dir nach Gästezahl. Aus Remseck, Bietigheim-Bissingen und dem Kern von Kornwestheim bist du über A81/A8 schnell bei mir.",
     "pages": [
       "kornwestheim"
     ]
@@ -2083,7 +2083,7 @@
   {
     "id": "city-ludwigsburg-unique-2",
     "question": "Wann brauche ich bei einer Ludwigsburger Feier mehr Bass?",
-    "answer": "Das Partypaket XL mit ICOA-Tops ist der Mittelweg für Betriebsfeiern: genug Leistung für Musik, aber klar genug für Ansagen. Für reine Partys reicht ein Top-Paar mit kleiner Lightshow. Aus der Innenstadt, aus Kornwestheim und aus Marbach kommst du über die A81 zügig zur Abholung.",
+    "answer": "Wenn in Ludwigsburg getanzt wird, reicht eine kleine Anlage nicht. Das ICOA-Partypaket mit Sub trägt Musik und Ansagen gleichermaßen; für DJ-Crews und größere Säle empfehle ich das Club-Paket mit zwei Subs. Aus der Innenstadt, aus Kornwestheim und aus Marbach kommst du über die A81 zügig zur Abholung.",
     "pages": [
       "ludwigsburg"
     ]
@@ -2099,7 +2099,7 @@
   {
     "id": "city-böblingen-unique-2",
     "question": "Wann lohnt sich das Club-Paket für einen Böblinger DJ-Abend?",
-    "answer": "Wenn du einen DJ-Abend planst, empfehle ich das Club-Paket mit zwei Subs. Für kleinere Räume reicht eine Partybox; ich entscheide mit dir nach Gästezahl und Raumhöhe. Aus Schönaich, Ehningen und Gärtringen erreichst du den Abholort über die A8 in wenigen Minuten.",
+    "answer": "Wenn du in Böblingen einen DJ-Abend planst, empfehle ich das ICOA-Club-Paket mit zwei Subs – meine leistungsfähigste PA für größere Räume. Für Studentenparties und DJ-Crews stelle ich Licht und Mikrofon dazu. Aus Schönaich, Ehningen und Gärtringen erreichst du den Abholort über die A8 in wenigen Minuten.",
     "pages": [
       "böblingen"
     ]
@@ -2146,8 +2146,8 @@
   },
   {
     "id": "city-waiblingen-unique-2",
-    "question": "Wie plane ich Strom für eine Waiblinger Feier?",
-    "answer": "In der Altstadt ist oft wenig Platz für große PA-Säulen. Ich empfehle ICOA-Tops oder ein Partypaket und lege bei Bedarf ein zweites Mikrofon für Programmpunkte dazu. Aus Waiblingen, Fellbach, Remseck und Weinstadt kommst du über die B14 zügig zur Abholung.",
+    "question": "Wie plane ich die PA für eine Waiblinger Feier?",
+    "answer": "Auch in der Waiblinger Altstadt brauchst du bei größeren Feiern eine PA mit Leistungsreserven. Ich empfehle die ICOA-Pakete mit Sub und lege bei Programmpunkten ein Mikrofon dazu; für DJ-Abende kommen zwei Subs infrage. Aus Waiblingen, Fellbach, Remseck und Weinstadt kommst du über die B14 zügig zur Abholung.",
     "pages": [
       "waiblingen"
     ]
@@ -2194,8 +2194,8 @@
   },
   {
     "id": "city-kirchheim-unter-teck-unique-2",
-    "question": "Wann reicht ein kompaktes Set für Kirchheim unter Teck?",
-    "answer": "Das Partypaket XL mit ICOA-Tops und kleinem Sub reicht für bis etwa 120 Gäste. Für einen reinen Plattenabend ohne Reden reicht das Top-Paar; ich berate dich nach Raumgröße. Aus Notzingen, Dettingen, Owen und Weilheim erreichst du mich über die B297 und A8.",
+    "question": "Wann lohnt sich die ICOA-PA für Kirchheim unter Teck?",
+    "answer": "Das ICOA-Partypaket mit Sub trägt bis etwa 120 Gäste – auch wenn getanzt wird. Für größere Räume oder DJ-Abende in Kirchheim empfehle ich das Club-Paket mit zwei Subs; ich berate dich nach Gästezahl und Raumhöhe. Aus Notzingen, Dettingen, Owen und Weilheim erreichst du mich über die B297 und A8.",
     "pages": [
       "kirchheim-unter-teck"
     ]
@@ -2210,8 +2210,8 @@
   },
   {
     "id": "city-ostfildern-unique-2",
-    "question": "Welche Musikanlage passt in eine Wohnung im Scharnhauser Park?",
-    "answer": "Du kannst dir das ICOA-Top-Paar und die Partyboxen bei mir anhören. Für den Scharnhauser Park empfehle ich oft eine kompakte PA; für Ruit reicht je nach Gästezahl eine Box. Aus Nellingen, Ruit und dem Scharnhauser Park kommst du über die B27 direkt zur Magellanstraße 4.",
+    "question": "Welche PA empfiehlst du für größere Feiern in Ostfildern?",
+    "answer": "Du kannst dir die ICOA-Pakete bei mir anhören. Für den Scharnhauser Park, für Ruit und für größere Räume in Ostfildern empfehle ich die leistungsfähige PA mit Sub; bei DJ-Abenden ergänze ich zwei Subs. Aus Nellingen, Ruit und dem Scharnhauser Park kommst du über die B27 direkt zur Magellanstraße 4.",
     "pages": [
       "ostfildern"
     ]
@@ -2274,8 +2274,8 @@
   },
   {
     "id": "city-backnang-unique-2",
-    "question": "Wie plane ich die Rückgabe bei einer Backnanger Feier?",
-    "answer": "Für eine kleine Feier in Burgstetten reicht das Top-Paar; für größere Räume in Sulzbach nehme ich das Partypaket XL. Ich berücksichtige die längere Anfahrt bei der Terminplanung. Aus Burgstetten, Oppenweiler und Sulzbach erreichst du mich über B14 und A8 in rund 35 Minuten.",
+    "question": "Wann lohnt sich die leistungsfähige PA für eine Backnanger Feier?",
+    "answer": "Für größere Feiern in Backnang empfehle ich die ICOA-Pakete mit Sub, wenn Musik und Bass getragen werden sollen. In Burgstetten und Sulzbach stelle ich das Club-Paket mit zwei Subs für DJs und Studentenparties zusammen; die längere Anfahrt plane ich vorher ein. Aus Burgstetten, Oppenweiler und Sulzbach erreichst du mich über B14 und A8 in rund 35 Minuten.",
     "pages": [
       "backnang"
     ]
@@ -2291,7 +2291,7 @@
   {
     "id": "city-metzingen-unique-2",
     "question": "Wann lohnt sich ein Beamer für die Diashow in Metzingen?",
-    "answer": "Für Saalfeiern empfehle ich ICOA-Tops mit Sub; für eine kleine Feier in Bad Urach reicht eine Partybox. Den Beamer für die Diashow kannst du zusätzlich mieten. Aus Dettingen, Eningen, Neuffen und Bad Urach kommst du über die A8 nach Echterdingen.",
+    "answer": "Für Saalfeiern in Metzingen empfehle ich die ICOA-Pakete mit Sub – genug Leistung für Musik, Reden und Tanz. Für größere Räume in Bad Urach nehme ich das Club-Paket mit zwei Subs; den Beamer für die Diashow kannst du zusätzlich mieten. Aus Dettingen, Eningen, Neuffen und Bad Urach kommst du über die A8 nach Echterdingen.",
     "pages": [
       "metzingen"
     ]

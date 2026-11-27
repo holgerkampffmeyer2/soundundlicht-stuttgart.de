@@ -67,4 +67,23 @@ test.describe('Vermietung Navigation', () => {
     await expect(page.locator('[data-vermietung-dropdown] a[href="/vermietung/pakete"].active')).toHaveCount(1);
     await expect(page.locator('#mobile-vermietung-sub a[href="/vermietung/pakete"].active')).toHaveCount(1);
   });
+
+  test('[REQ-CORE-01] Scroll-Spy markiert Section-Jump-Buttons statt der Toplinks', async ({ page }) => {
+    await page.goto('/vermietung');
+
+    for (const id of ['ablauf', 'pakete', 'sound']) {
+      await page.evaluate((sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) window.scrollTo(0, section.offsetTop + 120);
+      }, id);
+
+      await expect(page.locator(`.section-jump-link[href="#${id}"]`), `section-jump ${id}`).toHaveClass(/active/);
+
+      if (id !== 'sound') {
+        await expect(page.locator(`.desktop-menu a[href="/#${id}"]`), `top ${id}`).not.toHaveClass(/active/);
+      }
+    }
+
+    await expect(page.locator('.desktop-menu a[href="/vermietung"].active')).toHaveCount(1);
+  });
 });

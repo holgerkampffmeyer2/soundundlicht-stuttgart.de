@@ -158,6 +158,20 @@ const previewOf = (text: string, max = 420): { preview: string; rest: string } =
     const prevBtn = document.getElementById('prevPage');
     const nextBtn = document.getElementById('nextPage');
     const status = document.getElementById('reviewsStatus');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('.review-more').forEach((toggle) => {
+      toggle.addEventListener('toggle', () => {
+        if (toggle.open) return;
+        requestAnimationFrame(() => {
+          if (!toggle.contains(document.activeElement)) return;
+          toggle.closest('.review-card')?.scrollIntoView({
+            behavior: reduceMotion ? 'auto' : 'smooth',
+            block: 'start',
+          });
+        });
+      });
+    });
 
     if (!prevBtn || !nextBtn || totalPages < 2) return;
 
@@ -284,6 +298,7 @@ const previewOf = (text: string, max = 420): { preview: string; rest: string } =
     padding: 1.5rem;
     border-radius: 1rem;
     border: 1px solid var(--color-border);
+    scroll-margin-top: 10rem;
     background: linear-gradient(
       160deg,
       color-mix(in srgb, var(--color-surface) 70%, var(--color-bg)),
@@ -336,20 +351,32 @@ const previewOf = (text: string, max = 420): { preview: string; rest: string } =
   }
 
   .review-more {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--color-border);
   }
 
   .review-more summary {
     display: inline-flex;
+    order: 2;
     align-items: center;
     gap: 0.35rem;
+    margin-top: 0;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
     list-style: none;
     cursor: pointer;
     color: var(--color-accent);
     font-size: 0.875rem;
     font-weight: 600;
+  }
+
+  .review-more[open] summary {
+    margin-top: 0.75rem;
+  }
+
+  .review-more::details-content {
+    order: 1;
   }
 
   .review-more summary::-webkit-details-marker {
@@ -379,7 +406,8 @@ const previewOf = (text: string, max = 420): { preview: string; rest: string } =
   }
 
   .review-more p {
-    margin-top: 0.75rem;
+    order: 1;
+    margin-top: 0;
     color: var(--color-text);
     line-height: 1.7;
     white-space: pre-line;

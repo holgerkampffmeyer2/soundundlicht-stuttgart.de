@@ -127,7 +127,7 @@ test.describe('City-SEO-Differenzierung', () => {
     const nodes = await getJsonLdNodes(page);
     const service = nodes.find((node) => node['@type'] === 'Service');
     expect(service?.areaServed).toEqual([{ '@type': 'City', name: 'Esslingen' }]);
-    await expect(page.getByText('Wann reicht schlanke Beschallung in Esslinger Altstadt-Räumen?', { exact: false })).toBeVisible();
+    await expect(page.getByText('Wann brauche ich eine leistungsfähige PA in Esslinger Altstadt-Räumen?', { exact: false })).toBeVisible();
 
     await page.goto('/nürtingen');
     await expect(page.getByText('Brauche ich für Nürtinger Feiern Akku-Box oder Netzstrom?', { exact: false })).toBeVisible();

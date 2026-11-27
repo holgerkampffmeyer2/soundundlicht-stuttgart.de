@@ -71,6 +71,7 @@ const cities = defineCollection({
     areasIntro: z.string().optional(),
     icoaTitle: z.string().optional(),
     icoaIntro: z.string().optional(),
+    icoaEyebrow: z.string().optional(),
     contactDescription: z.string().optional(),
     distanceText: z.string().optional(),
     travelTimeText: z.string().optional(),

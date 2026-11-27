@@ -12,6 +12,10 @@ The platform SHALL use Astro 7.x Static Site Generation (SSG) with Tailwind CSS 
 - **WHEN** any page is rendered
 - **THEN** it includes the responsive Navbar and Footer marked with `data-pagefind-ignore`, dynamic mobile menu, and WishlistIcon badge
 
+#### Scenario: Section-Jump-Highlighting auf dem Vermietungs-Hub
+- **WHEN** a user scrolls through `/vermietung`
+- **THEN** nur der zur sichtbaren Section passende `.section-jump-link` wird als `active` markiert, nicht die Toplinks mit `/#…`-Ankern
+
 ### Requirement: [REQ-SEARCH-01] Pagefind Search Integration
 The platform SHALL provide client-side full-text search via `astro-pagefind` with catalog fallback matching.
 

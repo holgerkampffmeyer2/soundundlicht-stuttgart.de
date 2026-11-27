@@ -5,7 +5,7 @@ import { getFaqsForPage } from '../../lib/faqUtils';
 import { technicalLandingData } from '../../lib/technicalLanding';
 
 const allProducts = await getCollection('products');
-const slugs = ['djpaket-fildern', 'yamaha-mischpult', 'mikrofon', 'kls-laser-bar'];
+const slugs = ['djpaket-fildern', 'mikrofon', 'kls-laser-bar'];
 const products = slugs
   .map((slug) => allProducts.find((entry) => entry.data.slug === slug)?.data)
   .filter((product) => product !== undefined);
@@ -13,7 +13,7 @@ const products = slugs
 const faqs = getFaqsForPage('dj-equipment');
 const priceValue = 200;
 const title = 'DJ-Equipment mieten in Stuttgart';
-const description = 'DJ-Paket, Mischpult, Mikrofon und Laserbar für deinen Auftritt. Alles aufeinander abgestimmt, kurz eingewiesen und ab 200€ pro Tag mietbar.';
+const description = 'Kurzfristig Ersatz-PA mieten: Ich stelle PA, Lichttechnik, Mikrofon und Nebelmaschine – DJ-Mixer und Kopfhörer bringst du selbst mit. Ab 200€ pro Tag.';
 const { breadcrumbSegments, jsonLd } = technicalLandingData({
   title,
   description,
@@ -30,17 +30,17 @@ const { breadcrumbSegments, jsonLd } = technicalLandingData({
   description={description}
   image="/img/vermietung/djpaket.webp"
   keyword="DJ-Equipment mieten Stuttgart"
-  intro="Du willst selbst auflegen? Ich stelle ein Set zusammen, das vom Einstieg bis zum letzten Track funktioniert – mit Zuspielung, Mischpult, Mikrofon und Licht nach deinem Setup."
-  details="Du holst das Equipment bei mir in Echterdingen ab. Ich zeige dir Signalweg, Kabel und die wichtigsten Einstellungen, damit du auf der Feier nicht nach Anschlüssen suchen musst."
+  intro="Du brauchst kurzfristig eine Ersatz-PA oder hast als Club-DJ keine eigene? Ich stelle dir PA und Lichttechnik zusammen – inklusive Mikrofon und Nebelmaschine."
+  details="Du holst das Set bei mir in Echterdingen ab. Deinen DJ-Mixer und deine Kopfhörer bringst du selbst mit; ich zeige dir Signalweg, Kabel und Einstellungen, damit du direkt loslegen kannst."
   benefits={[
-    { title: 'Aufeinander abgestimmt', text: 'Mischer, Mikrofon und Licht passen zusammen – du musst keine fremden Geräte kombinieren.' },
-    { title: 'Für Gäste und Reden', text: 'Ein Mikrofon dazu ist oft wichtiger als ein weiteres Effektgerät, wenn Programm geplant ist.' },
+    { title: 'Kurzfristig einsatzbereit', text: 'Wenn deine PA ausfällt oder du keine eigene hast, bekommst du bei mir ein komplettes Sound- und Lichtset.' },
+    { title: 'Alles an Bord außer DJ-Teil', text: 'PA, Licht, Mikrofon und Nebelmaschine stelle ich. Mixer und Kopfhörer gehören zu deinem eigenen Setup.' },
     { title: 'Kurz eingewiesen', text: 'Ich erkläre dir bei der Abholung den Signalweg und wie du alles wieder zusammenpackst.' },
   ]}
   steps={[
-    'Sag mir, ob du eigene Controller oder CDs mitbringst.',
-    'Ich stelle Mischpult, Mikrofon und Licht passend zusammen.',
-    'Vor der Abfahrt prüfe ich Kabel und Signalweg mit dir.',
+    'Sag mir, wann du die Ersatz-PA brauchst und wie groß der Raum ist.',
+    'Ich stelle PA, Licht, Mikrofon und Nebelmaschine passend zusammen.',
+    'Bring deinen DJ-Mixer und deine Kopfhörer mit – den Rest prüfe ich mit dir vor der Abfahrt.',
   ]}
   products={products}
   faqs={faqs}

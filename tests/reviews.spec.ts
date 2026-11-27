@@ -38,5 +38,26 @@ test.describe('Rezensionen', () => {
     await more.locator('summary').click();
     await expect(more).toHaveAttribute('open', '');
     await expect(more.locator('p')).toBeVisible();
+    await expect(more.locator('.less-label')).toBeVisible();
+
+    const textBox = await more.locator('p').boundingBox();
+    const summaryBox = await more.locator('summary').boundingBox();
+    expect(textBox).toBeTruthy();
+    expect(summaryBox).toBeTruthy();
+    if (textBox && summaryBox) {
+      expect(summaryBox.y).toBeGreaterThan(textBox.y + textBox.height);
+    }
+    expect(await more.evaluate(el => getComputedStyle(el).borderTopWidth)).toBe('0px');
+    expect(await more.locator('summary').evaluate(el => getComputedStyle(el).borderTopWidth)).toBe('1px');
+
+    await more.locator('summary').click();
+    await expect(more).not.toHaveAttribute('open', '');
+    await expect(more.locator('summary')).toBeFocused();
+    await page.waitForFunction(() => {
+      const card = document.activeElement?.closest('.review-card');
+      if (!card) return false;
+      const top = card.getBoundingClientRect().top;
+      return top >= 0 && top < 200;
+    });
   });
 });

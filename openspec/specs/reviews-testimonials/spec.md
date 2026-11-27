@@ -37,6 +37,8 @@ Regelt die Anzeige der Google-Rezensionen als paginierte Testimonials, die Scrap
 
 - **WHEN** eine Rezension länger als 420 Zeichen ist
 - **THEN** zeigt die Karte eine Vorschau und ein natives `<details>`-Element „Mehr lesen", das den vollständigen Text ohne Verlust von Zeilenumbrücken zugänglich macht
+- **THEN** erscheint der Umschalter „Weniger anzeigen“ nach dem vollständigen Text, mit der Trennlinie unter dem Text statt zwischen Vorschau und Rest
+- **THEN** bleibt der Fokus beim Zuklappen auf dem Umschalter und die Karte wird wieder oben im Viewport positioniert
 
 #### Scenario: Paginierung mit Status und Fokus
 

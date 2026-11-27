@@ -6,11 +6,12 @@ interface Props {
   cityName: string;
   title?: string;
   intro?: string;
+  eyebrow?: string;
 }
 
-const { cityName, title, intro } = Astro.props;
+const { cityName, title, intro, eyebrow = 'Leistungsfähige PA' } = Astro.props;
 const sectionTitle = title ?? `LD Systems ICOA für ${cityName}`;
-const sectionDescription = intro ?? `Ich habe die ICOA-Serie neu im Sortiment: kompakte PA-Pakete mit klarem Sound und ordentlich Bass – ideal, wenn du in ${cityName} wenig Platz, aber viel Wirkung brauchst.`;
+const sectionDescription = intro ?? `Meine ICOA-Pakete sind die leistungsfähigste PA in meinem Verleih: klarer Sound, ordentlich Bass und genug Reserven für größere Räume, DJs und Studentenparties in ${cityName}.`;
 const slugs = ['ld-icoa-party-paket', 'ld-icoa-club-paket', 'ld-icoa-top-paar'];
 
 const products = await getCollection('products');
@@ -42,7 +43,7 @@ const pakete = slugs
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16 animate-on-scroll">
         <span class="text-[var(--color-secondary)] text-lg tracking-widest uppercase">
-          Neu bei mir
+          {eyebrow}
         </span>
         <h2 class="font-play text-4xl md:text-5xl font-bold mt-4 mb-6">
           {sectionTitle}
