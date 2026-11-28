@@ -1,6 +1,15 @@
 import { test, expect } from '@playwright/test';
 
 const BASE_URL = 'https://soundundlicht-stuttgart.de';
+
+function isOwnUrl(value: string): boolean {
+  try {
+    return new URL(value).origin === BASE_URL;
+  } catch {
+    return false;
+  }
+}
+
 const TECHNICAL_PAGES = [
   '/vermietung/pakete',
   '/vermietung/musikanlage',
@@ -40,7 +49,7 @@ test.describe('SEO-Build-Artefakte', () => {
     const urls = (await response.text()).split('\n').map((line) => line.trim()).filter(Boolean);
     expect(urls.length).toBeGreaterThan(20);
     for (const url of urls) {
-      expect(url.startsWith(BASE_URL)).toBeTruthy();
+      expect(isOwnUrl(url)).toBeTruthy();
       expect(url).not.toContain('/impressum');
       expect(url).not.toContain('/thankyou');
     }
@@ -81,8 +90,8 @@ test.describe('SEO-Build-Artefakte', () => {
     for (const product of body.products) {
       expect(product.title).toBeTruthy();
       expect(product.price).toMatch(/^ab \d+€/);
-      expect(product.image.startsWith(BASE_URL)).toBeTruthy();
-      expect(product.detailUrl.startsWith(BASE_URL)).toBeTruthy();
+      expect(isOwnUrl(product.image)).toBeTruthy();
+      expect(isOwnUrl(product.detailUrl)).toBeTruthy();
     }
   });
 });

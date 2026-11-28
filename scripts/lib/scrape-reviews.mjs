@@ -4,6 +4,15 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function isGoogleUrl(rawUrl) {
+  try {
+    const { hostname } = new URL(rawUrl);
+    return hostname === 'google.com' || hostname.endsWith('.google.com');
+  } catch {
+    return false;
+  }
+}
+
 export function extractReviewTimestamps(body) {
   const timestamps = new Map();
   for (const match of String(body || '').matchAll(/Ci9[A-Za-z0-9_-]{20,}/g)) {
@@ -140,7 +149,7 @@ export async function scrapeGoogleReviews({ chromium, headless = true, log = con
   try {
     const page = context.pages()[0] || (await context.newPage());
     page.on('response', async (response) => {
-      if (!response.url().includes('google.com')) return;
+      if (!isGoogleUrl(response.url())) return;
       try {
         for (const [id, time] of extractReviewTimestamps(await response.text())) {
           timestamps.set(id, time);

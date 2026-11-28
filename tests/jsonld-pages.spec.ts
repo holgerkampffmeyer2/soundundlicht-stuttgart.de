@@ -2,6 +2,15 @@ import { test, expect, type Page } from '@playwright/test';
 import { getJsonLdNodes, jsonLdTypes } from './helpers/jsonld';
 
 const BASE_URL = 'https://soundundlicht-stuttgart.de';
+
+function isOwnUrl(value: string): boolean {
+  try {
+    return new URL(value).origin === BASE_URL;
+  } catch {
+    return false;
+  }
+}
+
 const BASE_TYPES = ['WebPage', 'LocalBusiness', 'Organization', 'Person', 'WebSite', 'ItemList'];
 
 async function visit(page: Page, path: string): Promise<void> {
@@ -25,14 +34,14 @@ test.describe('JSON-LD-Seitentypen', () => {
     expect(Array.isArray(images)).toBeTruthy();
     expect(images.length).toBeGreaterThan(0);
     for (const image of images) {
-      expect(image.startsWith(BASE_URL)).toBeTruthy();
+      expect(isOwnUrl(image)).toBeTruthy();
     }
 
     const breadcrumb = nodes.find((node) => node['@type'] === 'BreadcrumbList');
     const items = breadcrumb?.itemListElement as Array<Record<string, unknown>>;
     expect(items.length).toBeGreaterThan(1);
     for (const item of items) {
-      if (item.item) expect(String(item.item).startsWith(BASE_URL)).toBeTruthy();
+      if (item.item) expect(isOwnUrl(String(item.item))).toBeTruthy();
     }
 
     const faq = nodes.find((node) => node['@type'] === 'FAQPage');
