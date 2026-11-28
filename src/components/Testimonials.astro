@@ -11,9 +11,15 @@ interface Review {
   rating: number;
   text: string;
   relative_time_description?: string;
+  time?: string;
+  datePrecision?: string;
+  pinned?: boolean;
 }
 
-const allReviews: Review[] = googleReviewsData.reviews || [];
+const allReviews: Review[] = [...(googleReviewsData.reviews || [])].sort((a, b) => {
+  if (Boolean(a.pinned) !== Boolean(b.pinned)) return a.pinned ? -1 : 1;
+  return 0;
+});
 const totalPages = Math.ceil(allReviews.length / ITEMS_PER_PAGE);
 const ratingValue = Number(googleReviewsData.ratingValue ?? 0);
 const ratingLabel = ratingValue.toFixed(1).replace('.', ',');
@@ -26,6 +32,19 @@ const initialsOf = (name: string): string =>
     .slice(0, 2)
     .map((part) => part[0]?.toUpperCase() ?? '')
     .join('');
+
+const reviewDateOf = (review: Review): string => {
+  if (!review.time) return review.relative_time_description ?? '';
+  const options: Intl.DateTimeFormatOptions = {
+    timeZone: 'UTC',
+    ...(review.datePrecision === 'month'
+      ? { month: 'long', year: 'numeric' }
+      : review.datePrecision === 'year'
+        ? { year: 'numeric' }
+        : { day: '2-digit', month: '2-digit', year: 'numeric' }),
+  };
+  return new Intl.DateTimeFormat('de-DE', options).format(new Date(review.time));
+};
 
 const previewOf = (text: string, max = 420): { preview: string; rest: string } => {
   if (text.length <= max) return { preview: text, rest: '' };
@@ -61,11 +80,22 @@ const previewOf = (text: string, max = 420): { preview: string; rest: string } =
         {allReviews.map((review, index) => {
           const { preview, rest } = previewOf(review.text);
           return (
-            <article class="review-card" data-page={Math.floor(index / ITEMS_PER_PAGE) + 1}>
+            <article
+              class:list={['review-card', review.pinned && 'is-pinned']}
+              data-page={Math.floor(index / ITEMS_PER_PAGE) + 1}
+            >
               <div class="review-card-top">
-                <span class="review-quote" aria-hidden="true">
-                  <Icon name="quote" />
-                </span>
+                <div class="review-card-badges">
+                  <span class="review-quote" aria-hidden="true">
+                    <Icon name="quote" />
+                  </span>
+                  {review.pinned && (
+                    <span class="review-pinned-badge">
+                      <Icon name="pin" />
+                      <span>Top-Rezension</span>
+                    </span>
+                  )}
+                </div>
                 <div class="review-stars" role="img" aria-label={`${review.rating} von 5 Sternen`}>
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Icon name="star" class={i < review.rating ? 'is-active' : ''} />
@@ -90,7 +120,7 @@ const previewOf = (text: string, max = 420): { preview: string; rest: string } =
                 <span class="review-avatar" aria-hidden="true">{initialsOf(review.author_name)}</span>
                 <div class="review-author">
                   <h3>{review.author_name}</h3>
-                  <span>{review.relative_time_description}</span>
+                  <span>{reviewDateOf(review)}</span>
                 </div>
                 <span class="review-source">
                   <Icon name="google" />
@@ -292,12 +322,14 @@ const previewOf = (text: string, max = 420): { preview: string; rest: string } =
   }
 
   .review-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
     padding: 1.5rem;
     border-radius: 1rem;
     border: 1px solid var(--color-border);
+    overflow: hidden;
     scroll-margin-top: 10rem;
     background: linear-gradient(
       160deg,
@@ -306,6 +338,23 @@ const previewOf = (text: string, max = 420): { preview: string; rest: string } =
     );
     box-shadow: var(--shadow-card-soft);
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .review-card.is-pinned {
+    border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+    background: linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--color-accent) 8%, var(--color-surface)),
+      var(--color-bg)
+    );
+  }
+
+  .review-card.is-pinned::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--color-accent);
   }
 
   .review-card:hover {
@@ -322,6 +371,13 @@ const previewOf = (text: string, max = 420): { preview: string; rest: string } =
     margin-bottom: 1rem;
   }
 
+  .review-card-badges {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
   .review-quote {
     display: inline-flex;
     align-items: center;
@@ -336,6 +392,25 @@ const previewOf = (text: string, max = 420): { preview: string; rest: string } =
   .review-quote svg {
     width: 1.5rem;
     height: 1.5rem;
+  }
+
+  .review-pinned-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .review-pinned-badge svg {
+    width: 0.9rem;
+    height: 0.9rem;
   }
 
   .review-stars {

@@ -13,7 +13,7 @@ The system SHALL provide a dynamic route `src/pages/[city].astro` that generates
 - **THEN** `dist/<city-slug>.html` exists for all 21 cities in the `cities` collection
 
 ### Requirement: [REQ-CITY-02] Prosa Fields in Cities Collection
-The system SHALL extend the `cities` Content Collection schema with optional prose fields: `heroTitle`, `heroDescription`, `heroDetails`, `einzelTitle`, `einzelDescription`, `areasIntro`, `contactDescription`, `distanceText`, `travelTimeText`. Each field SHALL be optional (`z.string().optional()`) with fallback defaults.
+The system SHALL extend the `cities` Content Collection schema with optional prose fields: `heroTitle`, `heroDescription`, `heroDetails`, `einzelTitle`, `einzelDescription`, `areasIntro`, `contactDescription`. Each field SHALL be optional (`z.string().optional()`) with fallback defaults.
 
 #### Scenario: City entry with custom prose
 - **WHEN** a city entry in `cities.json` includes `heroTitle: "Custom Title"`
@@ -67,7 +67,11 @@ The `CityAreas` component SHALL render with `areas` from city data and custom `i
 - **THEN** `CityAreas` receives and renders that text
 
 ### Requirement: [REQ-CITY-08] Contact Section with Custom Text
-The `ContactSection` component SHALL render with custom `description` from `contactDescription` field and `distanceText` from `distanceText` field (fallbacks to defaults).
+The `ContactSection` component SHALL render with custom `description` from `contactDescription` field and a distance line generated from `distance` and the city name.
+
+#### Scenario: Distance line generated from distance
+- **WHEN** a city has `distance: "ca. 30 km"`
+- **THEN** `ContactSection` receives `Nur ca. 30 km von <city> – verkehrsgünstig an A8 / B27`
 
 #### Scenario: Custom contact description used
 - **WHEN** city has `contactDescription: "Custom contact text"`

@@ -8,6 +8,7 @@ interface SiteReview {
   text: string;
   relative_time_description?: string;
   time?: string;
+  pinned?: boolean;
 }
 
 interface ReviewsData {
@@ -67,11 +68,18 @@ describe('[REQ-REVIEW-03] src/data/google-reviews.json', () => {
     }
   });
 
-  it('lists reviews with timestamps in non-increasing order', () => {
-    const timed = data.reviews.filter((r) => r.time);
+  it('lists non-pinned reviews with timestamps in non-increasing order', () => {
+    const timed = data.reviews.filter((r) => r.time && !r.pinned);
     for (let i = 1; i < timed.length; i++) {
       expect(timeMs(timed[i])).toBeLessThanOrEqual(timeMs(timed[i - 1]));
     }
+  });
+
+  it('[REQ-REVIEW-05] marks Chris D. as the single pinned review at the top', () => {
+    const pinned = data.reviews.filter((r) => r.pinned);
+    expect(pinned).toHaveLength(1);
+    expect(pinned[0].author_name).toBe('Chris D.');
+    expect(data.reviews[0].pinned).toBe(true);
   });
 
   it('has no duplicate reviews', () => {

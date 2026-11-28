@@ -4,6 +4,20 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+export function extractReviewTimestamps(body) {
+  const timestamps = new Map();
+  for (const match of String(body || '').matchAll(/Ci9[A-Za-z0-9_-]{20,}/g)) {
+    if (timestamps.has(match[0])) continue;
+    const nearby = String(body).slice(match.index, match.index + 600);
+    const timeMatch = nearby.match(/null,(\d{16,17})/);
+    if (!timeMatch) continue;
+    const milliseconds = Math.floor(Number(timeMatch[1]) / 1000);
+    const date = new Date(milliseconds);
+    if (!Number.isNaN(date.getTime())) timestamps.set(match[0], date.toISOString());
+  }
+  return timestamps;
+}
+
 async function clickElement(locator, timeout = 6000) {
   try {
     await locator.click({ timeout });
@@ -71,7 +85,7 @@ function scrollPanelScript() {
   ).size;
 }
 
-async function collectAllReviews(page, expectedCount) {
+async function collectAllReviews(page, expectedCount, timestamps = {}) {
   let lastCount = -1;
   let stuck = 0;
   const maxPasses = 60;
@@ -88,7 +102,7 @@ async function collectAllReviews(page, expectedCount) {
     await sleep(1200);
   }
 
-  return page.evaluate(() => {
+  return page.evaluate((timestamps) => {
     const seen = new Set();
     const reviews = [];
     for (const card of document.querySelectorAll('.jftiEf, div[data-review-id]')) {
@@ -103,21 +117,36 @@ async function collectAllReviews(page, expectedCount) {
       const ratingMatch = ratingLabel.match(/(\d+)/);
       const text = card.querySelector('.wiI7pd')?.textContent?.trim() || '';
 
-      reviews.push({
+      const review = {
         author_name: (card.getAttribute('aria-label') || card.querySelector('.d4r55')?.textContent || 'Anonym').trim(),
         rating: ratingMatch ? Number(ratingMatch[1]) : 5,
         text,
         relative_time_description: card.querySelector('.rsqaWe')?.textContent?.trim() || '',
-      });
+      };
+      const exactTime = timestamps[id];
+      if (exactTime) {
+        review.time = exactTime;
+        review.datePrecision = 'day';
+      }
+      reviews.push(review);
     }
     return reviews;
-  });
+  }, timestamps);
 }
 
 export async function scrapeGoogleReviews({ chromium, headless = true, log = console.log }) {
   const context = await launchSession(chromium, { headless });
+  const timestamps = new Map();
   try {
     const page = context.pages()[0] || (await context.newPage());
+    page.on('response', async (response) => {
+      if (!response.url().includes('google.com')) return;
+      try {
+        for (const [id, time] of extractReviewTimestamps(await response.text())) {
+          timestamps.set(id, time);
+        }
+      } catch {}
+    });
     await page.goto(PLACE_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
     await page.waitForTimeout(5000);
 
@@ -141,7 +170,7 @@ export async function scrapeGoogleReviews({ chromium, headless = true, log = con
     const sorted = await sortNewestFirst(page);
     log(sorted ? '   Sortierung: neueste zuerst' : '   Sortierung: Standard (Relevanz) — Menü nicht erreichbar');
 
-    const reviews = await collectAllReviews(page, aggregates.reviewCount);
+    const reviews = await collectAllReviews(page, aggregates.reviewCount, Object.fromEntries(timestamps));
     log(`   Gescraped: ${reviews.length} Rezension(en)`);
 
     return {

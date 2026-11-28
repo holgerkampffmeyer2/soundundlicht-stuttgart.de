@@ -42,8 +42,8 @@ Each product card in the Einzeltechnik section SHALL display: image (WebP with t
 The Einzeltechnik section heading and description text SHALL be configurable per city via `einzelTitle` and `einzelDescription` fields in `cities.json`.
 
 #### Scenario: Custom heading per city
-- **WHEN** `einzelTitle` is set to "Technik nach Wahl für" in a city entry
-- **THEN** the section heading renders "Technik nach Wahl für <Stadtname>"
+- **WHEN** `einzelTitle` is set to a complete heading such as "Einzeltechnik: Box und Laserbar für Göppingen"
+- **THEN** the section heading renders that exact text without appending the city name again
 
 #### Scenario: Default heading when not configured
 - **WHEN** `einzelTitle` is absent for a city entry

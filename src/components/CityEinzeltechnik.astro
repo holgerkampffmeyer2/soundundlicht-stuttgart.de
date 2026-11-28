@@ -12,7 +12,7 @@ interface Props {
 
 const { cityName, items, title, description } = Astro.props;
 
-const sectionTitle = title ? `${title} ${cityName}` : `Einzeltechnik für ${cityName}`;
+const sectionTitle = title ?? `Einzeltechnik für ${cityName}`;
 const sectionDescription = description ?? `Einzelgeräte für deine Feier in ${cityName} – flexibel kombinierbar.`;
 ---
 

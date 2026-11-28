@@ -23,7 +23,7 @@ Pflichtfelder:
 
 Optional, aber für neue Städte Pflicht: `primaryKeyword`, `seoTitle`, `metaDescription`. `primaryKeyword` ist das einzigartige Stadt-Longtail (z. B. `Musikanlage mieten Esslingen`) und wird als H1 gerendert. `seoTitle` und `metaDescription` werden direkt in `<title>` und `<meta name="description">` übernommen. Die Stuttgarter Headterms gehören den technischen Landingpages unter `/vermietung/` und dürfen nicht als City-H1 dupliziert werden.
 
-Weitere optionale Prosa-Felder: `heroTitle`, `heroDescription`, `heroDetails`, `areasIntro`, `contactDescription`, `distanceText`, `travelTimeText`, `einzelTitle`, `einzelDescription`, `icoaTitle`, `icoaIntro`. Fehlt eines, greift der Standardtext in `src/pages/[city].astro`.
+Weitere optionale Prosa-Felder: `heroTitle`, `heroDescription`, `heroDetails`, `areasIntro`, `contactDescription`, `einzelTitle`, `einzelDescription`, `icoaTitle`, `icoaIntro`. Fehlt eines, greift der Standardtext in `src/pages/[city].astro`.
 
 **Thin-Content-Regel:** Jede Stadt braucht eigene Szenarien (Location/Anlass), eigene Produktbegründung und mindestens zwei eigene FAQs. Ein nur ausgetauschter Stadtname in sonst identischen Texten ist nicht zulässig.
 

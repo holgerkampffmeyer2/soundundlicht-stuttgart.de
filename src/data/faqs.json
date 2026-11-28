@@ -824,8 +824,8 @@
   },
   {
     "id": "leinfelden-testen",
-    "question": "Kann ich die Technik vor der Abholung in Leinfelden-Echterdingen testen?",
-    "answer": "Ja, auf jeden Fall! Du kannst die Geräte vor Ort in Funktion sehen und ausprobieren. Ich zeige dir den Aufbau und beantworte alle Fragen. Das ist der große Vorteil gegenüber Versandverleihern.",
+    "question": "Kann ich die Technik bei der Abholung in Leinfelden-Echterdingen probehören?",
+    "answer": "Ja. Welche Geräte du bekommst, steht vorher im verbindlichen Angebot fest. Bei der Abholung in der Magellanstraße 4 zeige ich sie dir in Funktion, du kannst sie probehören und ich beantworte deine Fragen zur Bedienung.",
     "pages": [
       "leinfelden-echterdingen"
     ]
@@ -1397,7 +1397,7 @@
   {
     "id": "metzingen-entfernung",
     "question": "Wie weit ist Leinfelden-Echterdingen von Metzingen entfernt?",
-    "answer": "Metzingen liegt ca. 22 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 20 Minuten über die A8. Du holst die Technik bequem bei mir in der Magellanstraße 4 ab und nimmst sie direkt mit zur Feier.",
+    "answer": "Metzingen liegt ca. 25 km von Leinfelden-Echterdingen entfernt – eine Fahrtzeit von etwa 23 Minuten über die A8. Du holst die Technik bequem bei mir in der Magellanstraße 4 ab und nimmst sie direkt mit zur Feier.",
     "pages": [
       "metzingen"
     ]
@@ -2043,15 +2043,15 @@
   {
     "id": "city-leinfelden-echterdingen-unique-1",
     "question": "Was sollte ich beim Mieten in Leinfelden-Echterdingen beachten?",
-    "answer": "Vor Ort in Echterdingen kannst du mehrere Boxen direkt nacheinander vergleichen. Komm einfach in Leinfelden-Echterdingen vorbei oder schreib mir dein Wunschdatum. Ich stelle dir die Technik zusammen und weise dich bei der Übergabe ausführlich ein.",
+    "answer": "Schreib mir dein Wunschdatum und deine Gästezahl: Ich stelle die passende Technik zusammen und halte sie im verbindlichen Angebot fest. Bei der Abholung in Echterdingen zeige ich dir die Boxen und du kannst sie probehören, bevor du sie mitnimmst.",
     "pages": [
       "leinfelden-echterdingen"
     ]
   },
   {
     "id": "city-leinfelden-echterdingen-unique-2",
-    "question": "Kann ich die PA in Echterdingen vorher anhören?",
-    "answer": "Du kannst dir die ICOA-Pakete bei der Abholung ansehen und anhören. So weißt du vor der Feier, wie viel Leistung und Bass deine PA für den Raum in Leinfelden oder Echterdingen tatsächlich braucht. Aus Steinenbronn, Waldenbuch und Musberg kommst du direkt zur Magellanstraße 4; Parkplätze findest du vor dem Haus.",
+    "question": "Kann ich die PA in Echterdingen bei der Abholung probehören?",
+    "answer": "Ja. Welches ICOA-Paket du bekommst, steht vorher im verbindlichen Angebot. Bei der Abholung in der Magellanstraße 4 kannst du es ansehen und probehören. Aus Steinenbronn, Waldenbuch und Musberg kommst du direkt hierher; Parkplätze findest du vor dem Haus.",
     "pages": [
       "leinfelden-echterdingen"
     ]
@@ -2202,8 +2202,8 @@
   },
   {
     "id": "city-ostfildern-unique-1",
-    "question": "Kann ich in Ostfildern vor dem Mieten probehören?",
-    "answer": "Aus Ostfildern kommst du vorbei und kannst die Anlage vorher testen. Komm gern in Ostfildern vorbei oder schreib mir dein Datum. Ich stelle die Musikanlage nach deinem Raum zusammen und weise dich bei der Übergabe ein.",
+    "question": "Kann ich die Musikanlage bei der Abholung probehören?",
+    "answer": "Die Zusammenstellung steht vorher im verbindlichen Angebot fest. Bei der Abholung in Leinfelden-Echterdingen, nur 10 bis 15 Minuten aus Ostfildern, kannst du die Anlage probehören; ich zeige dir Kabel und Einstellungen.",
     "pages": [
       "ostfildern"
     ]
@@ -2211,7 +2211,7 @@
   {
     "id": "city-ostfildern-unique-2",
     "question": "Welche PA empfiehlst du für größere Feiern in Ostfildern?",
-    "answer": "Du kannst dir die ICOA-Pakete bei mir anhören. Für den Scharnhauser Park, für Ruit und für größere Räume in Ostfildern empfehle ich die leistungsfähige PA mit Sub; bei DJ-Abenden ergänze ich zwei Subs. Aus Nellingen, Ruit und dem Scharnhauser Park kommst du über die B27 direkt zur Magellanstraße 4.",
+    "answer": "Welches ICOA-Paket du bekommst, steht vorher im verbindlichen Angebot; bei der Abholung kannst du es probehören. Für den Scharnhauser Park, für Ruit und für größere Räume in Ostfildern empfehle ich die leistungsfähige PA mit Sub; bei DJ-Abenden ergänze ich zwei Subs. Aus Nellingen, Ruit und dem Scharnhauser Park kommst du über die B27 direkt zur Magellanstraße 4.",
     "pages": [
       "ostfildern"
     ]
@@ -2283,15 +2283,15 @@
   {
     "id": "city-metzingen-unique-1",
     "question": "Welche Musikanlage passt zu einer Metzinger Hochzeit?",
-    "answer": "Für Metzinger Hochzeiten ergänze ich gern einen Beamer für die Diashow. Erzähl mir von deiner Metzinger Hochzeit und ob eine Diashow geplant ist. Ich stelle PA und Beamer passend zusammen.",
+    "answer": "Für Metzinger Hochzeiten ergänze ich gern ein Mikrofon für Reden und Ansagen. Erzähl mir von deiner Feier und wer sprechen möchte. Ich stelle PA und Mikrofon passend zusammen.",
     "pages": [
       "metzingen"
     ]
   },
   {
     "id": "city-metzingen-unique-2",
-    "question": "Wann lohnt sich ein Beamer für die Diashow in Metzingen?",
-    "answer": "Für Saalfeiern in Metzingen empfehle ich die ICOA-Pakete mit Sub – genug Leistung für Musik, Reden und Tanz. Für größere Räume in Bad Urach nehme ich das Club-Paket mit zwei Subs; den Beamer für die Diashow kannst du zusätzlich mieten. Aus Dettingen, Eningen, Neuffen und Bad Urach kommst du über die A8 nach Echterdingen.",
+    "question": "Wann lohnt sich ein Mikrofon für Reden in Metzingen?",
+    "answer": "Für Saalfeiern in Metzingen empfehle ich die ICOA-Pakete mit Sub – genug Leistung für Musik, Reden und Tanz. Für größere Räume in Bad Urach nehme ich das Club-Paket mit zwei Subs; ein Mikrofon für Ansagen kannst du zusätzlich mieten. Aus Dettingen, Eningen, Neuffen und Bad Urach kommst du über die A8 nach Echterdingen.",
     "pages": [
       "metzingen"
     ]
@@ -2346,8 +2346,8 @@
   },
   {
     "id": "tech-musikanlage-2",
-    "question": "Kann ich die Musikanlage vorher anhören?",
-    "answer": "Ja. Du kannst dir die Systeme in Leinfelden-Echterdingen ansehen und direkt vergleichen, bevor du dich entscheidest.",
+    "question": "Kann ich die Musikanlage bei der Abholung probehören?",
+    "answer": "Ja. Ich stelle die Anlage nach deinem Raum zusammen und halte das im verbindlichen Angebot fest. Bei der Abholung in Leinfelden-Echterdingen kannst du sie ansehen und probehören.",
     "pages": [
       "musikanlage"
     ]
@@ -2459,7 +2459,7 @@
   {
     "id": "musikbox-synonym-partybox",
     "question": "Was bedeutet „Musikbox mieten“ bei dir?",
-    "answer": "Musikbox mieten heißt bei mir: eine mobile JBL Partybox mit Akku, Bluetooth und Lightshow mieten. Du kannst dir die Boxen in Echterdingen vorher anhören und sie direkt mitnehmen.",
+    "answer": "Musikbox mieten heißt bei mir: eine mobile JBL Partybox mit Akku, Bluetooth und Lightshow mieten. Nach dem verbindlichen Angebot kannst du sie in Echterdingen bei der Abholung probehören und direkt mitnehmen.",
     "pages": [
       "jbl-partybox-300-320"
     ]

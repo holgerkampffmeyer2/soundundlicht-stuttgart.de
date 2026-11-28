@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import { chromium } from 'playwright';
 import { scrapeGoogleReviews } from './lib/scrape-reviews.mjs';
 import { buildOutput, mergeReviews, parseLimit } from './lib/review-pipeline.mjs';
+import { relativeDateInfo } from './lib/review-dates.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const reviewsFilePath = path.join(__dirname, '../src/data/google-reviews.json');
@@ -16,10 +17,21 @@ const LIMIT = parseLimit(process.argv);
 function loadExisting() {
   try {
     const parsed = JSON.parse(fs.readFileSync(reviewsFilePath, 'utf-8'));
-    return Array.isArray(parsed.reviews) ? parsed.reviews : [];
+    return {
+      reviews: Array.isArray(parsed.reviews) ? parsed.reviews : [],
+      fetchedAt: parsed.fetchedAt ? new Date(parsed.fetchedAt) : null,
+    };
   } catch {
-    return [];
+    return { reviews: [], fetchedAt: null };
   }
+}
+
+function withDates(reviews, referenceDate) {
+  return reviews.map((review) => {
+    if (review.time) return review;
+    const dateInfo = relativeDateInfo(review.relative_time_description, referenceDate);
+    return dateInfo ? { ...review, ...dateInfo } : review;
+  });
 }
 
 async function main() {
@@ -41,8 +53,12 @@ async function main() {
     process.exit(1);
   }
 
-  const { reviews, newCount } = mergeReviews(match.reviews, loadExisting(), LIMIT);
-  const output = buildOutput({ match, reviews });
+  const now = new Date();
+  const existing = loadExisting();
+  const scraped = withDates(match.reviews, now);
+  const kept = withDates(existing.reviews, existing.fetchedAt ?? now);
+  const { reviews, newCount } = mergeReviews(scraped, kept, LIMIT);
+  const output = buildOutput({ match, reviews, now });
 
   fs.writeFileSync(reviewsFilePath, JSON.stringify(output, null, 2) + '\n', 'utf-8');
   console.log(

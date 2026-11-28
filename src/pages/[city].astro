@@ -54,7 +54,6 @@ const einzelTitle = cityData.einzelTitle || `Einzeltechnik für ${cityName}`;
 const einzelDescription = cityData.einzelDescription || `Einzelne Geräte statt Komplettpaket? Hier ein Auszug aus meinem Angebot – alle Geräte findest du auf der Übersichtsseite.`;
 const areasIntro = cityData.areasIntro || `Du wohnst in ${cityName} oder Umgebung? Dann ist die Abholung bei mir in der Magellanstraße 4, Echterdingen, nur ${cityData.distance} entfernt – direkt an A8 / B27 gelegen.`;
 const contactDescription = cityData.contactDescription || `Du wohnst in ${cityName} oder Umgebung und möchtest Technik für deine Party mieten? Schreib mir eine E-Mail mit deinem Wunschdatum und der gewünschten Ausrüstung. Die Abholung ist in Leinfelden-Echterdingen, Magellanstraße 4 – verkehrsgünstig an A8 / B27, nur ${cityData.distance} km bzw. ${cityData.travelTime} Minuten von ${cityName}. Ich melde mich innerhalb von 12 Stunden bei dir!`;
-const distanceText = cityData.distanceText || `Nur ${cityData.distance} von ${cityName} – verkehrsgünstig an A8 / B27`;
 
 // JSON-LD Builders
 const breadcrumbJsonLdData = breadcrumbJsonLd([
@@ -128,7 +127,7 @@ const faqPageJsonLdData = faqPageJsonLd(cityFaqs);
   <ContactSection
     title={`Technik mieten in ${cityName} – einfach anfragen`}
     description={contactDescription}
-    distanceText={distanceText}
+    distanceText={`Nur ${cityData.distance} von ${cityName} – verkehrsgünstig an A8 / B27`}
   />
 
   <Footer />

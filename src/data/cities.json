@@ -96,8 +96,6 @@
     "heroDetails": "Mein Abholort in Echterdingen liegt rund 12 km entfernt. Aus Plieningen, Hohenheim und Vaihingen kommst du über die A8 schnell hierher; ich zeige dir vorher, wie Tops, Sub und Licht zusammengesteckt werden.",
     "areasIntro": "Aus Plieningen, Hohenheim und Vaihingen bist du in 10 bis 15 Minuten bei mir; die Innenstadt erreichst du über die A8 ebenfalls zügig.",
     "contactDescription": "Sag mir deine Gästezahl und ob du in einem Stuttgarter Keller oder Saal feierst. Ich schlage dir eine passende Kombination vor und weise dich bei der Abholung in Magellanstraße 4 persönlich ein.",
-    "distanceText": "",
-    "travelTimeText": "",
     "icoaTitle": "Leistungsfähige PA für Stuttgarter Partys",
     "icoaIntro": "Wenn in Stuttgart getanzt wird, brauchst du eine PA mit Reserven nach oben. Für bis etwa 120 Gäste empfehle ich das ICOA-Partypaket mit Sub, für DJ-Abende und größere Räume das Club-Paket mit zwei Subs. Ich stelle die Technik nach Gästezahl und Raumhöhe zusammen.",
     "primaryKeyword": "Veranstaltungstechnik mieten Stuttgart",
@@ -179,8 +177,6 @@
     "heroDetails": "Die LD Maui 28 G3 eignet sich für größere Räume, eine kompakte Partybox für kleinere Runden. Von Denkendorf oder Ostfildern aus erreichst du meinen Abholort über die B10 und A8 in rund 20 Minuten.",
     "areasIntro": "Auch aus Denkendorf, Ostfildern, Altbach und Deizisau kommst du zügig zur Abholung; ich nenne dir beim Anruf die passende Anfahrt.",
     "contactDescription": "Erzähl mir von deiner Location in Esslingen am Neckar und der Gästezahl. Ich stelle eine Anlage für Reden und Tanz zusammen und erkläre dir den Aufbau bei der Abholung.",
-    "distanceText": "",
-    "travelTimeText": "",
     "icoaTitle": "Leistungsfähige PA für Esslinger Feiern",
     "icoaIntro": "Auch in historischen Räumen in Esslingen brauchst du genug Leistung, wenn Musik und Reden getragen werden sollen. Die ICOA-Pakete mit Sub liefern klaren Sound und ordentlich Bass; für Vereinsheime in Altbach oder Deizisau empfehle ich das Club-Paket, wenn getanzt wird.",
     "primaryKeyword": "Musikanlage mieten Esslingen",
@@ -207,8 +203,6 @@
     "heroDetails": "Für Studentenparties und größere Räume empfehle ich die ICOA-Pakete mit Sub und genug Reserven für Bass. Du holst die Technik in Echterdingen ab – aus der Innenstadt oder vom Campus bist du über die B27 in etwa 30 Minuten bei mir. Ich weise dich kurz ein, damit du direkt loslegen kannst.",
     "areasIntro": "Aus Kusterdingen und Gomaringen kommst du über die B27 direkt nach Echterdingen; in der Tübinger Innenstadt plane ich die Anfahrt mit dir vorher.",
     "contactDescription": "Schreib mir, ob deine Party in Tübingen auf dem Campus, in der WG oder im Club stattfindet. Ich stelle eine PA mit genug Leistung für deine Gäste zusammen und weise dich bei der Abholung ein.",
-    "distanceText": "",
-    "travelTimeText": "",
     "areas": [
       {
         "name": "Kusterdingen",
@@ -335,8 +329,6 @@
     "heroDetails": "Filderstadt ist nur etwa 5 km von meinem Abholort entfernt. Ich prüfe mit dir, ob die Box in deinen Kleinwagen passt, und zeige dir Kabel, Bluetooth und Einstellungen, bevor du losfährst.",
     "areasIntro": "Aus Bernhausen, Plattenhardt und Neuhausen bist du in wenigen Minuten in der Magellanstraße; die L1209 führt dich direkt zum Abholort.",
     "contactDescription": "Wenn du heute noch in Filderstadt feierst, schreib mir kurz Anlass und Gästezahl. Ich prüfe die Verfügbarkeit und halte die Technik zur Abholung bereit.",
-    "distanceText": "",
-    "travelTimeText": "",
     "icoaTitle": "Leistungsfähige PA für Filderstädter Partys",
     "icoaIntro": "Ob Studentenparty, DJ-Crew oder größere Feier auf dem Fildern – ich empfehle die ICOA-Pakete, wenn der Sound tragen soll. Das Partypaket mit einem Sub reicht für bis etwa 120 Gäste, für DJ-Abende und größere Räume nehme ich das Club-Paket mit zwei Subs.",
     "primaryKeyword": "Partybox mieten Filderstadt",
@@ -348,7 +340,7 @@
     "slug": "leinfelden-echterdingen",
     "image": "/img/cities/leinfelden-echterdingen.webp",
     "title": "Partybox mieten Leinfelden-Echterdingen",
-    "description": "Partybox mieten Leinfelden-Echterdingen: vor Ort probehören, im Auto testen und persönlich einweisen lassen. Abholung in der Magellanstraße 4.",
+    "description": "Partybox mieten Leinfelden-Echterdingen: verbindliches Angebot, persönliche Einweisung und Probehören bei der Abholung in der Magellanstraße 4.",
     "distance": "0 km",
     "travelTime": "0 min",
     "einzelItems": [
@@ -356,8 +348,8 @@
       "kls-laser-bar",
       "yamaha-mischpult"
     ],
-    "einzelTitle": "Einzeltechnik: Maui, Laserbar und Mischpult zum Probehören",
-    "einzelDescription": "In Echterdingen kannst du Maui-Säule, Laserbar und Mischpult nacheinander selbst testen.",
+    "einzelTitle": "Einzeltechnik: Maui, Laserbar und Mischpult in Leinfelden-Echterdingen",
+    "einzelDescription": "Maui-Säule, Laserbar und Mischpult sind einzeln buchbar. Welche Geräte du bekommst, steht vorher im verbindlichen Angebot; bei der Abholung kannst du sie probehören.",
     "areas": [
       {
         "name": "Filderstadt",
@@ -410,17 +402,15 @@
       }
     ],
     "heroTitle": "Partybox mieten Leinfelden-Echterdingen",
-    "heroDescription": "Du wohnst direkt vor Ort? Bei mir kannst du die Partybox vor der Anmietung probehören, im Auto testen und in Ruhe fragen, was zu deiner Feier passt. Das ist der größte Vorteil der Abholung in der Magellanstraße.",
+    "heroDescription": "Du wohnst direkt vor Ort? Die Zusammenstellung steht vorher im verbindlichen Angebot fest. Bei der Abholung in der Magellanstraße probehörst du die Partybox, bevor du sie mitnimmst, und ich weise dich persönlich ein.",
     "heroDetails": "Ob Steinenbronn, Waldenbuch oder die Innenstadt von Leinfelden: Ich zeige dir Aufbau, Kabelwege und Einstellungen persönlich. Meist reicht ein Kombi mit umgeklappter Rückbank.",
     "areasIntro": "Aus Steinenbronn, Waldenbuch und Musberg kommst du direkt zur Magellanstraße 4; Parkplätze findest du vor dem Haus.",
     "contactDescription": "Komm einfach in Leinfelden-Echterdingen vorbei oder schreib mir dein Wunschdatum. Ich stelle dir die Technik zusammen und weise dich bei der Übergabe ausführlich ein.",
-    "distanceText": "",
-    "travelTimeText": "",
     "icoaTitle": "PA-Vergleich in Leinfelden-Echterdingen",
-    "icoaIntro": "Du kannst dir die ICOA-Pakete bei der Abholung ansehen und anhören. So weißt du vor der Feier, wie viel Leistung und Bass deine PA für den Raum in Leinfelden oder Echterdingen tatsächlich braucht.",
+    "icoaIntro": "Welches ICOA-Paket du bekommst, steht vorher im verbindlichen Angebot. Bei der Abholung kannst du die PA ansehen und probehören, bevor du sie mitnimmst – so weißt du genau, was dich in deinem Raum erwartet.",
     "primaryKeyword": "Partybox mieten Leinfelden-Echterdingen",
     "seoTitle": "Partybox mieten Leinfelden-Echterdingen | Sound & Licht Stuttgart",
-    "metaDescription": "Partybox mieten Leinfelden-Echterdingen: vor Ort probehören, im Auto testen und persönlich einweisen lassen. Abholung in der Magellanstraße 4."
+    "metaDescription": "Partybox mieten Leinfelden-Echterdingen: verbindliches Angebot, persönliche Einweisung und Probehören bei der Abholung in der Magellanstraße 4."
   },
   {
     "name": "Kornwestheim",
@@ -442,8 +432,6 @@
     "heroDetails": "Über die A81 und A8 erreichst du meinen Abholort in etwa 25 Minuten. Aus Remseck oder Bietigheim-Bissingen kommst du ebenfalls zügig vorbei; ich erkläre dir den Aufbau vor der Abfahrt.",
     "areasIntro": "Aus Remseck, Bietigheim-Bissingen und dem Kern von Kornwestheim bist du über A81/A8 schnell bei mir.",
     "contactDescription": "Nenne mir deinen Anlass und ob du eher Musik oder Reden brauchst. Ich stelle die passende Anlage für deine Kornwestheimer Feier zusammen.",
-    "distanceText": "",
-    "travelTimeText": "",
     "areas": [
       {
         "name": "Ludwigsburg",
@@ -517,8 +505,6 @@
     "heroDetails": "Über Kornwestheim und Marbach erreichst du mich in rund 25 Minuten. Ich lege dir ein Mikrofon dazu, wenn Programm und Ansagen Teil deiner Ludwigsburger Feier sind.",
     "areasIntro": "Aus der Innenstadt, aus Kornwestheim und aus Marbach kommst du über die A81 zügig zur Abholung.",
     "contactDescription": "Schreib mir, ob deine Ludwigsburger Feier eher ein Betriebsjubiläum oder eine private Party ist. Ich stelle Sound und Licht passend zur Gästezahl zusammen.",
-    "distanceText": "",
-    "travelTimeText": "",
     "areas": [
       {
         "name": "Kornwestheim",
@@ -636,8 +622,6 @@
     "heroDetails": "Die Anfahrt über die A8 dauert von Böblingen etwa 20 Minuten. Aus Schönaich und Sindelfingen kommst du ebenfalls schnell hierher; ich prüfe vorher, ob dein Auto die Boxen aufnimmt.",
     "areasIntro": "Aus Schönaich, Ehningen und Gärtringen erreichst du den Abholort über die A8 in wenigen Minuten.",
     "contactDescription": "Sag mir, wie viele Gäste in deinem Böblinger Raum tanzen wollen. Ich stelle eine Box mit passendem Bass und Licht zusammen und weise dich bei der Abholung ein.",
-    "distanceText": "",
-    "travelTimeText": "",
     "icoaTitle": "PA für DJ-Abende in Böblingen",
     "icoaIntro": "Wenn du in Böblingen einen DJ-Abend planst, empfehle ich das ICOA-Club-Paket mit zwei Subs – meine leistungsfähigste PA für größere Räume. Für Studentenparties und DJ-Crews stelle ich Licht und Mikrofon dazu und lege die Subs nach Gästezahl aus.",
     "primaryKeyword": "Partybox mieten Böblingen",
@@ -691,11 +675,9 @@
     ],
     "heroTitle": "Partylicht mieten Sindelfingen",
     "heroDescription": "Für Geburtstage und Vereinsfeiern in Sindelfingen stelle ich Partylicht von PAR-Lichtern über Moving Heads bis Nebel zusammen. Ich achte darauf, dass die Effekte zu Raumgröße und Musik passen.",
-    "heroDetails": "Die technischen Geräte lassen sich bei mir vor der Abholung ansehen. Aus Böblingen, Ehningen und Sindelfingen bist du über die A8 in rund 20 Minuten vor Ort.",
+    "heroDetails": "Die Geräte sind vorher im verbindlichen Angebot festgelegt; bei der Abholung zeige ich sie dir und du kannst sie probehören. Aus Böblingen, Ehningen und Sindelfingen bist du über die A8 in rund 20 Minuten vor Ort.",
     "areasIntro": "Aus dem Sindelfinger Zentrum, aus Böblingen und aus Ehningen kommst du über die A8 direkt zur Magellanstraße.",
     "contactDescription": "Erzähl mir von deiner Location in Sindelfingen und ob du Nebel einsetzen darfst. Ich stelle ein Licht-Set zusammen und erkläre dir die Steuerung bei der Abholung.",
-    "distanceText": "",
-    "travelTimeText": "",
     "icoaTitle": "PA und Lichtshow für Sindelfinger Partys",
     "icoaIntro": "Für eine Lichtshow in Sindelfingen kombiniere ich die leistungsfähige ICOA-PA mit Moving Heads und PAR-Lichtern. Größere Räume und DJ-Abende bekommen zwei Subs und bei Bedarf Nebel; ich stimme das Setup auf Gästezahl und Raumhöhe ab.",
     "primaryKeyword": "Partylicht mieten Sindelfingen",
@@ -713,17 +695,15 @@
     "einzelItems": [
       "jbl-partybox-300-320",
       "led-par-lichter",
-      "mini-party-beamer"
+      "mikrofon"
     ],
-    "einzelTitle": "Einzeltechnik: Box, PAR-Lichter und Beamer für Leonberg",
-    "einzelDescription": "Für Räume mit Bühne in Leonberg ergänze ich zur Box PAR-Lichter und einen Mini-Beamer als einzelne Geräte.",
+    "einzelTitle": "Einzeltechnik: Box, PAR-Lichter und Mikrofon für Leonberg",
+    "einzelDescription": "Für Räume mit Bühne in Leonberg ergänze ich zur Box PAR-Lichter und ein Mikrofon für Reden und Moderation als einzelne Geräte.",
     "heroTitle": "Musikanlage mieten Leonberg",
     "heroDescription": "Ob Korntal, Weil der Stadt oder Renningen: Ich stelle für Leonberger Feiern eine Musikanlage zusammen, die in unterschiedlichste Räume passt und Mikrofone für Reden ergänzt.",
     "heroDetails": "Über die A8 erreichst du meinen Abholort in etwa 25 Minuten. Ein ICOA-Top eignet sich bei mir auch als Bodenmonitor, wenn auf einer kleinen Bühne gespielt wird.",
     "areasIntro": "Aus Korntal-Münchingen, Renningen und Leonberg selbst kommst du über die A8 zügig nach Echterdingen.",
     "contactDescription": "Schreib mir, ob in deinem Leonberger Raum eine Bühne oder nur eine Tanzfläche geplant ist. Ich stelle PA und Monitor passend zusammen.",
-    "distanceText": "",
-    "travelTimeText": "",
     "areas": [
       {
         "name": "Sindelfingen",
@@ -791,8 +771,6 @@
     "heroDetails": "Über die B14 und den Anschluss an die A8 bist du von Waiblingen, Fellbach oder Weinstadt in rund 25 Minuten bei mir. Für längere Feiern plane ich Kabel und Ersatzstrom mit dir.",
     "areasIntro": "Aus Waiblingen, Fellbach, Remseck und Weinstadt kommst du über die B14 zügig zur Abholung.",
     "contactDescription": "Nenne mir die Dauer deiner Waiblinger Feier und die Stromverhältnisse vor Ort. Ich stelle die Technik entsprechend zusammen und weise dich bei der Übergabe ein.",
-    "distanceText": "",
-    "travelTimeText": "",
     "areas": [
       {
         "name": "Fellbach",
@@ -866,8 +844,6 @@
     "heroDetails": "Über die A8 und Wendlingen erreichst du meinen Abholort in etwa 22 Minuten. Für Nürtinger Räume mit begrenztem Strom ist die Powerstation oft die bessere Wahl als ein großes Netzteil.",
     "areasIntro": "Aus Wendlingen und Esslingen kommst du über die A8 nach Echterdingen; die Anfahrt aus dem Nürtinger Zentrum dauert etwa 22 Minuten.",
     "contactDescription": "Schreib mir, ob dein Nürtinger Raum Stromanschlüsse hat. Ich stelle Akku-Box, Licht und bei Bedarf ein Mikrofon zusammen.",
-    "distanceText": "",
-    "travelTimeText": "",
     "areas": [
       {
         "name": "Wendlingen am Neckar",
@@ -943,8 +919,6 @@
     "heroDetails": "Die Anfahrt aus Reutlingen dauert über die A8 etwa 30 Minuten. Für größere Räume empfehle ich die LD Maui 28 G3, für kleinere Feiern genügt ein kompaktes Boxen-Set.",
     "areasIntro": "Aus Pfullingen, Eningen und dem Zentrum von Reutlingen kommst du über die A8 nach Echterdingen.",
     "contactDescription": "Beschreib mir deinen Raum in Reutlingen und die Gästezahl. Ich empfehle dir eine Anlage und erkläre Aufbau und Transport bei der Abholung.",
-    "distanceText": "",
-    "travelTimeText": "",
     "areas": [
       {
         "name": "Pfullingen",
@@ -1031,8 +1005,8 @@
       },
       {
         "name": "Metzingen",
-        "km": "ca. 22 km",
-        "travelTime": "22 Min.",
+        "km": "ca. 25 km",
+        "travelTime": "23 Min.",
         "url": "/metzingen"
       },
       {
@@ -1066,8 +1040,6 @@
     "heroDetails": "Über die A8 und die B297 kommst du aus Notzingen, Dettingen, Owen oder Weilheim in rund 25 Minuten zu mir. Ich zeige dir das Partypaket XL vor Ort und bestelle nur, was du brauchst.",
     "areasIntro": "Aus Notzingen, Dettingen, Owen und Weilheim erreichst du mich über die B297 und A8.",
     "contactDescription": "Sag mir, wie groß dein Keller in Kirchheim unter Teck ist. Ich stelle eine Box mit passendem Sub zusammen und weise dich bei der Abholung persönlich ein.",
-    "distanceText": "",
-    "travelTimeText": "",
     "icoaTitle": "Leistungsfähige PA für Kirchheimer Feiern",
     "icoaIntro": "Das ICOA-Partypaket mit Sub trägt bis etwa 120 Gäste – auch wenn getanzt wird. Für größere Räume oder DJ-Abende in Kirchheim empfehle ich das Club-Paket mit zwei Subs; ich berate dich nach Gästezahl und Raumhöhe.",
     "primaryKeyword": "Partybox mieten Kirchheim unter Teck",
@@ -1079,7 +1051,7 @@
     "slug": "ostfildern",
     "image": "/img/cities/ostfildern.webp",
     "title": "Musikanlage mieten Ostfildern",
-    "description": "Musikanlage mieten Ostfildern: vorher probehören in Nellingen, Ruit oder Scharnhauser Park. Kompakte PA, persönliche Einweisung, nur 10 Minuten entfernt.",
+    "description": "Musikanlage mieten Ostfildern: kompakte PA, verbindliches Angebot und Probehören bei der Abholung. Persönliche Einweisung, nur 10 Minuten entfernt.",
     "distance": "ca. 10 km",
     "travelTime": "15 Min.",
     "einzelItems": [
@@ -1087,8 +1059,8 @@
       "max-party-bar",
       "mikrofon"
     ],
-    "einzelTitle": "Einzeltechnik: Box, Party Bar und Mikrofon zum Probehören",
-    "einzelDescription": "In Ostfildern kannst du JBL-Box, Party Bar und Mikrofon vor der Miete nacheinander testen.",
+    "einzelTitle": "Einzeltechnik: Box, Party Bar und Mikrofon in Ostfildern",
+    "einzelDescription": "JBL-Box, Party Bar und Mikrofon sind einzeln buchbar. Die Auswahl steht vorher im verbindlichen Angebot; bei der Abholung kannst du die Geräte probehören.",
     "areas": [
       {
         "name": "Plieningen",
@@ -1144,17 +1116,15 @@
       }
     ],
     "heroTitle": "Musikanlage mieten Ostfildern",
-    "heroDescription": "In Nellingen, Ruit oder im Scharnhauser Park kannst du dir die Technik vor der Miete bei mir ansehen und probehören. Ich stelle eine Musikanlage zusammen, die zu deiner Wohnung oder deinem Saal passt.",
+    "heroDescription": "In Nellingen, Ruit oder im Scharnhauser Park bist du nur 10 bis 15 Minuten von meinem Abholort entfernt. Ich stelle die Musikanlage passend zu deiner Wohnung oder deinem Saal zusammen und halte das im verbindlichen Angebot fest; bei der Abholung kannst du sie ansehen und probehören.",
     "heroDetails": "Ostfildern liegt direkt neben meinem Abholort; über die B27 bist du in 10 bis 15 Minuten hier. Ich zeige dir Kabel, Einstellungen und Transport, bevor du die Technik mitnimmst.",
     "areasIntro": "Aus Nellingen, Ruit und dem Scharnhauser Park kommst du über die B27 direkt zur Magellanstraße 4.",
     "contactDescription": "Komm gern in Ostfildern vorbei oder schreib mir dein Datum. Ich stelle die Musikanlage nach deinem Raum zusammen und weise dich bei der Übergabe ein.",
-    "distanceText": "",
-    "travelTimeText": "",
     "icoaTitle": "PA-Beratung in Ostfildern",
-    "icoaIntro": "Du kannst dir die ICOA-Pakete bei mir anhören. Für den Scharnhauser Park, für Ruit und für größere Räume in Ostfildern empfehle ich die leistungsfähige PA mit Sub; bei DJ-Abenden ergänze ich zwei Subs.",
+    "icoaIntro": "Welches ICOA-Paket du bekommst, steht vorher im verbindlichen Angebot. Bei der Abholung kannst du es probehören. Für den Scharnhauser Park, für Ruit und für größere Räume in Ostfildern empfehle ich die leistungsfähige PA mit Sub; bei DJ-Abenden ergänze ich zwei Subs.",
     "primaryKeyword": "Musikanlage mieten Ostfildern",
     "seoTitle": "Musikanlage mieten Ostfildern | Sound & Licht Stuttgart",
-    "metaDescription": "Musikanlage mieten Ostfildern: vorher probehören in Nellingen, Ruit oder Scharnhauser Park. Kompakte PA, persönliche Einweisung, nur 10 Minuten entfernt."
+    "metaDescription": "Musikanlage mieten Ostfildern: kompakte PA, verbindliches Angebot und Probehören bei der Abholung. Persönliche Einweisung, nur 10 Minuten entfernt."
   },
   {
     "name": "Fellbach",
@@ -1221,8 +1191,6 @@
     "heroDetails": "Aus Schmiden und Oeffingen erreichst du mich über Stuttgart-Bad Cannstatt und die B14. Ich weise dich bei der Abholung kurz ein, damit du ohne Rückfragen loslegen kannst.",
     "areasIntro": "Aus Schmiden, Oeffingen, Kernen und Weinstadt kommst du über die B14 und A8 zu mir.",
     "contactDescription": "Schreib mir kurz Anlass und Uhrzeit deiner Fellbacher Feier. Ich prüfe die Verfügbarkeit und halte das passende Set zur Abholung bereit.",
-    "distanceText": "",
-    "travelTimeText": "",
     "icoaTitle": "Kurzfristig PA für Fellbacher Partys",
     "icoaIntro": "Wenn du in Fellbach kurzfristig eine leistungsfähige PA brauchst, stelle ich ein ICOA-Paket mit Sub zusammen. Für größere Feiern in Oeffingen oder DJ-Abende nehme ich das Club-Paket mit zwei Subs; ich sage dir direkt, was verfügbar ist.",
     "primaryKeyword": "Partytechnik mieten Fellbach",
@@ -1299,18 +1267,16 @@
         "travelTime": "35 Min."
       }
     ],
-    "heroTitle": "Partybox mieten Herrenberg",
-    "heroDescription": "Für Hochzeiten im Gäu und Firmenfeiern in Herrenberg stelle ich Partyboxen mit zwei Subs zusammen, damit Bass auch im Festzelt ankommt. Ich plane die Lautstärke nach Gästezahl und Raum.",
+    "heroTitle": "PA Anlage mieten Herrenberg",
+    "heroDescription": "Für Hochzeiten und Firmenfeiern in Herrenberg stelle ich Full-Range PA Lautsprecher mit zwei Subs zusammen, damit Bass auch im Festzelt ankommt. Ich plane die Lautstärke nach Gästezahl und Raum.",
     "heroDetails": "Aus Bondorf, Mötzingen, Nufringen und Kuppingen erreichst du meinen Abholort über die A8 in etwa 25 Minuten. Ich zeige dir den Aufbau der Boxen vor Ort.",
     "areasIntro": "Aus Bondorf, Mötzingen, Nufringen und Kuppingen kommst du über die A8 direkt nach Echterdingen.",
     "contactDescription": "Erzähl mir von deiner Feier im Herrenberger Gäu und der Gästezahl. Ich stelle Boxen und Subs passend zum Festzelt oder Saal zusammen.",
-    "distanceText": "",
-    "travelTimeText": "",
-    "icoaTitle": "Leistungsfähige PA für Herrenberger Festzelte",
+    "icoaTitle": "Leistungsfähige PA für Herrenberger Feste",
     "icoaIntro": "Wenn im Festzelt in Herrenberg getanzt wird, empfehle ich das ICOA-Club-Paket mit zwei Subs. Für Studentenparties und DJ-Crews stelle ich Licht und Mikrofon dazu; ich entscheide mit dir nach Gästezahl und Raumgröße.",
-    "primaryKeyword": "Partybox mieten Herrenberg",
-    "seoTitle": "Partybox mieten Herrenberg | Sound & Licht Stuttgart",
-    "metaDescription": "Partybox mieten Herrenberg: Boxen mit zwei Subs für Hochzeit oder Firmenfeier im Gäu. Beratung zur Gästezahl, Abholung über A8."
+    "primaryKeyword": "PA mieten Herrenberg",
+    "seoTitle": "PA mieten Herrenberg | Sound & Licht Stuttgart",
+    "metaDescription": "PA mieten Herrenberg: PA Full-Range Tops mit zwei Subs für Hochzeit oder Firmenfeier im Gäu. Beratung zur Gästezahl, Abholung über A8."
   },
   {
     "name": "Winnenden",
@@ -1376,8 +1342,6 @@
     "heroDetails": "Über die B14 kommst du aus Berglen und Remshalden in rund 25 Minuten hierher. Ich erkläre dir, wie du das Top-Paar bei Bedarf mit einem Sub aufrüsten kannst.",
     "areasIntro": "Aus Schwaikheim, Leutenbach, Remshalden und Berglen bist du über die B14 zügig bei mir.",
     "contactDescription": "Nenne mir die Gästezahl deiner Winnender Feier. Ich stelle eine PA zusammen, die du bei Bedarf mit einem Sub erweitern kannst.",
-    "distanceText": "",
-    "travelTimeText": "",
     "icoaTitle": "Erweiterbare PA für Winnender Feiern",
     "icoaIntro": "Das ICOA-Club-Paket mit zwei Subs ist meine leistungsfähigste PA für größere Räume in Winnenden. Für Leutenbach und Schwaikheim stelle ich das Partypaket mit Sub zusammen; bei DJ-Abenden kommen Licht und Mikrofon dazu.",
     "primaryKeyword": "Musikanlage mieten Winnenden",
@@ -1448,8 +1412,6 @@
     "heroDetails": "Von Burgstetten, Oppenweiler oder Sulzbach aus kommst du über die B14 und A8 in etwa 35 Minuten zu mir. Wir legen gemeinsam fest, wann die Technik zurückgegeben wird.",
     "areasIntro": "Aus Burgstetten, Oppenweiler und Sulzbach erreichst du mich über B14 und A8 in rund 35 Minuten.",
     "contactDescription": "Schreib mir dein Datum und die Anfahrt aus dem Murr-Tal. Ich stelle ein Set zusammen und lege die Rückgabe mit dir fest.",
-    "distanceText": "",
-    "travelTimeText": "",
     "icoaTitle": "Leistungsfähige PA fürs Murr-Tal",
     "icoaIntro": "Für größere Feiern in Backnang empfehle ich die ICOA-Pakete mit Sub, wenn Musik und Bass getragen werden sollen. In Burgstetten und Sulzbach stelle ich das Club-Paket mit zwei Subs für DJs und Studentenparties zusammen; die längere Anfahrt plane ich vorher ein.",
     "primaryKeyword": "Party-Technik mieten Backnang",
@@ -1461,16 +1423,16 @@
     "slug": "metzingen",
     "image": "/img/cities/metzingen.webp",
     "title": "Musikanlage mieten Metzingen",
-    "description": "Musikanlage mieten Metzingen: PA für Hochzeiten, optional mit Beamer für die Diashow. Beratung für Bad Urach, Neuffen und Eningen.",
-    "distance": "ca. 22 km",
-    "travelTime": "22 Min.",
+    "description": "Musikanlage mieten Metzingen: PA für Hochzeiten, optional mit Mikrofon für Reden und Ansagen. Beratung für Bad Urach, Neuffen und Eningen.",
+    "distance": "ca. 25 km",
+    "travelTime": "23 Min.",
     "einzelItems": [
       "jbl-partybox-300-320",
       "beamz-mhl36",
-      "mini-party-beamer"
+      "mikrofon"
     ],
-    "einzelTitle": "Einzeltechnik: Box, Moving Heads und Beamer für Metzingen",
-    "einzelDescription": "Für Metzinger Hochzeiten stelle ich JBL-Box, BeamZ Moving Heads und Mini-Beamer als einzelne Geräte zusammen – den Beamer für die Diashow.",
+    "einzelTitle": "Einzeltechnik: Box, Moving Heads und Mikrofon für Metzingen",
+    "einzelDescription": "Für Metzinger Hochzeiten stelle ich JBL-Box, BeamZ Moving Heads und ein Mikrofon für Reden und Ansagen als einzelne Geräte zusammen.",
     "areas": [
       {
         "name": "Dettingen an der Erms",
@@ -1517,17 +1479,15 @@
       }
     ],
     "heroTitle": "Musikanlage mieten Metzingen",
-    "heroDescription": "Für Hochzeiten in Metzingen kombiniere ich eine Musikanlage mit einem Beamer für die Diashow. Ich stimme Sound und Bild so ab, dass Reden und Musik gut verständlich bleiben.",
-    "heroDetails": "Aus Dettingen an der Erms, Eningen, Neuffen und Bad Urach erreichst du mich in rund 30 Minuten. Ich erkläre dir Kabelwege für Beamer und PA bei der Abholung.",
+    "heroDescription": "Für Hochzeiten in Metzingen kombiniere ich eine Musikanlage mit einem Mikrofon für Reden und Ansagen. Ich stimme Lautstärke und Klang so ab, dass Sprache und Musik gut zusammenpassen.",
+    "heroDetails": "Aus Dettingen an der Erms, Eningen, Neuffen und Bad Urach erreichst du mich in rund 30 Minuten. Ich erkläre dir Kabelwege für Mikrofon und PA bei der Abholung.",
     "areasIntro": "Aus Dettingen, Eningen, Neuffen und Bad Urach kommst du über die A8 nach Echterdingen.",
-    "contactDescription": "Erzähl mir von deiner Metzinger Hochzeit und ob eine Diashow geplant ist. Ich stelle PA und Beamer passend zusammen.",
-    "distanceText": "",
-    "travelTimeText": "",
+    "contactDescription": "Erzähl mir von deiner Metzinger Hochzeit und ob Reden oder Ansagen geplant sind. Ich stelle PA und Mikrofon passend zusammen.",
     "icoaTitle": "Leistungsfähige PA für Metzinger Hochzeiten",
-    "icoaIntro": "Für Saalfeiern in Metzingen empfehle ich die ICOA-Pakete mit Sub – genug Leistung für Musik, Reden und Tanz. Für größere Räume in Bad Urach nehme ich das Club-Paket mit zwei Subs; den Beamer für die Diashow kannst du zusätzlich mieten.",
+    "icoaIntro": "Für Saalfeiern in Metzingen empfehle ich die ICOA-Pakete mit Sub – genug Leistung für Musik, Reden und Tanz. Für größere Räume in Bad Urach nehme ich das Club-Paket mit zwei Subs; ein Mikrofon für Ansagen kannst du zusätzlich mieten.",
     "primaryKeyword": "Musikanlage mieten Metzingen",
     "seoTitle": "Musikanlage mieten Metzingen | Sound & Licht Stuttgart",
-    "metaDescription": "Musikanlage mieten Metzingen: PA für Hochzeiten, optional mit Beamer für die Diashow. Beratung für Bad Urach, Neuffen und Eningen."
+    "metaDescription": "Musikanlage mieten Metzingen: PA für Hochzeiten, optional mit Mikrofon für Reden und Ansagen. Beratung für Bad Urach, Neuffen und Eningen."
   },
   {
     "name": "Göppingen",
@@ -1543,7 +1503,7 @@
       "partylicht-moving-head"
     ],
     "einzelTitle": "Einzeltechnik: Box, Laserbar und Moving Head für Göppingen",
-    "einzelDescription": "Für Göppinger Ballsäle kombiniere ich JBL-Box, Laserbar und Moving Head einzeln – das Mikrofon ist separat buchbar.",
+    "einzelDescription": "Für Veranstaltungen in Göppingen lassen sich JBL-Box, Laserbar und Moving Heads auch einzeln mieten. Ganz nach Deinem Bedarf.",
     "areas": [
       {
         "name": "Eislingen/Fils",
@@ -1602,11 +1562,9 @@
     "heroDescription": "Für Hochzeiten im Göppinger Ballsaal stelle ich Veranstaltungstechnik mit klarer Sprache, kräftigem Bass und dezentem Licht zusammen. Du bekommst beim Abholen eine persönliche Einweisung statt eines Pakets vom Versandhändler.",
     "heroDetails": "Die Anfahrt aus Göppingen, Eislingen, Salach, Süßen oder Uhingen dauert über die A8 etwa 37 Minuten. Ich plane Kabelwege und Mikrofone vorher mit dir, damit der Saal schnell aufgebaut ist.",
     "areasIntro": "Aus Eislingen, Salach, Süßen und Uhingen kommst du über die A8 in etwa 37 Minuten zur Abholung.",
-    "contactDescription": "Schreib mir Details zu deiner Göppinger Feier und dem Ballsaal. Ich stelle Technik zusammen und erkläre dir den Aufbau persönlich bei der Abholung.",
-    "distanceText": "Nur ca. 44 km von Göppingen – verkehrsgünstig an A8 / B27",
-    "travelTimeText": "37 Min.",
-    "icoaTitle": "Leistungsfähige PA für Göppinger Ballsäle",
-    "icoaIntro": "Im Ballsaal in Göppingen brauchst du gleichmäßige Beschallung mit Reserven. Ich empfehle die ICOA-Pakete mit Sub oder die Maui-Säule; für DJ-Abende und größere Räume stelle ich das Club-Paket mit zwei Subs und Redemikrofone zusammen.",
+    "contactDescription": "Schreib mir Details zu deiner Feier oder Veranstaltung. Ich stelle Technik zusammen und erkläre dir den Aufbau persönlich bei der Abholung.",
+    "icoaTitle": "Leistungsfähige PA für Göppinger Veranstaltungen",
+    "icoaIntro": "In größeren Locations wie dem Ballsaal in Göppingen brauchst du gleichmäßige Beschallung mit Reserven. Ich empfehle die ICOA-Pakete mit Sub oder die Maui-Säule; für DJ-Abende und größere Räume stelle ich das Club-Paket mit zwei Subs und Redemikrofone zusammen.",
     "primaryKeyword": "Veranstaltungstechnik mieten Göppingen",
     "seoTitle": "Veranstaltungstechnik mieten Göppingen | Sound & Licht Stuttgart",
     "metaDescription": "Veranstaltungstechnik mieten Göppingen: PA, Mikrofon und Licht für Hochzeit im Ballsaal. Persönliche Einweisung statt Versandverleih, Abholung nahe A8."
